@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hum: your little world</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="description" content="See how much water, air and power AI uses, as your own little living world." />
+  </head>
+  <body>
+    <header class="nav">
+      <a class="wordmark" href="/" aria-label="Hum home">hum<span class="dot" aria-hidden="true"></span></a>
+    </header>
+    <main>
+      <canvas id="stage" aria-label="A toy globe of Earth with small glowing AI buildings"></canvas>
+      <section class="zone" id="earth-zone" aria-label="Earth">
+        <p class="promise">Every AI question uses a little water and power. See yours.</p>
+        <button class="btn" id="make">Make my world</button>
+      </section>
+      <section class="world-ui" id="world-ui" hidden aria-label="My world">
+        <div class="glyphs" id="glyphs"></div>
+        <p class="sentence" id="sentence"></p>
+        <p class="sr-only" id="world-desc" aria-live="polite"></p>
+        <button class="icon-btn" id="back">Back to Earth</button>
+      </section>
+      <p class="skip-hint" id="skip-hint" hidden>Tap to skip</p>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

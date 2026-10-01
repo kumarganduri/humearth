@@ -445,16 +445,23 @@ Synthesized from this design review. Each task comes from a specific decision ab
   - The "Which AI" figures are not vendored from EcoLogits. The blended quiz (OV #4) uses published per-prompt disclosures instead, so the MPL file is no longer needed.
 - **Repo:** `~/humearth`. Domain candidates: humearth.org, .io, .app and .dev were free on 2026-10-02 (humearth.com and hum.earth are taken).
 
+- **Build notes (2026-10-02):**
+  - **three-globe dropped.** The toy globe needs only lat/lon math for about 28 lanterns, so it isn't worth the dependency.
+  - **Dive tuned by eye.** The blend now runs over 0.72–0.90, the camera stops at 1.18 radii, and your plot (a clay disc with 5 trees) sits on the globe so you see it as you descend.
+  - **The seed spot is forced onto land** (`isLand`).
+  - **E4 still to do:** the tier warmup picker (E9) and the context-loss handling (E7).
+  - **28 hubs, not 30–50.** Free per-market MW figures ran out, and many hubs are marked "search-summary" for re-checking.
+
 ## Eng Review Implementation Tasks
 Each task comes from an eng-review decision above.
 
-- [~] **E1 (P1, human ~1d / CC ~45min):** numbers (step 0). Build `scripts/build-data.ts`, constants.json with video ranges, and hubs.json (30–50 hubs), all schema-validated. (4A, OV #3, OV #7)
+- [x] **E1 (P1, human ~1d / CC ~45min):** numbers (step 0). Build `scripts/build-data.ts`, constants.json with video ranges, and hubs.json (30–50 hubs), all schema-validated. (4A, OV #3, OV #7)
   - Verify: `npm run build:data`; CI schema test.
 - [x] **E2 (P1, human ~1d / CC ~40min):** footprint engine plus the k-derivation script and the guardrails across low/mid/high. Publish the mapping values. (5A, OV #1, #2, #4)
   - Verify: `vitest run src/footprint`.
-- [ ] **E3 (P1, human ~3h / CC ~15min):** `build-tokens.ts` (DESIGN.md to tokens.ts/css), `sceneColor()`, and self-hosted fonts. (6A, OV #9)
+- [x] **E3 (P1, human ~3h / CC ~15min):** `build-tokens.ts` (DESIGN.md to tokens.ts/css), `sceneColor()`, and self-hosted fonts. (6A, OV #9)
   - Verify: stale-token CI check; zero third-party requests in the Playwright network log.
-- [ ] **E4 (P1, human ~3d / CC ~2h):** dive with two scenes and a camera handoff, skip/reverse/reduced motion, and the tier locked before the dive. (1A, OV #6)
+- [~] **E4 (P1, human ~3d / CC ~2h):** dive with two scenes and a camera handoff, skip/reverse/reduced motion, and the tier locked before the dive. (1A, OV #6)
   - Verify: `vitest run src/scene`, plus a manual phone check at ≥ 30 fps.
 - [ ] **E5 (P1, human ~4h / CC ~20min):** app state machine with friend links view-only and "Change my answers" keeping the seed. (2A, OV #10)
   - Verify: `vitest run src/app`.
