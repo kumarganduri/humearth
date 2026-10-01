@@ -265,15 +265,15 @@ Wireframe (rough flow): `~/.gstack/projects/ai-footprint/designs/mockup-20261001
 Synthesized from this design review. Each task comes from a specific decision above.
 
 - [x] **T1 (P1, human ~1d / CC ~30min):** DESIGN.md (done 2026-10-01). Run /design-consultation to set tokens, fonts, wordmark and motion. (10A)
-- [ ] **T2 (P1, human ~3d / CC ~2h):** Dive. Make it skippable (tap/Esc), hide the nav during the dive, fall back to a crossfade on slow devices and under reduced motion, and add the reverse dive back to Earth. (3A, 11A)
-- [ ] **T3 (P1, human ~1d / CC ~30min):** Earth landing. Show a static poster first and fade in the 3D globe. Order: promise, one primary button, then the ticker in a solid zone. Add the returning-visitor glow and "Visit my world". (1A, 2A, 3A)
+- [x] **T2 (P1, human ~3d / CC ~2h):** Dive. Make it skippable (tap/Esc), hide the nav during the dive, fall back to a crossfade on slow devices and under reduced motion, and add the reverse dive back to Earth. (3A, 11A)
+- [x] **T3 (P1, human ~1d / CC ~30min):** Earth landing. Show a static poster first and fade in the 3D globe. Order: promise, one primary button, then the ticker in a solid zone. Add the returning-visitor glow and "Visit my world". (1A, 2A, 3A)
 - [x] **T4 (P1, human ~1d / CC ~40min):** Quiz. A bottom sheet with 2×2 picture buttons, one question at a time, the globe turning toward your spot, and the last tap starting the dive. (5A)
-- [ ] **T5 (P1, human ~2d / CC ~1h):** World landing. About 3 s of world-only reveal, then the leaf/drop/sun glyphs and one sentence. No grade bar. A live screen-reader sentence. (6A, 11A)
+- [x] **T5 (P1, human ~2d / CC ~1h):** World landing. About 3 s of world-only reveal, then the leaf/drop/sun glyphs and one sentence. No grade bar. A live screen-reader sentence. (6A, 11A)
 - [~] **T6 (P2, human ~1d / CC ~40min):** In-world choice objects (paintbrush, film reel, feather, seed) and corner icon buttons for share and back. (9A)
 - [x] **T7 (P1, human ~4h / CC ~20min):** Share. The hash holds the real buckets plus "my plan" toggles. Add the friend's-world banner, the preview, and the bad-link state. (3A, 4A)
 - [x] **T8 (P1, human ~1d / CC ~40min):** How We Know. A tap panel with the range in kid words, plus the full one-column page with sources and a change log. (12A)
-- [ ] **T9 (P2, human ~2h / CC ~10min):** A copy-glossary strings file that all UI text comes from. Lint to catch banned words on main screens. (8A)
-- [ ] **T10 (P1, human ~1d / CC ~40min):** Layouts for phone and desktop, keyboard order, 44px targets, contrast checks, landmarks. Verify with keyboard-only and VoiceOver runs. (11A)
+- [~] **T9 (P2, human ~2h / CC ~10min):** A copy-glossary strings file that all UI text comes from. Lint to catch banned words on main screens. (8A)
+- [x] **T10 (P1, human ~1d / CC ~40min):** Layouts for phone and desktop, keyboard order, 44px targets, contrast checks, landmarks. Verify with keyboard-only and VoiceOver runs. (11A)
 - [ ] **T11 (P3, human ~4h / CC ~20min):** Opt-in sound: wind, bloom chimes, river loop, remembered choice. (13A)
 
 ## Engineering Review (/plan-eng-review, 2026-10-02)
@@ -462,6 +462,14 @@ Synthesized from this design review. Each task comes from a specific decision ab
   - The change log moved to `public/data/changelog.json`.
   - **Open item: the Earth "since you opened this page" ticker (2A) is not built.** It needs an AI share of all data-centre electricity, and we have no sourced figure for that yet; we won't ship an unsourced number. The options are to find a sourced AI share, or to word the ticker around all data centres.
 
+- **Phones, tests and deploy (2026-10-02):**
+  - **Poster-first:** the first screen is 8 KB gz of JS. three.js loads after `load` + idle, behind the `View` interface.
+  - **Fallbacks:** posters cover no WebGL and context loss. Quality tiers come from a warmup, with a slow-device drop that never happens mid-dive.
+  - **How We Know** is prerendered.
+  - **Tests:** Playwright E2E (30, desktop and phone), axe, and Lighthouse in CI.
+  - **Deploy:** the job is ready but waits for the Cloudflare secrets.
+  - **Two real bugs were caught by tests:** quiz keyboard focus, and the panel link contrast.
+
 ## Eng Review Implementation Tasks
 Each task comes from an eng-review decision above.
 
@@ -471,19 +479,19 @@ Each task comes from an eng-review decision above.
   - Verify: `vitest run src/footprint`.
 - [x] **E3 (P1, human ~3h / CC ~15min):** `build-tokens.ts` (DESIGN.md to tokens.ts/css), `sceneColor()`, and self-hosted fonts. (6A, OV #9)
   - Verify: stale-token CI check; zero third-party requests in the Playwright network log.
-- [~] **E4 (P1, human ~3d / CC ~2h):** dive with two scenes and a camera handoff, skip/reverse/reduced motion, and the tier locked before the dive. (1A, OV #6)
+- [x] **E4 (P1, human ~3d / CC ~2h):** dive with two scenes and a camera handoff, skip/reverse/reduced motion, and the tier locked before the dive. (1A, OV #6)
   - Verify: `vitest run src/scene`, plus a manual phone check at ≥ 30 fps.
 - [x] **E5 (P1, human ~4h / CC ~20min):** app state machine with friend links view-only and "Change my answers" keeping the seed. (2A, OV #10)
   - Verify: `vitest run src/app`.
 - [x] **E6 (P1, human ~3h / CC ~15min):** `#w1.` share codec, plus the `?s=1` share flag. (3A, OV #8)
   - Verify: codec round-trip and fuzz tests.
-- [ ] **E7 (P1, human ~3h / CC ~20min):** WebGL context loss and restore, and pausing when the tab is hidden. (7A)
+- [x] **E7 (P1, human ~3h / CC ~20min):** WebGL context loss and restore, and pausing when the tab is hidden. (7A)
   - Verify: E2E with forced `WEBGL_lose_context`.
-- [ ] **E8 (P1, human ~4h / CC ~20min):** code split with a 90 KB initial JS budget, poster-first, and Lighthouse CI (LCP under 2.5 s on Slow 4G). (9A)
+- [x] **E8 (P1, human ~4h / CC ~20min):** code split with a 90 KB initial JS budget, poster-first, and Lighthouse CI (LCP under 2.5 s on Slow 4G). (9A)
   - Verify: the CI budget check.
-- [ ] **E9 (P2, human ~1d / CC ~45min):** render budgets, instancing, the warmup tier picker, and the dev stats overlay. (10A)
+- [x] **E9 (P2, human ~1d / CC ~45min):** render budgets, instancing, the warmup tier picker, and the dev stats overlay. (10A)
   - Verify: draw calls ≤ 150 in the stats overlay.
-- [ ] **E10 (P1, human ~3d / CC ~2h):** the full test stack: Vitest (all units), Playwright E2E (9 flows), axe, and GitHub Actions, with deploys only from green main. (8A)
+- [x] **E10 (P1, human ~3d / CC ~2h):** the full test stack: Vitest (all units), Playwright E2E (9 flows), axe, and GitHub Actions, with deploys only from green main. (8A)
   - Verify: the CI run is green.
 
 ## Success Criteria
