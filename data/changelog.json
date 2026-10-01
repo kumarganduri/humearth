@@ -1,0 +1,81 @@
+[
+  {
+    "date": "2026-10-01",
+    "constantsVersion": 1,
+    "changes": [
+      {
+        "key": "textPromptWh",
+        "from": null,
+        "to": [
+          0.24,
+          0.34,
+          1.86
+        ]
+      },
+      {
+        "key": "imageWh",
+        "from": null,
+        "to": [
+          0.63,
+          1.22,
+          2.91
+        ]
+      },
+      {
+        "key": "videoClipWh",
+        "from": null,
+        "to": [
+          30.3,
+          944,
+          944
+        ]
+      },
+      {
+        "key": "onsiteWaterLPerKWh",
+        "from": null,
+        "to": [
+          0.12,
+          1.08,
+          1.8
+        ]
+      },
+      {
+        "key": "offsiteWaterLPerKWh",
+        "from": null,
+        "to": [
+          0.49,
+          2.18,
+          3.94
+        ]
+      },
+      {
+        "key": "gridGCO2PerKWh",
+        "from": null,
+        "to": [
+          125,
+          473,
+          473
+        ]
+      },
+      {
+        "key": "dataCentreTWhPerYear",
+        "from": null,
+        "to": [
+          415,
+          415,
+          415
+        ]
+      },
+      {
+        "key": "worldPopulation",
+        "from": null,
+        "to": [
+          8160000000,
+          8160000000,
+          8160000000
+        ]
+      }
+    ],
+    "mappingChanged": true
+  }
+]

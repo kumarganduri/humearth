@@ -1,0 +1,29 @@
+{
+  "name": "humearth",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Hum: see how much water, air and power AI uses, as your own little living world.",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run build:data && tsc --noEmit && vite build",
+    "build:data": "tsx scripts/build-data.ts",
+    "derive:k": "tsx scripts/derive-k.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "three": "^0.186.1",
+    "three-globe": "^2.45.3"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.3",
+    "@types/three": "^0.186.0",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.2",
+    "vitest": "^5.0.3"
+  }
+}
