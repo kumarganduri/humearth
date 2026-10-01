@@ -1,8 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { footprint } from '../footprint/engine';
+
 import { realConstants } from '../footprint/testing';
 import { TEXT_HEAVY, VIDEO_HEAVY } from '../footprint/guardrails';
-import { band, comparisonWords, planWords, quizQuestions, sentenceFor, worldDescription } from './copy';
+import { band, comparisonWords, panelCopy, planWords, quizQuestions, sentenceFor, worldDescription } from './copy';
+import { footprint, kidComparisons } from '../footprint/engine';
 import type { Buckets } from '../footprint/types';
 
 const c = realConstants();
@@ -62,5 +63,25 @@ describe('quiz, plan words and comparisons', () => {
     expect(comparisonWords({ glasses: 2, bathtubs: 0.003, fridgeMinutes: 45, balloons: 1 })).toEqual({ air: '1 balloon of CO2', water: '2 glasses', power: 'a fridge for 45 minutes' });
     const big = comparisonWords({ glasses: 900, bathtubs: 1.5, fridgeMinutes: 1154, balloons: 224.1 });
     expect(big).toEqual({ air: '224 balloons of CO2', water: '1.5 bathtubs', power: 'a fridge for 19 hours' });
+  });
+});
+
+describe('tap panel (12A)', () => {
+  it('shows a low-to-high range in kid words and a reason, for every channel', () => {
+    const f = footprint(VIDEO_HEAVY, c);
+    const lo = kidComparisons(f.weekly.low.totals, c);
+    const hi = kidComparisons(f.weekly.high.totals, c);
+    for (const ch of ['co2', 'water', 'energy'] as const) {
+      const p = panelCopy(ch, lo, hi);
+      expect(p.range).toMatch(/^Somewhere from .+ to .+$/);
+      expect(p.whyUnsure.length).toBeGreaterThan(20);
+      expect(`${p.title} ${p.range} ${p.whyUnsure}`).not.toMatch(BANNED);
+    }
+  });
+  it('says "About" (or "Less than") when low and high read the same, and speaks about a friend on their world', () => {
+    const k = { glasses: 0.1, bathtubs: 0, fridgeMinutes: 0.2, balloons: 0.1 };
+    expect(panelCopy('water', k, k).range).toBe('Less than 1 glass');
+    expect(panelCopy('water', { ...k, glasses: 2 }, { ...k, glasses: 2 }).range).toBe('About 2 glasses');
+    expect(panelCopy('water', k, k, 'friend').title).toBe("Your friend's water this week");
   });
 });

@@ -10,10 +10,11 @@ import { buildWorld, type WorldScene } from './scene/world';
 import { Stage, type StagePhase } from './scene/stage';
 import { seedSpot } from './scene/geo';
 import { footprint, kidComparisons } from './footprint/engine';
-import { comparisonWords, planWords, quizQuestions, sentenceFor, worldDescription } from './ui/copy';
+import { comparisonWords, panelCopy, planWords, quizQuestions, sentenceFor, worldDescription } from './ui/copy';
 import { activeSeed, boot, displayedPlan, hasPlan, loadMine, newSeed, reduce, safeStore, saveMine, type AppEvent, type AppState } from './app/state';
 import { shareUrl } from './share/codec';
-import type { Constants, HubsFile, Plan } from './footprint/types';
+import { loadConstants, loadHubs } from './data/load';
+import type { Plan } from './footprint/types';
 
 const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
 const randomSeed = () => newSeed(() => crypto.getRandomValues(new Uint32Array(1))[0]! / 2 ** 32);
@@ -32,20 +33,14 @@ const CHOICES: { key: keyof Plan; label: string }[] = [
 ];
 
 async function main() {
-  const [constants, hubs] = await Promise.all([
-    fetch('/data/constants.json').then((r) => r.json() as Promise<Constants>),
-    // Sites fail -> globe without lanterns, numbers still work (state table 3A).
-    fetch('/data/hubs.json')
-      .then((r): Promise<Pick<HubsFile, 'hubs'>> => (r.ok ? r.json() : Promise.resolve({ hubs: [] })))
-      .catch((): Pick<HubsFile, 'hubs'> => ({ hubs: [] })),
-  ]);
+  const [constants, hubs] = await Promise.all([loadConstants(), loadHubs()]);
   const questions = quizQuestions(constants);
   const store = safeStore(globalThis.localStorage);
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 
   let state: AppState = boot(location.hash, loadMine(store));
 
-  const globe = buildGlobe(hubs.hubs);
+  const globe = buildGlobe(hubs);
   let worldSeed = activeSeed(state) ?? 1;
   let world: WorldScene = buildWorld(worldSeed);
   const stage = new Stage({
@@ -109,6 +104,8 @@ async function main() {
 
   let revealTimer = 0;
   let lastPlace: AppState['place'] | null = null;
+  type Channel = 'co2' | 'water' | 'energy';
+  let openPanel: Channel | null = null; // UI-only: which glyph's panel is open
 
   function render(s: AppState) {
     const placeChanged = s.place !== lastPlace;
@@ -144,6 +141,7 @@ async function main() {
     // World
     const ui = $('world-ui');
     if (s.place !== 'world' || !s.viewing) {
+      openPanel = null;
       clearTimeout(revealTimer);
       ui.classList.remove('show');
       ui.hidden = true;
@@ -154,7 +152,10 @@ async function main() {
     const words = comparisonWords(kidComparisons(fp.weekly.mid.totals, constants));
     const num = { co2: words.air, water: words.water, energy: words.power };
     $('glyphs').innerHTML = (['co2', 'water', 'energy'] as const)
-      .map((ch) => `<span class="glyph">${GLYPHS[ch].icon}${GLYPHS[ch].word} <span class="num">${num[ch]}</span></span>`)
+      .map(
+        (ch) =>
+          `<button class="glyph" data-channel="${ch}" aria-expanded="${openPanel === ch}" aria-controls="panel">${GLYPHS[ch].icon}${GLYPHS[ch].word} <span class="num">${num[ch]}</span></button>`,
+      )
       .join('');
     const whose = s.viewing.owner === 'me' ? 'mine' : 'friend';
     $('sentence').textContent = sentenceFor(fp, whose);
@@ -184,6 +185,21 @@ async function main() {
     $('make-mine').hidden = mineView;
     $('make-mine').textContent = s.mine ? 'Make a new one' : 'Make mine';
     $('world-desc').textContent = worldDescription(fp, whose);
+
+    // Tap panel (12A): range in kid words + why we're not totally sure + link to How We Know.
+    const panel = $('panel');
+    panel.hidden = openPanel === null;
+    if (openPanel) {
+      const p = panelCopy(
+        openPanel,
+        kidComparisons(fp.weekly.low.totals, constants),
+        kidComparisons(fp.weekly.high.totals, constants),
+        whose,
+      );
+      $('panel-title').textContent = p.title;
+      $('panel-range').textContent = p.range;
+      $('panel-why').textContent = p.whyUnsure;
+    }
 
     if (placeChanged) {
       // The world speaks first: ~3 s with no UI, then glyphs and sentence (6A).
@@ -231,6 +247,23 @@ async function main() {
     if (b.dataset.preview !== undefined) dispatch({ type: 'TOGGLE_PREVIEW' });
     else dispatch({ type: 'TOGGLE_PLAN', key: b.dataset.plan as keyof Plan });
   });
+  $('glyphs').addEventListener('click', (e) => {
+    const b = (e.target as HTMLElement).closest<HTMLButtonElement>('.glyph');
+    if (!b) return;
+    const ch = b.dataset.channel as Channel;
+    openPanel = openPanel === ch ? null : ch;
+    render(state);
+    if (openPanel) $('panel-title').focus();
+  });
+  const closePanel = () => {
+    if (!openPanel) return false;
+    const ch = openPanel;
+    openPanel = null;
+    render(state);
+    document.querySelector<HTMLButtonElement>(`.glyph[data-channel="${ch}"]`)?.focus();
+    return true;
+  };
+  $('panel-close').addEventListener('click', closePanel);
   $('change').addEventListener('click', () => dispatch({ type: 'CHANGE_ANSWERS' }));
   $('make-mine').addEventListener('click', () => dispatch({ type: 'MAKE_MINE' }));
   $('share').addEventListener('click', share);
@@ -238,6 +271,7 @@ async function main() {
   $('stage').addEventListener('click', () => stage.skip());
   addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
+      if (closePanel()) return;
       if (state.place === 'quiz') dispatch({ type: 'QUIZ_BACK' });
       else stage.skip();
     }

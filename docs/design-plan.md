@@ -271,7 +271,7 @@ Synthesized from this design review. Each task comes from a specific decision ab
 - [ ] **T5 (P1, human ~2d / CC ~1h):** World landing. About 3 s of world-only reveal, then the leaf/drop/sun glyphs and one sentence. No grade bar. A live screen-reader sentence. (6A, 11A)
 - [~] **T6 (P2, human ~1d / CC ~40min):** In-world choice objects (paintbrush, film reel, feather, seed) and corner icon buttons for share and back. (9A)
 - [x] **T7 (P1, human ~4h / CC ~20min):** Share. The hash holds the real buckets plus "my plan" toggles. Add the friend's-world banner, the preview, and the bad-link state. (3A, 4A)
-- [ ] **T8 (P1, human ~1d / CC ~40min):** How We Know. A tap panel with the range in kid words, plus the full one-column page with sources and a change log. (12A)
+- [x] **T8 (P1, human ~1d / CC ~40min):** How We Know. A tap panel with the range in kid words, plus the full one-column page with sources and a change log. (12A)
 - [ ] **T9 (P2, human ~2h / CC ~10min):** A copy-glossary strings file that all UI text comes from. Lint to catch banned words on main screens. (8A)
 - [ ] **T10 (P1, human ~1d / CC ~40min):** Layouts for phone and desktop, keyboard order, 44px targets, contrast checks, landmarks. Verify with keyboard-only and VoiceOver runs. (11A)
 - [ ] **T11 (P3, human ~4h / CC ~20min):** Opt-in sound: wind, bloom chimes, river loop, remembered choice. (13A)
@@ -456,6 +456,11 @@ Synthesized from this design review. Each task comes from a specific decision ab
   - The quiz seed is picked when the quiz starts, so the globe can turn toward your spot.
   - "or visit my world" is added for a friend-link visitor who already has a world.
   - Greener choices are buttons for now; the 3D in-world objects (T6) come with the art pass.
+
+- **How We Know build (2026-10-02):**
+  - The tap panel and the page both render from the same data files.
+  - The change log moved to `public/data/changelog.json`.
+  - **Open item: the Earth "since you opened this page" ticker (2A) is not built.** It needs an AI share of all data-centre electricity, and we have no sourced figure for that yet; we won't ship an unsourced number. The options are to find a sourced AI share, or to word the ticker around all data centres.
 
 ## Eng Review Implementation Tasks
 Each task comes from an eng-review decision above.

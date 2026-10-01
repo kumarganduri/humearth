@@ -10,6 +10,7 @@
   <body>
     <header class="nav">
       <a class="wordmark" href="/" aria-label="Hum home">hum<span class="dot" aria-hidden="true"></span></a>
+      <nav aria-label="Main"><a class="navlink" href="/how-we-know.html">How We Know</a></nav>
     </header>
     <main>
       <canvas id="stage" aria-label="A toy globe of Earth with small glowing AI buildings"></canvas>
@@ -41,6 +42,13 @@
         <div class="top">
           <p class="banner" id="friend-banner" hidden></p>
           <div class="glyphs" id="glyphs"></div>
+          <section class="panel" id="panel" hidden aria-labelledby="panel-title">
+            <button class="panel-close" id="panel-close" aria-label="Close">×</button>
+            <h3 id="panel-title" tabindex="-1"></h3>
+            <p class="panel-range" id="panel-range"></p>
+            <p id="panel-why"></p>
+            <a href="/how-we-know.html#numbers">See the full story</a>
+          </section>
         </div>
         <div class="sentence-wrap">
           <p class="trying" id="trying" hidden></p>

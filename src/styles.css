@@ -23,7 +23,9 @@ body {
 ::selection { background: var(--color-accent); color: var(--color-text); }
 :focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; border-radius: 6px; }
 
-.nav { position: fixed; inset: 0 0 auto 0; padding: var(--space-md) var(--space-lg); z-index: 2; }
+.nav { position: fixed; inset: 0 0 auto 0; padding: var(--space-md) var(--space-lg); z-index: 2; display: flex; justify-content: space-between; align-items: center; }
+.navlink { color: var(--color-text); font-weight: 700; text-decoration: none; }
+.navlink:hover { text-decoration: underline; }
 .wordmark { font: 800 1.9rem/1 var(--display); color: var(--color-text); text-decoration: none; display: inline-flex; align-items: baseline; gap: 6px; }
 .wordmark .dot { width: .42em; height: .42em; border-radius: 50%; background: var(--color-accent); box-shadow: 2px 3px 0 var(--color-accent-ember); }
 
@@ -76,7 +78,19 @@ body.landed main, body.diving main, body.quizzing main { grid-template-rows: 1fr
   background: color-mix(in srgb, var(--color-surface) 92%, transparent); color: var(--color-text);
   border: 0; border-radius: var(--rounded-full); font: 700 .95rem/1 var(--body); box-shadow: 0 3px 0 rgba(59,47,42,.18);
 }
+.glyph { cursor: pointer; }
+.glyph[aria-expanded="true"] { outline: 3px solid var(--color-accent); }
 .glyph svg { width: 22px; height: 22px; }
+.panel {
+  position: relative; width: min(360px, 100%); background: var(--color-surface-deep); border-radius: var(--rounded-lg);
+  padding: var(--space-md) var(--space-lg); box-shadow: 0 6px 18px -8px rgba(59,47,42,.35);
+}
+.panel h3 { font: 800 1.3rem/1.2 var(--display); margin: 0 28px var(--space-xs) 0; }
+.panel h3:focus { outline: none; }
+.panel-range { font: 600 1.2rem/1.3 var(--hand); margin: var(--space-xs) 0; }
+.panel p { margin: 0 0 var(--space-sm); }
+.panel a { color: var(--color-primary); font-weight: 700; text-underline-offset: 3px; }
+.panel-close { position: absolute; top: 6px; right: 6px; width: 44px; height: 44px; border: 0; background: none; font: 700 1.5rem/1 var(--body); color: var(--color-text-muted); cursor: pointer; border-radius: 50%; }
 .glyph .num { font: 400 .95rem/1 var(--hand); color: var(--color-text-muted); }
 .banner {
   margin: 0; padding: 8px 14px; border-radius: var(--rounded-full);

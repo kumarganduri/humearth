@@ -8,7 +8,7 @@ import type { Constants, HubsFile } from '../src/footprint/types';
 const SOURCE = 'data/sources/constants.source.json';
 const MAPPING = 'data/sources/mapping.json';
 const OUT = 'public/data/constants.json';
-const CHANGELOG = 'data/changelog.json';
+const CHANGELOG = 'public/data/changelog.json'; // public: How We Know shows it
 const HUBS_SOURCE = 'data/sources/hubs.source.json';
 const HUBS_OUT = 'public/data/hubs.json';
 

@@ -117,3 +117,25 @@ export function comparisonWords(k: KidComparisons): { air: string; water: string
     power: minutes >= 120 ? `a fridge for ${round(minutes / 60)} hours` : minutes < 1 ? 'a fridge for less than a minute' : `a fridge for ${round(minutes)} minutes`,
   };
 }
+
+/** The tap panel for one glyph (12A): range in kid words + why we're not totally sure. */
+export interface PanelCopy {
+  title: string;
+  range: string;
+  whyUnsure: string;
+}
+
+const PANEL: Record<'co2' | 'water' | 'energy', { title: string; key: 'air' | 'water' | 'power'; why: string }> = {
+  co2: { title: 'Your air this week', key: 'air', why: 'It depends on whether the power came from sun and wind, or from coal and gas.' },
+  water: { title: 'Your water this week', key: 'water', why: 'It depends on how each AI building is cooled, and where its power comes from.' },
+  energy: { title: 'Your power this week', key: 'power', why: "Companies don't share exact numbers, and some AIs use far more power than others." },
+};
+
+export function panelCopy(channel: 'co2' | 'water' | 'energy', low: KidComparisons, high: KidComparisons, whose: Whose = 'mine'): PanelCopy {
+  const p = PANEL[channel];
+  const lo = comparisonWords(low)[p.key];
+  const hi = comparisonWords(high)[p.key];
+  const title = whose === 'friend' ? p.title.replace('Your', "Your friend's") : p.title;
+  const same = lo.startsWith('less than') ? `L${lo.slice(1)}` : `About ${lo}`;
+  return { title, range: lo === hi ? same : `Somewhere from ${lo} to ${hi}`, whyUnsure: p.why };
+}
