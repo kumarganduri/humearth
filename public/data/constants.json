@@ -1,6 +1,6 @@
 {
-  "constantsVersion": 1,
-  "contentHash": "e3d18c8fcc2e8d4d",
+  "constantsVersion": 2,
+  "contentHash": "5338de452e852cb7",
   "builtAt": "2026-10-01",
   "values": {
     "textPromptWh": {
@@ -14,19 +14,22 @@
           "label": "Google: median Gemini Apps text prompt, Aug 2025 (includes data-centre overhead)",
           "url": "https://cloud.google.com/blog/products/infrastructure/measuring-the-environmental-impact-of-ai-inference",
           "retrieved": "2026-10-02",
-          "supports": "low"
+          "supports": "low",
+          "checked": "search-summary"
         },
         {
           "label": "OpenAI (Sam Altman): average ChatGPT query, June 2025",
           "url": "https://blog.samaltman.com/the-gentle-singularity",
           "retrieved": "2026-10-02",
-          "supports": "mid"
+          "supports": "mid",
+          "checked": "search-summary"
         },
         {
           "label": "MIT Technology Review: Llama 3.1 405B, 6,706 J per response",
           "url": "https://www.technologyreview.com/2025/05/20/1116327/ai-energy-usage-climate-footprint-big-tech/",
           "retrieved": "2026-10-02",
-          "supports": "high"
+          "supports": "high",
+          "checked": "search-summary"
         }
       ]
     },
@@ -41,13 +44,15 @@
           "label": "MIT Technology Review: Stable Diffusion 3 Medium 1024px, 2,282 J (low) and 4,402 J at more steps (mid)",
           "url": "https://www.technologyreview.com/2025/05/20/1116327/ai-energy-usage-climate-footprint-big-tech/",
           "retrieved": "2026-10-02",
-          "supports": "low,mid"
+          "supports": "low,mid",
+          "checked": "search-summary"
         },
         {
           "label": "Luccioni, Jernite, Strubell: Power Hungry Processing, image generation mean 2.907 kWh per 1,000 images",
           "url": "https://arxiv.org/abs/2311.16863",
           "retrieved": "2026-10-02",
-          "supports": "high"
+          "supports": "high",
+          "checked": "search-summary"
         }
       ]
     },
@@ -62,7 +67,8 @@
           "label": "MIT Technology Review: older CogVideoX clip 109,000 J (low); newer 5 s clip 3.4 million J (mid). No published figure for frontier video models, so high = mid.",
           "url": "https://www.technologyreview.com/2025/05/20/1116327/ai-energy-usage-climate-footprint-big-tech/",
           "retrieved": "2026-10-02",
-          "supports": "low,mid,high"
+          "supports": "low,mid,high",
+          "checked": "search-summary"
         }
       ]
     },
@@ -77,19 +83,22 @@
           "label": "AWS reported WUE 0.12 L/kWh (2025)",
           "url": "https://thenetworkinstallers.com/blog/data-center-water-usage/",
           "retrieved": "2026-10-02",
-          "supports": "low"
+          "supports": "low",
+          "checked": "search-summary"
         },
         {
           "label": "Google per-prompt disclosure: 0.26 mL per 0.24 Wh (= 1.08 L/kWh)",
           "url": "https://cloud.google.com/blog/products/infrastructure/measuring-the-environmental-impact-of-ai-inference",
           "retrieved": "2026-10-02",
-          "supports": "mid"
+          "supports": "mid",
+          "checked": "search-summary"
         },
         {
           "label": "Mytton, Data centre water consumption (npj Clean Water 2021): US average WUE about 1.8 L/kWh",
           "url": "https://www.nature.com/articles/s41545-021-00101-w",
           "retrieved": "2026-10-02",
-          "supports": "high"
+          "supports": "high",
+          "checked": "search-summary"
         }
       ]
     },
@@ -104,7 +113,8 @@
           "label": "Mytton (npj Clean Water 2021): US average 2.18 L/kWh; gas with cooling towers from 0.49, coal up to 3.94 L/kWh",
           "url": "https://www.nature.com/articles/s41545-021-00101-w",
           "retrieved": "2026-10-02",
-          "supports": "low,mid,high"
+          "supports": "low,mid,high",
+          "checked": "search-summary"
         }
       ]
     },
@@ -119,13 +129,15 @@
           "label": "Google per-prompt disclosure: 0.03 gCO2e per 0.24 Wh (market-based, = 125 g/kWh)",
           "url": "https://cloud.google.com/blog/products/infrastructure/measuring-the-environmental-impact-of-ai-inference",
           "retrieved": "2026-10-02",
-          "supports": "low"
+          "supports": "low",
+          "checked": "search-summary"
         },
         {
           "label": "Ember Global Electricity Review 2025: world average 473 gCO2/kWh in 2024",
           "url": "https://ember-energy.org/latest-insights/global-electricity-review-2025/global-electricity-trends/",
           "retrieved": "2026-10-02",
-          "supports": "mid,high"
+          "supports": "mid,high",
+          "checked": "search-summary"
         }
       ]
     },
@@ -140,7 +152,8 @@
           "label": "IEA Energy and AI (2025): about 415 TWh in 2024",
           "url": "https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai",
           "retrieved": "2026-10-02",
-          "supports": "low,mid,high"
+          "supports": "low,mid,high",
+          "checked": "search-summary"
         }
       ]
     },
@@ -155,7 +168,8 @@
           "label": "UN World Population Prospects 2024: about 8.16 billion in mid-2024",
           "url": "https://population.un.org/wpp/",
           "retrieved": "2026-10-02",
-          "supports": "low,mid,high"
+          "supports": "low,mid,high",
+          "checked": "search-summary"
         }
       ]
     }

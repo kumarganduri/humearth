@@ -1,0 +1,638 @@
+{
+  "contentHash": "879c4b80f261c76a",
+  "builtAt": "2026-10-01",
+  "hubs": [
+    {
+      "name": "Northern Virginia",
+      "country": "United States",
+      "lat": 39,
+      "lon": -77.5,
+      "mw": {
+        "low": 3046.1,
+        "mid": 4039.6,
+        "high": 11300
+      },
+      "measure": "mixed: colocation inventory (low) to total operational incl. self-built (high)",
+      "sources": [
+        {
+          "label": "CBRE Global Data Center Trends 2025 (inventory, Q1 2025)",
+          "url": "https://www.cbre.com/insights/reports/global-data-center-trends-2025",
+          "retrieved": "2026-10-02",
+          "supports": "low",
+          "checked": "page"
+        },
+        {
+          "label": "Visual Capitalist: Top 50 Data Center Markets by Power Consumption",
+          "url": "https://www.visualcapitalist.com/cp/top-data-center-markets/",
+          "retrieved": "2026-10-02",
+          "supports": "mid",
+          "checked": "search-summary"
+        },
+        {
+          "label": "Cushman & Wakefield Global Data Center Market Comparison 2026 (operational, incl. self-built)",
+          "url": "https://www.datacenterfrontier.com/site-selection/article/55131628/data-center-power-constraints-cloud-and-ai-demand-fuel-global-submarket-expansion-cushman-wakefield",
+          "retrieved": "2026-10-02",
+          "supports": "high",
+          "checked": "search-summary"
+        }
+      ]
+    },
+    {
+      "name": "Dallas-Fort Worth",
+      "country": "United States",
+      "lat": 32.8,
+      "lon": -96.8,
+      "mw": {
+        "low": 1067.3,
+        "mid": 1067.3,
+        "high": 1067.3
+      },
+      "measure": "colocation inventory",
+      "sources": [
+        {
+          "label": "CBRE North America Data Center Trends H2 2025 (inventory)",
+          "url": "https://www.cbre.com/press-releases/north-american-data-center-vacancy-rates-hit-record-low-despite-significant-supply-growth",
+          "retrieved": "2026-10-02",
+          "supports": "low,mid,high",
+          "checked": "search-summary"
+        }
+      ]
+    },
+    {
+      "name": "Atlanta",
+      "country": "United States",
+      "lat": 33.7,
+      "lon": -84.4,
+      "mw": {
+        "low": 1279.4,
+        "mid": 1279.4,
+        "high": 1279.4
+      },
+      "measure": "colocation inventory",
+      "sources": [
+        {
+          "label": "CBRE Global Data Center Trends 2025 (inventory, Q1 2025)",
+          "url": "https://www.cbre.com/insights/reports/global-data-center-trends-2025",
+          "retrieved": "2026-10-02",
+          "supports": "low,mid,high",
+          "checked": "page"
+        }
+      ]
+    },
+    {
+      "name": "Chicago",
+      "country": "United States",
+      "lat": 41.9,
+      "lon": -87.6,
+      "mw": {
+        "low": 904.6,
+        "mid": 904.6,
+        "high": 904.6
+      },
+      "measure": "colocation inventory",
+      "sources": [
+        {
+          "label": "CBRE North America Data Center Trends H2 2025 (inventory)",
+          "url": "https://www.cbre.com/press-releases/north-american-data-center-vacancy-rates-hit-record-low-despite-significant-supply-growth",
+          "retrieved": "2026-10-02",
+          "supports": "low,mid,high",
+          "checked": "search-summary"
+        }
+      ]
+    },
+    {
+      "name": "Phoenix",
+      "country": "United States",
+      "lat": 33.4,
+      "lon": -112.1,
+      "mw": {
+        "low": 617,
+        "mid": 617,
+        "high": 617
+      },
+      "measure": "colocation inventory",
+      "sources": [
+        {
+          "label": "CBRE Global Data Center Trends 2025 (inventory, Q1 2025)",
+          "url": "https://www.cbre.com/insights/reports/global-data-center-trends-2025",
+          "retrieved": "2026-10-02",
+          "supports": "low,mid,high",
+          "checked": "page"
+        }
+      ]
+    },
+    {
+      "name": "Silicon Valley",
+      "country": "United States",
+      "lat": 37.4,
+      "lon": -121.9,
+      "mw": {
+        "low": 489.2,
+        "mid": 489.2,
+        "high": 489.2
+      },
+      "measure": "colocation inventory",
+      "sources": [
+        {
+          "label": "CBRE: Silicon Valley inventory H2 2025",
+          "url": "https://www.cbre.com/press-releases/silicon-valley-data-centers-expands-modestly-as-power-rich-states-capture-mega-campus-growth",
+          "retrieved": "2026-10-02",
+          "supports": "low,mid,high",
+          "checked": "search-summary"
+        }
+      ]
+    },
+    {
+      "name": "Hillsboro, Oregon",
+      "country": "United States",
+      "lat": 45.5,
+      "lon": -122.9,
+      "mw": {
+        "low": 475.4,
+        "mid": 475.4,
+        "high": 475.4
+      },
+      "measure": "colocation inventory",
+      "sources": [
+        {
+          "label": "CBRE: Hillsboro inventory end of 2025",
+          "url": "https://www.cbre.com/press-releases/hillsboro-data-center-market-sees-strong-demand-in-2025-amid-record-national-growth",
+          "retrieved": "2026-10-02",
+          "supports": "low,mid,high",
+          "checked": "search-summary"
+        }
+      ]
+    },
+    {
+      "name": "São Paulo",
+      "country": "Brazil",
+      "lat": -23.5,
+      "lon": -46.6,
+      "mw": {
+        "low": 493,
+        "mid": 493,
+        "high": 493
+      },
+      "measure": "colocation inventory",
+      "sources": [
+        {
+          "label": "CBRE Global Data Center Trends 2025 (inventory, Q1 2025)",
+          "url": "https://www.cbre.com/insights/reports/global-data-center-trends-2025",
+          "retrieved": "2026-10-02",
+          "supports": "low,mid,high",
+          "checked": "page"
+        }
+      ]
+    },
+    {
+      "name": "Santiago",
+      "country": "Chile",
+      "lat": -33.4,
+      "lon": -70.6,
+      "mw": {
+        "low": 148,
+        "mid": 148,
+        "high": 148
+      },
+      "measure": "colocation inventory",
+      "sources": [
+        {
+          "label": "CBRE Global Data Center Trends 2025 (inventory, Q1 2025)",
+          "url": "https://www.cbre.com/insights/reports/global-data-center-trends-2025",
+          "retrieved": "2026-10-02",
+          "supports": "low,mid,high",
+          "checked": "page"
+        }
+      ]
+    },
+    {
+      "name": "London",
+      "country": "United Kingdom",
+      "lat": 51.5,
+      "lon": -0.1,
+      "mw": {
+        "low": 1189,
+        "mid": 1281,
+        "high": 1380
+      },
+      "measure": "operational capacity (H1 2025 to Sep 2026); mid is the geometric middle",
+      "sources": [
+        {
+          "label": "Cushman & Wakefield: EMEA Data Center H1 2025",
+          "url": "https://www.cushmanwakefield.com/en/germany/news/2025/08/emea-data-center-h1-2025",
+          "retrieved": "2026-10-02",
+          "supports": "low",
+          "checked": "search-summary"
+        },
+        {
+          "label": "Cushman & Wakefield: European data centre capacity surpasses 12GW (2026)",
+          "url": "https://www.cushmanwakefield.com/en/netherlands/news/2026/09/europese-datacenter-capaciteit-passeert-de-12gw",
+          "retrieved": "2026-10-02",
+          "supports": "high",
+          "checked": "search-summary"
+        },
+        {
+          "label": "Cushman & Wakefield: EMEA Data Center H1 2025",
+          "url": "https://www.cushmanwakefield.com/en/germany/news/2025/08/emea-data-center-h1-2025",
+          "retrieved": "2026-10-02",
+          "supports": "mid",
+          "checked": "search-summary",
+          "note": "mid derived: geometric middle of low and high"
+        }
+      ]
+    },
+    {
+      "name": "Frankfurt",
+      "country": "Germany",
+      "lat": 50.1,
+      "lon": 8.7,
+      "mw": {
+        "low": 745,
+        "mid": 745,
+        "high": 745
+      },
+      "measure": "live IT load (mid-2025)",
+      "sources": [
+        {
+          "label": "Tebin: Frankfurt, Continental Europe's largest data center market",
+          "url": "https://tebin.pro/news/frankfurt-data-center-capital-europe/",
+          "retrieved": "2026-10-02",
+          "supports": "low,mid,high",
+          "checked": "search-summary"
+        }
+      ]
+    },
+    {
+      "name": "Amsterdam",
+      "country": "Netherlands",
+      "lat": 52.4,
+      "lon": 4.9,
+      "mw": {
+        "low": 927,
+        "mid": 927,
+        "high": 927
+      },
+      "measure": "operational capacity (Q2 2026)",
+      "sources": [
+        {
+          "label": "Cushman & Wakefield: European data centre capacity surpasses 12GW (2026)",
+          "url": "https://www.cushmanwakefield.com/en/netherlands/news/2026/09/europese-datacenter-capaciteit-passeert-de-12gw",
+          "retrieved": "2026-10-02",
+          "supports": "low,mid,high",
+          "checked": "search-summary"
+        }
+      ]
+    },
+    {
+      "name": "Dublin",
+      "country": "Ireland",
+      "lat": 53.3,
+      "lon": -6.3,
+      "mw": {
+        "low": 1150,
+        "mid": 1150,
+        "high": 1150
+      },
+      "measure": "power consumption ranking",
+      "sources": [
+        {
+          "label": "Visual Capitalist: Top 50 Data Center Markets by Power Consumption",
+          "url": "https://www.visualcapitalist.com/cp/top-data-center-markets/",
+          "retrieved": "2026-10-02",
+          "supports": "low,mid,high",
+          "checked": "search-summary"
+        }
+      ]
+    },
+    {
+      "name": "Paris",
+      "country": "France",
+      "lat": 48.9,
+      "lon": 2.35,
+      "mw": {
+        "low": 600,
+        "mid": 719,
+        "high": 862
+      },
+      "measure": "existing capacity; mid is the geometric middle",
+      "sources": [
+        {
+          "label": "Arizton: France Data Center Market",
+          "url": "https://www.arizton.com/market-reports/france-data-center-market",
+          "retrieved": "2026-10-02",
+          "supports": "low",
+          "checked": "search-summary"
+        },
+        {
+          "label": "Baxtel: Paris Data Centers",
+          "url": "https://baxtel.com/data-center/paris",
+          "retrieved": "2026-10-02",
+          "supports": "high",
+          "checked": "search-summary"
+        },
+        {
+          "label": "Arizton: France Data Center Market",
+          "url": "https://www.arizton.com/market-reports/france-data-center-market",
+          "retrieved": "2026-10-02",
+          "supports": "mid",
+          "checked": "search-summary",
+          "note": "mid derived: geometric middle of low and high"
+        }
+      ]
+    },
+    {
+      "name": "Stockholm",
+      "country": "Sweden",
+      "lat": 59.3,
+      "lon": 18.1,
+      "mw": {
+        "low": 340,
+        "mid": 340,
+        "high": 340
+      },
+      "measure": "operational capacity",
+      "sources": [
+        {
+          "label": "JLL EMEA year-end data centre report 2025",
+          "url": "https://www.jll.com/en-sa/insights/emea-data-centre-report",
+          "retrieved": "2026-10-02",
+          "supports": "low,mid,high",
+          "checked": "search-summary"
+        }
+      ]
+    },
+    {
+      "name": "Johannesburg",
+      "country": "South Africa",
+      "lat": -26.2,
+      "lon": 28,
+      "mw": {
+        "low": 180,
+        "mid": 180,
+        "high": 180
+      },
+      "measure": "operational capacity",
+      "sources": [
+        {
+          "label": "JLL EMEA year-end data centre report 2025",
+          "url": "https://www.jll.com/en-sa/insights/emea-data-centre-report",
+          "retrieved": "2026-10-02",
+          "supports": "low,mid,high",
+          "checked": "search-summary"
+        }
+      ]
+    },
+    {
+      "name": "Dubai",
+      "country": "United Arab Emirates",
+      "lat": 25.2,
+      "lon": 55.3,
+      "mw": {
+        "low": 250,
+        "mid": 250,
+        "high": 250
+      },
+      "measure": "operational capacity",
+      "sources": [
+        {
+          "label": "JLL EMEA year-end data centre report 2025",
+          "url": "https://www.jll.com/en-sa/insights/emea-data-centre-report",
+          "retrieved": "2026-10-02",
+          "supports": "low,mid,high",
+          "checked": "search-summary"
+        }
+      ]
+    },
+    {
+      "name": "Riyadh",
+      "country": "Saudi Arabia",
+      "lat": 24.7,
+      "lon": 46.7,
+      "mw": {
+        "low": 180,
+        "mid": 180,
+        "high": 180
+      },
+      "measure": "operational capacity",
+      "sources": [
+        {
+          "label": "JLL EMEA year-end data centre report 2025",
+          "url": "https://www.jll.com/en-sa/insights/emea-data-centre-report",
+          "retrieved": "2026-10-02",
+          "supports": "low,mid,high",
+          "checked": "search-summary"
+        }
+      ]
+    },
+    {
+      "name": "Beijing",
+      "country": "China",
+      "lat": 39.9,
+      "lon": 116.4,
+      "mw": {
+        "low": 1799,
+        "mid": 1799,
+        "high": 1799
+      },
+      "measure": "power consumption ranking",
+      "sources": [
+        {
+          "label": "Visual Capitalist: Top 50 Data Center Markets by Power Consumption",
+          "url": "https://www.visualcapitalist.com/cp/top-data-center-markets/",
+          "retrieved": "2026-10-02",
+          "supports": "low,mid,high",
+          "checked": "search-summary"
+        }
+      ]
+    },
+    {
+      "name": "Shanghai",
+      "country": "China",
+      "lat": 31.2,
+      "lon": 121.5,
+      "mw": {
+        "low": 429,
+        "mid": 429,
+        "high": 429
+      },
+      "measure": "listed facilities",
+      "sources": [
+        {
+          "label": "Baxtel: Shanghai Data Centers",
+          "url": "https://baxtel.com/data-center/shanghai",
+          "retrieved": "2026-10-02",
+          "supports": "low,mid,high",
+          "checked": "search-summary"
+        }
+      ]
+    },
+    {
+      "name": "Singapore",
+      "country": "Singapore",
+      "lat": 1.35,
+      "lon": 103.8,
+      "mw": {
+        "low": 876,
+        "mid": 876,
+        "high": 876
+      },
+      "measure": "power consumption ranking",
+      "sources": [
+        {
+          "label": "Visual Capitalist: Top 50 Data Center Markets by Power Consumption",
+          "url": "https://www.visualcapitalist.com/cp/top-data-center-markets/",
+          "retrieved": "2026-10-02",
+          "supports": "low,mid,high",
+          "checked": "search-summary"
+        }
+      ]
+    },
+    {
+      "name": "Tokyo",
+      "country": "Japan",
+      "lat": 35.7,
+      "lon": 139.7,
+      "mw": {
+        "low": 865,
+        "mid": 865,
+        "high": 865
+      },
+      "measure": "power consumption ranking",
+      "sources": [
+        {
+          "label": "Visual Capitalist: Top 50 Data Center Markets by Power Consumption",
+          "url": "https://www.visualcapitalist.com/cp/top-data-center-markets/",
+          "retrieved": "2026-10-02",
+          "supports": "low,mid,high",
+          "checked": "search-summary"
+        }
+      ]
+    },
+    {
+      "name": "Seoul",
+      "country": "South Korea",
+      "lat": 37.6,
+      "lon": 127,
+      "mw": {
+        "low": 698,
+        "mid": 698,
+        "high": 698
+      },
+      "measure": "colocation inventory",
+      "sources": [
+        {
+          "label": "CBRE Global Data Center Trends 2025 (inventory, Q1 2025)",
+          "url": "https://www.cbre.com/insights/reports/global-data-center-trends-2025",
+          "retrieved": "2026-10-02",
+          "supports": "low,mid,high",
+          "checked": "page"
+        }
+      ]
+    },
+    {
+      "name": "Mumbai",
+      "country": "India",
+      "lat": 19.1,
+      "lon": 72.9,
+      "mw": {
+        "low": 670,
+        "mid": 670,
+        "high": 670
+      },
+      "measure": "colocation inventory",
+      "sources": [
+        {
+          "label": "CBRE Global Data Center Trends 2025 (inventory, Q1 2025)",
+          "url": "https://www.cbre.com/insights/reports/global-data-center-trends-2025",
+          "retrieved": "2026-10-02",
+          "supports": "low,mid,high",
+          "checked": "page"
+        }
+      ]
+    },
+    {
+      "name": "Johor",
+      "country": "Malaysia",
+      "lat": 1.5,
+      "lon": 103.7,
+      "mw": {
+        "low": 897,
+        "mid": 897,
+        "high": 897
+      },
+      "measure": "operational capacity (2025)",
+      "sources": [
+        {
+          "label": "Cushman & Wakefield: APAC data centre pipeline, 2025 operational",
+          "url": "https://www.cushmanwakefield.com/en/singapore/news/2026/03/apac-data-centre-development-pipeline-hits-record-in-2025",
+          "retrieved": "2026-10-02",
+          "supports": "low,mid,high",
+          "checked": "search-summary"
+        }
+      ]
+    },
+    {
+      "name": "Sydney",
+      "country": "Australia",
+      "lat": -33.9,
+      "lon": 151.2,
+      "mw": {
+        "low": 786,
+        "mid": 786,
+        "high": 786
+      },
+      "measure": "operational capacity (2025)",
+      "sources": [
+        {
+          "label": "Cushman & Wakefield: APAC data centre pipeline, 2025 operational",
+          "url": "https://www.cushmanwakefield.com/en/singapore/news/2026/03/apac-data-centre-development-pipeline-hits-record-in-2025",
+          "retrieved": "2026-10-02",
+          "supports": "low,mid,high",
+          "checked": "search-summary"
+        }
+      ]
+    },
+    {
+      "name": "Hong Kong",
+      "country": "China",
+      "lat": 22.3,
+      "lon": 114.2,
+      "mw": {
+        "low": 581,
+        "mid": 581,
+        "high": 581
+      },
+      "measure": "operational capacity (2025)",
+      "sources": [
+        {
+          "label": "Cushman & Wakefield: APAC data centre pipeline, 2025 operational",
+          "url": "https://www.cushmanwakefield.com/en/singapore/news/2026/03/apac-data-centre-development-pipeline-hits-record-in-2025",
+          "retrieved": "2026-10-02",
+          "supports": "low,mid,high",
+          "checked": "search-summary"
+        }
+      ]
+    },
+    {
+      "name": "Greater Jakarta",
+      "country": "Indonesia",
+      "lat": -6.2,
+      "lon": 106.8,
+      "mw": {
+        "low": 322,
+        "mid": 322,
+        "high": 322
+      },
+      "measure": "operational capacity (2025)",
+      "sources": [
+        {
+          "label": "Cushman & Wakefield: APAC data centre pipeline, 2025 operational",
+          "url": "https://www.cushmanwakefield.com/en/singapore/news/2026/03/apac-data-centre-development-pipeline-hits-record-in-2025",
+          "retrieved": "2026-10-02",
+          "supports": "low,mid,high",
+          "checked": "search-summary"
+        }
+      ]
+    }
+  ]
+}

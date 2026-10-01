@@ -3,10 +3,11 @@
 //   data/sources/constants.source.json ─┐
 //   data/sources/mapping.json ──────────┼─ validate ─> Constants (version, contentHash)
 //   previous public/data/constants.json ┘                └─> changelog entry when numbers changed
+//   data/sources/hubs.source.json ─ validate ─> public/data/hubs.json (contentHash)
 
 import { createHash } from 'node:crypto';
-import { validateMapping, validateSource } from '../../src/footprint/schema';
-import { VALUE_KEYS, type Constants, type Mapping } from '../../src/footprint/types';
+import { validateHubs, validateMapping, validateSource } from '../../src/footprint/schema';
+import { VALUE_KEYS, type Constants, type Hub, type HubsFile, type Mapping } from '../../src/footprint/types';
 
 export interface ChangelogEntry {
   date: string;
@@ -29,6 +30,8 @@ export function canonical(x: unknown): string {
   return JSON.stringify(x);
 }
 
+const hashOf = (x: unknown) => createHash('sha256').update(canonical(x)).digest('hex').slice(0, 16);
+
 export class DataValidationError extends Error {
   constructor(public readonly problems: string[]) {
     super(`Data validation failed:\n  - ${problems.join('\n  - ')}`);
@@ -46,7 +49,7 @@ export function buildConstants(
 
   const src = source as Pick<Constants, 'values' | 'quiz' | 'comparisons'>;
   const body = { values: src.values, quiz: src.quiz, comparisons: src.comparisons, mapping: mapping as Mapping };
-  const contentHash = createHash('sha256').update(canonical(body)).digest('hex').slice(0, 16);
+  const contentHash = hashOf(body);
 
   if (previous && previous.contentHash === contentHash) {
     return { constants: previous, changelog: null };
@@ -64,4 +67,15 @@ export function buildConstants(
   }
   const mappingChanged = !previous || canonical(previous.mapping) !== canonical(constants.mapping);
   return { constants, changelog: { date: today, constantsVersion, changes, mappingChanged } };
+}
+
+
+/** data/sources/hubs.source.json -> public/data/hubs.json. Returns null when nothing changed. */
+export function buildHubs(source: unknown, previous: HubsFile | null, today: string): HubsFile | null {
+  const problems = validateHubs(source);
+  if (problems.length) throw new DataValidationError(problems);
+  const hubs = (source as { hubs: Hub[] }).hubs;
+  const contentHash = hashOf(hubs);
+  if (previous?.contentHash === contentHash) return null;
+  return { contentHash, builtAt: today, hubs };
 }

@@ -14,6 +14,8 @@ export interface Source {
   url: string;
   retrieved: string; // YYYY-MM-DD
   supports: string; // which of low/mid/high this source backs, comma separated
+  checked?: 'page' | 'search-summary'; // read the page itself, or only a search summary (re-check)
+  note?: string;
 }
 
 export interface RangeValue {
@@ -66,6 +68,23 @@ export interface Constants {
   quiz: QuizTable;
   comparisons: Comparisons;
   mapping: Mapping;
+}
+
+/** An AI-building hub region, drawn as a lantern on the globe (OV #7). */
+export interface Hub {
+  name: string;
+  country: string;
+  lat: number;
+  lon: number;
+  mw: { low: number; mid: number; high: number };
+  measure: string; // what the MW figure counts; sources measure different things
+  sources: Source[];
+}
+
+export interface HubsFile {
+  contentHash: string;
+  builtAt: string;
+  hubs: Hub[];
 }
 
 /** Quiz answers. Only these coarse buckets are ever stored or shared. */

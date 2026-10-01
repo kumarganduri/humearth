@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { buildConstants, canonical, DataValidationError } from './build';
+import { readFileSync } from 'node:fs';
+import { buildConstants, buildHubs, canonical, DataValidationError } from './build';
 import { readMapping, readSource } from '../../src/footprint/testing';
 
 const clone = <T>(x: T): T => structuredClone(x);
@@ -91,5 +92,36 @@ describe('buildConstants: versioning and the change log', () => {
 
   it('ignores $comment and key order when hashing', () => {
     expect(canonical({ b: 1, a: [1, { d: 2, c: 3 }], $comment: 'x' })).toBe(canonical({ a: [1, { c: 3, d: 2 }], b: 1 }));
+  });
+});
+
+describe('buildHubs', () => {
+  const hubsSrc = () => JSON.parse(readFileSync('data/sources/hubs.source.json', 'utf8'));
+  it('accepts the real sourced hubs (28, every one with a measure and sources)', () => {
+    const out = buildHubs(hubsSrc(), null, '2026-10-02');
+    expect(out?.hubs.length).toBe(28);
+    expect(out?.hubs.every((h) => h.measure && h.sources.length > 0)).toBe(true);
+  });
+  it('returns null when nothing changed', () => {
+    const first = buildHubs(hubsSrc(), null, '2026-10-02')!;
+    expect(buildHubs(hubsSrc(), first, '2026-10-09')).toBeNull();
+  });
+  it('rejects bad coordinates, duplicates, a missing measure and out-of-order MW', () => {
+    const s = hubsSrc();
+    s.hubs[0].lat = 120;
+    s.hubs[1].name = s.hubs[2].name;
+    delete s.hubs[3].measure;
+    s.hubs[4].mw = { low: 10, mid: 5, high: 20 };
+    s.hubs[5].sources[0].checked = 'vibes';
+    const p = problemsOf(() => buildHubs(s, null, '2026-10-02')).join('\n');
+    expect(p).toMatch(/lat: must be in \[-90, 90\]/);
+    expect(p).toMatch(/duplicate name/);
+    expect(p).toMatch(/measure: required/);
+    expect(p).toMatch(/mw: needs low <= mid <= high/);
+    expect(p).toMatch(/checked: page \| search-summary/);
+  });
+  it('rejects an empty or missing hub list', () => {
+    expect(problemsOf(() => buildHubs({ hubs: [] }, null, '2026-10-02')).join()).toMatch(/at least one hub/);
+    expect(problemsOf(() => buildHubs(null, null, '2026-10-02')).join()).toMatch(/hubs: missing/);
   });
 });
