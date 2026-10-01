@@ -85,17 +85,20 @@ export function weeklyUse(buckets: Buckets, c: Constants, level: Level, plan: Pl
   return { perActivityWh, totals: channelsFromWh(total, c, level) };
 }
 
-/** Weekly share of ALL data-centre electricity per person, as co2 / water / energy (MID factors). */
-export function perPersonBaseline(c: Constants): ChannelTotals {
+/**
+ * Weekly share of ALL data-centre electricity per person, as co2 / water / energy, using one
+ * level's figures. The world on screen uses 'mid'; the guardrails compare like with like at each level.
+ */
+export function perPersonBaseline(c: Constants, level: Level = 'mid'): ChannelTotals {
   const v = c.values;
-  const whPerYear = v.dataCentreTWhPerYear.mid * 1e12;
-  const whPerPersonWeek = whPerYear / v.worldPopulation.mid / WEEKS_PER_YEAR;
-  return channelsFromWh(whPerPersonWeek, c, 'mid');
+  const whPerYear = v.dataCentreTWhPerYear[level] * 1e12;
+  const whPerPersonWeek = whPerYear / v.worldPopulation[level] / WEEKS_PER_YEAR;
+  return channelsFromWh(whPerPersonWeek, c, level);
 }
 
 /** health = 1 - clamp(use / (k * baseline), 0, 1 - floor). A designed scale (Mapping), shown on How We Know. */
-export function healthFor(use: ChannelTotals, c: Constants): Record<Channel, number> {
-  const base = perPersonBaseline(c);
+export function healthFor(use: ChannelTotals, c: Constants, level: Level = 'mid'): Record<Channel, number> {
+  const base = perPersonBaseline(c, level);
   const { k, floor } = c.mapping;
   const out = {} as Record<Channel, number>;
   for (const ch of CHANNELS) {

@@ -12,7 +12,7 @@ describe('How We Know page', () => {
     const h = renderMapping(c);
     expect(h).toContain(num(c.mapping.k));
     expect(h).toMatch(/a scale we designed/);
-    expect(h).toMatch(/975 Wh a week/);
+    expect(h).toMatch(/971 Wh a week/);
     expect(h).toMatch(/50\+ times a day/);
   });
 
@@ -24,8 +24,11 @@ describe('How We Know page', () => {
     }
   });
 
-  it('flags sources we only saw in a search summary', () => {
-    expect(renderValues(c)).toMatch(/needs re-checking/);
+  it('flags sources we only saw in a search summary, and only those', () => {
+    expect(renderValues(c)).not.toMatch(/needs re-checking/); // every numbers source was read (2026-10-02)
+    const unverified = structuredClone(c);
+    unverified.values.imageWh.sources[0]!.checked = 'search-summary';
+    expect(renderValues(unverified)).toMatch(/needs re-checking/);
   });
 
   it('lists all hubs, biggest first, with what each figure counts', () => {

@@ -43,7 +43,7 @@ export function renderMapping(c: Constants): string {
   return `
 <h2 id="health">How your world's health is drawn</h2>
 <p>Your world's health is <strong>a scale we designed</strong>, not something we measured. We compare your weekly AI use with <strong>${num(c.mapping.k)}</strong> times the average person's share of <em>all</em> data-centre electricity, which is about <strong>${num(base.energy)} Wh a week</strong> (${num(c.values.dataCentreTWhPerYear.mid)} TWh a year shared by ${num(c.values.worldPopulation.mid)} people). A world never drops below ${num(c.mapping.floor * 100)}% health: it rests, it doesn't die.</p>
-<p>We picked that multiplier so two promises hold whether we use our middle estimates or our high ones (${STRICT_LEVELS.join(' and ')}):</p>
+<p>We picked that multiplier so two promises hold whether we use our middle estimates or our high ones (${STRICT_LEVELS.join(' and ')}). When we test "what if the high numbers are true?", we apply them to everyone, including the average person's share, so we compare like with like:</p>
 <ul>
   <li>someone asking an AI 50+ times a day, with no pictures or videos, stays healthy (${num(TEXT_HEAVY_MIN_HEALTH * 100)}% or more);</li>
   <li>someone making a lot of AI videos looks clearly stressed (under ${num(VIDEO_HEAVY_MAX_HEALTH * 100)}%).</li>

@@ -59,7 +59,7 @@ describe('channelsFromWh', () => {
     const t = channelsFromWh(1000, c, 'mid');
     expect(t.energy).toBe(1000);
     expect(t.co2).toBeCloseTo(473);
-    expect(t.water).toBeCloseTo((1.08 + 2.18) * 1000);
+    expect(t.water).toBeCloseTo((0.36 + 2.18) * 1000);
   });
   it('is zero for zero use', () => {
     expect(channelsFromWh(0, c, 'high')).toEqual({ energy: 0, co2: 0, water: 0 });
@@ -110,8 +110,8 @@ describe('health', () => {
       }
     }
   });
-  it('baseline is all data-centre electricity per person per week (about 975 Wh)', () => {
-    expect(perPersonBaseline(c).energy).toBeCloseTo((415e12 / 8.16e9) / (365 / 7), 0);
+  it("baseline is all data-centre electricity per person per week (about 971 Wh)", () => {
+    expect(perPersonBaseline(c).energy).toBeCloseTo((415e12 / 8.2e9) / (365 / 7), 0);
   });
 });
 

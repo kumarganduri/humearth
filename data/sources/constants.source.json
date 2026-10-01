@@ -9,25 +9,26 @@
       "high": 1.86,
       "sources": [
         {
-          "label": "Google: median Gemini Apps text prompt, Aug 2025 (includes data-centre overhead)",
+          "label": "Google: \"the median Gemini Apps text prompt uses 0.24 watt-hours (Wh) of energy\" (Aug 2025; includes idle machines and data-centre overhead)",
           "url": "https://cloud.google.com/blog/products/infrastructure/measuring-the-environmental-impact-of-ai-inference",
           "retrieved": "2026-10-02",
           "supports": "low",
-          "checked": "search-summary"
+          "checked": "page"
         },
         {
-          "label": "OpenAI (Sam Altman): average ChatGPT query, June 2025",
+          "label": "OpenAI (Sam Altman): \"the average query uses about 0.34 watt-hours\" (June 2025)",
           "url": "https://blog.samaltman.com/the-gentle-singularity",
           "retrieved": "2026-10-02",
           "supports": "mid",
-          "checked": "search-summary"
+          "checked": "page"
         },
         {
-          "label": "MIT Technology Review: Llama 3.1 405B, 6,706 J per response",
+          "label": "MIT Technology Review: Llama 3.1 405B, \"an estimated 6,706 joules total, for each response\"",
           "url": "https://www.technologyreview.com/2025/05/20/1116327/ai-energy-usage-climate-footprint-big-tech/",
           "retrieved": "2026-10-02",
           "supports": "high",
-          "checked": "search-summary"
+          "checked": "page",
+          "note": "Article estimates totals by doubling measured GPU energy."
         }
       ]
     },
@@ -36,21 +37,22 @@
       "unit": "Wh",
       "low": 0.63,
       "mid": 1.22,
-      "high": 2.91,
+      "high": 2.9,
       "sources": [
         {
-          "label": "MIT Technology Review: Stable Diffusion 3 Medium 1024px, 2,282 J (low) and 4,402 J at more steps (mid)",
+          "label": "MIT Technology Review: Stable Diffusion 3 Medium 1024px, \"an estimated 2,282 joules total\" (low); \"about 4,402 joules\" at higher quality (mid)",
           "url": "https://www.technologyreview.com/2025/05/20/1116327/ai-energy-usage-climate-footprint-big-tech/",
           "retrieved": "2026-10-02",
           "supports": "low,mid",
-          "checked": "search-summary"
+          "checked": "page",
+          "note": "Article estimates totals by doubling measured GPU energy."
         },
         {
-          "label": "Luccioni, Jernite, Strubell: Power Hungry Processing, image generation mean 2.907 kWh per 1,000 images",
+          "label": "Luccioni, Jernite, Strubell, Power Hungry Processing (2023): \"image generation, whose mean consumption is 2.9kWh\" per 1,000 inferences",
           "url": "https://arxiv.org/abs/2311.16863",
           "retrieved": "2026-10-02",
           "supports": "high",
-          "checked": "search-summary"
+          "checked": "page"
         }
       ]
     },
@@ -62,11 +64,12 @@
       "high": 944,
       "sources": [
         {
-          "label": "MIT Technology Review: older CogVideoX clip 109,000 J (low); newer 5 s clip 3.4 million J (mid). No published figure for frontier video models, so high = mid.",
+          "label": "MIT Technology Review: older CogVideoX clip \"about 109,000 joules\" (low); newer five-second clip \"about 3.4 million joules\" (mid). No published figure for frontier video models, so high = mid.",
           "url": "https://www.technologyreview.com/2025/05/20/1116327/ai-energy-usage-climate-footprint-big-tech/",
           "retrieved": "2026-10-02",
           "supports": "low,mid,high",
-          "checked": "search-summary"
+          "checked": "page",
+          "note": "Article estimates totals by doubling measured GPU energy."
         }
       ]
     },
@@ -74,45 +77,45 @@
       "label": "Water used at the AI building (cooling) per kWh",
       "unit": "L/kWh",
       "low": 0.12,
-      "mid": 1.08,
-      "high": 1.8,
+      "mid": 0.36,
+      "high": 1.08,
       "sources": [
         {
-          "label": "AWS reported WUE 0.12 L/kWh (2025)",
-          "url": "https://thenetworkinstallers.com/blog/data-center-water-usage/",
+          "label": "Amazon: \"global data center operations used just 0.12 liters of water per kilowatt-hour (L/kWh) in 2025\"",
+          "url": "https://www.aboutamazon.com/news/sustainability/amazon-data-center-water-usage",
           "retrieved": "2026-10-02",
           "supports": "low",
-          "checked": "search-summary"
+          "checked": "page"
         },
         {
-          "label": "Google per-prompt disclosure: 0.26 mL per 0.24 Wh (= 1.08 L/kWh)",
-          "url": "https://cloud.google.com/blog/products/infrastructure/measuring-the-environmental-impact-of-ai-inference",
+          "label": "Lawrence Berkeley National Laboratory, 2024 US Data Center Energy Usage Report (p. 48): \"the overall average WUE, which stays just over 0.36 L/kWh through 2023\"",
+          "url": "https://eta-publications.lbl.gov/sites/default/files/2024-12/lbnl-2024-united-states-data-center-energy-usage-report_1.pdf",
           "retrieved": "2026-10-02",
           "supports": "mid",
-          "checked": "search-summary"
+          "checked": "page"
         },
         {
-          "label": "Mytton, Data centre water consumption (npj Clean Water 2021): US average WUE about 1.8 L/kWh",
-          "url": "https://www.nature.com/articles/s41545-021-00101-w",
+          "label": "Google: the median text prompt \"consumes 0.26 milliliters ... of water\" for 0.24 Wh (= 1.08 L/kWh, our division)",
+          "url": "https://cloud.google.com/blog/products/infrastructure/measuring-the-environmental-impact-of-ai-inference",
           "retrieved": "2026-10-02",
           "supports": "high",
-          "checked": "search-summary"
+          "checked": "page"
         }
       ]
     },
     "offsiteWaterLPerKWh": {
       "label": "Water used at power plants to make each kWh",
       "unit": "L/kWh",
-      "low": 0.49,
+      "low": 0.0,
       "mid": 2.18,
-      "high": 3.94,
+      "high": 4.4,
       "sources": [
         {
-          "label": "Mytton (npj Clean Water 2021): US average 2.18 L/kWh; gas with cooling towers from 0.49, coal up to 3.94 L/kWh",
+          "label": "Mytton, Data centre water consumption (npj Clean Water 2021): \"The US average water intensity for electricity generation for 2015 was 2.18 litres per kilowatt hour\" (mid); generation cooling \"consumption ranging from 0.00 to 4.4 L/kWh ... depending on the system characteristics\" (low, high)",
           "url": "https://www.nature.com/articles/s41545-021-00101-w",
           "retrieved": "2026-10-02",
           "supports": "low,mid,high",
-          "checked": "search-summary"
+          "checked": "page"
         }
       ]
     },
@@ -124,18 +127,18 @@
       "high": 473,
       "sources": [
         {
-          "label": "Google per-prompt disclosure: 0.03 gCO2e per 0.24 Wh (market-based, = 125 g/kWh)",
+          "label": "Google: the median text prompt \"emits 0.03 grams of carbon dioxide equivalent\" for 0.24 Wh, using Google's 2024 fleetwide grid carbon intensity (= 125 g/kWh, our division)",
           "url": "https://cloud.google.com/blog/products/infrastructure/measuring-the-environmental-impact-of-ai-inference",
           "retrieved": "2026-10-02",
           "supports": "low",
-          "checked": "search-summary"
+          "checked": "page"
         },
         {
-          "label": "Ember Global Electricity Review 2025: world average 473 gCO2/kWh in 2024",
+          "label": "Ember Global Electricity Review 2025: \"Emissions intensity dropped by 2.3% to 473 grams of CO2 per kilowatt hour (gCO2/kWh)\" in 2024",
           "url": "https://ember-energy.org/latest-insights/global-electricity-review-2025/global-electricity-trends/",
           "retrieved": "2026-10-02",
           "supports": "mid,high",
-          "checked": "search-summary"
+          "checked": "page"
         }
       ]
     },
@@ -147,27 +150,27 @@
       "high": 415,
       "sources": [
         {
-          "label": "IEA Energy and AI (2025): about 415 TWh in 2024",
+          "label": "IEA Energy and AI (2025): \"electricity consumption from data centres is estimated to amount to around 415 terawatt hours (TWh), or about 1.5% of global electricity consumption in 2024\"",
           "url": "https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai",
           "retrieved": "2026-10-02",
           "supports": "low,mid,high",
-          "checked": "search-summary"
+          "checked": "page"
         }
       ]
     },
     "worldPopulation": {
       "label": "People in the world",
       "unit": "people",
-      "low": 8160000000.0,
-      "mid": 8160000000.0,
-      "high": 8160000000.0,
+      "low": 8200000000.0,
+      "mid": 8200000000.0,
+      "high": 8200000000.0,
       "sources": [
         {
-          "label": "UN World Population Prospects 2024: about 8.16 billion in mid-2024",
-          "url": "https://population.un.org/wpp/",
+          "label": "United Nations, World Population Prospects 2024 press release (11 July 2024): \"8.2 billion people in 2024\"",
+          "url": "https://www.un.org/sustainabledevelopment/blog/2024/07/press-release-wpp2024/",
           "retrieved": "2026-10-02",
           "supports": "low,mid,high",
-          "checked": "search-summary"
+          "checked": "page"
         }
       ]
     }

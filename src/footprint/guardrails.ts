@@ -5,6 +5,10 @@
 // if the world were drawn from MID or HIGH figures. At LOW they cannot both hold (the lowest
 // published video figure is from an older, tiny model), so LOW only requires the order to hold:
 // a video-heavy week is never healthier than a text-heavy week.
+//
+// Like with like (decided 2026-10-02 after source checking): "what if the high figures are true?"
+// applies them to the average person's share too, not just to your week. Otherwise a pessimistic
+// water factor on one side only makes any promise impossible.
 
 import { healthFor, perPersonBaseline, weeklyUse } from './engine';
 import { CHANNELS, type Buckets, type Constants, type Level } from './types';
@@ -26,9 +30,9 @@ export interface LevelCheck {
   ok: boolean;
 }
 
-/** Health a persona would get if the world were drawn from `level` figures. */
+/** Health a persona would get if the world were drawn from `level` figures (both sides). */
 export function healthAtLevel(b: Buckets, c: Constants, level: Level) {
-  return healthFor(weeklyUse(b, c, level).totals, c);
+  return healthFor(weeklyUse(b, c, level).totals, c, level);
 }
 
 export function checkLevel(c: Constants, level: Level): LevelCheck {
@@ -54,7 +58,7 @@ export function checkGuardrails(c: Constants): { ok: boolean; levels: LevelCheck
  *   video-heavy: 1 - V_c/(k B_c) <  0.5   =>  k <  V_c / (0.5 B_c)   for every channel c
  */
 export function feasibleK(c: Constants, level: Level): { lo: number; hi: number; textWh: number; videoWh: number } {
-  const base = perPersonBaseline(c);
+  const base = perPersonBaseline(c, level);
   const text = weeklyUse(TEXT_HEAVY, c, level).totals;
   const video = weeklyUse(VIDEO_HEAVY, c, level).totals;
   return {
