@@ -35,7 +35,7 @@ describe('How We Know page', () => {
     const h = renderHubs(hubs);
     expect(h.indexOf('Northern Virginia')).toBeLessThan(h.indexOf('Santiago'));
     for (const hub of hubs) expect(h).toContain(esc(hub.measure));
-    expect(h).toContain('3,046–11,300');
+    expect(h).toContain('2,552–11,300');
   });
 
   it('shows the change log newest first, with old → new values', () => {

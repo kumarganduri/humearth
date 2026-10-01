@@ -97,9 +97,10 @@ describe('buildConstants: versioning and the change log', () => {
 
 describe('buildHubs', () => {
   const hubsSrc = () => JSON.parse(readFileSync('data/sources/hubs.source.json', 'utf8'));
-  it('accepts the real sourced hubs (28, every one with a measure and sources)', () => {
+  it('accepts the real sourced hubs (27, every one with a measure and page-checked sources)', () => {
     const out = buildHubs(hubsSrc(), null, '2026-10-02');
-    expect(out?.hubs.length).toBe(28);
+    expect(out?.hubs.length).toBe(27);
+    expect(out?.hubs.every((h) => h.sources.every((s) => s.checked === 'page'))).toBe(true);
     expect(out?.hubs.every((h) => h.measure && h.sources.length > 0)).toBe(true);
   });
   it('returns null when nothing changed', () => {

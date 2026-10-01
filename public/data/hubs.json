@@ -1,5 +1,5 @@
 {
-  "contentHash": "879c4b80f261c76a",
+  "contentHash": "ef8f27cba36d41c1",
   "builtAt": "2026-10-01",
   "hubs": [
     {
@@ -8,32 +8,32 @@
       "lat": 39,
       "lon": -77.5,
       "mw": {
-        "low": 3046.1,
-        "mid": 4039.6,
+        "low": 2552,
+        "mid": 3046.1,
         "high": 11300
       },
-      "measure": "mixed: colocation inventory (low) to total operational incl. self-built (high)",
+      "measure": "mixed: Jan 2024 ranking (low), colocation inventory Q1 2025 (mid), operational incl. self-built 2026 (high)",
       "sources": [
         {
-          "label": "CBRE Global Data Center Trends 2025 (inventory, Q1 2025)",
-          "url": "https://www.cbre.com/insights/reports/global-data-center-trends-2025",
+          "label": "Visual Capitalist, Top 50 Data Center Markets (Jan 2024, \"data from Cushman & Wakefield\"): Northern Virginia 2,552 MW",
+          "url": "https://www.visualcapitalist.com/cp/top-data-center-markets/",
           "retrieved": "2026-10-02",
           "supports": "low",
           "checked": "page"
         },
         {
-          "label": "Visual Capitalist: Top 50 Data Center Markets by Power Consumption",
-          "url": "https://www.visualcapitalist.com/cp/top-data-center-markets/",
+          "label": "CBRE Global Data Center Trends 2025: Northern Virginia inventory \"to 3,046.1 MW\" (Q1 2025)",
+          "url": "https://www.cbre.com/insights/reports/global-data-center-trends-2025",
           "retrieved": "2026-10-02",
           "supports": "mid",
-          "checked": "search-summary"
+          "checked": "page"
         },
         {
-          "label": "Cushman & Wakefield Global Data Center Market Comparison 2026 (operational, incl. self-built)",
-          "url": "https://www.datacenterfrontier.com/site-selection/article/55131628/data-center-power-constraints-cloud-and-ai-demand-fuel-global-submarket-expansion-cushman-wakefield",
+          "label": "Cushman & Wakefield press release (20 May 2026): \"Virginia maintained its position as the world's largest data center market with 11.3GW of operational capacity\"",
+          "url": "https://ir.cushmanwakefield.com/news/press-release-details/2026/Dallas-Texas-Ranked-No--1-Primary-Data-Market-in-the-World-as-AI-Demand-Power-Constraints-and-Regulation-Reshape-CRE-Strategy/default.aspx",
           "retrieved": "2026-10-02",
           "supports": "high",
-          "checked": "search-summary"
+          "checked": "page"
         }
       ]
     },
@@ -43,18 +43,25 @@
       "lat": 32.8,
       "lon": -96.8,
       "mw": {
-        "low": 1067.3,
-        "mid": 1067.3,
-        "high": 1067.3
+        "low": 654,
+        "mid": 1000,
+        "high": 1000
       },
-      "measure": "colocation inventory",
+      "measure": "Jan 2024 ranking (low); colocation market size H2 2025 (mid, high)",
       "sources": [
         {
-          "label": "CBRE North America Data Center Trends H2 2025 (inventory)",
-          "url": "https://www.cbre.com/press-releases/north-american-data-center-vacancy-rates-hit-record-low-despite-significant-supply-growth",
+          "label": "Visual Capitalist, Top 50 Data Center Markets (Jan 2024, \"data from Cushman & Wakefield\"): Dallas 654 MW",
+          "url": "https://www.visualcapitalist.com/cp/top-data-center-markets/",
           "retrieved": "2026-10-02",
-          "supports": "low,mid,high",
-          "checked": "search-summary"
+          "supports": "low",
+          "checked": "page"
+        },
+        {
+          "label": "CBRE North America Data Center Trends H2 2025: \"Dallas is a 1 GW colocation market\"",
+          "url": "https://www.cbre.com/insights/books/north-america-data-center-trends-h2-2025/dallas-ft-worth-data-center-market",
+          "retrieved": "2026-10-02",
+          "supports": "mid,high",
+          "checked": "page"
         }
       ]
     },
@@ -68,10 +75,10 @@
         "mid": 1279.4,
         "high": 1279.4
       },
-      "measure": "colocation inventory",
+      "measure": "colocation inventory (Q1 2025)",
       "sources": [
         {
-          "label": "CBRE Global Data Center Trends 2025 (inventory, Q1 2025)",
+          "label": "CBRE Global Data Center Trends 2025: \"Atlanta more than tripled its total inventory year-over-year in Q1 to 1,279.4 MW.\"",
           "url": "https://www.cbre.com/insights/reports/global-data-center-trends-2025",
           "retrieved": "2026-10-02",
           "supports": "low,mid,high",
@@ -85,18 +92,25 @@
       "lat": 41.9,
       "lon": -87.6,
       "mw": {
-        "low": 904.6,
-        "mid": 904.6,
-        "high": 904.6
+        "low": 555,
+        "mid": 589.6,
+        "high": 589.6
       },
-      "measure": "colocation inventory",
+      "measure": "Jan 2024 ranking (low); inventory H1 2024 (mid, high)",
       "sources": [
         {
-          "label": "CBRE North America Data Center Trends H2 2025 (inventory)",
+          "label": "Visual Capitalist, Top 50 Data Center Markets (Jan 2024, \"data from Cushman & Wakefield\"): Chicago 555 MW",
+          "url": "https://www.visualcapitalist.com/cp/top-data-center-markets/",
+          "retrieved": "2026-10-02",
+          "supports": "low",
+          "checked": "page"
+        },
+        {
+          "label": "CBRE North America Data Center Trends H1 2024: Chicago inventory 589.6 MW",
           "url": "https://www.cbre.com/press-releases/north-american-data-center-vacancy-rates-hit-record-low-despite-significant-supply-growth",
           "retrieved": "2026-10-02",
-          "supports": "low,mid,high",
-          "checked": "search-summary"
+          "supports": "mid,high",
+          "checked": "page"
         }
       ]
     },
@@ -110,10 +124,10 @@
         "mid": 617,
         "high": 617
       },
-      "measure": "colocation inventory",
+      "measure": "colocation inventory (Q1 2025)",
       "sources": [
         {
-          "label": "CBRE Global Data Center Trends 2025 (inventory, Q1 2025)",
+          "label": "CBRE Global Data Center Trends 2025: Phoenix \"total inventory to 617.0 MW\" (Q1 2025)",
           "url": "https://www.cbre.com/insights/reports/global-data-center-trends-2025",
           "retrieved": "2026-10-02",
           "supports": "low,mid,high",
@@ -131,14 +145,14 @@
         "mid": 489.2,
         "high": 489.2
       },
-      "measure": "colocation inventory",
+      "measure": "inventory (H2 2025)",
       "sources": [
         {
-          "label": "CBRE: Silicon Valley inventory H2 2025",
+          "label": "CBRE: \"Silicon Valley inventory was 489.2 megawatts (MW) in H2 2025\"",
           "url": "https://www.cbre.com/press-releases/silicon-valley-data-centers-expands-modestly-as-power-rich-states-capture-mega-campus-growth",
           "retrieved": "2026-10-02",
           "supports": "low,mid,high",
-          "checked": "search-summary"
+          "checked": "page"
         }
       ]
     },
@@ -152,14 +166,14 @@
         "mid": 475.4,
         "high": 475.4
       },
-      "measure": "colocation inventory",
+      "measure": "total inventory (end of 2025)",
       "sources": [
         {
-          "label": "CBRE: Hillsboro inventory end of 2025",
+          "label": "CBRE: \"Hillsboro ended 2025 with 475.4 megawatts (MW) of total inventory\"",
           "url": "https://www.cbre.com/press-releases/hillsboro-data-center-market-sees-strong-demand-in-2025-amid-record-national-growth",
           "retrieved": "2026-10-02",
           "supports": "low,mid,high",
-          "checked": "search-summary"
+          "checked": "page"
         }
       ]
     },
@@ -173,10 +187,10 @@
         "mid": 493,
         "high": 493
       },
-      "measure": "colocation inventory",
+      "measure": "colocation inventory (Q1 2025)",
       "sources": [
         {
-          "label": "CBRE Global Data Center Trends 2025 (inventory, Q1 2025)",
+          "label": "CBRE Global Data Center Trends 2025: \"São Paulo remains the largest market with 493 MW of inventory\"",
           "url": "https://www.cbre.com/insights/reports/global-data-center-trends-2025",
           "retrieved": "2026-10-02",
           "supports": "low,mid,high",
@@ -194,10 +208,10 @@
         "mid": 148,
         "high": 148
       },
-      "measure": "colocation inventory",
+      "measure": "colocation inventory (Q1 2025)",
       "sources": [
         {
-          "label": "CBRE Global Data Center Trends 2025 (inventory, Q1 2025)",
+          "label": "CBRE Global Data Center Trends 2025: \"followed by Santiago with 148 MW\"",
           "url": "https://www.cbre.com/insights/reports/global-data-center-trends-2025",
           "retrieved": "2026-10-02",
           "supports": "low,mid,high",
@@ -215,29 +229,22 @@
         "mid": 1281,
         "high": 1380
       },
-      "measure": "operational capacity (H1 2025 to Sep 2026); mid is the geometric middle",
+      "measure": "operational capacity, H1 2025 (low) to 2026 (high); mid is the geometric middle",
       "sources": [
         {
-          "label": "Cushman & Wakefield: EMEA Data Center H1 2025",
+          "label": "Cushman & Wakefield EMEA H1 2025: \"London remains the largest market in EMEA, with 1,189 megawatts (MW) in operation\"",
           "url": "https://www.cushmanwakefield.com/en/germany/news/2025/08/emea-data-center-h1-2025",
           "retrieved": "2026-10-02",
-          "supports": "low",
-          "checked": "search-summary"
+          "supports": "low,mid",
+          "checked": "page",
+          "note": "mid derived: geometric middle of low and high"
         },
         {
-          "label": "Cushman & Wakefield: European data centre capacity surpasses 12GW (2026)",
+          "label": "Cushman & Wakefield (2026): \"London remains the largest market in EMEA, with 1.38 GW of operational capacity\"",
           "url": "https://www.cushmanwakefield.com/en/netherlands/news/2026/09/europese-datacenter-capaciteit-passeert-de-12gw",
           "retrieved": "2026-10-02",
           "supports": "high",
-          "checked": "search-summary"
-        },
-        {
-          "label": "Cushman & Wakefield: EMEA Data Center H1 2025",
-          "url": "https://www.cushmanwakefield.com/en/germany/news/2025/08/emea-data-center-h1-2025",
-          "retrieved": "2026-10-02",
-          "supports": "mid",
-          "checked": "search-summary",
-          "note": "mid derived: geometric middle of low and high"
+          "checked": "page"
         }
       ]
     },
@@ -254,11 +261,11 @@
       "measure": "live IT load (mid-2025)",
       "sources": [
         {
-          "label": "Tebin: Frankfurt, Continental Europe's largest data center market",
+          "label": "Tebin, citing JLL's 2025 EMEA report: \"Frankfurt's live IT load at roughly 745 MW\"",
           "url": "https://tebin.pro/news/frankfurt-data-center-capital-europe/",
           "retrieved": "2026-10-02",
           "supports": "low,mid,high",
-          "checked": "search-summary"
+          "checked": "page"
         }
       ]
     },
@@ -275,11 +282,11 @@
       "measure": "operational capacity (Q2 2026)",
       "sources": [
         {
-          "label": "Cushman & Wakefield: European data centre capacity surpasses 12GW (2026)",
+          "label": "Cushman & Wakefield: \"In the second quarter of 2026, the Amsterdam market recorded 927 MW of operational capacity\"",
           "url": "https://www.cushmanwakefield.com/en/netherlands/news/2026/09/europese-datacenter-capaciteit-passeert-de-12gw",
           "retrieved": "2026-10-02",
           "supports": "low,mid,high",
-          "checked": "search-summary"
+          "checked": "page"
         }
       ]
     },
@@ -289,18 +296,18 @@
       "lat": 53.3,
       "lon": -6.3,
       "mw": {
-        "low": 1150,
-        "mid": 1150,
-        "high": 1150
+        "low": 304,
+        "mid": 304,
+        "high": 304
       },
-      "measure": "power consumption ranking",
+      "measure": "capacity ranking (Jan 2024, Cushman & Wakefield data)",
       "sources": [
         {
-          "label": "Visual Capitalist: Top 50 Data Center Markets by Power Consumption",
+          "label": "Visual Capitalist, Top 50 Data Center Markets (Jan 2024, \"data from Cushman & Wakefield\"): Dublin 304 MW",
           "url": "https://www.visualcapitalist.com/cp/top-data-center-markets/",
           "retrieved": "2026-10-02",
           "supports": "low,mid,high",
-          "checked": "search-summary"
+          "checked": "page"
         }
       ]
     },
@@ -310,33 +317,25 @@
       "lat": 48.9,
       "lon": 2.35,
       "mw": {
-        "low": 600,
-        "mid": 719,
+        "low": 391,
+        "mid": 862,
         "high": 862
       },
-      "measure": "existing capacity; mid is the geometric middle",
+      "measure": "Jan 2024 ranking (low); listed facilities (mid, high)",
       "sources": [
         {
-          "label": "Arizton: France Data Center Market",
-          "url": "https://www.arizton.com/market-reports/france-data-center-market",
+          "label": "Visual Capitalist, Top 50 Data Center Markets (Jan 2024, \"data from Cushman & Wakefield\"): Paris 391 MW",
+          "url": "https://www.visualcapitalist.com/cp/top-data-center-markets/",
           "retrieved": "2026-10-02",
           "supports": "low",
-          "checked": "search-summary"
+          "checked": "page"
         },
         {
-          "label": "Baxtel: Paris Data Centers",
+          "label": "Baxtel: \"Paris has 130 facilities with 2,360,138 sqft and 862 megawatts.\"",
           "url": "https://baxtel.com/data-center/paris",
           "retrieved": "2026-10-02",
-          "supports": "high",
-          "checked": "search-summary"
-        },
-        {
-          "label": "Arizton: France Data Center Market",
-          "url": "https://www.arizton.com/market-reports/france-data-center-market",
-          "retrieved": "2026-10-02",
-          "supports": "mid",
-          "checked": "search-summary",
-          "note": "mid derived: geometric middle of low and high"
+          "supports": "mid,high",
+          "checked": "page"
         }
       ]
     },
@@ -346,18 +345,25 @@
       "lat": 59.3,
       "lon": 18.1,
       "mw": {
-        "low": 340,
-        "mid": 340,
-        "high": 340
+        "low": 74,
+        "mid": 132,
+        "high": 132
       },
-      "measure": "operational capacity",
+      "measure": "Jan 2024 ranking (low); listed facilities (mid, high)",
       "sources": [
         {
-          "label": "JLL EMEA year-end data centre report 2025",
-          "url": "https://www.jll.com/en-sa/insights/emea-data-centre-report",
+          "label": "Visual Capitalist, Top 50 Data Center Markets (Jan 2024, \"data from Cushman & Wakefield\"): Stockholm 74 MW",
+          "url": "https://www.visualcapitalist.com/cp/top-data-center-markets/",
           "retrieved": "2026-10-02",
-          "supports": "low,mid,high",
-          "checked": "search-summary"
+          "supports": "low",
+          "checked": "page"
+        },
+        {
+          "label": "Baxtel: \"Stockholm has 40 facilities with 541,133 sqft and 132 megawatts.\"",
+          "url": "https://baxtel.com/data-center/stockholm",
+          "retrieved": "2026-10-02",
+          "supports": "mid,high",
+          "checked": "page"
         }
       ]
     },
@@ -367,23 +373,30 @@
       "lat": -26.2,
       "lon": 28,
       "mw": {
-        "low": 180,
-        "mid": 180,
-        "high": 180
+        "low": 161,
+        "mid": 278,
+        "high": 278
       },
-      "measure": "operational capacity",
+      "measure": "Jan 2024 ranking (low); listed facilities (mid, high)",
       "sources": [
         {
-          "label": "JLL EMEA year-end data centre report 2025",
-          "url": "https://www.jll.com/en-sa/insights/emea-data-centre-report",
+          "label": "Visual Capitalist, Top 50 Data Center Markets (Jan 2024, \"data from Cushman & Wakefield\"): Johannesburg 161 MW",
+          "url": "https://www.visualcapitalist.com/cp/top-data-center-markets/",
           "retrieved": "2026-10-02",
-          "supports": "low,mid,high",
-          "checked": "search-summary"
+          "supports": "low",
+          "checked": "page"
+        },
+        {
+          "label": "Baxtel: \"Johannesburg has 21 facilities with 2,756,243 sqft and 278 megawatts.\"",
+          "url": "https://baxtel.com/data-center/johannesburg",
+          "retrieved": "2026-10-02",
+          "supports": "mid,high",
+          "checked": "page"
         }
       ]
     },
     {
-      "name": "Dubai",
+      "name": "UAE (Dubai and Abu Dhabi)",
       "country": "United Arab Emirates",
       "lat": 25.2,
       "lon": 55.3,
@@ -392,35 +405,14 @@
         "mid": 250,
         "high": 250
       },
-      "measure": "operational capacity",
+      "measure": "live capacity, whole UAE (\"more than 250 MW\")",
       "sources": [
         {
-          "label": "JLL EMEA year-end data centre report 2025",
-          "url": "https://www.jll.com/en-sa/insights/emea-data-centre-report",
+          "label": "Cushman & Wakefield UAE: \"The UAE already has more than 250 MW of live capacity online\"",
+          "url": "https://www.cushwake.ae/en/thoughtleadership/abu-dhabi-and-dubai-take-top-global-rankings-in-data-center-growth",
           "retrieved": "2026-10-02",
           "supports": "low,mid,high",
-          "checked": "search-summary"
-        }
-      ]
-    },
-    {
-      "name": "Riyadh",
-      "country": "Saudi Arabia",
-      "lat": 24.7,
-      "lon": 46.7,
-      "mw": {
-        "low": 180,
-        "mid": 180,
-        "high": 180
-      },
-      "measure": "operational capacity",
-      "sources": [
-        {
-          "label": "JLL EMEA year-end data centre report 2025",
-          "url": "https://www.jll.com/en-sa/insights/emea-data-centre-report",
-          "retrieved": "2026-10-02",
-          "supports": "low,mid,high",
-          "checked": "search-summary"
+          "checked": "page"
         }
       ]
     },
@@ -434,14 +426,14 @@
         "mid": 1799,
         "high": 1799
       },
-      "measure": "power consumption ranking",
+      "measure": "capacity ranking (Jan 2024, Cushman & Wakefield data)",
       "sources": [
         {
-          "label": "Visual Capitalist: Top 50 Data Center Markets by Power Consumption",
+          "label": "Visual Capitalist, Top 50 Data Center Markets (Jan 2024, \"data from Cushman & Wakefield\"): Beijing 1,799 MW",
           "url": "https://www.visualcapitalist.com/cp/top-data-center-markets/",
           "retrieved": "2026-10-02",
           "supports": "low,mid,high",
-          "checked": "search-summary"
+          "checked": "page"
         }
       ]
     },
@@ -451,18 +443,25 @@
       "lat": 31.2,
       "lon": 121.5,
       "mw": {
-        "low": 429,
-        "mid": 429,
-        "high": 429
+        "low": 430,
+        "mid": 725,
+        "high": 725
       },
-      "measure": "listed facilities",
+      "measure": "listed facilities (low); Jan 2024 ranking (mid, high)",
       "sources": [
         {
-          "label": "Baxtel: Shanghai Data Centers",
+          "label": "Baxtel: \"Shanghai has 24 facilities with 3,843,410 sqft and 430 megawatts.\"",
           "url": "https://baxtel.com/data-center/shanghai",
           "retrieved": "2026-10-02",
-          "supports": "low,mid,high",
-          "checked": "search-summary"
+          "supports": "low",
+          "checked": "page"
+        },
+        {
+          "label": "Visual Capitalist, Top 50 Data Center Markets (Jan 2024, \"data from Cushman & Wakefield\"): Shanghai 725 MW",
+          "url": "https://www.visualcapitalist.com/cp/top-data-center-markets/",
+          "retrieved": "2026-10-02",
+          "supports": "mid,high",
+          "checked": "page"
         }
       ]
     },
@@ -476,14 +475,14 @@
         "mid": 876,
         "high": 876
       },
-      "measure": "power consumption ranking",
+      "measure": "capacity ranking (Jan 2024, Cushman & Wakefield data)",
       "sources": [
         {
-          "label": "Visual Capitalist: Top 50 Data Center Markets by Power Consumption",
+          "label": "Visual Capitalist, Top 50 Data Center Markets (Jan 2024, \"data from Cushman & Wakefield\"): Singapore 876 MW",
           "url": "https://www.visualcapitalist.com/cp/top-data-center-markets/",
           "retrieved": "2026-10-02",
           "supports": "low,mid,high",
-          "checked": "search-summary"
+          "checked": "page"
         }
       ]
     },
@@ -497,14 +496,14 @@
         "mid": 865,
         "high": 865
       },
-      "measure": "power consumption ranking",
+      "measure": "capacity ranking (Jan 2024, Cushman & Wakefield data)",
       "sources": [
         {
-          "label": "Visual Capitalist: Top 50 Data Center Markets by Power Consumption",
+          "label": "Visual Capitalist, Top 50 Data Center Markets (Jan 2024, \"data from Cushman & Wakefield\"): Tokyo 865 MW",
           "url": "https://www.visualcapitalist.com/cp/top-data-center-markets/",
           "retrieved": "2026-10-02",
           "supports": "low,mid,high",
-          "checked": "search-summary"
+          "checked": "page"
         }
       ]
     },
@@ -518,10 +517,10 @@
         "mid": 698,
         "high": 698
       },
-      "measure": "colocation inventory",
+      "measure": "inventory",
       "sources": [
         {
-          "label": "CBRE Global Data Center Trends 2025 (inventory, Q1 2025)",
+          "label": "CBRE Global Data Center Trends 2025: \"Seoul is South Korea's largest data center market, with 698 MW of inventory.\"",
           "url": "https://www.cbre.com/insights/reports/global-data-center-trends-2025",
           "retrieved": "2026-10-02",
           "supports": "low,mid,high",
@@ -539,10 +538,10 @@
         "mid": 670,
         "high": 670
       },
-      "measure": "colocation inventory",
+      "measure": "total capacity",
       "sources": [
         {
-          "label": "CBRE Global Data Center Trends 2025 (inventory, Q1 2025)",
+          "label": "CBRE Global Data Center Trends 2025: Mumbai \"with a total capacity of approximately 670 MW\"",
           "url": "https://www.cbre.com/insights/reports/global-data-center-trends-2025",
           "retrieved": "2026-10-02",
           "supports": "low,mid,high",
@@ -563,11 +562,11 @@
       "measure": "operational capacity (2025)",
       "sources": [
         {
-          "label": "Cushman & Wakefield: APAC data centre pipeline, 2025 operational",
+          "label": "Cushman & Wakefield, APAC data centre update: Johor 897MW operational (2025)",
           "url": "https://www.cushmanwakefield.com/en/singapore/news/2026/03/apac-data-centre-development-pipeline-hits-record-in-2025",
           "retrieved": "2026-10-02",
           "supports": "low,mid,high",
-          "checked": "search-summary"
+          "checked": "page"
         }
       ]
     },
@@ -584,11 +583,11 @@
       "measure": "operational capacity (2025)",
       "sources": [
         {
-          "label": "Cushman & Wakefield: APAC data centre pipeline, 2025 operational",
+          "label": "Cushman & Wakefield, APAC data centre update: Sydney 786MW operational (2025)",
           "url": "https://www.cushmanwakefield.com/en/singapore/news/2026/03/apac-data-centre-development-pipeline-hits-record-in-2025",
           "retrieved": "2026-10-02",
           "supports": "low,mid,high",
-          "checked": "search-summary"
+          "checked": "page"
         }
       ]
     },
@@ -605,11 +604,11 @@
       "measure": "operational capacity (2025)",
       "sources": [
         {
-          "label": "Cushman & Wakefield: APAC data centre pipeline, 2025 operational",
+          "label": "Cushman & Wakefield, APAC data centre update: Hong Kong 581MW operational (2025)",
           "url": "https://www.cushmanwakefield.com/en/singapore/news/2026/03/apac-data-centre-development-pipeline-hits-record-in-2025",
           "retrieved": "2026-10-02",
           "supports": "low,mid,high",
-          "checked": "search-summary"
+          "checked": "page"
         }
       ]
     },
@@ -626,11 +625,11 @@
       "measure": "operational capacity (2025)",
       "sources": [
         {
-          "label": "Cushman & Wakefield: APAC data centre pipeline, 2025 operational",
+          "label": "Cushman & Wakefield, APAC data centre update: Greater Jakarta 322MW operational (2025)",
           "url": "https://www.cushmanwakefield.com/en/singapore/news/2026/03/apac-data-centre-development-pipeline-hits-record-in-2025",
           "retrieved": "2026-10-02",
           "supports": "low,mid,high",
-          "checked": "search-summary"
+          "checked": "page"
         }
       ]
     }
