@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { footprint } from '../footprint/engine';
 import { realConstants } from '../footprint/testing';
 import { TEXT_HEAVY, VIDEO_HEAVY } from '../footprint/guardrails';
-import { band, sentenceFor, worldDescription } from './copy';
+import { band, comparisonWords, planWords, quizQuestions, sentenceFor, worldDescription } from './copy';
 import type { Buckets } from '../footprint/types';
 
 const c = realConstants();
@@ -22,9 +22,45 @@ describe('kid copy', () => {
     expect(band(footprint(TEXT_HEAVY, c))).toBe('great');
     expect(sentenceFor(footprint(VIDEO_HEAVY, c))).toMatch(/AI videos/);
   });
+  it("on a friend's world it talks about your friend's world, never yours", () => {
+    const f = footprint(VIDEO_HEAVY, c);
+    expect(sentenceFor(f, 'friend')).toMatch(/Your friend's/);
+    expect(sentenceFor(f, 'friend')).not.toMatch(/\bYour (world|river)/);
+    expect(worldDescription(f, 'friend')).not.toMatch(/\b[Yy]our (world|river)/);
+  });
   it('the screen-reader description mentions the river and the birds', () => {
     const d = worldDescription(footprint(VIDEO_HEAVY, c));
     expect(d).toMatch(/river/);
     expect(d).toMatch(/birds/);
+  });
+});
+
+describe('quiz, plan words and comparisons', () => {
+  it('quiz has 3 questions whose option counts match the sourced quiz table', () => {
+    const q = quizQuestions(c);
+    expect(q.map((x) => x.key)).toEqual(['text', 'images', 'videos']);
+    expect(q.map((x) => x.options.length)).toEqual([c.quiz.textPromptsPerDay.length, c.quiz.imagesPerWeek.length, c.quiz.videosPerWeek.length]);
+    expect(q[1]!.options[1]!.small).toBe(`about ${c.quiz.imagesPerWeek[1]} a week`);
+    for (const x of q) for (const o of x.options) expect(`${x.ask} ${o.big} ${o.small}`).not.toMatch(BANNED);
+  });
+  it('plan words read naturally', () => {
+    expect(planWords({ fewerPictures: false, fewerVideos: false, lighterAi: false })).toBe('');
+    expect(planWords({ fewerPictures: true, fewerVideos: false, lighterAi: false })).toBe('fewer AI pictures');
+    expect(planWords({ fewerPictures: true, fewerVideos: true, lighterAi: true })).toBe('fewer AI pictures, fewer AI videos and a lighter AI');
+  });
+  it('tiny amounts read "less than 1", never "0.0"', () => {
+    expect(comparisonWords({ glasses: 0.04, bathtubs: 0, fridgeMinutes: 0.3, balloons: 0.1 })).toEqual({
+      air: 'less than 1 balloon of CO2',
+      water: 'less than 1 glass',
+      power: 'a fridge for less than a minute',
+    });
+  });
+  it('a light text-only week is not called "lots"', () => {
+    expect(sentenceFor(footprint({ text: 0, images: 0, videos: 0 }, c))).not.toMatch(/Lots/);
+  });
+  it('comparisons switch to bathtubs and hours when big, with no units kids do not know', () => {
+    expect(comparisonWords({ glasses: 2, bathtubs: 0.003, fridgeMinutes: 45, balloons: 1 })).toEqual({ air: '1 balloon of CO2', water: '2 glasses', power: 'a fridge for 45 minutes' });
+    const big = comparisonWords({ glasses: 900, bathtubs: 1.5, fridgeMinutes: 1154, balloons: 224.1 });
+    expect(big).toEqual({ air: '224 balloons of CO2', water: '1.5 bathtubs', power: 'a fridge for 19 hours' });
   });
 });

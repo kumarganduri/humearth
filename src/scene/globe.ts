@@ -36,6 +36,8 @@ export interface GlobeScene {
   scene: Scene;
   /** Unit direction (world space) of a lat/lon on the globe, with the current spin applied. */
   worldDirOf(lat: number, lon: number): Vector3;
+  /** Move your plot to a spot, or hide it (null) when there is no world yet. */
+  setPlot(spot: { lat: number; lon: number } | null): void;
   update(dtSeconds: number, timeMs: number, spinning: boolean): void;
 }
 
@@ -121,7 +123,7 @@ function lanterns(hubs: Hub[]): InstancedMesh {
 }
 
 /** Your plot on the globe: a tiny clay disc with trees, so you can see your world as you dive toward it. */
-function seedPlot(lat: number, lon: number): Group {
+function seedPlot(): Group {
   const g = new Group();
   const disc = new Mesh(
     new CylinderGeometry(0.035, 0.03, 0.012, 10),
@@ -135,14 +137,18 @@ function seedPlot(lat: number, lon: number): Group {
     tree.position.set(Math.cos(a) * 0.018, 0.016, Math.sin(a) * 0.018);
     g.add(tree);
   }
-  const [x, y, z] = latLonToVec3(lat, lon, 1.004);
-  g.position.set(x, y, z);
-  g.lookAt(x * 2, y * 2, z * 2); // face outward
-  g.rotateX(Math.PI / 2); // disc axis along the surface normal
   return g;
 }
 
-export function buildGlobe(hubs: Hub[], spot: { lat: number; lon: number }, seed = 7): GlobeScene {
+function placePlot(g: Group, lat: number, lon: number) {
+  const [x, y, z] = latLonToVec3(lat, lon, 1.004);
+  g.position.set(x, y, z);
+  g.rotation.set(0, 0, 0);
+  g.lookAt(x * 2, y * 2, z * 2); // face outward (parent is unrotated in its own frame)
+  g.rotateX(Math.PI / 2); // disc axis along the surface normal
+}
+
+export function buildGlobe(hubs: Hub[], seed = 7): GlobeScene {
   const scene = new Scene();
   scene.background = skyTexture(colors['sky-dawn'], colors['sky-horizon']);
   scene.add(new HemisphereLight(0xfff3e0, 0xc9a07a, 1.1));
@@ -157,7 +163,9 @@ export function buildGlobe(hubs: Hub[], spot: { lat: number; lon: number }, seed
   const spin = new Group();
   const earth = paintedEarth(seed);
   const hubLights = lanterns(hubs);
-  spin.add(earth, hubLights, seedPlot(spot.lat, spot.lon));
+  const plot = seedPlot();
+  plot.visible = false;
+  spin.add(earth, hubLights, plot);
   tilt.add(spin);
 
   const brass = new MeshStandardMaterial({ color: sceneColor('brass'), metalness: 0.55, roughness: 0.35 });
@@ -186,6 +194,10 @@ export function buildGlobe(hubs: Hub[], spot: { lat: number; lon: number }, seed
       m.extractRotation(spin.matrixWorld);
       const [x, y, z] = latLonToVec3(lat, lon, 1);
       return new Vector3(x, y, z).applyMatrix4(m).normalize();
+    },
+    setPlot(spot) {
+      plot.visible = spot !== null;
+      if (spot) placePlot(plot, spot.lat, spot.lon);
     },
     update(dt, timeMs, spinning) {
       if (spinning) spin.rotation.y += dt * IDLE_SPIN;

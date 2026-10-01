@@ -13,17 +13,51 @@
     </header>
     <main>
       <canvas id="stage" aria-label="A toy globe of Earth with small glowing AI buildings"></canvas>
+
+      <!-- Earth: promise + ONE primary button (2A). Notices and the friend line sit above it. -->
       <section class="zone" id="earth-zone" aria-label="Earth">
-        <p class="promise">Every AI question uses a little water and power. See yours.</p>
-        <button class="btn" id="make">Make my world</button>
+        <div class="zone-text">
+          <p class="notice" id="notice" hidden>That world moved away. Make your own?</p>
+          <p class="promise" id="promise">Every AI question uses a little water and power. See yours.</p>
+        </div>
+        <div class="zone-actions">
+          <button class="btn" id="primary">Make my world</button>
+          <button class="link-btn" id="show-mine" hidden>or visit my world</button>
+        </div>
       </section>
+
+      <!-- Quiz: one question at a time, over the globe (5A). -->
+      <section class="sheet" id="quiz" hidden aria-labelledby="quiz-ask">
+        <div class="sheet-top">
+          <button class="link-btn" id="quiz-back" aria-label="Back">← back</button>
+          <span class="step" id="quiz-step"></span>
+        </div>
+        <h2 class="ask" id="quiz-ask"></h2>
+        <div class="picks" id="quiz-picks"></div>
+      </section>
+
+      <!-- My World (6A, 9A). Hidden for ~3 s after landing: the world speaks first. -->
       <section class="world-ui" id="world-ui" hidden aria-label="My world">
-        <div class="glyphs" id="glyphs"></div>
-        <p class="sentence" id="sentence"></p>
-        <p class="sr-only" id="world-desc" aria-live="polite"></p>
-        <button class="icon-btn" id="back">Back to Earth</button>
+        <div class="top">
+          <p class="banner" id="friend-banner" hidden></p>
+          <div class="glyphs" id="glyphs"></div>
+        </div>
+        <div class="sentence-wrap">
+          <p class="trying" id="trying" hidden></p>
+          <p class="sentence" id="sentence"></p>
+          <p class="sr-only" id="world-desc" aria-live="polite"></p>
+        </div>
+        <div class="choices" id="choices" role="group" aria-label="Try a greener week"></div>
+        <div class="corner">
+          <button class="icon-btn" id="change" hidden>Change my answers</button>
+          <button class="icon-btn" id="share" hidden>Share my world</button>
+          <button class="icon-btn" id="make-mine" hidden>Make mine</button>
+          <button class="icon-btn" id="back">Back to Earth</button>
+        </div>
       </section>
+
       <p class="skip-hint" id="skip-hint" hidden>Tap to skip</p>
+      <p class="toast" id="toast" role="status" aria-live="polite" hidden></p>
     </main>
     <script type="module" src="/src/main.ts"></script>
   </body>

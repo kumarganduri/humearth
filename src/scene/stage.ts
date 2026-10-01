@@ -20,7 +20,7 @@ import {
   WebGLRenderer,
   WebGLRenderTarget,
 } from 'three';
-import { advance, diveFrame, REDUCED_MOTION_MS, ORBIT_DISTANCE, WORLD_REST, WORLD_TARGET } from './dive';
+import { advance, diveFrame, REDUCED_MOTION_MS, ORBIT_DISTANCE, slerpDir, WORLD_REST, WORLD_TARGET } from './dive';
 import type { GlobeScene } from './globe';
 import type { WorldScene } from './world';
 import type { Vec3 } from './geo';
@@ -77,6 +77,8 @@ export class Stage {
   private lastMs = 0;
   private raf = 0;
   private paused = false;
+  private aim: Vector3 | null = null; // quiz: the globe camera turns toward your spot (5A)
+  private idleSpin = true;
 
   constructor(private o: StageOptions) {
     this.renderer = new WebGLRenderer({ canvas: o.canvas, antialias: true, powerPreference: 'high-performance' });
@@ -101,6 +103,24 @@ export class Stage {
     document.addEventListener('visibilitychange', () => (document.hidden ? this.pause() : this.resume()));
   }
 
+  /** Swap in a different world (a friend's, or a new seed). Only between dives. */
+  setWorld(world: WorldScene) {
+    this.o.world = world;
+  }
+
+  /** Stop the idle spin (during the quiz) so the camera can turn toward a fixed spot. */
+  setIdleSpin(on: boolean) {
+    this.idleSpin = on;
+  }
+
+  /** Turn the Earth camera part of the way (0..1) toward a lat/lon, e.g. one step per quiz answer. */
+  turnToward(lat: number, lon: number, amount: number) {
+    const from = this.globeCam.position.clone().normalize();
+    const to = this.o.globe.worldDirOf(lat, lon);
+    const [x, y, z] = slerpDir([from.x, from.y, from.z], [to.x, to.y, to.z], Math.min(1, Math.max(0, amount)));
+    this.aim = new Vector3(x, y, z);
+  }
+
   setTier(t: Tier) {
     this.tier = t;
   }
@@ -119,6 +139,7 @@ export class Stage {
     this.lockedTier = this.tier; // OV #6: no tier switching mid-dive
     this.resizeTargets();
     this.o.world.settle();
+    this.aim = null;
     this.t = 0;
     this.reducedBlend = this.o.reducedMotion() ? 0 : -1;
     this.setPhase('diving');
@@ -186,10 +207,19 @@ export class Stage {
     const elapsed = ms - this.lastMs;
     this.lastMs = ms;
     const reduced = this.o.reducedMotion();
-    this.o.globe.update(dt, ms, this.phase === 'earth' && !reduced);
+    this.o.globe.update(dt, ms, this.phase === 'earth' && this.idleSpin && !reduced);
     this.o.world.update(dt, reduced);
 
-    if (this.phase === 'earth') return this.renderer.render(this.o.globe.scene, this.globeCam);
+    if (this.phase === 'earth') {
+      if (this.aim) {
+        // Ease the camera direction toward the aim, staying at orbit distance.
+        const k = reduced ? 1 : 1 - Math.exp(-dt * 3);
+        const d = this.globeCam.position.clone().normalize().lerp(this.aim, k).normalize();
+        this.globeCam.position.copy(d.multiplyScalar(ORBIT_DISTANCE));
+        this.globeCam.lookAt(0, 0, 0);
+      }
+      return this.renderer.render(this.o.globe.scene, this.globeCam);
+    }
     if (this.phase === 'world') return this.renderer.render(this.o.world.scene, this.worldCam);
 
     const dir = this.phase === 'diving' ? 1 : -1;

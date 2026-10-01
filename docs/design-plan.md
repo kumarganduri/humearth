@@ -267,10 +267,10 @@ Synthesized from this design review. Each task comes from a specific decision ab
 - [x] **T1 (P1, human ~1d / CC ~30min):** DESIGN.md (done 2026-10-01). Run /design-consultation to set tokens, fonts, wordmark and motion. (10A)
 - [ ] **T2 (P1, human ~3d / CC ~2h):** Dive. Make it skippable (tap/Esc), hide the nav during the dive, fall back to a crossfade on slow devices and under reduced motion, and add the reverse dive back to Earth. (3A, 11A)
 - [ ] **T3 (P1, human ~1d / CC ~30min):** Earth landing. Show a static poster first and fade in the 3D globe. Order: promise, one primary button, then the ticker in a solid zone. Add the returning-visitor glow and "Visit my world". (1A, 2A, 3A)
-- [ ] **T4 (P1, human ~1d / CC ~40min):** Quiz. A bottom sheet with 2×2 picture buttons, one question at a time, the globe turning toward your spot, and the last tap starting the dive. (5A)
+- [x] **T4 (P1, human ~1d / CC ~40min):** Quiz. A bottom sheet with 2×2 picture buttons, one question at a time, the globe turning toward your spot, and the last tap starting the dive. (5A)
 - [ ] **T5 (P1, human ~2d / CC ~1h):** World landing. About 3 s of world-only reveal, then the leaf/drop/sun glyphs and one sentence. No grade bar. A live screen-reader sentence. (6A, 11A)
-- [ ] **T6 (P2, human ~1d / CC ~40min):** In-world choice objects (paintbrush, film reel, feather, seed) and corner icon buttons for share and back. (9A)
-- [ ] **T7 (P1, human ~4h / CC ~20min):** Share. The hash holds the real buckets plus "my plan" toggles. Add the friend's-world banner, the preview, and the bad-link state. (3A, 4A)
+- [~] **T6 (P2, human ~1d / CC ~40min):** In-world choice objects (paintbrush, film reel, feather, seed) and corner icon buttons for share and back. (9A)
+- [x] **T7 (P1, human ~4h / CC ~20min):** Share. The hash holds the real buckets plus "my plan" toggles. Add the friend's-world banner, the preview, and the bad-link state. (3A, 4A)
 - [ ] **T8 (P1, human ~1d / CC ~40min):** How We Know. A tap panel with the range in kid words, plus the full one-column page with sources and a change log. (12A)
 - [ ] **T9 (P2, human ~2h / CC ~10min):** A copy-glossary strings file that all UI text comes from. Lint to catch banned words on main screens. (8A)
 - [ ] **T10 (P1, human ~1d / CC ~40min):** Layouts for phone and desktop, keyboard order, 44px targets, contrast checks, landmarks. Verify with keyboard-only and VoiceOver runs. (11A)
@@ -452,6 +452,11 @@ Synthesized from this design review. Each task comes from a specific decision ab
   - **E4 still to do:** the tier warmup picker (E9) and the context-loss handling (E7).
   - **28 hubs, not 30–50.** Free per-market MW figures ran out, and many hubs are marked "search-summary" for re-checking.
 
+- **Quiz and sharing build (2026-10-02):**
+  - The quiz seed is picked when the quiz starts, so the globe can turn toward your spot.
+  - "or visit my world" is added for a friend-link visitor who already has a world.
+  - Greener choices are buttons for now; the 3D in-world objects (T6) come with the art pass.
+
 ## Eng Review Implementation Tasks
 Each task comes from an eng-review decision above.
 
@@ -463,9 +468,9 @@ Each task comes from an eng-review decision above.
   - Verify: stale-token CI check; zero third-party requests in the Playwright network log.
 - [~] **E4 (P1, human ~3d / CC ~2h):** dive with two scenes and a camera handoff, skip/reverse/reduced motion, and the tier locked before the dive. (1A, OV #6)
   - Verify: `vitest run src/scene`, plus a manual phone check at ≥ 30 fps.
-- [ ] **E5 (P1, human ~4h / CC ~20min):** app state machine with friend links view-only and "Change my answers" keeping the seed. (2A, OV #10)
+- [x] **E5 (P1, human ~4h / CC ~20min):** app state machine with friend links view-only and "Change my answers" keeping the seed. (2A, OV #10)
   - Verify: `vitest run src/app`.
-- [ ] **E6 (P1, human ~3h / CC ~15min):** `#w1.` share codec, plus the `?s=1` share flag. (3A, OV #8)
+- [x] **E6 (P1, human ~3h / CC ~15min):** `#w1.` share codec, plus the `?s=1` share flag. (3A, OV #8)
   - Verify: codec round-trip and fuzz tests.
 - [ ] **E7 (P1, human ~3h / CC ~20min):** WebGL context loss and restore, and pausing when the tab is hidden. (7A)
   - Verify: E2E with forced `WEBGL_lose_context`.
