@@ -70,3 +70,15 @@ describe('How We Know page', () => {
     expect(num(8.16e9)).toBe('8.16 billion');
   });
 });
+
+describe('prerendered How We Know', () => {
+  it('src/how/content.generated.html is up to date with public/data (run `npm run build:data`)', () => {
+    const read = <T>(p: string) => JSON.parse(readFileSync(p, 'utf8')) as T;
+    const fresh = renderPage(
+      read('public/data/constants.json'),
+      read<{ hubs: Hub[] }>('public/data/hubs.json').hubs,
+      read<ChangelogEntry[]>('public/data/changelog.json'),
+    );
+    expect(readFileSync('src/how/content.generated.html', 'utf8')).toContain(fresh);
+  });
+});

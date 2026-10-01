@@ -336,8 +336,13 @@ async function main() {
   effects(state, state);
   render(state);
   document.body.dataset.view = 'poster';
-  // After the first paint: the page is usable already; now bring in the 3D.
-  requestAnimationFrame(() => window.setTimeout(() => void load3D(), 0));
+  // Bring in the 3D only after the poster has loaded and the browser is idle, so three.js never
+  // delays the first screen's paint (the poster is the largest paint; Lighthouse LCP).
+  const whenIdle = (fn: () => void) =>
+    typeof requestIdleCallback === 'function' ? requestIdleCallback(fn, { timeout: 1500 }) : setTimeout(fn, 200); // Safari has no rIC
+  const start3D = () => whenIdle(() => void load3D());
+  if (document.readyState === 'complete') start3D();
+  else addEventListener('load', start3D, { once: true });
 }
 
 main();
