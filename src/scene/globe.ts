@@ -27,6 +27,9 @@ import {
 import { colors } from '../tokens';
 import { sceneColor } from './color';
 import { latLonToVec3, rng } from './geo';
+import { LAND_LEVEL, surfaceNoise } from './land';
+
+export { isLand } from './land';
 import type { Hub } from '../footprint/types';
 
 export const GLOBE_TILT = 0.41; // about 23.4 degrees
@@ -57,21 +60,8 @@ export function skyTexture(top: string, bottom: string): CanvasTexture {
   return tex;
 }
 
-/** Cheap smooth noise on the sphere; decides land, water, forest and ice per face. */
-function surfaceNoise(x: number, y: number, z: number): number {
-  return Math.sin(3.1 * x + 1.7 * y) * 0.5 + Math.sin(2.3 * y - 2.9 * z) * 0.35 + Math.sin(4.7 * z + 1.3 * x) * 0.25;
-}
-
-const LAND_LEVEL = 0.02;
-
-/** True where the painted globe shows land (same noise as the paint), so a forest never lands in the sea. */
-export function isLand(lat: number, lon: number): boolean {
-  const [x, y, z] = latLonToVec3(lat, lon, 1);
-  return surfaceNoise(x, y, z) > LAND_LEVEL + 0.06; // a little inland, away from the shore faces
-}
-
 function paintedEarth(seed: number): Mesh {
-  const geo = new IcosahedronGeometry(1, 4).toNonIndexed();
+  const geo = new IcosahedronGeometry(1, 4); // already non-indexed: one colour per face
   const pos = geo.attributes.position!;
   const r = rng(seed);
   const water = sceneColor('water');

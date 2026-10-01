@@ -1,5 +1,4 @@
 // How We Know page entry: fetch the same data files the site uses and render them.
-import '../styles.css';
 import './how.css';
 import { renderPage } from './render';
 import { loadChangelog, loadConstants, loadHubs } from '../data/load';

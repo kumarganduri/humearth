@@ -2,7 +2,7 @@
 // Finds the health-scale multiplier k that satisfies the "no guilt" guardrails, prints the evidence,
 // and writes data/sources/mapping.json. Exits 1 if no k works at the mid figures.
 
-import { readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { validateSource } from '../src/footprint/schema';
 import { checkGuardrails, feasibleK, strictKRange, STRICT_LEVELS, TEXT_HEAVY_MIN_HEALTH, VIDEO_HEAVY_MAX_HEALTH } from '../src/footprint/guardrails';
 import { perPersonBaseline } from '../src/footprint/engine';
@@ -41,10 +41,13 @@ if (!(strict.lo < strict.hi)) {
 }
 // Geometric middle of the range: as far as possible from both guardrails on a ratio scale.
 const k = Number(Math.sqrt(strict.lo * strict.hi).toFixed(2));
+// Keep the old date when nothing changed, so re-running derive:k (e.g. in CI) is a no-op.
+const previous = existsSync(MAPPING) ? (JSON.parse(readFileSync(MAPPING, 'utf8')) as Mapping) : null;
+const sameScale = previous?.k === k && previous?.floor === FLOOR;
 const mapping: Mapping = {
   k,
   floor: FLOOR,
-  derivedOn: new Date().toISOString().slice(0, 10),
+  derivedOn: sameScale ? previous!.derivedOn : new Date().toISOString().slice(0, 10),
   note: `Health is a designed scale: your weekly AI use compared with k x (all data-centre electricity per person). k sits in the middle of the range where the guardrails hold at the ${STRICT_LEVELS.join(' and ')} figures [${fmt(strict.lo)}, ${fmt(strict.hi)}). At the low figures only the order is kept: a video-heavy week is never healthier than a text-heavy one.`,
 };
 const check = checkGuardrails({ ...c, mapping });

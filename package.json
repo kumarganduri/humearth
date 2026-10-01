@@ -13,7 +13,10 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "build:tokens": "tsx scripts/build-tokens.ts"
+    "build:tokens": "tsx scripts/build-tokens.ts",
+    "posters": "tsx scripts/capture-posters.ts",
+    "check:budget": "tsx scripts/check-budget.ts",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@fontsource/atkinson-hyperlegible-next": "^5.3.0",
@@ -22,6 +25,8 @@
     "three": "^0.186.1"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.63.0",
     "@types/node": "^26.6.3",
     "@types/three": "^0.186.0",
     "tsx": "^4.23.15",

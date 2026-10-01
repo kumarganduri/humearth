@@ -13,6 +13,9 @@
       <nav aria-label="Main"><a class="navlink" href="/how-we-know.html">How We Know</a></nav>
     </header>
     <main>
+      <!-- Posters: the first screen, the no-WebGL fallback, and the context-loss fallback (3A, 7A). -->
+      <img class="poster" id="poster-earth" src="/posters/globe.jpg" alt="A toy globe of Earth with small glowing AI buildings" width="1200" height="900" fetchpriority="high" />
+      <img class="poster poster-world" id="poster-world" src="/posters/world.jpg" alt="Your little clay world: trees, a river and birds" width="1200" height="900" hidden />
       <canvas id="stage" aria-label="A toy globe of Earth with small glowing AI buildings"></canvas>
 
       <!-- Earth: promise + ONE primary button (2A). Notices and the friend line sit above it. -->
@@ -33,7 +36,7 @@
           <button class="link-btn" id="quiz-back" aria-label="Back">← back</button>
           <span class="step" id="quiz-step"></span>
         </div>
-        <h2 class="ask" id="quiz-ask"></h2>
+        <h2 class="ask" id="quiz-ask" tabindex="-1"></h2>
         <div class="picks" id="quiz-picks"></div>
       </section>
 

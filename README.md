@@ -4,7 +4,7 @@ See how much water, air and power AI uses, as your own little living world.
 
 Hum is an open-source website for kids (and grown-ups). Spin a toy-globe Earth with glowing AI buildings, answer three quick questions, and dive down into your own clay world. Use AI pictures and videos a lot and your world goes quiet; make greener choices and it blooms. Every number has a range and a source.
 
-**Status:** early build. The footprint engine and sourced data pipeline are in; the 3D globe and dive are next.
+**Status:** Phase 1 nearly complete: globe and dive, 3-tap quiz, saved and shared worlds, How We Know. Deploys to Cloudflare Pages.
 
 ## Develop
 
@@ -12,8 +12,14 @@ Hum is an open-source website for kids (and grown-ups). Spin a toy-globe Earth w
 npm install
 npm run derive:k     # choose the health scale and check the "no guilt" guardrails
 npm run build:data   # validate sourced numbers -> public/data/constants.json
-npm test
+npm test            # unit
+npm run test:e2e    # browser tests (needs: npx playwright install chromium)
+npm run dev         # http://localhost:5173
 ```
+
+## Deploy
+
+CI deploys `main` to Cloudflare Pages (project `humearth`) once the repo has two secrets: `CLOUDFLARE_API_TOKEN` (a token with *Cloudflare Pages: Edit*) and `CLOUDFLARE_ACCOUNT_ID`. `public/_headers` sets a strict Content-Security-Policy: nothing loads from anyone else's servers.
 
 ## How the numbers work
 

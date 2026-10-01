@@ -1,5 +1,7 @@
+@import '../base.css';
+
 /* How We Know: a Read surface (one column, 65-75ch), DESIGN.md tokens only. */
-body.read { overflow: auto; height: auto; }
+body.read { height: auto; }
 .nav-read { position: sticky; top: 0; display: flex; justify-content: space-between; align-items: center; background: var(--color-surface); border-bottom: 1px solid rgba(107, 90, 80, 0.18); }
 .navlink { color: var(--color-text); font-weight: 700; text-decoration: none; }
 .navlink:hover { text-decoration: underline; }

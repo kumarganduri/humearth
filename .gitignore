@@ -3,3 +3,6 @@ dist/
 .DS_Store
 *.log
 coverage/
+.lighthouseci/
+test-results/
+playwright-report/

@@ -2,13 +2,17 @@
 // All decisions live in app/state.ts (pure, tested); this file only reacts to them.
 //
 //   user input ─> dispatch(event) ─> reduce(state, event) ─> effects(prev, next) ─> render(next)
-//   stage phase changes (landed / back on Earth) ─> dispatch(LANDED | ON_EARTH)
+//   view phase changes (landed / back on Earth) ─> dispatch(LANDED | ON_EARTH)
+//
+// The picture is a View: posters first (fast first screen, no three.js), then the 3D view loads as
+// its own chunk and takes over. No WebGL, or a lost GPU context, falls back to the posters (7A, 9A).
 
 import './styles.css';
-import { buildGlobe, isLand } from './scene/globe';
-import { buildWorld, type WorldScene } from './scene/world';
-import { Stage, type StagePhase } from './scene/stage';
+import { isLand } from './scene/land';
 import { seedSpot } from './scene/geo';
+import { createPosterView } from './view/poster';
+import { webglAvailable } from './view/webgl';
+import type { View, ViewPhase } from './view/view';
 import { footprint, kidComparisons } from './footprint/engine';
 import { comparisonWords, panelCopy, planWords, quizQuestions, sentenceFor, worldDescription } from './ui/copy';
 import { activeSeed, boot, displayedPlan, hasPlan, loadMine, newSeed, reduce, safeStore, saveMine, type AppEvent, type AppState } from './app/state';
@@ -40,21 +44,74 @@ async function main() {
 
   let state: AppState = boot(location.hash, loadMine(store));
 
-  const globe = buildGlobe(hubs);
-  let worldSeed = activeSeed(state) ?? 1;
-  let world: WorldScene = buildWorld(worldSeed);
-  const stage = new Stage({
-    canvas: $<HTMLCanvasElement>('stage'),
-    globe,
-    world,
-    reducedMotion: () => reduced.matches,
-    isPhone: matchMedia('(pointer: coarse)').matches && Math.min(screen.width, screen.height) < 600,
-    onPhase: (p: StagePhase) => {
-      if (p === 'world') dispatch({ type: 'LANDED' });
-      if (p === 'earth') dispatch({ type: 'ON_EARTH', newSeed: randomSeed() });
-      $('skip-hint').hidden = !(p === 'diving' || p === 'returning');
-    },
-  });
+  const onPhase = (p: ViewPhase) => {
+    if (p === 'world') dispatch({ type: 'LANDED' });
+    if (p === 'earth') dispatch({ type: 'ON_EARTH', newSeed: randomSeed() });
+    $('skip-hint').hidden = !((p === 'diving' || p === 'returning') && view.kind === '3d');
+  };
+  const posters = { earth: $('poster-earth'), world: $('poster-world') };
+  let view: View = createPosterView(posters, { onPhase });
+
+  /** Bring a view up to date with the current state (used when a view takes over). */
+  function syncView(v: View, s: AppState) {
+    const seed = activeSeed(s);
+    v.setPlot(seed ? spotOf(seed) : null);
+    if (seed) v.showWorld(seed);
+    const fp = shownFootprint(s);
+    if (fp) v.setHealth(fp.health, fp.animals);
+    v.setIdleSpin(s.place !== 'quiz');
+    v.jumpTo(s.place === 'world' ? 'world' : 'earth');
+    if (s.place === 'quiz' && s.quiz && seed) {
+      const { lat, lon } = spotOf(seed);
+      v.turnToward(lat, lon, (s.quiz.step + 1) / (questions.length + 1));
+    }
+  }
+
+  /** Swap the picture. Never mid-dive: a dive in progress finishes on the view that started it. */
+  function useView(v: View) {
+    if (state.place === 'diving' || state.place === 'returning') return false;
+    const old = view;
+    view = v;
+    if (old !== v && old.kind === 'poster') old.dispose();
+    syncView(v, state);
+    document.body.classList.toggle('has-3d', v.kind === '3d');
+    return true;
+  }
+
+  // The 3D view loads after the first paint, as its own chunk (three.js never blocks the first screen).
+  async function load3D() {
+    if (!webglAvailable()) {
+      document.body.dataset.view = 'poster-no-webgl';
+      return;
+    }
+    const { createView3D } = await import('./scene/view3d');
+    const v3d = await createView3D({
+      canvas: $<HTMLCanvasElement>('stage'),
+      hubs,
+      reducedMotion: () => reduced.matches,
+      isPhone: matchMedia('(pointer: coarse)').matches && Math.min(screen.width, screen.height) < 600,
+      onPhase: (p) => view === v3d && onPhase(p),
+      onTier: (t) => (document.body.dataset.tier = t),
+      onContextLost: () => {
+        // The GPU took the 3D away: show the posters straight away, and finish any dive (7A).
+        const fallback = createPosterView(posters, { onPhase });
+        view = fallback;
+        document.body.classList.remove('has-3d');
+        syncView(fallback, state);
+        if (state.place === 'diving') dispatch({ type: 'LANDED' });
+        if (state.place === 'returning') dispatch({ type: 'ON_EARTH', newSeed: randomSeed() });
+        document.body.dataset.view = 'poster-context-lost';
+      },
+      onContextRestored: () => {
+        if (useView(v3d)) document.body.dataset.view = '3d';
+      },
+    });
+    const tryTakeOver = () => {
+      if (useView(v3d)) document.body.dataset.view = '3d';
+      else window.setTimeout(tryTakeOver, 250); // a poster dive is finishing; try again in a moment
+    };
+    tryTakeOver();
+  }
 
   /** The footprint of the world on screen (with my plan, or a friend's preview), or null. */
   const shownFootprint = (s: AppState) => (s.viewing ? footprint(s.viewing.world.buckets, constants, displayedPlan(s)) : null);
@@ -76,30 +133,26 @@ async function main() {
     // The URL shows a friend's world while you look at it; once you make your own, it's clean.
     if (next.viewing?.owner === 'me' && location.hash) history.replaceState(null, '', location.pathname);
 
-    // Which world the globe and the diorama show.
+    // Which world the globe and the diorama show (a new world only between dives).
     const seed = activeSeed(next);
-    globe.setPlot(seed ? spotOf(seed) : null);
-    if (seed && seed !== worldSeed && (next.place === 'earth' || next.place === 'quiz')) {
-      worldSeed = seed;
-      world = buildWorld(seed);
-      stage.setWorld(world);
-    }
+    view.setPlot(seed ? spotOf(seed) : null);
+    if (seed && (next.place === 'earth' || next.place === 'quiz')) view.showWorld(seed);
     // Health before the dive, so you land in your real world (and toggles bloom it live).
     const fp = shownFootprint(next);
-    if (fp) world.setHealth(fp.health, fp.animals);
+    if (fp) view.setHealth(fp.health, fp.animals);
 
     // Quiz: no idle spin; turn a little more toward your spot with each answer (5A).
-    stage.setIdleSpin(next.place !== 'quiz');
+    view.setIdleSpin(next.place !== 'quiz');
     if (next.place === 'quiz' && next.quiz && seed) {
       const { lat, lon } = spotOf(seed);
-      stage.turnToward(lat, lon, (next.quiz.step + 1) / (questions.length + 1));
+      view.turnToward(lat, lon, (next.quiz.step + 1) / (questions.length + 1));
     }
 
     if (next.place === 'diving' && prev.place !== 'diving' && seed) {
       const { lat, lon } = spotOf(seed);
-      stage.dive(lat, lon);
+      view.dive(lat, lon);
     }
-    if (next.place === 'returning' && prev.place === 'world') stage.back();
+    if (next.place === 'returning' && prev.place === 'world') view.back();
   }
 
   let revealTimer = 0;
@@ -127,6 +180,8 @@ async function main() {
     if (s.place === 'quiz' && s.quiz) {
       const q = questions[s.quiz.step]!;
       const chosen = s.quiz.answers[q.key];
+      // Check BEFORE re-rendering: replacing the buttons removes the focused one.
+      const focusWasInQuiz = document.activeElement?.closest('#quiz') != null;
       $('quiz-step').textContent = `question ${s.quiz.step + 1} of ${questions.length}`;
       $('quiz-ask').textContent = q.ask;
       $('quiz-picks').innerHTML = q.options
@@ -135,7 +190,8 @@ async function main() {
             `<button class="pick" data-value="${o.value}" aria-pressed="${chosen === o.value}"><span><strong>${o.big}</strong>${o.small}</span></button>`,
         )
         .join('');
-      if (placeChanged || document.activeElement?.closest('#quiz')) ($('quiz-picks').firstElementChild as HTMLElement | null)?.focus();
+      // Move focus to the new question so screen readers read it; Tab reaches the answers.
+      if (placeChanged || focusWasInQuiz) $('quiz-ask').focus();
     }
 
     // World
@@ -268,18 +324,20 @@ async function main() {
   $('make-mine').addEventListener('click', () => dispatch({ type: 'MAKE_MINE' }));
   $('share').addEventListener('click', share);
   $('back').addEventListener('click', () => dispatch({ type: 'BACK' }));
-  $('stage').addEventListener('click', () => stage.skip());
+  $('stage').addEventListener('click', () => view.skip());
   addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       if (closePanel()) return;
       if (state.place === 'quiz') dispatch({ type: 'QUIZ_BACK' });
-      else stage.skip();
+      else view.skip();
     }
   });
 
   effects(state, state);
   render(state);
-  stage.start();
+  document.body.dataset.view = 'poster';
+  // After the first paint: the page is usable already; now bring in the 3D.
+  requestAnimationFrame(() => window.setTimeout(() => void load3D(), 0));
 }
 
 main();

@@ -1,0 +1,29 @@
+/* Shared by every page: tokens, self-hosted fonts, reset, focus, nav. */
+@import './tokens.css';
+@import '@fontsource/grandstander/latin-800.css';
+@import '@fontsource/atkinson-hyperlegible-next/latin-400.css';
+@import '@fontsource/atkinson-hyperlegible-next/latin-700.css';
+@import '@fontsource/shantell-sans/latin-400.css';
+
+:root {
+  --display: 'Grandstander', 'Atkinson Hyperlegible Next', sans-serif;
+  --body: 'Atkinson Hyperlegible Next', sans-serif;
+  --hand: 'Shantell Sans', 'Atkinson Hyperlegible Next', sans-serif;
+}
+* { box-sizing: border-box; }
+/* `hidden` must win over any component display rule. */
+[hidden] { display: none !important; }
+html, body { margin: 0; height: 100%; }
+body {
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: 400 1.0625rem/1.55 var(--body);
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--color-accent); color: var(--color-text); }
+:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; border-radius: 6px; }
+
+.nav { position: fixed; inset: 0 0 auto 0; padding: var(--space-md) var(--space-lg); z-index: 2; display: flex; justify-content: space-between; align-items: center; }
+.navlink { color: var(--color-text); font-weight: 700; text-decoration: none; }
+.navlink:hover { text-decoration: underline; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
