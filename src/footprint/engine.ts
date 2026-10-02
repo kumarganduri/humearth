@@ -146,6 +146,18 @@ export function footprint(buckets: Buckets, c: Constants, plan: Plan = NO_PLAN):
   };
 }
 
+const SECONDS_PER_YEAR = 365 * 24 * 3600;
+
+/**
+ * The Earth ticker: AI's worldwide use per second, at one level's figures.
+ * All data-centre electricity (IEA) x AI's share (US 2024 share as our world estimate).
+ */
+export function aiPerSecond(c: Constants, level: Level): ChannelTotals {
+  const v = c.values;
+  const whPerSecond = (v.dataCentreTWhPerYear[level] * 1e12 * v.aiShareOfDataCentres[level]) / SECONDS_PER_YEAR;
+  return channelsFromWh(whPerSecond, c, level);
+}
+
 export interface KidComparisons {
   glasses: number;
   bathtubs: number;

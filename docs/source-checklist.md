@@ -56,6 +56,7 @@
 | [ ] | Electricity per text answer | high | high 1.86 Wh | MIT Technology Review: Llama 3.1 405B, "an estimated 6,706 joules total, for each response" |
 | [ ] | Electricity per AI picture | low,mid | low 0.63, mid 1.22 Wh | MIT Technology Review: Stable Diffusion 3 Medium 1024px, "an estimated 2,282 joules total" (low); "about 4,402 joules" at higher quality (mid) |
 | [ ] | Electricity per short AI video (about 5 seconds) | low,mid,high | low 30.3, mid 944, high 944 Wh | MIT Technology Review: older CogVideoX clip "about 109,000 joules" (low); newer five-second clip "about 3.4 million joules" (mid). No published figure for frontier video models, so high = mid. |
+| [ ] | AI's share of data-centre electricity (for the Earth ticker) | low,mid,high | low 0.265, mid 0.32, high 0.38 share | MIT Technology Review (citing Lawrence Berkeley National Laboratory): "Data centers in the US used somewhere around 200 terawatt-hours of electricity in 2024" and "AI-specific servers in these data centers are estimated to have used between 53 and 76 terawatt-hours" (53/200 = 26.5%, 76/200 = 38%) |
 
 ### 4. arxiv.org — read once; quick re-confirm
 

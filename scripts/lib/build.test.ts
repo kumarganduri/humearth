@@ -69,7 +69,7 @@ describe('buildConstants: versioning and the change log', () => {
   it('first build is v1 and logs every value as new', () => {
     const { constants, changelog } = buildConstants(src(), map(), null, '2026-10-02');
     expect(constants.constantsVersion).toBe(1);
-    expect(changelog?.changes).toHaveLength(8);
+    expect(changelog?.changes).toHaveLength(9);
     expect(changelog?.changes.every((x) => x.from === null)).toBe(true);
   });
 

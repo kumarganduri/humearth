@@ -1,7 +1,7 @@
 {
-  "constantsVersion": 3,
-  "contentHash": "e1530fef40b95998",
-  "builtAt": "2026-10-01",
+  "constantsVersion": 4,
+  "contentHash": "ff71475377ef7e1a",
+  "builtAt": "2026-10-02",
   "values": {
     "textPromptWh": {
       "label": "Electricity per text answer",
@@ -173,6 +173,23 @@
           "retrieved": "2026-10-02",
           "supports": "low,mid,high",
           "checked": "page"
+        }
+      ]
+    },
+    "aiShareOfDataCentres": {
+      "label": "AI's share of data-centre electricity (for the Earth ticker)",
+      "unit": "share",
+      "low": 0.265,
+      "mid": 0.32,
+      "high": 0.38,
+      "sources": [
+        {
+          "label": "MIT Technology Review (citing Lawrence Berkeley National Laboratory): \"Data centers in the US used somewhere around 200 terawatt-hours of electricity in 2024\" and \"AI-specific servers in these data centers are estimated to have used between 53 and 76 terawatt-hours\" (53/200 = 26.5%, 76/200 = 38%)",
+          "url": "https://www.technologyreview.com/2025/05/20/1116327/ai-energy-usage-climate-footprint-big-tech/",
+          "retrieved": "2026-10-02",
+          "supports": "low,mid,high",
+          "checked": "page",
+          "note": "US 2024 share, used as our estimate for the world (no quotable global figure exists; the IEA shows one only in a chart). The world share is probably lower. Mid is the middle of the range."
         }
       ]
     }

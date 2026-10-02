@@ -51,6 +51,7 @@ export function validateRange(key: string, v: unknown): string[] {
     if (typeof v[f] !== 'string' || (v[f] as string).length === 0) errs.push(`${key}.${f}: required`);
   }
   errs.push(...validateTriple(key, v));
+  if (v.unit === 'share' && typeof v.high === 'number' && v.high > 1) errs.push(`${key}: a share must be <= 1`);
   errs.push(...validateSources(key, v.sources));
   return errs;
 }

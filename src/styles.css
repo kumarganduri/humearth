@@ -31,6 +31,14 @@ body.landed main, body.diving main, body.quizzing main { grid-template-rows: 1fr
 .link-btn { all: unset; cursor: pointer; color: var(--color-primary); text-decoration: underline; text-underline-offset: 3px; font: 700 1rem/1 var(--body); min-height: 44px; display: inline-flex; align-items: center; }
 .link-btn:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; }
 
+.ticker { font: 400 1rem/1.4 var(--hand); color: var(--color-text-muted); max-width: 46ch; }
+.ticker-btn { all: unset; cursor: pointer; text-align: left; }
+.ticker-btn strong { font-weight: 600; color: var(--color-text); font-variant-numeric: tabular-nums; }
+.ticker-btn:hover strong { text-decoration: underline; text-underline-offset: 3px; }
+.ticker-btn:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; border-radius: 6px; }
+.ticker-note { margin: var(--space-sm) 0 0; font: 400 0.95rem/1.45 var(--body); color: var(--color-text); }
+.ticker-note a { color: var(--color-primary-underside); font-weight: 700; }
+
 /* Quiz sheet: slides up over the globe, one question at a time (5A). */
 .sheet {
   position: fixed; left: 50%; bottom: 0; transform: translateX(-50%); width: min(460px, 100%);
@@ -107,7 +115,8 @@ body.landed main, body.diving main, body.quizzing main { grid-template-rows: 1fr
 .skip-hint { position: fixed; bottom: var(--space-lg); width: 100%; text-align: center; font: 400 1rem var(--hand); color: var(--color-text-muted); margin: 0; }
 
 @media (min-width: 900px) {
-  .zone { grid-template-columns: auto auto; justify-content: center; align-items: center; gap: var(--space-2xl); }
+  .zone { grid-template-columns: auto auto; justify-content: center; align-items: center; gap: var(--space-lg) var(--space-2xl); }
+  .ticker { grid-column: 1 / -1; }
 }
 @media (max-width: 600px) {
   .sentence-wrap { bottom: 200px; right: var(--space-lg); }

@@ -65,6 +65,7 @@ export function renderValues(c: Constants): string {
 <thead><tr><th scope="col">What</th><th scope="col">Low</th><th scope="col">Middle</th><th scope="col">High</th><th scope="col">Unit</th></tr></thead>
 <tbody>${VALUE_KEYS.map((k) => valueRow(c.values[k])).join('')}</tbody>
 </table></div>
+<p><strong>The ticker on Earth</strong> ("since you opened this page…") multiplies all the world's data-centre electricity by AI's share of it. Nobody publishes a world figure for that share in words (the IEA shows one only in a chart), so we use the United States' 2024 share, ${num(c.values.aiShareOfDataCentres.low * 100)}–${num(c.values.aiShareOfDataCentres.high * 100)}%, as our estimate for the world. The real world share is probably lower, so treat the ticker as an upper-end picture.</p>
 <p>The quiz turns answers into amounts: ${c.quiz.textPromptsPerDay.map(num).join(' / ')} questions a day, ${c.quiz.imagesPerWeek.map(num).join(' / ')} pictures a week and ${c.quiz.videosPerWeek.map(num).join(' / ')} short videos a week. "A lighter AI" uses the lowest published figure for questions and pictures.</p>
 <p class="muted">Constants version ${c.constantsVersion} · ${esc(c.contentHash)} · built ${esc(c.builtAt)}</p>`;
 }

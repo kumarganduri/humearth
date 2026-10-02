@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
+  aiPerSecond,
   animalsFor,
   applyPlan,
   channelsFromWh,
@@ -144,5 +145,20 @@ describe('kidComparisons', () => {
     expect(k.bathtubs).toBeCloseTo(500 / 1000 / 150);
     expect(k.fridgeMinutes).toBeCloseTo(60);
     expect(k.balloons).toBeCloseTo(2);
+  });
+});
+
+describe('Earth ticker: AI worldwide per second', () => {
+  it('is all data-centre electricity x AI share, spread over a year', () => {
+    const t = aiPerSecond(c, 'mid');
+    expect(t.energy).toBeCloseTo((415e12 * 0.32) / (365 * 24 * 3600), 0);
+    expect(t.water).toBeCloseTo((t.energy / 1000) * (0.36 + 2.18) * 1000, 3);
+  });
+  it('orders low <= mid <= high on every channel', () => {
+    const [lo, mid, hi] = (['low', 'mid', 'high'] as const).map((l) => aiPerSecond(c, l));
+    for (const ch of CHANNELS) {
+      expect(lo![ch]).toBeLessThanOrEqual(mid![ch]);
+      expect(mid![ch]).toBeLessThanOrEqual(hi![ch]);
+    }
   });
 });

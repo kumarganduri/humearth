@@ -142,5 +142,21 @@
       }
     ],
     "mappingChanged": true
+  },
+  {
+    "date": "2026-10-02",
+    "constantsVersion": 4,
+    "changes": [
+      {
+        "key": "aiShareOfDataCentres",
+        "from": null,
+        "to": [
+          0.265,
+          0.32,
+          0.38
+        ]
+      }
+    ],
+    "mappingChanged": false
   }
 ]

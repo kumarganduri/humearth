@@ -139,3 +139,18 @@ export function panelCopy(channel: 'co2' | 'water' | 'energy', low: KidCompariso
   const same = lo.startsWith('less than') ? `L${lo.slice(1)}` : `About ${lo}`;
   return { title, range: lo === hi ? same : `Somewhere from ${lo} to ${hi}`, whyUnsure: p.why };
 }
+
+/** Whole numbers with thousands separators; one decimal under 10 so the first seconds still move. */
+const grouped = (n: number) => (n < 10 ? n.toFixed(1) : Math.round(n).toLocaleString('en-US'));
+
+/** Earth ticker (2A): "about 1,234 bathtubs of water", growing while the page is open. */
+export function tickerWords(waterMlPerSecond: number, seconds: number, c: Constants): string {
+  const bathtubs = (waterMlPerSecond * seconds) / 1000 / c.comparisons.bathtubL;
+  return `about ${grouped(bathtubs)} ${Math.round(bathtubs) === 1 ? 'bathtub' : 'bathtubs'} of water`;
+}
+
+/** The tap note under the ticker: the range per minute, and the honest caveat. */
+export function tickerNote(lowMlPerSecond: number, highMlPerSecond: number, c: Constants): string {
+  const perMinute = (ml: number) => Math.round((ml * 60) / 1000 / c.comparisons.bathtubL).toLocaleString('en-US');
+  return `Somewhere from ${perMinute(lowMlPerSecond)} to ${perMinute(highMlPerSecond)} bathtubs a minute. We count all the world's AI buildings' power, and use America's AI share as our guess for the world, so the real number is probably a bit lower.`;
+}

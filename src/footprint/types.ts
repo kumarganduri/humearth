@@ -36,6 +36,7 @@ export const VALUE_KEYS = [
   'gridGCO2PerKWh',
   'dataCentreTWhPerYear',
   'worldPopulation',
+  'aiShareOfDataCentres',
 ] as const;
 export type ValueKey = (typeof VALUE_KEYS)[number];
 

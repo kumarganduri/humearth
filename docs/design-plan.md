@@ -460,7 +460,7 @@ Synthesized from this design review. Each task comes from a specific decision ab
 - **How We Know build (2026-10-02):**
   - The tap panel and the page both render from the same data files.
   - The change log moved to `public/data/changelog.json`.
-  - **Open item: the Earth "since you opened this page" ticker (2A) is not built.** It needs an AI share of all data-centre electricity, and we have no sourced figure for that yet; we won't ship an unsourced number. The options are to find a sourced AI share, or to word the ticker around all data centres.
+  - **Earth ticker (2A), built 2026-10-02:** all data-centre electricity (IEA 415 TWh) x AI share 26.5–38% (the US 2024 share from MIT Technology Review citing LBNL, used as the world estimate). There is no quotable global share; the IEA's is chart-only. The caveat is shown on tap and on How We Know.
 
 - **Phones, tests and deploy (2026-10-02):**
   - **Poster-first:** the first screen is 8 KB gz of JS. three.js loads after `load` + idle, behind the `View` interface.

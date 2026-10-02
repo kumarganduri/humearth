@@ -87,3 +87,17 @@ test('tap panel: range in kid words, why unsure, link to How We Know; Esc return
   await expect(page.locator('#panel')).toBeHidden();
   await expect(page.locator('.glyph[data-channel="water"]')).toBeFocused();
 });
+
+test('Earth ticker counts up and explains its range and caveat on tap', async ({ page }) => {
+  await fresh(page);
+  const amount = page.locator('#ticker-amount');
+  const read = async () => Number((await amount.textContent())!.replace(/[^0-9.]/g, ''));
+  await page.waitForTimeout(1500);
+  const first = await read();
+  await page.waitForTimeout(2200);
+  expect(await read()).toBeGreaterThan(first);
+  await page.click('#ticker');
+  await expect(page.locator('#ticker')).toHaveAttribute('aria-expanded', 'true');
+  await expect(page.locator('#ticker-note')).toContainText("America's AI share");
+  await expect(page.locator('#ticker-note a')).toHaveAttribute('href', '/how-we-know.html#numbers');
+});

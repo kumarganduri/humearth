@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import { realConstants } from '../footprint/testing';
 import { TEXT_HEAVY, VIDEO_HEAVY } from '../footprint/guardrails';
-import { band, comparisonWords, panelCopy, planWords, quizQuestions, sentenceFor, worldDescription } from './copy';
+import { band, comparisonWords, panelCopy, planWords, quizQuestions, sentenceFor, tickerNote, tickerWords, worldDescription } from './copy';
 import { footprint, kidComparisons } from '../footprint/engine';
 import type { Buckets } from '../footprint/types';
 
@@ -83,5 +83,17 @@ describe('tap panel (12A)', () => {
     expect(panelCopy('water', k, k).range).toBe('Less than 1 glass');
     expect(panelCopy('water', { ...k, glasses: 2 }, { ...k, glasses: 2 }).range).toBe('About 2 glasses');
     expect(panelCopy('water', k, k, 'friend').title).toBe("Your friend's water this week");
+  });
+});
+
+describe('Earth ticker words', () => {
+  it('grows with time, reads naturally, and uses no units kids do not know', () => {
+    expect(tickerWords(1000, 0, c)).toBe('about 0.0 bathtubs of water');
+    expect(tickerWords(150_000, 1, c)).toBe('about 1.0 bathtub of water');
+    expect(tickerWords(10_000_000, 60, c)).toBe('about 4,000 bathtubs of water');
+    const note = tickerNote(9_000_000, 25_000_000, c);
+    expect(note).toMatch(/^Somewhere from 3,600 to 10,000 bathtubs a minute\./);
+    expect(note).toMatch(/America's AI share/);
+    expect(`${tickerWords(10_000_000, 60, c)} ${note}`).not.toMatch(BANNED);
   });
 });

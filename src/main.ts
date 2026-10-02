@@ -13,8 +13,8 @@ import { seedSpot } from './scene/geo';
 import { createPosterView } from './view/poster';
 import { webglAvailable } from './view/webgl';
 import type { View, ViewPhase } from './view/view';
-import { footprint, kidComparisons } from './footprint/engine';
-import { comparisonWords, panelCopy, planWords, quizQuestions, sentenceFor, worldDescription } from './ui/copy';
+import { aiPerSecond, footprint, kidComparisons } from './footprint/engine';
+import { comparisonWords, panelCopy, planWords, quizQuestions, sentenceFor, tickerNote, tickerWords, worldDescription } from './ui/copy';
 import { activeSeed, boot, displayedPlan, hasPlan, loadMine, newSeed, reduce, safeStore, saveMine, type AppEvent, type AppState } from './app/state';
 import { shareUrl } from './share/codec';
 import { loadConstants, loadHubs } from './data/load';
@@ -288,6 +288,29 @@ async function main() {
       window.prompt('Copy this link to share your world:', url);
     }
   }
+
+  // Earth ticker (2A): AI's worldwide water since this page opened, from the middle figures.
+  const openedAt = performance.now();
+  const aiMid = aiPerSecond(constants, 'mid');
+  const tickTicker = () => {
+    if (state.place !== 'earth') return;
+    $('ticker-amount').textContent = tickerWords(aiMid.water, (performance.now() - openedAt) / 1000, constants);
+  };
+  tickTicker();
+  window.setInterval(tickTicker, 1000);
+  $('ticker').addEventListener('click', () => {
+    const note = $('ticker-note');
+    const open = note.hidden;
+    note.hidden = !open;
+    $('ticker').setAttribute('aria-expanded', String(open));
+    if (open) {
+      note.textContent = tickerNote(aiPerSecond(constants, 'low').water, aiPerSecond(constants, 'high').water, constants) + ' ';
+      const link = document.createElement('a');
+      link.href = '/how-we-know.html#numbers';
+      link.textContent = 'How we know';
+      note.append(link);
+    }
+  });
 
   // Wiring
   $('primary').addEventListener('click', () => dispatch(state.viewing ? { type: 'VISIT' } : { type: 'MAKE', newSeed: randomSeed() }));
