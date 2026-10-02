@@ -12,6 +12,8 @@ import { isLand } from './scene/land';
 import { seedSpot } from './scene/geo';
 import { createPosterView } from './view/poster';
 import { webglAvailable } from './view/webgl';
+import { bloomNotes, mixFor, readSoundPref, writeSoundPref } from './sound/mix';
+import type { Synth } from './sound/synth';
 import type { View, ViewPhase } from './view/view';
 import { aiPerSecond, footprint, kidComparisons } from './footprint/engine';
 import { comparisonWords, panelCopy, planWords, quizQuestions, sentenceFor, tickerNote, tickerWords, worldDescription } from './ui/copy';
@@ -52,11 +54,42 @@ async function main() {
   const posters = { earth: $('poster-earth'), world: $('poster-world') };
   let view: View = createPosterView(posters, { onPhase });
 
+  // Sound (13A): off by default, remembered on this device. The synth loads only when turned on,
+  // and browsers only allow audio after a tap, so a remembered "on" starts at the first tap.
+  let soundOn = readSoundPref(globalThis.localStorage);
+  let synth: Synth | null = null;
+  const soundMix = (s: AppState) => {
+    const fp = shownFootprint(s);
+    return mixFor(s.place, fp?.health ?? null, fp?.animals ?? null);
+  };
+  async function startSound() {
+    if (!synth) synth = (await import('./sound/synth')).createSynth();
+    synth.setMix(soundMix(state));
+    synth.setEnabled(true);
+  }
+  const renderSoundButton = () => {
+    $('sound').setAttribute('aria-pressed', String(soundOn));
+    $('sound-label').textContent = soundOn ? 'Sound on' : 'Sound off';
+  };
+  renderSoundButton();
+  if (soundOn) addEventListener('pointerdown', () => void startSound(), { once: true });
+  $('sound').addEventListener('click', () => {
+    soundOn = !soundOn;
+    writeSoundPref(globalThis.localStorage, soundOn);
+    renderSoundButton();
+    if (soundOn) void startSound();
+    else synth?.setEnabled(false);
+  });
+
+  /** A returning visitor's world glows on Earth so they can find it (1A). */
+  const plotGlows = (s: AppState) => s.place === 'earth' && s.viewing?.owner === 'me';
+
   /** Bring a view up to date with the current state (used when a view takes over). */
   function syncView(v: View, s: AppState) {
     const seed = activeSeed(s);
-    v.setPlot(seed ? spotOf(seed) : null);
+    v.setPlot(seed ? spotOf(seed) : null, plotGlows(s));
     if (seed) v.showWorld(seed);
+    v.setChoices(s.viewing?.owner === 'me' ? s.viewing.world.plan : null);
     const fp = shownFootprint(s);
     if (fp) v.setHealth(fp.health, fp.animals);
     v.setIdleSpin(s.place !== 'quiz');
@@ -135,8 +168,9 @@ async function main() {
 
     // Which world the globe and the diorama show (a new world only between dives).
     const seed = activeSeed(next);
-    view.setPlot(seed ? spotOf(seed) : null);
+    view.setPlot(seed ? spotOf(seed) : null, plotGlows(next));
     if (seed && (next.place === 'earth' || next.place === 'quiz')) view.showWorld(seed);
+    view.setChoices(next.viewing?.owner === 'me' ? next.viewing.world.plan : null);
     // Health before the dive, so you land in your real world (and toggles bloom it live).
     const fp = shownFootprint(next);
     if (fp) view.setHealth(fp.health, fp.animals);
@@ -153,6 +187,16 @@ async function main() {
       view.dive(lat, lon);
     }
     if (next.place === 'returning' && prev.place === 'world') view.back();
+
+    // Sound follows the picture; greener choices that help ring a bloom chime.
+    if (synth && soundOn) {
+      synth.setMix(soundMix(next));
+      const before = shownFootprint(prev);
+      if (fp && before && next.place === 'world' && prev.place === 'world' && next.viewing?.world.seed === prev.viewing?.world.seed) {
+        const avgHealth = (h: typeof fp.health) => (h.co2 + h.water + h.energy) / 3;
+        synth.chime(bloomNotes(avgHealth(fp.health) - avgHealth(before.health)));
+      }
+    }
   }
 
   let revealTimer = 0;
@@ -347,7 +391,16 @@ async function main() {
   $('make-mine').addEventListener('click', () => dispatch({ type: 'MAKE_MINE' }));
   $('share').addEventListener('click', share);
   $('back').addEventListener('click', () => dispatch({ type: 'BACK' }));
-  $('stage').addEventListener('click', () => view.skip());
+  // On the canvas: in my world, tapping a greener-choice object toggles it; during a dive, a tap skips.
+  $('stage').addEventListener('click', (e) => {
+    const key = state.place === 'world' && state.viewing?.owner === 'me' ? view.pickChoice(e.clientX, e.clientY) : null;
+    if (key) dispatch({ type: 'TOGGLE_PLAN', key });
+    else view.skip();
+  });
+  $('stage').addEventListener('pointermove', (e) => {
+    const over = state.place === 'world' && state.viewing?.owner === 'me' && view.pickChoice(e.clientX, e.clientY) !== null;
+    $('stage').style.cursor = over ? 'pointer' : '';
+  });
   addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       if (closePanel()) return;

@@ -40,6 +40,8 @@ export function createPosterView(el: { earth: HTMLElement; world: HTMLElement },
       el.world.style.filter = posterHealthFilter(health);
     },
     setPlot() {},
+    setChoices() {},
+    pickChoice: () => null,
     turnToward() {},
     setIdleSpin() {},
     jumpTo(place) {

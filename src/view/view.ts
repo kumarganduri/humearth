@@ -3,7 +3,7 @@
 // and the moment before three.js has loaded all use the same code path.
 
 import type { AnimalState } from '../footprint/engine';
-import type { Channel } from '../footprint/types';
+import type { Channel, Plan } from '../footprint/types';
 
 export type ViewPhase = 'earth' | 'diving' | 'world' | 'returning';
 
@@ -19,7 +19,11 @@ export interface View {
   /** Show the world for this seed (rebuilds the diorama when the seed changes). */
   showWorld(seed: number): void;
   setHealth(health: Record<Channel, number>, animals: AnimalState): void;
-  setPlot(spot: { lat: number; lon: number } | null): void;
+  setPlot(spot: { lat: number; lon: number } | null, glow?: boolean): void;
+  /** Greener-choice objects in the world: my plan, or hidden (null) on a friend's world. */
+  setChoices(plan: Plan | null): void;
+  /** The greener choice under a screen point in the world, if the view can tell. */
+  pickChoice(clientX: number, clientY: number): keyof Plan | null;
   turnToward(lat: number, lon: number, amount: number): void;
   setIdleSpin(on: boolean): void;
   /** Jump to a place with no animation (when this view takes over from another). */

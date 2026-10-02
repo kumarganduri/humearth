@@ -10,7 +10,13 @@
   <body>
     <header class="nav">
       <a class="wordmark" href="/" aria-label="Hum home">hum<span class="dot" aria-hidden="true"></span></a>
-      <nav aria-label="Main"><a class="navlink" href="/how-we-know.html">How We Know</a></nav>
+      <nav aria-label="Main" class="nav-links">
+        <button class="navlink sound-btn" id="sound" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path class="waves" d="M16 9a4 4 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11"/></svg>
+          <span id="sound-label">Sound off</span>
+        </button>
+        <a class="navlink" href="/how-we-know.html">How We Know</a>
+      </nav>
     </header>
     <main>
       <!-- Posters: the first screen, the no-WebGL fallback, and the context-loss fallback (3A, 7A). -->

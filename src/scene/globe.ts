@@ -39,8 +39,8 @@ export interface GlobeScene {
   scene: Scene;
   /** Unit direction (world space) of a lat/lon on the globe, with the current spin applied. */
   worldDirOf(lat: number, lon: number): Vector3;
-  /** Move your plot to a spot, or hide it (null) when there is no world yet. */
-  setPlot(spot: { lat: number; lon: number } | null): void;
+  /** Move your plot to a spot, or hide it (null) when there is no world yet. Glow marks a returning visitor's world (1A). */
+  setPlot(spot: { lat: number; lon: number } | null, glow?: boolean): void;
   update(dtSeconds: number, timeMs: number, spinning: boolean): void;
 }
 
@@ -177,6 +177,8 @@ export function buildGlobe(hubs: Hub[], seed = 7): GlobeScene {
   scene.add(stem, base, ground);
 
   const m = new Matrix4();
+  let plotGlow = false;
+  const glowColor = sceneColor('accent');
   return {
     scene,
     worldDirOf(lat, lon) {
@@ -185,13 +187,20 @@ export function buildGlobe(hubs: Hub[], seed = 7): GlobeScene {
       const [x, y, z] = latLonToVec3(lat, lon, 1);
       return new Vector3(x, y, z).applyMatrix4(m).normalize();
     },
-    setPlot(spot) {
+    setPlot(spot, glow = false) {
       plot.visible = spot !== null;
+      plotGlow = glow;
       if (spot) placePlot(plot, spot.lat, spot.lon);
     },
     update(dt, timeMs, spinning) {
       if (spinning) spin.rotation.y += dt * IDLE_SPIN;
       mat(hubLights).emissiveIntensity = 0.5 + 0.12 * Math.sin(timeMs / 900);
+      // Your world glows softly on the globe so a returning visitor can find it (1A).
+      const pulse = plotGlow ? 0.35 + 0.25 * Math.sin(timeMs / 500) : 0;
+      plot.traverse((o) => {
+        const m = (o as Mesh).material as MeshStandardMaterial | undefined;
+        if (m?.emissive) m.emissive.copy(glowColor).multiplyScalar(pulse);
+      });
     },
   };
 }

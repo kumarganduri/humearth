@@ -26,4 +26,9 @@ body {
 .nav { position: fixed; inset: 0 0 auto 0; padding: var(--space-md) var(--space-lg); z-index: 2; display: flex; justify-content: space-between; align-items: center; }
 .navlink { color: var(--color-text); font-weight: 700; text-decoration: none; }
 .navlink:hover { text-decoration: underline; }
+.nav-links { display: flex; align-items: center; gap: var(--space-lg); }
+.sound-btn { all: unset; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; min-height: 44px; font-weight: 700; color: var(--color-text); }
+.sound-btn svg { width: 20px; height: 20px; }
+.sound-btn[aria-pressed="false"] .waves { opacity: 0.25; }
+.sound-btn:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; border-radius: 6px; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

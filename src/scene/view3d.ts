@@ -6,7 +6,7 @@ import { buildWorld } from './world';
 import { Stage } from './stage';
 import type { Tier } from './tier';
 import type { View, ViewCallbacks } from '../view/view';
-import type { Hub } from '../footprint/types';
+import type { Hub, Plan } from '../footprint/types';
 
 export interface View3DOptions extends ViewCallbacks {
   canvas: HTMLCanvasElement;
@@ -25,6 +25,7 @@ export async function createView3D(o: View3DOptions): Promise<View & { setTier(t
   const globe = buildGlobe(o.hubs);
   await yieldToBrowser();
   let seed = 1;
+  let lastChoices: Plan | null = null;
   let world = buildWorld(seed);
   await yieldToBrowser();
   const stage = new Stage({
@@ -49,11 +50,18 @@ export async function createView3D(o: View3DOptions): Promise<View & { setTier(t
     showWorld(s) {
       if (s === seed) return;
       seed = s;
+      const choices = lastChoices;
       world = buildWorld(s);
+      world.setChoices(choices);
       stage.setWorld(world);
     },
     setHealth: (h, a) => world.setHealth(h, a),
-    setPlot: (spot) => globe.setPlot(spot),
+    setPlot: (spot, glow) => globe.setPlot(spot, glow),
+    setChoices: (plan) => {
+      lastChoices = plan;
+      world.setChoices(plan);
+    },
+    pickChoice: (x, y) => stage.pickWorld(x, y),
     turnToward: (lat, lon, amount) => stage.turnToward(lat, lon, amount),
     setIdleSpin: (on) => stage.setIdleSpin(on),
     jumpTo: (place) => {

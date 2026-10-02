@@ -97,3 +97,17 @@ describe('Earth ticker words', () => {
     expect(`${tickerWords(10_000_000, 60, c)} ${note}`).not.toMatch(BANNED);
   });
 });
+
+describe('glossary lint on the page itself (T9)', () => {
+  it('index.html uses kid words: no "data centre", units or jargon on the main screens', async () => {
+    const { readFileSync } = await import('node:fs');
+    const html = readFileSync('index.html', 'utf8');
+    const visible = html
+      .replace(/<script[\s\S]*?<\/script>/g, ' ')
+      .replace(/<!--[\s\S]*?-->/g, ' ')
+      .replace(/<svg[\s\S]*?<\/svg>/g, ' ')
+      .replace(/(?:alt|aria-label)="([^"]*)"/g, ' $1 ') // what screen readers hear counts too
+      .replace(/<[^>]+>/g, ' ');
+    expect(visible).not.toMatch(BANNED);
+  });
+});

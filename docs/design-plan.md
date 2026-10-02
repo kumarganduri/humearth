@@ -269,12 +269,12 @@ Synthesized from this design review. Each task comes from a specific decision ab
 - [x] **T3 (P1, human ~1d / CC ~30min):** Earth landing. Show a static poster first and fade in the 3D globe. Order: promise, one primary button, then the ticker in a solid zone. Add the returning-visitor glow and "Visit my world". (1A, 2A, 3A)
 - [x] **T4 (P1, human ~1d / CC ~40min):** Quiz. A bottom sheet with 2×2 picture buttons, one question at a time, the globe turning toward your spot, and the last tap starting the dive. (5A)
 - [x] **T5 (P1, human ~2d / CC ~1h):** World landing. About 3 s of world-only reveal, then the leaf/drop/sun glyphs and one sentence. No grade bar. A live screen-reader sentence. (6A, 11A)
-- [~] **T6 (P2, human ~1d / CC ~40min):** In-world choice objects (paintbrush, film reel, feather, seed) and corner icon buttons for share and back. (9A)
+- [x] **T6 (P2, human ~1d / CC ~40min):** In-world choice objects (paintbrush, film reel, feather, seed) and corner icon buttons for share and back. (9A)
 - [x] **T7 (P1, human ~4h / CC ~20min):** Share. The hash holds the real buckets plus "my plan" toggles. Add the friend's-world banner, the preview, and the bad-link state. (3A, 4A)
 - [x] **T8 (P1, human ~1d / CC ~40min):** How We Know. A tap panel with the range in kid words, plus the full one-column page with sources and a change log. (12A)
-- [~] **T9 (P2, human ~2h / CC ~10min):** A copy-glossary strings file that all UI text comes from. Lint to catch banned words on main screens. (8A)
+- [x] **T9 (P2, human ~2h / CC ~10min):** A copy-glossary strings file that all UI text comes from. Lint to catch banned words on main screens. (8A)
 - [x] **T10 (P1, human ~1d / CC ~40min):** Layouts for phone and desktop, keyboard order, 44px targets, contrast checks, landmarks. Verify with keyboard-only and VoiceOver runs. (11A)
-- [ ] **T11 (P3, human ~4h / CC ~20min):** Opt-in sound: wind, bloom chimes, river loop, remembered choice. (13A)
+- [x] **T11 (P3, human ~4h / CC ~20min):** Opt-in sound: wind, bloom chimes, river loop, remembered choice. (13A)
 
 ## Engineering Review (/plan-eng-review, 2026-10-02)
 
@@ -469,6 +469,13 @@ Synthesized from this design review. Each task comes from a specific decision ab
   - **Tests:** Playwright E2E (30, desktop and phone), axe, and Lighthouse in CI.
   - **Deploy:** the job is ready but waits for the Cloudflare secrets.
   - **Two real bugs were caught by tests:** quiz keyboard focus, and the panel link contrast.
+
+- **Finishing pass (2026-10-02):**
+  - **Bare trees:** out-of-leaf trees show winter branches instead of stumps.
+  - **Greener choices in 3D:** a paintbrush, film reel and feather on the front-right rim. They are tappable, lift and glow when on, and trees keep clear of them. The seed waits for a Phase 2 planting partner.
+  - **Returning visitor:** your plot glows on the globe.
+  - **Sound:** opt-in and synthesised live with Web Audio (no audio files): wind during the dive, river level and birdsong by health, a bloom chime on improvement. It is a 0.9 KB lazy chunk and the setting is remembered.
+  - **Also:** a glossary lint on index.html and a proper favicon.
 
 ## Eng Review Implementation Tasks
 Each task comes from an eng-review decision above.

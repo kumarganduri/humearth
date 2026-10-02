@@ -101,3 +101,18 @@ test('Earth ticker counts up and explains its range and caveat on tap', async ({
   await expect(page.locator('#ticker-note')).toContainText("America's AI share");
   await expect(page.locator('#ticker-note a')).toHaveAttribute('href', '/how-we-know.html#numbers');
 });
+
+test('sound is off by default, loads nothing until turned on, and is remembered', async ({ page }) => {
+  const synthRequests: string[] = [];
+  page.on('request', (r) => /\/synth[-.]/.test(r.url()) && synthRequests.push(r.url()));
+  await fresh(page);
+  await expect(page.locator('#sound')).toHaveAttribute('aria-pressed', 'false');
+  await expect(page.locator('#sound-label')).toHaveText('Sound off');
+  await page.waitForTimeout(1500);
+  expect(synthRequests).toEqual([]); // nothing loaded while off
+  await page.click('#sound');
+  await expect(page.locator('#sound-label')).toHaveText('Sound on');
+  await expect.poll(() => synthRequests.length).toBeGreaterThan(0);
+  await page.reload();
+  await expect(page.locator('#sound')).toHaveAttribute('aria-pressed', 'true'); // remembered
+});

@@ -146,6 +146,14 @@ export class Stage {
     this.o.onTier?.(t);
   }
 
+  /** Which greener-choice object is under a screen point in the world, if any. */
+  pickWorld(clientX: number, clientY: number) {
+    if (this.phase !== 'world') return null;
+    const r = this.o.canvas.getBoundingClientRect();
+    const ndc = { x: ((clientX - r.left) / r.width) * 2 - 1, y: -((clientY - r.top) / r.height) * 2 + 1 };
+    return this.o.world.pickChoice(ndc, this.worldCam);
+  }
+
   /** Jump straight to Earth or the world with no animation (resync after a context restore). */
   jumpTo(place: 'earth' | 'world') {
     if (place === 'world') this.land();
