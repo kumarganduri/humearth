@@ -4,12 +4,13 @@
 // and re-renders the same pieces with the same functions.
 
 import type { CountriesFile, CountryRow, MetricSeries, SeriesFile, SeriesYear } from '../footprint/series-types';
-import type { RangeValue } from '../footprint/types';
+import type { Constants } from '../footprint/types';
 import { crossing } from '../footprint/series';
 import { raceHtml, raceRows } from '../charts/race';
 import { fanSvg } from '../charts/fan';
 import { niceMax } from '../charts/scale';
 import { esc, formatNumber, readingHtml } from './format';
+import { calculatorHtml } from './calculator';
 
 /** Countries shown in the race: the ones data centres pass (or approach) between 2017 and 2035. */
 export const RACE_COUNTRIES = ['Russia', 'Japan', 'Canada', 'Germany', 'France', 'United Kingdom', 'Netherlands'] as const;
@@ -23,8 +24,10 @@ export const SOURCE = 'IEA';
 export interface HeroData {
   series: SeriesFile;
   countries: CountriesFile;
-  aiShare: Pick<RangeValue, 'low' | 'mid' | 'high'>;
+  constants: Constants;
 }
+
+const aiShareOf = (d: HeroData) => d.constants.values.aiShareOfDataCentres;
 
 export const pick = (all: CountryRow[], names: readonly string[]) =>
   names.map((n) => all.find((c) => c.name === n)).filter((c): c is CountryRow => Boolean(c));
@@ -42,7 +45,7 @@ export function yearOf(m: MetricSeries, year: number): SeriesYear {
 export function raceFor(d: HeroData, year: number): string {
   const m = d.series.metrics.electricity;
   const countries = pick(d.countries.countries, RACE_COUNTRIES);
-  const rows = raceRows({ year: yearOf(m, year), latestMeasuredYear: m.latestMeasuredYear, aiShare: d.aiShare, countries });
+  const rows = raceRows({ year: yearOf(m, year), latestMeasuredYear: m.latestMeasuredYear, aiShare: aiShareOf(d), countries });
   return raceHtml(rows, raceScaleMax(m, countries), 'TWh');
 }
 
@@ -111,11 +114,11 @@ export function growthWords(from: number, to: number): string {
 export function renderHero(d: HeroData): string {
   const m = d.series.metrics.electricity;
   const latest = m.latestMeasuredYear;
-  const share = `${formatNumber(d.aiShare.low * 100)}–${formatNumber(d.aiShare.high * 100)}%`;
+  const share = `${formatNumber(aiShareOf(d).low * 100)}–${formatNumber(aiShareOf(d).high * 100)}%`;
   const fan = fanSvg(m, { unit: 'TWh', title: "Data-centre electricity, measured and forecast", references: pick(d.countries.countries, FAN_COUNTRIES) });
   return `<section class="poster" aria-labelledby="headline">
   <div class="poster-text">
-    <h1 id="headline">The world's <span class="dc">data centres</span> already use as much electricity as a country. <span class="ai">AI</span> is the fastest-growing part.</h1>
+    <h1 id="headline">The world's <span class="dc">data centres</span> already use as much electricity as a country. <span class="ai">AI</span> is the <span class="nowrap">fastest-growing</span> part.</h1>
     <div id="reading">${readingFor(d, latest)}</div>
     <p class="lede">${esc(ledeFor(d))}</p>
   </div>
@@ -136,5 +139,6 @@ export function renderHero(d: HeroData): string {
   <h2 id="heading-future">Where it's heading</h2>
   <p>${esc(futureSentence(m))} The bright line is measured; the dim range hasn't happened yet.</p>
 </section>
-<figure class="fanwrap">${fan}<figcaption class="src">${esc(historyNote(m))} Country lines show each country's electricity use in ${d.countries.year}. <a href="/how-we-know.html#growth">Every year, and how we got it</a></figcaption></figure>`;
+<figure class="fanwrap">${fan}<figcaption class="src">${esc(historyNote(m))} Country lines show each country's electricity use in ${d.countries.year}. <a href="/how-we-know.html#growth">Every year, and how we got it</a></figcaption></figure>
+${calculatorHtml(d.constants)}`;
 }

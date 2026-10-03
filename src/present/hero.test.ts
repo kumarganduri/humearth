@@ -8,7 +8,7 @@ const read = <T>(p: string) => JSON.parse(readFileSync(p, 'utf8')) as T;
 const data = (): HeroData => ({
   series: read<SeriesFile>('public/data/series.json'),
   countries: read<CountriesFile>('public/data/countries.json'),
-  aiShare: read<Constants>('public/data/constants.json').values.aiShareOfDataCentres,
+  constants: read<Constants>('public/data/constants.json'),
 });
 
 describe('renderHero: the first screen, prebuilt from the shipped data', () => {

@@ -11,6 +11,8 @@ import './home.css';
 import { cleanUpV1 } from './legacy';
 import { captionFor, rangeWords } from './present/format';
 import { raceFor, readingFor, UNIT_WORDS, yearOf, type HeroData } from './present/hero';
+import { calculatorOutputs, clampUsage, outputsHtml } from './present/calculator';
+import type { Constants } from './footprint/types';
 
 cleanUpV1(globalThis.localStorage, globalThis.location, globalThis.history);
 
@@ -28,9 +30,9 @@ async function load(): Promise<HeroData> {
   const [series, countries, constants] = await Promise.all([
     getJson<HeroData['series']>('series'),
     getJson<HeroData['countries']>('countries'),
-    getJson<{ values: { aiShareOfDataCentres: HeroData['aiShare'] } }>('constants'),
+    getJson<HeroData['constants']>('constants'),
   ]);
-  return { series, countries, aiShare: constants.values.aiShareOfDataCentres };
+  return { series, countries, constants };
 }
 
 /** Update the race in place: same <li> per key, so widths animate; then FLIP the rows into the new order. */
@@ -128,8 +130,27 @@ function start(d: HeroData) {
   setYear(m.latestMeasuredYear);
 }
 
+/** "Your part": every slider recomputes the week with the same engine the page was built with. */
+function startCalculator(c: Constants) {
+  const inputs = [...document.querySelectorAll<HTMLInputElement>('#your-part input[type=range]')];
+  const update = () => {
+    const usage = clampUsage(Object.fromEntries(inputs.map((i) => [i.dataset.k!, i.value])));
+    for (const i of inputs) $(`v-${i.dataset.k}`).textContent = i.value;
+    const o = calculatorOutputs(usage, c);
+    $('calc-out').innerHTML = outputsHtml(o);
+    $('calc-say').textContent = o.sentence;
+  };
+  for (const i of inputs) {
+    i.addEventListener('input', update);
+    i.disabled = false;
+  }
+}
+
 load()
-  .then(start)
+  .then((d) => {
+    start(d);
+    startCalculator(d.constants);
+  })
   .catch(() => {
     // The prebuilt hero already shows the latest published year; only the slider is unavailable.
     $('slider-note').hidden = false;
