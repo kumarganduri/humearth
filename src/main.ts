@@ -1,11 +1,14 @@
-// Hum v2 entry point. The first screen is already in the HTML (src/hero.generated.html); this only wakes the
-// year slider and Play, re-rendering with the same pure functions the build used (eng review D4).
+// Hum v2 entry point. The first screen is already in the HTML (src/hero.generated.html); this wakes the
+// year slider and Play, re-rendering with the same pure functions the build used (eng review D4), and then
+// lazily brings in the globe (d3-geo + world map), so the first paint never waits for it.
 //
 //   load series + countries + constants ──ok──► enable slider / Play ──input──► setYear(y)
-//                │                                                              ├ reading (range + caption)
-//                └──fail──► keep the prebuilt hero, slider stays disabled,       ├ race rows (keyed: bars grow,
-//                           show "couldn't load" note                            │  rows slide to their new place)
-//                                                                                └ aria-valuetext ("2030: about 950 …")
+//                │                          │                                   ├ reading (range + caption)
+//                │                          └─► import globe, world, hubs ──►   ├ globe: countries passed light up
+//                │                                                              ├ passed list + phone summary
+//                └──fail──► keep the prebuilt page, slider stays disabled,      ├ race rows (keyed: bars grow,
+//                           show "couldn't load" note                           │  rows slide to their new place)
+//                                                                               └ aria-valuetext ("2030: about 950 …")
 import './base.css';
 import './home.css';
 import './hero.generated.css'; // the prebuilt hero's styles (moved out of style="" for the CSP)
@@ -14,7 +17,9 @@ import { captionFor, rangeWords } from './present/format';
 import { raceFor, readingFor, UNIT_WORDS, yearOf, type HeroData } from './present/hero';
 import { calculatorOutputs, clampUsage, outputsHtml } from './present/calculator';
 import { applyStyleData, stylesToData } from './present/inline-styles';
-import type { Constants } from './footprint/types';
+import { countryNote, passedCount, passedFor, passedListHtml, passedShort } from './present/earth';
+import type { Constants, HubsFile } from './footprint/types';
+import type { Globe } from './globe/earth';
 
 cleanUpV1(globalThis.localStorage, globalThis.location, globalThis.history);
 
@@ -90,6 +95,37 @@ function updateRace(html: string) {
   }
 }
 
+let globe: Globe | undefined;
+const litIn = (d: HeroData, year: number) => new Set(passedFor(d, year).filter((r) => r.on).map((r) => r.name));
+
+/** The globe is an enhancement: if anything here fails, the list beside it already says the same thing. */
+async function startGlobe(d: HeroData, year: () => number) {
+  const host = $('globe');
+  if (!host || typeof ResizeObserver === 'undefined') return;
+  const [{ createGlobe }, world, hubs] = await Promise.all([
+    import('./globe/earth'),
+    getJson<Parameters<typeof import('./globe/earth').createGlobe>[0]['world']>('world'),
+    getJson<HubsFile>('hubs'),
+  ]);
+  const tip = $('tip');
+  globe = createGlobe({
+    host,
+    world,
+    hubs: hubs.hubs,
+    tracked: new Set(d.countries.countries.map((c) => c.name)),
+    reduceMotion: reduceMotion(),
+    onPick(name, at) {
+      if (!name) return void (tip.hidden = true);
+      tip.innerHTML = countryNote(d, name);
+      tip.hidden = false;
+      const max = host.clientWidth - tip.offsetWidth - 8;
+      tip.style.left = `${Math.max(8, Math.min(at.x + 12, max))}px`;
+      tip.style.top = `${Math.min(at.y + 12, host.clientHeight - tip.offsetHeight - 8)}px`;
+    },
+  });
+  globe.setLit(litIn(d, year()));
+}
+
 function start(d: HeroData) {
   const m = d.series.metrics.electricity;
   const first = m.years[0]!.year;
@@ -105,9 +141,12 @@ function start(d: HeroData) {
     $('year').textContent = String(year);
     const words = rangeWords({ low: y.low.value, mid: y.mid.value ?? 0, high: y.high.value }, UNIT_WORDS);
     const how = captionFor(y).split(' · ')[1] ?? '';
-    slider.setAttribute('aria-valuetext', `${year}: ${words}${how ? `; ${how}` : ''}`);
+    slider.setAttribute('aria-valuetext', `${year}: ${words}${how ? `; ${how}` : ''}; ${passedCount(d, year)}`);
     $('reading').innerHTML = readingFor(d, year);
+    updatePassed(d, year);
+    $('side-year').textContent = String(year);
     updateRace(raceFor(d, year));
+    globe?.setLit(litIn(d, year));
   };
   const stop = () => {
     if (timer !== undefined) clearInterval(timer);
@@ -137,6 +176,25 @@ function start(d: HeroData) {
   slider.disabled = false;
   play.disabled = false;
   setYear(m.latestMeasuredYear);
+  startGlobe(d, () => Number(slider.value)).catch(() => {
+    /* the passed list and race still tell the story */
+  });
+}
+
+/** Re-render the passed list in place (keyed by country), so only the classes and the count change. */
+function updatePassed(d: HeroData, year: number) {
+  const box = $('passed');
+  const next = document.createElement('template');
+  next.innerHTML = passedListHtml(d, year);
+  const list = box.querySelector('ol');
+  if (!list) return void box.replaceChildren(next.content);
+  $('passed-n').textContent = next.content.querySelector('#passed-n')!.textContent;
+  for (const fresh of next.content.querySelectorAll<HTMLElement>('li')) {
+    const li = list.querySelector<HTMLElement>(`li[data-key="${CSS.escape(fresh.dataset.key!)}"]`);
+    if (li && li.innerHTML !== fresh.innerHTML) li.innerHTML = fresh.innerHTML;
+    if (li) li.className = fresh.className;
+  }
+  $('passed-short').textContent = passedShort(d, year);
 }
 
 /** "Your part": every slider recomputes the week with the same engine the page was built with. */

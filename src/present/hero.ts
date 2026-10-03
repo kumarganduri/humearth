@@ -12,6 +12,7 @@ import { niceMax } from '../charts/scale';
 import { esc, formatNumber, readingHtml } from './format';
 import { calculatorHtml } from './calculator';
 import { impactsHtml, whereItGoesHtml } from './story';
+import { passedListHtml, passedShort } from './earth';
 
 /** Countries shown in the race: the ones data centres pass (or approach) between 2017 and 2035. */
 export const RACE_COUNTRIES = ['Russia', 'Japan', 'Canada', 'Germany', 'France', 'United Kingdom', 'Netherlands'] as const;
@@ -117,24 +118,34 @@ export function renderHero(d: HeroData): string {
   const latest = m.latestMeasuredYear;
   const share = `${formatNumber(aiShareOf(d).low * 100)}–${formatNumber(aiShareOf(d).high * 100)}%`;
   const fan = fanSvg(m, { unit: 'TWh', title: "Data-centre electricity, measured and forecast", references: pick(d.countries.countries, FAN_COUNTRIES) });
-  return `<section class="poster" aria-labelledby="headline">
-  <div class="poster-text">
+  return `<section class="earth" aria-labelledby="headline">
+  <div class="globe" id="globe"><div class="tip" id="tip" role="status" hidden></div></div>
+  <div class="earth-text">
     <h1 id="headline">The world's <span class="dc">data centres</span> already use as much electricity as a country. <span class="ai">AI</span> is the <span class="nowrap">fastest-growing</span> part.</h1>
     <div id="reading">${readingFor(d, latest)}</div>
     <p class="lede">${esc(ledeFor(d))}</p>
   </div>
-  <div class="poster-chart">
-    <div id="race">${raceFor(d, latest)}</div>
-    <p class="ai-note"><span class="ai-key" aria-hidden="true"></span>AI's part, about ${share}: the United States' share, used as a world estimate.</p>
-    <div class="controls">
-      <output class="year num" id="year" for="slider">${latest}</output>
-      <input type="range" id="slider" min="${m.years[0]!.year}" max="${m.years[m.years.length - 1]!.year}" step="1" value="${latest}" aria-label="Year" aria-valuetext="${latest}" disabled>
-      <button type="button" class="btn" id="play" disabled>Play ${m.years[0]!.year} to ${m.years[m.years.length - 1]!.year}</button>
-    </div>
+  <p class="passed-short" id="passed-short" aria-hidden="true">${esc(passedShort(d, latest))}</p>
+  <div class="controls">
+    <output class="year num" id="year" for="slider">${latest}</output>
+    <input type="range" id="slider" min="${m.years[0]!.year}" max="${m.years[m.years.length - 1]!.year}" step="1" value="${latest}" aria-label="Year" aria-valuetext="${latest}" disabled>
+    <button type="button" class="btn" id="play" disabled>Play ${m.years[0]!.year} to ${m.years[m.years.length - 1]!.year}</button>
+  </div>
+  <aside class="passed" aria-labelledby="passed-h">
+    <h2 id="passed-h">Countries passed</h2>
+    <div id="passed">${passedListHtml(d, latest)}</div>
+  </aside>
+  <div class="earth-foot">
     <p class="note" id="slider-note" hidden>The year slider couldn't load. The numbers above are for ${latest}.</p>
     ${noscriptTable(m)}
-    <p class="src">Data centres: ${esc(SOURCE)}, Energy and AI (2025) and its 2026 update. Countries: Ember (${d.countries.year}). Dashed means calculated; dim means forecast. <a href="/how-we-know.html#growth">How we know</a></p>
+    <p class="src">A country lights up when data centres use more electricity in a year than it does (middle figure). Glows are the biggest data-centre hubs, sized by power capacity. Data centres: ${esc(SOURCE)}, Energy and AI (2025) and its 2026 update. Countries: Ember (${d.countries.year}). <a href="/how-we-know.html#growth">How we know</a></p>
   </div>
+</section>
+<section class="col side" aria-labelledby="heading-side">
+  <h2 id="heading-side">Side by side in <span class="num" id="side-year">${latest}</span></h2>
+  <p>Data centres against whole countries, in electricity a year. The year above moves this too. Dashed means calculated; dim means forecast.</p>
+  <div id="race">${raceFor(d, latest)}</div>
+  <p class="ai-note"><span class="ai-key" aria-hidden="true"></span>AI's part, about ${share}: the United States' share, used as a world estimate.</p>
 </section>
 <section class="col" aria-labelledby="heading-future">
   <h2 id="heading-future">Where it's heading</h2>

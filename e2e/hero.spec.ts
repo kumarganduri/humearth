@@ -33,7 +33,7 @@ test('dragging the slider updates the reading, caption, race and what screen rea
   await page.locator(slider).fill('2030');
   await expect(page.locator('#year')).toHaveText('2030');
   await expect(page.locator('#reading .range-cap')).toHaveText('2030 · published forecast (IEA)');
-  await expect(page.locator(slider)).toHaveAttribute('aria-valuetext', '2030: about 950 terawatt-hours a year, between 593 and 1,093; published forecast');
+  await expect(page.locator(slider)).toHaveAttribute('aria-valuetext', /^2030: about 950 terawatt-hours a year, between 593 and 1,093; published forecast; \d+ of 15 countries passed$/);
   await expect(page.locator('.row.dc')).toHaveClass(/forecast/);
   await expect(page.locator('.row.dc .band')).toHaveCount(1);
   await expect(page.locator('.row.dc .ai')).toHaveCount(0); // the AI share is a today-only figure
