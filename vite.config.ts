@@ -4,19 +4,26 @@ import { resolve } from 'node:path';
 import { defineConfig, type Plugin } from 'vite';
 
 /**
- * How We Know is static data, so it's prerendered: `npm run build:data` writes
- * src/how/content.generated.html from the data files, and this inlines it. No JavaScript,
- * no layout shift while it loads, readable with scripts off.
+ * Static data is prerendered: `npm run build:data` writes the generated HTML from the data files, and
+ * this inlines it. No layout shift while it loads, readable with scripts off.
+ *   index.html          <!--hero-content-->  <- src/hero.generated.html  (eng review D4)
+ *   how-we-know.html    <!--how-content-->   <- src/how/content.generated.html
  */
-function prerenderHowWeKnow(): Plugin {
+const GENERATED: [page: string, marker: string, file: string][] = [
+  ['index.html', '<!--hero-content-->', 'src/hero.generated.html'],
+  ['how-we-know.html', '<!--how-content-->', 'src/how/content.generated.html'],
+];
+
+function prerender(): Plugin {
   return {
-    name: 'hum:prerender-how-we-know',
+    name: 'hum:prerender',
     transformIndexHtml: {
       order: 'pre',
       handler(html, ctx) {
-        if (!ctx.filename.endsWith('how-we-know.html')) return html;
-        const body = readFileSync(resolve(import.meta.dirname, 'src/how/content.generated.html'), 'utf8');
-        return html.replace('<!--how-content-->', body);
+        for (const [page, marker, file] of GENERATED) {
+          if (ctx.filename.endsWith(page)) return html.replace(marker, readFileSync(resolve(import.meta.dirname, file), 'utf8'));
+        }
+        return html;
       },
     },
   };
@@ -24,7 +31,7 @@ function prerenderHowWeKnow(): Plugin {
 
 export default defineConfig({
   test: { exclude: ['e2e/**', 'node_modules/**', 'dist/**'] },
-  plugins: [prerenderHowWeKnow()],
+  plugins: [prerender()],
   build: {
     rollupOptions: {
       input: {
