@@ -29,7 +29,24 @@ function prerender(): Plugin {
   };
 }
 
+/**
+ * `vite preview` (what the E2E tests run against) sends the same security headers as production
+ * (public/_headers on Cloudflare), so a CSP violation fails a test instead of reaching the live site.
+ */
+export function productionHeaders(file = resolve(import.meta.dirname, 'public/_headers')): Record<string, string> {
+  const lines = readFileSync(file, 'utf8').split('\n');
+  const start = lines.findIndex((l) => l.trim() === '/*');
+  const out: Record<string, string> = {};
+  for (const line of lines.slice(start + 1)) {
+    if (!/^\s+\S/.test(line)) break; // the "/*" block ends at the first non-indented line
+    const i = line.indexOf(':');
+    out[line.slice(0, i).trim()] = line.slice(i + 1).trim();
+  }
+  return out;
+}
+
 export default defineConfig({
+  preview: { headers: productionHeaders() },
   test: { exclude: ['e2e/**', 'node_modules/**', 'dist/**'] },
   plugins: [prerender()],
   build: {

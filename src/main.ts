@@ -8,10 +8,12 @@
 //                                                                                └ aria-valuetext ("2030: about 950 …")
 import './base.css';
 import './home.css';
+import './hero.generated.css'; // the prebuilt hero's styles (moved out of style="" for the CSP)
 import { cleanUpV1 } from './legacy';
 import { captionFor, rangeWords } from './present/format';
 import { raceFor, readingFor, UNIT_WORDS, yearOf, type HeroData } from './present/hero';
 import { calculatorOutputs, clampUsage, outputsHtml } from './present/calculator';
+import { applyStyleData, stylesToData } from './present/inline-styles';
 import type { Constants } from './footprint/types';
 
 cleanUpV1(globalThis.localStorage, globalThis.location, globalThis.history);
@@ -35,12 +37,19 @@ async function load(): Promise<HeroData> {
   return { series, countries, constants };
 }
 
+/** Copy inline styles through the CSSOM (never setAttribute('style'): the CSP refuses it). */
+function copyStyle(from: HTMLElement, to: HTMLElement) {
+  for (const prop of [...to.style]) to.style.removeProperty(prop);
+  for (const prop of [...from.style]) to.style.setProperty(prop, from.style.getPropertyValue(prop));
+}
+
 /** Update the race in place: same <li> per key, so widths animate; then FLIP the rows into the new order. */
 function updateRace(html: string) {
   const list = $('race').querySelector('ol');
   if (!list) return;
   const next = document.createElement('template');
-  next.innerHTML = html;
+  next.innerHTML = stylesToData(html); // the CSP refuses style=""; never hand one to the parser
+  applyStyleData(next.content);
   const before = new Map([...list.children].map((li) => [(li as HTMLElement).dataset.key!, li.getBoundingClientRect().top]));
   const ordered: HTMLElement[] = [];
   for (const fresh of next.content.querySelectorAll<HTMLElement>('li')) {
@@ -57,7 +66,7 @@ function updateRace(html: string) {
     for (const cls of ['band', 'ai']) {
       const have = bar.querySelector<HTMLElement>(`.${cls}`);
       const want = freshBar.querySelector<HTMLElement>(`.${cls}`);
-      if (want && have) have.setAttribute('style', want.getAttribute('style') ?? '');
+      if (want && have) copyStyle(want, have);
       else if (want && cls === 'band') bar.prepend(want); // paint order: band behind the bar
       else if (want) bar.append(want); // AI slice on top
       else have?.remove();

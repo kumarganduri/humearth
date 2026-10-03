@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 import { futureSentence, growthWords, historyNote, ledeFor, raceFor, raceScaleMax, renderHero, RACE_COUNTRIES, pick, type HeroData } from './hero';
 import type { CountriesFile, SeriesFile } from '../footprint/series-types';
 import type { Constants } from '../footprint/types';
+import { extractInlineStyles } from './inline-styles';
 
 const read = <T>(p: string) => JSON.parse(readFileSync(p, 'utf8')) as T;
 const data = (): HeroData => ({
@@ -70,7 +71,13 @@ describe('race for the slider', () => {
 });
 
 describe('prerendered hero', () => {
-  it('src/hero.generated.html is up to date with public/data (run `npm run build:data`)', () => {
-    expect(readFileSync('src/hero.generated.html', 'utf8')).toContain(renderHero(data()));
+  it('src/hero.generated.html + .css are up to date with public/data (run `npm run build:data`)', () => {
+    const { html, css } = extractInlineStyles(renderHero(data()));
+    expect(readFileSync('src/hero.generated.html', 'utf8')).toContain(html);
+    expect(readFileSync('src/hero.generated.css', 'utf8')).toContain(css);
+  });
+
+  it('the prebuilt page has no style attributes (the CSP would block them)', () => {
+    expect(readFileSync('src/hero.generated.html', 'utf8')).not.toMatch(/\sstyle="/);
   });
 });
