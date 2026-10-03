@@ -1,5 +1,4 @@
 import { expect, test, type Page } from '@playwright/test';
-import { landInWorld, withSavedWorld, world } from './helpers';
 
 // Regression: ISSUE-005 — nav links (26-30px) and "See the full story" (22px) were under DESIGN.md's 44px targets.
 // Found by /qa on 2026-10-03. Report: .gstack/qa-reports/qa-report-localhost-2026-10-03.md
@@ -16,14 +15,9 @@ const tooSmall = (page: Page, scope: string) =>
       .filter((x) => x.h < 44),
   );
 
-test('every standalone button and link on the app is at least 44px tall', async ({ page }) => {
-  await withSavedWorld(page, world());
-  expect(await tooSmall(page, 'body')).toEqual([]); // Earth
-  await page.click('#primary');
-  await landInWorld(page);
-  await page.locator('.glyph').first().click();
-  await expect(page.locator('#panel')).toBeVisible();
-  expect(await tooSmall(page, 'body')).toEqual([]); // world with a panel open
+test('every standalone link on the home page is at least 44px tall', async ({ page }) => {
+  await page.goto('/');
+  expect(await tooSmall(page, 'body')).toEqual([]);
 });
 
 test('How We Know nav targets are at least 44px tall', async ({ page }) => {

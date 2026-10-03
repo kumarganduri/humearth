@@ -1,23 +1,23 @@
 // Pure core of the data pipeline (eng review 4A), kept separate from file I/O so it can be tested.
 //
-//   data/sources/constants.source.json ─┐
-//   data/sources/mapping.json ──────────┼─ validate ─> Constants (version, contentHash)
+//   data/sources/constants.source.json ─┬─ validate ─> Constants (version, contentHash)
 //   previous public/data/constants.json ┘                └─> changelog entry when numbers changed
 //   data/sources/hubs.source.json ─ validate ─> public/data/hubs.json (contentHash)
 //   data/sources/series.source.json ─ validate ─> deriveSeries ─> public/data/series.json (contentHash)
 //   data/sources/countries.source.json ─ validate ─> public/data/countries.json (contentHash)
 
 import { createHash } from 'node:crypto';
-import { validateCountriesSource, validateHubs, validateMapping, validateSeriesSource, validateSource } from '../../src/footprint/schema';
+import { validateCountriesSource, validateHubs, validateSeriesSource, validateSource } from '../../src/footprint/schema';
 import { deriveSeries } from '../../src/footprint/series';
 import type { CountriesFile, CountriesSource, SeriesFile, SeriesSource } from '../../src/footprint/series-types';
-import { VALUE_KEYS, type Constants, type Hub, type HubsFile, type Mapping } from '../../src/footprint/types';
+import { VALUE_KEYS, type Constants, type Hub, type HubsFile } from '../../src/footprint/types';
 
 export interface ChangelogEntry {
   date: string;
   constantsVersion: number;
   changes: { key: string; from: [number, number, number] | null; to: [number, number, number] }[];
-  mappingChanged: boolean;
+  /** v1 only: the kid "world health" scale was re-derived. Kept so old entries still read correctly. */
+  mappingChanged?: boolean;
 }
 
 /** Stable JSON: object keys sorted at every level, so the hash only changes when content does. */
@@ -44,15 +44,14 @@ export class DataValidationError extends Error {
 
 export function buildConstants(
   source: unknown,
-  mapping: unknown,
   previous: Constants | null,
   today: string,
 ): { constants: Constants; changelog: ChangelogEntry | null } {
-  const problems = [...validateSource(source), ...validateMapping(mapping)];
+  const problems = validateSource(source);
   if (problems.length) throw new DataValidationError(problems);
 
-  const src = source as Pick<Constants, 'values' | 'quiz' | 'comparisons'>;
-  const body = { values: src.values, quiz: src.quiz, comparisons: src.comparisons, mapping: mapping as Mapping };
+  const src = source as Pick<Constants, 'values'>;
+  const body = { values: src.values };
   const contentHash = hashOf(body);
 
   if (previous && previous.contentHash === contentHash) {
@@ -69,8 +68,7 @@ export function buildConstants(
     const from = before ? triple(before) : null;
     if (!from || from.some((n, i) => n !== to[i])) changes.push({ key, from, to });
   }
-  const mappingChanged = !previous || canonical(previous.mapping) !== canonical(constants.mapping);
-  return { constants, changelog: { date: today, constantsVersion, changes, mappingChanged } };
+  return { constants, changelog: { date: today, constantsVersion, changes } };
 }
 
 

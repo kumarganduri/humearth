@@ -1,13 +1,12 @@
-// How We Know (decision 12A): the grown-up page. Pure functions from the same data files the site
-// uses to escaped HTML, so the page can never disagree with the numbers kids see.
+// How We Know: pure functions from the same data files the site uses to escaped HTML, so this page can
+// never disagree with the numbers on the main page.
 //
-//   constants.json ─┬─> "How your world's health is drawn" (k, baseline, guardrails)  OV #1
-//                   └─> "The numbers" (low / mid / high, unit, sources)
-//   hubs.json ──────────> "AI buildings on the globe" (MW range, what it measures, sources)
+//   constants.json ─────> "The numbers" (low / mid / high, unit, sources)
+//   series.json ────────> "How it grows, year by year"
+//   countries.json ─────> "The countries we compare with"
+//   hubs.json ──────────> "Data-centre places" (MW range, what it measures, sources)
 //   changelog.json ─────> "We changed our numbers"
 
-import { perPersonBaseline } from '../footprint/engine';
-import { TEXT_HEAVY_MIN_HEALTH, VIDEO_HEAVY_MAX_HEALTH, STRICT_LEVELS } from '../footprint/guardrails';
 import { VALUE_KEYS, type Constants, type Hub, type RangeValue, type Source } from '../footprint/types';
 import type { CountriesFile, MetricSeries, SeriesFile, SeriesValue, SeriesYear } from '../footprint/series-types';
 
@@ -15,7 +14,7 @@ export interface ChangelogEntry {
   date: string;
   constantsVersion: number;
   changes: { key: string; from: [number, number, number] | null; to: [number, number, number] }[];
-  mappingChanged: boolean;
+  mappingChanged?: boolean;
 }
 
 const ESC: Record<string, string> = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
@@ -39,35 +38,21 @@ function sourceList(sources: Source[]): string {
     .join('')}</ul>`;
 }
 
-export function renderMapping(c: Constants): string {
-  const base = perPersonBaseline(c);
-  return `
-<h2 id="health">How your world's health is drawn</h2>
-<p>Your world's health is <strong>a scale we designed</strong>, not something we measured. We compare your weekly AI use with <strong>${num(c.mapping.k)}</strong> times the average person's share of <em>all</em> data-centre electricity, which is about <strong>${num(base.energy)} Wh a week</strong> (${num(c.values.dataCentreTWhPerYear.mid)} TWh a year shared by ${num(c.values.worldPopulation.mid)} people). A world never drops below ${num(c.mapping.floor * 100)}% health: it rests, it doesn't die.</p>
-<p>We picked that multiplier so two promises hold whether we use our middle estimates or our high ones (${STRICT_LEVELS.join(' and ')}). When we test "what if the high numbers are true?", we apply them to everyone, including the average person's share, so we compare like with like:</p>
-<ul>
-  <li>someone asking an AI 50+ times a day, with no pictures or videos, stays healthy (${num(TEXT_HEAVY_MIN_HEALTH * 100)}% or more);</li>
-  <li>someone making a lot of AI videos looks clearly stressed (under ${num(VIDEO_HEAVY_MAX_HEALTH * 100)}%).</li>
-</ul>
-<p>With our lowest estimates both promises can't hold at once (the lowest published video figure comes from an older, tiny model), so there we only keep the order: a video-heavy week is never shown healthier than a text-heavy one. The script that checks this runs on every build, and the build fails if a promise breaks.</p>
-<p class="muted">${esc(c.mapping.note)} Derived ${esc(c.mapping.derivedOn)}.</p>`;
-}
-
 function valueRow(v: RangeValue): string {
-  return `<tr><th scope="row">${esc(v.label)}</th><td class="num">${num(v.low)}</td><td class="num">${num(v.mid)}</td><td class="num">${num(v.high)}</td><td>${unitCell(v.unit)}</td></tr>
+  // On phones the unit column folds into the label (CSS), so the numbers get the room.
+  return `<tr><th scope="row">${esc(v.label)}<span class="unit-inline muted"> · ${unitCell(v.unit)}</span></th><td class="num">${num(v.low)}</td><td class="num">${num(v.mid)}</td><td class="num">${num(v.high)}</td><td class="unit-col">${unitCell(v.unit)}</td></tr>
 <tr class="src"><td colspan="5">${sourceList(v.sources)}</td></tr>`;
 }
 
 export function renderValues(c: Constants): string {
   return `
 <h2 id="numbers">The numbers</h2>
-<p>Nobody outside the AI companies can measure a single question exactly. So we start from what companies have published, add independent research, and always keep a low, middle and high estimate. Your world is drawn from the middle; the panels in your world show the whole range.</p>
+<p>Nobody outside the AI companies can measure a single question exactly. So we start from what companies have published, add independent research, and always keep a low, middle and high estimate. Every number on the main page shows the whole range.</p>
 <div class="table-wrap"><table>
-<thead><tr><th scope="col">What</th><th scope="col">Low</th><th scope="col">Middle</th><th scope="col">High</th><th scope="col">Unit</th></tr></thead>
+<thead><tr><th scope="col">What</th><th scope="col">Low</th><th scope="col"><abbr title="Middle">Mid</abbr></th><th scope="col">High</th><th scope="col" class="unit-col">Unit</th></tr></thead>
 <tbody>${VALUE_KEYS.map((k) => valueRow(c.values[k])).join('')}</tbody>
 </table></div>
-<p><strong>The ticker on Earth</strong> ("since you opened this page…") multiplies all the world's data-centre electricity by AI's share of it. Nobody publishes a world figure for that share in words (the IEA shows one only in a chart), so we use the United States' 2024 share, ${num(c.values.aiShareOfDataCentres.low * 100)}–${num(c.values.aiShareOfDataCentres.high * 100)}%, as our estimate for the world. The real world share is probably lower, so treat the ticker as an upper-end picture.</p>
-<p>The quiz turns answers into amounts: ${c.quiz.textPromptsPerDay.map(num).join(' / ')} questions a day, ${c.quiz.imagesPerWeek.map(num).join(' / ')} pictures a week and ${c.quiz.videosPerWeek.map(num).join(' / ')} short videos a week. "A lighter AI" uses the lowest published figure for questions and pictures.</p>
+<p>AI's share of all data-centre electricity is the United States' 2024 share, ${num(c.values.aiShareOfDataCentres.low * 100)}–${num(c.values.aiShareOfDataCentres.high * 100)}%, used as our estimate for the world: nobody publishes a world figure in words. The real world share is probably lower.</p>
 <p class="muted">Constants version ${c.constantsVersion} · ${esc(c.contentHash)} · built ${esc(c.builtAt)}</p>`;
 }
 
@@ -81,8 +66,8 @@ export function renderHubs(hubs: Hub[]): string {
     })
     .join('');
   return `
-<h2 id="buildings">AI buildings on the globe</h2>
-<p>Each glowing block on the globe is a region with many data centres ("AI buildings"). Its size follows the region's power capacity on a gentle scale, so the biggest region doesn't swallow the map. Published figures measure different things, and we say which for each one.</p>
+<h2 id="buildings">Data-centre places</h2>
+<p>Regions with many data centres, and their power capacity. Published figures measure different things, and we say which for each one.</p>
 <div class="table-wrap"><table>
 <thead><tr><th scope="col">Region</th><th scope="col">Megawatts</th><th scope="col">What the figure counts</th></tr></thead>
 <tbody>${rows}</tbody>
@@ -105,7 +90,7 @@ export function renderChangelog(entries: ChangelogEntry[], c: Constants): string
                   : `<li>${esc(LABELS[ch.key] ?? ch.key)}: <strong>${triple(ch.to)}</strong> (first version)</li>`,
               )
               .join('');
-      const map = e.mappingChanged ? '<li>The health scale was re-derived.</li>' : '';
+      const map = e.mappingChanged ? '<li>The (v1) world-health scale was re-derived.</li>' : '';
       return `<li><h3>${esc(e.date)} · version ${e.constantsVersion}</h3><ul>${what}${map}</ul></li>`;
     })
     .join('');
@@ -120,15 +105,15 @@ export function renderPrivacy(): string {
 <h2 id="privacy">Your privacy</h2>
 <ul>
   <li>No accounts, no cookies, no tracking scripts, and nothing loaded from other companies' servers.</li>
-  <li>Your world is saved only on your device. We never see your answers.</li>
-  <li>A share link holds only your world's pattern number, your three quiz answers and your greener choices. No names.</li>
-  <li>Share links include <code>?s=1</code> so our host can count how many shared worlds get opened, from ordinary page requests, without any script.</li>
+  <li>The calculator runs in your browser. We never see what you enter.</li>
+  <li>Hum's first version saved a "world" on your device; the current site removes it the next time you visit.</li>
 </ul>`;
 }
 
-/** One cell value: published plain, derived marked (dotted underline + title), none as an em-dash-free "no figure". */
+/** One cell value: published plain, derived marked (dotted underline + title), none as "not published". */
 function cell(x: SeriesValue): string {
-  if (x.value === null) return '<span class="muted">not published</span>';
+  // A dash keeps narrow phones readable; screen readers hear the words, and the rules list says it too.
+  if (x.value === null) return '<span class="muted" aria-hidden="true">–</span><span class="sr-only">not published</span>';
   const n = num(x.value);
   return x.kind === 'derived' ? `<span class="derived" title="calculated">${n}</span>` : n;
 }
@@ -160,7 +145,7 @@ function metricTable(m: MetricSeries, caption: string): string {
     .join('');
   return `<h3>${esc(caption)} <span class="muted">(${esc(m.unit)})</span></h3>
 <div class="table-wrap" tabindex="0" role="region" aria-label="${esc(caption)}, by year"><table class="series">
-<thead><tr><th scope="col">Year</th><th scope="col">Low</th><th scope="col">Middle</th><th scope="col">High</th></tr></thead>
+<thead><tr><th scope="col">Year</th><th scope="col">Low</th><th scope="col"><abbr title="Middle">Mid</abbr></th><th scope="col">High</th></tr></thead>
 <tbody>${rows}</tbody>
 </table></div>
 <ul class="rules">${how}</ul>
@@ -195,7 +180,7 @@ export function renderCountries(c: CountriesFile): string {
 }
 
 export function renderPage(c: Constants, hubs: Hub[], changelog: ChangelogEntry[], series: SeriesFile, countries: CountriesFile): string {
-  return [renderMapping(c), renderValues(c), renderGrowth(series), renderCountries(countries), renderHubs(hubs), renderChangelog(changelog, c), renderPrivacy()].join('\n');
+  return [renderValues(c), renderGrowth(series), renderCountries(countries), renderHubs(hubs), renderChangelog(changelog, c), renderPrivacy()].join('\n');
 }
 
 /** Long units like gCO2/kWh may wrap after the slash on small phones, never inside a word. */

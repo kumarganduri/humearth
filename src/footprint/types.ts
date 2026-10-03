@@ -40,35 +40,11 @@ export const VALUE_KEYS = [
 ] as const;
 export type ValueKey = (typeof VALUE_KEYS)[number];
 
-export interface QuizTable {
-  textPromptsPerDay: number[]; // index = bucket 0..3
-  imagesPerWeek: number[]; // index = bucket 0..2
-  videosPerWeek: number[]; // index = bucket 0..2
-}
-
-export interface Comparisons {
-  glassMl: number;
-  bathtubL: number;
-  fridgeWatts: number;
-  balloonGCO2: number;
-}
-
-/** The health mapping is a designed scale, not a measurement (eng review OV #1). Published on How We Know. */
-export interface Mapping {
-  k: number;
-  floor: number; // health never drops below this
-  derivedOn: string;
-  note: string;
-}
-
 export interface Constants {
   constantsVersion: number;
   contentHash: string;
   builtAt: string;
   values: Record<ValueKey, RangeValue>;
-  quiz: QuizTable;
-  comparisons: Comparisons;
-  mapping: Mapping;
 }
 
 /** An AI-building hub region, drawn as a lantern on the globe (OV #7). */
@@ -88,18 +64,9 @@ export interface HubsFile {
   hubs: Hub[];
 }
 
-/** Quiz answers. Only these coarse buckets are ever stored or shared. */
-export interface Buckets {
-  text: 0 | 1 | 2 | 3;
-  images: 0 | 1 | 2;
-  videos: 0 | 1 | 2;
+/** What the calculator asks (eng review D8): plain counts, as the sliders show them. */
+export interface Usage {
+  questionsPerDay: number;
+  picturesPerWeek: number;
+  videosPerWeek: number;
 }
-
-/** Greener choices ("my plan"), decision 9A. */
-export interface Plan {
-  fewerPictures: boolean;
-  fewerVideos: boolean;
-  lighterAi: boolean;
-}
-
-export const NO_PLAN: Plan = { fewerPictures: false, fewerVideos: false, lighterAi: false };

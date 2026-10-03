@@ -1,6 +1,0 @@
-{
-  "k": 7.24,
-  "floor": 0.15,
-  "derivedOn": "2026-10-01",
-  "note": "Health is a designed scale: your weekly AI use compared with k x (all data-centre electricity per person). k sits in the middle of the range where the guardrails hold at the mid and high figures [5.37, 9.76). At the low figures only the order is kept: a video-heavy week is never healthier than a text-heavy one."
-}

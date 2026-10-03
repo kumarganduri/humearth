@@ -1,38 +1,38 @@
-/* Shared by every page: tokens, self-hosted fonts, reset, focus, nav. */
+/* Shared by every page: tokens, self-hosted fonts, reset, focus, nav (DESIGN.md v2 "Lights at Night"). */
 @import './tokens.css';
-@import '@fontsource/grandstander/latin-800.css';
+@import '@fontsource/instrument-serif/latin-400.css';
 @import '@fontsource/atkinson-hyperlegible-next/latin-400.css';
 @import '@fontsource/atkinson-hyperlegible-next/latin-700.css';
-@import '@fontsource/shantell-sans/latin-400.css';
+@import '@fontsource/atkinson-hyperlegible-mono/latin-400.css';
+@import '@fontsource/atkinson-hyperlegible-mono/latin-600.css';
 
 :root {
-  --display: 'Grandstander', 'Atkinson Hyperlegible Next', sans-serif;
-  --body: 'Atkinson Hyperlegible Next', sans-serif;
-  --hand: 'Shantell Sans', 'Atkinson Hyperlegible Next', sans-serif;
+  color-scheme: dark;
+  --display: 'Instrument Serif', Georgia, serif;
+  --body: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+  --num: 'Atkinson Hyperlegible Mono', ui-monospace, Menlo, monospace;
 }
 * { box-sizing: border-box; }
 /* `hidden` must win over any component display rule. */
 [hidden] { display: none !important; }
-html, body { margin: 0; height: 100%; }
+html, body { margin: 0; }
 body {
-  background: var(--color-surface);
+  background: var(--color-night);
   color: var(--color-text);
-  font: 400 1.0625rem/1.55 var(--body);
+  font: 400 1.0625rem/1.6 var(--body);
   -webkit-font-smoothing: antialiased;
 }
-::selection { background: var(--color-accent); color: var(--color-text); }
-:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; border-radius: 6px; }
+a { color: var(--color-data-centres); text-underline-offset: 3px; }
+::selection { background: var(--color-data-centres); color: var(--color-night); }
+:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; border-radius: var(--rounded-sm); }
+.num { font-family: var(--num); font-variant-numeric: tabular-nums; }
+.muted { color: var(--color-text-muted); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-.nav { position: fixed; inset: 0 0 auto 0; padding: var(--space-md) var(--space-lg); z-index: 2; display: flex; justify-content: space-between; align-items: center; }
+.nav { padding: var(--space-md) var(--space-lg); display: flex; justify-content: space-between; align-items: center; gap: var(--space-md); }
 .navlink { color: var(--color-text); font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; } /* 44px+ targets (DESIGN.md) */
 .navlink:hover { text-decoration: underline; }
 .nav-links { display: flex; align-items: center; gap: var(--space-lg); }
-.sound-btn { all: unset; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; min-height: 44px; font-weight: 700; color: var(--color-text); }
-.sound-btn svg { width: 20px; height: 20px; }
-.sound-btn[aria-pressed="false"] .waves { opacity: 0.25; }
-.sound-btn:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; border-radius: 6px; }
-.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-/* The wordmark is shared by every page (the app and How We Know). */
-.wordmark, .wordmark:visited { font: 800 1.9rem/1 var(--display); color: var(--color-text); text-decoration: none; display: inline-flex; align-items: baseline; gap: 6px; padding: 7px 0; } /* 7px + 30px line + 7px = 44px target */
-.wordmark .dot { width: .42em; height: .42em; border-radius: 50%; background: var(--color-accent); box-shadow: 2px 3px 0 var(--color-accent-ember); }
+/* The wordmark is shared by every page. 7px + 30px line + 7px = 44px target. */
+.wordmark, .wordmark:visited { font: 400 1.9rem/1 var(--display); color: var(--color-text); text-decoration: none; display: inline-flex; align-items: baseline; padding: 7px 0; }

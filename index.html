@@ -3,85 +3,19 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Hum: your little world</title>
+    <title>Hum: how much electricity AI uses</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <meta name="description" content="See how much water, air and power AI uses, as your own little living world." />
+    <meta name="description" content="The world's data centres already use as much electricity as a country, and AI is the fastest-growing part. Every number sourced, with its range." />
   </head>
   <body>
     <header class="nav">
-      <a class="wordmark" href="/" aria-label="Hum home">hum<span class="dot" aria-hidden="true"></span></a>
-      <nav aria-label="Main" class="nav-links">
-        <button class="navlink sound-btn" id="sound" aria-pressed="false">
-          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path class="waves" d="M16 9a4 4 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11"/></svg>
-          <span id="sound-label">Sound off</span>
-        </button>
-        <a class="navlink" href="/how-we-know.html">How We Know</a>
-      </nav>
+      <a class="wordmark" href="/" aria-label="Hum home">Hum</a>
+      <nav aria-label="Main" class="nav-links"><a class="navlink" href="/how-we-know.html">How we know</a></nav>
     </header>
-    <main>
-      <!-- Posters: the first screen, the no-WebGL fallback, and the context-loss fallback (3A, 7A). -->
-      <img class="poster" id="poster-earth" src="/posters/globe.jpg" alt="A toy globe of Earth with small glowing AI buildings" width="1200" height="900" fetchpriority="high" />
-      <img class="poster poster-world" id="poster-world" src="/posters/world.jpg" alt="Your little clay world: trees, a river and birds" width="1200" height="900" loading="lazy" hidden />
-      <canvas id="stage" aria-label="A toy globe of Earth with small glowing AI buildings"></canvas>
-
-      <!-- Earth: promise + ONE primary button (2A). Notices and the friend line sit above it. -->
-      <section class="zone" id="earth-zone" aria-label="Earth">
-        <div class="zone-text">
-          <p class="notice" id="notice" hidden>That world moved away. Make your own?</p>
-          <p class="promise" id="promise">Every AI question uses a little water and power. See yours.</p>
-        </div>
-        <div class="zone-actions">
-          <button class="btn" id="primary">Make my world</button>
-          <button class="link-btn" id="show-mine" hidden>or visit my world</button>
-        </div>
-        <!-- Ticker (2A): small, below the button, in the solid zone. Tap for the range and the caveat. -->
-        <div class="ticker">
-          <button class="ticker-btn" id="ticker" aria-expanded="false" aria-controls="ticker-note">
-            Since you opened this page, AI around the world used <strong id="ticker-amount">about 0.0 bathtubs of water</strong>
-          </button>
-          <p class="ticker-note" id="ticker-note" hidden></p>
-        </div>
-      </section>
-
-      <!-- Quiz: one question at a time, over the globe (5A). -->
-      <section class="sheet" id="quiz" hidden aria-labelledby="quiz-ask">
-        <div class="sheet-top">
-          <button class="link-btn" id="quiz-back" aria-label="Back">← back</button>
-          <span class="step" id="quiz-step"></span>
-        </div>
-        <h2 class="ask" id="quiz-ask" tabindex="-1"></h2>
-        <div class="picks" id="quiz-picks"></div>
-      </section>
-
-      <!-- My World (6A, 9A). Hidden for ~3 s after landing: the world speaks first. -->
-      <section class="world-ui" id="world-ui" hidden aria-label="My world">
-        <div class="top">
-          <p class="banner" id="friend-banner" hidden></p>
-          <div class="glyphs" id="glyphs"></div>
-          <section class="panel" id="panel" hidden aria-labelledby="panel-title">
-            <button class="panel-close" id="panel-close" aria-label="Close">×</button>
-            <h3 id="panel-title" tabindex="-1"></h3>
-            <p class="panel-range" id="panel-range"></p>
-            <p id="panel-why"></p>
-            <a href="/how-we-know.html#numbers">See the full story</a>
-          </section>
-        </div>
-        <div class="sentence-wrap">
-          <p class="trying" id="trying" hidden></p>
-          <p class="sentence" id="sentence"></p>
-          <p class="sr-only" id="world-desc" aria-live="polite"></p>
-        </div>
-        <div class="choices" id="choices" role="group" aria-label="Try a greener week"></div>
-        <div class="corner">
-          <button class="icon-btn" id="change" hidden>Change my answers</button>
-          <button class="icon-btn" id="share" hidden>Share my world</button>
-          <button class="icon-btn" id="make-mine" hidden>Make mine</button>
-          <button class="icon-btn" id="back">Back to Earth</button>
-        </div>
-      </section>
-
-      <p class="skip-hint" id="skip-hint" hidden>Tap to skip</p>
-      <p class="toast" id="toast" role="status" aria-live="polite" hidden></p>
+    <!-- Stage 1a, T2: v1 removed. T4 replaces this with the prebuilt hero (docs/designs/hum-v2-stage-1a-plan.md). -->
+    <main class="home">
+      <h1>The world's data centres already use as much electricity as a country.</h1>
+      <p class="muted">The new Hum is being built. Every number and its source is on <a href="/how-we-know.html">How we know</a>.</p>
     </main>
     <script type="module" src="/src/main.ts"></script>
   </body>

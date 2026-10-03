@@ -2,37 +2,39 @@
 
 /* How We Know: a Read surface (one column, 65-75ch), DESIGN.md tokens only. */
 body.read { height: auto; }
-.nav-read { position: sticky; top: 0; display: flex; justify-content: space-between; align-items: center; background: var(--color-surface); border-bottom: 1px solid rgba(107, 90, 80, 0.18); }
+.nav-read { position: sticky; top: 0; display: flex; justify-content: space-between; align-items: center; background: var(--color-surface); border-bottom: 1px solid var(--color-rule); }
 .read-col { display: block; height: auto; max-width: 70ch; margin: 0 auto; padding: var(--space-2xl) var(--space-lg) var(--space-3xl); }
-.read-col h1 { font: 800 2.4rem/1.1 var(--display); margin: 0 0 var(--space-md); }
-.read-col h2 { font: 800 1.7rem/1.15 var(--display); margin: var(--space-3xl) 0 var(--space-md); scroll-margin-top: 80px; }
+.read-col h1 { font: 400 2.4rem/1.1 var(--display); margin: 0 0 var(--space-md); }
+.read-col h2 { font: 400 1.7rem/1.15 var(--display); margin: var(--space-3xl) 0 var(--space-md); scroll-margin-top: 80px; }
 .read-col h3 { font: 700 1rem/1.3 var(--body); margin: 0 0 var(--space-xs); }
 .read-col p, .read-col li { max-width: 68ch; }
 .lede { font-size: 1.15rem; }
 .toc { font-size: 0.95rem; margin: var(--space-md) 0 0; }
-a { color: var(--color-primary); text-underline-offset: 3px; }
-a:visited { color: var(--color-primary-underside); }
+a { color: var(--color-data-centres); text-underline-offset: 3px; }
+a:visited { color: var(--color-data-centres); }
 .muted { color: var(--color-text-muted); font-size: 0.92rem; }
-.badge { display: inline-block; font: 400 0.8rem/1 var(--hand); background: var(--color-accent); color: var(--color-text); padding: 3px 7px; border-radius: var(--rounded-full); white-space: nowrap; }
+.badge { display: inline-block; font: 600 0.75rem/1 var(--num); letter-spacing: .06em; background: var(--color-data-centres); color: var(--color-night); padding: 3px 7px; border-radius: var(--rounded-full); white-space: nowrap; }
 .table-wrap { overflow-x: auto; margin: var(--space-md) 0; }
 table { width: 100%; border-collapse: collapse; font-size: 0.98rem; }
 th, td { text-align: left; padding: 10px 8px; vertical-align: top; }
-thead th { border-bottom: 2px solid rgba(107, 90, 80, 0.35); font-weight: 700; }
-tbody tr:not(.src) th, tbody tr:not(.src) td { border-top: 1px solid rgba(107, 90, 80, 0.2); }
-td.num { font-family: var(--hand); font-variant-numeric: tabular-nums; white-space: nowrap; }
+thead th { border-bottom: 2px solid var(--color-rule); font-weight: 700; }
+tbody tr:not(.src) th, tbody tr:not(.src) td { border-top: 1px solid var(--color-rule); }
+td.num { font-family: var(--num); font-variant-numeric: tabular-nums; white-space: nowrap; }
 tr.src td { padding-top: 0; }
 .sources { margin: 0; padding-left: 1.1em; font-size: 0.9rem; }
 .sources li { margin: 2px 0; }
 .changelog { list-style: none; padding: 0; }
 .changelog > li { margin: var(--space-lg) 0; }
-code { font-family: var(--hand); background: var(--color-surface-deep); padding: 1px 5px; border-radius: 4px; }
-.foot { margin-top: var(--space-3xl); border-top: 1px solid rgba(107, 90, 80, 0.2); padding-top: var(--space-lg); }
+code { font-family: var(--num); background: var(--color-surface); padding: 1px 5px; border-radius: 4px; }
+.foot { margin-top: var(--space-3xl); border-top: 1px solid var(--color-rule); padding-top: var(--space-lg); }
 
 /* Phones: let the numbers wrap so the table fits and the source lines below each row can be read without side-scrolling. */
 @media (max-width: 560px) {
   th, td { padding: 8px 5px; }
-  td.num { white-space: normal; }
+  td.num { white-space: normal; font-size: 0.86em; letter-spacing: -0.02em; } /* the mono numerals are wide */
+  .unit-col { display: none; }
 }
+@media (min-width: 561px) { .unit-inline { display: none; } }
 /* Very small phones (320-380px): a touch smaller so the widest table still fits without side-scrolling. */
 @media (max-width: 380px) {
   table { font-size: 0.86rem; }

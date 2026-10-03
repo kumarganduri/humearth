@@ -7,10 +7,6 @@ export function readSource(): unknown {
   return JSON.parse(readFileSync('data/sources/constants.source.json', 'utf8'));
 }
 
-export function readMapping(): unknown {
-  return JSON.parse(readFileSync('data/sources/mapping.json', 'utf8'));
-}
-
 export function realConstants(): Constants {
-  return buildConstants(readSource(), readMapping(), null, '2026-10-02').constants;
+  return buildConstants(readSource(), null, '2026-10-03').constants;
 }

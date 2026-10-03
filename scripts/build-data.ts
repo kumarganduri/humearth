@@ -8,7 +8,6 @@ import type { CountriesFile, SeriesFile } from '../src/footprint/series-types';
 import { renderPage } from '../src/how/render';
 
 const SOURCE = 'data/sources/constants.source.json';
-const MAPPING = 'data/sources/mapping.json';
 const OUT = 'public/data/constants.json';
 const CHANGELOG = 'public/data/changelog.json'; // public: How We Know shows it
 const HUBS_SOURCE = 'data/sources/hubs.source.json';
@@ -23,7 +22,7 @@ const readJson = <T>(p: string): T | null => (existsSync(p) ? (JSON.parse(readFi
 
 try {
   const today = new Date().toISOString().slice(0, 10);
-  const { constants, changelog } = buildConstants(readJson(SOURCE), readJson(MAPPING), readJson<Constants>(OUT), today);
+  const { constants, changelog } = buildConstants(readJson(SOURCE), readJson<Constants>(OUT), today);
   if (!changelog) {
     console.log(`constants unchanged (v${constants.constantsVersion}, ${constants.contentHash})`);
   } else {

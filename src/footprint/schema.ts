@@ -57,16 +57,6 @@ export function validateRange(key: string, v: unknown): string[] {
   return errs;
 }
 
-function validateIntTable(name: string, t: unknown, len: number): string[] {
-  if (!Array.isArray(t) || t.length !== len) return [`quiz.${name}: needs ${len} entries`];
-  const errs: string[] = [];
-  t.forEach((x, i) => {
-    if (!finitePositive(x)) errs.push(`quiz.${name}[${i}]: must be a number >= 0`);
-    if (i > 0 && finitePositive(x) && finitePositive(t[i - 1]) && x < (t[i - 1] as number)) errs.push(`quiz.${name}: must not decrease`);
-  });
-  return errs;
-}
-
 /** Returns every problem found; empty means valid. */
 export function validateSource(src: unknown): string[] {
   if (!isObj(src)) return ['root: must be an object'];
@@ -74,28 +64,6 @@ export function validateSource(src: unknown): string[] {
   const values = src.values;
   if (!isObj(values)) errs.push('values: missing');
   else for (const key of VALUE_KEYS) errs.push(...validateRange(key, values[key]));
-  const quiz = src.quiz;
-  if (!isObj(quiz)) errs.push('quiz: missing');
-  else {
-    errs.push(...validateIntTable('textPromptsPerDay', quiz.textPromptsPerDay, 4));
-    errs.push(...validateIntTable('imagesPerWeek', quiz.imagesPerWeek, 3));
-    errs.push(...validateIntTable('videosPerWeek', quiz.videosPerWeek, 3));
-  }
-  const cmp = src.comparisons;
-  if (!isObj(cmp)) errs.push('comparisons: missing');
-  else for (const f of ['glassMl', 'bathtubL', 'fridgeWatts', 'balloonGCO2']) {
-    if (!(finitePositive(cmp[f]) && (cmp[f] as number) > 0)) errs.push(`comparisons.${f}: must be > 0`);
-  }
-  return errs;
-}
-
-export function validateMapping(m: unknown): string[] {
-  if (!isObj(m)) return ['mapping: missing (run `npm run derive:k`)'];
-  const errs: string[] = [];
-  if (!(finitePositive(m.k) && (m.k as number) > 0)) errs.push('mapping.k: must be > 0');
-  if (!(finitePositive(m.floor) && (m.floor as number) < 1)) errs.push('mapping.floor: must be in [0, 1)');
-  if (typeof m.derivedOn !== 'string' || !DATE.test(m.derivedOn)) errs.push('mapping.derivedOn: YYYY-MM-DD');
-  if (typeof m.note !== 'string') errs.push('mapping.note: required');
   return errs;
 }
 

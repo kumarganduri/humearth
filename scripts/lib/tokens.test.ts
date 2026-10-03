@@ -6,9 +6,11 @@ describe('design tokens', () => {
   it('parses every colour from the real DESIGN.md', () => {
     const t = parseDesignMd(readFileSync('DESIGN.md', 'utf8'));
     expect(t.name).toBe('Hum');
-    expect(t.colors.primary).toBe('#C2412A');
-    expect(t.colors['water-stressed']).toBe('#8FA3A0');
-    expect(Object.keys(t.colors).length).toBeGreaterThan(30);
+    // DESIGN.md v2 "Lights at Night": amber is only for measured data-centre electricity.
+    expect(t.colors.night).toBe('#0B0D12');
+    expect(t.colors['data-centres']).toBe('#FFA630');
+    expect(t.colors.forecast).toBe('#B07A2E');
+    expect(Object.keys(t.colors).length).toBeGreaterThanOrEqual(12);
   });
 
   it('generated files are up to date with DESIGN.md', () => {

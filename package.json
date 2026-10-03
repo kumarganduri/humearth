@@ -9,28 +9,24 @@
     "dev": "vite",
     "build": "npm run build:tokens -- --check && npm run build:data && tsc --noEmit && vite build",
     "build:data": "tsx scripts/build-data.ts",
-    "derive:k": "tsx scripts/derive-k.ts",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
     "build:tokens": "tsx scripts/build-tokens.ts",
-    "posters": "tsx scripts/capture-posters.ts",
     "check:budget": "tsx scripts/check-budget.ts",
     "test:e2e": "playwright test",
     "checklist": "tsx scripts/source-checklist.ts",
     "check:countries": "tsx scripts/check-countries.ts"
   },
   "dependencies": {
+    "@fontsource/atkinson-hyperlegible-mono": "^5.3.0",
     "@fontsource/atkinson-hyperlegible-next": "^5.3.0",
-    "@fontsource/grandstander": "^5.3.0",
-    "@fontsource/shantell-sans": "^5.3.0",
-    "three": "^0.186.1"
+    "@fontsource/instrument-serif": "^5.3.0"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",
     "@playwright/test": "^1.63.0",
     "@types/node": "^26.6.3",
-    "@types/three": "^0.186.0",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2",
     "vite": "^8.3.2",

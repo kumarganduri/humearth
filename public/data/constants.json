@@ -1,7 +1,7 @@
 {
-  "constantsVersion": 4,
-  "contentHash": "ff71475377ef7e1a",
-  "builtAt": "2026-10-02",
+  "constantsVersion": 5,
+  "contentHash": "1b833538706b06bd",
+  "builtAt": "2026-10-03",
   "values": {
     "textPromptWh": {
       "label": "Electricity per text answer",
@@ -61,17 +61,41 @@
     "videoClipWh": {
       "label": "Electricity per short AI video (about 5 seconds)",
       "unit": "Wh",
-      "low": 30.3,
-      "mid": 944,
+      "low": 25.3,
+      "mid": 90,
       "high": 944,
       "sources": [
+        {
+          "label": "Delavande, Pierrard & Luccioni (Hugging Face), \"Video Killed the Energy Budget\" (2025), Table 4: CogVideoX-5B uses 21.6 Wh (GPU) + 2.4 Wh (CPU) + 1.3 Wh (RAM) for one 49-frame 480x720 clip",
+          "url": "https://arxiv.org/html/2509.19222",
+          "retrieved": "2026-10-03",
+          "supports": "low",
+          "checked": "page",
+          "note": "single H100 GPU, no data-centre overhead; 25.3 Wh is the sum"
+        },
+        {
+          "label": "Same paper: \"generating a single short video with WAN2.1–T2V–1.3B consumes nearly ∼90 Wh\"",
+          "url": "https://arxiv.org/html/2509.19222",
+          "retrieved": "2026-10-03",
+          "supports": "mid",
+          "checked": "page",
+          "note": "modern open model, ~5 s at 720p"
+        },
         {
           "label": "MIT Technology Review: older CogVideoX clip \"about 109,000 joules\" (low); newer five-second clip \"about 3.4 million joules\" (mid). No published figure for frontier video models, so high = mid.",
           "url": "https://www.technologyreview.com/2025/05/20/1116327/ai-energy-usage-climate-footprint-big-tech/",
           "retrieved": "2026-10-02",
-          "supports": "low,mid,high",
+          "supports": "high",
           "checked": "page",
           "note": "Article estimates totals by doubling measured GPU energy."
+        },
+        {
+          "label": "Cross-check, same paper: \"WAN2.1-T2V-14B consumes over 415 Wh\"",
+          "url": "https://arxiv.org/html/2509.19222",
+          "retrieved": "2026-10-03",
+          "supports": "high",
+          "checked": "page",
+          "note": "an independent measurement in the hundreds of Wh supports the high end"
         }
       ]
     },
@@ -126,7 +150,7 @@
       "unit": "gCO2/kWh",
       "low": 125,
       "mid": 473,
-      "high": 473,
+      "high": 560,
       "sources": [
         {
           "label": "Google: the median text prompt \"emits 0.03 grams of carbon dioxide equivalent\" for 0.24 Wh, using Google's 2024 fleetwide grid carbon intensity (= 125 g/kWh, our division)",
@@ -139,8 +163,16 @@
           "label": "Ember Global Electricity Review 2025: \"Emissions intensity dropped by 2.3% to 473 grams of CO2 per kilowatt hour (gCO2/kWh)\" in 2024",
           "url": "https://ember-energy.org/latest-insights/global-electricity-review-2025/global-electricity-trends/",
           "retrieved": "2026-10-02",
-          "supports": "mid,high",
+          "supports": "mid",
           "checked": "page"
+        },
+        {
+          "label": "Ember, Global Electricity Review 2025: \"China's carbon intensity of electricity generation was 560 gCO2/kWh, down 4.1% from 2023\"",
+          "url": "https://ember-energy.org/latest-insights/global-electricity-review-2025/major-countries-and-regions/",
+          "retrieved": "2026-10-03",
+          "supports": "high",
+          "checked": "page",
+          "note": "a coal-heavy grid that hosts many data centres; location-based, 2024"
         }
       ]
     },
@@ -193,37 +225,5 @@
         }
       ]
     }
-  },
-  "quiz": {
-    "$comment": "Bucket index -> usage. From the design plan (OV #4: 3-tap quiz).",
-    "textPromptsPerDay": [
-      1,
-      6,
-      30,
-      80
-    ],
-    "imagesPerWeek": [
-      0,
-      3,
-      20
-    ],
-    "videosPerWeek": [
-      0,
-      1,
-      5
-    ]
-  },
-  "comparisons": {
-    "$comment": "Illustrative household sizes used only to turn numbers into things a kid can picture. Shown as approximate.",
-    "glassMl": 250,
-    "bathtubL": 150,
-    "fridgeWatts": 50,
-    "balloonGCO2": 10
-  },
-  "mapping": {
-    "k": 7.24,
-    "floor": 0.15,
-    "derivedOn": "2026-10-01",
-    "note": "Health is a designed scale: your weekly AI use compared with k x (all data-centre electricity per person). k sits in the middle of the range where the guardrails hold at the mid and high figures [5.37, 9.76). At the low figures only the order is kept: a video-heavy week is never healthier than a text-heavy one."
   }
 }

@@ -158,5 +158,37 @@
       }
     ],
     "mappingChanged": false
+  },
+  {
+    "date": "2026-10-03",
+    "constantsVersion": 5,
+    "changes": [
+      {
+        "key": "videoClipWh",
+        "from": [
+          30.3,
+          944,
+          944
+        ],
+        "to": [
+          25.3,
+          90,
+          944
+        ]
+      },
+      {
+        "key": "gridGCO2PerKWh",
+        "from": [
+          125,
+          473,
+          473
+        ],
+        "to": [
+          125,
+          473,
+          560
+        ]
+      }
+    ]
   }
 ]

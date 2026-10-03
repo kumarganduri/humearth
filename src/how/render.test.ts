@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { esc, num, renderChangelog, renderHubs, renderMapping, renderPage, renderValues, type ChangelogEntry } from './render';
+import { esc, num, renderChangelog, renderCountries, renderGrowth, renderHubs, renderPage, renderValues, type ChangelogEntry } from './render';
 import { realConstants } from '../footprint/testing';
 import { VALUE_KEYS, type Hub } from '../footprint/types';
 
@@ -8,12 +8,21 @@ const c = realConstants();
 const hubs = (JSON.parse(readFileSync('data/sources/hubs.source.json', 'utf8')) as { hubs: Hub[] }).hubs;
 
 describe('How We Know page', () => {
-  it('publishes the health mapping: k, the baseline and both promises (OV #1)', () => {
-    const h = renderMapping(c);
-    expect(h).toContain(num(c.mapping.k));
-    expect(h).toMatch(/a scale we designed/);
-    expect(h).toMatch(/971 Wh a week/);
-    expect(h).toMatch(/50\+ times a day/);
+  it('year by year: every year listed, calculated numbers marked, a missing low said in words', () => {
+    const series = JSON.parse(readFileSync('public/data/series.json', 'utf8'));
+    const h = renderGrowth(series);
+    for (let y = 2017; y <= 2035; y++) expect(h).toContain(`<th scope="row">${y}</th>`);
+    expect(h).toContain('<span class="derived" title="calculated">');
+    expect(h).toMatch(/not published/); // CO2 has no published low
+    expect(h).toMatch(/<strong>2017–2023<\/strong>: Calculated back from 2024/);
+  });
+
+  it('countries: names the dataset file, its licence and checksum, biggest first', () => {
+    const countries = JSON.parse(readFileSync('public/data/countries.json', 'utf8'));
+    const h = renderCountries(countries);
+    expect(h).toContain('CC-BY-4.0');
+    expect(h).toContain(countries.dataset.sha256.slice(0, 16));
+    expect(h.indexOf('India')).toBeLessThan(h.indexOf('Netherlands'));
   });
 
   it('lists every value with low / middle / high and every source link', () => {
@@ -63,7 +72,7 @@ describe('How We Know page', () => {
     const log = JSON.parse(readFileSync('public/data/changelog.json', 'utf8')) as ChangelogEntry[];
     const read = <T>(p: string) => JSON.parse(readFileSync(p, 'utf8')) as T;
     const h = renderPage(c, hubs, log, read('public/data/series.json'), read('public/data/countries.json'));
-    for (const id of ['health', 'numbers', 'growth', 'countries', 'buildings', 'changes', 'privacy']) expect(h).toContain(`id="${id}"`);
+    for (const id of ['numbers', 'growth', 'countries', 'buildings', 'changes', 'privacy']) expect(h).toContain(`id="${id}"`);
   });
 
   it('formats numbers for reading', () => {

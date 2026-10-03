@@ -26,8 +26,6 @@ jobs:
         run: npm run build:tokens -- --check
       - name: Sourced numbers validate (fails on any unsourced or out-of-order value)
         run: npm run build:data && git diff --exit-code -- public/data src/how/content.generated.html
-      - name: Guardrails hold ("no guilt" promises, k in range)
-        run: npm run derive:k && git diff --exit-code -- data/sources/mapping.json
       - run: npm run typecheck
       - name: Unit tests
         run: npm test
