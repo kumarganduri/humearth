@@ -222,6 +222,7 @@ async function main() {
 
   function render(s: AppState) {
     const placeChanged = s.place !== lastPlace;
+    const cameBack = placeChanged && lastPlace !== null; // not the first render on page load
     lastPlace = s.place;
     document.body.classList.toggle('diving', s.place === 'diving' || s.place === 'returning');
     document.body.classList.toggle('landed', s.place === 'world');
@@ -234,6 +235,9 @@ async function main() {
     const primary = $<HTMLButtonElement>('primary');
     primary.textContent = !s.viewing ? 'Make my world' : s.viewing.owner === 'me' ? 'Visit my world' : "Visit your friend's world";
     $('show-mine').hidden = !(s.viewing?.owner === 'friend' && s.mine);
+    // Back on Earth after a world or the quiz: keyboard focus was on a button that is now hidden,
+    // so it would fall to the top of the page. Put it on the main button instead.
+    if (cameBack && s.place === 'earth' && (document.activeElement === document.body || document.activeElement?.closest('[hidden], #world-ui, #quiz'))) primary.focus();
 
     // Quiz
     $('quiz').hidden = s.place !== 'quiz';
