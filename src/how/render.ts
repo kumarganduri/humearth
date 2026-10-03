@@ -9,23 +9,15 @@
 
 import { VALUE_KEYS, type Constants, type Hub, type RangeValue, type Source } from '../footprint/types';
 import type { CountriesFile, MetricSeries, SeriesFile, SeriesValue, SeriesYear } from '../footprint/series-types';
+import { esc, formatNumber as num } from '../present/format';
+
+export { esc };
 
 export interface ChangelogEntry {
   date: string;
   constantsVersion: number;
   changes: { key: string; from: [number, number, number] | null; to: [number, number, number] }[];
   mappingChanged?: boolean;
-}
-
-const ESC: Record<string, string> = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
-export const esc = (s: string) => s.replace(/[&<>"']/g, (c) => ESC[c]!);
-
-/** Readable numbers: 0.24, 1.22, 944, 8.16 billion. */
-export function num(n: number): string {
-  if (n >= 1e9) return `${(n / 1e9).toFixed(2).replace(/\.?0+$/, '')} billion`;
-  if (n >= 1000) return Math.round(n).toLocaleString('en-US');
-  if (n >= 10) return n.toFixed(0);
-  return n.toFixed(2).replace(/\.?0+$/, '') || '0';
 }
 
 function sourceList(sources: Source[]): string {

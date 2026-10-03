@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { esc, num, renderChangelog, renderCountries, renderGrowth, renderHubs, renderPage, renderValues, type ChangelogEntry } from './render';
+import { esc, renderChangelog, renderCountries, renderGrowth, renderHubs, renderPage, renderValues, type ChangelogEntry } from './render';
 import { realConstants } from '../footprint/testing';
 import { VALUE_KEYS, type Hub } from '../footprint/types';
 
@@ -75,12 +75,8 @@ describe('How We Know page', () => {
     for (const id of ['numbers', 'growth', 'countries', 'buildings', 'changes', 'privacy']) expect(h).toContain(`id="${id}"`);
   });
 
-  it('formats numbers for reading', () => {
-    expect(num(0.24)).toBe('0.24');
-    expect(num(1.2)).toBe('1.2');
-    expect(num(944)).toBe('944');
-    expect(num(11300)).toBe('11,300');
-    expect(num(8.16e9)).toBe('8.16 billion');
+  it('uses the shared number format (e.g. the video low 25.3 is not rounded to 25)', () => {
+    expect(renderValues(c)).toContain('>25.3<');
   });
 });
 
