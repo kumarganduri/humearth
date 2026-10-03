@@ -115,8 +115,11 @@ body.landed main, body.diving main, body.quizzing main { grid-template-rows: 1fr
   .zone { grid-template-columns: auto auto; justify-content: center; align-items: center; gap: var(--space-lg) var(--space-2xl); }
   .ticker { grid-column: 1 / -1; }
 }
+/* Phones: sentence, choices and corner buttons stack from the bottom in normal flow, so a long sentence
+   or wrapped buttons push each other up instead of overlapping. */
 @media (max-width: 600px) {
-  .sentence-wrap { bottom: 200px; right: var(--space-lg); }
-  .choices { bottom: 140px; right: var(--space-lg); }
+  .world-ui { display: flex; flex-direction: column; justify-content: flex-end; gap: 12px; padding: 0 var(--space-lg) var(--space-lg); }
+  .sentence-wrap, .choices, .corner { position: static; }
+  .sentence-wrap { max-width: none; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
