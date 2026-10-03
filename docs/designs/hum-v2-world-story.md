@@ -152,3 +152,11 @@ Stage 1a is planned and reviewed in [hum-v2-stage-1a-plan.md](hum-v2-stage-1a-pl
 2. Run /plan-eng-review on stage 1a: data schema for time series and the country table, tests to replace the guardrails, what gets deleted.
 3. Source the stage 1a data (IEA quotes, the country table, the video and grid fixes).
 4. Build stage 1a and ship it, then stage 1b.
+
+## Decision 2026-10-03: an experience, not an article
+After seeing the stage 1a page on the preview, the founder said: "it's an article more than a website… a website could do more, get in people's minds, think different." Four clickable prototypes were compared (https://claude.ai/artifact/DVNF2VZcioZnNiSxNggKQf), and the founder chose the recommended combination:
+- **Home is the Earth.** A full-screen night globe (drag to spin, year slider + Play). Countries light up the year data centres pass their whole electricity use. The existing sections move underneath as the "show me the data" layer and follow the same year.
+- **`/question`: follow one AI request** from phone to fibre, data centre, servers, power plant and cooling tower, with live meters. Then: AI worldwide uses about N of these every second.
+- **`/live`: a live meter** counting since you opened the page, or since midnight UTC.
+- **`/2030`: you run it.** Choose the grid mix and efficiency; see 2030 CO2, electricity and water against today.
+Same honesty rules as before. New figures needed: grid intensities for China, India and the US (Ember 2024) and the IEA High Efficiency case (2035). This supersedes stage 2's "3D night Earth beside the race": the Earth comes first, as a 2D orthographic canvas globe (d3-geo), so three.js stays out.
