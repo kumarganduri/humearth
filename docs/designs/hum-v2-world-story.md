@@ -22,7 +22,7 @@ The job of v2 is to show how much the world is being affected by AI's growing el
 - **Headline:** "Data centres already use as much power as a country, and AI is the fastest-growing part." AI is shown as a slice inside the total.
   - **AI share is drawn for today only:** the US-based 26.5 to 38% range, labelled "US share, used as a world estimate".
   - **The "fastest-growing" claim cites the IEA directly** ("AI-focused data centres ... poised to triple" by 2030). No AI-share curve is drawn over the years until a world series is sourced. *Why:* the earlier "AI is as big as a country" mixed up AI with all data centres. All three independent reviewers flagged it as the first thing an expert would attack.
-- **Hero layout:** a split screen with the night Earth on one side and the country race on the other, driven by one year slider that plays itself on load and then hands over control. On phones the two stack vertically.
+- **Hero layout:** a split screen with the night Earth on one side and the country race on the other, driven by one year slider. The page opens at the latest measured year, and a "Play 2017 to 2035" button runs the animation; there is no autoplay on load (decided 2026-10-03 in the design system and eng review). On phones the two stack vertically.
 - **What the slider shows** (these rules also settle the earlier open questions):
   - **Countries stay at their latest measured year.** Data centres are compared against countries' use today, as the IEA does. The chart says so: "countries at {table year} levels" (the latest year the chosen country table publishes). When the data centres are at 2025, that one-year gap is labelled too.
   - **Crossing a country, "passes X":**
@@ -84,7 +84,7 @@ The Codex opinion failed because Codex is not logged in (error 401). Three indep
 - the country race and the fan chart side by side, both driven by the year slider (stacked on phones)
 - then the calculator
 
-The **Earth posters** stay as a static image until stage 2. Stage 2 replaces the left half of the hero with the 3D night Earth.
+The v1 Earth posters are removed, because the pre-built hero is the first screen (eng review, 2026-10-03). Stage 2 adds the 3D night Earth beside the race.
 1. **Data first:**
    - Add IEA series to `constants.source.json` with checked quotes: 2024 = 415 TWh, 2030 = ~945 TWh (base case), 2035 = ~1,200 TWh (base case), and the 2035 range of 700 to 1,700 TWh.
    - Add 2025 (+17%) and the history back to 2017 (~12% a year).
@@ -111,6 +111,7 @@ The **Earth posters** stay as a static image until stage 2. Stage 2 replaces the
    - Retire the clay scene code and the quiz state machine.
 
 ### Stage 1b: the rest of the story
+- "The hum": opt-in sound whose tone follows the year slider. It was moved out of 1a by the eng review, and can be rebuilt from v1's Web Audio engine and its measured-audio tests in git history.
 - the impact grid's EXPLAINED tiles with named cases
 - "What actually reduces it", including the greenwashing callouts
 
@@ -142,6 +143,9 @@ A once-a-day sourced higher-or-lower question with a share card and a streak kep
 
 ## Distribution Plan
 The existing pipeline covers it: GitHub, then CI, then Cloudflare Pages at humearth.org. Each stage ships as its own release.
+
+## Engineering plan
+Stage 1a is planned and reviewed in [hum-v2-stage-1a-plan.md](hum-v2-stage-1a-plan.md).
 
 ## Next Steps
 1. Revise DESIGN.md for the adult, data-journalism look (/design-consultation).
