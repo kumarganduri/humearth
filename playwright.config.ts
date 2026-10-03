@@ -11,14 +11,14 @@ export default defineConfig({
   retries: process.env.CI ? 1 : 0,
   reporter: process.env.CI ? [['github'], ['list']] : 'list',
   use: {
-    baseURL: 'http://127.0.0.1:4173',
+    baseURL: 'http://127.0.0.1:4191',
     viewport: { width: 1200, height: 860 },
     launchOptions: { args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] },
     trace: 'retain-on-failure',
   },
   webServer: {
-    command: 'npx vite build && npx vite preview --host 127.0.0.1 --port 4173 --strictPort',
-    url: 'http://127.0.0.1:4173',
+    command: 'npx vite build && npx vite preview --host 127.0.0.1 --port 4191 --strictPort',
+    url: 'http://127.0.0.1:4191', // Hum's own port: another local project uses vite's default 4173
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
   },

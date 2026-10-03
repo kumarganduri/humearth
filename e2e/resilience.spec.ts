@@ -59,7 +59,7 @@ test('the GPU drops the 3D: posters take over, then the 3D comes back', async ({
 test('nothing loads from anyone else\'s servers', async ({ page }) => {
   const foreign: string[] = [];
   page.on('request', (r) => {
-    if (!r.url().startsWith('http://127.0.0.1:4173') && !r.url().startsWith('data:')) foreign.push(r.url());
+    if (!r.url().startsWith('http://127.0.0.1:4191') && !r.url().startsWith('data:')) foreign.push(r.url());
   });
   await withSavedWorld(page, world());
   await page.click('#primary');

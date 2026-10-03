@@ -89,6 +89,7 @@ export function createSynth(): Synth {
     osc.stop(at + 0.13);
   }
 
+  let pauseTimer = 0;
   let birdsPerMinute = 0;
   const birdTimer = window.setInterval(() => {
     // Each 250 ms tick: chance of a little phrase of 2-3 chirps.
@@ -122,9 +123,11 @@ export function createSynth(): Synth {
       });
     },
     setEnabled(on) {
+      // A pending pause from an earlier "off" must not silence a later "on" (fast taps).
+      window.clearTimeout(pauseTimer);
       if (on) void ctx.resume();
       glide(master.gain, on ? 0.9 : 0);
-      if (!on) window.setTimeout(() => void ctx.suspend(), RAMP * 1000);
+      if (!on) pauseTimer = window.setTimeout(() => void ctx.suspend(), RAMP * 1000);
     },
     dispose() {
       window.clearInterval(birdTimer);

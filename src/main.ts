@@ -39,12 +39,55 @@ const CHOICES: { key: keyof Plan; label: string }[] = [
 ];
 
 async function main() {
+  // Sound (13A): off by default, remembered on this device. The synth loads only when turned on,
+  // and browsers only allow audio after a tap, so a remembered "on" starts at the first tap.
+  // Wired before the numbers load, so the button works right away on a slow phone.
+  let soundOn = readSoundPref(globalThis.localStorage);
+  let synth: Synth | null = null;
+  // Until the numbers arrive the page is on Earth; afterwards the mix follows the app state.
+  let currentMix = () => mixFor('earth', null, null);
+  /** Make the speakers match the button. Re-reads soundOn after loading, so a tap during the load wins. */
+  async function syncSound(): Promise<boolean> {
+    if (soundOn && !synth) {
+      const { createSynth } = await import('./sound/synth');
+      synth ??= createSynth();
+    }
+    if (!synth) return false;
+    if (soundOn) synth.setMix(currentMix());
+    synth.setEnabled(soundOn);
+    return soundOn;
+  }
+  const renderSoundButton = () => {
+    $('sound').setAttribute('aria-pressed', String(soundOn));
+    $('sound-label').textContent = soundOn ? 'Sound on' : 'Sound off';
+  };
+  renderSoundButton();
+  // A remembered "on" starts at the first tap anywhere, except a tap on the button itself: that tap is "Sound off".
+  const firstTap = (e: Event) => {
+    if ($('sound').contains(e.target as Node)) return;
+    removeEventListener('pointerdown', firstTap);
+    void syncSound();
+  };
+  if (soundOn) addEventListener('pointerdown', firstTap);
+  $('sound').addEventListener('click', () => {
+    soundOn = !soundOn;
+    writeSoundPref(globalThis.localStorage, soundOn);
+    renderSoundButton();
+    removeEventListener('pointerdown', firstTap);
+    void syncSound().then((on) => on && synth?.chime(bloomNotes(0.1))); // a little hello, so you know it's on
+  });
+
   const [constants, hubs] = await Promise.all([loadConstants(), loadHubs()]);
   const questions = quizQuestions(constants);
   const store = safeStore(globalThis.localStorage);
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 
   let state: AppState = boot(location.hash, loadMine(store));
+  const soundMix = (s: AppState) => {
+    const fp = shownFootprint(s);
+    return mixFor(s.place, fp?.health ?? null, fp?.animals ?? null);
+  };
+  currentMix = () => soundMix(state);
 
   const onPhase = (p: ViewPhase) => {
     if (p === 'world') dispatch({ type: 'LANDED' });
@@ -53,33 +96,6 @@ async function main() {
   };
   const posters = { earth: $('poster-earth'), world: $('poster-world') };
   let view: View = createPosterView(posters, { onPhase });
-
-  // Sound (13A): off by default, remembered on this device. The synth loads only when turned on,
-  // and browsers only allow audio after a tap, so a remembered "on" starts at the first tap.
-  let soundOn = readSoundPref(globalThis.localStorage);
-  let synth: Synth | null = null;
-  const soundMix = (s: AppState) => {
-    const fp = shownFootprint(s);
-    return mixFor(s.place, fp?.health ?? null, fp?.animals ?? null);
-  };
-  async function startSound() {
-    if (!synth) synth = (await import('./sound/synth')).createSynth();
-    synth.setMix(soundMix(state));
-    synth.setEnabled(true);
-  }
-  const renderSoundButton = () => {
-    $('sound').setAttribute('aria-pressed', String(soundOn));
-    $('sound-label').textContent = soundOn ? 'Sound on' : 'Sound off';
-  };
-  renderSoundButton();
-  if (soundOn) addEventListener('pointerdown', () => void startSound(), { once: true });
-  $('sound').addEventListener('click', () => {
-    soundOn = !soundOn;
-    writeSoundPref(globalThis.localStorage, soundOn);
-    renderSoundButton();
-    if (soundOn) void startSound().then(() => synth?.chime(bloomNotes(0.1))); // a little hello, so you know it's on
-    else synth?.setEnabled(false);
-  });
 
   /** A returning visitor's world glows on Earth so they can find it (1A). */
   const plotGlows = (s: AppState) => s.place === 'earth' && s.viewing?.owner === 'me';
