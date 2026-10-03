@@ -32,3 +32,7 @@ body {
 .sound-btn[aria-pressed="false"] .waves { opacity: 0.25; }
 .sound-btn:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; border-radius: 6px; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* The wordmark is shared by every page (the app and How We Know). */
+.wordmark, .wordmark:visited { font: 800 1.9rem/1 var(--display); color: var(--color-text); text-decoration: none; display: inline-flex; align-items: baseline; gap: 6px; }
+.wordmark .dot { width: .42em; height: .42em; border-radius: 50%; background: var(--color-accent); box-shadow: 2px 3px 0 var(--color-accent-ember); }

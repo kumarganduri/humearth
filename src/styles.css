@@ -3,9 +3,6 @@
 /* The app page is one fixed screen; the How We Know page scrolls. */
 body { overflow: hidden; }
 
-.wordmark { font: 800 1.9rem/1 var(--display); color: var(--color-text); text-decoration: none; display: inline-flex; align-items: baseline; gap: 6px; }
-.wordmark .dot { width: .42em; height: .42em; border-radius: 50%; background: var(--color-accent); box-shadow: 2px 3px 0 var(--color-accent-ember); }
-
 main { height: 100%; display: grid; grid-template-rows: 1fr auto; grid-template-columns: 100%; }
 #stage, .poster { grid-row: 1; grid-column: 1; width: 100%; height: 100%; display: block; min-height: 0; }
 main { background: linear-gradient(180deg, var(--color-sky-dawn), var(--color-sky-horizon)); }
