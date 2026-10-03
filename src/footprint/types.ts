@@ -38,6 +38,7 @@ export const VALUE_KEYS = [
   'worldPopulation',
   'aiShareOfDataCentres',
   'aiFocusedGrowth2025',
+  'dcHighEfficiency2035TWh',
 ] as const;
 export type ValueKey = (typeof VALUE_KEYS)[number];
 
@@ -70,4 +71,19 @@ export interface Usage {
   questionsPerDay: number;
   picturesPerWeek: number;
   videosPerWeek: number;
+}
+
+/** One grid's carbon intensity (data/sources/grids.source.json), for the /2030 simulation. */
+export interface Grid {
+  key: string;
+  name: string;
+  gCO2PerKWh: number;
+  year: number;
+  sources: Source[];
+}
+
+export interface GridsFile {
+  contentHash: string;
+  builtAt: string;
+  grids: Grid[];
 }

@@ -180,4 +180,23 @@ export function validateCountriesSource(src: unknown): string[] {
   return errs;
 }
 
+/** data/sources/grids.source.json: one sourced carbon intensity per grid. */
+export function validateGrids(src: unknown): string[] {
+  if (!isObj(src) || !Array.isArray(src.grids) || src.grids.length === 0) return ['grids: at least one required'];
+  const errs: string[] = [];
+  const keys = new Set<string>();
+  src.grids.forEach((g, i) => {
+    const k = isObj(g) && typeof g.key === 'string' && g.key ? `grids[${g.key}]` : `grids[${i}]`;
+    if (!isObj(g)) return errs.push(`${k}: must be an object`);
+    if (typeof g.key !== 'string' || !/^[a-z]+$/.test(g.key)) errs.push(`${k}.key: lowercase letters required`);
+    else if (keys.has(g.key)) errs.push(`${k}: duplicate key`);
+    else keys.add(g.key);
+    if (typeof g.name !== 'string' || !g.name) errs.push(`${k}.name: required`);
+    if (!(finitePositive(g.gCO2PerKWh) && (g.gCO2PerKWh as number) < 2000)) errs.push(`${k}.gCO2PerKWh: must be in 0..2000`);
+    if (!Number.isInteger(g.year)) errs.push(`${k}.year: integer required`);
+    errs.push(...validateSources(k, g.sources));
+  });
+  return errs;
+}
+
 export type { RangeValue };

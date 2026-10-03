@@ -7,10 +7,10 @@
 //   data/sources/countries.source.json ─ validate ─> public/data/countries.json (contentHash)
 
 import { createHash } from 'node:crypto';
-import { validateCountriesSource, validateHubs, validateSeriesSource, validateSource } from '../../src/footprint/schema';
+import { validateCountriesSource, validateGrids, validateHubs, validateSeriesSource, validateSource } from '../../src/footprint/schema';
 import { deriveSeries } from '../../src/footprint/series';
 import type { CountriesFile, CountriesSource, SeriesFile, SeriesSource } from '../../src/footprint/series-types';
-import { VALUE_KEYS, type Constants, type Hub, type HubsFile } from '../../src/footprint/types';
+import { VALUE_KEYS, type Constants, type Grid, type GridsFile, type Hub, type HubsFile } from '../../src/footprint/types';
 
 export interface ChangelogEntry {
   date: string;
@@ -102,4 +102,14 @@ export function buildCountries(source: unknown, previous: CountriesFile | null, 
   const contentHash = hashOf(body);
   if (previous?.contentHash === contentHash) return null;
   return { contentHash, builtAt: today, ...body };
+}
+
+/** data/sources/grids.source.json -> public/data/grids.json. Null when nothing changed. */
+export function buildGrids(source: unknown, previous: GridsFile | null, today: string): GridsFile | null {
+  const problems = validateGrids(source);
+  if (problems.length) throw new DataValidationError(problems);
+  const grids = (source as { grids: Grid[] }).grids;
+  const contentHash = hashOf(grids);
+  if (previous?.contentHash === contentHash) return null;
+  return { contentHash, builtAt: today, grids };
 }

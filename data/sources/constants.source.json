@@ -239,6 +239,23 @@
           "note": "single published estimate"
         }
       ]
+    },
+    "dcHighEfficiency2035TWh": {
+      "label": "Data-centre electricity in 2035, IEA High Efficiency case",
+      "unit": "TWh/yr",
+      "low": 970,
+      "mid": 970,
+      "high": 970,
+      "sources": [
+        {
+          "label": "IEA, Energy and AI (2025): \"This unlocks energy savings of more than 15%, with global electricity demand from data centres reaching around 970 TWh by 2035.\"",
+          "url": "https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai",
+          "retrieved": "2026-10-03",
+          "supports": "low,mid,high",
+          "checked": "page",
+          "note": "single published estimate; compare with the 1,200 TWh base case"
+        }
+      ]
     }
   }
 }

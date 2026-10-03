@@ -7,7 +7,7 @@
 //   hubs.json ──────────> "Data-centre places" (MW range, what it measures, sources)
 //   changelog.json ─────> "We changed our numbers"
 
-import { VALUE_KEYS, type Constants, type Hub, type RangeValue, type Source } from '../footprint/types';
+import { VALUE_KEYS, type Constants, type GridsFile, type Hub, type RangeValue, type Source } from '../footprint/types';
 import type { CountriesFile, MetricSeries, SeriesFile, SeriesValue, SeriesYear } from '../footprint/series-types';
 import { esc, formatNumber as num } from '../present/format';
 
@@ -171,8 +171,22 @@ export function renderCountries(c: CountriesFile): string {
 </table></div>`;
 }
 
-export function renderPage(c: Constants, hubs: Hub[], changelog: ChangelogEntry[], series: SeriesFile, countries: CountriesFile): string {
-  return [renderValues(c), renderGrowth(series), renderCountries(countries), renderHubs(hubs), renderChangelog(changelog, c), renderPrivacy()].join('\n');
+export function renderGrids(g: GridsFile): string {
+  const rows = g.grids
+    .map((x) => `<tr><th scope="row">${esc(x.name)}</th><td class="num">${num(x.gCO2PerKWh)}</td><td>${x.year}</td></tr>
+<tr class="src"><td colspan="3">${sourceList(x.sources)}</td></tr>`)
+    .join('');
+  return `
+<h2 id="grids">Grids in the 2030 game</h2>
+<p>On the 2030 page you choose which grids power the world's data centres. Each grid's carbon intensity is a published figure for one year; real grids keep changing, mostly getting cleaner.</p>
+<div class="table-wrap"><table>
+<thead><tr><th scope="col">Grid</th><th scope="col">g CO2 per kWh</th><th scope="col">Year</th></tr></thead>
+<tbody>${rows}</tbody>
+</table></div>`;
+}
+
+export function renderPage(c: Constants, hubs: Hub[], changelog: ChangelogEntry[], series: SeriesFile, countries: CountriesFile, grids: GridsFile): string {
+  return [renderValues(c), renderGrowth(series), renderCountries(countries), renderGrids(grids), renderHubs(hubs), renderChangelog(changelog, c), renderPrivacy()].join('\n');
 }
 
 /** Long units like gCO2/kWh may wrap after the slash on small phones, never inside a word. */

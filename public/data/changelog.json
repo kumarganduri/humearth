@@ -210,5 +210,20 @@
     "date": "2026-10-03",
     "constantsVersion": 7,
     "changes": []
+  },
+  {
+    "date": "2026-10-03",
+    "constantsVersion": 8,
+    "changes": [
+      {
+        "key": "dcHighEfficiency2035TWh",
+        "from": null,
+        "to": [
+          970,
+          970,
+          970
+        ]
+      }
+    ]
   }
 ]

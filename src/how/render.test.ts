@@ -71,8 +71,8 @@ describe('How We Know page', () => {
   it('renders the full page from the real data files', () => {
     const log = JSON.parse(readFileSync('public/data/changelog.json', 'utf8')) as ChangelogEntry[];
     const read = <T>(p: string) => JSON.parse(readFileSync(p, 'utf8')) as T;
-    const h = renderPage(c, hubs, log, read('public/data/series.json'), read('public/data/countries.json'));
-    for (const id of ['numbers', 'growth', 'countries', 'buildings', 'changes', 'privacy']) expect(h).toContain(`id="${id}"`);
+    const h = renderPage(c, hubs, log, read('public/data/series.json'), read('public/data/countries.json'), read('public/data/grids.json'));
+    for (const id of ['numbers', 'growth', 'countries', 'grids', 'buildings', 'changes', 'privacy']) expect(h).toContain(`id="${id}"`);
   });
 
   it('uses the shared number format (e.g. the video low 25.3 is not rounded to 25)', () => {
@@ -89,6 +89,7 @@ describe('prerendered How We Know', () => {
       read<ChangelogEntry[]>('public/data/changelog.json'),
       read('public/data/series.json'),
       read('public/data/countries.json'),
+      read('public/data/grids.json'),
     );
     expect(readFileSync('src/how/content.generated.html', 'utf8')).toContain(fresh);
   });

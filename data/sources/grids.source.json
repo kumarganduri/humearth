@@ -1,0 +1,65 @@
+{
+  "$comment": "Location-based grid carbon intensity for the /2030 simulation. One figure per grid, each with a checked quote (docs/sources/stage-1a-sourcing.md).",
+  "grids": [
+    {
+      "key": "india",
+      "name": "India-like grid",
+      "gCO2PerKWh": 708,
+      "year": 2024,
+      "sources": [
+        {
+          "label": "Ember, Global Electricity Review 2025: \"The carbon intensity of India's power sector was 708 gCO2/kWh in 2024.\"",
+          "url": "https://ember-energy.org/latest-insights/global-electricity-review-2025/major-countries-and-regions/",
+          "retrieved": "2026-10-03",
+          "supports": "low,mid,high",
+          "checked": "page"
+        }
+      ]
+    },
+    {
+      "key": "china",
+      "name": "China-like grid",
+      "gCO2PerKWh": 560,
+      "year": 2024,
+      "sources": [
+        {
+          "label": "Ember, Global Electricity Review 2025: \"China's carbon intensity of electricity generation was 560 gCO2/kWh, down 4.1% from 2023\"",
+          "url": "https://ember-energy.org/latest-insights/global-electricity-review-2025/major-countries-and-regions/",
+          "retrieved": "2026-10-03",
+          "supports": "low,mid,high",
+          "checked": "page"
+        }
+      ]
+    },
+    {
+      "key": "world",
+      "name": "World average",
+      "gCO2PerKWh": 473,
+      "year": 2024,
+      "sources": [
+        {
+          "label": "Ember, Global Electricity Review 2025: \"Emissions intensity dropped by 2.3% to 473 grams of CO2 per kilowatt hour (gCO2/kWh)\"",
+          "url": "https://ember-energy.org/latest-insights/global-electricity-review-2025/global-electricity-trends/",
+          "retrieved": "2026-10-03",
+          "supports": "low,mid,high",
+          "checked": "page"
+        }
+      ]
+    },
+    {
+      "key": "us",
+      "name": "US-like grid",
+      "gCO2PerKWh": 384,
+      "year": 2024,
+      "sources": [
+        {
+          "label": "Ember, Global Electricity Review 2025: \"The carbon intensity of US electricity generation was 384 gCO2/kWh\"",
+          "url": "https://ember-energy.org/latest-insights/global-electricity-review-2025/major-countries-and-regions/",
+          "retrieved": "2026-10-03",
+          "supports": "low,mid,high",
+          "checked": "page"
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
-import { buildConstants, buildCountries, buildHubs, buildSeries, canonical, DataValidationError } from './build';
+import { buildConstants, buildCountries, buildGrids, buildHubs, buildSeries, canonical, DataValidationError } from './build';
 import { readSource } from '../../src/footprint/testing';
 import { VALUE_KEYS } from '../../src/footprint/types';
 
@@ -169,5 +169,24 @@ describe('buildSeries / buildCountries: the v2 data must be sourced and in order
     expect(p).toMatch(/checked: must be "dataset"/);
     expect(p).toMatch(/duplicate/);
     expect(p).toMatch(/demandTWh: must be > 0/);
+  });
+});
+
+describe('buildGrids: the /2030 grid figures must be sourced', () => {
+  const grids = () => clone(JSON.parse(readFileSync('data/sources/grids.source.json', 'utf8')));
+  it('the checked-in grids build, and rebuild to nothing when unchanged', () => {
+    const built = buildGrids(grids(), null, '2026-10-03')!;
+    expect(built.grids.map((g) => g.key)).toEqual(['india', 'china', 'world', 'us']);
+    expect(buildGrids(grids(), built, '2026-10-04')).toBeNull();
+  });
+  it('rejects a grid without a source, a duplicate key, or an impossible intensity', () => {
+    const g = grids();
+    g.grids[0].sources = [];
+    g.grids[1].key = g.grids[2].key;
+    g.grids[3].gCO2PerKWh = 5000;
+    const p = problemsOf(() => buildGrids(g, null, '2026-10-03'));
+    expect(p.some((x) => x.startsWith('grids[india]'))).toBe(true);
+    expect(p).toContain('grids[world]: duplicate key');
+    expect(p).toContain('grids[us].gCO2PerKWh: must be in 0..2000');
   });
 });
