@@ -38,3 +38,9 @@ test('/live has no serious accessibility problems', async ({ page }) => {
   await expect(page.locator('#board')).toBeVisible();
   await noSeriousViolations(page);
 });
+
+test('/2030 has no serious accessibility problems', async ({ page }) => {
+  await page.goto('/2030');
+  await expect(page.locator('#s-eff')).toBeEnabled();
+  await noSeriousViolations(page);
+});

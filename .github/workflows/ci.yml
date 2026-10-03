@@ -25,7 +25,7 @@ jobs:
       - name: Design tokens match DESIGN.md
         run: npm run build:tokens -- --check
       - name: Sourced numbers validate (fails on any unsourced or out-of-order value)
-        run: npm run build:data && git diff --exit-code -- public/data src/how/content.generated.html src/hero.generated.html src/hero.generated.css src/question.generated.html src/live.generated.html
+        run: npm run build:data && git diff --exit-code -- public/data src/how/content.generated.html src/hero.generated.html src/hero.generated.css src/question.generated.html src/live.generated.html src/sim.generated.html src/sim.generated.css
       - run: npm run typecheck
       - name: Unit tests
         run: npm test

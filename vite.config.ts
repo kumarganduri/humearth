@@ -10,12 +10,14 @@ import { defineConfig, type Plugin } from 'vite';
  *   how-we-know.html    <!--how-content-->   <- src/how/content.generated.html
  *   question.html       <!--question-content--> <- src/question.generated.html
  *   live.html           <!--live-content-->     <- src/live.generated.html
+ *   2030.html           <!--sim-content-->      <- src/sim.generated.html (+ .css)
  */
 const GENERATED: [page: string, marker: string, file: string][] = [
   ['index.html', '<!--hero-content-->', 'src/hero.generated.html'],
   ['how-we-know.html', '<!--how-content-->', 'src/how/content.generated.html'],
   ['question.html', '<!--question-content-->', 'src/question.generated.html'],
   ['live.html', '<!--live-content-->', 'src/live.generated.html'],
+  ['2030.html', '<!--sim-content-->', 'src/sim.generated.html'],
 ];
 
 function prerender(): Plugin {
@@ -60,6 +62,7 @@ export default defineConfig({
         how: resolve(import.meta.dirname, 'how-we-know.html'),
         question: resolve(import.meta.dirname, 'question.html'),
         live: resolve(import.meta.dirname, 'live.html'),
+        y2030: resolve(import.meta.dirname, '2030.html'),
       },
     },
   },

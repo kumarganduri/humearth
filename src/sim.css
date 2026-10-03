@@ -1,0 +1,40 @@
+/* /2030 (DESIGN.md v2): choices on the left, consequences on the right; one stacked bar shows the mix.
+   Grid colours run warm (dirtier) to cool (cleaner); green is kept for clean-power deals only. */
+.y2030 { max-width: 1120px; margin: 0 auto; padding-inline: 20px; padding-block: var(--space-lg) var(--space-3xl); --water: #6FB7C9; --co2: #C9B79C; }
+.sim-head h1 { font: 400 clamp(2rem, 4.4vw, 3.2rem)/1.06 var(--display); margin: 0; text-wrap: balance; max-width: 24ch; }
+.sim-head .lede { color: var(--color-text-muted); max-width: 64ch; margin: var(--space-sm) 0 var(--space-lg); }
+.sim { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; align-items: start; }
+.mix { display: grid; gap: 14px; }
+.mix .row { display: grid; grid-template-columns: 10rem minmax(0, 1fr) 3.4rem; gap: 12px; align-items: center; }
+.mix label { font-weight: 700; font-size: .95rem; line-height: 1.25; }
+.mix .g { display: block; font: 400 .75rem/1.3 var(--num); color: var(--color-text-muted); }
+.mix input[type=range] { width: 100%; height: 44px; margin: 0; accent-color: var(--color-data-centres); }
+.mix input:disabled { opacity: .45; }
+.mix output { text-align: right; font-weight: 600; }
+.mix .eff { border-top: 1px solid var(--color-rule); padding-top: 12px; }
+.mix .btn { justify-self: start; }
+.stack { height: 28px; display: flex; border-radius: var(--rounded-md); overflow: hidden; border: 1px solid var(--color-rule); }
+.stack span { transition: width .2s; }
+.g-india { background: #8A5A3B; } .g-china { background: #A8704A; } .g-world { background: var(--color-country); } .g-us { background: #5F7DA3; } .g-clean { background: var(--color-success); }
+.out { display: grid; gap: 14px; }
+.gauge { border: 1px solid var(--color-rule); border-radius: 10px; padding: 12px 14px; }
+.gauge .k { color: var(--color-text-muted); font-size: .9rem; }
+.gauge .v { font: 600 2rem/1.15 var(--num); font-variant-numeric: tabular-nums; }
+.gauge .v small { font-size: .45em; color: var(--color-text-muted); font-weight: 400; }
+.gauge .v.c { color: var(--co2); } .gauge .v.e { color: var(--color-data-centres); } .gauge .v.w { color: var(--water); }
+.gauge .bar { position: relative; height: 10px; background: var(--color-surface); border-radius: var(--rounded-full); margin-top: 10px; }
+.gauge .bar i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: var(--rounded-full); background: var(--co2); transition: width .2s; }
+.gauge .bar b { position: absolute; top: -5px; bottom: -5px; width: 2px; background: var(--color-text); }
+.gauge .ref { font: .78rem/1.35 var(--num); color: var(--color-text-muted); margin-top: 8px; }
+.verdict { font: 400 clamp(1.25rem, 2.6vw, 1.6rem)/1.3 var(--display); margin: 0; min-height: 2.6em; }
+@media (max-width: 760px) { .sim { grid-template-columns: 1fr; } .mix .row { grid-template-columns: 7.4rem minmax(0, 1fr) 3rem; gap: 8px; } }
+
+.col { max-width: 720px; border-top: 1px solid var(--color-rule); margin-top: var(--space-2xl); padding-top: var(--space-xl); }
+.col h2 { font: 400 clamp(1.6rem, 3vw, 2.2rem)/1.1 var(--display); margin: 0 0 var(--space-md); }
+.table-scroll { overflow-x: auto; }
+.each { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+.each th, .each td { padding: 8px 8px 8px 0; border-bottom: 1px solid var(--color-rule); text-align: right; }
+.each th[scope=row], .each thead th:first-child { text-align: left; }
+.each thead th { font: 400 .8rem var(--body); color: var(--color-text-muted); }
+.each td { font-family: var(--num); }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }

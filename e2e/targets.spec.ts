@@ -36,3 +36,16 @@ test('every standalone control on /live is at least 44px tall', async ({ page })
   await expect(page.locator('#board')).toBeVisible();
   expect(await tooSmall(page, 'body')).toEqual([]);
 });
+
+test('every standalone control on /2030 is at least 44px tall', async ({ page }) => {
+  await page.goto('/2030');
+  await expect(page.locator('#s-eff')).toBeEnabled();
+  expect(await tooSmall(page, 'body')).toEqual([]);
+});
+
+test('the nav fits on one line under the wordmark on a 375px phone', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 800 });
+  await page.goto('/2030');
+  const tops = await page.$$eval('.nav-links a', (as) => as.map((a) => Math.round(a.getBoundingClientRect().top)));
+  expect(new Set(tops).size).toBe(1);
+});
