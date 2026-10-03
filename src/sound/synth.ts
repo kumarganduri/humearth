@@ -25,7 +25,7 @@ function noiseBuffer(ctx: AudioContext): AudioBuffer {
   for (let i = 0; i < len; i++) {
     // Brown-ish noise: softer than white, closer to wind and water.
     last = (last + 0.02 * (Math.random() * 2 - 1)) / 1.02;
-    d[i] = last * 3.5;
+    d[i] = last * 14; // about -12 dBFS before the filters: loud enough to hear on laptop speakers
   }
   return buf;
 }

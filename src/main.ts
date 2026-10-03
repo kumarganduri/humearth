@@ -77,7 +77,7 @@ async function main() {
     soundOn = !soundOn;
     writeSoundPref(globalThis.localStorage, soundOn);
     renderSoundButton();
-    if (soundOn) void startSound();
+    if (soundOn) void startSound().then(() => synth?.chime(bloomNotes(0.1))); // a little hello, so you know it's on
     else synth?.setEnabled(false);
   });
 

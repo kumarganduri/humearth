@@ -5,7 +5,7 @@ const h = (x: number) => ({ co2: x, water: x, energy: x });
 
 describe('sound mix (13A)', () => {
   it('the dive is wind, with no river or birds', () => {
-    expect(mixFor('diving', h(1), 'present')).toEqual({ wind: 0.5, river: 0, birdsPerMinute: 0 });
+    expect(mixFor('diving', h(1), 'present')).toEqual({ wind: 0.35, river: 0, birdsPerMinute: 0 });
   });
   it('a healthy world has a full river and birdsong; a stressed world goes quiet', () => {
     const healthy = mixFor('world', h(1), 'present');
@@ -16,7 +16,7 @@ describe('sound mix (13A)', () => {
     expect(stressed.river).toBeGreaterThan(0); // quiet, never silent: the world rests
   });
   it('Earth is a soft breeze', () => {
-    expect(mixFor('earth', null, null)).toEqual({ wind: 0.06, river: 0, birdsPerMinute: 0 });
+    expect(mixFor('earth', null, null)).toEqual({ wind: 0.1, river: 0, birdsPerMinute: 0 });
   });
   it('bloom chime grows with the improvement, nothing for no change', () => {
     expect(bloomNotes(0)).toEqual([]);

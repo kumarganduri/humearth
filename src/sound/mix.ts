@@ -16,8 +16,8 @@ export interface Mix {
 const avg = (h: Record<Channel, number>) => (h.co2 + h.water + h.energy) / 3;
 
 export function mixFor(place: SoundPlace, health: Record<Channel, number> | null, animals: AnimalState | null): Mix {
-  if (place === 'diving' || place === 'returning') return { wind: 0.5, river: 0, birdsPerMinute: 0 };
-  if (place !== 'world' || !health) return { wind: 0.06, river: 0, birdsPerMinute: 0 }; // a soft breeze on Earth
+  if (place === 'diving' || place === 'returning') return { wind: 0.35, river: 0, birdsPerMinute: 0 };
+  if (place !== 'world' || !health) return { wind: 0.1, river: 0, birdsPerMinute: 0 }; // a soft breeze on Earth
   const birds = animals === 'present' ? 14 : animals === 'some-hiding' ? 4 : 0;
   return { wind: 0.04, river: 0.08 + 0.32 * health.water, birdsPerMinute: Math.round(birds * avg(health)) };
 }
