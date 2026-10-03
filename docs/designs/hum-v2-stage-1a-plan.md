@@ -131,7 +131,7 @@ No critical gaps.
   - then regenerate the tokens
 - [x] **T3 (P1)** `present/format.ts` and `charts/{scale,race,fan}.ts` with tests.
 - [x] **T4 (P1)** The generated hero, `main.ts` v2 (slider, Play, fallback, legacy cleanup), `index.html` and `styles.css` per DESIGN.md, fonts (D10).
-- [ ] **T5 (P1)** The calculator: `weeklyUse(counts)` and its section.
+- [x] **T5 (P1)** The calculator: `weeklyUse(counts)` and its section.
 - [ ] **T8 (P1)** The "AI inside" headline bars, "Where does the electricity go?", the measured impact rows.
 - [ ] **T7 (P1)** E2E/a11y/budget/Lighthouse green, then the preview deploy (`wrangler pages deploy --branch hum-v2`, asked first), phone QA, then the merge to main.
 
