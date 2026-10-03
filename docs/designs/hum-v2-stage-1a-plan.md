@@ -129,7 +129,7 @@ No critical gaps.
   - packages: the old font packages
   - config and docs: the CI derive:k step, CLAUDE.md's guardrail section
   - then regenerate the tokens
-- [ ] **T3 (P1)** `present/format.ts` and `charts/{scale,race,fan}.ts` with tests.
+- [x] **T3 (P1)** `present/format.ts` and `charts/{scale,race,fan}.ts` with tests.
 - [ ] **T4 (P1)** The generated hero, `main.ts` v2 (slider, Play, fallback, legacy cleanup), `index.html` and `styles.css` per DESIGN.md, fonts (D10).
 - [ ] **T5 (P1)** The calculator: `weeklyUse(counts)` and its section.
 - [ ] **T8 (P1)** The "AI inside" headline bars, "Where does the electricity go?", the measured impact rows.
