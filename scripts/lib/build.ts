@@ -4,9 +4,13 @@
 //   data/sources/mapping.json ──────────┼─ validate ─> Constants (version, contentHash)
 //   previous public/data/constants.json ┘                └─> changelog entry when numbers changed
 //   data/sources/hubs.source.json ─ validate ─> public/data/hubs.json (contentHash)
+//   data/sources/series.source.json ─ validate ─> deriveSeries ─> public/data/series.json (contentHash)
+//   data/sources/countries.source.json ─ validate ─> public/data/countries.json (contentHash)
 
 import { createHash } from 'node:crypto';
-import { validateHubs, validateMapping, validateSource } from '../../src/footprint/schema';
+import { validateCountriesSource, validateHubs, validateMapping, validateSeriesSource, validateSource } from '../../src/footprint/schema';
+import { deriveSeries } from '../../src/footprint/series';
+import type { CountriesFile, CountriesSource, SeriesFile, SeriesSource } from '../../src/footprint/series-types';
 import { VALUE_KEYS, type Constants, type Hub, type HubsFile, type Mapping } from '../../src/footprint/types';
 
 export interface ChangelogEntry {
@@ -78,4 +82,26 @@ export function buildHubs(source: unknown, previous: HubsFile | null, today: str
   const contentHash = hashOf(hubs);
   if (previous?.contentHash === contentHash) return null;
   return { contentHash, builtAt: today, hubs };
+}
+
+/** data/sources/series.source.json -> public/data/series.json (every year, tagged). Null when nothing changed. */
+export function buildSeries(source: unknown, previous: SeriesFile | null, today: string): SeriesFile | null {
+  const problems = validateSeriesSource(source);
+  if (problems.length) throw new DataValidationError(problems);
+  const src = source as SeriesSource;
+  const body = { firstYear: src.firstYear, lastYear: src.lastYear, metrics: deriveSeries(src) };
+  const contentHash = hashOf(body);
+  if (previous?.contentHash === contentHash) return null;
+  return { contentHash, builtAt: today, ...body };
+}
+
+/** data/sources/countries.source.json -> public/data/countries.json. Null when nothing changed. */
+export function buildCountries(source: unknown, previous: CountriesFile | null, today: string): CountriesFile | null {
+  const problems = validateCountriesSource(source);
+  if (problems.length) throw new DataValidationError(problems);
+  const src = source as CountriesSource;
+  const body: CountriesSource = { dataset: src.dataset, year: src.year, unit: src.unit, countries: src.countries };
+  const contentHash = hashOf(body);
+  if (previous?.contentHash === contentHash) return null;
+  return { contentHash, builtAt: today, ...body };
 }

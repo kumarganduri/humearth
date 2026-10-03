@@ -9,6 +9,7 @@
 import { perPersonBaseline } from '../footprint/engine';
 import { TEXT_HEAVY_MIN_HEALTH, VIDEO_HEAVY_MAX_HEALTH, STRICT_LEVELS } from '../footprint/guardrails';
 import { VALUE_KEYS, type Constants, type Hub, type RangeValue, type Source } from '../footprint/types';
+import type { CountriesFile, MetricSeries, SeriesFile, SeriesValue, SeriesYear } from '../footprint/series-types';
 
 export interface ChangelogEntry {
   date: string;
@@ -125,8 +126,76 @@ export function renderPrivacy(): string {
 </ul>`;
 }
 
-export function renderPage(c: Constants, hubs: Hub[], changelog: ChangelogEntry[]): string {
-  return [renderMapping(c), renderValues(c), renderHubs(hubs), renderChangelog(changelog, c), renderPrivacy()].join('\n');
+/** One cell value: published plain, derived marked (dotted underline + title), none as an em-dash-free "no figure". */
+function cell(x: SeriesValue): string {
+  if (x.value === null) return '<span class="muted">not published</span>';
+  const n = num(x.value);
+  return x.kind === 'derived' ? `<span class="derived" title="calculated">${n}</span>` : n;
+}
+
+function readingCells(y: SeriesYear): string {
+  return `<td class="num">${cell(y.low)}</td><td class="num">${cell(y.mid)}</td><td class="num">${cell(y.high)}</td>`;
+}
+
+/** Consecutive years that share a rule, e.g. "2017–2023: Calculated back from 2024 ...". */
+function ruleGroups(years: SeriesYear[]): { from: number; to: number; rule: string }[] {
+  const groups: { from: number; to: number; rule: string }[] = [];
+  for (const y of years) {
+    const last = groups[groups.length - 1];
+    if (last && last.rule === y.rule && last.to === y.year - 1) last.to = y.year;
+    else groups.push({ from: y.year, to: y.year, rule: y.rule });
+  }
+  return groups;
+}
+
+function metricTable(m: MetricSeries, caption: string): string {
+  const rows = m.years
+    .map((y) => {
+      const cls = y.year === m.latestMeasuredYear ? ' class="today"' : y.phase === 'future' ? ' class="future"' : '';
+      return `<tr${cls}><th scope="row">${y.year}</th>${readingCells(y)}</tr>`;
+    })
+    .join('');
+  const how = ruleGroups(m.years)
+    .map((g) => `<li><strong>${g.from === g.to ? g.from : `${g.from}–${g.to}`}</strong>: ${esc(g.rule)}</li>`)
+    .join('');
+  return `<h3>${esc(caption)} <span class="muted">(${esc(m.unit)})</span></h3>
+<div class="table-wrap" tabindex="0" role="region" aria-label="${esc(caption)}, by year"><table class="series">
+<thead><tr><th scope="col">Year</th><th scope="col">Low</th><th scope="col">Middle</th><th scope="col">High</th></tr></thead>
+<tbody>${rows}</tbody>
+</table></div>
+<ul class="rules">${how}</ul>
+${sourceList(m.sources)}`;
+}
+
+export function renderGrowth(series: SeriesFile): string {
+  const e = series.metrics.electricity, co2 = series.metrics.co2;
+  return `
+<h2 id="growth">How it grows, year by year</h2>
+<p>Sources publish only a few years: what data centres used in 2024 and 2025, and forecasts for 2030 and 2035. We fill in the years between with plain rules and mark every filled-in number as <span class="derived">calculated</span>. Where a source gives no low estimate, we say so instead of inventing one. Years after ${e.latestMeasuredYear} are forecasts.</p>
+${metricTable(e, e.label)}
+${metricTable(co2, co2.label)}
+<p class="muted">Series ${esc(series.contentHash)} · built ${esc(series.builtAt)}</p>`;
+}
+
+export function renderCountries(c: CountriesFile): string {
+  const d = c.dataset;
+  const rows = [...c.countries]
+    .sort((a, b) => b.demandTWh - a.demandTWh)
+    .map((r) => `<tr><th scope="row">${esc(r.name)}</th><td class="num">${num(r.demandTWh)}</td></tr>`)
+    .join('');
+  return `
+<h2 id="countries">The countries we compare with</h2>
+<p>Each country's total electricity use in ${c.year} (demand, not generation), copied from one dataset file. A check on every build downloads the file again, confirms it is the same file, and compares every number.</p>
+<ul class="sources"><li><a href="${esc(d.page)}" rel="noopener noreferrer">${esc(d.name)}</a> <span class="muted">· ${esc(d.licence)} · retrieved ${esc(d.retrieved)}</span></li>
+<li><span class="muted">File: <a href="${esc(d.url)}" rel="noopener noreferrer">${esc(d.url.split('/').pop()!)}</a> · sha256 <code>${esc(d.sha256.slice(0, 16))}…</code> · rows where "${esc(d.filter.sourceColumn)}" is "${esc(d.filter.sourceValue)}"</span></li></ul>
+<div class="table-wrap"><table>
+<thead><tr><th scope="col">Country</th><th scope="col">${c.year} use (${unitCell(c.unit)})</th></tr></thead>
+<tbody>${rows}</tbody>
+</table></div>`;
+}
+
+export function renderPage(c: Constants, hubs: Hub[], changelog: ChangelogEntry[], series: SeriesFile, countries: CountriesFile): string {
+  return [renderMapping(c), renderValues(c), renderGrowth(series), renderCountries(countries), renderHubs(hubs), renderChangelog(changelog, c), renderPrivacy()].join('\n');
 }
 
 /** Long units like gCO2/kWh may wrap after the slash on small phones, never inside a word. */

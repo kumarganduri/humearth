@@ -1,0 +1,740 @@
+{
+  "contentHash": "ec5d0aaaabaf90fc",
+  "builtAt": "2026-10-03",
+  "firstYear": 2017,
+  "lastYear": 2035,
+  "metrics": {
+    "electricity": {
+      "label": "Electricity used by the world's data centres",
+      "unit": "TWh/yr",
+      "latestMeasuredYear": 2025,
+      "years": [
+        {
+          "year": 2017,
+          "phase": "past",
+          "low": {
+            "value": 187.72492436481073,
+            "kind": "derived"
+          },
+          "mid": {
+            "value": 187.72492436481073,
+            "kind": "derived"
+          },
+          "high": {
+            "value": 187.72492436481073,
+            "kind": "derived"
+          },
+          "rule": "Calculated back from 2024 at about 12% growth a year"
+        },
+        {
+          "year": 2018,
+          "phase": "past",
+          "low": {
+            "value": 210.25191528858807,
+            "kind": "derived"
+          },
+          "mid": {
+            "value": 210.25191528858807,
+            "kind": "derived"
+          },
+          "high": {
+            "value": 210.25191528858807,
+            "kind": "derived"
+          },
+          "rule": "Calculated back from 2024 at about 12% growth a year"
+        },
+        {
+          "year": 2019,
+          "phase": "past",
+          "low": {
+            "value": 235.48214512321866,
+            "kind": "derived"
+          },
+          "mid": {
+            "value": 235.48214512321866,
+            "kind": "derived"
+          },
+          "high": {
+            "value": 235.48214512321866,
+            "kind": "derived"
+          },
+          "rule": "Calculated back from 2024 at about 12% growth a year"
+        },
+        {
+          "year": 2020,
+          "phase": "past",
+          "low": {
+            "value": 263.7400025380049,
+            "kind": "derived"
+          },
+          "mid": {
+            "value": 263.7400025380049,
+            "kind": "derived"
+          },
+          "high": {
+            "value": 263.7400025380049,
+            "kind": "derived"
+          },
+          "rule": "Calculated back from 2024 at about 12% growth a year"
+        },
+        {
+          "year": 2021,
+          "phase": "past",
+          "low": {
+            "value": 295.3888028425655,
+            "kind": "derived"
+          },
+          "mid": {
+            "value": 295.3888028425655,
+            "kind": "derived"
+          },
+          "high": {
+            "value": 295.3888028425655,
+            "kind": "derived"
+          },
+          "rule": "Calculated back from 2024 at about 12% growth a year"
+        },
+        {
+          "year": 2022,
+          "phase": "past",
+          "low": {
+            "value": 330.83545918367344,
+            "kind": "derived"
+          },
+          "mid": {
+            "value": 330.83545918367344,
+            "kind": "derived"
+          },
+          "high": {
+            "value": 330.83545918367344,
+            "kind": "derived"
+          },
+          "rule": "Calculated back from 2024 at about 12% growth a year"
+        },
+        {
+          "year": 2023,
+          "phase": "past",
+          "low": {
+            "value": 370.5357142857143,
+            "kind": "derived"
+          },
+          "mid": {
+            "value": 370.5357142857143,
+            "kind": "derived"
+          },
+          "high": {
+            "value": 370.5357142857143,
+            "kind": "derived"
+          },
+          "rule": "Calculated back from 2024 at about 12% growth a year"
+        },
+        {
+          "year": 2024,
+          "phase": "past",
+          "low": {
+            "value": 415,
+            "kind": "published"
+          },
+          "mid": {
+            "value": 415,
+            "kind": "published"
+          },
+          "high": {
+            "value": 415,
+            "kind": "published"
+          },
+          "rule": "Published figure (single estimate)"
+        },
+        {
+          "year": 2025,
+          "phase": "past",
+          "low": {
+            "value": 485,
+            "kind": "published"
+          },
+          "mid": {
+            "value": 485,
+            "kind": "published"
+          },
+          "high": {
+            "value": 485,
+            "kind": "published"
+          },
+          "rule": "Published figure (single estimate)"
+        },
+        {
+          "year": 2026,
+          "phase": "future",
+          "low": {
+            "value": 506.5,
+            "kind": "derived"
+          },
+          "mid": {
+            "value": 554.8021200214711,
+            "kind": "derived"
+          },
+          "high": {
+            "value": 606.5,
+            "kind": "derived"
+          },
+          "rule": "Calculated: steady growth between the 2025 and 2030 figures; range drawn as a straight line between published ranges"
+        },
+        {
+          "year": 2027,
+          "phase": "future",
+          "low": {
+            "value": 528,
+            "kind": "derived"
+          },
+          "mid": {
+            "value": 634.6502935676676,
+            "kind": "derived"
+          },
+          "high": {
+            "value": 728,
+            "kind": "derived"
+          },
+          "rule": "Calculated: steady growth between the 2025 and 2030 figures; range drawn as a straight line between published ranges"
+        },
+        {
+          "year": 2028,
+          "phase": "future",
+          "low": {
+            "value": 549.5,
+            "kind": "derived"
+          },
+          "mid": {
+            "value": 725.9903677187443,
+            "kind": "derived"
+          },
+          "high": {
+            "value": 849.5,
+            "kind": "derived"
+          },
+          "rule": "Calculated: steady growth between the 2025 and 2030 figures; range drawn as a straight line between published ranges"
+        },
+        {
+          "year": 2029,
+          "phase": "future",
+          "low": {
+            "value": 571,
+            "kind": "derived"
+          },
+          "mid": {
+            "value": 830.4762786093333,
+            "kind": "derived"
+          },
+          "high": {
+            "value": 971,
+            "kind": "derived"
+          },
+          "rule": "Calculated: steady growth between the 2025 and 2030 figures; range drawn as a straight line between published ranges"
+        },
+        {
+          "year": 2030,
+          "phase": "future",
+          "low": {
+            "value": 592.5,
+            "kind": "derived"
+          },
+          "mid": {
+            "value": 950,
+            "kind": "published"
+          },
+          "high": {
+            "value": 1092.5,
+            "kind": "derived"
+          },
+          "rule": "Published forecast; range drawn as a straight line between published ranges"
+        },
+        {
+          "year": 2031,
+          "phase": "future",
+          "low": {
+            "value": 614,
+            "kind": "derived"
+          },
+          "mid": {
+            "value": 995.4401038876196,
+            "kind": "derived"
+          },
+          "high": {
+            "value": 1214,
+            "kind": "derived"
+          },
+          "rule": "Calculated: steady growth between the 2030 and 2035 figures; range drawn as a straight line between published ranges"
+        },
+        {
+          "year": 2032,
+          "phase": "future",
+          "low": {
+            "value": 635.5,
+            "kind": "derived"
+          },
+          "mid": {
+            "value": 1043.0536846608366,
+            "kind": "derived"
+          },
+          "high": {
+            "value": 1335.5,
+            "kind": "derived"
+          },
+          "rule": "Calculated: steady growth between the 2030 and 2035 figures; range drawn as a straight line between published ranges"
+        },
+        {
+          "year": 2033,
+          "phase": "future",
+          "low": {
+            "value": 657,
+            "kind": "derived"
+          },
+          "mid": {
+            "value": 1092.9447033885765,
+            "kind": "derived"
+          },
+          "high": {
+            "value": 1457,
+            "kind": "derived"
+          },
+          "rule": "Calculated: steady growth between the 2030 and 2035 figures; range drawn as a straight line between published ranges"
+        },
+        {
+          "year": 2034,
+          "phase": "future",
+          "low": {
+            "value": 678.5,
+            "kind": "derived"
+          },
+          "mid": {
+            "value": 1145.2220937732086,
+            "kind": "derived"
+          },
+          "high": {
+            "value": 1578.5,
+            "kind": "derived"
+          },
+          "rule": "Calculated: steady growth between the 2030 and 2035 figures; range drawn as a straight line between published ranges"
+        },
+        {
+          "year": 2035,
+          "phase": "future",
+          "low": {
+            "value": 700,
+            "kind": "published"
+          },
+          "mid": {
+            "value": 1200,
+            "kind": "published"
+          },
+          "high": {
+            "value": 1700,
+            "kind": "published"
+          },
+          "rule": "Published forecast"
+        }
+      ],
+      "sources": [
+        {
+          "label": "IEA, Energy and AI (2025): \"data centre electricity consumption has grown by around 12% per year since 2017\"",
+          "url": "https://www.iea.org/reports/energy-and-ai/executive-summary",
+          "retrieved": "2026-10-03",
+          "supports": "low,mid,high",
+          "checked": "page"
+        },
+        {
+          "label": "IEA, Energy and AI (2025): \"Data centres accounted for around 1.5% of the world's electricity consumption in 2024, or 415 terawatt-hours (TWh).\"",
+          "url": "https://www.iea.org/reports/energy-and-ai/executive-summary",
+          "retrieved": "2026-10-03",
+          "supports": "low,mid,high",
+          "checked": "page",
+          "note": "single published estimate"
+        },
+        {
+          "label": "IEA, Key Questions on Energy and AI (2026): \"electricity consumption from data centres roughly doubling from 485 TWh in 2025 to 950 TWh in 2030\"",
+          "url": "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary",
+          "retrieved": "2026-10-03",
+          "supports": "low,mid,high",
+          "checked": "page",
+          "note": "single published estimate"
+        },
+        {
+          "label": "IEA, Key Questions on Energy and AI (2026): \"from 485 TWh in 2025 to 950 TWh in 2030\"",
+          "url": "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary",
+          "retrieved": "2026-10-03",
+          "supports": "mid",
+          "checked": "page",
+          "note": "base case; the IEA gives no 2030 range in text"
+        },
+        {
+          "label": "IEA, Energy and AI (2025): \"Our Base Case sees global data centre electricity consumption rising to around 1 200 TWh by 2035.\"",
+          "url": "https://www.iea.org/reports/energy-and-ai/executive-summary",
+          "retrieved": "2026-10-03",
+          "supports": "mid",
+          "checked": "page"
+        },
+        {
+          "label": "IEA, Energy and AI (2025): \"By 2035, the range of data centre electricity demand across our cases spans from 700 to 1 700 TWh.\"",
+          "url": "https://www.iea.org/reports/energy-and-ai/executive-summary",
+          "retrieved": "2026-10-03",
+          "supports": "low,high",
+          "checked": "page"
+        }
+      ]
+    },
+    "co2": {
+      "label": "CO2 from the electricity data centres use",
+      "unit": "Mt CO2/yr",
+      "latestMeasuredYear": 2024,
+      "years": [
+        {
+          "year": 2017,
+          "phase": "past",
+          "low": {
+            "value": null,
+            "kind": "none"
+          },
+          "mid": {
+            "value": null,
+            "kind": "none"
+          },
+          "high": {
+            "value": null,
+            "kind": "none"
+          },
+          "rule": "No published figure"
+        },
+        {
+          "year": 2018,
+          "phase": "past",
+          "low": {
+            "value": null,
+            "kind": "none"
+          },
+          "mid": {
+            "value": null,
+            "kind": "none"
+          },
+          "high": {
+            "value": null,
+            "kind": "none"
+          },
+          "rule": "No published figure"
+        },
+        {
+          "year": 2019,
+          "phase": "past",
+          "low": {
+            "value": null,
+            "kind": "none"
+          },
+          "mid": {
+            "value": null,
+            "kind": "none"
+          },
+          "high": {
+            "value": null,
+            "kind": "none"
+          },
+          "rule": "No published figure"
+        },
+        {
+          "year": 2020,
+          "phase": "past",
+          "low": {
+            "value": null,
+            "kind": "none"
+          },
+          "mid": {
+            "value": null,
+            "kind": "none"
+          },
+          "high": {
+            "value": null,
+            "kind": "none"
+          },
+          "rule": "No published figure"
+        },
+        {
+          "year": 2021,
+          "phase": "past",
+          "low": {
+            "value": null,
+            "kind": "none"
+          },
+          "mid": {
+            "value": null,
+            "kind": "none"
+          },
+          "high": {
+            "value": null,
+            "kind": "none"
+          },
+          "rule": "No published figure"
+        },
+        {
+          "year": 2022,
+          "phase": "past",
+          "low": {
+            "value": null,
+            "kind": "none"
+          },
+          "mid": {
+            "value": null,
+            "kind": "none"
+          },
+          "high": {
+            "value": null,
+            "kind": "none"
+          },
+          "rule": "No published figure"
+        },
+        {
+          "year": 2023,
+          "phase": "past",
+          "low": {
+            "value": null,
+            "kind": "none"
+          },
+          "mid": {
+            "value": null,
+            "kind": "none"
+          },
+          "high": {
+            "value": null,
+            "kind": "none"
+          },
+          "rule": "No published figure"
+        },
+        {
+          "year": 2024,
+          "phase": "past",
+          "low": {
+            "value": 180,
+            "kind": "published"
+          },
+          "mid": {
+            "value": 180,
+            "kind": "published"
+          },
+          "high": {
+            "value": 180,
+            "kind": "published"
+          },
+          "rule": "Published figure (single estimate)"
+        },
+        {
+          "year": 2025,
+          "phase": "future",
+          "low": {
+            "value": null,
+            "kind": "none"
+          },
+          "mid": {
+            "value": 191.2170637378412,
+            "kind": "derived"
+          },
+          "high": {
+            "value": 209.0909090909091,
+            "kind": "derived"
+          },
+          "rule": "Calculated: steady growth between the 2024 and 2035 figures; no published low"
+        },
+        {
+          "year": 2026,
+          "phase": "future",
+          "low": {
+            "value": null,
+            "kind": "none"
+          },
+          "mid": {
+            "value": 203.13314146956458,
+            "kind": "derived"
+          },
+          "high": {
+            "value": 238.1818181818182,
+            "kind": "derived"
+          },
+          "rule": "Calculated: steady growth between the 2024 and 2035 figures; no published low"
+        },
+        {
+          "year": 2027,
+          "phase": "future",
+          "low": {
+            "value": null,
+            "kind": "none"
+          },
+          "mid": {
+            "value": 215.79179366474247,
+            "kind": "derived"
+          },
+          "high": {
+            "value": 267.27272727272725,
+            "kind": "derived"
+          },
+          "rule": "Calculated: steady growth between the 2024 and 2035 figures; no published low"
+        },
+        {
+          "year": 2028,
+          "phase": "future",
+          "low": {
+            "value": null,
+            "kind": "none"
+          },
+          "mid": {
+            "value": 229.2392953516341,
+            "kind": "derived"
+          },
+          "high": {
+            "value": 296.3636363636364,
+            "kind": "derived"
+          },
+          "rule": "Calculated: steady growth between the 2024 and 2035 figures; no published low"
+        },
+        {
+          "year": 2029,
+          "phase": "future",
+          "low": {
+            "value": null,
+            "kind": "none"
+          },
+          "mid": {
+            "value": 243.52480528039567,
+            "kind": "derived"
+          },
+          "high": {
+            "value": 325.45454545454544,
+            "kind": "derived"
+          },
+          "rule": "Calculated: steady growth between the 2024 and 2035 figures; no published low"
+        },
+        {
+          "year": 2030,
+          "phase": "future",
+          "low": {
+            "value": null,
+            "kind": "none"
+          },
+          "mid": {
+            "value": 258.70054562803773,
+            "kind": "derived"
+          },
+          "high": {
+            "value": 354.5454545454545,
+            "kind": "derived"
+          },
+          "rule": "Calculated: steady growth between the 2024 and 2035 figures; no published low"
+        },
+        {
+          "year": 2031,
+          "phase": "future",
+          "low": {
+            "value": null,
+            "kind": "none"
+          },
+          "mid": {
+            "value": 274.8219929020599,
+            "kind": "derived"
+          },
+          "high": {
+            "value": 383.6363636363636,
+            "kind": "derived"
+          },
+          "rule": "Calculated: steady growth between the 2024 and 2035 figures; no published low"
+        },
+        {
+          "year": 2032,
+          "phase": "future",
+          "low": {
+            "value": null,
+            "kind": "none"
+          },
+          "mid": {
+            "value": 291.94808074063184,
+            "kind": "derived"
+          },
+          "high": {
+            "value": 412.72727272727275,
+            "kind": "derived"
+          },
+          "rule": "Calculated: steady growth between the 2024 and 2035 figures; no published low"
+        },
+        {
+          "year": 2033,
+          "phase": "future",
+          "low": {
+            "value": null,
+            "kind": "none"
+          },
+          "mid": {
+            "value": 310.1414153506767,
+            "kind": "derived"
+          },
+          "high": {
+            "value": 441.8181818181818,
+            "kind": "derived"
+          },
+          "rule": "Calculated: steady growth between the 2024 and 2035 figures; no published low"
+        },
+        {
+          "year": 2034,
+          "phase": "future",
+          "low": {
+            "value": null,
+            "kind": "none"
+          },
+          "mid": {
+            "value": 329.4685043714146,
+            "kind": "derived"
+          },
+          "high": {
+            "value": 470.9090909090909,
+            "kind": "derived"
+          },
+          "rule": "Calculated: steady growth between the 2024 and 2035 figures; no published low"
+        },
+        {
+          "year": 2035,
+          "phase": "future",
+          "low": {
+            "value": null,
+            "kind": "none"
+          },
+          "mid": {
+            "value": 350,
+            "kind": "published"
+          },
+          "high": {
+            "value": 500,
+            "kind": "published"
+          },
+          "rule": "Published forecast; no published low"
+        }
+      ],
+      "sources": [
+        {
+          "label": "IEA, Energy and AI (2025): \"Emissions from electricity use by data centres grows from 180 million tonnes (Mt) today to 300 Mt in the Base Case by 2035, and up to 500 Mt in the Lift-Off Case.\"",
+          "url": "https://www.iea.org/reports/energy-and-ai/executive-summary",
+          "retrieved": "2026-10-03",
+          "supports": "low,mid,high",
+          "checked": "page",
+          "note": "\"today\" in a 2025 report; dated 2024 here, single published estimate"
+        },
+        {
+          "label": "IEA, Key Questions on Energy and AI (2026): \"The emissions associated with data centres double in IEA projections, reaching around 350 million tonnes in 2035\"",
+          "url": "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary",
+          "retrieved": "2026-10-03",
+          "supports": "mid",
+          "checked": "page"
+        },
+        {
+          "label": "IEA, Energy and AI (2025): \"... and up to 500 Mt in the Lift-Off Case.\"",
+          "url": "https://www.iea.org/reports/energy-and-ai/executive-summary",
+          "retrieved": "2026-10-03",
+          "supports": "high",
+          "checked": "page",
+          "note": "no low case published in text"
+        }
+      ]
+    }
+  }
+}

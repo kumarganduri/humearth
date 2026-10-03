@@ -61,6 +61,22 @@ jobs:
           path: dist/
           retention-days: 7
 
+  source-data:
+    name: Country numbers match the Ember dataset
+    # Separate from "test" on purpose: when Ember re-publishes its file this goes red so we update the
+    # numbers knowingly (eng review D3), but it never blocks deploying an unrelated fix.
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Download the dataset, check sha256 and every country row
+        run: npm run check:countries
+
   deploy:
     name: Deploy to Cloudflare Pages
     needs: test

@@ -38,3 +38,9 @@ code { font-family: var(--hand); background: var(--color-surface-deep); padding:
   table { font-size: 0.86rem; }
   th, td { padding: 8px 3px; }
 }
+/* v2 series table: calculated numbers are marked (DESIGN.md: derived = dotted underline); today's row stands out. */
+.derived { text-decoration: underline dotted; text-underline-offset: 3px; }
+tr.today th, tr.today td { font-weight: 700; }
+tr.future th, tr.future td { color: var(--color-text-muted); }
+ul.rules { font-size: 0.92rem; padding-left: 1.1em; margin: var(--space-sm) 0; }
+.table-wrap:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 2px; }

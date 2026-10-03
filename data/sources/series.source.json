@@ -1,0 +1,146 @@
+{
+  "$comment": "Only figures a source published (T0 sourcing record: docs/sources/stage-1a-sourcing.md). Everything between them is derived by scripts/lib/series.ts and labelled as such. low/high null = not published; never filled in.",
+  "firstYear": 2017,
+  "lastYear": 2035,
+  "metrics": {
+    "electricity": {
+      "label": "Electricity used by the world's data centres",
+      "unit": "TWh/yr",
+      "backfill": {
+        "rate": 0.12,
+        "sources": [
+          {
+            "label": "IEA, Energy and AI (2025): \"data centre electricity consumption has grown by around 12% per year since 2017\"",
+            "url": "https://www.iea.org/reports/energy-and-ai/executive-summary",
+            "retrieved": "2026-10-03",
+            "supports": "low,mid,high",
+            "checked": "page"
+          }
+        ]
+      },
+      "points": [
+        {
+          "year": 2024,
+          "estimate": "measured",
+          "low": 415,
+          "mid": 415,
+          "high": 415,
+          "sources": [
+            {
+              "label": "IEA, Energy and AI (2025): \"Data centres accounted for around 1.5% of the world's electricity consumption in 2024, or 415 terawatt-hours (TWh).\"",
+              "url": "https://www.iea.org/reports/energy-and-ai/executive-summary",
+              "retrieved": "2026-10-03",
+              "supports": "low,mid,high",
+              "checked": "page",
+              "note": "single published estimate"
+            }
+          ]
+        },
+        {
+          "year": 2025,
+          "estimate": "measured",
+          "low": 485,
+          "mid": 485,
+          "high": 485,
+          "sources": [
+            {
+              "label": "IEA, Key Questions on Energy and AI (2026): \"electricity consumption from data centres roughly doubling from 485 TWh in 2025 to 950 TWh in 2030\"",
+              "url": "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary",
+              "retrieved": "2026-10-03",
+              "supports": "low,mid,high",
+              "checked": "page",
+              "note": "single published estimate"
+            }
+          ]
+        },
+        {
+          "year": 2030,
+          "estimate": "forecast",
+          "low": null,
+          "mid": 950,
+          "high": null,
+          "sources": [
+            {
+              "label": "IEA, Key Questions on Energy and AI (2026): \"from 485 TWh in 2025 to 950 TWh in 2030\"",
+              "url": "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary",
+              "retrieved": "2026-10-03",
+              "supports": "mid",
+              "checked": "page",
+              "note": "base case; the IEA gives no 2030 range in text"
+            }
+          ]
+        },
+        {
+          "year": 2035,
+          "estimate": "forecast",
+          "low": 700,
+          "mid": 1200,
+          "high": 1700,
+          "sources": [
+            {
+              "label": "IEA, Energy and AI (2025): \"Our Base Case sees global data centre electricity consumption rising to around 1 200 TWh by 2035.\"",
+              "url": "https://www.iea.org/reports/energy-and-ai/executive-summary",
+              "retrieved": "2026-10-03",
+              "supports": "mid",
+              "checked": "page"
+            },
+            {
+              "label": "IEA, Energy and AI (2025): \"By 2035, the range of data centre electricity demand across our cases spans from 700 to 1 700 TWh.\"",
+              "url": "https://www.iea.org/reports/energy-and-ai/executive-summary",
+              "retrieved": "2026-10-03",
+              "supports": "low,high",
+              "checked": "page"
+            }
+          ]
+        }
+      ]
+    },
+    "co2": {
+      "label": "CO2 from the electricity data centres use",
+      "unit": "Mt CO2/yr",
+      "points": [
+        {
+          "year": 2024,
+          "estimate": "measured",
+          "low": 180,
+          "mid": 180,
+          "high": 180,
+          "sources": [
+            {
+              "label": "IEA, Energy and AI (2025): \"Emissions from electricity use by data centres grows from 180 million tonnes (Mt) today to 300 Mt in the Base Case by 2035, and up to 500 Mt in the Lift-Off Case.\"",
+              "url": "https://www.iea.org/reports/energy-and-ai/executive-summary",
+              "retrieved": "2026-10-03",
+              "supports": "low,mid,high",
+              "checked": "page",
+              "note": "\"today\" in a 2025 report; dated 2024 here, single published estimate"
+            }
+          ]
+        },
+        {
+          "year": 2035,
+          "estimate": "forecast",
+          "low": null,
+          "mid": 350,
+          "high": 500,
+          "sources": [
+            {
+              "label": "IEA, Key Questions on Energy and AI (2026): \"The emissions associated with data centres double in IEA projections, reaching around 350 million tonnes in 2035\"",
+              "url": "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary",
+              "retrieved": "2026-10-03",
+              "supports": "mid",
+              "checked": "page"
+            },
+            {
+              "label": "IEA, Energy and AI (2025): \"... and up to 500 Mt in the Lift-Off Case.\"",
+              "url": "https://www.iea.org/reports/energy-and-ai/executive-summary",
+              "retrieved": "2026-10-03",
+              "supports": "high",
+              "checked": "page",
+              "note": "no low case published in text"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

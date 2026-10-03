@@ -61,8 +61,9 @@ describe('How We Know page', () => {
 
   it('renders the full page from the real data files', () => {
     const log = JSON.parse(readFileSync('public/data/changelog.json', 'utf8')) as ChangelogEntry[];
-    const h = renderPage(c, hubs, log);
-    for (const id of ['health', 'numbers', 'buildings', 'changes', 'privacy']) expect(h).toContain(`id="${id}"`);
+    const read = <T>(p: string) => JSON.parse(readFileSync(p, 'utf8')) as T;
+    const h = renderPage(c, hubs, log, read('public/data/series.json'), read('public/data/countries.json'));
+    for (const id of ['health', 'numbers', 'growth', 'countries', 'buildings', 'changes', 'privacy']) expect(h).toContain(`id="${id}"`);
   });
 
   it('formats numbers for reading', () => {
@@ -81,6 +82,8 @@ describe('prerendered How We Know', () => {
       read('public/data/constants.json'),
       read<{ hubs: Hub[] }>('public/data/hubs.json').hubs,
       read<ChangelogEntry[]>('public/data/changelog.json'),
+      read('public/data/series.json'),
+      read('public/data/countries.json'),
     );
     expect(readFileSync('src/how/content.generated.html', 'utf8')).toContain(fresh);
   });
