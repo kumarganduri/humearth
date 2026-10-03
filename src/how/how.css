@@ -3,8 +3,6 @@
 /* How We Know: a Read surface (one column, 65-75ch), DESIGN.md tokens only. */
 body.read { height: auto; }
 .nav-read { position: sticky; top: 0; display: flex; justify-content: space-between; align-items: center; background: var(--color-surface); border-bottom: 1px solid rgba(107, 90, 80, 0.18); }
-.navlink { color: var(--color-text); font-weight: 700; text-decoration: none; }
-.navlink:hover { text-decoration: underline; }
 .read-col { display: block; height: auto; max-width: 70ch; margin: 0 auto; padding: var(--space-2xl) var(--space-lg) var(--space-3xl); }
 .read-col h1 { font: 800 2.4rem/1.1 var(--display); margin: 0 0 var(--space-md); }
 .read-col h2 { font: 800 1.7rem/1.15 var(--display); margin: var(--space-3xl) 0 var(--space-md); scroll-margin-top: 80px; }

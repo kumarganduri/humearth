@@ -79,7 +79,7 @@ body.landed main, body.diving main, body.quizzing main { grid-template-rows: 1fr
 .panel h3:focus { outline: none; }
 .panel-range { font: 600 1.2rem/1.3 var(--hand); margin: var(--space-xs) 0; }
 .panel p { margin: 0 0 var(--space-sm); }
-.panel a { color: var(--color-primary-underside); font-weight: 700; text-underline-offset: 3px; } /* 7:1 on surface-deep; primary is only 4.2:1 there */
+.panel a { color: var(--color-primary-underside); font-weight: 700; text-underline-offset: 3px; display: inline-flex; align-items: center; min-height: 44px; } /* 7:1 on surface-deep; primary is only 4.2:1 there */
 .panel-close { position: absolute; top: 6px; right: 6px; width: 44px; height: 44px; border: 0; background: none; font: 700 1.5rem/1 var(--body); color: var(--color-text-muted); cursor: pointer; border-radius: 50%; }
 .glyph .num { font: 400 .95rem/1 var(--hand); color: var(--color-text-muted); }
 .banner {
