@@ -29,3 +29,9 @@ tr.src td { padding-top: 0; }
 .changelog > li { margin: var(--space-lg) 0; }
 code { font-family: var(--hand); background: var(--color-surface-deep); padding: 1px 5px; border-radius: 4px; }
 .foot { margin-top: var(--space-3xl); border-top: 1px solid rgba(107, 90, 80, 0.2); padding-top: var(--space-lg); }
+
+/* Phones: let the numbers wrap so the table fits and the source lines below each row can be read without side-scrolling. */
+@media (max-width: 560px) {
+  th, td { padding: 8px 5px; }
+  td.num { white-space: normal; }
+}
