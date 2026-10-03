@@ -3,7 +3,7 @@ import { expect, test } from '@playwright/test';
 // Production's Content-Security-Policy (public/_headers) is also served by the test server (vite.config.ts),
 // so anything the policy blocks shows up here. Found on the hum-v2 preview deploy: the policy blocked the
 // race's inline style attributes, leaving the data-centre bar at zero width.
-for (const path of ['/', '/how-we-know.html', '/question']) {
+for (const path of ['/', '/how-we-know.html', '/question', '/live']) {
   test(`no Content-Security-Policy violations on ${path}, and the bars have width`, async ({ page }) => {
     const violations: string[] = [];
     page.on('console', (m) => {

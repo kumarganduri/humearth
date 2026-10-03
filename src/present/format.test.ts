@@ -17,7 +17,11 @@ describe('formatNumber: one rule everywhere', () => {
     [944, '944'],
     [1029.97, '1,030'],
     [11300, '11,300'],
-    [4_920_000, '4,920,000'],
+    [4_920_000, '4.92 million'],
+    [999_999, '1 million'], // rounds up to the next unit, never "1,000,000"
+    [999_499, '999,499'],
+    [999_999_999, '1 billion'],
+    [999_400_000, '999 million'],
     [14_482_000, '14.5 million'],
     [8.2e9, '8.2 billion'],
     [8.16e9, '8.16 billion'],

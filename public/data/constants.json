@@ -1,6 +1,6 @@
 {
-  "constantsVersion": 8,
-  "contentHash": "df13485640fe35da",
+  "constantsVersion": 9,
+  "contentHash": "c27f3622fc14557c",
   "builtAt": "2026-10-03",
   "values": {
     "textPromptWh": {
@@ -256,6 +256,23 @@
           "supports": "low,mid,high",
           "checked": "page",
           "note": "single published estimate; compare with the 1,200 TWh base case"
+        }
+      ]
+    },
+    "olympicPoolLitres": {
+      "label": "Water in an Olympic-size swimming pool",
+      "unit": "L",
+      "low": 2500000,
+      "mid": 2500000,
+      "high": 2500000,
+      "sources": [
+        {
+          "label": "Wikipedia, Olympic-size swimming pool (specifications table): \"2,500,000 L (2,500 m3; 660,000 US gal), assuming a nominal depth of 2 m.\"",
+          "url": "https://en.wikipedia.org/wiki/Olympic-size_swimming_pool",
+          "retrieved": "2026-10-03",
+          "supports": "low,mid,high",
+          "checked": "page",
+          "note": "a size, not an estimate: 50 m x 25 m x 2 m (the World Aquatics minimum depth)"
         }
       ]
     }

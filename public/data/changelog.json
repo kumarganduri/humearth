@@ -225,5 +225,20 @@
         ]
       }
     ]
+  },
+  {
+    "date": "2026-10-03",
+    "constantsVersion": 9,
+    "changes": [
+      {
+        "key": "olympicPoolLitres",
+        "from": null,
+        "to": [
+          2500000,
+          2500000,
+          2500000
+        ]
+      }
+    ]
   }
 ]

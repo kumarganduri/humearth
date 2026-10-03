@@ -32,3 +32,9 @@ test('How We Know shows every section, including year by year and the countries'
   await expect(page.locator('#content')).toContainText('How it grows, year by year');
   await expect(page.locator('#content')).not.toContainText("Your world's health"); // v1 is gone
 });
+
+test('/live has no serious accessibility problems', async ({ page }) => {
+  await page.goto('/live');
+  await expect(page.locator('#board')).toBeVisible();
+  await noSeriousViolations(page);
+});

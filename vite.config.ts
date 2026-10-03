@@ -9,11 +9,13 @@ import { defineConfig, type Plugin } from 'vite';
  *   index.html          <!--hero-content-->  <- src/hero.generated.html  (eng review D4)
  *   how-we-know.html    <!--how-content-->   <- src/how/content.generated.html
  *   question.html       <!--question-content--> <- src/question.generated.html
+ *   live.html           <!--live-content-->     <- src/live.generated.html
  */
 const GENERATED: [page: string, marker: string, file: string][] = [
   ['index.html', '<!--hero-content-->', 'src/hero.generated.html'],
   ['how-we-know.html', '<!--how-content-->', 'src/how/content.generated.html'],
   ['question.html', '<!--question-content-->', 'src/question.generated.html'],
+  ['live.html', '<!--live-content-->', 'src/live.generated.html'],
 ];
 
 function prerender(): Plugin {
@@ -57,6 +59,7 @@ export default defineConfig({
         main: resolve(import.meta.dirname, 'index.html'),
         how: resolve(import.meta.dirname, 'how-we-know.html'),
         question: resolve(import.meta.dirname, 'question.html'),
+        live: resolve(import.meta.dirname, 'live.html'),
       },
     },
   },

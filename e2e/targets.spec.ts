@@ -30,3 +30,9 @@ test('every standalone control on /question is at least 44px tall', async ({ pag
   await expect(page.locator('#q-send')).toBeEnabled();
   expect(await tooSmall(page, 'body')).toEqual([]);
 });
+
+test('every standalone control on /live is at least 44px tall', async ({ page }) => {
+  await page.goto('/live');
+  await expect(page.locator('#board')).toBeVisible();
+  expect(await tooSmall(page, 'body')).toEqual([]);
+});

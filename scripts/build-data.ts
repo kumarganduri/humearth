@@ -9,6 +9,7 @@ import type { CountriesFile, SeriesFile } from '../src/footprint/series-types';
 import { renderPage } from '../src/how/render';
 import { renderHero } from '../src/present/hero';
 import { questionPageHtml } from '../src/present/question';
+import { livePageHtml } from '../src/present/live';
 import { extractInlineStyles } from '../src/present/inline-styles';
 
 const SOURCE = 'data/sources/constants.source.json';
@@ -25,6 +26,7 @@ const GRIDS_OUT = 'public/data/grids.json';
 const WORLD_OUT = 'public/data/world.json'; // country shapes for the Earth home
 const HERO_OUT = 'src/hero.generated.html'; // prebuilt first screen (inlined into index.html by vite.config.ts)
 const QUESTION_OUT = 'src/question.generated.html'; // /question, prebuilt (works with scripts off)
+const LIVE_OUT = 'src/live.generated.html'; // /live, prebuilt per-second rates
 const HERO_CSS_OUT = 'src/hero.generated.css'; // its inline styles, moved out for the CSP (style-src 'self')
 const HOW_OUT = 'src/how/content.generated.html'; // prerendered How We Know body (inlined by vite.config.ts)
 
@@ -94,6 +96,7 @@ try {
     [HERO_OUT, `<!-- ${banner} -->\n${prebuilt.html}\n`],
     [HERO_CSS_OUT, `/* ${banner} */\n${prebuilt.css}`],
     [QUESTION_OUT, `<!-- ${banner} -->\n${questionPageHtml(constantsNow, readJson<SeriesFile>(SERIES_OUT)!)}\n`],
+    [LIVE_OUT, `<!-- ${banner} -->\n${livePageHtml(constantsNow, readJson<SeriesFile>(SERIES_OUT)!, readJson<HubsFile>(HUBS_OUT)!.hubs)}\n`],
   ] as const) {
     if (!existsSync(file) || readFileSync(file, 'utf8') !== body) {
       writeFileSync(file, body);

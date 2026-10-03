@@ -1,0 +1,34 @@
+/* /live (DESIGN.md v2): one pool filling with the water AI uses, two counters beside it. Numbers tick; the
+   explanation and every range sit below in the reading column. */
+.live { max-width: 1120px; margin: 0 auto; padding-inline: 20px; padding-block: var(--space-lg) var(--space-3xl); --water: #6FB7C9; --co2: #C9B79C; }
+.live-head h1 { font: 400 clamp(2rem, 4.4vw, 3.2rem)/1.06 var(--display); margin: 0 0 var(--space-md); text-wrap: balance; max-width: 24ch; }
+.since { display: flex; gap: 6px; flex-wrap: wrap; }
+.kind { appearance: none; border: 1px solid var(--color-rule); background: transparent; color: var(--color-text-muted); border-radius: var(--rounded-full); padding: 6px 14px; cursor: pointer; min-height: 44px; font: inherit; }
+.kind[aria-pressed="true"] { border-color: var(--color-ai); color: var(--color-ai); }
+.live-board { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 32px; margin-top: var(--space-xl); align-items: end; }
+.live-board[hidden] { display: none; }
+.pool-col { display: grid; gap: 14px; }
+.pool { position: relative; height: clamp(200px, 38vh, 380px); border: 2px solid var(--color-rule); border-top: 0; border-radius: 0 0 14px 14px; overflow: hidden; background: #070910; }
+.pool .water { position: absolute; left: 0; right: 0; bottom: 0; height: 0; background: linear-gradient(to top, #1f4c58, var(--water)); transition: height .1s linear; }
+.pool-label { position: absolute; left: 10px; top: 8px; font: .8rem var(--num); color: var(--color-text-muted); }
+.counts { display: grid; gap: 22px; }
+.count .k { font-size: .9rem; color: var(--color-text-muted); }
+.count .v { font: 600 clamp(2rem, 5vw, 3.4rem)/1.05 var(--num); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.count .v small { font-size: .4em; color: var(--color-text-muted); font-weight: 400; }
+.count.e .v { color: var(--color-data-centres); }
+.count.w .v { color: var(--water); }
+.count.c .v { color: var(--co2); }
+.count .sub { font: .9rem var(--num); color: var(--color-text-muted); }
+@media (max-width: 760px) { .live-board { grid-template-columns: 1fr; gap: 20px; } .pool { height: 180px; } }
+
+.col { max-width: 720px; border-top: 1px solid var(--color-rule); margin-top: var(--space-2xl); padding-top: var(--space-xl); }
+.col h2 { font: 400 clamp(1.6rem, 3vw, 2.2rem)/1.1 var(--display); margin: 0 0 var(--space-md); }
+.per-sec { list-style: none; margin: 0 0 var(--space-md); padding: 0; display: grid; gap: 8px; }
+.per-sec li { display: grid; grid-template-columns: 7rem minmax(0, 1fr); gap: 12px; align-items: baseline; border-bottom: 1px solid var(--color-rule); padding-bottom: 8px; }
+.per-sec .k { color: var(--color-text-muted); }
+.per-sec b { font: 600 1.2rem var(--num); color: var(--color-data-centres); }
+.per-sec .w b { color: var(--water); }
+.per-sec .c b { color: var(--co2); }
+.per-sec .rng { font: .85rem var(--num); color: var(--color-text-muted); white-space: nowrap; }
+@media (max-width: 420px) { .per-sec li { grid-template-columns: 5.5rem minmax(0, 1fr); } .per-sec .rng { display: block; white-space: normal; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }

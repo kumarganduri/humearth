@@ -11,13 +11,16 @@ import type { SeriesValue, SeriesYear } from '../footprint/series-types';
 const ESC: Record<string, string> = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
 export const esc = (s: string) => s.replace(/[&<>"']/g, (c) => ESC[c]!);
 
-/** Whole numbers with commas from 100 up; 3 significant figures below; tens of millions and billions in words. */
+/** Whole numbers with commas from 100 up; 3 significant figures below; millions and billions in words. */
 export function formatNumber(n: number): string {
   if (!Number.isFinite(n)) return '–';
   const sign = n < 0 ? '-' : '';
   const a = Math.abs(n);
-  if (a >= 1e9) return `${sign}${Number((a / 1e9).toPrecision(3))} billion`;
-  if (a >= 1e7) return `${sign}${Number((a / 1e6).toPrecision(3))} million`;
+  // Round first, then pick the unit, so 999,999,999 reads "1 billion", not "1,000 million".
+  const billions = Number((a / 1e9).toPrecision(3));
+  if (billions >= 1) return `${sign}${billions} billion`;
+  const millions = Number((a / 1e6).toPrecision(3));
+  if (millions >= 1) return `${sign}${millions} million`;
   if (a >= 100) return sign + Math.round(a).toLocaleString('en-US');
   if (a === 0) return '0';
   return sign + String(Number(a.toPrecision(3)));

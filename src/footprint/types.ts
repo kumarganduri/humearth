@@ -39,6 +39,7 @@ export const VALUE_KEYS = [
   'aiShareOfDataCentres',
   'aiFocusedGrowth2025',
   'dcHighEfficiency2035TWh',
+  'olympicPoolLitres',
 ] as const;
 export type ValueKey = (typeof VALUE_KEYS)[number];
 
