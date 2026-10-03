@@ -53,7 +53,7 @@ export function renderMapping(c: Constants): string {
 }
 
 function valueRow(v: RangeValue): string {
-  return `<tr><th scope="row">${esc(v.label)}</th><td class="num">${num(v.low)}</td><td class="num">${num(v.mid)}</td><td class="num">${num(v.high)}</td><td>${esc(v.unit)}</td></tr>
+  return `<tr><th scope="row">${esc(v.label)}</th><td class="num">${num(v.low)}</td><td class="num">${num(v.mid)}</td><td class="num">${num(v.high)}</td><td>${unitCell(v.unit)}</td></tr>
 <tr class="src"><td colspan="5">${sourceList(v.sources)}</td></tr>`;
 }
 
@@ -128,3 +128,6 @@ export function renderPrivacy(): string {
 export function renderPage(c: Constants, hubs: Hub[], changelog: ChangelogEntry[]): string {
   return [renderMapping(c), renderValues(c), renderHubs(hubs), renderChangelog(changelog, c), renderPrivacy()].join('\n');
 }
+
+/** Long units like gCO2/kWh may wrap after the slash on small phones, never inside a word. */
+const unitCell = (unit: string) => esc(unit).replaceAll('/', '/<wbr>');

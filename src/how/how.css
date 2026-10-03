@@ -33,3 +33,8 @@ code { font-family: var(--hand); background: var(--color-surface-deep); padding:
   th, td { padding: 8px 5px; }
   td.num { white-space: normal; }
 }
+/* Very small phones (320-380px): a touch smaller so the widest table still fits without side-scrolling. */
+@media (max-width: 380px) {
+  table { font-size: 0.86rem; }
+  th, td { padding: 8px 3px; }
+}
