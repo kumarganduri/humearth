@@ -127,14 +127,12 @@ function start(c: Constants, s: SeriesFile) {
   });
 
   for (const el of [...kinds, send, $<HTMLInputElement>('q-text')]) el.disabled = false;
-  $('meters').hidden = false;
   reset();
 }
 
 Promise.all([getJson<Constants>('constants'), getJson<SeriesFile>('series')])
   .then(([c, s]) => start(c, s))
   .catch(() => {
-    $('meters').hidden = false;
     $('q-end').textContent = "The animation couldn't load. The table below has every figure.";
   });
 

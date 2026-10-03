@@ -58,8 +58,6 @@ function start(c: Constants, s: SeriesFile) {
   };
   document.addEventListener('visibilitychange', () => (document.hidden ? pause() : (tick(), run())));
 
-  $('board').hidden = false;
-  $('since').hidden = false;
   tick();
   run();
 }

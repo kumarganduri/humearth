@@ -79,15 +79,15 @@ export function livePageHtml(c: Constants, s: SeriesFile, hubs: Hub[]): string {
   const pool = c.values.olympicPoolLitres.mid;
   const secondsPerPool = pool / r.litresPerSecond[1];
   const counter = (k: 'e' | 'c', name: string) =>
-    `<div class="count ${k}"><div class="k">${name}</div><div class="v"><span class="num" id="l-${k}">0</span> <small id="l-${k}u"></small></div></div>`;
+    `<div class="count ${k}"><div class="k">${name}</div><div class="v"><span class="num" id="l-${k}">0</span> <small id="l-${k}u">${k === 'e' ? 'kWh' : 'kg'}</small></div></div>`;
   return `<section class="live-head" aria-labelledby="l-h">
   <h1 id="l-h"><span id="l-title">Since you opened this page</span>, AI around the world has used:</h1>
-  <div class="since" role="group" aria-label="Count from" id="since" hidden>
+  <div class="since js-only" role="group" aria-label="Count from" id="since">
     <button type="button" class="kind" data-since="open" aria-pressed="true">Since you opened it</button>
     <button type="button" class="kind" data-since="midnight" aria-pressed="false">Since midnight</button>
   </div>
 </section>
-<div class="live-board" id="board" hidden>
+<div class="live-board js-only" id="board">
   <div class="pool-col">
     <div class="pool" aria-hidden="true"><div class="water" id="pool-fill"></div><span class="pool-label">one Olympic pool</span></div>
     <div class="count w"><div class="k">Water</div><div class="v"><span class="num" id="l-w">0</span> <small id="l-wu">litres</small></div><div class="sub" id="l-pools">0 Olympic pools filled</div></div>

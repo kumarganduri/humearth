@@ -1,0 +1,3 @@
+/* Loaded only when scripts are off (<noscript>): hide controls and counters that need JavaScript, instead of
+   showing them frozen. Using a stylesheet keeps them in the layout from the first paint when scripts run (no shift). */
+.js-only { display: none !important; }

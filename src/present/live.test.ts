@@ -60,7 +60,7 @@ describe('the words', () => {
   it('prebuilt page: per-second rates with ranges; counters hidden until JS; no style attributes', () => {
     const h = livePageHtml(c, s, hubs);
     expect(h).toContain('<b class="derived">4.92 MWh</b>');
-    expect(h).toMatch(/id="board" hidden/);
+    expect(h).toContain('<div class="live-board js-only" id="board">'); // hidden only by noscript.css
     expect(h).toContain('2.5 million litres');
     expect(h).not.toMatch(/\sstyle="/);
   });

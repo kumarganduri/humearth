@@ -112,7 +112,7 @@ export function questionPageHtml(c: Constants, s: SeriesFile): string {
   </form>
 </section>
 <div class="trip" role="img" aria-label="Your request travels from your phone, across the internet, to a data centre and its servers. The servers draw electricity from a power plant, which makes CO2, and the data centre uses water for cooling.">${journeySvg('wide')}${journeySvg('tall')}</div>
-<section class="meters-wrap" id="meters" aria-labelledby="m-h" hidden>
+<section class="meters-wrap js-only" id="meters" aria-labelledby="m-h">
   <h2 id="m-h" class="sr-only">What it used</h2>
   <div class="meters">${meter('e', 'Electricity')}${meter('c', 'CO2')}${meter('w', 'Water')}</div>
   <p class="sr-only" id="trip-status" aria-live="polite"></p>
