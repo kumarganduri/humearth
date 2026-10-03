@@ -1,5 +1,6 @@
 // Kid copy (design decision 8A glossary): plain words, about 12 words or fewer, no units.
-// The sentence names the biggest ACTIVITY (OV #2), and stays hopeful: stress goes quiet, never scolds.
+// The sentence says how the world is first, then names the biggest ACTIVITY (OV #2), and stays hopeful:
+// stress goes quiet, never scolds.
 
 import type { Footprint, KidComparisons } from '../footprint/engine';
 import { CHANNELS, type Constants, type Plan } from '../footprint/types';
@@ -14,17 +15,17 @@ export function band(f: Footprint): Band {
 const SENTENCES: Record<Footprint['dominantActivity'], Record<Band, string>> = {
   none: { great: 'Your world is happy and full of life.', okay: 'Your world is happy and full of life.', tired: 'Your world is resting.' },
   text: {
-    great: 'AI questions used most of it. Your world is doing great.',
-    okay: 'AI questions used most of it. Your world is a bit tired.',
-    tired: 'AI questions used most of it. Your world is resting.',
+    great: 'Your world is doing great. AI questions used most of it.',
+    okay: 'Your world is a bit tired. AI questions used most of it.',
+    tired: 'Your world is resting. AI questions used most of it.',
   },
   images: {
-    great: 'AI pictures used most of it. Your world is doing great.',
+    great: 'Your world is doing great. AI pictures used most of it.',
     okay: 'Your river is a little low. AI pictures used most of it.',
     tired: 'Your river is low. AI pictures used most of it.',
   },
   videos: {
-    great: 'AI videos used most of it. Your world is doing great.',
+    great: 'Your world is doing great. AI videos used most of it.',
     okay: 'Your river is a little low. AI videos used most of it.',
     tired: 'Your world is resting. AI videos used most of it.',
   },
