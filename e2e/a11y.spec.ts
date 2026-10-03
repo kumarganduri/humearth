@@ -16,6 +16,16 @@ test('home and How We Know have no serious accessibility problems', async ({ pag
   await noSeriousViolations(page);
 });
 
+test('/question has no serious accessibility problems, before and after a trip', async ({ page }) => {
+  await page.goto('/question');
+  await expect(page.locator('#q-send')).toBeEnabled();
+  await noSeriousViolations(page);
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.click('#q-send');
+  await expect(page.locator('#q-end')).toContainText('That was one question');
+  await noSeriousViolations(page);
+});
+
 test('How We Know shows every section, including year by year and the countries', async ({ page }) => {
   await page.goto('/how-we-know.html');
   for (const id of ['numbers', 'growth', 'countries', 'buildings', 'changes', 'privacy']) await expect(page.locator(`#${id}`)).toBeVisible();

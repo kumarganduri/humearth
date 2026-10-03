@@ -1,0 +1,51 @@
+/* /question (DESIGN.md v2): the trip runs left to right on wide screens, top to bottom on phones.
+   Amber = electricity (measured colour), water and CO2 use muted tints so amber keeps its meaning. */
+.question { max-width: 1120px; margin: 0 auto; padding-inline: 20px; padding-block: var(--space-lg) var(--space-3xl); --water: #6FB7C9; --co2: #C9B79C; }
+.ask h1 { font: 400 clamp(2rem, 4.4vw, 3.2rem)/1.06 var(--display); margin: 0; text-wrap: balance; max-width: 22ch; }
+.ask .lede { color: var(--color-text-muted); margin: var(--space-sm) 0 var(--space-md); max-width: 60ch; }
+.q-ask { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.q-ask input[type=text] { flex: 1 1 240px; min-height: 44px; background: var(--color-surface); border: 1px solid var(--color-rule); color: var(--color-text); border-radius: var(--rounded-md); padding: 8px 12px; font: inherit; }
+.q-ask input[type=text]:disabled { opacity: .5; }
+.kinds { display: flex; gap: 6px; flex-wrap: wrap; }
+.kind { appearance: none; border: 1px solid var(--color-rule); background: transparent; color: var(--color-text-muted); border-radius: var(--rounded-full); padding: 6px 14px; cursor: pointer; min-height: 44px; font: inherit; }
+.kind[aria-pressed="true"] { border-color: var(--color-ai); color: var(--color-ai); }
+.kind:disabled { opacity: .5; cursor: default; }
+
+.trip { margin: var(--space-lg) 0 var(--space-md); }
+.journey { width: 100%; height: auto; display: block; }
+.journey.tall { display: none; max-width: 420px; margin-inline: auto; }
+@media (max-width: 700px) { .journey.wide { display: none; } .journey.tall { display: block; } }
+.journey .path { fill: none; stroke: var(--color-rule); stroke-width: 3; stroke-dasharray: 2 8; stroke-linecap: round; }
+.journey .lit { fill: none; stroke: var(--color-data-centres); stroke-width: 3; stroke-linecap: round; }
+.journey .st circle { fill: var(--color-surface); stroke: var(--color-rule); stroke-width: 2; transition: stroke .3s, fill .3s; }
+.journey .st.on circle { stroke: var(--color-data-centres); fill: #1F1A12; }
+.journey .st text { fill: var(--color-text-muted); font: 15px var(--body); text-anchor: middle; }
+.journey .st.on text { fill: var(--color-text); }
+.journey .ico { stroke: var(--color-text-muted); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.journey .st.on .ico { stroke: var(--color-data-centres); }
+.journey .dot { fill: var(--color-ai); }
+
+.meters { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.meter { border: 1px solid var(--color-rule); border-radius: 10px; padding: 12px 14px; }
+.meter .k { font-size: .85rem; color: var(--color-text-muted); }
+.meter .v { font: 600 1.7rem/1.15 var(--num); font-variant-numeric: tabular-nums; }
+.meter .v small { font-size: .55em; color: var(--color-text-muted); font-weight: 400; }
+.meter.e .v { color: var(--color-data-centres); }
+.meter.w .v { color: var(--water); }
+.meter.c .v { color: var(--co2); }
+.meter .r { font: 400 .78rem/1.3 var(--num); color: var(--color-text-muted); min-height: 1.3em; }
+.q-end { font: 400 clamp(1.25rem, 2.8vw, 1.7rem)/1.3 var(--display); min-height: 3.2em; max-width: 46ch; margin: var(--space-md) 0 0; }
+.q-end b { color: var(--color-data-centres); font-weight: 400; }
+@media (max-width: 560px) { .meters { grid-template-columns: 1fr; gap: 8px; } .meter { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 4px 12px; } .meter .r { flex-basis: 100%; } }
+
+.col { max-width: 760px; border-top: 1px solid var(--color-rule); margin-top: var(--space-2xl); padding-top: var(--space-xl); }
+.col h2 { font: 400 clamp(1.6rem, 3vw, 2.2rem)/1.1 var(--display); margin: 0 0 var(--space-md); }
+.per-req { border-collapse: collapse; width: 100%; font-family: var(--num); font-variant-numeric: tabular-nums; font-size: .95rem; }
+.per-req caption { text-align: left; font-family: var(--body); color: var(--color-text-muted); font-size: .85rem; padding-bottom: 6px; }
+.per-req th, .per-req td { padding: 8px 8px 8px 0; border-bottom: 1px solid var(--color-rule); text-align: right; vertical-align: top; }
+.per-req th[scope=row], .per-req thead th:first-child { text-align: left; font-family: var(--body); font-weight: 700; }
+.per-req thead th { font: 400 .8rem var(--body); color: var(--color-text-muted); }
+.per-req .rng { display: block; font-size: .78rem; color: var(--color-text-muted); white-space: nowrap; }
+.table-scroll { overflow-x: auto; }
+@media (max-width: 560px) { .per-req { font-size: .85rem; } .per-req .rng { font-size: .66rem; } .per-req th, .per-req td { padding-right: 6px; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }

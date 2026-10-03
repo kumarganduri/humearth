@@ -2,7 +2,7 @@
   "ci": {
     "collect": {
       "staticDistDir": "./dist",
-      "url": ["/", "/how-we-know.html"],
+      "url": ["/", "/how-we-know.html", "/question.html"],
       "numberOfRuns": 1,
       "settings": { "preset": "perf", "formFactor": "mobile", "screenEmulation": { "mobile": true, "width": 390, "height": 844, "deviceScaleFactor": 3, "disabled": false }, "chromeFlags": "--use-angle=swiftshader --enable-unsafe-swiftshader --headless=new" }
     },

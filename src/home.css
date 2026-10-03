@@ -55,7 +55,6 @@
 .reading .sep, .reading .unit, .reading .none { color: var(--color-text-muted); }
 .reading .unit { font-size: 1rem; }
 .range-cap { font-size: .8rem; color: var(--color-text-muted); margin-top: var(--space-xs); letter-spacing: .02em; }
-.derived { text-decoration: underline dotted; text-underline-offset: 4px; }
 
 /* Race */
 .race { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; position: relative; }
@@ -79,12 +78,7 @@
 .year { font: 600 2rem/1 var(--num); min-width: 4ch; }
 #slider { flex: 1 1 200px; accent-color: var(--color-data-centres); height: 44px; margin: 0; }
 #slider:disabled { opacity: .45; }
-.btn { appearance: none; background: transparent; cursor: pointer; border: 1px solid var(--color-data-centres); color: var(--color-data-centres); padding: 10px 16px; border-radius: var(--rounded-md); font: 700 1rem/1 var(--body); min-height: 44px; }
-.btn:hover:not(:disabled) { background: color-mix(in srgb, var(--color-data-centres) 12%, transparent); }
-.btn:disabled { opacity: .45; cursor: default; }
 .note { font-size: .9rem; color: var(--color-warning); margin: var(--space-sm) 0 0; }
-.src { font-size: .8rem; color: var(--color-text-muted); margin: var(--space-md) 0 0; }
-.src a { color: var(--color-text-muted); }
 table.static { margin-top: var(--space-md); border-collapse: collapse; font-family: var(--num); font-size: .9rem; }
 table.static th, table.static td { padding: 4px 10px 4px 0; text-align: right; }
 table.static caption { text-align: left; font-family: var(--body); color: var(--color-text-muted); padding-bottom: 4px; }

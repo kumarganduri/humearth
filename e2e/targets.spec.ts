@@ -24,3 +24,9 @@ test('How We Know nav targets are at least 44px tall', async ({ page }) => {
   await page.goto('/how-we-know.html');
   expect(await tooSmall(page, '.nav')).toEqual([]);
 });
+
+test('every standalone control on /question is at least 44px tall', async ({ page }) => {
+  await page.goto('/question');
+  await expect(page.locator('#q-send')).toBeEnabled();
+  expect(await tooSmall(page, 'body')).toEqual([]);
+});

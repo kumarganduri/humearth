@@ -8,10 +8,12 @@ import { defineConfig, type Plugin } from 'vite';
  * this inlines it. No layout shift while it loads, readable with scripts off.
  *   index.html          <!--hero-content-->  <- src/hero.generated.html  (eng review D4)
  *   how-we-know.html    <!--how-content-->   <- src/how/content.generated.html
+ *   question.html       <!--question-content--> <- src/question.generated.html
  */
 const GENERATED: [page: string, marker: string, file: string][] = [
   ['index.html', '<!--hero-content-->', 'src/hero.generated.html'],
   ['how-we-know.html', '<!--how-content-->', 'src/how/content.generated.html'],
+  ['question.html', '<!--question-content-->', 'src/question.generated.html'],
 ];
 
 function prerender(): Plugin {
@@ -54,6 +56,7 @@ export default defineConfig({
       input: {
         main: resolve(import.meta.dirname, 'index.html'),
         how: resolve(import.meta.dirname, 'how-we-know.html'),
+        question: resolve(import.meta.dirname, 'question.html'),
       },
     },
   },
