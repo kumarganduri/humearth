@@ -124,7 +124,7 @@ No critical gaps.
 ## Implementation tasks (run in order)
 - [x] **T0 (P1)** Source data: the IEA 2030 range (consumption), 2035 CO2 low, Ember rows plus sha256, video and grid highs. Gate for everything below.
 - [x] **T1 (P1)** Data: series/countries sources and schema, `buildSeries` (electricity + CO2), the countries CI check, How We Know tables, tests.
-- [ ] **T2 (P1)** Remove v1:
+- [x] **T2 (P1)** Remove v1:
   - code: scene, view, app state, copy, sound, codec, k/mapping/guardrails/derive:k, posters
   - packages: the old font packages
   - config and docs: the CI derive:k step, CLAUDE.md's guardrail section
@@ -139,6 +139,11 @@ No critical gaps.
 - **Where the series logic lives:** `src/footprint/series.ts`, not `scripts/lib/series.ts`, because the browser also needs the crossing calculation. `scripts/lib/build.ts` only wraps it (validate, hash, write).
 - **The countries check runs as its own CI job (`source-data`):** it goes red when Ember re-publishes the file, but deploy depends only on `test`, so an unrelated fix can still ship.
 - **DESIGN.md v2 is parked:** it sits at `docs/designs/DESIGN-v2.md` until T2, so the token check stays green while the v1 scene still reads the clay colours. T2 moves it back to `DESIGN.md` and regenerates the tokens.
+
+### Notes from building T2 (2026-10-03)
+- **Kid comparisons removed:** the constants no longer carry them (balloons, bathtubs, glasses). v2 uses real units, and T5/T8 may add one sourced everyday comparison.
+- **v1 cleanup came forward:** `src/legacy.ts` (strip `#w1.` links and `?s=1`, remove `hum.world` and `hum.sound`) landed in T2, not T4, because the placeholder home page needed an entry point anyway.
+- **How We Know on phones:** the numbers table folds its Unit column into the label, and "not published" cells show a dash with screen-reader text. Both keep the 320px fit with the wider mono numerals.
 
 ## Parallelization
 Sequential implementation, no parallelization opportunity. The tasks share `main.ts`, the engine and the data files (outside #10).
