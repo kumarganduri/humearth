@@ -6,3 +6,6 @@ coverage/
 .lighthouseci/
 test-results/
 playwright-report/
+
+# local QA reports
+.gstack/
