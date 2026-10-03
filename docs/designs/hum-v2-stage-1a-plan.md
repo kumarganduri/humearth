@@ -122,8 +122,8 @@ browser:  main.ts ─► fetch series.json ─► slider / Play ─► charts/ra
 No critical gaps.
 
 ## Implementation tasks (run in order)
-- [ ] **T0 (P1)** Source data: the IEA 2030 range (consumption), 2035 CO2 low, Ember rows plus sha256, video and grid highs. Gate for everything below.
-- [ ] **T1 (P1)** Data: series/countries sources and schema, `buildSeries` (electricity + CO2), the countries CI check, How We Know tables, tests.
+- [x] **T0 (P1)** Source data: the IEA 2030 range (consumption), 2035 CO2 low, Ember rows plus sha256, video and grid highs. Gate for everything below.
+- [x] **T1 (P1)** Data: series/countries sources and schema, `buildSeries` (electricity + CO2), the countries CI check, How We Know tables, tests.
 - [ ] **T2 (P1)** Remove v1:
   - code: scene, view, app state, copy, sound, codec, k/mapping/guardrails/derive:k, posters
   - packages: the old font packages
@@ -134,6 +134,11 @@ No critical gaps.
 - [ ] **T5 (P1)** The calculator: `weeklyUse(counts)` and its section.
 - [ ] **T8 (P1)** The "AI inside" headline bars, "Where does the electricity go?", the measured impact rows.
 - [ ] **T7 (P1)** E2E/a11y/budget/Lighthouse green, then the preview deploy (`wrangler pages deploy --branch hum-v2`, asked first), phone QA, then the merge to main.
+
+### Notes from building T0–T1 (2026-10-03)
+- **Where the series logic lives:** `src/footprint/series.ts`, not `scripts/lib/series.ts`, because the browser also needs the crossing calculation. `scripts/lib/build.ts` only wraps it (validate, hash, write).
+- **The countries check runs as its own CI job (`source-data`):** it goes red when Ember re-publishes the file, but deploy depends only on `test`, so an unrelated fix can still ship.
+- **DESIGN.md v2 is parked:** it sits at `docs/designs/DESIGN-v2.md` until T2, so the token check stays green while the v1 scene still reads the clay colours. T2 moves it back to `DESIGN.md` and regenerates the tokens.
 
 ## Parallelization
 Sequential implementation, no parallelization opportunity. The tasks share `main.ts`, the engine and the data files (outside #10).
