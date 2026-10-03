@@ -190,5 +190,25 @@
         ]
       }
     ]
+  },
+  {
+    "date": "2026-10-03",
+    "constantsVersion": 6,
+    "changes": [
+      {
+        "key": "aiFocusedGrowth2025",
+        "from": null,
+        "to": [
+          0.5,
+          0.5,
+          0.5
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-10-03",
+    "constantsVersion": 7,
+    "changes": []
   }
 ]

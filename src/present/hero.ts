@@ -11,6 +11,7 @@ import { fanSvg } from '../charts/fan';
 import { niceMax } from '../charts/scale';
 import { esc, formatNumber, readingHtml } from './format';
 import { calculatorHtml } from './calculator';
+import { impactsHtml, whereItGoesHtml } from './story';
 
 /** Countries shown in the race: the ones data centres pass (or approach) between 2017 and 2035. */
 export const RACE_COUNTRIES = ['Russia', 'Japan', 'Canada', 'Germany', 'France', 'United Kingdom', 'Netherlands'] as const;
@@ -140,5 +141,7 @@ export function renderHero(d: HeroData): string {
   <p>${esc(futureSentence(m))} The bright line is measured; the dim range hasn't happened yet.</p>
 </section>
 <figure class="fanwrap">${fan}<figcaption class="src">${esc(historyNote(m))} Country lines show each country's electricity use in ${d.countries.year}. <a href="/how-we-know.html#growth">Every year, and how we got it</a></figcaption></figure>
+${whereItGoesHtml(d)}
+${impactsHtml(d)}
 ${calculatorHtml(d.constants)}`;
 }

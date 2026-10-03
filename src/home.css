@@ -99,3 +99,32 @@ table.static caption { text-align: left; font-family: var(--body); color: var(--
 .say { font: 400 1.3rem/1.3 var(--display); margin: var(--space-md) 0; }
 @media (max-width: 640px) { .calc-grid { grid-template-columns: 1fr; } }
 .nowrap { white-space: nowrap; }
+
+/* Where the electricity goes */
+.col h3 { font: 700 1.05rem/1.3 var(--body); margin: var(--space-xl) 0 var(--space-sm); }
+.split { position: relative; height: 28px; background: var(--color-country); opacity: .9; border-radius: var(--rounded-sm); margin: var(--space-md) 0 var(--space-sm); overflow: hidden; }
+.split-ai { position: absolute; inset: 0 auto 0 0; background: var(--color-ai); }
+.split-band { position: absolute; top: 0; bottom: 0; background: repeating-linear-gradient(90deg, var(--color-ai) 0 6px, transparent 6px 10px); opacity: .8; }
+.split-legend { display: flex; gap: var(--space-lg); flex-wrap: wrap; font-size: .9rem; color: var(--color-text-muted); }
+.split-legend i { display: inline-block; width: 12px; height: 12px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+.k-ai { background: var(--color-ai); }
+.k-rest { background: var(--color-country); }
+.growth { display: grid; gap: 8px; }
+.g-row { display: grid; grid-template-columns: 11rem minmax(0, 1fr) 4rem; gap: 10px; align-items: center; }
+.g-name { font-weight: 700; font-size: .95rem; }
+.g-bar { height: 16px; position: relative; }
+.g-fill { position: absolute; inset: 0 auto 0 0; background: var(--color-data-centres); border-radius: var(--rounded-sm); }
+.g-fill.ai { background: var(--color-ai); }
+.g-v { text-align: right; font-weight: 600; }
+@media (max-width: 420px) { .g-row { grid-template-columns: 7.5rem minmax(0, 1fr) 3.5rem; } .g-name { font-size: .85rem; } }
+
+/* What it does to the world: ruled rows with a badge column (DESIGN.md: not a card grid) */
+.impacts { display: grid; margin-top: var(--space-md); }
+.imp { display: grid; grid-template-columns: 7rem minmax(0, 1fr); gap: 18px; padding: var(--space-md) 0; border-bottom: 1px solid var(--color-rule); align-items: start; }
+.imp h3 { margin: 0 0 4px; }
+.imp p { margin: 0; color: var(--color-text-muted); font-size: .95rem; }
+.imp .figure { color: var(--color-data-centres); font-size: 1.25rem; font-weight: 600; margin-bottom: 4px; }
+.badge { font: 600 .72rem/1 var(--num); letter-spacing: .08em; padding: 6px 8px; border-radius: var(--rounded-sm); justify-self: start; }
+.badge.m { background: var(--color-data-centres); color: var(--color-night); }
+.badge.e { border: 1.5px solid var(--color-text-muted); color: var(--color-text-muted); }
+@media (max-width: 420px) { .imp { grid-template-columns: 1fr; gap: 8px; } }

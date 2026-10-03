@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { buildConstants, buildCountries, buildHubs, buildSeries, canonical, DataValidationError } from './build';
 import { readSource } from '../../src/footprint/testing';
+import { VALUE_KEYS } from '../../src/footprint/types';
 
 const clone = <T>(x: T): T => structuredClone(x);
 const src = () => clone(readSource()) as any;
@@ -55,7 +56,7 @@ describe('buildConstants: versioning and the change log', () => {
   it('first build is v1 and logs every value as new', () => {
     const { constants, changelog } = buildConstants(src(), null, '2026-10-02');
     expect(constants.constantsVersion).toBe(1);
-    expect(changelog?.changes).toHaveLength(9);
+    expect(changelog?.changes).toHaveLength(VALUE_KEYS.length);
     expect(changelog?.changes.every((x) => x.from === null)).toBe(true);
   });
 

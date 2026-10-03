@@ -1,6 +1,6 @@
 {
-  "constantsVersion": 5,
-  "contentHash": "1b833538706b06bd",
+  "constantsVersion": 7,
+  "contentHash": "2581ef1d86a3d492",
   "builtAt": "2026-10-03",
   "values": {
     "textPromptWh": {
@@ -209,7 +209,7 @@
       ]
     },
     "aiShareOfDataCentres": {
-      "label": "AI's share of data-centre electricity (for the Earth ticker)",
+      "label": "AI's share of data-centre electricity (United States, 2024)",
       "unit": "share",
       "low": 0.265,
       "mid": 0.32,
@@ -222,6 +222,23 @@
           "supports": "low,mid,high",
           "checked": "page",
           "note": "US 2024 share, used as our estimate for the world (no quotable global figure exists; the IEA shows one only in a chart). The world share is probably lower. Mid is the middle of the range."
+        }
+      ]
+    },
+    "aiFocusedGrowth2025": {
+      "label": "Growth in 2025 of electricity used by AI-focused data centres",
+      "unit": "share",
+      "low": 0.5,
+      "mid": 0.5,
+      "high": 0.5,
+      "sources": [
+        {
+          "label": "IEA, Key Questions on Energy and AI (2026): \"Electricity consumption from AI-focused data centres grew even faster, surging 50% in 2025.\"",
+          "url": "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary",
+          "retrieved": "2026-10-03",
+          "supports": "low,mid,high",
+          "checked": "page",
+          "note": "single published estimate"
         }
       ]
     }

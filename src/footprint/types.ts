@@ -37,6 +37,7 @@ export const VALUE_KEYS = [
   'dataCentreTWhPerYear',
   'worldPopulation',
   'aiShareOfDataCentres',
+  'aiFocusedGrowth2025',
 ] as const;
 export type ValueKey = (typeof VALUE_KEYS)[number];
 
