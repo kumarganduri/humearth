@@ -13,7 +13,7 @@ export default defineConfig({
   use: {
     baseURL: 'http://127.0.0.1:4191',
     viewport: { width: 1200, height: 860 },
-    launchOptions: { args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] },
+    launchOptions: { args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist', '--mute-audio'] },
     trace: 'retain-on-failure',
   },
   webServer: {
