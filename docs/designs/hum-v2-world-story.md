@@ -160,3 +160,12 @@ After seeing the stage 1a page on the preview, the founder said: "it's an articl
 - **`/live`: a live meter** counting since you opened the page, or since midnight UTC.
 - **`/2030`: you run it.** Choose the grid mix and efficiency; see 2030 CO2, electricity and water against today.
 Same honesty rules as before. New figures needed: grid intensities for China, India and the US (Ember 2024) and the IEA High Efficiency case (2035). This supersedes stage 2's "3D night Earth beside the race": the Earth comes first, as a 2D orthographic canvas globe (d3-geo), so three.js stays out.
+
+### Built 2026-10-03 (hum-v2, not yet live)
+- [x] **E1** Data: grids (Ember 2024), IEA High Efficiency 2035 (970 TWh), Olympic pool, world map; `src/footprint/rates.ts` (per second, per request, `simulate2030`).
+- [x] **E2** Earth home: d3-geo canvas globe, lazy-loaded (10.5 KB gz); passed list prebuilt (works without JS, carries the expected years); race follows the same year.
+- [x] **E3** `/question`: the trip, with meters filling where each cost is paid; typed text never leaves the page.
+- [x] **E4** `/live`: counters since opening or local midnight (changed from UTC: the visitor's own day reads better); pool fills; labelled as a model of yearly totals.
+- [x] **E5** `/2030`: starts at 100% world-average grid (the prototype's starting mix was invented); one-grid-at-a-time table; both comparisons use 2024, the latest published CO2 year.
+- [x] **E6 (code)** Shared nav, CSP/axe/44px/320px sweeps on all five pages, Lighthouse mobile perf 100 everywhere. Codex reviewed each step; its findings were fixed.
+- [ ] **E6 (ship)** Preview deploy to `hum-v2`, founder phone QA, then merge to main (founder's go-ahead only).
