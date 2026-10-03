@@ -172,7 +172,36 @@ async function main() {
       effects(prev, state);
       render(state);
     }
+    syncHistory();
   }
+
+  // Phone/browser Back (ISSUE-006): while away from Earth we keep one extra history entry, so Back
+  // steps back inside Hum (HISTORY_BACK) instead of leaving the site. Back on Earth, the entry is
+  // removed again, so the next Back leaves the site as expected.
+  let awayEntry = false;
+  let ignoreNextPop = false;
+  function syncHistory() {
+    const away = state.place !== 'earth';
+    if (away && !awayEntry) {
+      history.pushState({ hum: 'away' }, '');
+      awayEntry = true;
+    } else if (!away && awayEntry) {
+      awayEntry = false;
+      ignoreNextPop = true;
+      history.back();
+    }
+  }
+  addEventListener('popstate', () => {
+    if (ignoreNextPop) {
+      ignoreNextPop = false;
+      // Stepping back restored the earlier address; a friend's link must not come back once my world is shown.
+      if (state.viewing?.owner === 'me' && location.hash) history.replaceState(null, '', location.pathname);
+      return;
+    }
+    if (!awayEntry) return;
+    awayEntry = false;
+    dispatch({ type: 'HISTORY_BACK' }); // still away (quiz question 2, mid-dive)? syncHistory adds the entry back
+  });
 
   /** Side effects of a state change. Kept small and explicit. */
   function effects(prev: AppState, next: AppState) {

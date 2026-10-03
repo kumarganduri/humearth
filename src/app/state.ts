@@ -36,6 +36,8 @@ export type AppEvent =
   | { type: 'MAKE'; newSeed: number }
   | { type: 'ANSWER'; value: number }
   | { type: 'QUIZ_BACK' }
+  /** The phone's or browser's Back button (ISSUE-006). */
+  | { type: 'HISTORY_BACK' }
   | { type: 'VISIT' }
   | { type: 'LANDED' }
   | { type: 'BACK' }
@@ -132,6 +134,12 @@ export function reduce(s: AppState, e: AppEvent): AppState {
     case 'QUIZ_BACK':
       if (s.place !== 'quiz' || !s.quiz) return s;
       return s.quiz.step === 0 ? { ...s, place: 'earth', quiz: null } : { ...s, quiz: { ...s.quiz, step: s.quiz.step - 1 } };
+    case 'HISTORY_BACK':
+      // Back steps back inside Hum: the previous question, or home to Earth from a world.
+      // Mid-dive or mid-return it does nothing (the flight is about 3 seconds).
+      if (s.place === 'quiz') return reduce(s, { type: 'QUIZ_BACK' });
+      if (s.place === 'world') return reduce(s, { type: 'BACK' });
+      return s;
     case 'VISIT':
       return s.place === 'earth' && s.viewing ? { ...s, place: 'diving', notice: null } : s;
     case 'LANDED':
