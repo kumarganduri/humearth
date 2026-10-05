@@ -48,6 +48,7 @@ jobs:
         if: failure()
         with:
           name: test-reports
+          include-hidden-files: true # .lighthouseci/ starts with a dot; v4 skips hidden files by default
           path: |
             playwright-report/
             test-results/

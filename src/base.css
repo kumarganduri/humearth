@@ -1,19 +1,15 @@
 /* Shared by every page: tokens, self-hosted fonts, reset, focus, nav (DESIGN.md v2 "Lights at Night"). */
 @import './tokens.css';
-@import '@fontsource/atkinson-hyperlegible-next/latin-400.css';
-@import '@fontsource/atkinson-hyperlegible-next/latin-700.css';
-@import '@fontsource/atkinson-hyperlegible-mono/latin-400.css';
-@import '@fontsource/atkinson-hyperlegible-mono/latin-600.css';
 
-/* Headline face, self-hosted from /public/fonts (OFL, see instrument-serif-OFL.txt) and preloaded in
-   index.html. The fallback is Georgia resized to the same width, so the swap doesn't move lines (D10). */
-@font-face {
-  font-family: 'Instrument Serif';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(/fonts/instrument-serif-latin-400-normal.woff2) format('woff2');
-}
+/* Every face is self-hosted from /public/fonts (OFL, see the *-OFL.txt files) and preloaded in each page's
+   <head>. font-display: optional means a face is used only if it is ready by the first paint and never swapped
+   in later, so fonts can't move the layout (CI's Linux fallbacks are much wider than a Mac's: swapping there
+   gave CLS 0.25-0.53). On a slow first visit the fallback stays for that page view; the next one has the font. */
+@font-face { font-family: 'Instrument Serif'; font-style: normal; font-weight: 400; font-display: optional; src: url(/fonts/instrument-serif-latin-400-normal.woff2) format('woff2'); }
+@font-face { font-family: 'Atkinson Hyperlegible Next'; font-style: normal; font-weight: 400; font-display: optional; src: url(/fonts/atkinson-hyperlegible-next-latin-400-normal.woff2) format('woff2'); }
+@font-face { font-family: 'Atkinson Hyperlegible Next'; font-style: normal; font-weight: 700; font-display: optional; src: url(/fonts/atkinson-hyperlegible-next-latin-700-normal.woff2) format('woff2'); }
+@font-face { font-family: 'Atkinson Hyperlegible Mono'; font-style: normal; font-weight: 400; font-display: optional; src: url(/fonts/atkinson-hyperlegible-mono-latin-400-normal.woff2) format('woff2'); }
+@font-face { font-family: 'Atkinson Hyperlegible Mono'; font-style: normal; font-weight: 600; font-display: optional; src: url(/fonts/atkinson-hyperlegible-mono-latin-600-normal.woff2) format('woff2'); }
 @font-face {
   font-family: 'Instrument Serif Fallback';
   src: local('Georgia'), local('Times New Roman');

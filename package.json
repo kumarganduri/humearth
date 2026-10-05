@@ -19,8 +19,6 @@
     "check:countries": "tsx scripts/check-countries.ts"
   },
   "dependencies": {
-    "@fontsource/atkinson-hyperlegible-mono": "^5.3.0",
-    "@fontsource/atkinson-hyperlegible-next": "^5.3.0",
     "d3-geo": "^3.1.1"
   },
   "devDependencies": {
