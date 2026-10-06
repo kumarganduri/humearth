@@ -19,7 +19,7 @@ npm run dev         # http://localhost:5173
 
 ## Deploy
 
-CI deploys `main` to Cloudflare Pages (project `humearth`) once the repo has two secrets: `CLOUDFLARE_API_TOKEN` (a token with *Cloudflare Pages: Edit*) and `CLOUDFLARE_ACCOUNT_ID`. `public/_headers` sets a strict Content-Security-Policy: nothing loads from anyone else's servers.
+CI deploys `main` to Cloudflare Pages (project `humearth`) once the repo has two secrets: `CLOUDFLARE_API_TOKEN` (a token with *Cloudflare Pages: Edit*) and `CLOUDFLARE_ACCOUNT_ID`. `public/_headers` sets a strict Content-Security-Policy: nothing loads from anyone else's servers except Cloudflare Web Analytics (cookieless visit counts, real site only; token in `src/analytics.ts`).
 
 ## How the numbers work
 

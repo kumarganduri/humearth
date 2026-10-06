@@ -2,6 +2,7 @@
 // The per-second figures and their ranges are prebuilt in the page; this only animates them.
 //
 //   every ~100 ms while visible: seconds since {open | midnight} -> totals -> counters, pool level, pools filled
+import './analytics'; // visitor counts, real site only
 import './base.css';
 import './live.css';
 import { cleanUpV1 } from './legacy';

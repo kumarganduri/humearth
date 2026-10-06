@@ -9,6 +9,7 @@
 //                └──fail──► keep the prebuilt page, slider stays disabled,      ├ race rows (keyed: bars grow,
 //                           show "couldn't load" note                           │  rows slide to their new place)
 //                                                                               └ aria-valuetext ("2030: about 950 …")
+import './analytics'; // visitor counts, real site only
 import './base.css';
 import './home.css';
 import './hero.generated.css'; // the prebuilt hero's styles (moved out of style="" for the CSP)

@@ -1,6 +1,7 @@
 // /2030: every slider re-runs the same model the page was prebuilt with (rates.ts simulate2030).
 //
 //   grid sliders + efficiency ──input──► simulate2030 ──► stack (shares), gauges, verdict (polite live region)
+import './analytics'; // visitor counts, real site only
 import './base.css';
 import './sim.css';
 import './sim.generated.css'; // the prebuilt starting point's widths (moved out of style="" for the CSP)

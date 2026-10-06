@@ -96,7 +96,8 @@ export function renderPrivacy(): string {
   return `
 <h2 id="privacy">Your privacy</h2>
 <ul>
-  <li>No accounts, no cookies, no tracking scripts, and nothing loaded from other companies' servers.</li>
+  <li>No accounts, no cookies, no ads, and no tracking across sites.</li>
+  <li>We count visits with Cloudflare Web Analytics, run by Cloudflare, which already hosts this site. It sets no cookies and doesn't fingerprint you; it records the page, where you came from, your country and your kind of device, and only as totals. It is the one thing that loads from outside this site.</li>
   <li>The calculator runs in your browser. We never see what you enter.</li>
   <li>Hum's first version saved a "world" on your device; the current site removes it the next time you visit.</li>
 </ul>`;

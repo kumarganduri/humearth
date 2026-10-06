@@ -6,6 +6,7 @@
 //            └ end: ranges under each meter + "AI around the world, every second" sentence
 //
 // Nothing typed ever leaves the page: there is no request, and the CSP (form-action 'none') forbids one.
+import './analytics'; // visitor counts, real site only
 import './base.css';
 import './question.css';
 import { cleanUpV1 } from './legacy';

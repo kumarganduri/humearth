@@ -25,16 +25,24 @@ test('the globe draws: a sized canvas with lit pixels in the amber of the data-c
   const box = (await page.locator('#globe canvas').boundingBox())!;
   expect(box.width).toBeGreaterThan(250);
   expect(box.height).toBeGreaterThan(250);
+  // Sample a 96x96 copy, not the full canvas (millions of pixels at phone DPR): reading the whole buffer on
+  // every poll starved CI's software renderer, timing this test out and stalling the browser for others.
   await expect
-    .poll(() =>
-      page.locator('#globe canvas').evaluate((c: HTMLCanvasElement) => {
-        const px = c.getContext('2d')!.getImageData(0, 0, c.width, c.height).data;
-        let amber = 0;
-        for (let i = 0; i < px.length; i += 16) if (px[i]! > 180 && px[i + 1]! > 100 && px[i + 1]! < 190 && px[i + 2]! < 90) amber++;
-        return amber;
-      }),
+    .poll(
+      () =>
+        page.locator('#globe canvas').evaluate((c: HTMLCanvasElement) => {
+          const small = document.createElement('canvas');
+          small.width = small.height = 96;
+          const ctx = small.getContext('2d')!;
+          ctx.drawImage(c, 0, 0, 96, 96);
+          const px = ctx.getImageData(0, 0, 96, 96).data;
+          let amber = 0;
+          for (let i = 0; i < px.length; i += 4) if (px[i]! > 160 && px[i + 1]! > 90 && px[i + 1]! < 200 && px[i + 2]! < 110) amber++;
+          return amber;
+        }),
+      { timeout: 20_000, intervals: [250, 500, 1000] },
     )
-    .toBeGreaterThan(50);
+    .toBeGreaterThan(8);
 });
 
 test('moving the year lights more countries, updates the list, the phone line and the race heading', async ({ page }) => {

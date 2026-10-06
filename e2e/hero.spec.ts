@@ -69,14 +69,12 @@ test('Play runs 2017 to 2035 and Pause stops it', async ({ page }) => {
   await expect(page.locator('#play')).toHaveText('Play 2017 to 2035');
 });
 
-test('reduced motion: Play jumps straight to 2035, no animation', async ({ browser }) => {
-  const ctx = await browser.newContext({ reducedMotion: 'reduce' });
-  const page = await ctx.newPage();
+test('reduced motion: Play jumps straight to 2035, no animation', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' }); // on the test's own page: no extra browser context
   await ready(page);
   await page.click('#play');
   await expect(page.locator('#year')).toHaveText('2035');
   await expect(page.locator('#play')).toHaveText('Play 2017 to 2035');
-  await ctx.close();
 });
 
 test('if the data fails to load, the prebuilt hero stays and the slider says why it is off', async ({ page }) => {
