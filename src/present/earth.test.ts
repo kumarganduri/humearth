@@ -50,7 +50,7 @@ describe('the words', () => {
     expect(html.match(/: passed<\/span>/g)).toHaveLength(n);
     expect(html.match(/: not (yet, expected around 20\d\d|expected by 2035)<\/span>/g)).toHaveLength(15 - n);
     expect(html).toContain('<span class="sr-only">: not expected by 2035</span>'); // India
-    expect(html).toMatch(/<li data-key="Japan"><span>Japan<\/span><span class="num">1,030 · ~20\d\d<\/span>/);
+    expect(html).toMatch(/<li data-key="Japan"><span>Japan<\/span><span class="num">1,027 · ~20\d\d<\/span>/);
     expect(html).toContain('<li data-key="France" class="on">');
   });
 

@@ -1,4 +1,6 @@
 import { expect, test } from '@playwright/test';
+import { geoOrthographic } from 'd3-geo';
+import { fitGlobe, START_ROTATION } from '../src/globe/earth';
 
 // The Earth home (stage 1a experiences, E2): the globe, the passed list and the race all follow one year.
 
@@ -59,19 +61,17 @@ test('moving the year lights more countries, updates the list, the phone line an
 });
 
 test('tapping a country explains it; dragging turns the globe and hides the note', async ({ page }) => {
+  // Reduced motion: the globe stays at its starting rotation, so we can compute exactly where Brazil is with
+  // the page's own projection and tap it (tapping fixed points on a spinning globe was luck: ocean or land).
+  await page.emulateMedia({ reducedMotion: 'reduce' });
   await ready(page);
   const canvas = page.locator('#globe canvas');
   const box = (await canvas.boundingBox())!;
-  // Tap points across the globe until one lands on a country (the globe turns, so don't hard-code one).
-  let shown = false;
-  for (let i = 0; i < 25 && !shown; i++) {
-    const a = (i / 25) * Math.PI * 2;
-    const r = Math.min(box.width, box.height) * 0.18 * ((i % 3) + 1) / 3;
-    await canvas.click({ position: { x: box.width * (page.viewportSize()!.width >= 860 ? 0.64 : 0.5) + Math.cos(a) * r, y: box.height / 2 + Math.sin(a) * r } });
-    shown = await page.locator('#tip').isVisible();
-  }
-  expect(shown).toBe(true);
-  await expect(page.locator('#tip')).toContainText(/(uses [\d,]+ TWh|not in Hum's comparison set)/);
+  const f = fitGlobe(box.width, box.height, page.viewportSize()!.width >= 860);
+  const brazil = geoOrthographic().clipAngle(90).scale(f.scale).translate([f.cx, f.cy]).rotate(START_ROTATION)([-51, -10])!;
+  await canvas.click({ position: { x: brazil[0], y: brazil[1] } });
+  await expect(page.locator('#tip')).toBeVisible();
+  await expect(page.locator('#tip')).toContainText(/^Brazil uses [\d,]+ TWh of electricity a year/);
   const cx = box.x + box.width / 2;
   const cy = box.y + box.height / 2;
   await page.mouse.move(cx, cy);

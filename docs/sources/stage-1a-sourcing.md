@@ -73,7 +73,7 @@ The 2025 report's 2035 base was 300 Mt; the 2026 update says ~350 Mt. Following 
 **The file:**
 - **URL:** https://files.ember-energy.org/public-downloads/generation/outputs/release_generation_yearly_global.csv
 - **Downloaded:** 2026-10-03, 16,084,305 bytes
-- **sha256:** `ea214963f4a98b26f52aaf541736d4310349a905e64f83e63425bfc3ab6255d7`
+- **sha256:** `ea214963f4a98b26f52aaf541736d4310349a905e64f83e63425bfc3ab6255d7` (superseded 2026-10-06, see the revision below)
 
 **Filter:** `Electricity source` = `Demand`, `Year` = 2025, `Area type` = "Country or economy". The value is in the column `Generation (TWh)`, which holds demand on Demand rows. Hum uses **demand**, not generation; for France, demand is 480.6 and generation is 574.4.
 
@@ -98,3 +98,7 @@ The 2025 report's 2035 base was 300 Mt; the 2026 update says ~350 Mt. Following 
 Spot-checked by script against the CSV: France, Germany, Japan, UK, Netherlands and India all match. 2025 figures may be preliminary for some countries; Ember revises twice a month, and CI's hash check will force an explicit update when the file changes.
 
 **What it means:** data centres at 485 TWh (2025) sit just above France (480.6) and below Germany (516.5). At the 2030 base of 950 TWh, they sit just below Japan (1,030).
+
+
+### Revision 2026-10-06: Ember re-published the yearly file
+CI's `source-data` job went red: the file's sha256 is now `b2ac49fa9b27035fedda3c6afb85917bf136de9253bfcbaf09c3410904ec7cd1`, still with 2025 as the latest demand year. Every 2025 row was re-read with the same filter and `countries.source.json` updated (`npm run check:countries` passes against the new file). Changes: Mexico 356.66 to 389.731, Brazil 763.776 to 775.261, Canada 645.63 to 653.56, Japan 1029.97 to 1027.353, South Korea 624.671 to 627.835, Australia 286.76 to 285.922, Sweden 136.763 to 136.471, Russia 1177.295 to 1177.743; France, Italy, United Kingdom and Spain moved by less than 0.2; India, Germany and Netherlands unchanged.

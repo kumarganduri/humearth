@@ -38,7 +38,7 @@ describe('renderHero: the first screen, prebuilt from the shipped data', () => {
 
 describe('sentences come from the data, never typed-in numbers', () => {
   it('lede: passed France, near Japan by 2030', () => {
-    expect(ledeFor(data())).toBe("In 2025 they used about 485 TWh, more than France uses in a year. The IEA expects about 950 TWh by 2030, close to Japan's 1,030.");
+    expect(ledeFor(data())).toBe("In 2025 they used about 485 TWh, more than France uses in a year. The IEA expects about 950 TWh by 2030, close to Japan's 1,027.");
   });
   it('future sentence and growth words', () => {
     expect(futureSentence(data().series.metrics.electricity)).toBe(

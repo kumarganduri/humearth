@@ -45,7 +45,12 @@ export const hubRadius = (mw: number, maxMw: number) => 2 + 9 * Math.sqrt(Math.m
 export const flashAt = (since: number | undefined, now: number) => (since === undefined ? 0 : Math.max(0, 1 - (now - since) / 900));
 
 const FLASH_MS = 900;
+/** The globe opens over the Atlantic: the Americas and Europe, where most compared countries and hubs are. */
+export const START_ROTATION: [number, number, number] = [40, -28, 0];
 const SPIN_DEG_PER_MS = 0.004;
+/** Auto-spin redraws at most ~30 times a second (drags and flashes still draw every frame): half the work,
+ *  kinder to phone batteries, and it stopped CI's software renderer from starving the browser. */
+const SPIN_FRAME_MS = 33;
 
 function token(name: string, fallback: string) {
   return getComputedStyle(document.documentElement).getPropertyValue(name).trim() || fallback;
@@ -74,7 +79,7 @@ export function createGlobe(o: GlobeOptions): Globe {
   const graticule = geoGraticule10();
   const maxMw = Math.max(...o.hubs.map((h) => h.mw.mid));
   // Start over the Atlantic: the Americas and Europe, where most of the compared countries and hubs are.
-  const rot: [number, number, number] = [40, -28, 0];
+  const rot: [number, number, number] = [...START_ROTATION];
   let w = 0;
   let h = 0;
   let lit = new Set<string>();
@@ -84,6 +89,8 @@ export function createGlobe(o: GlobeOptions): Globe {
   let raf = 0;
   let last = 0;
   let dirty = true;
+  let spun = false;
+  let lastDraw = 0;
 
   const size = () => {
     const r = o.host.getBoundingClientRect();
@@ -160,9 +167,13 @@ export function createGlobe(o: GlobeOptions): Globe {
     if (!visible) return;
     if (spinning) {
       rot[0] = (rot[0] + dt * SPIN_DEG_PER_MS) % 360;
-      dirty = true;
+      spun = true;
     }
-    if (dirty) draw(now);
+    if (dirty || (spun && now - lastDraw >= SPIN_FRAME_MS)) {
+      draw(now);
+      lastDraw = now;
+      spun = false;
+    }
   };
 
   // Drag to turn. Pointer events cover mouse, pen and touch; touch-action: pan-y in CSS keeps vertical
