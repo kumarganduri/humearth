@@ -6,7 +6,7 @@
 //   humearth.org / www  ──►  <script defer src=static.cloudflareinsights.com/beacon.min.js data-cf-beacon>
 //   anything else       ──►  nothing
 
-export const CF_ANALYTICS_TOKEN = '';
+export const CF_ANALYTICS_TOKEN = 'e57c910a04784d82a8a18c6bcd95e3e6';
 export const COUNTED_HOSTS = ['humearth.org', 'www.humearth.org'];
 export const BEACON_SRC = 'https://static.cloudflareinsights.com/beacon.min.js';
 
