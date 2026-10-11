@@ -47,5 +47,5 @@
 .per-req thead th { font: 400 .8rem var(--body); color: var(--color-text-muted); }
 .per-req .rng { display: block; font-size: .78rem; color: var(--color-text-muted); white-space: nowrap; }
 .table-scroll { overflow-x: auto; }
-@media (max-width: 560px) { .per-req { font-size: .85rem; } .per-req .rng { font-size: .66rem; } .per-req th, .per-req td { padding-right: 6px; } }
+@media (max-width: 560px) { .per-req { font-size: .85rem; } .per-req .rng { font-size: .75rem; white-space: normal; } .per-req th, .per-req td { padding-right: 6px; } }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }

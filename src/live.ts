@@ -27,13 +27,13 @@ function start(c: Constants, s: SeriesFile) {
   const rates = aiRates(s, c);
   const poolL = c.values.olympicPoolLitres.mid;
   let since: Since = 'open';
-  const buttons = [...document.querySelectorAll<HTMLButtonElement>('#since .kind')];
+  const buttons = [...document.querySelectorAll<HTMLButtonElement>('#since [data-since]')];
   for (const b of buttons) {
     b.addEventListener('click', () => {
       since = b.dataset.since as Since;
       for (const x of buttons) x.setAttribute('aria-pressed', String(x === b));
       $('l-title').textContent = since === 'open' ? 'Since you opened this page' : 'Since midnight today';
-      tick();
+      tick(); // shows the new total even while paused
     });
   }
 
@@ -50,15 +50,27 @@ function start(c: Constants, s: SeriesFile) {
   };
 
   let timer: number | undefined;
+  // Paused by the visitor (the pause control moving content needs, WCAG 2.2.2) or by a hidden tab.
+  let held = false;
   const run = () => {
-    if (timer === undefined && !document.hidden) timer = window.setInterval(tick, TICK_MS);
+    if (timer === undefined && !document.hidden && !held) timer = window.setInterval(tick, TICK_MS);
   };
   const pause = () => {
     clearInterval(timer);
     timer = undefined;
   };
   document.addEventListener('visibilitychange', () => (document.hidden ? pause() : (tick(), run())));
-
+  const hold = document.getElementById('l-hold') as HTMLButtonElement;
+  hold.addEventListener('click', () => {
+    held = !held;
+    hold.setAttribute('aria-pressed', String(held));
+    hold.textContent = held ? 'Resume counting' : 'Pause counting';
+    if (held) pause();
+    else {
+      tick();
+      run();
+    }
+  });
   tick();
   run();
 }

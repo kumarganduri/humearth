@@ -13,6 +13,12 @@
 .globe { position: relative; aspect-ratio: 1 / 1; width: 100%; max-height: 72svh; margin-inline: auto; }
 .globe-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; cursor: grab; touch-action: pan-y; }
 .globe-canvas:active { cursor: grabbing; }
+.globe-ctrls { position: absolute; z-index: 2; right: 0; top: 0; display: flex; gap: 6px; }
+.globe-ctrls[hidden] { display: none; }
+.icon-btn { appearance: none; width: 44px; height: 44px; display: inline-grid; place-items: center; padding: 0; cursor: pointer; border-radius: var(--rounded-full); border: 1px solid var(--color-rule); background: color-mix(in srgb, var(--color-night) 70%, transparent); color: var(--color-text-muted); transition: color .15s, border-color .15s; }
+.icon-btn:hover { color: var(--color-data-centres); border-color: var(--color-data-centres); }
+.icon-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.icon-btn svg path[d^="M8 5"] { fill: currentColor; stroke: none; }
 .tip { position: absolute; z-index: 2; pointer-events: none; background: var(--color-surface); border: 1px solid var(--color-rule); border-radius: var(--rounded-md); padding: 8px 10px; font-size: .85rem; max-width: 250px; line-height: 1.35; }
 .passed-short { margin: 0; color: var(--color-data-centres); font-size: .95rem; }
 .passed h2 { font: 700 .8rem/1 var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--color-text-muted); margin: 0 0 var(--space-sm); }

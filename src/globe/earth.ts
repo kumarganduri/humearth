@@ -21,11 +21,17 @@ export interface GlobeOptions {
   tracked: Set<string>;
   reduceMotion: boolean;
   onPick: (name: string | null, at: { x: number; y: number }) => void;
+  /** Called when turning starts or stops (including when a drag stops it), so controls stay in sync. */
+  onSpinChange?: (spinning: boolean) => void;
 }
 
 export interface Globe {
   /** Light exactly these countries; newly lit ones flash. */
   setLit(names: Set<string>): void;
+  /** Start or stop the slow turn (the pause control moving content needs: WCAG 2.2.2). */
+  setSpinning(on: boolean): void;
+  /** Turn by this many degrees of longitude: the non-drag way to turn it (WCAG 2.5.7). */
+  turn(deg: number): void;
   destroy(): void;
 }
 
@@ -191,6 +197,7 @@ export function createGlobe(o: GlobeOptions): Globe {
     if (!drag.moved) {
       drag.moved = true;
       spinning = false;
+      o.onSpinChange?.(false);
       o.onPick(null, { x: 0, y: 0 });
     }
     rot[0] += dx * 0.35;
@@ -229,6 +236,15 @@ export function createGlobe(o: GlobeOptions): Globe {
   });
 
   return {
+    setSpinning(on) {
+      spinning = on;
+      o.onSpinChange?.(on);
+    },
+    turn(deg) {
+      rot[0] = (rot[0] + deg) % 360;
+      o.onPick(null, { x: 0, y: 0 });
+      dirty = true;
+    },
     setLit(names) {
       const now = performance.now();
       for (const n of names) if (!lit.has(n)) flash.set(n, now);

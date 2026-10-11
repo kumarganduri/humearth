@@ -119,7 +119,7 @@ export function renderHero(d: HeroData): string {
   const share = `${formatNumber(aiShareOf(d).low * 100)}–${formatNumber(aiShareOf(d).high * 100)}%`;
   const fan = fanSvg(m, { unit: 'TWh', title: "Data-centre electricity, measured and forecast", references: pick(d.countries.countries, FAN_COUNTRIES) });
   return `<section class="earth" aria-labelledby="headline">
-  <div class="globe" id="globe"><div class="tip" id="tip" role="status" hidden></div></div>
+  <div class="globe" id="globe"><div class="tip" id="tip" role="status" hidden></div><div class="globe-ctrls" id="globe-ctrls" role="group" aria-label="Turn the globe" hidden><button type="button" class="icon-btn" id="globe-west" aria-label="Turn west"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 6l-6 6 6 6"/></svg></button><button type="button" class="icon-btn" id="globe-spin" aria-label="Stop turning"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 6v12M15 6v12"/></svg></button><button type="button" class="icon-btn" id="globe-east" aria-label="Turn east"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
   <div class="earth-text">
     <h1 id="headline">The world's <span class="dc">data centres</span> already use as much electricity as a country. <span class="ai">AI</span> is the <span class="nowrap">fastest-growing</span> part.</h1>
     <div id="reading">${readingFor(d, latest)}</div>

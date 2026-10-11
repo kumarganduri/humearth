@@ -82,9 +82,12 @@ export function livePageHtml(c: Constants, s: SeriesFile, hubs: Hub[]): string {
     `<div class="count ${k}"><div class="k">${name}</div><div class="v"><span class="num" id="l-${k}">0</span> <small id="l-${k}u">${k === 'e' ? 'kWh' : 'kg'}</small></div></div>`;
   return `<section class="live-head" aria-labelledby="l-h">
   <h1 id="l-h"><span id="l-title">Since you opened this page</span>, AI around the world has used:</h1>
-  <div class="since js-only" role="group" aria-label="Count from" id="since">
-    <button type="button" class="kind" data-since="open" aria-pressed="true">Since you opened it</button>
-    <button type="button" class="kind" data-since="midnight" aria-pressed="false">Since midnight</button>
+  <div class="since js-only" id="since">
+    <div class="since-from" role="group" aria-label="Count from">
+      <button type="button" class="kind" data-since="open" aria-pressed="true">Since you opened it</button>
+      <button type="button" class="kind" data-since="midnight" aria-pressed="false">Since midnight</button>
+    </div>
+    <button type="button" class="kind hold" id="l-hold" aria-pressed="false">Pause counting</button>
   </div>
 </section>
 <div class="live-board js-only" id="board">

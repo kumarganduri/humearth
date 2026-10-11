@@ -89,3 +89,40 @@ test('if the map fails to load, the page still works without the globe', async (
   await expect(page.locator('#side-year')).toHaveText('2030');
   await expect(page.locator('#globe canvas')).toHaveCount(0);
 });
+
+test('the globe can be stopped and turned without dragging (WCAG 2.2.2, 2.5.7)', async ({ page }) => {
+  await ready(page);
+  const spin = page.locator('#globe-spin');
+  await expect(spin).toHaveAttribute('aria-label', 'Stop turning');
+  await spin.click();
+  await expect(spin).toHaveAttribute('aria-label', 'Start turning');
+  const snap = () =>
+    page.locator('#globe canvas').evaluate((c: HTMLCanvasElement) => {
+      const d = c.getContext('2d')!.getImageData(0, 0, c.width, c.height).data;
+      let h = 0;
+      for (let i = 0; i < d.length; i += 97) h = (h * 31 + d[i]!) | 0;
+      return h;
+    });
+  // Wait out the 'just passed' flash (frames can arrive late under test load): two equal frames in a row...
+  let a = await snap();
+  await expect
+    .poll(async () => {
+      const b = await snap();
+      const same = b === a;
+      a = b;
+      return same;
+    }, { timeout: 10_000, intervals: [300] })
+    .toBe(true);
+  await page.waitForTimeout(800);
+  expect(await snap()).toBe(a); // ...then stopped means stopped
+  await page.locator('#globe-east').click();
+  await expect.poll(snap).not.toBe(a); // the button turned it
+  await page.keyboard.press('Shift+Tab'); // keyboard reachable: focus moves back to the pause button
+  await expect(spin).toBeFocused();
+});
+
+test('reduced motion: the globe starts still, and the button offers to start it', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await ready(page);
+  await expect(page.locator('#globe-spin')).toHaveAttribute('aria-label', 'Start turning');
+});

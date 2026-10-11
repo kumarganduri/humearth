@@ -115,6 +115,7 @@ async function startGlobe(d: HeroData, year: () => number) {
     hubs: hubs.hubs,
     tracked: new Set(d.countries.countries.map((c) => c.name)),
     reduceMotion: reduceMotion(),
+    onSpinChange: (on) => onSpinChange?.(on),
     onPick(name, at) {
       if (!name) return void (tip.hidden = true);
       tip.innerHTML = countryNote(d, name);
@@ -125,7 +126,30 @@ async function startGlobe(d: HeroData, year: () => number) {
     },
   });
   globe.setLit(litIn(d, year()));
+  startGlobeControls(globe);
 }
+
+const PAUSE_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 6v12M15 6v12"/></svg>';
+const PLAY_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5l11 7-11 7z"/></svg>';
+const TURN_DEG = 30;
+
+/** Pause / start the slow turn, and turn by buttons: the globe can be stopped and turned without dragging. */
+function startGlobeControls(g: Globe) {
+  const spin = $<HTMLButtonElement>('globe-spin');
+  let spinning = !reduceMotion();
+  const show = (on: boolean) => {
+    spinning = on;
+    spin.innerHTML = on ? PAUSE_ICON : PLAY_ICON;
+    spin.setAttribute('aria-label', on ? 'Stop turning' : 'Start turning');
+  };
+  show(spinning);
+  spin.addEventListener('click', () => g.setSpinning(!spinning));
+  $('globe-west').addEventListener('click', () => g.turn(TURN_DEG));
+  $('globe-east').addEventListener('click', () => g.turn(-TURN_DEG));
+  onSpinChange = show;
+  $('globe-ctrls').hidden = false;
+}
+let onSpinChange: ((on: boolean) => void) | undefined;
 
 function start(d: HeroData) {
   const m = d.series.metrics.electricity;

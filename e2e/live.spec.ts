@@ -51,3 +51,16 @@ for (const width of [320, 390]) {
     expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBeLessThanOrEqual(0);
   });
 }
+
+test('counting can be paused and resumed (WCAG 2.2.2)', async ({ page }) => {
+  await page.goto('/live');
+  await expect(page.locator('#board')).toBeVisible();
+  await page.click('#l-hold');
+  await expect(page.locator('#l-hold')).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('#l-hold')).toHaveText('Resume counting');
+  const frozen = await page.locator('#l-w').textContent();
+  await page.waitForTimeout(800);
+  await expect(page.locator('#l-w')).toHaveText(frozen!);
+  await page.click('#l-hold');
+  await expect(page.locator('#l-w')).not.toHaveText(frozen!);
+});
