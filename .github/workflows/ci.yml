@@ -92,6 +92,10 @@ jobs:
       - name: Skip until Cloudflare secrets are set
         if: env.CLOUDFLARE_API_TOKEN == '' || env.CLOUDFLARE_ACCOUNT_ID == ''
         run: echo "::notice::Deploy skipped - add CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID repo secrets to deploy."
+      # functions/ (the /2030 link-preview function) and the src/ + data it imports come from the repo;
+      # the built site comes from the test job's artifact.
+      - uses: actions/checkout@v4
+        if: env.CLOUDFLARE_API_TOKEN != '' && env.CLOUDFLARE_ACCOUNT_ID != ''
       - uses: actions/download-artifact@v4
         if: env.CLOUDFLARE_API_TOKEN != '' && env.CLOUDFLARE_ACCOUNT_ID != ''
         with:

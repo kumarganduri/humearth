@@ -17,7 +17,7 @@ export default defineConfig({
     trace: 'retain-on-failure',
   },
   webServer: {
-    command: 'npx vite build && npx vite preview --host 127.0.0.1 --port 4191 --strictPort',
+    command: 'npx vite build && npm run build:og && npx vite preview --host 127.0.0.1 --port 4191 --strictPort', // og: link-preview cards
     url: 'http://127.0.0.1:4191', // Hum's own port: another local project uses vite's default 4173
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,

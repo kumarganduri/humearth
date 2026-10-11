@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build": "npm run build:tokens -- --check && npm run build:data && tsc --noEmit && vite build",
+    "build": "npm run build:tokens -- --check && npm run build:data && tsc --noEmit && vite build && npm run build:og",
     "build:data": "tsx scripts/build-data.ts",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
@@ -16,7 +16,8 @@
     "check:budget": "tsx scripts/check-budget.ts",
     "test:e2e": "playwright test",
     "checklist": "tsx scripts/source-checklist.ts",
-    "check:countries": "tsx scripts/check-countries.ts"
+    "check:countries": "tsx scripts/check-countries.ts",
+    "build:og": "tsx scripts/build-og.ts"
   },
   "dependencies": {
     "d3-geo": "^3.1.1"
@@ -24,6 +25,7 @@
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",
     "@playwright/test": "^1.63.0",
+    "@resvg/resvg-js": "^2.6.2",
     "@types/d3-geo": "^3.1.1",
     "@types/geojson": "^7946.0.16",
     "@types/node": "^26.6.3",
@@ -34,6 +36,7 @@
     "typescript": "^7.0.2",
     "vite": "^8.3.2",
     "vitest": "^5.0.3",
+    "wawoff2": "^2.0.1",
     "world-atlas": "^2.0.2",
     "yaml": "^2.9.1"
   }
