@@ -126,3 +126,10 @@ test('reduced motion: the globe starts still, and the button offers to start it'
   await ready(page);
   await expect(page.locator('#globe-spin')).toHaveAttribute('aria-label', 'Start turning');
 });
+
+test('a "See the data" link under the globe takes you to the comparison below', async ({ page }) => {
+  await page.goto('/');
+  await page.click('.scroll-cue');
+  await expect(page).toHaveURL(/#heading-side$/);
+  await expect(page.locator('#heading-side')).toBeInViewport();
+});

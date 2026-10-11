@@ -129,7 +129,7 @@ components:
 - **Body: Atkinson Hyperlegible Next.** It is built for legibility, so a teenager on a 320px phone reads it easily, and it carries over from Hum v1. Size 17px with line height 1.6.
 - **Numbers: Atkinson Hyperlegible Mono** with tabular figures. Use it for every figure, axis tick, range, the slider year and the calculator outputs, so numbers line up and never jitter as the slider moves.
 - **Loading:** self-host all three with `@fontsource` (OFL-1.1, verified 2026-10-03) at the weights used: display 400, body 400/700, mono 400/600. Use `font-display: swap` with real fallbacks (Georgia; system sans; ui-monospace).
-- **Scale:** display about 41–66px, title about 30–42px, body 17px, small/label 13–15px, mono badge 11.5px with 0.08em tracking.
+- **Scale:** display about 41–66px, title about 30–42px, body 17px, small/label 13–15px, mono badge 12px with 0.08em tracking (12px is the floor for any text).
 
 ## Layout
 

@@ -10,11 +10,13 @@
 .live-board { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 32px; margin-top: var(--space-xl); align-items: end; }
 .pool-col { display: grid; gap: 14px; }
 .pool { position: relative; height: clamp(200px, 38vh, 380px); border: 2px solid var(--color-rule); border-top: 0; border-radius: 0 0 14px 14px; overflow: hidden; background: #070910; }
-.pool .water { position: absolute; left: 0; right: 0; bottom: 0; height: 0; background: linear-gradient(to top, #1f4c58, var(--water)); transition: height .1s linear; }
+.pool .water { position: absolute; inset: 0; background: linear-gradient(to top, #1f4c58, var(--water)); transform: scaleY(0); transform-origin: bottom; transition: transform .1s linear; } /* transform, not height: no layout work, no layout shift */
 .pool-label { position: absolute; left: 10px; top: 8px; font: .8rem var(--num); color: var(--color-text-muted); }
 .counts { display: grid; gap: 22px; }
 .count .k { font-size: .9rem; color: var(--color-text-muted); }
 .count .v { font: 600 clamp(2rem, 5vw, 3.4rem)/1.05 var(--num); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.count .v .num { display: inline-block; min-width: 7ch; } /* room for a full day's total from the first paint: units never slide */
+.count.w .v .num { min-width: 13ch; }
 .count .v small { font-size: .4em; color: var(--color-text-muted); font-weight: 400; }
 .count.e .v { color: var(--color-data-centres); }
 .count.w .v { color: var(--water); }

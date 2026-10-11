@@ -26,7 +26,7 @@ async function getJson<T>(name: string): Promise<T> {
 function start(c: Constants, s: SeriesFile) {
   const rates = aiRates(s, c);
   const poolL = c.values.olympicPoolLitres.mid;
-  let since: Since = 'open';
+  let since: Since = 'midnight'; // opens with today's totals: big numbers and a part-filled pool at once
   const buttons = [...document.querySelectorAll<HTMLButtonElement>('#since [data-since]')];
   for (const b of buttons) {
     b.addEventListener('click', () => {
@@ -46,7 +46,7 @@ function start(c: Constants, s: SeriesFile) {
     }
     const p = pools(t.litres, poolL);
     $('l-pools').textContent = poolsWords(p.full);
-    $('pool-fill').style.height = `${(p.frac * 100).toFixed(2)}%`; // CSSOM: allowed by the CSP
+    $('pool-fill').style.transform = `scaleY(${p.frac.toFixed(4)})`; // CSSOM: allowed by the CSP
   };
 
   let timer: number | undefined;

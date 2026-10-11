@@ -64,3 +64,13 @@ test('counting can be paused and resumed (WCAG 2.2.2)', async ({ page }) => {
   await page.click('#l-hold');
   await expect(page.locator('#l-w')).not.toHaveText(frozen!);
 });
+
+test('opens on today: since midnight is chosen and the counters start big', async ({ page }) => {
+  await page.clock.setFixedTime(new Date(2026, 9, 3, 9, 0, 0));
+  await page.goto('/live');
+  await expect(page.locator('[data-since="midnight"]')).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('h1')).toHaveText('Since midnight today, AI around the world has used:');
+  await expect(page.locator('#l-pools')).toHaveText(/^1\d\d Olympic pools filled$/); // 9 h of water
+  await page.click('[data-since="open"]');
+  await expect(page.locator('h1')).toHaveText('Since you opened this page, AI around the world has used:');
+});

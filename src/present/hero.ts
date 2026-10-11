@@ -136,6 +136,7 @@ export function renderHero(d: HeroData): string {
     <div id="passed">${passedListHtml(d, latest)}</div>
   </aside>
   <div class="earth-foot">
+    <a class="scroll-cue" href="#heading-side">See the data<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
     <p class="note" id="slider-note" hidden>The year slider couldn't load. The numbers above are for ${latest}.</p>
     ${noscriptTable(m)}
     <p class="src">A country lights up when data centres use more electricity in a year than it does (middle figure). Glows are the biggest data-centre hubs, sized by power capacity. Data centres: ${esc(SOURCE)}, Energy and AI (2025) and its 2026 update. Countries: Ember (${d.countries.year}). <a href="/how-we-know.html#growth">How we know</a></p>

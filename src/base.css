@@ -64,3 +64,5 @@ a { color: var(--color-data-centres); text-underline-offset: 3px; }
   .nav-links { gap: 14px; font-size: .88rem; flex-wrap: wrap; }
 }
 .navlink[aria-current="page"] { color: var(--color-data-centres); }
+/* In-page links glide to their section, unless the visitor prefers reduced motion. */
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
