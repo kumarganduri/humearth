@@ -13,6 +13,8 @@ import { cleanUpV1 } from './legacy';
 import { formatNumber } from './present/format';
 import { endSentence, figureOf, meterProgress, rangeLine, STATIONS, type Station } from './present/question';
 import { perRequest, type RequestKind } from './footprint/rates';
+import { kindSearch, readKind } from './present/links';
+import { replaceSearch } from './present/url';
 import type { Constants } from './footprint/types';
 import type { SeriesFile } from './footprint/series-types';
 
@@ -86,6 +88,7 @@ function start(c: Constants, s: SeriesFile) {
       }
       kind = b.dataset.kind as RequestKind;
       for (const x of kinds) x.setAttribute('aria-pressed', String(x === b));
+      replaceSearch(kindSearch(kind)); // ?kind=video: the link opens this choice
       reset();
     });
   }
@@ -133,6 +136,11 @@ function start(c: Constants, s: SeriesFile) {
     frame = requestAnimationFrame(step);
   });
 
+  const linked = readKind(location.search);
+  if (linked) {
+    kind = linked;
+    for (const x of kinds) x.setAttribute('aria-pressed', String(x.dataset.kind === linked));
+  }
   for (const el of [...kinds, send, $<HTMLInputElement>('q-text')]) el.disabled = false;
   reset();
 }

@@ -18,6 +18,8 @@ import { captionFor, rangeWords } from './present/format';
 import { raceFor, readingFor, UNIT_WORDS, yearOf, type HeroData } from './present/hero';
 import { calculatorOutputs, clampUsage, outputsHtml } from './present/calculator';
 import { applyStyleData, stylesToData } from './present/inline-styles';
+import { readYear, yearSearch } from './present/links';
+import { replaceSearch } from './present/url';
 import { countryNote, passedCount, passedFor, passedListHtml, passedShort } from './present/earth';
 import type { Constants, HubsFile } from './footprint/types';
 import type { Globe } from './globe/earth';
@@ -173,20 +175,24 @@ function start(d: HeroData) {
     updateRace(raceFor(d, year));
     globe?.setLit(litIn(d, year));
   };
+  // The year lives in the link (?year=2030), written when a choice settles: slider released, Play ended.
+  const syncUrl = () => replaceSearch(yearSearch(Number(slider.value), m.latestMeasuredYear));
   const stop = () => {
     if (timer !== undefined) clearInterval(timer);
     timer = undefined;
     play.textContent = playLabel;
     play.setAttribute('aria-pressed', 'false');
+    syncUrl();
   };
 
   slider.addEventListener('input', () => {
-    stop();
+    if (timer !== undefined) stop();
     setYear(Number(slider.value));
   });
+  slider.addEventListener('change', syncUrl);
   play.addEventListener('click', () => {
     if (timer !== undefined) return stop();
-    if (reduceMotion()) return setYear(last); // no animation: jump to the end
+    if (reduceMotion()) return (setYear(last), syncUrl()); // no animation: jump to the end
     let year = Number(slider.value) >= last ? first : Number(slider.value);
     setYear(year);
     play.textContent = 'Pause';
@@ -200,7 +206,7 @@ function start(d: HeroData) {
 
   slider.disabled = false;
   play.disabled = false;
-  setYear(m.latestMeasuredYear);
+  setYear(readYear(location.search, first, last) ?? m.latestMeasuredYear);
   startGlobe(d, () => Number(slider.value)).catch(() => {
     $('globe').classList.add('off'); // no empty placeholder: the passed list and race still tell the story
   });

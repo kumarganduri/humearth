@@ -12,7 +12,8 @@
 .mix input:disabled { opacity: .45; }
 .mix output { text-align: right; font-weight: 600; }
 .mix .eff { border-top: 1px solid var(--color-rule); padding-top: 12px; }
-.mix .btn { justify-self: start; }
+.sim-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.shared { margin: 0; min-height: 1.5em; font-size: .9rem; color: var(--color-text-muted); overflow-wrap: anywhere; }
 .stack { height: 28px; display: flex; border-radius: var(--rounded-md); overflow: hidden; border: 1px solid var(--color-rule); }
 .stack span { transition: width .2s; }
 .g-india { background: #8A5A3B; } .g-china { background: #A8704A; } .g-world { background: var(--color-country); } .g-us { background: #5F7DA3; } .g-clean { background: var(--color-success); }

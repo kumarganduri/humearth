@@ -35,6 +35,9 @@ export function verdict(r: SimResult, s: SeriesFile): string {
   return `Emissions ${formatNumber(d)} times ${b.year}'s. Where data centres plug in matters as much as how much they use.`;
 }
 
+/** The words that go with a shared link: your result, from the numbers. */
+export const shareText = (r: SimResult) => `My 2030 for the world's data centres: ${formatNumber(r.mtCO2)} million tonnes of CO2 a year. Try yours on Hum:`;
+
 export function outputsHtml(r: SimResult, grids: SimGrid[], co2Year: number): string {
   const max = gaugeMax(r, grids);
   const saved = r.baseTWh - r.twh;
@@ -73,7 +76,8 @@ export function simPageHtml(c: Constants, s: SeriesFile, gridList: Grid[]): stri
     <div class="stack" id="s-stack" aria-hidden="true">${stackHtml(r, grids)}</div>
     ${rows}
     <div class="row eff"><label for="s-eff">Efficiency<span class="g">lighter models, better chips</span></label><input type="range" id="s-eff" min="0" max="100" step="5" value="0" disabled><output class="num" id="s-effv" for="s-eff">0%</output></div>
-    <button type="button" class="btn" id="s-reset" disabled>Start again</button>
+    <div class="sim-actions"><button type="button" class="btn solid" id="s-share" disabled>Share your 2030</button><button type="button" class="btn" id="s-reset" disabled>Start again</button></div>
+    <p class="shared" id="s-shared" role="status"></p>
   </form>
   <div class="out">
     <div id="s-out">${outputsHtml(r, grids, co2Year)}</div>
