@@ -90,6 +90,7 @@ describe('prerendered How We Know', () => {
       read('public/data/series.json'),
       read('public/data/countries.json'),
       read('public/data/grids.json'),
+      read('public/data/impacts.json'),
     );
     expect(readFileSync('src/how/content.generated.html', 'utf8')).toContain(fresh);
   });

@@ -6,7 +6,7 @@
 
 import { geoDistance, geoGraticule10, geoOrthographic, geoPath } from 'd3-geo';
 import type { FeatureCollection, Geometry } from 'geojson';
-import type { GridsFile, HubsFile } from '../footprint/types';
+import type { GridsFile, HubsFile, ImpactsFile } from '../footprint/types';
 import { aiRates, perRequest, requestsPerSecond, simGrids, simulate2030, todayTWh } from '../footprint/rates';
 import { START_ROTATION } from '../globe/earth';
 import { esc, formatNumber } from './format';
@@ -20,6 +20,7 @@ export const OG_PAGES: OgPage[] = ['home', 'question', 'live', '2030', 'how'];
 
 export interface OgData extends HeroData {
   world: FeatureCollection<Geometry, { name: string }>;
+  impacts?: ImpactsFile;
   hubs: HubsFile;
   grids: GridsFile;
 }
@@ -76,6 +77,7 @@ export function cardText(page: OgPage, d: OgData): CardText {
         Object.values(d.series.metrics).reduce((a, m) => a + m.sources.length, 0) +
         d.grids.grids.reduce((a, g) => a + g.sources.length, 0) +
         d.hubs.hubs.reduce((a, h) => a + h.sources.length, 0) +
+        (d.impacts ? [...d.impacts.tiles, ...d.impacts.practices].reduce((a, x) => a + x.sources.length, 0) : 0) +
         1;
       return {
         headline: ['Every number,', 'and where it', 'comes from.'],

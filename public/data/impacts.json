@@ -1,0 +1,240 @@
+{
+  "contentHash": "8ce9c59aac06fdf3",
+  "builtAt": "2026-10-11",
+  "tiles": [
+    {
+      "key": "grid",
+      "title": "Strain on the grid",
+      "place": "Ireland and the eastern United States",
+      "summary": "In Ireland, data centres used 22% of all metered electricity in 2024, up from 5% in 2015. In the eastern US, a 5,250 MW increase in the PJM grid's demand forecast, almost entirely from data centres, helped drive the results of its latest capacity auction.",
+      "sources": [
+        {
+          "label": "Central Statistics Office Ireland, 10 June 2025: \"The percentage share of metered electricity consumption used by data centres rose to 22% in 2024 from 5% in 2015\"",
+          "url": "https://www.cso.ie/en/releasesandpublications/ep/p-dcmec/datacentresmeteredelectricityconsumption2024/keyfindings/",
+          "retrieved": "2026-10-11",
+          "supports": "case",
+          "checked": "page"
+        },
+        {
+          "label": "Utility Dive, 18 December 2025: \"In part, the latest auction results were driven by a 5,250-MW increase in PJM's demand forecast — almost entirely driven by data centers\"",
+          "url": "https://www.utilitydive.com/news/pjm-interconnection-capacity-auction-data-center/808264/",
+          "retrieved": "2026-10-11",
+          "supports": "case",
+          "checked": "page"
+        }
+      ]
+    },
+    {
+      "key": "air",
+      "title": "Local air",
+      "place": "Memphis, Tennessee",
+      "summary": "In Memphis, the county's permit lets xAI operate 15 generators at its data centre, up to 247 megawatts; TechCrunch describes them as natural gas generators. According to their manufacturer, the turbines emit nitrogen oxides, a key contributor to smog, and formaldehyde.",
+      "sources": [
+        {
+          "label": "TechCrunch, 3 July 2025, ‘xAI gets permits for 15 natural gas generators at Memphis data center’: \"The permit issued by the Shelby County Health Department says that xAI can operate 15 Solar SMT-130 generators with certain emissions controls, which can generate up to 247 megawatts.\"",
+          "url": "https://techcrunch.com/2025/07/03/xai-gets-permits-for-15-natural-gas-generators-at-memphis-data-center/",
+          "retrieved": "2026-10-11",
+          "supports": "case",
+          "checked": "page"
+        },
+        {
+          "label": "NBC News, 17 June 2025: \"The turbines emit nitrogen oxides, a key contributor to smog, and formaldehyde, among other pollutants, according to their manufacturer.\"",
+          "url": "https://www.nbcnews.com/news/us-news/naacp-musk-xai-supercomputer-colossus-memphis-tennessee-rcna213490",
+          "retrieved": "2026-10-11",
+          "supports": "case",
+          "checked": "page"
+        }
+      ]
+    },
+    {
+      "key": "chips",
+      "title": "Chips and e-waste",
+      "place": "Worldwide",
+      "summary": "A peer-reviewed study of generative AI's e-waste finds it could potentially reach 1.2 to 5.0 million tons in total over 2020 to 2030.",
+      "sources": [
+        {
+          "label": "Nature Computational Science, 28 October 2024, ‘E-waste challenges of generative artificial intelligence’: \"this e-waste stream could increase, potentially reaching a total accumulation of 1.2–5.0 million tons during 2020–2030\"",
+          "url": "https://www.nature.com/articles/s43588-024-00712-6",
+          "retrieved": "2026-10-11",
+          "supports": "case",
+          "checked": "page"
+        }
+      ]
+    },
+    {
+      "key": "land",
+      "title": "Land",
+      "place": "Prince William County, Virginia",
+      "summary": "The planned Digital Gateway would span 34 buildings and 1.7 gigawatts of data-centre capacity on 2,139 acres near Manassas National Battlefield; WTOP reported it would be the largest data-centre corridor in the world. A court found the county's advertised notice did not comply with either the state or county code.",
+      "sources": [
+        {
+          "label": "Bisnow, 8 April 2026: \"Within the 2,139-acre Digital Gateway, Blackstone subsidiary QTS and Compass Datacenters have planned to develop large data center campuses that at full build-out would span 34 buildings, 22M SF and 1.7 gigawatts of capacity.\"",
+          "url": "https://www.bisnow.com/news/national/data-center-community-relations/digital-gateway-plans-may-close-for-good-134038",
+          "retrieved": "2026-10-11",
+          "supports": "case",
+          "checked": "page"
+        },
+        {
+          "label": "WTOP, 9 August 2025: \"would be the largest data center corridor in the world, with 37 data centers spread out across over 2,100 acres in western Prince William, near Manassas National Battlefield\"",
+          "url": "https://wtop.com/prince-william-county/2025/08/judge-voids-digital-gateway-rezoning-in-prince-william-county/",
+          "retrieved": "2026-10-11",
+          "supports": "case",
+          "checked": "page",
+          "note": "Its building count (37) differs from Bisnow's newer 34; Hum uses Bisnow's."
+        },
+        {
+          "label": "WTOP, 9 August 2025, quoting the court: \"This Court finds that the advertised notice provided by the County did not comply with either the State or County code.\"",
+          "url": "https://wtop.com/prince-william-county/2025/08/judge-voids-digital-gateway-rezoning-in-prince-william-county/",
+          "retrieved": "2026-10-11",
+          "supports": "case",
+          "checked": "page"
+        }
+      ]
+    },
+    {
+      "key": "noise",
+      "title": "Noise",
+      "place": "Chandler, Arizona and Prince William County, Virginia",
+      "summary": "Residents near data centres in Prince William County say the constant drone, especially at night, causes anxiety and deprives them of sleep. Chandler, Arizona requires data centres to be built so their sound doesn't exceed the background level measured in a baseline study.",
+      "sources": [
+        {
+          "label": "Prince William Times, 27 February 2023: \"But residents say the constant drone, especially at night, causes anxiety and deprives them of sleep.\"",
+          "url": "https://www.princewilliamtimes.com/news/some-cities-suffering-from-data-center-noise-turn-to-tough-limits/article_2aa7fb8c-b6aa-11ed-8626-5738aae2f76c.html",
+          "retrieved": "2026-10-11",
+          "supports": "case",
+          "checked": "page"
+        },
+        {
+          "label": "City of Chandler, Ordinance No. 5033, 8 December 2022: \"The Data Center must be designed and built to incorporate sound mitigation methods sufficient to prevent the sound levels emanating from the Data Center ... from exceeding the ambient noise levels that were observed in the baseline study.\"",
+          "url": "https://www.chandleraz.gov/sites/default/files/departments/development-services/PLH22-0053-Ordinance-No-5033-Data-Center.pdf",
+          "retrieved": "2026-10-11",
+          "supports": "case",
+          "checked": "page",
+          "note": "The ... replaces \"(as determined by a third-party acoustic engineer)\", which runs across a page break."
+        }
+      ]
+    }
+  ],
+  "practices": [
+    {
+      "key": "certificates",
+      "title": "Buying certificates, not clean power",
+      "summary": "Renewable-energy certificates are used to calculate \"market-based\" emissions, the official figures firms report. Researchers estimate that if the trend continues, 42% of committed scope 2 (electricity) emission reductions will not result in real-world mitigation.",
+      "sources": [
+        {
+          "label": "Nature Climate Change, 9 June 2022: \"If this trend continues, 42% of committed scope 2 emission reductions will not result in real-world mitigation.\"",
+          "url": "https://www.nature.com/articles/s41558-022-01379-5",
+          "retrieved": "2026-10-11",
+          "supports": "case",
+          "checked": "page"
+        },
+        {
+          "label": "The Guardian, 15 September 2024: \"Recs are used to calculate \"market-based\" emissions, or the official emissions figures used by the firms.\"",
+          "url": "https://www.theguardian.com/technology/2024/sep/15/data-center-gas-emissions-tech",
+          "retrieved": "2026-10-11",
+          "supports": "case",
+          "checked": "page"
+        }
+      ]
+    },
+    {
+      "key": "annual",
+      "title": "Matching over a year, not hour by hour",
+      "summary": "A peer-reviewed model found that matching a year's electricity use with clean power has minimal impact on long-run emissions. Matching it hour by hour keeps contributing significantly to cutting them, even as grids get cleaner.",
+      "sources": [
+        {
+          "label": "Joule, 21 February 2024 (Princeton): \"procurement strategies that match participants' demand with carbon-free generation on an annual basis have minimal impact on long-run system-level CO2 emissions\"",
+          "url": "https://collaborate.princeton.edu/en/publications/system-level-impacts-of-voluntary-carbon-free-electricity-procure/",
+          "retrieved": "2026-10-11",
+          "supports": "case",
+          "checked": "page",
+          "note": "The page writes CO2 with a subscript (\"CO 2\")."
+        },
+        {
+          "label": "Riepin and Brown, TU Berlin, arXiv 2023: \"Even as grids become cleaner over time, the hourly matching strategy contributes significantly to system-level emissions reduction.\"",
+          "url": "https://arxiv.org/abs/2403.07876",
+          "retrieved": "2026-10-11",
+          "supports": "case",
+          "checked": "page"
+        }
+      ]
+    },
+    {
+      "key": "offsets",
+      "title": "\"Carbon neutral\" through offsets",
+      "summary": "A review estimates that less than 16% of the carbon credits issued to the projects it investigated were real emission reductions. A new EU directive will ban product claims of a neutral, reduced or positive environmental impact based on offsetting.",
+      "sources": [
+        {
+          "label": "Nature Communications, 14 November 2024: \"We estimate that less than 16% of the carbon credits issued to the investigated projects constitute real emission reductions\"",
+          "url": "https://www.nature.com/articles/s41467-024-53645-z",
+          "retrieved": "2026-10-11",
+          "supports": "case",
+          "checked": "page"
+        },
+        {
+          "label": "European Parliament, 17 January 2024: \"the directive will ban claims that a product has a neutral, reduced or positive impact on the environment because of emissions offsetting schemes\"",
+          "url": "https://www.europarl.europa.eu/news/en/press-room/20240112IPR16772/meps-adopt-new-law-banning-greenwashing-and-misleading-product-information",
+          "retrieved": "2026-10-11",
+          "supports": "case",
+          "checked": "page"
+        }
+      ]
+    },
+    {
+      "key": "water",
+      "title": "\"Water positive\"",
+      "summary": "One company's water stewardship goal left out the water consumed by the power plants that supply its data centres. And as a former water sustainability manager put it, carbon is a global problem, but water is more localised.",
+      "sources": [
+        {
+          "label": "Grist, 29 August 2024: \"the company's water stewardship goal doesn't include the water consumed by the power plants that supply its data centers\"",
+          "url": "https://grist.org/technology/amazon-data-centers-water-positive-energy/",
+          "retrieved": "2026-10-11",
+          "supports": "case",
+          "checked": "page"
+        },
+        {
+          "label": "SourceMaterial, 9 April 2025, quoting a former water sustainability manager at a cloud company: \"Carbon is a global problem—water is more localised\"",
+          "url": "https://www.source-material.org/amazon-microsoft-google-trump-data-centres-water-use/",
+          "retrieved": "2026-10-11",
+          "supports": "case",
+          "checked": "page"
+        }
+      ]
+    },
+    {
+      "key": "embodied",
+      "title": "Leaving out the chips and the buildings",
+      "summary": "Embodied emissions can exceed 40% of a data centre's total greenhouse gas emissions, so a footprint that leaves them out can miss a large part.",
+      "sources": [
+        {
+          "label": "ICEF Sustainable Data Centers Roadmap, October 2025: \"embodied emissions can exceed 40% of a data center’s total greenhouse gas emissions and may dominate the lifetime greenhouse gas emissions footprint\"",
+          "url": "https://icef.go.jp/wp-content/themes/icef_new/pdf/roadmap/2025/CHAPTER%20%E2%85%A2%20%E2%80%93%203.%20EMBODIED%20GREENHOUSE%20GAS%20EMISSIONS%20%28SCOPE%203%29.pdf",
+          "retrieved": "2026-10-11",
+          "supports": "case",
+          "checked": "page"
+        }
+      ]
+    },
+    {
+      "key": "efficiency",
+      "title": "Efficiency, not the total",
+      "summary": "Researchers warn that because of rebound effects, efficiency alone won't ensure lower total harm. US data-centre electricity use climbed from 58 TWh in 2014 to 176 TWh in 2023.",
+      "sources": [
+        {
+          "label": "Luccioni, Strubell and Crawford, arXiv January 2025: \"Rebound effects undermine the assumption that improved technical efficiency alone will ensure net reductions in environmental harm.\"",
+          "url": "https://arxiv.org/abs/2501.16548",
+          "retrieved": "2026-10-11",
+          "supports": "case",
+          "checked": "page"
+        },
+        {
+          "label": "Lawrence Berkeley National Laboratory, 15 January 2025: \"The total data center electricity usage climbed from 58 TWh in 2014 to 176 TWh in 2023\"",
+          "url": "https://newscenter.lbl.gov/2025/01/15/berkeley-lab-report-evaluates-increase-in-electricity-demand-from-data-centers/",
+          "retrieved": "2026-10-11",
+          "supports": "case",
+          "checked": "page"
+        }
+      ]
+    }
+  ]
+}

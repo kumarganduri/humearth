@@ -199,4 +199,38 @@ export function validateGrids(src: unknown): string[] {
   return errs;
 }
 
+/** Every number Hum writes in a case summary must appear in one of that case's quotes. */
+export function numbersNotQuoted(summary: string, sources: { label: string }[]): string[] {
+  const numbers = (t: string) => (t.replace(/(\d),(\d)/g, '$1$2').match(/\d+(?:\.\d+)?/g) ?? []); // "5,250" reads as 5250
+  const quoted = new Set(sources.flatMap((s) => numbers(s.label)));
+  return [...new Set(numbers(summary).filter((n) => !quoted.has(n)))];
+}
+
+export function validateImpacts(src: unknown): string[] {
+  if (!isObj(src) || !Array.isArray(src.tiles) || !Array.isArray(src.practices)) return ['impacts: tiles and practices arrays required'];
+  const errs: string[] = [];
+  const keys = new Set<string>();
+  for (const [group, list] of [['tiles', src.tiles], ['practices', src.practices]] as const) {
+    (list as unknown[]).forEach((x, i) => {
+      const k = isObj(x) && typeof x.key === 'string' ? `${group}[${x.key}]` : `${group}[${i}]`;
+      if (!isObj(x)) return errs.push(`${k}: must be an object`);
+      if (typeof x.key !== 'string' || !/^[a-z-]+$/.test(x.key)) errs.push(`${k}.key: lowercase letters required`);
+      else if (keys.has(x.key)) errs.push(`${k}: duplicate key`);
+      else keys.add(x.key);
+      if (typeof x.title !== 'string' || !x.title) errs.push(`${k}.title: required`);
+      if (group === 'tiles' && (typeof x.place !== 'string' || !x.place)) errs.push(`${k}.place: required for a named case`);
+      if (typeof x.summary !== 'string' || x.summary.length < 20) errs.push(`${k}.summary: required`);
+      errs.push(...validateSources(k, x.sources, ['case']));
+      if (Array.isArray(x.sources)) {
+        x.sources.forEach((s, j) => {
+          if (isObj(s) && s.checked !== 'page') errs.push(`${k}.sources[${j}]: a case must be quoted from the page itself (checked: "page")`);
+          if (isObj(s) && typeof s.label === 'string' && !/: ".+"$/s.test(s.label)) errs.push(`${k}.sources[${j}].label: must end with the verbatim quote in double quotes`);
+        });
+        if (typeof x.summary === 'string') for (const n of numbersNotQuoted(x.summary, x.sources as { label: string }[])) errs.push(`${k}.summary: ${n} is not in any of its quotes`);
+      }
+    });
+  }
+  return errs;
+}
+
 export type { RangeValue };

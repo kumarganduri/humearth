@@ -5,7 +5,8 @@
 //
 //   usage (questions/day, pictures/week, videos/week) ──► each action's saving per week ──► ranked bars
 
-import type { Constants, Level, Usage } from '../footprint/types';
+import type { Constants, ImpactsFile, Level, Usage } from '../footprint/types';
+import { practicesHtml } from './cases';
 import { esc, formatNumber } from './format';
 
 export interface Action {
@@ -80,7 +81,7 @@ export function reduceBarsHtml(u: Usage, c: Constants): string {
   return `<ol class="cuts" aria-label="What each change would save in a week, biggest first">${rows}</ol>`;
 }
 
-export function reduceHtml(u: Usage, c: Constants): string {
+export function reduceHtml(u: Usage, c: Constants, impacts?: ImpactsFile): string {
   return `<section class="col reduce" id="reduce" aria-labelledby="heading-reduce">
   <h2 id="heading-reduce">What actually reduces it</h2>
   <p>Your week from <a href="#your-part">Your part</a>, ranked: what each change would save, in watt-hours a week. Same scale for every bar, so the small ones look as small as they are.</p>
@@ -93,5 +94,6 @@ export function reduceHtml(u: Usage, c: Constants): string {
     <li><b>Whether companies publish what they use.</b> The per-question figures here come from a handful of company disclosures and outside estimates, which is why every one of them is a range.</li>
     <li><b>Local permits.</b> New data centres need grid connections, water and planning approval, decided in public meetings people can attend.</li>
   </ul>
+  ${impacts ? practicesHtml(impacts) : ''}
 </section>`;
 }

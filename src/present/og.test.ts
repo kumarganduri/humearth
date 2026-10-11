@@ -6,6 +6,7 @@ const read = <T>(p: string) => JSON.parse(readFileSync(p, 'utf8')) as T;
 const d: OgData = {
   series: read('public/data/series.json'), countries: read('public/data/countries.json'), constants: read('public/data/constants.json'),
   world: read('public/data/world.json'), hubs: read('public/data/hubs.json'), grids: read('public/data/grids.json'),
+  impacts: read('public/data/impacts.json'),
 };
 
 describe('link-preview cards', () => {

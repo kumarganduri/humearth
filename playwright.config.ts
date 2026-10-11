@@ -1,19 +1,19 @@
 import { defineConfig } from '@playwright/test';
 
-// E2E runs against the production build (vite preview), in Chromium with software WebGL,
-// so CI machines without a GPU still exercise the real 3D path.
+// E2E runs against the production build (vite preview), in Chromium. v2 has no WebGL (the globe is a 2D
+// canvas), so no software-GPU flags: forcing SwiftShader only added CPU load, which stalled browsers on CI.
 export default defineConfig({
   testDir: 'e2e',
   timeout: 45_000,
   fullyParallel: true,
-  // Software WebGL is CPU-heavy: too many parallel workers starve each other's frames.
+  // The globes are canvas-heavy: too many parallel workers starve each other's frames on CI's two cores.
   workers: process.env.CI ? 2 : 3,
   retries: process.env.CI ? 1 : 0,
   reporter: process.env.CI ? [['github'], ['list']] : 'list',
   use: {
     baseURL: 'http://127.0.0.1:4191',
     viewport: { width: 1200, height: 860 },
-    launchOptions: { args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist', '--mute-audio'] },
+    launchOptions: { args: ['--mute-audio'] },
     trace: 'retain-on-failure',
   },
   webServer: {

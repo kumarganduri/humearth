@@ -202,3 +202,18 @@ table.static caption { text-align: left; font-family: var(--body); color: var(--
   .cut-label { grid-column: 1 / -1; }
   .cut.none .cut-v { grid-column: 1 / -1; }
 }
+
+/* Stage 1b named cases (EXPLAINED tiles) and "Claims to read twice": the summary is the story, the source
+   names are links, the exact quotes sit behind a fold. */
+.imp .place { margin: 0 0 6px; font-size: .85rem; color: var(--color-text-muted); }
+.case-src { margin: 8px 0 0; font-size: .85rem; color: var(--color-text-muted); }
+.case-src a { color: var(--color-text-muted); }
+.quotes { margin-top: 4px; }
+.quotes > summary { cursor: pointer; display: inline-flex; align-items: center; min-height: 44px; font-size: .85rem; color: var(--color-data-centres); }
+.quotes ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.quotes blockquote { margin: 0; padding-left: 12px; border-left: 2px solid var(--color-rule); font-size: .9rem; color: var(--color-text); }
+.quotes cite { display: block; padding-left: 14px; font-style: normal; font-size: .8rem; color: var(--color-text-muted); }
+.claims { list-style: none; margin: var(--space-md) 0 0; padding: 0; display: grid; }
+.claim { padding: var(--space-md) 0; border-top: 1px solid var(--color-rule); }
+.claim h4 { margin: 0 0 4px; font: 700 1rem/1.3 var(--body); }
+.claim p { margin: 0; color: var(--color-text-muted); font-size: .95rem; }

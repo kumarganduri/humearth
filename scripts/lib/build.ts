@@ -7,10 +7,10 @@
 //   data/sources/countries.source.json ─ validate ─> public/data/countries.json (contentHash)
 
 import { createHash } from 'node:crypto';
-import { validateCountriesSource, validateGrids, validateHubs, validateSeriesSource, validateSource } from '../../src/footprint/schema';
+import { validateCountriesSource, validateGrids, validateHubs, validateImpacts, validateSeriesSource, validateSource } from '../../src/footprint/schema';
 import { deriveSeries } from '../../src/footprint/series';
 import type { CountriesFile, CountriesSource, SeriesFile, SeriesSource } from '../../src/footprint/series-types';
-import { VALUE_KEYS, type Constants, type Grid, type GridsFile, type Hub, type HubsFile } from '../../src/footprint/types';
+import { VALUE_KEYS, type Constants, type Grid, type GridsFile, type Hub, type HubsFile, type ImpactCase, type ImpactsFile } from '../../src/footprint/types';
 
 export interface ChangelogEntry {
   date: string;
@@ -112,4 +112,13 @@ export function buildGrids(source: unknown, previous: GridsFile | null, today: s
   const contentHash = hashOf(grids);
   if (previous?.contentHash === contentHash) return null;
   return { contentHash, builtAt: today, grids };
+}
+
+export function buildImpacts(source: unknown, previous: ImpactsFile | null, today: string): ImpactsFile | null {
+  const problems = validateImpacts(source);
+  if (problems.length) throw new DataValidationError(problems);
+  const { tiles, practices } = source as { tiles: ImpactCase[]; practices: ImpactCase[] };
+  const contentHash = hashOf({ tiles, practices });
+  if (previous?.contentHash === contentHash) return null;
+  return { contentHash, builtAt: today, tiles, practices };
 }

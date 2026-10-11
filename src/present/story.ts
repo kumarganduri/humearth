@@ -2,15 +2,19 @@
 // number comes from data/sources, and anything calculated is marked as calculated (dotted).
 //
 //   whereItGoesHtml   today's total split into AI (a range) and everything else; AI vs all growth
-//   impactsHtml       MEASURED impacts: electricity, CO2 (series), water (per kWh + a calculated world total)
+//   impactsHtml       MEASURED impacts: electricity, CO2 (series), water (per kWh + a calculated world total),
+//                     then the EXPLAINED named cases (stage 1b, src/present/cases.ts)
 
-import type { Constants } from '../footprint/types';
+import type { Constants, ImpactsFile } from '../footprint/types';
 import type { SeriesFile } from '../footprint/series-types';
+import { explainedTilesHtml } from './cases';
 import { esc, formatNumber, rangeText } from './format';
 
 export interface StoryData {
   series: SeriesFile;
   constants: Constants;
+  /** Stage 1b named cases (EXPLAINED tiles); prebuilt only, so optional for the runtime. */
+  impacts?: ImpactsFile;
 }
 
 const pct = (x: number) => `${formatNumber(x * 100)}%`;
@@ -69,7 +73,7 @@ export function impactsHtml(d: StoryData): string {
   const val = (y: (typeof e.years)[number]) => r({ low: y.low.value, mid: y.mid.value, high: y.high.value });
   return `<section class="col" aria-labelledby="heading-impacts">
   <h2 id="heading-impacts">What it does to the world</h2>
-  <p>Three effects have published worldwide numbers. Others, like strain on local power grids and air pollution from on-site gas turbines, are real but only known place by place; we'll explain those with named cases rather than invent a total.</p>
+  <p>Three effects have published worldwide numbers (MEASURED). Others are real but only known place by place, so instead of inventing a total we explain them with named cases (EXPLAINED).</p>
   <div class="impacts">
     ${impact('Electricity', `Published for ${eToday.year} (IEA). Forecast for ${eEnd.year}: ${esc(rangeText(val(eEnd), 'TWh'))}.`, esc(rangeText(val(eToday), 'TWh a year')))}
     ${impact('CO2 from that electricity', `Published for ${cToday.year} (IEA). Forecast for ${cEnd.year}: ${esc(rangeText(val(cEnd), 'Mt'))}${cEnd.low.value === null ? ' (no low case published)' : ''}.`, esc(rangeText(val(cToday), 'Mt CO2 a year')))}
@@ -78,6 +82,7 @@ export function impactsHtml(d: StoryData): string {
       `Cooling at the building uses ${esc(rangeText(on, 'litres per kWh'))}; the power plants feeding it often use more: ${esc(rangeText(off, 'litres per kWh'))}. For ${eToday.year}'s electricity that comes to <span class="derived" title="calculated: ${eToday.year} electricity x litres per kWh">${esc(rangeText(litres, 'billion litres'))}</span> (calculated).`,
       esc(rangeText({ low: on.low + off.low, mid: on.mid + off.mid, high: on.high + off.high }, 'litres per kWh')),
     )}
+    ${d.impacts ? explainedTilesHtml(d.impacts) : ''}
   </div>
   <p class="src">Every source, and how each range was built, is on <a href="/how-we-know.html#numbers">How we know</a>.</p>
 </section>`;

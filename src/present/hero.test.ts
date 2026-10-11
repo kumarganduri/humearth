@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { futureSentence, growthWords, historyNote, ledeFor, raceFor, raceScaleMax, renderHero, RACE_COUNTRIES, pick, type HeroData } from './hero';
 import type { CountriesFile, SeriesFile } from '../footprint/series-types';
-import type { Constants } from '../footprint/types';
+import type { Constants, ImpactsFile } from '../footprint/types';
 import { extractInlineStyles } from './inline-styles';
 
 const read = <T>(p: string) => JSON.parse(readFileSync(p, 'utf8')) as T;
@@ -10,6 +10,7 @@ const data = (): HeroData => ({
   series: read<SeriesFile>('public/data/series.json'),
   countries: read<CountriesFile>('public/data/countries.json'),
   constants: read<Constants>('public/data/constants.json'),
+  impacts: read<ImpactsFile>('public/data/impacts.json'),
 });
 
 describe('renderHero: the first screen, prebuilt from the shipped data', () => {

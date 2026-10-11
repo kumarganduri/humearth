@@ -37,7 +37,7 @@ jobs:
 
       - name: Install Chromium for E2E
         run: npx playwright install --with-deps chromium
-      - name: End-to-end tests (desktop + phone, software WebGL)
+      - name: End-to-end tests (desktop + phone)
         run: npx playwright test
         env:
           CI: true

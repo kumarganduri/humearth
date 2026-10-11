@@ -7,7 +7,7 @@
 //   hubs.json ──────────> "Data-centre places" (MW range, what it measures, sources)
 //   changelog.json ─────> "We changed our numbers"
 
-import { VALUE_KEYS, type Constants, type GridsFile, type Hub, type RangeValue, type Source } from '../footprint/types';
+import { VALUE_KEYS, type Constants, type GridsFile, type Hub, type ImpactCase, type ImpactsFile, type RangeValue, type Source } from '../footprint/types';
 import type { CountriesFile, MetricSeries, SeriesFile, SeriesValue, SeriesYear } from '../footprint/series-types';
 import { esc, formatNumber as num } from '../present/format';
 
@@ -199,8 +199,21 @@ export function renderGrids(g: GridsFile): string {
 </table></div>`;
 }
 
-export function renderPage(c: Constants, hubs: Hub[], changelog: ChangelogEntry[], series: SeriesFile, countries: CountriesFile, grids: GridsFile): string {
-  return [renderValues(c), renderGrowth(series), renderCountries(countries), renderGrids(grids), renderHubs(hubs), renderChangelog(changelog, c), renderPrivacy()].join('\n');
+/** Stage 1b: the named cases (EXPLAINED tiles) and the practices, each with its quotes, as on the home page. */
+export function renderCases(d: ImpactsFile): string {
+  const one = (x: ImpactCase, prefix: 'case' | 'claim') => `<h3 id="${prefix}-${esc(x.key)}">${esc(x.title)}${x.place ? ` <span class="muted">· ${esc(x.place)}</span>` : ''}</h3>
+<p>${esc(x.summary)}</p>
+${sourceList(x.sources)}`;
+  return `
+<h2 id="cases">Named cases and claims</h2>
+<p>Some effects have no worldwide number yet, so the main page explains them with real, named cases. Every case quotes its source, read on the page itself, and every number in our summary appears in one of those quotes (the build checks this). The "claims to read twice" name practices, never accuse a company.</p>
+${d.tiles.map((x) => one(x, 'case')).join('\n')}
+<h2 id="claims">Claims to read twice</h2>
+${d.practices.map((x) => one(x, 'claim')).join('\n')}`;
+}
+
+export function renderPage(c: Constants, hubs: Hub[], changelog: ChangelogEntry[], series: SeriesFile, countries: CountriesFile, grids: GridsFile, impacts?: ImpactsFile): string {
+  return [renderValues(c), renderGrowth(series), renderCountries(countries), renderGrids(grids), renderHubs(hubs), impacts ? renderCases(impacts) : '', renderChangelog(changelog, c), renderPrivacy()].join('\n');
 }
 
 /** Long units like gCO2/kWh may wrap after the slash on small phones, never inside a word. */

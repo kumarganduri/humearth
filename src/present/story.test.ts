@@ -36,8 +36,19 @@ describe('what it does to the world (measured)', () => {
     expect(h).toContain('(no low case published)');
     expect(h).toMatch(/<span class="derived" title="calculated: 2025 electricity x litres per kWh">58.2 · 1,232 · 2,658 billion litres<\/span> \(calculated\)/);
   });
-  it('no EXPLAINED tiles yet (stage 1b), and no invented totals for the place-by-place effects', () => {
-    expect(h).not.toContain('EXPLAINED');
+  it('without the stage 1b cases there are no EXPLAINED tiles, and no invented totals for place-by-place effects', () => {
+    expect(h).not.toContain('badge e">EXPLAINED');
     expect(h).toContain('only known place by place');
+  });
+
+  it('with the cases: one EXPLAINED tile per named case, each with a place, linked sources and its quotes', () => {
+    const impacts = JSON.parse(readFileSync('public/data/impacts.json', 'utf8'));
+    const full = impactsHtml({ ...d(), impacts });
+    expect(full.match(/badge e">EXPLAINED/g)).toHaveLength(impacts.tiles.length);
+    for (const t of impacts.tiles) {
+      expect(full).toContain(`id="case-${t.key}"`);
+      for (const s of t.sources) expect(full).toContain(`href="${s.url.replace(/&/g, '&amp;')}"`);
+    }
+    expect(full.match(/<details class="quotes">/g)).toHaveLength(impacts.tiles.length);
   });
 });

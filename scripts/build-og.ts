@@ -29,6 +29,7 @@ const d: OgData = {
   world: read('public/data/world.json'),
   hubs: read('public/data/hubs.json'),
   grids: read('public/data/grids.json'),
+  impacts: read('public/data/impacts.json'),
 };
 
 mkdirSync('dist/og', { recursive: true });

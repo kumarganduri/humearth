@@ -4,7 +4,7 @@
 // and re-renders the same pieces with the same functions.
 
 import type { CountriesFile, CountryRow, MetricSeries, SeriesFile, SeriesYear } from '../footprint/series-types';
-import type { Constants } from '../footprint/types';
+import type { Constants, ImpactsFile } from '../footprint/types';
 import { crossing } from '../footprint/series';
 import { raceHtml, raceRows } from '../charts/race';
 import { fanSvg } from '../charts/fan';
@@ -28,6 +28,8 @@ export interface HeroData {
   series: SeriesFile;
   countries: CountriesFile;
   constants: Constants;
+  /** Stage 1b named cases and practices: prebuilt into the page only, so optional at runtime. */
+  impacts?: ImpactsFile;
 }
 
 const aiShareOf = (d: HeroData) => d.constants.values.aiShareOfDataCentres;
@@ -157,5 +159,5 @@ export function renderHero(d: HeroData): string {
 ${whereItGoesHtml(d)}
 ${impactsHtml(d)}
 ${calculatorHtml(d.constants)}
-${reduceHtml(DEFAULT_USAGE, d.constants)}`;
+${reduceHtml(DEFAULT_USAGE, d.constants, d.impacts)}`;
 }

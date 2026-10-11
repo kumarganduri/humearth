@@ -104,18 +104,15 @@ test('the globe can be stopped and turned without dragging (WCAG 2.2.2, 2.5.7)',
       for (let i = 0; i < d.length; i += 97) h = (h * 31 + d[i]!) | 0;
       return h;
     });
-  // Wait out the 'just passed' flash (frames can arrive late under test load): two equal frames in a row...
-  let a = await snap();
-  await expect
-    .poll(async () => {
-      const b = await snap();
-      const same = b === a;
-      a = b;
-      return same;
-    }, { timeout: 10_000, intervals: [300] })
-    .toBe(true);
+  // The 'just passed' flash fades over 900 ms of wall-clock time; under load frames arrive late, so wait it
+  // out, then compare only after the browser has really drawn new frames (two animation frames each time).
+  const frames = () => page.evaluate(() => new Promise<void>((r) => requestAnimationFrame(() => requestAnimationFrame(() => r()))));
+  await page.waitForTimeout(1000);
+  await frames();
+  const a = await snap();
   await page.waitForTimeout(800);
-  expect(await snap()).toBe(a); // ...then stopped means stopped
+  await frames();
+  expect(await snap()).toBe(a); // stopped means stopped
   await page.locator('#globe-east').click();
   await expect.poll(snap).not.toBe(a); // the button turned it
   await page.keyboard.press('Shift+Tab'); // keyboard reachable: focus moves back to the pause button

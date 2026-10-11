@@ -88,3 +88,18 @@ export interface GridsFile {
   builtAt: string;
   grids: Grid[];
 }
+
+/** Stage 1b: a named, real case (EXPLAINED tile) or a greenwashing practice, with quoted sources. */
+export interface ImpactCase {
+  key: string;
+  title: string;
+  place?: string; // tiles only
+  summary: string; // Hum's words; every number in it must appear in one of its quotes (checked at build)
+  sources: Source[];
+}
+export interface ImpactsFile {
+  contentHash: string;
+  builtAt: string;
+  tiles: ImpactCase[];
+  practices: ImpactCase[];
+}

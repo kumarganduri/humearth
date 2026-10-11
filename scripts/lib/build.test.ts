@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
-import { buildConstants, buildCountries, buildGrids, buildHubs, buildSeries, canonical, DataValidationError } from './build';
+import { buildConstants, buildCountries, buildGrids, buildHubs, buildImpacts, buildSeries, canonical, DataValidationError } from './build';
 import { readSource } from '../../src/footprint/testing';
 import { VALUE_KEYS } from '../../src/footprint/types';
 
@@ -188,5 +188,33 @@ describe('buildGrids: the /2030 grid figures must be sourced', () => {
     expect(p.some((x) => x.startsWith('grids[india]'))).toBe(true);
     expect(p).toContain('grids[world]: duplicate key');
     expect(p).toContain('grids[us].gCO2PerKWh: must be in 0..2000');
+  });
+});
+
+describe('buildImpacts: named cases must be quoted, and summaries can only use quoted numbers', () => {
+  const src = () => clone(JSON.parse(readFileSync('data/sources/impacts.source.json', 'utf8')));
+  it('the checked-in cases build, and rebuild to nothing when unchanged', () => {
+    const built = buildImpacts(src(), null, '2026-10-11')!;
+    expect(built.tiles.map((t) => t.key)).toEqual(['grid', 'air', 'chips', 'land', 'noise']);
+    expect(built.practices).toHaveLength(6);
+    expect(buildImpacts(src(), built, '2026-10-12')).toBeNull();
+  });
+  it('a number in a summary that no quote contains fails the build', () => {
+    const s = src();
+    s.tiles[0].summary = s.tiles[0].summary.replace('22%', '23%');
+    expect(problemsOf(() => buildImpacts(s, null, '2026-10-11'))).toContain('tiles[grid].summary: 23 is not in any of its quotes');
+  });
+  it('a case quoted only from a search summary, or a label with no quote, fails', () => {
+    const s = src();
+    s.practices[0].sources[0].checked = 'search-summary';
+    s.tiles[1].sources[0].label = 'TechCrunch, 3 July 2025';
+    const p = problemsOf(() => buildImpacts(s, null, '2026-10-11'));
+    expect(p).toContain('practices[certificates].sources[0]: a case must be quoted from the page itself (checked: "page")');
+    expect(p).toContain('tiles[air].sources[0].label: must end with the verbatim quote in double quotes');
+  });
+  it('a named case needs a place', () => {
+    const s = src();
+    delete s.tiles[2].place;
+    expect(problemsOf(() => buildImpacts(s, null, '2026-10-11'))).toContain('tiles[chips].place: required for a named case');
   });
 });
