@@ -105,7 +105,7 @@ export function questionPageHtml(c: Constants, s: SeriesFile): string {
   <h1 id="q-h">Follow one AI request out of your phone.</h1>
   <p class="lede">Type anything. It goes nowhere: this is a simulation of where a real one would go, and what it would use on the way.</p>
   <form class="q-ask" id="q-form">
-    <label class="sr-only" for="q-text">Your question</label>
+    <label class="q-label" for="q-text">Your question <span>(it never leaves this page)</span></label>
     <input type="text" id="q-text" placeholder="Ask anything" maxlength="120" autocomplete="off" disabled>
     <div class="kinds" role="group" aria-label="Kind of request">${kinds}</div>
     <button type="submit" class="btn solid" id="q-send" disabled>Send</button>

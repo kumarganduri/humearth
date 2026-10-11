@@ -88,6 +88,7 @@ test('if the map fails to load, the page still works without the globe', async (
   await page.locator('#slider').fill('2030');
   await expect(page.locator('#side-year')).toHaveText('2030');
   await expect(page.locator('#globe canvas')).toHaveCount(0);
+  await expect(page.locator('#globe')).toBeHidden(); // no empty placeholder left behind
 });
 
 test('the globe can be stopped and turned without dragging (WCAG 2.2.2, 2.5.7)', async ({ page }) => {
@@ -132,4 +133,13 @@ test('a "See the data" link under the globe takes you to the comparison below', 
   await page.click('.scroll-cue');
   await expect(page).toHaveURL(/#heading-side$/);
   await expect(page.locator('#heading-side')).toBeInViewport();
+});
+
+test('landscape phone: headline and globe share the first screen', async ({ page }) => {
+  await page.setViewportSize({ width: 844, height: 390 });
+  await page.goto('/');
+  const g = await page.locator('#globe').boundingBox();
+  const h = await page.locator('h1').boundingBox();
+  expect(g!.y).toBeLessThan(390);
+  expect(g!.x).toBeGreaterThan(h!.x + h!.width - 1);
 });

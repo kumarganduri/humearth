@@ -59,3 +59,17 @@ for (const width of [320, 390]) {
     await expect(page.locator('.journey.wide')).toBeHidden();
   });
 }
+
+test('choosing another kind mid-trip cancels it and starts clean (animations stay interruptible)', async ({ page }) => {
+  await page.goto('/question');
+  await expect(page.locator('#q-send')).toBeEnabled();
+  await expect(page.locator('label[for="q-text"]')).toBeVisible(); // a visible label, not just a placeholder
+  await page.click('#q-send');
+  await expect(page.locator('#q-send')).toBeDisabled();
+  await page.click('.kind[data-kind="picture"]');
+  await expect(page.locator('#q-send')).toBeEnabled();
+  await expect(page.locator('#m-e')).toHaveText('0');
+  await page.waitForTimeout(600);
+  await expect(page.locator('#m-e')).toHaveText('0'); // the cancelled trip doesn't keep filling the meters
+  await expect(page.locator('#q-end')).toHaveText('');
+});

@@ -11,9 +11,14 @@
 .earth h1 .ai { color: var(--color-ai); }
 .lede { margin: var(--space-md) 0 0; max-width: 40ch; color: var(--color-text-muted); text-shadow: 0 0 10px var(--color-night); }
 .globe { position: relative; aspect-ratio: 1 / 1; width: 100%; max-height: 72svh; margin-inline: auto; }
+/* While the map loads, a dim sphere holds the globe's exact place (same geometry as fitGlobe); the canvas
+   paints over it. If the map can't load, the empty space folds away. */
+.globe { container-type: size; --gr: 44cqmin; --gx: 50cqw; }
+.globe::before { content: ''; position: absolute; width: calc(2 * var(--gr)); aspect-ratio: 1; left: calc(var(--gx) - var(--gr)); top: calc(50cqh - var(--gr)); border-radius: 50%; background: #0E131C; }
+.globe.off { display: none; }
 .globe-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; cursor: grab; touch-action: pan-y; }
 .globe-canvas:active { cursor: grabbing; }
-.globe-ctrls { position: absolute; z-index: 2; right: 0; top: 0; display: flex; gap: 6px; }
+.globe-ctrls { position: absolute; z-index: 2; right: 0; top: 0; display: flex; gap: 8px; }
 .globe-ctrls[hidden] { display: none; }
 .icon-btn { appearance: none; width: 44px; height: 44px; display: inline-grid; place-items: center; padding: 0; cursor: pointer; border-radius: var(--rounded-full); border: 1px solid var(--color-rule); background: color-mix(in srgb, var(--color-night) 70%, transparent); color: var(--color-text-muted); transition: color .15s, border-color .15s; }
 .icon-btn:hover { color: var(--color-data-centres); border-color: var(--color-data-centres); }
@@ -44,7 +49,7 @@
     min-height: max(600px, min(calc(100svh - 76px), 920px));
     padding-top: var(--space-md);
   }
-  .globe { grid-column: 1; grid-row: 1 / 4; aspect-ratio: auto; max-height: none; height: 100%; }
+  .globe { grid-column: 1; grid-row: 1 / 4; aspect-ratio: auto; max-height: none; height: 100%; --gr: min(31cqw, 44cqh); --gx: 64cqw; }
   .earth-text { grid-column: 1; grid-row: 1; max-width: 30rem; pointer-events: none; }
   .earth-text a { pointer-events: auto; }
   .passed-short { display: none; }
@@ -82,7 +87,7 @@
 .row.dc.forecast .name, .row.dc.forecast .v { color: var(--color-forecast); }
 .row .band { position: absolute; top: -3px; bottom: -3px; background: var(--color-band); border: 1px dashed var(--color-forecast); border-radius: var(--rounded-sm); transition: left 350ms ease-out, width 350ms ease-out; }
 .row .ai { position: absolute; top: 0; bottom: 0; background: var(--color-ai); border-left: 2px solid var(--color-night); }
-.ai-note { font-size: .8rem; color: var(--color-text-muted); margin: var(--space-sm) 0 0; display: flex; gap: 8px; align-items: center; }
+.ai-note { font-size: .85rem; color: var(--color-text-muted); margin: var(--space-sm) 0 0; display: flex; gap: 8px; align-items: center; }
 .ai-key { width: 14px; height: 10px; background: var(--color-ai); border-radius: 2px; flex: none; }
 
 /* Year slider (DESIGN.md: native range, 44px target, Play outline button) */
@@ -168,3 +173,13 @@ table.static caption { text-align: left; font-family: var(--body); color: var(--
 .badge.m { background: var(--color-data-centres); color: var(--color-night); }
 .badge.e { border: 1.5px solid var(--color-text-muted); color: var(--color-text-muted); }
 @media (max-width: 420px) { .imp { grid-template-columns: 1fr; gap: 8px; } }
+
+/* Landscape phones: headline and globe side by side, so the globe is on the first screen. */
+@media (orientation: landscape) and (max-height: 520px) and (max-width: 859px) {
+  .earth { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 20px; align-items: start; }
+  .earth-text { grid-column: 1; grid-row: 1; }
+  .earth h1 { font-size: clamp(1.6rem, 4.2vw, 2.2rem); }
+  .globe { grid-column: 2; grid-row: 1 / 3; max-height: 82svh; }
+  .passed-short { grid-column: 1; grid-row: 2; align-self: end; }
+  .controls, .passed, .earth-foot { grid-column: 1 / -1; }
+}

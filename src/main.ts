@@ -202,7 +202,7 @@ function start(d: HeroData) {
   play.disabled = false;
   setYear(m.latestMeasuredYear);
   startGlobe(d, () => Number(slider.value)).catch(() => {
-    /* the passed list and race still tell the story */
+    $('globe').classList.add('off'); // no empty placeholder: the passed list and race still tell the story
   });
 }
 

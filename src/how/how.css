@@ -2,6 +2,9 @@
 
 /* How We Know: a Read surface (one column, 65-75ch), DESIGN.md tokens only. */
 body.read { height: auto; }
+/* Jumped-to sections clear the sticky header; on phones the header (two lines there) scrolls away instead. */
+.read-col [id] { scroll-margin-top: 96px; }
+@media (max-width: 560px) { .nav-read { position: static; } .read-col [id] { scroll-margin-top: 16px; } }
 .nav-read { position: sticky; top: 0; display: flex; justify-content: space-between; align-items: center; background: var(--color-surface); border-bottom: 1px solid var(--color-rule); }
 .read-col { display: block; height: auto; max-width: 70ch; margin: 0 auto; padding: var(--space-2xl) var(--space-lg) var(--space-3xl); }
 .read-col h1 { font: 400 2.4rem/1.1 var(--display); margin: 0 0 var(--space-md); }

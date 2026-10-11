@@ -54,6 +54,7 @@ function visibleTrip() {
 function start(c: Constants, s: SeriesFile) {
   let kind: RequestKind = 'question';
   let running = false;
+  let frame = 0; // the trip's pending animation frame, so a new choice can cancel it
   const kinds = [...document.querySelectorAll<HTMLButtonElement>('.kind')];
   const send = $<HTMLButtonElement>('q-send');
 
@@ -77,7 +78,12 @@ function start(c: Constants, s: SeriesFile) {
 
   for (const b of kinds) {
     b.addEventListener('click', () => {
-      if (running) return;
+      // Choosing another kind mid-trip cancels it (animations stay interruptible) and starts over clean.
+      if (running) {
+        cancelAnimationFrame(frame);
+        running = false;
+        send.disabled = false;
+      }
       kind = b.dataset.kind as RequestKind;
       for (const x of kinds) x.setAttribute('aria-pressed', String(x === b));
       reset();
@@ -118,13 +124,13 @@ function start(c: Constants, s: SeriesFile) {
         $('trip-status').textContent = `Reached: ${STATIONS[reached]!.label}.`;
       }
       setMeters(meterProgress(trip.at, along));
-      if (k < 1) return void requestAnimationFrame(step);
+      if (k < 1) return void (frame = requestAnimationFrame(step));
       setMeters({ e: 1, c: 1, w: 1 });
       $('q-end').innerHTML = endSentence(kind, c, s);
       running = false;
       send.disabled = false;
     };
-    requestAnimationFrame(step);
+    frame = requestAnimationFrame(step);
   });
 
   for (const el of [...kinds, send, $<HTMLInputElement>('q-text')]) el.disabled = false;

@@ -2,7 +2,7 @@
    explanation and every range sit below in the reading column. */
 .live { max-width: 1120px; margin: 0 auto; padding-inline: 20px; padding-block: var(--space-lg) var(--space-3xl); --water: #6FB7C9; --co2: #C9B79C; }
 .live-head h1 { font: 400 clamp(2rem, 4.4vw, 3.2rem)/1.06 var(--display); margin: 0 0 var(--space-md); text-wrap: balance; max-width: 24ch; }
-.since, .since-from { display: flex; gap: 6px; flex-wrap: wrap; }
+.since, .since-from { display: flex; gap: 8px; flex-wrap: wrap; }
 .since { justify-content: space-between; }
 .kind { appearance: none; border: 1px solid var(--color-rule); background: transparent; color: var(--color-text-muted); border-radius: var(--rounded-full); padding: 6px 14px; cursor: pointer; min-height: 44px; font: inherit; }
 .kind[aria-pressed="true"] { border-color: var(--color-ai); color: var(--color-ai); }

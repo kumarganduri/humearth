@@ -44,3 +44,14 @@ test('/2030 has no serious accessibility problems', async ({ page }) => {
   await expect(page.locator('#s-eff')).toBeEnabled();
   await noSeriousViolations(page);
 });
+
+for (const path of ['/', '/question', '/live', '/2030', '/how-we-know.html']) {
+  test(`${path}: the first Tab reaches "Skip to content", which moves focus to the main content`, async ({ page }) => {
+    await page.goto(path);
+    await page.keyboard.press('Tab');
+    await expect(page.locator('.skip-link')).toBeFocused();
+    await expect(page.locator('.skip-link')).toBeInViewport();
+    await page.keyboard.press('Enter');
+    await expect(page.locator('main')).toBeFocused();
+  });
+}
