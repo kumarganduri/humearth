@@ -20,7 +20,20 @@ export interface ChangelogEntry {
   mappingChanged?: boolean;
 }
 
+/** "3 sources", plus how many still need re-checking: a fold never hides that warning. */
+export function sourcesLabel(sources: Source[]): string {
+  const n = sources.length;
+  const recheck = sources.filter((s) => s.checked === 'search-summary').length;
+  return `${n} ${n === 1 ? 'source' : 'sources'}${recheck ? ` · ${recheck} needs re-checking` : ''}`;
+}
+
+/** Every source list sits in a fold: open as built (desktop, and with scripts off), closed on phones by
+ *  /how-fold.js before first paint, because there the full quotes made the page very long. */
 function sourceList(sources: Source[]): string {
+  return `<details class="src-fold" open><summary>${esc(sourcesLabel(sources))}</summary>${sourceListBody(sources)}</details>`;
+}
+
+function sourceListBody(sources: Source[]): string {
   return `<ul class="sources">${sources
     .map((s) => {
       const recheck = s.checked === 'search-summary' ? ' <span class="badge" title="We have not yet read this page itself, only a search summary of it.">needs re-checking</span>' : '';

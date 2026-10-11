@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { esc, renderChangelog, renderCountries, renderGrowth, renderHubs, renderPage, renderValues, type ChangelogEntry } from './render';
+import { esc, sourcesLabel, renderChangelog, renderCountries, renderGrowth, renderHubs, renderPage, renderValues, type ChangelogEntry } from './render';
 import { realConstants } from '../footprint/testing';
 import { VALUE_KEYS, type Hub } from '../footprint/types';
 
@@ -92,5 +92,21 @@ describe('prerendered How We Know', () => {
       read('public/data/grids.json'),
     );
     expect(readFileSync('src/how/content.generated.html', 'utf8')).toContain(fresh);
+  });
+});
+
+describe('source folds (phones start closed, desktop always open)', () => {
+  const src = (checked: string) => ({ label: 'x', url: 'https://example.org', retrieved: '2026-10-11', supports: 'mid', checked }) as never;
+  it('labels count the sources and never hide a re-checking warning', () => {
+    expect(sourcesLabel([src('page')])).toBe('1 source');
+    expect(sourcesLabel([src('page'), src('page'), src('page')])).toBe('3 sources');
+    expect(sourcesLabel([src('page'), src('search-summary')])).toBe('2 sources · 1 needs re-checking');
+  });
+  it('every source list is built open, inside a fold', () => {
+    const read = <T>(p: string) => JSON.parse(readFileSync(p, 'utf8')) as T;
+    const h = renderPage(c, hubs, [], read('public/data/series.json'), read('public/data/countries.json'), read('public/data/grids.json'));
+    const folds = h.match(/<details class="src-fold" open><summary>\d+ sources?/g) ?? [];
+    expect(folds.length).toBeGreaterThan(10);
+    expect(h.match(/<ul class="sources">/g)!.length).toBeGreaterThanOrEqual(folds.length);
   });
 });

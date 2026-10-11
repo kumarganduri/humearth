@@ -4,7 +4,6 @@
 body.read { height: auto; }
 /* Jumped-to sections clear the sticky header; on phones the header (two lines there) scrolls away instead. */
 .read-col [id] { scroll-margin-top: 96px; }
-@media (max-width: 560px) { .nav-read { position: static; } .read-col [id] { scroll-margin-top: 16px; } }
 .nav-read { position: sticky; top: 0; display: flex; justify-content: space-between; align-items: center; background: var(--color-surface); border-bottom: 1px solid var(--color-rule); }
 .read-col { display: block; height: auto; max-width: 70ch; margin: 0 auto; padding: var(--space-2xl) var(--space-lg) var(--space-3xl); }
 .read-col h1 { font: 400 2.4rem/1.1 var(--display); margin: 0 0 var(--space-md); }
@@ -25,6 +24,16 @@ tbody tr:not(.src) th, tbody tr:not(.src) td { border-top: 1px solid var(--color
 td.num { font-family: var(--num); font-variant-numeric: tabular-nums; white-space: nowrap; }
 tr.src td { padding-top: 0; }
 .sources { margin: 0; padding-left: 1.1em; font-size: 0.9rem; }
+/* Source folds: on desktop always open and the toggle is hidden (looks exactly as before); on phones the
+   list starts closed behind "3 sources" (closed by /how-fold.js before first paint). */
+.src-fold > summary { display: none; }
+@media (max-width: 560px) {
+  .src-fold > summary { display: flex; align-items: center; gap: 6px; min-height: 44px; cursor: pointer; list-style: none; color: var(--color-text-muted); font-size: .9rem; }
+  .src-fold > summary::-webkit-details-marker { display: none; }
+  .src-fold > summary::before { content: ''; width: 7px; height: 7px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(-45deg); transition: transform .15s; margin-right: 2px; }
+  .src-fold[open] > summary::before { transform: rotate(45deg); }
+  .src-fold > summary:hover { color: var(--color-text); }
+}
 .sources li { margin: 2px 0; }
 .changelog { list-style: none; padding: 0; }
 .changelog > li { margin: var(--space-lg) 0; }
@@ -49,3 +58,6 @@ tr.today th, tr.today td { font-weight: 700; }
 tr.future th, tr.future td { color: var(--color-text-muted); }
 ul.rules { font-size: 0.92rem; padding-left: 1.1em; margin: var(--space-sm) 0; }
 .table-wrap:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 2px; }
+/* Phones: the header is two lines tall there, so it scrolls away instead of staying stuck on top. (After the
+   .nav-read rule on purpose: the later rule wins.) */
+@media (max-width: 560px) { .nav-read { position: static; } .read-col [id] { scroll-margin-top: 16px; } }
