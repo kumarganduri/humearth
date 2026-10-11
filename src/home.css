@@ -183,3 +183,22 @@ table.static caption { text-align: left; font-family: var(--body); color: var(--
   .passed-short { grid-column: 1; grid-row: 2; align-self: end; }
   .controls, .passed, .earth-foot { grid-column: 1 / -1; }
 }
+
+/* What actually reduces it: one linear scale, biggest saving first; tiny bars stay as a visible sliver. */
+.col.reduce { max-width: 760px; }
+.cuts { list-style: none; margin: var(--space-md) 0 0; padding: 0; display: grid; gap: 10px; }
+.cut { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr) 7.5rem; gap: 12px; align-items: center; }
+.cut-label { font-weight: 700; font-size: .95rem; line-height: 1.25; }
+.cut-bar { height: 18px; position: relative; }
+.cut-fill { position: absolute; inset: 0 auto 0 0; min-width: 2px; background: var(--color-data-centres); border-radius: var(--rounded-sm); transition: width 350ms ease-out; }
+.cut-v { text-align: right; font-family: var(--num); font-variant-numeric: tabular-nums; font-size: .9rem; color: var(--color-text-muted); }
+.cut-v b { color: var(--color-data-centres); font-weight: 600; font-size: 1.05rem; }
+.cut-v .rng { display: block; font-size: .8rem; }
+.cut.none .cut-v { grid-column: 2 / -1; text-align: left; }
+.civic { margin: 0; padding-left: 1.1em; display: grid; gap: 10px; }
+.civic b { color: var(--color-text); }
+@media (max-width: 560px) {
+  .cut { grid-template-columns: minmax(0, 1fr) auto; row-gap: 4px; }
+  .cut-label { grid-column: 1 / -1; }
+  .cut.none .cut-v { grid-column: 1 / -1; }
+}

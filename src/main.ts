@@ -17,6 +17,7 @@ import { cleanUpV1 } from './legacy';
 import { captionFor, rangeWords } from './present/format';
 import { raceFor, readingFor, UNIT_WORDS, yearOf, type HeroData } from './present/hero';
 import { calculatorOutputs, clampUsage, outputsHtml } from './present/calculator';
+import { reduceBarsHtml } from './present/reduce';
 import { applyStyleData, stylesToData } from './present/inline-styles';
 import { readYear, yearSearch } from './present/links';
 import { replaceSearch } from './present/url';
@@ -237,6 +238,10 @@ function startCalculator(c: Constants) {
     const o = calculatorOutputs(usage, c);
     $('calc-out').innerHTML = outputsHtml(o);
     $('calc-say').textContent = o.sentence;
+    // "What actually reduces it" follows your answers (bar widths go through the CSSOM: CSP).
+    const cuts = $('cuts');
+    cuts.innerHTML = stylesToData(reduceBarsHtml(usage, c));
+    applyStyleData(cuts);
   };
   for (const i of inputs) {
     i.addEventListener('input', update);

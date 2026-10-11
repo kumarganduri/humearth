@@ -103,7 +103,6 @@ export function calculatorHtml(c: Constants): string {
     <div class="outs" id="calc-out">${outputsHtml(o)}</div>
   </div>
   <p class="say" id="calc-say" aria-live="polite">${esc(o.sentence)}</p>
-  <p>Next to the world's total, one person's use is tiny: the biggest lever isn't your chat window. It's where data centres get built, how clean their power is, and whether companies publish what they use. That's where your voice counts.</p>
   <p class="src">Low · middle · high, from the figures on <a href="/how-we-know.html#numbers">How we know</a>. One week, everything counted at the data centre (not your phone).</p>
 </section>`;
 }

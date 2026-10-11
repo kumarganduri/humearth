@@ -34,3 +34,16 @@ test('keyboard: arrow keys change a slider and the sentence is announced (aria-l
   await expect(page.locator('#calc-say')).toContainText('Your videos: 180 Wh');
   await expect(page.locator('#calc-say')).toHaveAttribute('aria-live', 'polite');
 });
+
+test('"What actually reduces it" ranks your own week and follows the sliders', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator('#u-videosPerWeek')).toBeEnabled();
+  await expect(page.locator('#cuts .cut').first()).toHaveAttribute('data-key', 'videos'); // default: 1 video is the biggest saving
+  await page.locator('#u-videosPerWeek').fill('0');
+  await expect(page.locator('#cuts .cut[data-key="videos"]')).toHaveClass(/none/);
+  await expect(page.locator('#cuts .cut[data-key="videos"]')).toContainText("You don't make any videos");
+  await page.locator('#u-picturesPerWeek').fill('40');
+  await expect(page.locator('#cuts .cut').first()).toHaveAttribute('data-key', 'pictures'); // 20 fewer pictures now beats the rest
+  const w = await page.locator('#cuts .cut').first().locator('.cut-fill').evaluate((e) => e.getBoundingClientRect().width / e.parentElement!.getBoundingClientRect().width);
+  expect(w).toBeGreaterThan(0.95);
+});

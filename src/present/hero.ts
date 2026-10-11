@@ -10,7 +10,8 @@ import { raceHtml, raceRows } from '../charts/race';
 import { fanSvg } from '../charts/fan';
 import { niceMax } from '../charts/scale';
 import { esc, formatNumber, readingHtml } from './format';
-import { calculatorHtml } from './calculator';
+import { calculatorHtml, DEFAULT_USAGE } from './calculator';
+import { reduceHtml } from './reduce';
 import { impactsHtml, whereItGoesHtml } from './story';
 import { passedListHtml, passedShort } from './earth';
 
@@ -155,5 +156,6 @@ export function renderHero(d: HeroData): string {
 <figure class="fanwrap">${fan}<figcaption class="src">${esc(historyNote(m))} Country lines show each country's electricity use in ${d.countries.year}. <a href="/how-we-know.html#growth">Every year, and how we got it</a></figcaption></figure>
 ${whereItGoesHtml(d)}
 ${impactsHtml(d)}
-${calculatorHtml(d.constants)}`;
+${calculatorHtml(d.constants)}
+${reduceHtml(DEFAULT_USAGE, d.constants)}`;
 }
