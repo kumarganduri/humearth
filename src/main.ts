@@ -24,6 +24,8 @@ import { replaceSearch } from './present/url';
 import { countryNote, passedCount, passedFor, passedListHtml, passedShort } from './present/earth';
 import type { Constants, HubsFile } from './footprint/types';
 import type { Globe } from './globe/earth';
+import type { HumSynth } from './sound/synth';
+import { humFor, type HumTone } from './sound/hum';
 
 cleanUpV1(globalThis.localStorage, globalThis.location, globalThis.history);
 
@@ -100,6 +102,31 @@ function updateRace(html: string) {
 }
 
 let globe: Globe | undefined;
+let hum: HumSynth | undefined;
+
+/** "The hum": opt-in, never remembered. The audio context is made inside the tap (Safari), the synth's
+ *  code arrives after; the button always ends where it says, however fast it's pressed. */
+function startHum(tone: () => HumTone) {
+  const btn = $<HTMLButtonElement>('hum');
+  if (!btn || typeof AudioContext === 'undefined') return;
+  let on = false;
+  let ctx: AudioContext | undefined;
+  let loading: Promise<void> | undefined;
+  btn.addEventListener('click', () => {
+    on = !on;
+    btn.setAttribute('aria-pressed', String(on));
+    btn.setAttribute('aria-label', on ? 'Turn off the hum' : 'Turn on the hum');
+    if (!ctx) {
+      ctx = new AudioContext(); // inside the tap
+      void ctx.resume();
+    }
+    loading ??= import('./sound/synth').then(({ createHumSynth }) => {
+      hum = createHumSynth(ctx!);
+      hum.setTone(tone());
+    });
+    void loading.then(() => hum!.setEnabled(on));
+  });
+}
 const litIn = (d: HeroData, year: number) => new Set(passedFor(d, year).filter((r) => r.on).map((r) => r.name));
 
 /** The globe is an enhancement: if anything here fails, the list beside it already says the same thing. */
@@ -175,7 +202,9 @@ function start(d: HeroData) {
     $('side-year').textContent = String(year);
     updateRace(raceFor(d, year));
     globe?.setLit(litIn(d, year));
+    hum?.setTone(humFor(m, year));
   };
+  startHum(() => humFor(m, Number(slider.value)));
   // The year lives in the link (?year=2030), written when a choice settles: slider released, Play ended.
   const syncUrl = () => replaceSearch(yearSearch(Number(slider.value), m.latestMeasuredYear));
   const stop = () => {

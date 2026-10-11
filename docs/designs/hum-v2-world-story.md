@@ -169,3 +169,8 @@ Same honesty rules as before. New figures needed: grid intensities for China, In
 - [x] **E5** `/2030`: starts at 100% world-average grid (the prototype's starting mix was invented); one-grid-at-a-time table; both comparisons use 2024, the latest published CO2 year.
 - [x] **E6 (code)** Shared nav, CSP/axe/44px/320px sweeps on all five pages, Lighthouse mobile perf 100 everywhere. Codex reviewed each step; its findings were fixed.
 - [ ] **E6 (ship)** Preview deploy to `hum-v2`, founder phone QA, then merge to main (founder's go-ahead only).
+
+### Stage 1b built 2026-10-11 (live on main)
+- [x] **"What actually reduces it"** (personal): your week from "Your part", ranked in Wh a week on one linear scale, tiny savings kept; plus "Bigger than any of these" (no scale).
+- [x] **EXPLAINED tiles** with named cases (grid, local air, chips and e-waste, land, noise) and **"Claims to read twice"** (six practices, no company accused). `data/sources/impacts.source.json`, 29 quotes each read on its page twice; the build rejects any summary number that isn't in its quotes. Sourcing record: `docs/sources/stage-1b-sourcing.md`.
+- [x] **"The hum"**: opt-in, never remembered. Louder and fuller with the year's electricity; a steady tone for a single published figure, wavering (detuned beats) for wide forecast ranges, the sound version of "brightness means certainty". Measured-audio E2E.

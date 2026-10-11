@@ -133,6 +133,7 @@ export function renderHero(d: HeroData): string {
     <output class="year num" id="year" for="slider">${latest}</output>
     <input type="range" id="slider" min="${m.years[0]!.year}" max="${m.years[m.years.length - 1]!.year}" step="1" value="${latest}" aria-label="Year" aria-valuetext="${latest}" disabled>
     <button type="button" class="btn" id="play" disabled>Play ${m.years[0]!.year} to ${m.years[m.years.length - 1]!.year}</button>
+    <button type="button" class="icon-btn hum-btn js-only" id="hum" aria-pressed="false" aria-label="Turn on the hum" title="The hum: louder with more electricity, wavering in forecast years"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 9h4l5-4v14l-5-4H4z"/><path class="wave" d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg></button>
   </div>
   <aside class="passed" aria-labelledby="passed-h">
     <h2 id="passed-h">Countries passed</h2>
@@ -142,7 +143,7 @@ export function renderHero(d: HeroData): string {
     <a class="scroll-cue" href="#heading-side">See the data<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
     <p class="note" id="slider-note" hidden>The year slider couldn't load. The numbers above are for ${latest}.</p>
     ${noscriptTable(m)}
-    <p class="src">A country lights up when data centres use more electricity in a year than it does (middle figure). Glows are the biggest data-centre hubs, sized by power capacity. Data centres: ${esc(SOURCE)}, Energy and AI (2025) and its 2026 update. Countries: Ember (${d.countries.year}). <a href="/how-we-know.html#growth">How we know</a></p>
+    <p class="src">A country lights up when data centres use more electricity in a year than it does (middle figure). The speaker button plays the hum: louder as they use more, wavering in forecast years. Glows are the biggest data-centre hubs, sized by power capacity. Data centres: ${esc(SOURCE)}, Energy and AI (2025) and its 2026 update. Countries: Ember (${d.countries.year}). <a href="/how-we-know.html#growth">How we know</a></p>
   </div>
 </section>
 <section class="col side" aria-labelledby="heading-side">

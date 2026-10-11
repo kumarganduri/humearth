@@ -11,6 +11,7 @@
     <output class="year num" id="year" for="slider">2025</output>
     <input type="range" id="slider" min="2017" max="2035" step="1" value="2025" aria-label="Year" aria-valuetext="2025" disabled>
     <button type="button" class="btn" id="play" disabled>Play 2017 to 2035</button>
+    <button type="button" class="icon-btn hum-btn js-only" id="hum" aria-pressed="false" aria-label="Turn on the hum" title="The hum: louder with more electricity, wavering in forecast years"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 9h4l5-4v14l-5-4H4z"/><path class="wave" d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg></button>
   </div>
   <aside class="passed" aria-labelledby="passed-h">
     <h2 id="passed-h">Countries passed</h2>
@@ -20,7 +21,7 @@
     <a class="scroll-cue" href="#heading-side">See the data<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
     <p class="note" id="slider-note" hidden>The year slider couldn't load. The numbers above are for 2025.</p>
     <noscript><table class="static"><caption>Data-centre electricity, published figures (TWh a year)</caption><thead><tr><th scope="col">Year</th><th scope="col">Low</th><th scope="col">Mid</th><th scope="col">High</th></tr></thead><tbody><tr><th scope="row">2024</th><td>415</td><td>415</td><td>415</td></tr><tr><th scope="row">2025</th><td>485</td><td>485</td><td>485</td></tr><tr><th scope="row">2030 (forecast)</th><td>593</td><td>950</td><td>1,093</td></tr><tr><th scope="row">2035 (forecast)</th><td>700</td><td>1,200</td><td>1,700</td></tr></tbody></table></noscript>
-    <p class="src">A country lights up when data centres use more electricity in a year than it does (middle figure). Glows are the biggest data-centre hubs, sized by power capacity. Data centres: IEA, Energy and AI (2025) and its 2026 update. Countries: Ember (2025). <a href="/how-we-know.html#growth">How we know</a></p>
+    <p class="src">A country lights up when data centres use more electricity in a year than it does (middle figure). The speaker button plays the hum: louder as they use more, wavering in forecast years. Glows are the biggest data-centre hubs, sized by power capacity. Data centres: IEA, Energy and AI (2025) and its 2026 update. Countries: Ember (2025). <a href="/how-we-know.html#growth">How we know</a></p>
   </div>
 </section>
 <section class="col side" aria-labelledby="heading-side">
