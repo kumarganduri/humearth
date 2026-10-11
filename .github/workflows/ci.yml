@@ -41,7 +41,7 @@ jobs:
         run: npx playwright test
         env:
           CI: true
-      - name: Lighthouse (LCP < 2.5 s on throttled mobile)
+      - name: Lighthouse (LCP < 2.5 s on throttled mobile, median of 3 runs per page)
         run: npx --yes @lhci/cli@0.15 autorun
 
       - uses: actions/upload-artifact@v4
