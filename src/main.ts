@@ -13,7 +13,7 @@ import './analytics'; // visitor counts, real site only
 import './base.css';
 import './home.css';
 import './hero.generated.css'; // the prebuilt hero's styles (moved out of style="" for the CSP)
-import { cleanUpV1 } from './legacy';
+import { cleanUpV1, safeLocalStorage } from './legacy';
 import { captionFor, rangeWords } from './present/format';
 import { raceFor, readingFor, UNIT_WORDS, yearOf, type HeroData } from './present/hero';
 import { calculatorOutputs, clampUsage, outputsHtml } from './present/calculator';
@@ -27,7 +27,7 @@ import type { Globe } from './globe/earth';
 import type { HumSynth } from './sound/synth';
 import { humFor, type HumTone } from './sound/hum';
 
-cleanUpV1(globalThis.localStorage, globalThis.location, globalThis.history);
+cleanUpV1(safeLocalStorage(), globalThis.location, globalThis.history);
 
 const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
 const reduceMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;

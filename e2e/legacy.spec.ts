@@ -12,3 +12,13 @@ test('an old v1 share link opens the normal page, with the hash and stored world
   await expect.poll(() => page.url()).toMatch(/\/$/);
   expect(await page.evaluate(() => [localStorage.getItem('hum.world'), localStorage.getItem('hum.sound')])).toEqual([null, null]);
 });
+
+// Regression: reading window.localStorage throws where the browser blocks site storage (e.g. cookies blocked);
+// that stopped every page's script before it started. Each page must still come to life.
+for (const [path, ready] of [['/', '#slider'], ['/question', '#q-send'], ['/live', '#l-hold'], ['/2030', '#s-eff']] as const) {
+  test(`${path} still works when the browser blocks site storage`, async ({ page }) => {
+    await page.addInitScript(() => Object.defineProperty(window, 'localStorage', { get() { throw new DOMException('blocked', 'SecurityError'); } }));
+    await page.goto(path);
+    await expect(page.locator(ready)).toBeEnabled();
+  });
+}

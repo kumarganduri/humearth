@@ -16,8 +16,8 @@ import type { HeroData } from './hero';
 
 export const OG_W = 1200;
 export const OG_H = 630;
-export type OgPage = 'home' | 'question' | 'live' | '2030' | 'how';
-export const OG_PAGES: OgPage[] = ['home', 'question', 'live', '2030', 'how'];
+export type OgPage = 'home' | 'question' | 'live' | '2030' | 'how' | 'daily';
+export const OG_PAGES: OgPage[] = ['home', 'question', 'live', '2030', 'how', 'daily'];
 
 export interface OgData extends HeroData {
   world: FeatureCollection<Geometry, { name: string }>;
@@ -71,6 +71,12 @@ export function cardText(page: OgPage, d: OgData): CardText {
         caption: 'The IEA forecast. Now choose the grids and see the CO2.',
       };
     }
+    case 'daily':
+      return {
+        headline: ['Hum Daily:', 'one question a day.', 'More or less?'],
+        figure: 'Every answer sourced',
+        caption: "Countries, data-centre hubs, grids and AI's electricity per use",
+      };
     case 'how': {
       // Every quote How We Know lists: per-use figures, year-by-year series, grids, hubs, and the country dataset.
       const n =

@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 // Link previews: every page names its card, and the card image is served (rendered at build time).
-const PAGES: [string, string][] = [['/', 'home'], ['/question', 'question'], ['/live', 'live'], ['/2030', '2030'], ['/how-we-know.html', 'how']];
+const PAGES: [string, string][] = [['/', 'home'], ['/question', 'question'], ['/live', 'live'], ['/2030', '2030'], ['/daily', 'daily'], ['/how-we-know.html', 'how']];
 
 for (const [path, card] of PAGES) {
   test(`${path}: preview tags point at its card, and the card is a 1200x630 PNG`, async ({ page, request }) => {

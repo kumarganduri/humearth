@@ -45,7 +45,7 @@ test('/2030 has no serious accessibility problems', async ({ page }) => {
   await noSeriousViolations(page);
 });
 
-for (const path of ['/', '/question', '/live', '/2030', '/how-we-know.html']) {
+for (const path of ['/', '/question', '/live', '/2030', '/daily', '/how-we-know.html']) {
   test(`${path}: the first Tab reaches "Skip to content", which moves focus to the main content`, async ({ page }) => {
     await page.goto(path);
     await page.keyboard.press('Tab');
@@ -55,3 +55,12 @@ for (const path of ['/', '/question', '/live', '/2030', '/how-we-know.html']) {
     await expect(page.locator('main')).toBeFocused();
   });
 }
+
+test('/daily has no serious accessibility problems, before and after answering', async ({ page }) => {
+  await page.goto('/daily');
+  await expect(page.locator('[data-pick="more"]')).toBeVisible();
+  await noSeriousViolations(page);
+  await page.click('[data-pick="more"]');
+  await expect(page.locator('.dq-verdict')).toBeVisible();
+  await noSeriousViolations(page);
+});

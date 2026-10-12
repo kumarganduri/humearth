@@ -21,3 +21,13 @@ export function cleanUpV1(store: Store | null | undefined, loc: Loc, hist: Hist)
     hist.replaceState(null, '', `${loc.pathname}${search ? `?${search}` : ''}`);
   }
 }
+
+/** localStorage, or null where the browser blocks site storage: there even *reading* window.localStorage
+ *  throws (e.g. Chrome with cookies blocked), which used to stop every page's script before it started. */
+export function safeLocalStorage(): Storage | null {
+  try {
+    return globalThis.localStorage ?? null;
+  } catch {
+    return null;
+  }
+}

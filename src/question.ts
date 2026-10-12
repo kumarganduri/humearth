@@ -9,7 +9,7 @@
 import './analytics'; // visitor counts, real site only
 import './base.css';
 import './question.css';
-import { cleanUpV1 } from './legacy';
+import { cleanUpV1, safeLocalStorage } from './legacy';
 import { formatNumber } from './present/format';
 import { endSentence, figureOf, meterProgress, rangeLine, STATIONS, type Station } from './present/question';
 import { perRequest, type RequestKind } from './footprint/rates';
@@ -18,7 +18,7 @@ import { replaceSearch } from './present/url';
 import type { Constants } from './footprint/types';
 import type { SeriesFile } from './footprint/series-types';
 
-cleanUpV1(globalThis.localStorage, globalThis.location, globalThis.history);
+cleanUpV1(safeLocalStorage(), globalThis.location, globalThis.history);
 
 const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
 const TRIP_MS = 5200;

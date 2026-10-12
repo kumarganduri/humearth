@@ -5,7 +5,7 @@ import './analytics'; // visitor counts, real site only
 import './base.css';
 import './sim.css';
 import './sim.generated.css'; // the prebuilt starting point's widths (moved out of style="" for the CSP)
-import { cleanUpV1 } from './legacy';
+import { cleanUpV1, safeLocalStorage } from './legacy';
 import { simGrids, simulate2030, type SimInput } from './footprint/rates';
 import { outputsHtml, shareText, START, verdict } from './present/sim';
 import { readSim, simSearch } from './present/links';
@@ -14,7 +14,7 @@ import { applyStyleData, stylesToData } from './present/inline-styles';
 import type { Constants, GridsFile } from './footprint/types';
 import type { SeriesFile } from './footprint/series-types';
 
-cleanUpV1(globalThis.localStorage, globalThis.location, globalThis.history);
+cleanUpV1(safeLocalStorage(), globalThis.location, globalThis.history);
 
 const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
 

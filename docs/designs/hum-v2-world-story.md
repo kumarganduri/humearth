@@ -179,3 +179,9 @@ Same honesty rules as before. New figures needed: grid intensities for China, In
 - **London:** NESO Carbon Intensity API, regional estimate (CC BY 4.0, no key), every 30 minutes.
 - **Northern Virginia:** EIA hourly generation by fuel for PJM x EIA's 2023 CO2 per kWh by fuel (constants v10), calculated by Hum and drawn dotted. Needs the `EIA_API_KEY` Pages secret (founder registers; never in the repo).
 - `functions/api/grid.ts` fetches both at the edge and caches 15 minutes (2 on failure), so visitors' browsers still only contact humearth.org. Dublin (EirGrid) was left out: its dashboard feed has no published API terms.
+
+### Stage 4 built 2026-10-12: Hum Daily (/daily)
+- One more-or-less question a day (Wordle-style, by the visitor's local date; #1 = 12 October 2026). Topics take turns: countries and data centres, AI per use, grids, hubs.
+- The pool (173 questions) is built from the data files. A question is used only if its answer holds across both figures' whole ranges and the middle figures are at least 20% apart; hubs are only compared with hubs measured the same way.
+- The reveal shows both figures with their ranges and links to How We Know. The streak lives on the device only (localStorage); the share text has no spoiler.
+- Found on the way: reading `localStorage` throws where browsers block site storage, which stopped every page's script; all pages now use `safeLocalStorage()`.

@@ -5,7 +5,7 @@
 import './analytics'; // visitor counts, real site only
 import './base.css';
 import './live.css';
-import { cleanUpV1 } from './legacy';
+import { cleanUpV1, safeLocalStorage } from './legacy';
 import { aiRates } from './footprint/rates';
 import { counterWords, elapsedSeconds, pools, poolsWords, totalsAfter, type Since } from './present/live';
 import type { Constants } from './footprint/types';
@@ -13,7 +13,7 @@ import { gridHtml } from './livegrid/view';
 import type { GridFile } from './livegrid/grid';
 import type { SeriesFile } from './footprint/series-types';
 
-cleanUpV1(globalThis.localStorage, globalThis.location, globalThis.history);
+cleanUpV1(safeLocalStorage(), globalThis.location, globalThis.history);
 
 const $ = (id: string) => document.getElementById(id)!;
 const openedAt = Date.now();

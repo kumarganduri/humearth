@@ -63,6 +63,7 @@ export default defineConfig({
         question: resolve(import.meta.dirname, 'question.html'),
         live: resolve(import.meta.dirname, 'live.html'),
         y2030: resolve(import.meta.dirname, '2030.html'),
+        daily: resolve(import.meta.dirname, 'daily.html'),
       },
     },
   },

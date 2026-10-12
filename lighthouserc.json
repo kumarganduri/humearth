@@ -7,7 +7,8 @@
         "/how-we-know.html",
         "/question.html",
         "/live.html",
-        "/2030.html"
+        "/2030.html",
+        "/daily.html"
       ],
       "numberOfRuns": 3,
       "settings": {
