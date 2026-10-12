@@ -32,5 +32,8 @@ export async function onRequestGet({ request, next }: Ctx): Promise<Response> {
     .on('meta[property="og:description"]', set(preview.description))
     .on('meta[name="twitter:description"]', set(preview.description))
     .on('meta[property="og:url"]', set(request.url))
+    .on('meta[property="og:image"]', set(new URL(preview.image, request.url).href))
+    .on('meta[name="twitter:image"]', set(new URL(preview.image, request.url).href))
+    .on('meta[property="og:image:alt"]', set(preview.imageAlt))
     .transform(res);
 }

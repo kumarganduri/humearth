@@ -18,3 +18,15 @@ for (const [path, card] of PAGES) {
     expect([b.readUInt32BE(16), b.readUInt32BE(20)]).toEqual([1200, 630]);
   });
 }
+
+test('every personal /2030 card in the range exists as a 1200x630 PNG (spot-checked: ends and middle)', async ({ request }) => {
+  const meta = await request.get('/og/2030/227.png');
+  expect(meta.status()).toBe(200);
+  for (const n of [227, 300, 449]) {
+    const r = await request.get(`/og/2030/${n}.png`);
+    expect(r.status(), `card ${n}`).toBe(200);
+    const b = await r.body();
+    expect(b.subarray(1, 4).toString()).toBe('PNG');
+    expect([b.readUInt32BE(16), b.readUInt32BE(20)]).toEqual([1200, 630]);
+  }
+});
