@@ -240,5 +240,38 @@
         ]
       }
     ]
+  },
+  {
+    "date": "2026-10-12",
+    "constantsVersion": 10,
+    "changes": [
+      {
+        "key": "coalCO2LbPerKWh",
+        "from": null,
+        "to": [
+          2.31,
+          2.31,
+          2.31
+        ]
+      },
+      {
+        "key": "gasCO2LbPerKWh",
+        "from": null,
+        "to": [
+          0.96,
+          0.96,
+          0.96
+        ]
+      },
+      {
+        "key": "oilCO2LbPerKWh",
+        "from": null,
+        "to": [
+          2.46,
+          2.46,
+          2.46
+        ]
+      }
+    ]
   }
 ]

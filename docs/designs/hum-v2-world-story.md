@@ -174,3 +174,8 @@ Same honesty rules as before. New figures needed: grid intensities for China, In
 - [x] **"What actually reduces it"** (personal): your week from "Your part", ranked in Wh a week on one linear scale, tiny savings kept; plus "Bigger than any of these" (no scale).
 - [x] **EXPLAINED tiles** with named cases (grid, local air, chips and e-waste, land, noise) and **"Claims to read twice"** (six practices, no company accused). `data/sources/impacts.source.json`, 29 quotes each read on its page twice; the build rejects any summary number that isn't in its quotes. Sourcing record: `docs/sources/stage-1b-sourcing.md`.
 - [x] **"The hum"**: opt-in, never remembered. Louder and fuller with the year's electricity; a steady tone for a single published figure, wavering (detuned beats) for wide forecast ranges, the sound version of "brightness means certainty". Measured-audio E2E.
+
+### Stage 3 built 2026-10-12: live grid carbon on /live
+- **London:** NESO Carbon Intensity API, regional estimate (CC BY 4.0, no key), every 30 minutes.
+- **Northern Virginia:** EIA hourly generation by fuel for PJM x EIA's 2023 CO2 per kWh by fuel (constants v10), calculated by Hum and drawn dotted. Needs the `EIA_API_KEY` Pages secret (founder registers; never in the repo).
+- `functions/api/grid.ts` fetches both at the edge and caches 15 minutes (2 on failure), so visitors' browsers still only contact humearth.org. Dublin (EirGrid) was left out: its dashboard feed has no published API terms.

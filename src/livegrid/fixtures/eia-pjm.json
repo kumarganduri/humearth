@@ -1,0 +1,161 @@
+{
+ "response": {
+  "total": 17,
+  "frequency": "hourly",
+  "data": [
+   {
+    "period": "2026-10-12T14",
+    "respondent": "PJM",
+    "respondent-name": "PJM Interconnection, LLC",
+    "fueltype": "COL",
+    "type-name": "COL",
+    "value": "12000",
+    "value-units": "megawatthours"
+   },
+   {
+    "period": "2026-10-12T14",
+    "respondent": "PJM",
+    "respondent-name": "PJM Interconnection, LLC",
+    "fueltype": "NG",
+    "type-name": "NG",
+    "value": "30000",
+    "value-units": "megawatthours"
+   },
+   {
+    "period": "2026-10-12T14",
+    "respondent": "PJM",
+    "respondent-name": "PJM Interconnection, LLC",
+    "fueltype": "NUC",
+    "type-name": "NUC",
+    "value": "33000",
+    "value-units": "megawatthours"
+   },
+   {
+    "period": "2026-10-12T14",
+    "respondent": "PJM",
+    "respondent-name": "PJM Interconnection, LLC",
+    "fueltype": "WND",
+    "type-name": "WND",
+    "value": "3000",
+    "value-units": "megawatthours"
+   },
+   {
+    "period": "2026-10-12T14",
+    "respondent": "PJM",
+    "respondent-name": "PJM Interconnection, LLC",
+    "fueltype": "SUN",
+    "type-name": "SUN",
+    "value": "2000",
+    "value-units": "megawatthours"
+   },
+   {
+    "period": "2026-10-12T14",
+    "respondent": "PJM",
+    "respondent-name": "PJM Interconnection, LLC",
+    "fueltype": "WAT",
+    "type-name": "WAT",
+    "value": "1000",
+    "value-units": "megawatthours"
+   },
+   {
+    "period": "2026-10-12T14",
+    "respondent": "PJM",
+    "respondent-name": "PJM Interconnection, LLC",
+    "fueltype": "OIL",
+    "type-name": "OIL",
+    "value": "100",
+    "value-units": "megawatthours"
+   },
+   {
+    "period": "2026-10-12T14",
+    "respondent": "PJM",
+    "respondent-name": "PJM Interconnection, LLC",
+    "fueltype": "OTH",
+    "type-name": "OTH",
+    "value": "900",
+    "value-units": "megawatthours"
+   },
+   {
+    "period": "2026-10-12T15",
+    "respondent": "PJM",
+    "respondent-name": "PJM Interconnection, LLC",
+    "fueltype": "COL",
+    "type-name": "COL",
+    "value": "10000",
+    "value-units": "megawatthours"
+   },
+   {
+    "period": "2026-10-12T15",
+    "respondent": "PJM",
+    "respondent-name": "PJM Interconnection, LLC",
+    "fueltype": "NG",
+    "type-name": "NG",
+    "value": "32000",
+    "value-units": "megawatthours"
+   },
+   {
+    "period": "2026-10-12T15",
+    "respondent": "PJM",
+    "respondent-name": "PJM Interconnection, LLC",
+    "fueltype": "NUC",
+    "type-name": "NUC",
+    "value": "33000",
+    "value-units": "megawatthours"
+   },
+   {
+    "period": "2026-10-12T15",
+    "respondent": "PJM",
+    "respondent-name": "PJM Interconnection, LLC",
+    "fueltype": "WND",
+    "type-name": "WND",
+    "value": "5000",
+    "value-units": "megawatthours"
+   },
+   {
+    "period": "2026-10-12T15",
+    "respondent": "PJM",
+    "respondent-name": "PJM Interconnection, LLC",
+    "fueltype": "SUN",
+    "type-name": "SUN",
+    "value": "1000",
+    "value-units": "megawatthours"
+   },
+   {
+    "period": "2026-10-12T15",
+    "respondent": "PJM",
+    "respondent-name": "PJM Interconnection, LLC",
+    "fueltype": "WAT",
+    "type-name": "WAT",
+    "value": "1000",
+    "value-units": "megawatthours"
+   },
+   {
+    "period": "2026-10-12T15",
+    "respondent": "PJM",
+    "respondent-name": "PJM Interconnection, LLC",
+    "fueltype": "OIL",
+    "type-name": "OIL",
+    "value": "0",
+    "value-units": "megawatthours"
+   },
+   {
+    "period": "2026-10-12T15",
+    "respondent": "PJM",
+    "respondent-name": "PJM Interconnection, LLC",
+    "fueltype": "OTH",
+    "type-name": "OTH",
+    "value": "1000",
+    "value-units": "megawatthours"
+   },
+   {
+    "period": "2026-10-12T15",
+    "respondent": "PJM",
+    "respondent-name": "PJM Interconnection, LLC",
+    "fueltype": "BAT",
+    "type-name": "BAT",
+    "value": "-200",
+    "value-units": "megawatthours"
+   }
+  ]
+ }
+}

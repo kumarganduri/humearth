@@ -1,7 +1,7 @@
 {
-  "constantsVersion": 9,
-  "contentHash": "c27f3622fc14557c",
-  "builtAt": "2026-10-03",
+  "constantsVersion": 10,
+  "contentHash": "caa3e7ef053b6f00",
+  "builtAt": "2026-10-12",
   "values": {
     "textPromptWh": {
       "label": "Electricity per text answer",
@@ -273,6 +273,57 @@
           "supports": "low,mid,high",
           "checked": "page",
           "note": "a size, not an estimate: 50 m x 25 m x 2 m (the World Aquatics minimum depth)"
+        }
+      ]
+    },
+    "coalCO2LbPerKWh": {
+      "label": "CO2 per kWh generated from coal (United States, 2023)",
+      "unit": "lb CO2/kWh",
+      "low": 2.31,
+      "mid": 2.31,
+      "high": 2.31,
+      "sources": [
+        {
+          "label": "EIA FAQ, table \"U.S. utility-scale net electricity generation and resulting CO 2 emissions by fuel in 2023\", pounds per kWh column: \"Coal 675,115 709 781 2.31\"",
+          "url": "https://www.eia.gov/tools/faqs/faq.php?id=74&t=11",
+          "retrieved": "2026-10-12",
+          "supports": "low,mid,high",
+          "checked": "page",
+          "note": "single published figure; EIA counts biomass, hydro, solar and wind as carbon neutral (same page), and nuclear emits no CO2 when generating"
+        }
+      ]
+    },
+    "gasCO2LbPerKWh": {
+      "label": "CO2 per kWh generated from natural gas (United States, 2023)",
+      "unit": "lb CO2/kWh",
+      "low": 0.96,
+      "mid": 0.96,
+      "high": 0.96,
+      "sources": [
+        {
+          "label": "EIA FAQ, table \"U.S. utility-scale net electricity generation and resulting CO 2 emissions by fuel in 2023\", pounds per kWh column: \"Natural gas 1,806,063 790 871 0.96\"",
+          "url": "https://www.eia.gov/tools/faqs/faq.php?id=74&t=11",
+          "retrieved": "2026-10-12",
+          "supports": "low,mid,high",
+          "checked": "page",
+          "note": "single published figure; EIA counts biomass, hydro, solar and wind as carbon neutral (same page), and nuclear emits no CO2 when generating"
+        }
+      ]
+    },
+    "oilCO2LbPerKWh": {
+      "label": "CO2 per kWh generated from petroleum (United States, 2023)",
+      "unit": "lb CO2/kWh",
+      "low": 2.46,
+      "mid": 2.46,
+      "high": 2.46,
+      "sources": [
+        {
+          "label": "EIA FAQ, table \"U.S. utility-scale net electricity generation and resulting CO 2 emissions by fuel in 2023\", pounds per kWh column: \"Petroleum 16,233 18 20 2.46\"",
+          "url": "https://www.eia.gov/tools/faqs/faq.php?id=74&t=11",
+          "retrieved": "2026-10-12",
+          "supports": "low,mid,high",
+          "checked": "page",
+          "note": "single published figure; EIA counts biomass, hydro, solar and wind as carbon neutral (same page), and nuclear emits no CO2 when generating"
         }
       ]
     }

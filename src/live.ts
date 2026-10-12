@@ -9,6 +9,8 @@ import { cleanUpV1 } from './legacy';
 import { aiRates } from './footprint/rates';
 import { counterWords, elapsedSeconds, pools, poolsWords, totalsAfter, type Since } from './present/live';
 import type { Constants } from './footprint/types';
+import { gridHtml } from './livegrid/view';
+import type { GridFile } from './livegrid/grid';
 import type { SeriesFile } from './footprint/series-types';
 
 cleanUpV1(globalThis.localStorage, globalThis.location, globalThis.history);
@@ -75,8 +77,22 @@ function start(c: Constants, s: SeriesFile) {
   run();
 }
 
+/** "Right now on the grid": fetched from our own /api/grid (the edge fetches the grid operators). */
+async function startGrid(c: Constants) {
+  const box = $('grid-now');
+  const time = (iso: string) => new Intl.DateTimeFormat(undefined, { hour: '2-digit', minute: '2-digit', timeZoneName: 'short' }).format(new Date(iso));
+  const ctx = { whPerAnswer: c.values.textPromptWh.mid, worldG: c.values.gridGCO2PerKWh.mid, time };
+  try {
+    const r = await fetch('/api/grid');
+    if (!r.ok) throw new Error(String(r.status));
+    box.innerHTML = gridHtml((await r.json()) as GridFile, ctx);
+  } catch {
+    box.innerHTML = '<p class="g-none">The live grid figures couldn\'t load just now. Try again in a few minutes.</p>';
+  }
+}
+
 Promise.all([getJson<Constants>('constants'), getJson<SeriesFile>('series')])
-  .then(([c, s]) => start(c, s))
+  .then(([c, s]) => (start(c, s), startGrid(c)))
   .catch(() => {
     /* the per-second figures below are prebuilt and still tell the story */
   });

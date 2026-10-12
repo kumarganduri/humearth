@@ -9,6 +9,7 @@ import type { Constants, Hub } from '../footprint/types';
 import type { SeriesFile } from '../footprint/series-types';
 import { aiRates, todayTWh, type Rates } from '../footprint/rates';
 import { formatNumber } from './format';
+import { gridSkeleton } from '../livegrid/view';
 
 export type Since = 'open' | 'midnight';
 
@@ -97,6 +98,12 @@ export function livePageHtml(c: Constants, s: SeriesFile, hubs: Hub[]): string {
   </div>
   <div class="counts">${counter('e', 'Electricity')}${counter('c', 'CO2')}</div>
 </div>
+<section class="col grid-now js-only" aria-labelledby="gn-h">
+  <h2 id="gn-h">Right now on the grid</h2>
+  <p>The same electricity can be clean or dirty depending on where and when it's made. Live from two of the biggest data-centre hubs, in grams of CO2 per kWh generated:</p>
+  <div class="g-cards" id="grid-now">${gridSkeleton(['London', 'Northern Virginia'])}</div>
+  <p class="src">Both count CO2 from generating the electricity on that grid (NESO also counts imports). Northern Virginia is calculated by Hum from EIA's hourly fuel mix for the PJM grid and EIA's CO2 per kWh by fuel. Updated about every 15 minutes. <a href="/how-we-know.html#numbers">How we know</a></p>
+</section>
 <section class="col" aria-labelledby="ps-h">
   <h2 id="ps-h">Every second</h2>
   <ul class="per-sec">
