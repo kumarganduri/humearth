@@ -17,7 +17,7 @@ describe('live grid cards', () => {
     const h = regionHtml(london, at(london));
     expect(h).toContain(`<span class="num g-big">${last.g}</span>`);
     expect(h).toContain('As of ');
-    expect(h).toContain('right now: about');
+    expect(h).toContain("If one AI answer ran on this grid's average electricity right now: about");
     expect(h).toMatch(/(\d+% of the world average|about the world average|[\d.]+ times the world average) \(473\)/);
     expect(h).toContain(`about <b class="derived">${Number((last.g * 0.34).toPrecision(3))} mg</b> of CO2`);
     expect(h).toContain('<svg class="spark"');
@@ -30,7 +30,7 @@ describe('live grid cards', () => {
     const h = regionHtml(v, { ...ctx, now: newest + 26 * 3600e3 });
     expect(h).toContain('Latest published hour: ');
     expect(h).toContain('26 hours ago');
-    expect(h).toContain('in that hour: about');
+    expect(h).toContain('electricity in that hour: about');
     expect(h).not.toContain('right now');
   });
   it('a calculated hub is drawn dotted: dotted number and a dashed line', () => {

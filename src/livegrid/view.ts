@@ -63,7 +63,7 @@ export function regionHtml(r: GridRegion, c: GridViewContext): string {
   <p class="g-now"><span class="num g-big">${num}</span> <span class="g-unit">g CO2 per kWh</span></p>
   <p class="g-cmp">${esc(compare)} (${formatNumber(c.worldG)}). ${esc(asOf)}, ${what}.</p>
   ${sparkline(r.points, calc)}
-  <p class="g-answer">One AI answer's electricity here, ${fresh ? 'right now' : 'in that hour'}: about <b class="derived">${formatNumber(answerMg(now.g, c.whPerAnswer))} mg</b> of CO2.</p>
+  <p class="g-answer">If one AI answer ran on this grid's average electricity ${fresh ? 'right now' : 'in that hour'}: about <b class="derived">${formatNumber(answerMg(now.g, c.whPerAnswer))} mg</b> of CO2.</p>
   ${src}
 </div>`;
 }

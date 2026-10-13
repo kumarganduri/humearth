@@ -102,7 +102,7 @@ export function livePageHtml(c: Constants, s: SeriesFile, hubs: Hub[]): string {
   <h2 id="gn-h">Right now on the grid</h2>
   <p>The same electricity can be clean or dirty depending on where and when it's made. The latest figures from two of the biggest data-centre hubs, in grams of CO2 per kWh generated:</p>
   <div class="g-cards" id="grid-now">${gridSkeleton(['London', 'Northern Virginia'])}</div>
-  <p class="src">Both count CO2 from generating the electricity on that grid (NESO also counts imports). Northern Virginia is calculated by Hum from EIA's hourly fuel mix for the PJM grid and EIA's CO2 per kWh by fuel. Hum checks about every 15 minutes; NESO publishes every half hour, EIA about a day late. <a href="/how-we-know.html#numbers">How we know</a></p>
+  <p class="src">Both count CO2 from generating the electricity on that grid (NESO also counts imports). They're the grid's average, not a measurement of any data centre: a data centre may buy cleaner (or dirtier) power, or run at different times. Northern Virginia is calculated by Hum from EIA's hourly fuel mix for the PJM grid and EIA's CO2 per kWh by fuel. Hum checks about every 15 minutes; NESO publishes every half hour, EIA about a day late. <a href="/how-we-know.html#numbers">How we know</a></p>
 </section>
 <section class="col" aria-labelledby="ps-h">
   <h2 id="ps-h">Every second</h2>
