@@ -80,8 +80,8 @@ function start(c: Constants, s: SeriesFile) {
 /** "Right now on the grid": fetched from our own /api/grid (the edge fetches the grid operators). */
 async function startGrid(c: Constants) {
   const box = $('grid-now');
-  const time = (iso: string) => new Intl.DateTimeFormat(undefined, { hour: '2-digit', minute: '2-digit', timeZoneName: 'short' }).format(new Date(iso));
-  const ctx = { whPerAnswer: c.values.textPromptWh.mid, worldG: c.values.gridGCO2PerKWh.mid, time };
+  const time = (iso: string) => new Intl.DateTimeFormat(undefined, { weekday: 'short', hour: '2-digit', minute: '2-digit', timeZoneName: 'short' }).format(new Date(iso));
+  const ctx = { whPerAnswer: c.values.textPromptWh.mid, worldG: c.values.gridGCO2PerKWh.mid, time, now: Date.now() };
   try {
     const r = await fetch('/api/grid');
     if (!r.ok) throw new Error(String(r.status));

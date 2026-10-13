@@ -3,7 +3,8 @@ import { readFileSync } from 'node:fs';
 import { gridHtml, regionHtml, sparkline } from './view';
 import { parseNeso, type GridRegion } from './grid';
 
-const ctx = { whPerAnswer: 0.34, worldG: 473, time: (iso: string) => iso.slice(11, 16) };
+const ctx = { whPerAnswer: 0.34, worldG: 473, time: (iso: string) => iso.slice(11, 16), now: 0 };
+const at = (r: GridRegion) => ({ ...ctx, now: Date.parse(r.points[r.points.length - 1]!.t) + 30 * 60e3 }); // 30 min after the newest point
 const london: GridRegion = {
   key: 'london', hub: 'London', kind: 'estimate',
   source: { name: 'NESO', url: 'https://carbonintensity.org.uk/', licence: 'CC BY 4.0' },
@@ -13,17 +14,28 @@ const london: GridRegion = {
 describe('live grid cards', () => {
   it('London: the latest figure, compared with the world average, the answer in mg, a 24 h line, the source and licence', () => {
     const last = london.points[london.points.length - 1]!;
-    const h = regionHtml(london, ctx);
+    const h = regionHtml(london, at(london));
     expect(h).toContain(`<span class="num g-big">${last.g}</span>`);
+    expect(h).toContain('As of ');
+    expect(h).toContain('right now: about');
     expect(h).toMatch(/(\d+% of the world average|about the world average|[\d.]+ times the world average) \(473\)/);
     expect(h).toContain(`about <b class="derived">${Number((last.g * 0.34).toPrecision(3))} mg</b> of CO2`);
     expect(h).toContain('<svg class="spark"');
     expect(h).toContain('(CC BY 4.0)');
     expect(h).not.toMatch(/\sstyle="/); // CSP
   });
+  it('a figure published late says how old it is, and never claims "right now"', () => {
+    const v: GridRegion = { ...london, key: 'virginia', hub: 'Northern Virginia', kind: 'calculated' };
+    const newest = Date.parse(v.points[v.points.length - 1]!.t);
+    const h = regionHtml(v, { ...ctx, now: newest + 26 * 3600e3 });
+    expect(h).toContain('Latest published hour: ');
+    expect(h).toContain('26 hours ago');
+    expect(h).toContain('in that hour: about');
+    expect(h).not.toContain('right now');
+  });
   it('a calculated hub is drawn dotted: dotted number and a dashed line', () => {
     const v: GridRegion = { ...london, key: 'virginia', hub: 'Northern Virginia', kind: 'calculated' };
-    const h = regionHtml(v, ctx);
+    const h = regionHtml(v, at(v));
     expect(h).toMatch(/<span class="derived">\d+<\/span>/);
     expect(h).toContain('stroke-dasharray="5 4"');
     expect(h).toContain("calculated by Hum from the grid operator's fuel mix");

@@ -11,6 +11,17 @@ export interface GridViewContext {
   worldG: number;
   /** "16:00" in the visitor's own time zone (the browser passes Intl; tests pass a fixed one). */
   time: (iso: string) => string;
+  /** Now, in ms (Date.now() in the browser): used to say how old a figure is. */
+  now: number;
+}
+
+/** Sources publish with a delay (EIA: about a day). Within this, a figure counts as "right now". */
+export const FRESH_HOURS = 2;
+
+/** "26 hours ago" / "about 2 days ago". */
+export function ageWords(hours: number): string {
+  if (hours < 48) return `${Math.round(hours)} hours ago`;
+  return `about ${Math.round(hours / 24)} days ago`;
 }
 
 const W = 280;
@@ -40,15 +51,19 @@ export function regionHtml(r: GridRegion, c: GridViewContext): string {
     return `<div class="g-card off" data-key="${r.key}">${head}<p class="g-none">${why}</p>${src}</div>`;
   }
   const calc = r.kind === 'calculated';
+  // Say how old the newest figure is when the source publishes late (EIA's hourly data lags about a day).
+  const ageH = (c.now - Date.parse(now.t)) / 3600e3;
+  const fresh = ageH <= FRESH_HOURS;
+  const asOf = fresh ? `As of ${c.time(now.t)}` : `Latest published hour: ${c.time(now.t)}, ${ageWords(ageH)}`;
   const num = calc ? `<span class="derived">${formatNumber(now.g)}</span>` : formatNumber(now.g);
   const vsWorld = now.g / c.worldG;
   const compare = vsWorld < 0.9 ? `${Math.round(vsWorld * 100)}% of the world average` : vsWorld <= 1.1 ? 'about the world average' : `${formatNumber(vsWorld)} times the world average`;
   const what = calc ? 'calculated by Hum from the grid operator\'s fuel mix (dotted)' : "NESO's estimate for the London region";
   return `<div class="g-card" data-key="${r.key}">${head}
   <p class="g-now"><span class="num g-big">${num}</span> <span class="g-unit">g CO2 per kWh</span></p>
-  <p class="g-cmp">${esc(compare)} (${formatNumber(c.worldG)}). As of ${esc(c.time(now.t))}, ${what}.</p>
+  <p class="g-cmp">${esc(compare)} (${formatNumber(c.worldG)}). ${esc(asOf)}, ${what}.</p>
   ${sparkline(r.points, calc)}
-  <p class="g-answer">One AI answer's electricity here, right now: about <b class="derived">${formatNumber(answerMg(now.g, c.whPerAnswer))} mg</b> of CO2.</p>
+  <p class="g-answer">One AI answer's electricity here, ${fresh ? 'right now' : 'in that hour'}: about <b class="derived">${formatNumber(answerMg(now.g, c.whPerAnswer))} mg</b> of CO2.</p>
   ${src}
 </div>`;
 }
