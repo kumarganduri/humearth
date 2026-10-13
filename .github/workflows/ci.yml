@@ -12,11 +12,11 @@ concurrency:
 jobs:
   test:
     name: Checks, tests and build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04 # pinned: ubuntu-latest moves to 26.04 on 2026-10-19; upgrade deliberately once Playwright supports it
     timeout-minutes: 25
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: 24
           cache: npm
@@ -44,7 +44,7 @@ jobs:
       - name: Lighthouse (LCP < 2.5 s on throttled mobile, median of 3 runs per page)
         run: npx --yes @lhci/cli@0.15 autorun
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: failure()
         with:
           name: test-reports
@@ -54,7 +54,7 @@ jobs:
             test-results/
             .lighthouseci/
           retention-days: 7
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: dist
           path: dist/
@@ -64,11 +64,11 @@ jobs:
     name: Country numbers match the Ember dataset
     # Separate from "test" on purpose: when Ember re-publishes its file this goes red so we update the
     # numbers knowingly (eng review D3), but it never blocks deploying an unrelated fix.
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04 # pinned: ubuntu-latest moves to 26.04 on 2026-10-19; upgrade deliberately once Playwright supports it
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: 24
           cache: npm
@@ -80,7 +80,7 @@ jobs:
     name: Deploy to Cloudflare Pages
     needs: test
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04 # pinned: ubuntu-latest moves to 26.04 on 2026-10-19; upgrade deliberately once Playwright supports it
     timeout-minutes: 10
     permissions:
       contents: read
@@ -94,14 +94,14 @@ jobs:
         run: echo "::notice::Deploy skipped - add CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID repo secrets to deploy."
       # functions/ (the /2030 link-preview function) and the src/ + data it imports come from the repo;
       # the built site comes from the test job's artifact.
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         if: env.CLOUDFLARE_API_TOKEN != '' && env.CLOUDFLARE_ACCOUNT_ID != ''
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         if: env.CLOUDFLARE_API_TOKEN != '' && env.CLOUDFLARE_ACCOUNT_ID != ''
         with:
           name: dist
           path: dist
-      - uses: cloudflare/wrangler-action@v3
+      - uses: cloudflare/wrangler-action@v4
         if: env.CLOUDFLARE_API_TOKEN != '' && env.CLOUDFLARE_ACCOUNT_ID != ''
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
