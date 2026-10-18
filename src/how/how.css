@@ -61,3 +61,7 @@ ul.rules { font-size: 0.92rem; padding-left: 1.1em; margin: var(--space-sm) 0; }
 /* Phones: the header is two lines tall there, so it scrolls away instead of staying stuck on top. (After the
    .nav-read rule on purpose: the later rule wins.) */
 @media (max-width: 560px) { .nav-read { position: static; } .read-col [id] { scroll-margin-top: 16px; } }
+
+/* v4 verdict guide */
+.guide dt { font: 600 .95rem/1.2 var(--num); letter-spacing: .08em; color: var(--color-ai); margin-top: 12px; }
+.guide dd { margin: 4px 0 0; }

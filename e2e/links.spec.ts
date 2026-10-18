@@ -2,18 +2,19 @@ import { expect, test } from '@playwright/test';
 
 // Shareable links (ui-ux-pro-max 'deep-linking'): what you set is in the URL, and a link opens exactly that.
 
-test('home: ?year=2030 opens at 2030; releasing the slider writes the year; the latest year is a clean URL', async ({ page }) => {
+test('the Earth: an old /?year=2030 link forwards to /earth at 2030; the slider writes the year; the latest year is a clean URL', async ({ page }) => {
   await page.goto('/?year=2030');
+  await expect(page).toHaveURL(/\/earth\?year=2030$/);
   await expect(page.locator('#year')).toHaveText('2030');
   await expect(page.locator('#side-year')).toHaveText('2030');
   await page.locator('#slider').fill('2032'); // fill fires input + change
-  await expect(page).toHaveURL(/\/\?year=2032$/);
+  await expect(page).toHaveURL(/\/earth\?year=2032$/);
   await page.locator('#slider').fill('2025');
-  await expect(page).toHaveURL(/\/$/);
+  await expect(page).toHaveURL(/\/earth$/);
 });
 
-test('home: a junk year is ignored', async ({ page }) => {
-  await page.goto('/?year=1850');
+test('the Earth: a junk year is ignored', async ({ page }) => {
+  await page.goto('/earth?year=1850');
   await expect(page.locator('#slider')).toBeEnabled();
   await expect(page.locator('#year')).toHaveText('2025');
 });

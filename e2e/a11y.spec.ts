@@ -7,8 +7,8 @@ async function noSeriousViolations(page: Page) {
   expect(bad.map((v) => `${v.id}: ${v.help} (${v.nodes.map((n) => n.target.join(' ')).join(', ')})`)).toEqual([]);
 }
 
-test('home and How We Know have no serious accessibility problems', async ({ page }) => {
-  await page.goto('/');
+test('the Earth and How We Know have no serious accessibility problems', async ({ page }) => {
+  await page.goto('/earth');
   await expect(page.locator('h1')).toBeVisible();
   await noSeriousViolations(page);
   await page.goto('/how-we-know.html');
@@ -45,7 +45,7 @@ test('/2030 has no serious accessibility problems', async ({ page }) => {
   await noSeriousViolations(page);
 });
 
-for (const path of ['/', '/question', '/live', '/2030', '/daily', '/how-we-know.html']) {
+for (const path of ['/', '/today', '/q/flight', '/topics', '/earth', '/question', '/live', '/2030', '/daily', '/how-we-know.html']) {
   test(`${path}: the first Tab reaches "Skip to content", which moves focus to the main content`, async ({ page }) => {
     await page.goto(path);
     await page.keyboard.press('Tab');

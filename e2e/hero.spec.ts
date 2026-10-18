@@ -4,14 +4,14 @@ import { expect, test } from '@playwright/test';
 
 const slider = '#slider';
 const ready = async (page: import('@playwright/test').Page) => {
-  await page.goto('/');
+  await page.goto('/earth');
   await expect(page.locator(slider)).toBeEnabled({ timeout: 10_000 });
 };
 
 test('with JavaScript off: headline, today\'s figure and a table of published years are all there', async ({ browser }) => {
   const ctx = await browser.newContext({ javaScriptEnabled: false });
   const page = await ctx.newPage();
-  await page.goto('/');
+  await page.goto('/earth');
   await expect(page.locator('h1')).toContainText('as much electricity as a country');
   await expect(page.locator('#reading .mid')).toHaveText('485');
   await expect(page.locator('table.static')).toBeVisible();
@@ -79,7 +79,7 @@ test('reduced motion: Play jumps straight to 2035, no animation', async ({ page 
 
 test('if the data fails to load, the prebuilt hero stays and the slider says why it is off', async ({ page }) => {
   await page.route('**/data/series.json', (r) => r.fulfill({ status: 404, body: '' }));
-  await page.goto('/');
+  await page.goto('/earth');
   await expect(page.locator('#slider-note')).toBeVisible();
   await expect(page.locator('#slider-note')).toContainText("couldn't load");
   await expect(page.locator(slider)).toBeDisabled();

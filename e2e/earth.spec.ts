@@ -5,7 +5,7 @@ import { fitGlobe, START_ROTATION } from '../src/globe/earth';
 // The Earth home (stage 1a experiences, E2): the globe, the passed list and the race all follow one year.
 
 const ready = async (page: import('@playwright/test').Page) => {
-  await page.goto('/');
+  await page.goto('/earth');
   await expect(page.locator('#slider')).toBeEnabled({ timeout: 10_000 });
   await expect(page.locator('#globe canvas')).toHaveCount(1, { timeout: 10_000 });
 };
@@ -14,7 +14,7 @@ const countPassed = (page: import('@playwright/test').Page) => page.locator('#pa
 test('with JavaScript off: no globe, but the list still says which countries are passed', async ({ browser }) => {
   const ctx = await browser.newContext({ javaScriptEnabled: false });
   const page = await ctx.newPage();
-  await page.goto('/');
+  await page.goto('/earth');
   await expect(page.locator('#globe canvas')).toHaveCount(0);
   await expect(page.locator('#passed li')).toHaveCount(15);
   await expect(page.locator('#passed li[data-key="France"]')).toHaveClass('on');
@@ -83,7 +83,7 @@ test('tapping a country explains it; dragging turns the globe and hides the note
 
 test('if the map fails to load, the page still works without the globe', async ({ page }) => {
   await page.route('**/data/world.json', (r) => r.fulfill({ status: 500, body: '' }));
-  await page.goto('/');
+  await page.goto('/earth');
   await expect(page.locator('#slider')).toBeEnabled({ timeout: 10_000 });
   await page.locator('#slider').fill('2030');
   await expect(page.locator('#side-year')).toHaveText('2030');
@@ -126,7 +126,7 @@ test('reduced motion: the globe starts still, and the button offers to start it'
 });
 
 test('a "See the data" link under the globe takes you to the comparison below', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('/earth');
   await page.click('.scroll-cue');
   await expect(page).toHaveURL(/#heading-side$/);
   await expect(page.locator('#heading-side')).toBeInViewport();
@@ -134,7 +134,7 @@ test('a "See the data" link under the globe takes you to the comparison below', 
 
 test('landscape phone: headline and globe share the first screen', async ({ page }) => {
   await page.setViewportSize({ width: 844, height: 390 });
-  await page.goto('/');
+  await page.goto('/earth');
   const g = await page.locator('#globe').boundingBox();
   const h = await page.locator('h1').boundingBox();
   expect(g!.y).toBeLessThan(390);

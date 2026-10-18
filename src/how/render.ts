@@ -105,6 +105,22 @@ export function renderChangelog(entries: ChangelogEntry[], c: Constants): string
 <ol class="changelog">${items}</ol>`;
 }
 
+/** Hum v4: what the verdict stamps on answers mean, and the label on every figure. */
+export function renderVerdicts(): string {
+  return `
+<h2 id="verdicts">What the verdicts mean</h2>
+<p>Each answer to a claim gets one of four verdicts. A verdict can’t be stronger than its evidence: if only a company says so, the answer is labelled “company figures”.</p>
+<dl class="guide">
+  <dt>✓ YES</dt><dd>The evidence supports the claim as people usually say it.</dd>
+  <dt>◐ PARTLY</dt><dd>True in part, in some places, or only for older figures. The answer says which part.</dd>
+  <dt>✕ NO</dt><dd>The evidence contradicts it, even at the highest published estimate.</dd>
+  <dt>? NOBODY KNOWS</dt><dd>No one has published enough to say. The answer says what’s missing.</dd>
+</dl>
+<p><b>Labels on every figure:</b> Measured · Estimated · Calculated by Hum (our arithmetic, shown under “Hum’s sums”, and checked by the build) · Company says so (not independently checked) · Forecast · Data row (copied from a published dataset and checked against the file).</p>
+<p><b>Both sides:</b> every answer that says your own use is small also gives the total, because one question is tiny and all of them together are not. Figures that measure different things are never ranked against each other.</p>
+<p><b>Your privacy on the cards:</b> your guesses and score stay on your device. Nothing you choose is sent to us.</p>`;
+}
+
 export function renderPrivacy(): string {
   return `
 <h2 id="privacy">Your privacy</h2>
@@ -214,7 +230,7 @@ ${d.practices.map((x) => one(x, 'claim')).join('\n')}`;
 }
 
 export function renderPage(c: Constants, hubs: Hub[], changelog: ChangelogEntry[], series: SeriesFile, countries: CountriesFile, grids: GridsFile, impacts?: ImpactsFile): string {
-  return [renderValues(c), renderGrowth(series), renderCountries(countries), renderGrids(grids), renderHubs(hubs), impacts ? renderCases(impacts) : '', renderChangelog(changelog, c), renderPrivacy()].join('\n');
+  return [renderVerdicts(), renderValues(c), renderGrowth(series), renderCountries(countries), renderGrids(grids), renderHubs(hubs), impacts ? renderCases(impacts) : '', renderChangelog(changelog, c), renderPrivacy()].join('\n');
 }
 
 /** Long units like gCO2/kWh may wrap after the slash on small phones, never inside a word. */
