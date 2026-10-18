@@ -79,7 +79,7 @@ test('/today shows a numbered question that is not the front door’s first card
   await page.goto('/');
   const front = await page.locator('#card-h').textContent();
   await page.goto('/today');
-  await expect(page.locator('#today-n')).toContainText(/Hum #\d+/);
+  await expect(page.locator('#today-num')).toHaveText(/Hum #\d+/);
   await expect(page.locator('#card-h')).not.toHaveText(front!);
   await page.locator('#card .choices button').first().click();
   await expect(page.locator('#today-share')).toContainText('Challenge a friend');
@@ -102,5 +102,7 @@ test.describe('with scripts off', () => {
     await expect(page.locator('#card-h')).toBeVisible();
     await expect(page.locator('#card .choices')).toBeHidden();
     await expect(page.locator('#card .tellme')).toHaveAttribute('href', /^\/q\//);
+    await page.goto('/today');
+    await expect(page.locator('#card-h')).toBeVisible();
   });
 });

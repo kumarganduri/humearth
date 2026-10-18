@@ -26,8 +26,9 @@ const write = (k: string, v: unknown) => { try { store?.setItem(k, JSON.stringif
 
 
 function play(host: HTMLElement, a: Card, companies: Set<string>, opts: { at?: number; of?: number; next?: string; onAnswer?: (right: boolean) => void; onNext?: () => void }) {
+  // A card prebuilt into the page is woken in place, not redrawn (a redraw would repaint the largest text late).
+  if (host.dataset.slug !== a.slug || !host.querySelector('.choices')) host.innerHTML = cardHtml(a, opts.at !== undefined ? { at: opts.at, of: opts.of! } : undefined);
   host.dataset.slug = a.slug;
-  host.innerHTML = cardHtml(a, opts.at !== undefined ? { at: opts.at, of: opts.of! } : undefined);
   const buttons = [...host.querySelectorAll<HTMLButtonElement>('.choices button')];
   const choiceOf = (b: HTMLButtonElement) => (b.dataset.k ? { k: b.dataset.k } : { i: Number(b.dataset.i) });
   for (const b of buttons) b.addEventListener('click', () => {
@@ -97,7 +98,8 @@ function today(data: Data, companies: Set<string>) {
   const day = dayNumber(data.launch, new Date());
   const n = Math.max(1, day + 1);
   const a = data.answers.find((x) => x.slug === data.deck[todayIndex(day, data.deck.length)])!;
-  document.getElementById('today-n')!.textContent = `Hum #${n} · one question a day, the same for everyone. No sign-up. There are ${data.deck.length} cards so far, so they repeat until more answers are reviewed.`;
+  const num = document.getElementById('today-num')!;
+  if (num.textContent !== `Hum #${n}`) num.textContent = `Hum #${n}`;
   const key = `hum.today.${n}`;
   const done = read<{ right: boolean } | null>(key, null);
   play(host, a, companies, {

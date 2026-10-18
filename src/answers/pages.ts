@@ -4,6 +4,7 @@
 
 import { CATEGORIES, type Answer, type AnswersFile, type AnswersSource } from './types';
 import { answerPage, answerRow, cardHtml, esc, SITE, topicPage, topicSlug } from './render';
+import { dayNumber, todayIndex } from './pure';
 
 export const NAV_LINKS: [href: string, label: string][] = [
   ['/today', 'Today'],
@@ -110,14 +111,16 @@ export function homeBody(src: AnswersSource): string {
 <p class="status">${src.answers.length} reviewed answers. Each source shows the date its quote was checked on its page.</p>`;
 }
 
-/** Today's shell. The card data is embedded (a JSON data block, not a script, so the CSP allows it), so the card
- *  appears without waiting for a fetch; its box is reserved in CSS so nothing below it moves. */
-export function todayBody(data: string): string {
+/** Today's page, prebuilt for the day it's built (CI rebuilds just after midnight UTC), so the card is there before
+ *  any script and with scripts off. The card data is embedded (a JSON data block, not a script, so the CSP allows
+ *  it); the script only swaps the card if the day has turned over since the build. */
+export function todayBody(data: string, src: AnswersSource, day: number): string {
+  const slug = src.deck[todayIndex(day, src.deck.length)]!;
+  const a = src.answers.find((x) => x.slug === slug)!;
   return `<section class="today" aria-labelledby="today-h"><h1 id="today-h">Today’s question</h1>
-  <p class="muted" id="today-n">Hum #… · one question a day, the same for everyone. No sign-up. There are … cards so far, so they repeat until more answers are reviewed.</p>
+  <p class="muted"><span id="today-num">Hum #${Math.max(1, day + 1)}</span> · one question a day, the same for everyone. No sign-up. There are ${src.deck.length} cards so far, so they repeat until more answers are reviewed.</p>
   <script type="application/json" id="answers-data">${data.replace(/</g, '\\u003c')}</script>
-  <div class="card js-only" id="card"><p class="muted">Loading today’s question…</p></div>
-  <noscript><p>Today’s question depends on today’s date, so it needs JavaScript. <a href="/topics">Browse every answer</a> instead.</p></noscript>
+  <div class="card" id="card" data-slug="${slug}">${cardHtml(a)}</div>
   <div id="today-share"></div></section>`;
 }
 

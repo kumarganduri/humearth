@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
   pull_request:
+  # Rebuild and redeploy just after midnight UTC, so /today's prebuilt card is the day's card.
+  schedule:
+    - cron: '5 0 * * *'
 
 concurrency:
   group: ci-${{ github.ref }}
@@ -25,7 +28,7 @@ jobs:
       - name: Design tokens match DESIGN.md
         run: npm run build:tokens -- --check
       - name: Sourced numbers validate (fails on any unsourced or out-of-order value)
-        run: npm run build:data && git diff --exit-code -- public/data src/how/content.generated.html src/hero.generated.html src/hero.generated.css src/question.generated.html src/live.generated.html src/sim.generated.html src/sim.generated.css
+        run: npm run build:data && git diff --exit-code -- public/data src/how/content.generated.html src/hero.generated.html src/hero.generated.css src/question.generated.html src/live.generated.html src/sim.generated.html src/sim.generated.css src/home.generated.html src/footer.generated.html
       - run: npm run typecheck
       - name: Unit tests
         run: npm test
@@ -79,7 +82,7 @@ jobs:
   deploy:
     name: Deploy to Cloudflare Pages
     needs: test
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: (github.event_name == 'push' || github.event_name == 'schedule') && github.ref == 'refs/heads/main'
     runs-on: ubuntu-24.04 # pinned: ubuntu-latest moves to 26.04 on 2026-10-19; upgrade deliberately once Playwright supports it
     timeout-minutes: 10
     permissions:

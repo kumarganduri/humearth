@@ -14,6 +14,7 @@ import { simPageHtml } from '../src/present/sim';
 import { extractInlineStyles } from '../src/present/inline-styles';
 import { validateAnswersSource } from '../src/answers/schema';
 import { answerPages, answersFile, FOOTER_HTML, homeBody, todayBody } from '../src/answers/pages';
+import { dayNumber } from '../src/answers/pure';
 import type { AnswersSource } from '../src/answers/types';
 import { mkdirSync, rmSync } from 'node:fs';
 import { createHash } from 'node:crypto';
@@ -144,7 +145,7 @@ try {
   for (const [file, body] of [
     [ANSWERS_OUT, answersJson],
     [HOME_OUT, `<!-- ${banner} -->\n${homeBody(src)}\n`],
-    [TODAY_OUT, `<!-- ${banner} -->\n${todayBody(answersJson.trim())}\n`],
+    [TODAY_OUT, `<!-- ${banner} -->\n${todayBody(answersJson.trim(), src, dayNumber(src.launch, new Date()))}\n`],
     ['src/footer.generated.html', `${FOOTER_HTML}\n`],
   ] as const) {
     if (!existsSync(file) || readFileSync(file, 'utf8') !== body) {
