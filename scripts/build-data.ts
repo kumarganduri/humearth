@@ -12,6 +12,12 @@ import { questionPageHtml } from '../src/present/question';
 import { livePageHtml } from '../src/present/live';
 import { simPageHtml } from '../src/present/sim';
 import { extractInlineStyles } from '../src/present/inline-styles';
+import { validateAnswersSource } from '../src/answers/schema';
+import { answerPages, answersFile, FOOTER_HTML, homeBody, todayBody } from '../src/answers/pages';
+import { dayNumber } from '../src/answers/pure';
+import type { AnswersSource } from '../src/answers/types';
+import { mkdirSync, rmSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 
 const SOURCE = 'data/sources/constants.source.json';
 const OUT = 'public/data/constants.json';
@@ -33,6 +39,10 @@ const LIVE_OUT = 'src/live.generated.html'; // /live, prebuilt per-second rates
 const SIM_OUT = 'src/sim.generated.html'; // /2030 at its starting point
 const SIM_CSS_OUT = 'src/sim.generated.css'; // its inline styles, moved out for the CSP
 const HERO_CSS_OUT = 'src/hero.generated.css'; // its inline styles, moved out for the CSP (style-src 'self')
+const ANSWERS_SOURCE = 'data/sources/answers.source.json';
+const ANSWERS_OUT = 'public/data/answers.json'; // the deck, search and Today (no quotes)
+const HOME_OUT = 'src/home.generated.html'; // the v4 front door (inlined into index.html)
+const TODAY_OUT = 'src/today.generated.html'; // /today's shell
 const HOW_OUT = 'src/how/content.generated.html'; // prerendered How We Know body (inlined by vite.config.ts)
 
 const readJson = <T>(p: string): T | null => (existsSync(p) ? (JSON.parse(readFileSync(p, 'utf8')) as T) : null);
@@ -112,6 +122,31 @@ try {
     [SIM_OUT, `<!-- ${banner} -->\n${sim.html}\n`],
     [SIM_CSS_OUT, `/* ${banner} */\n${sim.css}`],
     [LIVE_OUT, `<!-- ${banner} -->\n${livePageHtml(constantsNow, readJson<SeriesFile>(SERIES_OUT)!, readJson<HubsFile>(HUBS_OUT)!.hubs)}\n`],
+  ] as const) {
+    if (!existsSync(file) || readFileSync(file, 'utf8') !== body) {
+      writeFileSync(file, body);
+      console.log(`wrote ${file}`);
+    }
+  }
+  // Hum v4 answers: validated (every number a reader sees is in a quote or a checked sum), then the
+  // answer and topic pages, the front door and Today are generated from them.
+  const answersSrc = readJson<AnswersSource>(ANSWERS_SOURCE);
+  const answerProblems = validateAnswersSource(answersSrc);
+  if (answerProblems.length) throw new DataValidationError(answerProblems);
+  const src = answersSrc!;
+  const answersHash = createHash('sha256').update(JSON.stringify(src)).digest('hex').slice(0, 16);
+  const prevAnswers = readJson<{ contentHash: string; builtAt: string }>(ANSWERS_OUT);
+  const answersJson = `${JSON.stringify(answersFile(src, answersHash, prevAnswers?.contentHash === answersHash ? prevAnswers.builtAt : today), null, 2)}\n`;
+  const pages = answerPages(src);
+  // Generated pages are rebuilt from scratch, so a removed answer can't leave an old page behind.
+  for (const dir of ['q', 'topics']) { rmSync(dir, { recursive: true, force: true }); mkdirSync(dir, { recursive: true }); }
+  for (const [file, body] of Object.entries(pages)) writeFileSync(file, body);
+  console.log(`wrote ${Object.keys(pages).length} answer and topic pages (${src.answers.length} answers)`);
+  for (const [file, body] of [
+    [ANSWERS_OUT, answersJson],
+    [HOME_OUT, `<!-- ${banner} -->\n${homeBody(src)}\n`],
+    [TODAY_OUT, `<!-- ${banner} -->\n${todayBody(answersJson.trim(), src, dayNumber(src.launch, new Date()))}\n`],
+    ['src/footer.generated.html', `${FOOTER_HTML}\n`],
   ] as const) {
     if (!existsSync(file) || readFileSync(file, 'utf8') !== body) {
       writeFileSync(file, body);

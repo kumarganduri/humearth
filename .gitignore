@@ -9,3 +9,7 @@ playwright-report/
 
 # local QA reports
 .gstack/
+q/
+topics/
+topics.html
+src/today.generated.html

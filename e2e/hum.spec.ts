@@ -33,7 +33,7 @@ async function withMeter(page: Page) {
       return n && sum ? 10 * Math.log10(sum / n) : -Infinity;
     };
   });
-  await page.goto('/');
+  await page.goto('/earth');
   await expect(page.locator('#slider')).toBeEnabled();
 }
 const level = (page: Page) => page.evaluate(() => (window as unknown as { __level: () => number }).__level());
@@ -79,7 +79,7 @@ test('fast taps always end where the button says', async ({ page }) => {
 test('no sound code loads until the hum is turned on', async ({ page }) => {
   const scripts: string[] = [];
   page.on('request', (r) => r.resourceType() === 'script' && scripts.push(r.url()));
-  await page.goto('/');
+  await page.goto('/earth');
   await expect(page.locator('#slider')).toBeEnabled();
   await page.waitForTimeout(800);
   expect(scripts.some((u) => /synth/.test(u))).toBe(false);

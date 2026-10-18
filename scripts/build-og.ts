@@ -10,6 +10,8 @@ import { Resvg } from '@resvg/resvg-js';
 import { decompress } from 'wawoff2';
 import { cardSvg, OG_PAGES, OG_W, personalCardSvg, type OgData } from '../src/present/og';
 import { resultRange } from '../src/present/share-preview';
+import { answerCardSvg } from '../src/answers/og';
+import type { AnswersSource } from '../src/answers/types';
 // @ts-expect-error: upng-js ships no types
 import UPNG from 'upng-js';
 
@@ -54,3 +56,12 @@ for (let mt = min; mt <= max; mt++) {
   bytes += png.length;
 }
 console.log(`wrote dist/og/2030/${min}..${max}.png (${max - min + 1} cards, ${(bytes / 1048576).toFixed(1)} MB, ~${Math.round(bytes / (max - min + 1) / 1024)} KB each)`);
+
+// Answer pages: one card each, showing the question and Hum's verdict (or the result).
+const answers = read<AnswersSource>('data/sources/answers.source.json').answers;
+mkdirSync('dist/og/q', { recursive: true });
+for (const a of answers) {
+  const img = new Resvg(answerCardSvg(a), { fitTo: { mode: 'width', value: OG_W }, font: { fontFiles, loadSystemFonts: false, defaultFontFamily: 'Atkinson Hyperlegible Next' } }).render();
+  writeFileSync(`dist/og/q/${a.slug}.png`, Buffer.from(UPNG.encode([new Uint8Array(img.pixels).buffer], img.width, img.height, 256)));
+}
+console.log(`wrote dist/og/q/*.png (${answers.length} answer cards)`);

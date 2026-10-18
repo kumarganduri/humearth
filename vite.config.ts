@@ -1,5 +1,5 @@
 /// <reference types="vitest/config" />
-import { readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { defineConfig, type Plugin } from 'vite';
 
@@ -13,7 +13,9 @@ import { defineConfig, type Plugin } from 'vite';
  *   2030.html           <!--sim-content-->      <- src/sim.generated.html (+ .css)
  */
 const GENERATED: [page: string, marker: string, file: string][] = [
-  ['index.html', '<!--hero-content-->', 'src/hero.generated.html'],
+  ['index.html', '<!--home-content-->', 'src/home.generated.html'],
+  ['today.html', '<!--today-content-->', 'src/today.generated.html'],
+  ['earth.html', '<!--hero-content-->', 'src/hero.generated.html'],
   ['how-we-know.html', '<!--how-content-->', 'src/how/content.generated.html'],
   ['question.html', '<!--question-content-->', 'src/question.generated.html'],
   ['live.html', '<!--live-content-->', 'src/live.generated.html'],
@@ -26,8 +28,9 @@ function prerender(): Plugin {
     transformIndexHtml: {
       order: 'pre',
       handler(html, ctx) {
+        html = html.replace('<!--footer-->', readFileSync(resolve(import.meta.dirname, 'src/footer.generated.html'), 'utf8'));
         for (const [page, marker, file] of GENERATED) {
-          if (ctx.filename.endsWith(page)) return html.replace(marker, readFileSync(resolve(import.meta.dirname, file), 'utf8'));
+          if (ctx.filename.endsWith(`/${page}`)) return html.replace(marker, readFileSync(resolve(import.meta.dirname, file), 'utf8'));
         }
         return html;
       },
@@ -51,6 +54,19 @@ export function productionHeaders(file = resolve(import.meta.dirname, 'public/_h
   return out;
 }
 
+/** Answer and topic pages written by `npm run build:data` (q/*.html, topics/*.html, topics.html), one rollup input each. */
+function generatedPages(): Record<string, string> {
+  const out: Record<string, string> = {};
+  const topics = resolve(import.meta.dirname, 'topics.html');
+  if (existsSync(topics)) out.topics = topics;
+  for (const dir of ['q', 'topics']) {
+    const abs = resolve(import.meta.dirname, dir);
+    if (!existsSync(abs)) continue;
+    for (const f of readdirSync(abs)) if (f.endsWith('.html')) out[`${dir}/${f.slice(0, -5)}`] = resolve(abs, f);
+  }
+  return out;
+}
+
 export default defineConfig({
   preview: { headers: productionHeaders() },
   test: { exclude: ['e2e/**', 'node_modules/**', 'dist/**'] },
@@ -59,6 +75,9 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(import.meta.dirname, 'index.html'),
+        today: resolve(import.meta.dirname, 'today.html'),
+        earth: resolve(import.meta.dirname, 'earth.html'),
+        ...generatedPages(),
         how: resolve(import.meta.dirname, 'how-we-know.html'),
         question: resolve(import.meta.dirname, 'question.html'),
         live: resolve(import.meta.dirname, 'live.html'),

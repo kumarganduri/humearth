@@ -4,6 +4,9 @@
       "staticDistDir": "./dist",
       "url": [
         "/",
+        "/today.html",
+        "/q/flight.html",
+        "/earth.html",
         "/how-we-know.html",
         "/question.html",
         "/live.html",

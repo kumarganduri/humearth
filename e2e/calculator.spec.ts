@@ -4,7 +4,7 @@ import { expect, test } from '@playwright/test';
 const q = '#u-questionsPerDay', p = '#u-picturesPerWeek', v = '#u-videosPerWeek';
 
 test('the default week is shown before JS; sliders wake up and recompute', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('/earth');
   await expect(page.locator(v)).toBeEnabled({ timeout: 10_000 });
   await expect(page.locator('#calc-say')).toContainText('Your videos: 90 Wh');
   await page.locator(v).fill('0');
@@ -14,7 +14,7 @@ test('the default week is shown before JS; sliders wake up and recompute', async
 });
 
 test('an empty week says so, and the maximum week switches to kWh', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('/earth');
   await expect(page.locator(q)).toBeEnabled({ timeout: 10_000 });
   for (const s of [q, p, v]) await page.locator(s).fill('0');
   await expect(page.locator('#calc-say')).toHaveText('No AI this week, so nothing to add up.');
@@ -26,7 +26,7 @@ test('an empty week says so, and the maximum week switches to kWh', async ({ pag
 });
 
 test('keyboard: arrow keys change a slider and the sentence is announced (aria-live)', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('/earth');
   await expect(page.locator(v)).toBeEnabled({ timeout: 10_000 });
   await page.locator(v).focus();
   await page.keyboard.press('ArrowRight');
@@ -36,7 +36,7 @@ test('keyboard: arrow keys change a slider and the sentence is announced (aria-l
 });
 
 test('"What actually reduces it" ranks your own week and follows the sliders', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('/earth');
   await expect(page.locator('#u-videosPerWeek')).toBeEnabled();
   await expect(page.locator('#cuts .cut').first()).toHaveAttribute('data-key', 'videos'); // default: 1 video is the biggest saving
   await page.locator('#u-videosPerWeek').fill('0');

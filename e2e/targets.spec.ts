@@ -16,7 +16,7 @@ const tooSmall = (page: Page, scope: string) =>
   );
 
 test('every standalone link on the home page is at least 44px tall', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('/earth');
   expect(await tooSmall(page, 'body')).toEqual([]);
 });
 
@@ -43,12 +43,12 @@ test('every standalone control on /2030 is at least 44px tall', async ({ page })
   expect(await tooSmall(page, 'body')).toEqual([]);
 });
 
-test('the nav on a phone: two tidy rows of three, every link a 44px target', async ({ page }) => {
+test('the nav on a phone: one row of four, every link a 44px target', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 800 });
   await page.goto('/2030');
   const tops = await page.$$eval('.nav-links a', (as) => as.map((a) => Math.round(a.getBoundingClientRect().top)));
-  expect(new Set(tops).size).toBe(2);
-  expect(tops.filter((t) => t === tops[0]).length).toBe(3);
+  expect(new Set(tops).size).toBe(1);
+  expect(tops.length).toBe(4);
   expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBeLessThanOrEqual(0);
 });
 
@@ -57,3 +57,11 @@ test('every standalone control on /daily is at least 44px tall', async ({ page }
   await expect(page.locator('[data-pick="more"]')).toBeVisible();
   expect(await tooSmall(page, 'body')).toEqual([]);
 });
+
+for (const path of ['/', '/q/flight', '/today', '/topics']) {
+  test(`every standalone control on ${path} is at least 44px tall`, async ({ page }) => {
+    await page.goto(path);
+    await expect(page.locator('h1')).toBeVisible();
+    expect(await tooSmall(page, 'main')).toEqual([]);
+  });
+}

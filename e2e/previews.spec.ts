@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 // Link previews: every page names its card, and the card image is served (rendered at build time).
-const PAGES: [string, string][] = [['/', 'home'], ['/question', 'question'], ['/live', 'live'], ['/2030', '2030'], ['/daily', 'daily'], ['/how-we-know.html', 'how']];
+const PAGES: [string, string][] = [['/', 'home'], ['/earth', 'home'], ['/question', 'question'], ['/live', 'live'], ['/2030', '2030'], ['/daily', 'daily'], ['/how-we-know.html', 'how']];
 
 for (const [path, card] of PAGES) {
   test(`${path}: preview tags point at its card, and the card is a 1200x630 PNG`, async ({ page, request }) => {
@@ -29,4 +29,14 @@ test('every personal /2030 card in the range exists as a 1200x630 PNG (spot-chec
     expect(b.subarray(1, 4).toString()).toBe('PNG');
     expect([b.readUInt32BE(16), b.readUInt32BE(20)]).toEqual([1200, 630]);
   }
+});
+
+test('an answer page previews with its own card: the question and Hum’s verdict', async ({ page, request }) => {
+  await page.goto('/q/flight');
+  expect(await page.locator('meta[property="og:image"]').getAttribute('content')).toBe('https://humearth.org/og/q/flight.png');
+  expect(await page.locator('meta[property="og:title"]').getAttribute('content')).toContain('taking a flight?');
+  const png = await request.get('/og/q/flight.png');
+  expect(png.status()).toBe(200);
+  const b = await png.body();
+  expect([b.readUInt32BE(16), b.readUInt32BE(20)]).toEqual([1200, 630]);
 });

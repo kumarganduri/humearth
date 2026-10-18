@@ -1,0 +1,485 @@
+<title>Hum Answers prototype</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;600&family=Atkinson+Hyperlegible+Next:wght@400;700&family=Instrument+Serif&display=swap">
+<style>
+/* Layout: one 640px answer column on night; the card is the only raised object. Hum DESIGN.md "Lights at Night", single dark theme on purpose. */
+:root {
+  --night: #0B0D12; --surface: #161A23; --rule: #2A3038; --edge: #5C6573; --text: #F2EBDD; --muted: #9BA1AD;
+  --amber: #FFA630; --ai: #FFF1C9; --forecast: #B07A2E; --band: #3A2A14; --country: #7D93B5; --right: #5FBF8F;
+  --display: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --body: "Atkinson Hyperlegible Next", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Atkinson Hyperlegible Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { background: var(--night); scroll-padding-top: 72px; }
+body { background: var(--night); color: var(--text); font: 400 1.0625rem/1.6 var(--body); margin: 0;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+a { color: var(--text); text-decoration-color: var(--muted); text-underline-offset: 3px; }
+a:hover { text-decoration-color: var(--amber); }
+:focus-visible { outline: 2px solid var(--ai); outline-offset: 2px; }
+h1:focus, h2:focus, h3:focus { outline: none; }
+button { font: inherit; color: inherit; }
+abbr { text-decoration: underline dotted var(--muted); cursor: help; }
+.wrap { max-width: 640px; margin: 0 auto; }
+header.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--night); border-bottom: 1px solid var(--rule); }
+header.bar .wrap { display: flex; align-items: center; gap: 8px; min-height: 56px; }
+.wordmark { font: 400 1.9rem/1 var(--display); text-decoration: none; }
+.pill { font: 600 0.6875rem/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ai); border: 1px solid var(--edge); border-radius: 9999px; padding: 4px 8px; margin-right: auto; }
+.nav { display: flex; gap: 4px; }
+.nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; text-decoration: none; border-radius: 6px; font-weight: 700; font-size: 0.95rem; }
+.nav a[aria-current="page"] { color: var(--amber); }
+main { padding-block: 24px 72px; }
+h1 { font: 400 clamp(1.9rem, 6vw, 2.6rem)/1.1 var(--display); margin: 0; text-wrap: balance; }
+h2 { font: 400 1.6rem/1.15 var(--display); margin: 0 0 12px; text-wrap: balance; }
+h3 { font-size: 1rem; margin: 0 0 8px; }
+.hero-sub { font-size: 1.0625rem; color: var(--muted); margin: 8px 0 0; }
+.muted { color: var(--muted); }
+.small { font-size: 0.875rem; }
+.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.stack { display: flex; flex-direction: column; gap: 16px; }
+section + section { margin-top: 40px; }
+
+/* search */
+.search label { display: block; font-weight: 700; font-size: 0.95rem; margin-bottom: 6px; }
+.search input { width: 100%; min-height: 52px; padding: 0 16px; border-radius: 6px; border: 1.5px solid var(--edge); background: var(--surface); color: var(--text); font: inherit; }
+.search input:focus { border-color: var(--ai); outline: none; }
+.results { list-style: none; margin: 8px 0 0; padding: 0; border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); }
+.results li + li { border-top: 1px solid var(--rule); }
+.results a { display: flex; gap: 10px; align-items: baseline; padding: 12px 14px; text-decoration: none; min-height: 44px; }
+.results .tag { margin-left: auto; flex: none; }
+.results .none { padding: 12px 14px; color: var(--muted); }
+.results .sep { padding: 6px 14px; font-size: 0.75rem; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+
+/* card */
+.card { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 20px; }
+.kicker { font-size: 0.875rem; color: var(--muted); margin: 0 0 6px; }
+.claim { font: 400 clamp(1.5rem, 5vw, 1.9rem)/1.18 var(--display); margin: 0 0 6px; text-wrap: balance; }
+.choices { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 16px; }
+.choices button { position: relative; min-height: 52px; padding: 8px 10px; border-radius: 6px; border: 1.5px solid var(--amber); background: transparent; color: var(--amber); font-weight: 700; cursor: pointer; text-align: center; line-height: 1.25; }
+.choices button:hover:not([aria-disabled="true"]) { background: rgba(255, 166, 48, 0.12); }
+.choices button[aria-disabled="true"] { cursor: default; border-color: var(--rule); color: var(--muted); }
+.choices button.is-right { background: var(--right); border-color: var(--right); color: var(--night); }
+.choices button.is-mine:not(.is-right) { border-color: var(--edge); color: var(--text); border-style: dashed; }
+.choices .tag { display: block; font: 600 0.6875rem/1.2 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 4px; }
+.tellme { display: inline-block; margin-top: 12px; font-size: 0.95rem; }
+.reveal { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--rule); display: flex; flex-direction: column; gap: 12px; }
+.reveal h3 { font: 400 1.5rem/1.15 var(--display); margin: 0; }
+.reveal p { margin: 0; }
+.cardnav { display: flex; flex-wrap: wrap; gap: 8px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 16px; border-radius: 6px; border: 1.5px solid var(--amber); color: var(--amber); background: transparent; font-weight: 700; text-decoration: none; cursor: pointer; }
+.btn:hover { background: rgba(255, 166, 48, 0.12); }
+.btn.quiet { border-color: var(--edge); color: var(--text); }
+.progress { display: flex; gap: 6px; margin-top: 14px; }
+.progress span { width: 8px; height: 8px; border-radius: 9999px; background: var(--rule); }
+.progress span.on { background: var(--muted); }
+.progress span.now { background: var(--ai); }
+.foryou { font-size: 0.95rem; color: var(--muted); }
+
+/* stamps */
+.stamp { display: inline-flex; align-items: center; gap: 8px; font: 600 0.95rem/1 var(--mono); letter-spacing: 0.08em; padding: 8px 12px; border-radius: 3px; border: 2px solid var(--ai); color: var(--ai); text-decoration: none; }
+.stamp .who { font: 400 0.8125rem/1 var(--body); letter-spacing: 0; color: var(--muted); }
+.chips { display: inline-flex; flex-wrap: wrap; gap: 6px; }
+.chip { font: 600 0.75rem/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 8px; border-radius: 3px; border: 1.5px solid var(--muted); color: var(--muted); }
+.verdict-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.lede { font-size: 1.125rem; margin: 0; }
+.lede b { font-weight: 700; }
+.world { border-left: 3px solid var(--amber); padding: 4px 0 4px 14px; margin: 0; }
+.world .k { display: block; font-size: 0.8125rem; font-weight: 700; color: var(--amber); letter-spacing: 0.04em; }
+
+/* figure strips: linear axes from 0, marks drawn in SVG, every label in HTML */
+.fig { display: flex; flex-direction: column; gap: 8px; }
+.fig .t { font-weight: 700; font-size: 0.95rem; }
+.fig svg { display: block; width: 100%; height: 40px; }
+.fig .axis { display: flex; justify-content: space-between; font: 0.8125rem var(--mono); color: var(--muted); }
+.fig ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; font-size: 0.9375rem; }
+.fig li { display: grid; grid-template-columns: 16px 1fr; gap: 8px; align-items: baseline; }
+.fig .sw { width: 12px; height: 12px; border-radius: 9999px; background: var(--amber); transform: translateY(1px); }
+.fig .sw.co { background: transparent; border: 2px solid var(--amber); }
+.fig .sw.cl { background: transparent; border: 2px dashed var(--ai); border-radius: 2px; }
+.fig .sw.rg { background: var(--band); border: 1.5px dashed var(--forecast); border-radius: 2px; width: 14px; }
+.unitkey { font-size: 0.875rem; color: var(--muted); }
+
+/* folds */
+details { border-top: 1px solid var(--rule); }
+details:last-of-type { border-bottom: 1px solid var(--rule); }
+summary { cursor: pointer; min-height: 48px; display: flex; align-items: center; font-weight: 700; list-style: none; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; margin-left: auto; font-family: var(--mono); color: var(--muted); }
+details[open] summary::after { content: "–"; }
+details > div { padding-bottom: 16px; }
+.ladder { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+.ladder .row { display: flex; gap: 8px; align-items: baseline; justify-content: space-between; }
+.ladder .track { position: relative; height: 14px; border-bottom: 1px solid var(--rule); }
+.ladder .dot { position: absolute; top: 2px; width: 10px; height: 10px; margin-left: -5px; border-radius: 9999px; background: var(--country); }
+.ladder li.me .dot { background: var(--amber); }
+.ladder li.me .row b { color: var(--amber); }
+.ladder .x { display: block; color: var(--muted); font-size: 0.8125rem; }
+.ladder .ticks { display: flex; justify-content: space-between; font: 0.75rem var(--mono); color: var(--muted); margin-top: 4px; }
+.sources { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+.sources blockquote { margin: 4px 0; padding-left: 12px; border-left: 2px solid var(--rule); font-size: 0.95rem; }
+.sources .data { margin: 4px 0; padding-left: 12px; border-left: 2px dashed var(--rule); font-size: 0.95rem; }
+.prov { font: 600 0.6875rem/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--edge); border-radius: 3px; padding: 3px 6px; margin-left: 6px; vertical-align: 1px; white-space: nowrap; }
+ul.plain { margin: 0; padding-left: 20px; }
+.next { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.next li { border-top: 1px solid var(--rule); }
+.next li:last-child { border-bottom: 1px solid var(--rule); }
+.next a { display: flex; gap: 12px; align-items: baseline; padding: 12px 0; text-decoration: none; min-height: 48px; }
+.next .k { flex: none; width: 7.5em; font-size: 0.8125rem; font-weight: 700; color: var(--muted); }
+.share { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.share textarea { width: 100%; min-height: 96px; background: var(--surface); color: var(--text); border: 1px solid var(--rule); border-radius: 6px; padding: 10px; font: 0.95rem/1.5 var(--body); }
+.draft-note { background: var(--surface); border: 1px dashed var(--muted); border-radius: 6px; padding: 12px 14px; font-size: 0.9rem; color: var(--muted); margin: 0; }
+.draft-verdict { font: 400 1.5rem/1.2 var(--display); margin: 0; }
+
+/* home lists */
+.rows { list-style: none; margin: 0; padding: 0; }
+.rows li { border-top: 1px solid var(--rule); }
+.rows li:last-child { border-bottom: 1px solid var(--rule); }
+.rows a { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; align-items: baseline; padding: 12px 0; text-decoration: none; min-height: 48px; }
+.rows .s { font: 600 0.8125rem/1 var(--mono); letter-spacing: 0.08em; color: var(--ai); white-space: nowrap; }
+.rows .s.d { color: var(--muted); }
+.rows .sub { grid-column: 1 / -1; color: var(--muted); font-size: 0.9rem; }
+.shelves { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 16px; }
+.shelves a { display: flex; justify-content: space-between; gap: 8px; padding: 12px 0; border-top: 1px solid var(--rule); text-decoration: none; min-height: 48px; }
+.status { font-size: 0.875rem; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 12px; }
+.score { font: 400 3rem/1 var(--display); color: var(--ai); }
+footer { border-top: 1px solid var(--rule); padding-block: 20px 40px; font-size: 0.875rem; color: var(--muted); }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 18px; }
+.guide dt { font: 600 0.95rem/1.2 var(--mono); letter-spacing: 0.08em; color: var(--ai); margin-top: 12px; }
+.guide dd { margin: 4px 0 0; }
+@media (max-width: 380px) { .choices { grid-template-columns: 1fr; } .shelves { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
+@media print {
+  :root { --night: #fff; --surface: #fff; --text: #111; --muted: #444; --rule: #bbb; --edge: #888; --amber: #8a4b00; --ai: #111; color-scheme: light; }
+  header.bar, footer, .share, .cardnav, .search { display: none !important; }
+  details > div { display: block !important; }
+}
+</style>
+
+<header class="bar"><div class="wrap">
+  <a class="wordmark" href="#home" aria-label="Hum, home">Hum</a>
+  <span class="pill" title="Prototype for testing. Answers marked Draft aren’t reviewed yet.">Prototype</span>
+  <nav class="nav" aria-label="Main">
+    <a href="#today" id="nav-today">Today</a>
+    <a href="#search" id="nav-search">Search</a>
+  </nav>
+</div></header>
+<main id="main" class="wrap"></main>
+<footer><div class="wrap">
+  <a href="#topics">All topics</a><a href="#how">How we know</a><span>Hum · open source · every number sourced</span>
+</div></footer>
+
+<script>
+document.documentElement.lang = 'en';
+const DATA = __DATA__;
+const R = DATA.reviewed, D = DATA.drafts, LADDER = DATA.ladder;
+const SITE = 'https://humearth.org';
+const bySlug = new Map();
+R.forEach(r => bySlug.set(r.slug, { ...r, reviewed: true }));
+const coveredIds = new Set(R.map(r => r.key));
+const drafts = D.filter(d => !d.ids.some(i => coveredIds.has(i)));
+drafts.forEach(d => bySlug.set('d-' + d.slug, { ...d, slug: 'd-' + d.slug, reviewed: false, type: 'draft' }));
+const ALL = [...bySlug.values()];
+const CATS = ['About you', 'Comparisons and myths', "The world's total", 'Growth and the future', 'Your bills and the grid', 'Water', 'Near you', 'Power sources', 'Company claims', 'Other costs', 'Policy and rules', 'Hard to know'];
+const CAT_NOTE = { 'Your bills and the grid': 'The evidence so far is mostly from the US.', 'Near you': 'The evidence so far is mostly from the US.' };
+const catSlug = c => c.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+// The deck alternates "about you" with the bigger picture, so no run ends on "it's tiny".
+const PLAY = ['one-question', 'power-mix', 'google-search', 'world-share', 'bottle-of-water', 'big-tech-emissions', 'netflix', 'bills', 'flight', 'reasoning', 'my-year'];
+const CLAIM_CHOICES = [['YES', 'True'], ['PARTLY', 'Partly true'], ['NO', 'False'], ['NOBODY KNOWS', 'Nobody knows']];
+const ICON = { YES: '✓', NO: '✕', PARTLY: '◐', 'NOBODY KNOWS': '?' };
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const main = document.getElementById('main');
+const store = { get(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } }, set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} } };
+const LAUNCH = Date.UTC(2026, 9, 18);
+const dayNo = () => { const n = new Date(); return Math.floor((Date.UTC(n.getUTCFullYear(), n.getUTCMonth(), n.getUTCDate()) - LAUNCH) / 864e5); };
+// Today starts one card in, so the front door keeps its lead card on most days and never repeats Today's.
+const todaySlug = () => PLAY[(((dayNo() + 1) % PLAY.length) + PLAY.length) % PLAY.length];
+const HOME_DECK = () => PLAY.filter(s => s !== todaySlug());
+
+/* Energy in words: no thousands separators, so "28,000 Wh" can't be read as 28 Wh. */
+function energy(wh) {
+  const f = (v) => (v >= 100 ? Math.round(v) : v >= 10 ? Math.round(v) : Math.round(v * 100) / 100).toString();
+  if (wh >= 1e12) return f(wh / 1e12) + ' TWh';
+  if (wh >= 1e9) return f(wh / 1e9) + ' GWh';
+  if (wh >= 1e6) return f(wh / 1e6) + ' MWh';
+  if (wh >= 1e3) return f(wh / 1e3) + ' kWh';
+  return f(wh) + ' Wh';
+}
+function times(r) {
+  if (r < 1.5) return 'about the same as the line above';
+  if (r < 10) return `about ${Math.round(r * 10) / 10}× the line above`;
+  if (r < 1000) return `about ${Math.round(r)}× the line above`;
+  const words = [[1e9, 'billion'], [1e6, 'million'], [1e3, 'thousand']];
+  for (const [n, w] of words) if (r >= n) return `about ${Math.round((r / n) * 10) / 10} ${w} times the line above`;
+}
+const unitKey = () => `<details class="unitkey"><summary>What do Wh, kWh and TWh mean?</summary><div><p><abbr title="watt-hour">Wh</abbr> is a watt-hour: a 1-watt light left on for an hour. 1 kWh = 1,000 Wh, and 1 TWh = 1 billion kWh. Hum compares each number with something everyday so you don’t need the units.</p></div></details>`;
+
+/* ---------- figure strips ---------- */
+function pointsFig(p) {
+  const max = Math.max(...p.items.map(i => i.v)) * 1.1;
+  const x = v => 6 + (v / max) * 348;
+  let marks = p.items.map(i => i.claim
+    ? `<rect x="${x(i.v) - 6}" y="8" width="12" height="24" rx="2" fill="none" stroke="var(--ai)" stroke-width="2" stroke-dasharray="3 3"/>`
+    : `<circle cx="${x(i.v)}" cy="20" r="7" fill="${i.kind === 'company_claim' ? 'var(--night)' : 'var(--amber)'}" stroke="var(--amber)" stroke-width="2.5"/>`).join('');
+  return `<div class="fig"><span class="t">${esc(p.title)}</span>
+    <svg viewBox="0 0 360 40" preserveAspectRatio="none" aria-hidden="true"><line x1="6" y1="20" x2="354" y2="20" stroke="var(--rule)" stroke-width="2"/>${marks}</svg>
+    <div class="axis" aria-hidden="true"><span>0</span><span>${(Math.round(max * 10) / 10)} ${esc(p.unit.split(' ')[0])}</span></div>
+    <ul>${p.items.map(i => `<li><span class="sw ${i.claim ? 'cl' : i.kind === 'company_claim' ? 'co' : ''}" aria-hidden="true"></span><span><b class="mono">${i.v} ${esc(p.unit.split(' ')[0])}</b> ${esc(i.label)}: ${esc(i.how)}${i.kind === 'company_claim' ? ' (company figure)' : ''}</span></li>`).join('')}</ul>
+    <span class="small muted">Hollow dots are the companies’ own figures. Unit: ${esc(p.unit)}.</span></div>`;
+}
+function rangeFig(r) {
+  const max = r.claim * 1.05, x = v => 6 + (v / max) * 348;
+  return `<div class="fig"><span class="t">${esc(r.unit)}</span>
+    <svg viewBox="0 0 360 40" preserveAspectRatio="none" aria-hidden="true"><line x1="6" y1="20" x2="354" y2="20" stroke="var(--rule)" stroke-width="2"/>
+    <rect x="${x(r.low)}" y="10" width="${Math.max(4, x(r.high) - x(r.low))}" height="20" rx="2" fill="var(--band)" stroke="var(--forecast)" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <rect x="${x(r.claim) - 6}" y="8" width="12" height="24" rx="2" fill="none" stroke="var(--ai)" stroke-width="2" stroke-dasharray="3 3"/></svg>
+    <div class="axis" aria-hidden="true"><span>0 ml</span><span>${Math.round(max)} ml</span></div>
+    <ul><li><span class="sw rg" aria-hidden="true"></span><span><b class="mono">${r.low} to ${r.high} ml</b> the study’s estimate per answer</span></li>
+    <li><span class="sw cl" aria-hidden="true"></span><span><b class="mono">${r.claim} ml</b> ${esc(r.claimNote.replace(/^The claim: /, 'what the claim says'))}</span></li></ul></div>`;
+}
+const figHtml = e => e.points ? pointsFig(e.points) : e.range ? rangeFig(e.range) : '';
+
+/* ---------- the ladder: dots on one log axis, with the jump in words ---------- */
+function ladderHtml(me) {
+  const lo = -1, hi = 15;
+  const pos = wh => ((Math.log10(wh) - lo) / (hi - lo)) * 100;
+  return `<ol class="ladder">` + LADDER.map((l, i) => `<li class="${l.k === me ? 'me' : ''}"><div class="row"><b>${esc(l.label)}</b><span class="mono small">${energy(l.wh)}</span></div>
+    <div class="track" aria-hidden="true"><span class="dot" style="left:${pos(l.wh).toFixed(1)}%"></span></div>
+    <span class="x">${esc(l.note)} · ${esc(l.tag)}</span>${i ? `<span class="x">${times(l.wh / LADDER[i - 1].wh)}</span>` : ''}</li>`).join('') +
+    `</ol><div class="ticks" aria-hidden="true"><span>0.1 Wh</span><span>1 MWh</span><span>1 TWh</span></div><p class="small muted">The dots sit on a log scale: each step to the right is ten times bigger, which is the only way a phone charge and all the world’s data centres fit on one line.</p>`;
+}
+
+/* ---------- sharing ---------- */
+function shareBlock(text, url, id) {
+  return `<div class="share" id="${id}"><button type="button" class="btn" data-share>Share</button><span class="small muted" aria-live="polite" data-done></span><textarea readonly hidden aria-label="Text to share">${esc(text + ' ' + url)}</textarea></div>`;
+}
+function bindShare(root, text, url) {
+  const b = root.querySelector('[data-share]'), ta = root.querySelector('textarea'), done = root.querySelector('[data-done]');
+  b.addEventListener('click', async () => {
+    const full = text + ' ' + url;
+    try { if (navigator.share) { await navigator.share({ text, url }); done.textContent = 'Shared'; return; } } catch (e) { if (e && e.name === 'AbortError') return; }
+    try { await navigator.clipboard.writeText(full); done.textContent = 'Copied. Paste it anywhere.'; }
+    catch { ta.hidden = false; ta.focus(); ta.select(); done.textContent = 'Selected. Copy it from here.'; }
+  });
+}
+
+/* ---------- playable card ---------- */
+let playIdx = 0, runScore = 0;
+function cardInner(r, opts = {}) {
+  const pos = opts.pos;
+  const prog = pos == null ? '' : `<div class="progress" aria-label="Card ${pos + 1} of ${opts.total}">${Array.from({ length: opts.total }, (_, i) => `<span class="${i < pos ? 'on' : i === pos ? 'now' : ''}"></span>`).join('')}</div>`;
+  const head = r.type === 'claim'
+    ? `<p class="kicker">You’ve probably heard (${esc(r.heardFrom)}):</p><h2 class="claim" tabindex="-1" id="card-h">${esc(r.heard)}</h2><p class="small muted">True, false, or somewhere in between?</p>
+       <div class="choices" role="group" aria-label="Your guess">${CLAIM_CHOICES.map(([k, l]) => `<button type="button" data-k="${k}">${l}</button>`).join('')}</div>`
+    : `<p class="kicker">Guess first</p><h2 class="claim" tabindex="-1" id="card-h">${esc(r.guess.prompt)}</h2>
+       <div class="choices" role="group" aria-label="Your guess">${r.guess.options.map((o, i) => `<button type="button" data-i="${i}">${esc(o)}</button>`).join('')}</div>`;
+  return `${head}<a class="tellme" href="#${r.slug}">Just tell me</a><div class="reveal" id="reveal" hidden></div>${prog}`;
+}
+function playCard(host, r, opts) {
+  host.innerHTML = cardInner(r, opts);
+  const isRight = b => r.type === 'claim' ? b.dataset.k === r.stamp : Number(b.dataset.i) === r.guess.right;
+  host.querySelectorAll('.choices button').forEach(b => b.addEventListener('click', () => {
+    if (b.getAttribute('aria-disabled') === 'true') return;
+    const right = isRight(b);
+    host.querySelectorAll('.choices button').forEach(x => {
+      x.setAttribute('aria-disabled', 'true');
+      if (isRight(x)) { x.classList.add('is-right'); x.insertAdjacentHTML('beforeend', '<span class="tag">✓ Right answer</span>'); }
+      if (x === b) { x.classList.add('is-mine'); if (!right) x.insertAdjacentHTML('beforeend', '<span class="tag">✕ Your guess</span>'); }
+    });
+    if (opts.onAnswer) opts.onAnswer(right);
+    const rv = host.querySelector('#reveal');
+    const stamp = r.type === 'claim' ? `<a class="stamp" href="#how"><span aria-hidden="true">${ICON[r.stamp]}</span> ${r.stamp} <span class="who">Hum’s verdict</span></a>` : '';
+    rv.innerHTML = `${stamp}<h3 tabindex="-1" id="rv-h">${right ? 'You got it.' : 'Not quite.'} ${esc(r.result)}.</h3><p>${esc(r.reveal)}</p>${figHtml(r)}
+      <p class="world"><span class="k">The bigger picture</span>${esc(r.world)}</p>
+      ${r.you ? `<p class="foryou">What this means for you: your own use barely registers. What adds up is billions of questions, heavier uses like <a href="#reasoning">thinking modes</a> and video, and the data centres being built for them.</p>` : ''}
+      <div class="cardnav"><a class="btn" href="#${r.slug}">Read the full answer</a>${opts.onNext ? `<button type="button" class="btn quiet" id="next-card">${opts.last ? 'See your score' : 'Next question'}</button>` : ''}</div>
+      ${shareBlock(r.share, `${SITE}/q/${r.slug}`, 'card-share')}`;
+    rv.hidden = false;
+    bindShare(rv.querySelector('#card-share'), r.share, `${SITE}/q/${r.slug}`);
+    rv.querySelector('#rv-h').focus();
+    if (opts.onNext) rv.querySelector('#next-card').addEventListener('click', opts.onNext);
+  }));
+}
+
+/* ---------- views ---------- */
+function view(title, nav) {
+  document.title = title ? `${title} · Hum` : 'Hum: straight answers about AI’s electricity, water and CO₂';
+  ['today', 'search'].forEach(n => document.getElementById('nav-' + n).removeAttribute('aria-current'));
+  if (nav) document.getElementById('nav-' + nav).setAttribute('aria-current', 'page');
+}
+function focusH1() { const h = main.querySelector('h1'); if (h) { h.tabIndex = -1; h.focus({ preventScroll: true }); } }
+function searchHtml() {
+  return `<div class="search" role="search"><label for="q">Heard something? Ask Hum.</label><input id="q" type="search" autocomplete="off" placeholder="e.g. is AI bad for the planet?" aria-controls="results" aria-describedby="q-count"><p id="q-count" class="small muted" aria-live="polite"></p><ul class="results" id="results" hidden></ul></div>`;
+}
+const norm = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+const STOP = new Set('a an the is are do does did i my me of to in on for and or it its be can how what why will with by from than that this ai use uses using really'.split(' '));
+function search(q) {
+  const words = norm(q).split(/[^a-z0-9]+/).filter(w => w.length > 1 && !STOP.has(w));
+  if (!words.length) return [];
+  const scored = ALL.map(e => {
+    const hay = norm(e.q + ' ' + (e.cat || ''));
+    let s = 0; words.forEach(w => { if (hay.includes(w)) s += 2; else if (w.length > 4 && hay.includes(w.slice(0, -1))) s += 1; });
+    return { e, s };
+  }).filter(x => x.s >= Math.min(2, words.length * 2));
+  const rank = arr => arr.sort((a, b) => b.s - a.s || (b.e.p || 3) - (a.e.p || 3)).map(x => x.e);
+  return { rev: rank(scored.filter(x => x.e.reviewed)).slice(0, 5), dr: rank(scored.filter(x => !x.e.reviewed)).slice(0, 6) };
+}
+function bindSearch() {
+  const input = document.getElementById('q'), list = document.getElementById('results'), count = document.getElementById('q-count');
+  let t;
+  input.addEventListener('input', () => {
+    const v = input.value.trim();
+    const hits = v ? search(v) : { rev: [], dr: [] };
+    const n = (hits.rev || []).length + (hits.dr || []).length;
+    list.hidden = !v;
+    const row = e => `<li><a href="#${e.slug}"><span>${esc(e.q)}</span><span class="tag chip">${e.reviewed ? 'Answer' : 'Draft'}</span></a></li>`;
+    list.innerHTML = n ? (hits.rev.length ? hits.rev.map(row).join('') : '') + (hits.dr.length ? `<li class="sep">Drafts, not reviewed yet</li>` + hits.dr.map(row).join('') : '')
+      : `<li class="none">No answer yet for that. On the real site this would tell Hum what to write next.</li>`;
+    clearTimeout(t); t = setTimeout(() => { count.textContent = v ? (n ? `${hits.rev.length} reviewed answers and ${hits.dr.length} drafts match` : 'No match yet') : ''; }, 500);
+  });
+}
+function home() {
+  view(null, null);
+  const deck = HOME_DECK();
+  const listed = ['big-tech-emissions', 'bills', 'reasoning', 'power-mix'].map(s => bySlug.get(s));
+  const tally = store.get('hum.proto.tally', { played: 0, right: 0 });
+  main.innerHTML = `<section class="stack">
+    <div><h1>One AI question uses very little electricity. The world’s data centres use about as much as France.</h1>
+    <p class="hero-sub">Straight answers about AI’s electricity, water and CO₂. Every number sourced.</p></div>
+    ${searchHtml()}
+    <div class="card" id="card"></div>
+    ${tally.played ? `<p class="small muted">On this device you’ve played ${tally.played} and got ${tally.right} right.</p>` : ''}
+  </section>
+  <section><h2>Questions people ask</h2><ul class="rows">${listed.map(x => `<li><a href="#${x.slug}"><span>${esc(x.q)}</span>${x.stamp ? `<span class="s"><span aria-hidden="true">${ICON[x.stamp]}</span> ${x.stamp}</span>` : '<span></span>'}<span class="sub">${esc(x.result)}</span></a></li>`).join('')}</ul></section>
+  <section><h2>Browse by topic</h2><div class="shelves">${CATS.map(c => `<a href="#topic-${catSlug(c)}"><span>${esc(c)}</span><span class="mono muted">${ALL.filter(e => e.cat === c).length}</span></a>`).join('')}</div></section>
+  <p class="status">${R.length} reviewed answers and ${drafts.length} drafts. Each source shows the date its quote was checked on its page.</p>`;
+  bindSearch();
+  const host = document.getElementById('card');
+  const next = () => {
+    if (playIdx >= deck.length) {
+      host.innerHTML = `<h2 tabindex="-1" id="card-h">You got ${runScore} of ${deck.length}.</h2><p class="muted">That’s every card so far. A new question comes each day under Today.</p><div class="cardnav"><a class="btn" href="#today">Today’s question</a><button type="button" class="btn quiet" id="again">Play again</button></div>`;
+      host.querySelector('#again').addEventListener('click', () => { playIdx = 0; runScore = 0; next(); });
+      host.querySelector('#card-h').focus(); return;
+    }
+    const r = bySlug.get(deck[playIdx]);
+    playCard(host, r, {
+      pos: playIdx, total: deck.length, last: playIdx === deck.length - 1,
+      onAnswer: right => { runScore += right ? 1 : 0; const t = store.get('hum.proto.tally', { played: 0, right: 0 }); t.played++; if (right) t.right++; store.set('hum.proto.tally', t); },
+      onNext: () => { playIdx++; next(); host.scrollIntoView({ block: 'start' }); host.querySelector('#card-h').focus({ preventScroll: true }); },
+    });
+  };
+  next();
+}
+function today() {
+  view('Today’s question', 'today');
+  const d = dayNo(), n = d + 1, r = bySlug.get(todaySlug());
+  const key = 'hum.proto.today.' + n, done = store.get(key, null);
+  main.innerHTML = `<section class="stack"><h1>Today’s question</h1><p class="muted">Hum #${n} · one question a day, the same for everyone. No sign-up. There are ${PLAY.length} cards so far, so they repeat until more answers are reviewed.</p><div class="card" id="card"></div><div id="today-share"></div></section>`;
+  const host = document.getElementById('card');
+  playCard(host, r, {
+    onAnswer: right => {
+      store.set(key, { right });
+      const text = `Hum #${n}: I ${right ? 'got it' : 'missed it'}. Can you guess? “${r.type === 'claim' ? r.heard : r.guess.prompt}”`;
+      const box = document.getElementById('today-share');
+      box.innerHTML = `<h2>Challenge a friend</h2><p class="small muted">Your result, without the answer.</p>${shareBlock(text, SITE + '/today', 'ts')}`;
+      bindShare(box.querySelector('#ts'), text, SITE + '/today');
+    },
+  });
+  if (done) host.insertAdjacentHTML('afterbegin', `<p class="small muted">You played this one already on this device (${done.right ? 'right' : 'missed'}).</p>`);
+}
+const PROV = { company_claim: 'Company says so', estimate: 'Estimated', measured: 'Measured', calculated: 'Calculated by Hum', forecast: 'Forecast', policy_or_event: 'Record', dataset: 'Data row' };
+const dateWords = iso => new Date(iso + 'T12:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+function sourcesHtml(list, calc, checkedAll) {
+  return `<ul class="sources">${list.map(s => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.pub)}</a><span class="prov">${esc(PROV[s.kind] || s.kind)}</span>${s.kind === 'dataset' ? `<p class="data">${esc(s.quote)}</p><span class="small muted">Row checked against the published file, ${dateWords(s.retrieved)}</span>` : `<blockquote>“${esc(s.quote)}”</blockquote><span class="small muted">Quote checked on the page, ${dateWords(s.retrieved || checkedAll)}</span>`}</li>`).join('')}</ul>${calc && calc.length ? `<h3 style="margin-top:16px">Hum’s sums</h3><ul class="plain small">${calc.map(c => `<li class="mono">${esc(c)}</li>`).join('')}</ul>` : ''}`;
+}
+function citeText(e) {
+  const primary = e.sources[0];
+  return `${primary.pub}, as quoted in Hum, “${e.q}”, ${SITE}/q/${e.slug} (quote checked ${dateWords(primary.retrieved)}).`;
+}
+function answer(e) {
+  if (!e.reviewed) return draft(e);
+  view(e.q, null);
+  const nexts = [['Go deeper', e.next.deeper], ['Zoom out', e.next.bigger], ['Closer to home', e.next.closer]].map(([k, s]) => [k, bySlug.get(s)]).filter(x => x[1]);
+  const verdict = e.stamp ? `<a class="stamp" href="#how"><span aria-hidden="true">${ICON[e.stamp]}</span> ${e.stamp} <span class="who">Hum’s verdict</span></a>` : '';
+  main.innerHTML = `<article class="stack">
+    <p class="small muted" style="margin:0"><a href="#topic-${catSlug(e.cat)}">${esc(e.cat)}</a></p>
+    <h1>${esc(e.q)}</h1>
+    ${e.type === 'claim' ? `<p class="muted small" style="margin:0">The claim: ${esc(e.heard)}</p>` : ''}
+    ${verdict || (e.chips && e.chips.length) ? `<div class="verdict-row">${verdict}${e.chips && e.chips.length ? `<span class="chips">${e.chips.map(c => `<span class="chip">${esc(c)}</span>`).join('')}</span>` : ''}</div>` : ''}
+    <p class="lede">${esc(e.answer)}</p>
+    <p class="world"><span class="k">The bigger picture</span>${esc(e.world)}</p>
+    ${figHtml(e)}
+    <div>
+      ${e.rung ? `<details><summary>How big is that?</summary><div>${ladderHtml(e.rung)}</div></details>` : ''}
+      ${e.why ? `<details><summary>Why the claim misleads</summary><div><p>${esc(e.why)}</p></div></details>` : ''}
+      <details><summary>What nobody knows yet</summary><div><ul class="plain">${e.dontknow.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div></details>
+      <details><summary>Sources (${e.sources.length})</summary><div>${sourcesHtml(e.sources, e.calc)}</div></details>
+      <details><summary>Cite this</summary><div><p class="small">${esc(citeText(e))}</p><p class="small muted">Cite the original source first; Hum is where you found it.</p></div></details>
+      ${unitKey()}
+    </div>
+    <section><h2>Send this answer</h2><p class="small muted">${esc(e.share)}</p>${shareBlock(e.share, `${SITE}/q/${e.slug}`, 'ans-share')}</section>
+    <section><h2>Next questions</h2><ul class="next">${nexts.map(([k, x]) => `<li><a href="#${x.slug}"><span class="k">${k}</span><span>${esc(x.q)}</span></a></li>`).join('')}</ul></section>
+  </article>`;
+  bindShare(main.querySelector('#ans-share'), e.share, `${SITE}/q/${e.slug}`);
+}
+function draft(e) {
+  view(e.q + ' (draft)', null);
+  main.innerHTML = `<article class="stack">
+    <p class="small muted" style="margin:0"><a href="#topic-${catSlug(e.cat)}">${esc(e.cat)}</a></p>
+    <h1>${esc(e.q)}</h1>
+    <p class="draft-note">Draft from Hum’s research, not reviewed yet: the wording and verdict may change. The quotes listed below were checked on their pages on 18 Oct 2026. The detail may still mention figures Hum couldn’t check; those are listed under “What nobody knows yet”.</p>
+    <p class="draft-verdict">${esc(e.verdict)}</p>
+    <div>
+      <details><summary>Read the detail</summary><div><p>${esc(e.answer)}</p></div></details>
+      ${e.gaps && e.gaps.length ? `<details><summary>What nobody knows yet</summary><div><ul class="plain">${e.gaps.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div></details>` : ''}
+      <details><summary>Sources (${e.src.length})</summary><div>${sourcesHtml(e.src, null, '2026-10-18')}</div></details>
+    </div>
+    <p><a class="btn quiet" href="#topic-${catSlug(e.cat)}">More in ${esc(e.cat)}</a></p>
+  </article>`;
+}
+function topic(c) {
+  view(c, null);
+  const list = ALL.filter(e => e.cat === c).sort((a, b) => (b.reviewed - a.reviewed) || ((b.p || 3) - (a.p || 3)));
+  main.innerHTML = `<section class="stack"><p class="small muted" style="margin:0"><a href="#topics">All topics</a></p><h1>${esc(c)}</h1><p class="muted" style="margin:0">${list.length} questions. Reviewed answers first, then drafts by how likely people are to ask (our estimate).${CAT_NOTE[c] ? ' ' + CAT_NOTE[c] : ''}</p>
+  <ul class="rows">${list.map(e => `<li><a href="#${e.slug}"><span>${esc(e.q)}</span><span class="s ${e.reviewed ? '' : 'd'}">${e.reviewed ? (e.stamp ? `<span aria-hidden="true">${ICON[e.stamp]}</span> ${e.stamp}` : 'ANSWER') : 'DRAFT'}</span>${e.reviewed && !e.stamp ? `<span class="sub">${esc(e.result)}</span>` : ''}</a></li>`).join('')}</ul></section>`;
+}
+function topics() {
+  view('All topics', null);
+  main.innerHTML = `<section class="stack"><h1>All topics</h1><div class="shelves">${CATS.map(c => `<a href="#topic-${catSlug(c)}"><span>${esc(c)}</span><span class="mono muted">${ALL.filter(e => e.cat === c).length}</span></a>`).join('')}</div></section>`;
+}
+function how() {
+  view('How we know', null);
+  main.innerHTML = `<section class="stack"><h1>How we know</h1>
+  <p>Every number on Hum comes from a source we quote word for word, and each quote is checked on the page itself, not from a search summary. Each source shows the date it was checked.</p>
+  <h2>What the verdicts mean</h2>
+  <dl class="guide">
+    <dt>✓ YES</dt><dd>The evidence supports the claim as people usually say it.</dd>
+    <dt>◐ PARTLY</dt><dd>True in part, in some places, or only for older figures. The answer says which part.</dd>
+    <dt>✕ NO</dt><dd>The evidence contradicts it, even at the highest published estimate.</dd>
+    <dt>? NOBODY KNOWS</dt><dd>No one has published enough to say. We tell you what’s missing and who could publish it.</dd>
+  </dl>
+  <p>A verdict can’t be stronger than its evidence. When only a company says so, the answer is labelled “company figures”.</p>
+  <h2>Labels on every figure</h2>
+  <p>Measured · Estimated · Calculated by Hum (our arithmetic, shown under “Hum’s sums”) · Company says so (not independently checked) · Forecast · Data row (copied from a published dataset and checked against the file).</p>
+  <h2>Both sides</h2>
+  <p>Every answer that says your own use is small also tells you the total, because one question is tiny and all of them together are not. We never rank AI models against each other when their figures measure different things.</p>
+  <p class="muted small">This is a prototype. On the live site this page also lists every source, when it was last checked, and every correction.</p></section>`;
+}
+function route() {
+  const h = decodeURIComponent(location.hash.slice(1));
+  if (h === 'search') { home(); view('Search', 'search'); const q = document.getElementById('q'); q.scrollIntoView({ block: 'center' }); q.focus(); return; }
+  if (!h || h === 'home') { playIdx = 0; runScore = 0; home(); }
+  else if (h === 'today') today();
+  else if (h === 'topics') topics();
+  else if (h === 'how') how();
+  else if (h.startsWith('topic-')) { const c = CATS.find(c => 'topic-' + catSlug(c) === h); c ? topic(c) : home(); }
+  else if (bySlug.has(h)) answer(bySlug.get(h));
+  else home();
+  window.scrollTo(0, 0);
+  if (h && h !== 'home') focusH1();
+}
+window.addEventListener('hashchange', route);
+route();
+</script>
