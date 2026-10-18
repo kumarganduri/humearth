@@ -1,0 +1,387 @@
+<title>Hum Answers prototype</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;600&family=Atkinson+Hyperlegible+Next:wght@400;700&family=Instrument+Serif&display=swap">
+<style>
+/* Layout: one 640px answer column on night; the card is the only raised object. Hum DESIGN.md "Lights at Night", single dark theme on purpose. */
+:root {
+  --night: #0B0D12; --surface: #161A23; --rule: #2A3038; --text: #F2EBDD; --muted: #9BA1AD;
+  --amber: #FFA630; --ai: #FFF1C9; --forecast: #B07A2E; --band: #3A2A14; --country: #7D93B5;
+  --display: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --body: "Atkinson Hyperlegible Next", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Atkinson Hyperlegible Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { background: var(--night); }
+body { background: var(--night); color: var(--text); font: 400 1.0625rem/1.6 var(--body); margin: 0;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+a { color: var(--text); text-decoration-color: var(--muted); text-underline-offset: 3px; }
+a:hover { text-decoration-color: var(--amber); }
+:focus-visible { outline: 2px solid var(--ai); outline-offset: 2px; }
+button { font: inherit; color: inherit; }
+.wrap { max-width: 640px; margin: 0 auto; }
+.ribbon { max-width: 640px; margin: 0 auto; padding-block: 8px; font-size: 0.8125rem; color: var(--muted); border-bottom: 1px solid var(--rule); }
+.ribbon b { color: var(--ai); font-weight: 700; }
+header.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--night); border-bottom: 1px solid var(--rule); }
+header.bar .wrap { display: flex; align-items: center; gap: 8px; min-height: 56px; }
+.wordmark { font: 400 1.9rem/1 var(--display); text-decoration: none; margin-right: auto; }
+.nav { display: flex; gap: 4px; }
+.nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; text-decoration: none; border-radius: 6px; font-weight: 700; font-size: 0.95rem; }
+.nav a[aria-current="page"] { color: var(--amber); }
+main { padding-block: 24px 72px; }
+h1 { font: 400 clamp(1.9rem, 6vw, 2.6rem)/1.1 var(--display); margin: 0 0 16px; text-wrap: balance; }
+h2 { font: 400 1.6rem/1.15 var(--display); margin: 0 0 12px; text-wrap: balance; }
+h3 { font-size: 1rem; margin: 0 0 8px; }
+.muted { color: var(--muted); }
+.small { font-size: 0.875rem; }
+.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.stack { display: flex; flex-direction: column; gap: 16px; }
+section + section { margin-top: 40px; }
+
+/* search */
+.search { position: relative; }
+.search label { display: block; font-weight: 700; font-size: 0.95rem; margin-bottom: 6px; }
+.search input { width: 100%; min-height: 52px; padding: 0 16px; border-radius: 6px; border: 1.5px solid var(--rule); background: var(--surface); color: var(--text); font: inherit; }
+.search input:focus { border-color: var(--ai); outline: none; }
+.results { list-style: none; margin: 8px 0 0; padding: 0; border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); }
+.results li + li { border-top: 1px solid var(--rule); }
+.results a { display: flex; gap: 10px; align-items: baseline; padding: 12px 14px; text-decoration: none; min-height: 44px; }
+.results .tag { margin-left: auto; flex: none; }
+.results .none { padding: 12px 14px; color: var(--muted); }
+
+/* card */
+.card { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 20px; }
+.kicker { font-size: 0.875rem; color: var(--muted); margin: 0 0 6px; }
+.claim { font: 400 clamp(1.5rem, 5vw, 1.9rem)/1.18 var(--display); margin: 0 0 6px; text-wrap: balance; }
+.choices { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 16px; }
+.choices button { min-height: 52px; padding: 8px 10px; border-radius: 6px; border: 1.5px solid var(--amber); background: transparent; color: var(--amber); font-weight: 700; cursor: pointer; text-align: center; line-height: 1.25; }
+.choices button:hover { background: rgba(255, 166, 48, 0.12); }
+.choices button[aria-pressed="true"] { background: var(--amber); color: var(--night); }
+.choices button:disabled { cursor: default; }
+.choices button.right:not([aria-pressed="true"]) { border-color: var(--ai); color: var(--ai); }
+.tellme { display: inline-block; margin-top: 12px; font-size: 0.95rem; }
+.reveal { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--rule); }
+.reveal h3 { font: 400 1.5rem/1.15 var(--display); margin: 0 0 8px; }
+.cardnav { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 16px; border-radius: 6px; border: 1.5px solid var(--amber); color: var(--amber); background: transparent; font-weight: 700; text-decoration: none; cursor: pointer; }
+.btn:hover { background: rgba(255, 166, 48, 0.12); }
+.btn.quiet { border-color: var(--rule); color: var(--text); }
+.progress { display: flex; gap: 6px; margin-top: 14px; }
+.progress span { width: 8px; height: 8px; border-radius: 9999px; background: var(--rule); }
+.progress span.on { background: var(--muted); }
+.progress span.now { background: var(--ai); }
+
+/* stamps */
+.stamp { display: inline-flex; align-items: center; gap: 8px; font: 600 0.95rem/1 var(--mono); letter-spacing: 0.08em; padding: 8px 12px; border-radius: 3px; border: 2px solid var(--ai); color: var(--ai); }
+.stamp .who { font: 400 0.8125rem/1 var(--body); letter-spacing: 0; color: var(--muted); }
+.chips { display: inline-flex; flex-wrap: wrap; gap: 6px; }
+.chip { font: 600 0.75rem/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 8px; border-radius: 3px; border: 1.5px solid var(--muted); color: var(--muted); }
+.verdict-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 16px; }
+.lede { font-size: 1.125rem; }
+.world { border-left: 3px solid var(--amber); padding: 4px 0 4px 14px; }
+.world .k { display: block; font-size: 0.8125rem; font-weight: 700; color: var(--amber); letter-spacing: 0.04em; }
+
+/* range bar */
+.range { margin-top: 4px; }
+.range svg { display: block; width: 100%; height: auto; overflow: visible; }
+.range text { font-family: var(--mono); font-size: 12px; fill: var(--muted); }
+.range text.v { fill: var(--text); font-size: 13px; }
+.range .caption { font-size: 0.875rem; color: var(--muted); margin-top: 6px; }
+
+/* folds */
+details { border-top: 1px solid var(--rule); }
+details:last-of-type { border-bottom: 1px solid var(--rule); }
+summary { cursor: pointer; min-height: 48px; display: flex; align-items: center; font-weight: 700; list-style: none; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; margin-left: auto; font-family: var(--mono); color: var(--muted); }
+details[open] summary::after { content: "–"; }
+details > div { padding-bottom: 16px; }
+.ladder { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.ladder li { display: grid; grid-template-columns: 1fr; gap: 4px; }
+.ladder .row { display: flex; gap: 8px; align-items: baseline; justify-content: space-between; }
+.ladder .track { height: 10px; background: var(--rule); border-radius: 3px; overflow: hidden; }
+.ladder .fill { height: 100%; background: var(--country); border-radius: 3px; }
+.ladder li.me .fill { background: var(--amber); }
+.ladder li.me .row b { color: var(--amber); }
+.ladder .x { color: var(--muted); font-size: 0.8125rem; }
+.sources { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+.sources blockquote { margin: 4px 0; padding-left: 12px; border-left: 2px solid var(--rule); font-size: 0.95rem; }
+.prov { font: 600 0.6875rem/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--rule); border-radius: 3px; padding: 3px 6px; margin-left: 6px; vertical-align: 1px; }
+.prov.company { border-color: var(--muted); }
+ul.plain { margin: 0; padding-left: 20px; }
+.next { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.next li { border-top: 1px solid var(--rule); }
+.next li:last-child { border-bottom: 1px solid var(--rule); }
+.next a { display: flex; gap: 12px; align-items: baseline; padding: 12px 0; text-decoration: none; min-height: 48px; }
+.next .k { flex: none; width: 7.5em; font-size: 0.8125rem; font-weight: 700; color: var(--muted); }
+.share { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.share textarea { width: 100%; min-height: 84px; background: var(--surface); color: var(--text); border: 1px solid var(--rule); border-radius: 6px; padding: 10px; font: 0.95rem/1.5 var(--body); }
+.draft-note { background: var(--surface); border: 1px dashed var(--muted); border-radius: 6px; padding: 12px 14px; font-size: 0.9rem; color: var(--muted); }
+
+/* home lists */
+.rows { list-style: none; margin: 0; padding: 0; }
+.rows li { border-top: 1px solid var(--rule); }
+.rows li:last-child { border-bottom: 1px solid var(--rule); }
+.rows a { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; align-items: baseline; padding: 12px 0; text-decoration: none; min-height: 48px; }
+.rows .s { font: 600 0.8125rem/1 var(--mono); letter-spacing: 0.08em; color: var(--ai); }
+.rows .sub { grid-column: 1 / -1; color: var(--muted); font-size: 0.9rem; }
+.shelves { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 16px; }
+.shelves a { display: flex; justify-content: space-between; gap: 8px; padding: 12px 0; border-top: 1px solid var(--rule); text-decoration: none; min-height: 48px; }
+.status { font-size: 0.875rem; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 12px; }
+footer { border-top: 1px solid var(--rule); padding-block: 20px 40px; font-size: 0.875rem; color: var(--muted); }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 18px; }
+@media (max-width: 380px) { .choices { grid-template-columns: 1fr; } .shelves { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
+</style>
+
+<div class="ribbon"><b>Prototype for testing.</b> Figures come from Hum’s checked research. Answers marked “draft” aren’t reviewed yet.</div>
+<header class="bar"><div class="wrap">
+  <a class="wordmark" href="#home" aria-label="Hum, home">Hum</a>
+  <nav class="nav" aria-label="Main">
+    <a href="#today" id="nav-today">Today</a>
+    <a href="#search" id="nav-search">Search</a>
+  </nav>
+</div></header>
+<main id="main" class="wrap" tabindex="-1"></main>
+<footer><div class="wrap">
+  <a href="#topics">All topics</a><a href="#how">How we know</a><span>Hum · open source · every number sourced</span>
+</div></footer>
+
+<script>
+const DATA = __DATA__;
+const R = DATA.reviewed, D = DATA.drafts, LADDER = DATA.ladder;
+const bySlug = new Map();
+R.forEach(r => bySlug.set(r.slug, { ...r, reviewed: true }));
+const coveredIds = new Set(R.map(r => r.key));
+const drafts = D.filter(d => !d.ids.some(i => coveredIds.has(i)));
+drafts.forEach(d => bySlug.set('d-' + d.slug, { ...d, slug: 'd-' + d.slug, reviewed: false, type: 'draft' }));
+const ALL = [...bySlug.values()];
+const CATS = ['About you', 'Comparisons and myths', "The world's total", 'Growth and the future', 'Your bills and the grid', 'Water', 'Near you', 'Power sources', 'Company claims', 'Other costs', 'Policy and rules', 'Hard to know'];
+const catSlug = c => c.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const PLAY = ['one-question', 'google-search', 'bottle-of-water', 'netflix', 'world-share', 'flight', 'reasoning', 'power-mix', 'my-year', 'bills', 'big-tech-emissions'];
+const CLAIM_CHOICES = [['YES', 'True'], ['PARTLY', 'Partly true'], ['NO', 'False'], ['NOBODY KNOWS', 'Nobody knows']];
+const ICON = { YES: '✓', NO: '✕', PARTLY: '◐', 'NOBODY KNOWS': '?' };
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const main = document.getElementById('main');
+const fmt = n => n >= 1e12 ? (n / 1e12).toLocaleString('en-GB', { maximumFractionDigits: 0 }) + ' TWh' : n >= 1000 ? (n / 1000).toLocaleString('en-GB', { maximumFractionDigits: 1 }) + ' kWh' : n.toLocaleString('en-GB', { maximumFractionDigits: 2 }) + ' Wh';
+const store = { get(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } }, set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} } };
+
+/* ---------- range bar (log scale, so a 500 ml claim and a 10–50 ml range share one axis) ---------- */
+function rangeSvg(b) {
+  if (!b) return '';
+  const vals = [b.low, b.mid, b.high, b.claim].filter(v => v != null);
+  const lo = Math.min(...vals) / 2.2, hi = Math.max(...vals) * 2.2;
+  const W = 600, L = 8, Rr = 592, x = v => L + (Math.log10(v) - Math.log10(lo)) / (Math.log10(hi) - Math.log10(lo)) * (Rr - L);
+  const lab = (v) => (v >= 100 ? v.toLocaleString('en-GB', { maximumFractionDigits: 0 }) : v.toLocaleString('en-GB', { maximumFractionDigits: 2 }));
+  let s = `<svg viewBox="0 0 ${W} 96" role="img" aria-label="${esc(rangeText(b))}">`;
+  s += `<line x1="${L}" y1="40" x2="${Rr}" y2="40" stroke="var(--rule)" stroke-width="2"/>`;
+  s += `<rect x="${x(b.low)}" y="31" width="${Math.max(4, x(b.high) - x(b.low))}" height="18" rx="3" fill="var(--band)" stroke="var(--forecast)" stroke-width="1.5" stroke-dasharray="4 3"/>`;
+  s += `<text x="${x(b.low)}" y="72" text-anchor="middle">${lab(b.low)}</text><text x="${x(b.high)}" y="72" text-anchor="middle">${lab(b.high)}</text>`;
+  if (b.mid != null) s += `<rect x="${x(b.mid) - 3}" y="26" width="6" height="28" rx="2" fill="var(--amber)"/><text class="v" x="${x(b.mid)}" y="18" text-anchor="middle">${lab(b.mid)}</text>`;
+  if (b.claim != null) s += `<line x1="${x(b.claim)}" y1="24" x2="${x(b.claim)}" y2="56" stroke="var(--ai)" stroke-width="2" stroke-dasharray="3 3"/><text x="${Math.min(x(b.claim), Rr - 4)}" y="90" text-anchor="end" style="fill:var(--ai)">${esc(b.claimNote || 'the claim')}</text>`;
+  return s + '</svg>';
+}
+function rangeText(b) {
+  let t = `${b.unit}: from ${b.low}${b.lowNote ? ' (' + b.lowNote + ')' : ''} to ${b.high}${b.highNote ? ' (' + b.highNote + ')' : ''}`;
+  if (b.mid != null) t += `, middle ${b.mid}${b.midNote ? ' (' + b.midNote + ')' : ''}`;
+  if (b.claim != null) t += `. ${b.claimNote}`;
+  return t + '.';
+}
+const rangeBlock = b => b ? `<div class="range">${rangeSvg(b)}<p class="caption">${esc(rangeText(b))}</p></div>` : '';
+
+/* ---------- the ladder ---------- */
+function ladderHtml(me) {
+  const lo = Math.log10(0.1), hi = Math.log10(1e15);
+  return `<ol class="ladder">` + LADDER.map((l, i) => {
+    const w = ((Math.log10(l.wh) - lo) / (hi - lo)) * 100;
+    const x = i ? ` <span class="x">about ${Math.round(l.wh / LADDER[i - 1].wh).toLocaleString('en-GB')}× the rung above</span>` : '';
+    return `<li class="${l.k === me ? 'me' : ''}"><div class="row"><b>${esc(l.label)}</b><span class="mono small">${fmt(l.wh)}</span></div><div class="track" aria-hidden="true"><div class="fill" style="width:${w.toFixed(1)}%"></div></div><span class="x">${esc(l.note)}</span>${x}</li>`;
+  }).join('') + `</ol><p class="small muted">Bars use a log scale: each step along the bar is ten times bigger. The kettle line is Hum’s sum from physics (the energy to heat 1 litre from 15 °C to boiling), not a measured kettle.</p>`;
+}
+
+/* ---------- playable card ---------- */
+let playIdx = 0;
+function cardHtml(r, opts = {}) {
+  const pos = opts.pos ?? null;
+  const prog = pos == null ? '' : `<div class="progress" aria-hidden="true">${PLAY.map((_, i) => `<span class="${i < pos ? 'on' : i === pos ? 'now' : ''}"></span>`).join('')}</div>`;
+  if (r.type === 'claim') {
+    return `<div class="card" id="card"><p class="kicker">You’ve probably heard (${esc(r.heardFrom)}):</p><p class="claim">${esc(r.heard)}</p><p class="small muted">True, false, or somewhere in between?</p>
+    <div class="choices" role="group" aria-label="Your guess">${CLAIM_CHOICES.map(([k, l]) => `<button type="button" data-k="${k}" aria-pressed="false">${l}</button>`).join('')}</div>
+    <a class="tellme" href="#${r.slug}">Just tell me</a><div class="reveal" id="reveal" hidden></div>${prog}</div>`;
+  }
+  return `<div class="card" id="card"><p class="kicker">Guess first</p><p class="claim">${esc(r.guess.prompt)}</p>
+  <div class="choices" role="group" aria-label="Your guess">${r.guess.options.map((o, i) => `<button type="button" data-i="${i}" aria-pressed="false">${esc(o)}</button>`).join('')}</div>
+  <a class="tellme" href="#${r.slug}">Just tell me</a><div class="reveal" id="reveal" hidden></div>${prog}</div>`;
+}
+function firstSentence(t) { const m = t.match(/^.*?[.!?](\s|$)/); return m ? m[0].trim() : t; }
+function bindCard(r, onNext) {
+  const card = document.getElementById('card');
+  card.querySelectorAll('.choices button').forEach(b => b.addEventListener('click', () => {
+    const right = r.type === 'claim' ? b.dataset.k === r.stamp : Number(b.dataset.i) === r.guess.right;
+    card.querySelectorAll('.choices button').forEach(x => {
+      x.disabled = true;
+      const isRight = r.type === 'claim' ? x.dataset.k === r.stamp : Number(x.dataset.i) === r.guess.right;
+      if (isRight) x.classList.add('right');
+    });
+    b.setAttribute('aria-pressed', 'true');
+    const tally = store.get('hum.proto.tally', { played: 0, right: 0 });
+    tally.played++; if (right) tally.right++; store.set('hum.proto.tally', tally);
+    const rv = document.getElementById('reveal');
+    const head = r.type === 'claim' ? `<span class="stamp">${ICON[r.stamp]} ${r.stamp} <span class="who">Hum’s verdict</span></span>` : '';
+    rv.innerHTML = `${head}<h3 tabindex="-1" id="rv-h">${right ? 'You got it. ' : 'Not quite. '}${esc(r.result)}.</h3><p>${esc(firstSentence(r.answer))}</p>${rangeBlock(r.bar)}<p class="world"><span class="k">The bigger picture</span>${esc(r.world)}</p>
+      <div class="cardnav"><a class="btn" href="#${r.slug}">Read the full answer</a>${onNext ? '<button type="button" class="btn quiet" id="next-card">Next question</button>' : ''}</div>`;
+    rv.hidden = false;
+    document.getElementById('rv-h').focus({ preventScroll: false });
+    if (onNext) document.getElementById('next-card').addEventListener('click', onNext);
+  }));
+}
+
+/* ---------- views ---------- */
+function setNav(k) { ['today', 'search'].forEach(n => document.getElementById('nav-' + n).toggleAttribute('aria-current', false)); if (k) document.getElementById('nav-' + k).setAttribute('aria-current', 'page'); }
+function searchHtml() {
+  return `<div class="search" role="search"><label for="q">Heard something? Ask Hum.</label><input id="q" type="search" autocomplete="off" placeholder="e.g. is AI raising my bill?" aria-controls="results" aria-describedby="q-count"><p id="q-count" class="small muted" aria-live="polite"></p><ul class="results" id="results" hidden></ul></div>`;
+}
+const STOP = new Set('a an the is are do does did i my me of to in on for and or it its be can how what why will with by from than that this ai use uses using really'.split(' '));
+function search(q) {
+  const words = q.toLowerCase().split(/[^a-z0-9]+/).filter(w => w.length > 1 && !STOP.has(w));
+  if (!words.length) return [];
+  return ALL.map(e => {
+    const hay = (e.q + ' ' + (e.cat || '')).toLowerCase();
+    let s = 0; words.forEach(w => { if (hay.includes(w)) s += 2; else if (w.length > 4 && hay.includes(w.slice(0, -1))) s += 1; });
+    return { e, s: s ? s + (e.reviewed ? 1.5 : 0) + (e.p || 3) * 0.1 : 0 };
+  }).filter(x => x.s >= Math.min(2, words.length * 2)).sort((a, b) => b.s - a.s).slice(0, 8).map(x => x.e);
+}
+function bindSearch() {
+  const input = document.getElementById('q'), list = document.getElementById('results'), count = document.getElementById('q-count');
+  let t;
+  input.addEventListener('input', () => {
+    const v = input.value.trim();
+    const hits = v ? search(v) : [];
+    list.hidden = !v;
+    list.innerHTML = hits.length ? hits.map(e => `<li><a href="#${e.slug}"><span>${esc(e.q)}</span><span class="tag chip">${e.reviewed ? 'Answer' : 'Draft'}</span></a></li>`).join('')
+      : `<li class="none">No answer yet for that. On the real site this would tell Hum what to write next.</li>`;
+    clearTimeout(t); t = setTimeout(() => { count.textContent = v ? (hits.length ? `${hits.length} answers match` : 'No match yet') : ''; }, 500);
+  });
+}
+function home() {
+  setNav(null);
+  const r = bySlug.get(PLAY[playIdx % PLAY.length]);
+  const rows = ['big-tech-emissions', 'bills', 'reasoning', 'power-mix'].map(s => bySlug.get(s));
+  const tally = store.get('hum.proto.tally', { played: 0, right: 0 });
+  main.innerHTML = `<section class="stack">
+    <h1>AI’s electricity, water and CO2: straight answers, every number sourced.</h1>
+    ${searchHtml()}
+    ${cardHtml(r, { pos: playIdx % PLAY.length })}
+    ${tally.played ? `<p class="small muted">You’ve played ${tally.played} and got ${tally.right} right on this device.</p>` : ''}
+  </section>
+  <section><h2>The bigger picture</h2><ul class="rows">${rows.map(x => `<li><a href="#${x.slug}"><span>${esc(x.q)}</span><span class="s">${x.stamp ? ICON[x.stamp] + ' ' + x.stamp : esc(x.result)}</span><span class="sub">${esc(x.result)}${x.chips && x.chips.length ? ' · ' + esc(x.chips.join(' · ')) : ''}</span></a></li>`).join('')}</ul></section>
+  <section><h2>Browse by topic</h2><div class="shelves">${CATS.map(c => `<a href="#topic-${catSlug(c)}"><span>${esc(c)}</span><span class="mono muted">${ALL.filter(e => e.cat === c).length}</span></a>`).join('')}</div></section>
+  <p class="status">${R.length} reviewed answers · ${drafts.length} draft answers · every quote checked on its page, 18 Oct 2026</p>`;
+  bindSearch();
+  bindCard(r, () => { playIdx++; home(); document.getElementById('card').scrollIntoView({ block: 'start' }); document.querySelector('#card .choices button').focus({ preventScroll: true }); });
+}
+function today() {
+  setNav('today');
+  const start = Date.UTC(2026, 9, 18), now = new Date(), day = Math.floor((Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) - start) / 864e5);
+  const r = bySlug.get(PLAY[((day % PLAY.length) + PLAY.length) % PLAY.length]);
+  const n = 142 + day;
+  main.innerHTML = `<section class="stack"><h1>Today’s question</h1><p class="muted">Hum #${n} · one question a day, the same for everyone. No sign-up.</p>${cardHtml(r)}</section>`;
+  bindCard(r, null);
+  const rv = document.getElementById('reveal');
+  new MutationObserver(() => {
+    if (rv.hidden || rv.querySelector('.share')) return;
+    const pressed = document.querySelector('#card [aria-pressed="true"]');
+    const right = pressed && pressed.classList.contains('right');
+    const text = `Hum #${n}: ${right ? 'got it' : 'missed it'} · “${r.q}” · humearth.org/today`;
+    rv.insertAdjacentHTML('beforeend', `<div class="share" style="margin-top:14px"><textarea id="share-text" readonly aria-label="Text to share">${esc(text)}</textarea><button type="button" class="btn" id="copy">Copy to share</button><span id="copied" class="small muted" aria-live="polite"></span></div>`);
+    bindCopy();
+  }).observe(rv, { attributes: true, attributeFilter: ['hidden'] });
+}
+function bindCopy() {
+  const b = document.getElementById('copy'), ta = document.getElementById('share-text'), done = document.getElementById('copied');
+  b.addEventListener('click', () => {
+    const ok = () => { done.textContent = 'Copied'; };
+    const fallback = () => { ta.focus(); ta.select(); done.textContent = 'Selected: press copy on your keyboard'; };
+    try { navigator.clipboard.writeText(ta.value).then(ok, fallback); } catch { fallback(); }
+  });
+}
+const provClass = k => /company/i.test(k) ? 'prov company' : 'prov';
+const provLabel = k => ({ company_claim: 'Company says so', estimate: 'Estimated', measured: 'Measured', calculated: 'Calculated by Hum', forecast: 'Forecast', policy_or_event: 'Record' }[k] || k);
+function sourcesHtml(list, calc) {
+  return `<ul class="sources">${list.map(s => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.pub)}</a><span class="${provClass(s.kind)}">${esc(provLabel(s.kind))}</span><blockquote>“${esc(s.quote)}”</blockquote><span class="small muted">Quote checked on the page, 18 Oct 2026</span></li>`).join('')}</ul>${calc && calc.length ? `<h3 style="margin-top:16px">Hum’s sums</h3><ul class="plain small">${calc.map(c => `<li class="mono">${esc(c)}</li>`).join('')}</ul>` : ''}`;
+}
+function answer(e) {
+  setNav(null);
+  if (!e.reviewed) return draft(e);
+  const nexts = [['Go deeper', e.next.deeper], ['The bigger picture', e.next.bigger], ['Closer to home', e.next.closer]].map(([k, s]) => [k, bySlug.get(s)]).filter(x => x[1]);
+  const verdict = e.stamp ? `<span class="stamp">${ICON[e.stamp]} ${e.stamp} <span class="who">Hum’s verdict</span></span>` : `<span class="stamp">${esc(e.result)}</span>`;
+  const shareText = `Hum’s answer: ${e.stamp ? e.stamp + '. ' : ''}${e.result}. ${firstSentence(e.answer)} Sources: humearth.org/q/${e.slug}`;
+  main.innerHTML = `<article class="stack">
+    <p class="small muted"><a href="#topic-${catSlug(e.cat)}">${esc(e.cat)}</a></p>
+    <h1>${esc(e.q)}</h1>
+    <div class="verdict-row">${verdict}${e.chips && e.chips.length ? `<span class="chips">${e.chips.map(c => `<span class="chip">${esc(c)}</span>`).join('')}</span>` : ''}</div>
+    ${e.type === 'claim' ? `<p class="muted small">The claim: ${esc(e.heard)}</p>` : ''}
+    <p class="lede">${esc(e.answer)}</p>
+    <p class="world"><span class="k">The bigger picture</span>${esc(e.world)}</p>
+    ${rangeBlock(e.bar)}
+    <div>
+      ${e.rung ? `<details><summary>How big is that?</summary><div>${ladderHtml(e.rung)}</div></details>` : ''}
+      ${e.why ? `<details><summary>Why the claim misleads</summary><div><p>${esc(e.why)}</p></div></details>` : ''}
+      <details><summary>What nobody knows yet</summary><div><ul class="plain">${e.dontknow.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div></details>
+      <details><summary>Sources (${e.sources.length})</summary><div>${sourcesHtml(e.sources, e.calc)}</div></details>
+    </div>
+    <section><h2>Next questions</h2><ul class="next">${nexts.map(([k, x]) => `<li><a href="#${x.slug}"><span class="k">${k}</span><span>${esc(x.q)}</span></a></li>`).join('')}</ul></section>
+    <section><h2>Send this answer</h2><div class="share"><textarea id="share-text" readonly aria-label="Text to share">${esc(shareText)}</textarea><button type="button" class="btn" id="copy">Copy to share</button><span id="copied" class="small muted" aria-live="polite"></span></div></section>
+  </article>`;
+  bindCopy();
+}
+function draft(e) {
+  main.innerHTML = `<article class="stack">
+    <p class="small muted"><a href="#topic-${catSlug(e.cat)}">${esc(e.cat)}</a></p>
+    <h1>${esc(e.q)}</h1>
+    <p class="draft-note">Draft answer from Hum’s research. Not reviewed yet: the wording and verdict may change. Each quote below was checked on its page.</p>
+    <p class="lede"><b>${esc(e.verdict)}</b></p>
+    <p>${esc(e.answer)}</p>
+    <div>
+      ${e.gaps && e.gaps.length ? `<details><summary>What nobody knows yet</summary><div><ul class="plain">${e.gaps.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div></details>` : ''}
+      <details><summary>Sources (${e.src.length})</summary><div>${sourcesHtml(e.src)}</div></details>
+    </div>
+    <p><a class="btn quiet" href="#topic-${catSlug(e.cat)}">More in ${esc(e.cat)}</a></p>
+  </article>`;
+}
+function topic(c) {
+  setNav(null);
+  const list = ALL.filter(e => e.cat === c).sort((a, b) => (b.reviewed - a.reviewed) || ((b.p || 3) - (a.p || 3)));
+  main.innerHTML = `<section class="stack"><p class="small muted"><a href="#topics">All topics</a></p><h1>${esc(c)}</h1><p class="muted">${list.length} questions. Reviewed answers first, then drafts by how often people ask.</p>
+  <ul class="rows">${list.map(e => `<li><a href="#${e.slug}"><span>${esc(e.q)}</span><span class="s">${e.reviewed ? (e.stamp ? ICON[e.stamp] + ' ' + e.stamp : 'ANSWER') : 'DRAFT'}</span></a></li>`).join('')}</ul></section>`;
+}
+function topics() {
+  setNav(null);
+  main.innerHTML = `<section class="stack"><h1>All topics</h1><div class="shelves">${CATS.map(c => `<a href="#topic-${catSlug(c)}"><span>${esc(c)}</span><span class="mono muted">${ALL.filter(e => e.cat === c).length}</span></a>`).join('')}</div></section>`;
+}
+function how() {
+  setNav(null);
+  main.innerHTML = `<section class="stack"><h1>How we know</h1>
+  <p>Every number on Hum comes from a source we quote word for word. Before anything appears, the quote is checked on the page itself, not from a search summary.</p>
+  <p><b>Verdicts:</b> YES, PARTLY, NO or NOBODY KNOWS. A verdict can’t be stronger than its evidence: if the published range overlaps the claim, the verdict is PARTLY; if only a company says so, it’s marked “company figure”.</p>
+  <p><b>Labels on every figure:</b> Measured · Estimated · Calculated by Hum (our arithmetic, shown in “Hum’s sums”) · Company says so (not independently checked) · Forecast.</p>
+  <p><b>Both sides:</b> every answer that says your own use is small also tells you the total, because one question is tiny and all of them together are not.</p>
+  <p class="muted small">This is a prototype. On the live site this page also lists every source, when it was last checked, and every correction.</p></section>`;
+}
+function route() {
+  const h = decodeURIComponent(location.hash.slice(1));
+  if (h === 'search') { home(); const q = document.getElementById('q'); q.scrollIntoView({ block: 'center' }); q.focus(); setNav('search'); return; }
+  if (!h || h === 'home') home();
+  else if (h === 'today') today();
+  else if (h === 'topics') topics();
+  else if (h === 'how') how();
+  else if (h.startsWith('topic-')) { const c = CATS.find(c => 'topic-' + catSlug(c) === h); c ? topic(c) : home(); }
+  else if (bySlug.has(h)) answer(bySlug.get(h));
+  else home();
+  if (h !== 'search') { window.scrollTo(0, 0); main.focus({ preventScroll: true }); }
+}
+window.addEventListener('hashchange', route);
+route();
+</script>
