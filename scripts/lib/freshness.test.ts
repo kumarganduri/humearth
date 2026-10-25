@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { collectQuotes, decide, DOWN_WEEKS, dropRunningHeaders, htmlText, issueBody, looksBlocked, matchQuote, quotesInLabel, readState, type Result } from './freshness';
+import { archiveAgeDays, collectQuotes, decide, DOWN_WEEKS, dropRunningHeaders, htmlText, issueBody, lacksArticle, looksBlocked, matchQuote, quotesInLabel, readState, type Result } from './freshness';
 
 // Saved fragments of real pages Hum quotes (trimmed), so the matcher is tested against what sites actually serve.
 const BLOGGER = `<html><head><script>var x = "Together with other work";</script></head><body><noscript><div class="post-body">The servers it touches each work on it for just a few thousandths of a second. Together with other work performed before your search even starts (such as building the search index) this amounts to 0.0003 kWh of energy per search, or 1 kJ.&nbsp; For comparison…</div></noscript></body></html>`;
@@ -101,5 +101,16 @@ describe('looksBlocked', () => {
     expect(looksBlocked(403, '')).toBe(true);
     expect(looksBlocked(200, '<title>Just a moment...</title>')).toBe(true);
     expect(looksBlocked(200, '<p>A normal article about data centres.</p>')).toBe(false);
+  });
+});
+
+describe('pages that send cloud servers something else', () => {
+  it('tells a placeholder page from an article whose quote is gone', () => {
+    const quote = 'We estimate that less than 16% of the carbon credits issued to the investigated projects constitute real emission reductions';
+    expect(lacksArticle('Your privacy, your choice. We use essential cookies to make sure the site can function. Accept all cookies', quote)).toBe(true);
+    expect(lacksArticle('Carbon credits issued to investigated projects: the share of real emission reductions was estimated at 12%.', quote)).toBe(false);
+  });
+  it('dates archive copies', () => {
+    expect(archiveAgeDays('20260918120000', '2026-10-25')).toBe(37);
   });
 });

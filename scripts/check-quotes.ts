@@ -4,7 +4,7 @@
 // It never fails the build over a source: a changed page is news for a person, not a broken site.
 
 import { appendFileSync, readFileSync, readdirSync } from 'node:fs';
-import { collectQuotes, decide, dropRunningHeaders, htmlText, issueBody, looksBlocked, matchQuote, readState, summaryMarkdown, type Result, type State } from './lib/freshness';
+import { archiveAgeDays, ARCHIVE_MAX_DAYS, collectQuotes, decide, dropRunningHeaders, htmlText, issueBody, lacksArticle, looksBlocked, matchQuote, readState, summaryMarkdown, type Result, type State } from './lib/freshness';
 
 const UA = 'Mozilla/5.0 (compatible; HumFreshnessWatch/1.0; +https://humearth.org/how-we-know)';
 const TIMEOUT_MS = 45_000;
@@ -41,18 +41,42 @@ async function fetchText(url: string): Promise<{ text: string } | { down: string
   }
 }
 
-const pages = new Map<string, { text: string } | { down: string }>();
+/** The Internet Archive's latest copy of a page that blocked us, if it's recent enough to stand in for it. */
+async function archiveCopy(url: string): Promise<{ text: string; note: string } | null> {
+  try {
+    const r = await fetch(`https://archive.org/wayback/available?url=${encodeURIComponent(url)}`, { headers: { 'user-agent': UA }, signal: AbortSignal.timeout(TIMEOUT_MS) });
+    const snap = ((await r.json()) as { archived_snapshots?: { closest?: { timestamp: string; available: boolean } } }).archived_snapshots?.closest;
+    if (!snap?.available || archiveAgeDays(snap.timestamp, today) > ARCHIVE_MAX_DAYS) return null;
+    const page = await fetchText(`https://web.archive.org/web/${snap.timestamp}id_/${url}`); // id_: the page as captured, no archive toolbar
+    return 'text' in page ? { text: page.text, note: `checked on the Internet Archive's copy from ${snap.timestamp.slice(0, 4)}-${snap.timestamp.slice(4, 6)}-${snap.timestamp.slice(6, 8)}` } : null;
+  } catch {
+    return null;
+  }
+}
+
+type Page = { text: string; note?: string } | { down: string };
+const pages = new Map<string, Page>();
 let next = 0;
 await Promise.all(Array.from({ length: CONCURRENCY }, async () => {
   while (next < urls.length) {
     const url = urls[next++]!;
-    pages.set(url, await fetchText(url));
+    let page: Page = await fetchText(url);
+    // A page that blocked us, or sent a placeholder instead of the article, is read from a recent archive copy.
+    const text = 'text' in page ? page.text : null;
+    const placeholder = text !== null && quotes.filter((q) => q.url === url).every((q) => lacksArticle(text, q.quote));
+    if ('down' in page || placeholder) {
+      const why = 'down' in page ? page.down : 'the page that loaded wasn’t the article (a consent or bot page)';
+      page = (await archiveCopy(url)) ?? { down: why };
+    }
+    pages.set(url, page);
   }
 }));
 
 const results: Result[] = quotes.map((q) => {
   const page = pages.get(q.url)!;
-  return 'down' in page ? { ...q, status: 'down', note: page.down } : { ...q, status: matchQuote(page.text, q.quote) };
+  if ('down' in page) return { ...q, status: 'down', note: page.down };
+  const status = matchQuote(page.text, q.quote);
+  return { ...q, status, ...(page.note ? { note: page.note } : {}) };
 });
 
 // Last week's state lives in the issue itself (a hidden comment), so the watch needs no storage of its own.

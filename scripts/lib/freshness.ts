@@ -127,6 +127,25 @@ export function matchQuote(pageText: string, quote: string): Exclude<Status, 'do
   return best / want.size >= 0.85 ? 'changed' : 'missing';
 }
 
+/** True when a page plainly isn't the article: under a third of the quote's longer words appear anywhere on it.
+ *  Sites send cloud servers a consent or bot page with status 200 (Nature, the European Parliament), and that
+ *  must read as "couldn't read the page", not as "the quote vanished". */
+export function lacksArticle(pageText: string, quote: string): boolean {
+  const qw = [...new Set(words(normalise(quote)))];
+  if (qw.length < 3) return false;
+  const pw = new Set(normalise(pageText).split(/[^a-z0-9.%$]+/));
+  return qw.filter((w) => pw.has(w)).length / qw.length < 1 / 3;
+}
+
+/** The Internet Archive's most recent copy is used when a page blocks us, if it is no older than this. */
+export const ARCHIVE_MAX_DAYS = 183;
+
+/** "20260918123456" (a Wayback timestamp) -> days before `today` ("2026-10-25"). */
+export function archiveAgeDays(timestamp: string, today: string): number {
+  const d = Date.UTC(+timestamp.slice(0, 4), +timestamp.slice(4, 6) - 1, +timestamp.slice(6, 8));
+  return Math.floor((Date.parse(`${today}T00:00:00Z`) - d) / 864e5);
+}
+
 /** A response we can't read the page from: blocked, rate-limited or a bot challenge. */
 export function looksBlocked(status: number, body: string): boolean {
   if (status >= 400) return true;
