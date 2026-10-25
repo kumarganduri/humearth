@@ -20,9 +20,10 @@ export const CONVERSIONS = [1000, 3600, 1e6, 1e9, 1e12, 52, 365, 100, 3785];
 const isObj = (x: unknown): x is Record<string, unknown> => typeof x === 'object' && x !== null && !Array.isArray(x);
 const str = (x: unknown): x is string => typeof x === 'string' && x.trim().length > 0;
 
-/** Every number in a piece of text, with thousands separators read through ("5,250" is 5250). */
+/** Every number in a piece of text, with thousands separators read through ("5,250" and the IEA's "1 200" with a
+ *  narrow or no-break space). An ordinary space never joins numbers, so "2024 415" stays two. */
 export function numbersIn(text: string): number[] {
-  return (text.replace(/(\d),(?=\d{3}\b)/g, '$1').match(/\d+(?:\.\d+)?/g) ?? []).map(Number);
+  return (text.replace(/(\d)[,\u00a0\u2009\u202f](?=\d{3}\b)/g, '$1').match(/\d+(?:\.\d+)?/g) ?? []).map(Number);
 }
 
 /** The numbers in a calc expression, reading 18e9 as one number. */

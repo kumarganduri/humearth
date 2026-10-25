@@ -31,7 +31,7 @@ test('front door: a claim card shows Hum’s verdict stamp after the guess', asy
 
 test('front door: playing every card ends on a score', async ({ page }) => {
   await page.goto('/');
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 40; i++) {
     const next = page.locator('#next-card');
     if (!(await page.locator('#card .choices button').count())) break;
     await page.locator('#card .choices button').first().click();
@@ -88,9 +88,10 @@ test('/today shows a numbered question that is not the front door’s first card
   await expect(page.locator('#today-share')).toContainText('Challenge a friend');
 });
 
-test('topics list every reviewed answer, by category', async ({ page }) => {
+test('topics list every reviewed answer, by category', async ({ page, request }) => {
+  const total = (await (await request.get('/data/answers.json')).json()).answers.length;
   await page.goto('/topics');
-  await expect(page.locator('.rows a')).toHaveCount(11);
+  await expect(page.locator('.rows a')).toHaveCount(total);
   await page.goto('/topics/your-bills-and-the-grid');
   await expect(page.locator('.topic .muted').first()).toContainText('mostly from the US');
 });
@@ -114,7 +115,7 @@ test.describe('with scripts off', () => {
 // date. Walk a whole cycle of days with a fixed clock: Today shows the day's number and never the front door's first card.
 test('every day of the card cycle: Today has the day’s number and differs from the front door’s first card', async ({ page }) => {
   const launch = Date.UTC(2026, 9, 18, 12);
-  for (let day = 0; day < 12; day++) {
+  for (let day = 0; day < 22; day++) {
     await page.clock.setFixedTime(new Date(launch + day * 864e5));
     await page.goto('/');
     const front = await page.locator('#card-h').textContent();

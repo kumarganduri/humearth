@@ -1,6 +1,6 @@
 {
-  "contentHash": "9c415811efeeb2c4",
-  "builtAt": "2026-10-18",
+  "contentHash": "33f04af1bf9f1c86",
+  "builtAt": "2026-10-25",
   "launch": "2026-10-18",
   "deck": [
     "one-question",
@@ -13,7 +13,17 @@
     "bills",
     "flight",
     "reasoning",
-    "my-year"
+    "my-year",
+    "should-i-stop",
+    "can-ai-cut-emissions",
+    "pictures-and-video",
+    "renewable-claims",
+    "please-thank-you",
+    "nuclear-restarts",
+    "training-vs-using",
+    "drinking-water",
+    "efficiency-rebound",
+    "data-centre-noise"
   ],
   "companies": [
     "google",
@@ -21,10 +31,30 @@
     "altman",
     "altman_water",
     "google_2009",
-    "esg_18",
-    "esg_37",
-    "fd_ms",
-    "fd_ms2"
+    "bte_google_ambition",
+    "bte_google_scope2",
+    "bte_ms_25",
+    "bte_ms_total",
+    "noise_pwt_amazon",
+    "dw_google_total",
+    "dw_google_note",
+    "dw_google_douglas",
+    "dw_amazon",
+    "eff_google_33",
+    "eff_google_tokens",
+    "tmi_ppa",
+    "tmi_match",
+    "tmi_unit2",
+    "tmi_2027",
+    "please_techcrunch",
+    "rc_google_annual",
+    "rc_google_hourly",
+    "rc_google_gap",
+    "rc_google_scope2",
+    "rc_meta_eac",
+    "tvu_google_split",
+    "tvu_aws",
+    "tvu_meta"
   ],
   "answers": [
     {
@@ -212,10 +242,10 @@
       "heardFrom": "news coverage of the companies’ reports",
       "stamp": "PARTLY",
       "result": "Rising, yes. How much is AI, they don’t say",
-      "reveal": "Google’s footprint rose 18% in 2025, and Microsoft’s emissions 25% in its 2025 fiscal year, by their own reports.",
+      "reveal": "Google’s emissions rose 18% in 2025, and Microsoft’s 25% in its 2025 fiscal year, by their own reports.",
       "world": "All the world’s data centres, of which AI is one part, used about 485 TWh in 2025. That’s about as much electricity as France uses in a year, and around 1.5% of the world’s. The IEA expects it to roughly double by 2030.",
       "you": false,
-      "share": "By their own reports: Google’s footprint rose 18% in 2025 (electricity use up 37%), Microsoft’s emissions 25% in fiscal 2025. How much is AI, they don’t say."
+      "share": "By their own reports: Google’s emissions rose 18% in 2025 (electricity use up 37%), Microsoft’s 25% in fiscal 2025. How much is AI, they don’t say."
     },
     {
       "slug": "bills",
@@ -226,10 +256,10 @@
       "heardFrom": "local news and council meetings",
       "stamp": "PARTLY",
       "result": "Partly: in the eastern US, the grid’s monitor says yes",
-      "reveal": "In the PJM grid of the eastern US, the independent market monitor calls data centres the primary reason capacity prices jumped.",
-      "world": "Outside PJM, Hum has no checked figure yet for how data centres affect household bills.",
+      "reveal": "In the PJM grid of the eastern US, the independent market monitor calls data-centre load growth the primary reason capacity prices jumped.",
+      "world": "Across US states from 2019 to 2025, Berkeley Lab found those with the highest demand growth generally saw average prices fall after inflation, and says data-centre load doesn’t appear to change that. In PJM, the market monitor’s estimates point to data centres pushing capacity costs up.",
       "you": false,
-      "share": "In the eastern US PJM grid, the independent market monitor estimates data-centre load raised one capacity auction’s revenue by $7.3 billion (82%). What reaches your bill depends on your utility."
+      "share": "PJM’s independent market monitor estimates data-centre load raised the eastern US grid’s 2026/2027 capacity auction revenue by $7.3 billion (82.1%). What reaches your bill depends on your utility and state."
     },
     {
       "slug": "power-mix",
@@ -272,6 +302,265 @@
       "world": "The IEA expects data centres to use about 950 TWh by 2030, roughly double 2025.",
       "you": false,
       "share": "Data centres used about 1.5% of the world’s electricity in 2024 (IEA). By 2025 that was about as much as France uses in a year, and the IEA expects it to roughly double by 2030."
+    },
+    {
+      "slug": "can-ai-cut-emissions",
+      "q": "Will AI cut more emissions than it causes?",
+      "cat": "Growth and the future",
+      "type": "claim",
+      "heard": "“AI will cut more emissions than it causes.”",
+      "heardFrom": "a common argument for building more AI",
+      "stamp": "NOBODY KNOWS",
+      "result": "It could, in a forecast. Nobody has measured it",
+      "reveal": "In the IEA’s wide-adoption scenario, AI tools cut around 5% of energy-related emissions in 2035. That depends on uptake the IEA says has no momentum yet.",
+      "world": "Data centres’ own emissions, from the electricity they consume, were about 180 million tonnes of CO₂ in the IEA’s 2025 report, heading for 300 Mt by 2035 in its Base Case and up to 500 Mt in its Lift-Off Case. That stays below 1.5% of energy-sector emissions.",
+      "you": false,
+      "share": "Will AI cut more emissions than it causes? In an IEA scenario, yes: around 5% of energy-related emissions in 2035 if AI tools are widely used. But that’s a forecast, and the IEA calls AI “not a silver bullet”."
+    },
+    {
+      "slug": "data-centre-noise",
+      "q": "Why do people near data centres hear a constant hum, and how loud can it be?",
+      "cat": "Near you",
+      "type": "how-much",
+      "guess": {
+        "prompt": "In Fairfax County, Virginia, the night-time limit for steady noise in residential areas, which a new data centre must show it meets, is…",
+        "options": [
+          "35 dBA",
+          "55 dBA",
+          "75 dBA",
+          "90 dBA"
+        ],
+        "right": 1
+      },
+      "result": "Up to 55 dBA at night, in one Virginia county",
+      "reveal": "A noise expert says people call 55 to 65 decibels no louder than conversation. The trouble, residents say, is that it never stops.",
+      "world": "Near a cluster of Amazon data centres in Prince William County, Virginia, measurements found the noise below the county’s 60-decibel daytime limit about half the time. Residents still said the constant drone, especially at night, cost them sleep. Amazon was muffling its cooling equipment, the local paper reported.",
+      "you": false,
+      "share": "Why data centres hum: their cooling runs night and day. Fairfax County, Virginia, caps steady noise in residential areas at 55 dBA at night; Chandler, Arizona, says new ones can’t be louder than the background."
+    },
+    {
+      "slug": "drinking-water",
+      "q": "Do data centres use drinking water?",
+      "cat": "Water",
+      "type": "claim",
+      "heard": "“Data centres use drinking water.”",
+      "heardFrom": "news coverage and planning debates",
+      "stamp": "PARTLY",
+      "result": "Mostly, at Google: about 78% of its data-centre water was drinking-quality",
+      "reveal": "Google’s data centres took in about 37 billion litres of water in 2024, and about 29 billion of it was potable, by Google’s own report.",
+      "world": "Across the US, data centres consumed about 17 billion gallons of water on site in a recent year (a Berkeley Lab estimate). Nobody publishes how much of that was drinking water.",
+      "you": false,
+      "share": "Google’s data centres drew about 29 billion litres of potable, drinking-quality water in 2024, about 78% of their total, by Google’s own report. Some sites run on reclaimed wastewater.",
+      "points": {
+        "title": "Where Google’s data centres got their water, 2024",
+        "unit": "billion litres withdrawn",
+        "items": [
+          {
+            "value": 29.14,
+            "label": "Potable (drinking-quality)",
+            "how": "Google’s table, converted from 7,699 million gallons",
+            "source": "dw_google_total"
+          },
+          {
+            "value": 4.879,
+            "label": "Other non-potable water",
+            "how": "Google’s table, converted from 1,289 million gallons",
+            "source": "dw_google_total"
+          },
+          {
+            "value": 3.319,
+            "label": "Reclaimed wastewater",
+            "how": "Google’s table, converted from 877 million gallons",
+            "source": "dw_google_total"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "efficiency-rebound",
+      "q": "Will more efficient AI chips fix AI’s energy problem?",
+      "cat": "Growth and the future",
+      "type": "claim",
+      "heard": "“More efficient AI chips will fix AI’s energy problem.”",
+      "heardFrom": "tech industry talk",
+      "stamp": "NO",
+      "result": "Not on their own",
+      "reveal": "Each AI answer uses far less energy than it did, but use is growing faster, so the total keeps rising.",
+      "world": "The world’s data centres used about 485 TWh in 2025, about as much electricity as France uses in a year. The IEA expects that to roughly double to 950 TWh by 2030.",
+      "you": false,
+      "share": "More efficient chips won’t fix AI’s energy use on their own: energy per AI task is falling fast, yet data-centre electricity grew 17% in 2025, and even the IEA’s High Efficiency case reaches about 970 TWh by 2035.",
+      "points": {
+        "title": "World data-centre electricity consumption, IEA (2025 estimate, 2035 forecasts)",
+        "unit": "TWh a year",
+        "items": [
+          {
+            "value": 485,
+            "label": "2025, estimated",
+            "how": "IEA, Key Questions on Energy and AI (2026)",
+            "source": "iea_485"
+          },
+          {
+            "value": 700,
+            "label": "2035, Headwinds case",
+            "how": "lowest case: slower AI uptake plus efficiency",
+            "source": "eff_iea_700"
+          },
+          {
+            "value": 970,
+            "label": "2035, High Efficiency case",
+            "how": "faster efficiency gains, 20% below the base case",
+            "source": "eff_iea_970",
+            "claim": true
+          }
+        ]
+      }
+    },
+    {
+      "slug": "nuclear-restarts",
+      "q": "Are tech companies restarting Three Mile Island to power AI?",
+      "cat": "Power sources",
+      "type": "claim",
+      "heard": "“Tech companies are restarting Three Mile Island to power AI.”",
+      "heardFrom": "news coverage since the 2024 Microsoft deal",
+      "stamp": "PARTLY",
+      "result": "Unit 1, for Microsoft’s data centres, and not running yet",
+      "reveal": "It’s Unit 1, not Unit 2, the reactor in the 1979 accident. Constellation expects it online in 2027.",
+      "world": "Once running, it would restore 835 megawatts to the grid, Constellation says. All the world’s data centres, of which AI is one part, used about 485 TWh of electricity in 2025.",
+      "you": false,
+      "share": "Three Mile Island: Unit 1 (not the 1979 accident reactor) is being restarted under a 20-year deal for Microsoft’s data centres. It isn’t running yet; Constellation expects 2027."
+    },
+    {
+      "slug": "pictures-and-video",
+      "q": "How much electricity does making an AI picture or video use?",
+      "cat": "About you",
+      "type": "how-much",
+      "guess": {
+        "prompt": "One short AI video clip uses about as much electricity as…",
+        "options": [
+          "A few short text questions",
+          "One phone charge",
+          "Boiling a litre of water",
+          "A US home for a day"
+        ],
+        "right": 2
+      },
+      "result": "About 90 Wh: like boiling a litre of water",
+      "reveal": "In one lab test, a short clip from an open video model used about 90 Wh (Hugging Face). Boiling a litre of water takes about 99 Wh.",
+      "world": "Nobody publishes how many AI pictures and videos are made, or what they use in total. All the world’s data centres, of which AI is one part, used about 485 TWh in 2025, and the IEA expects about 950 TWh by 2030.",
+      "you": true,
+      "share": "One short AI video clip used about 90 Wh in a lab test on an open model (Hugging Face), about as much as boiling a litre of water. One AI picture: about 0.63 to 1.22 Wh (MIT Technology Review).",
+      "points": {
+        "title": "Lab tests on specific open models (not comparable with each other)",
+        "unit": "Wh per picture or clip",
+        "items": [
+          {
+            "value": 0.63,
+            "label": "One standard picture, Stable Diffusion 3 Medium",
+            "how": "estimated by MIT Technology Review",
+            "source": "pics_mittr_image_std"
+          },
+          {
+            "value": 1.22,
+            "label": "One higher-quality picture, same model",
+            "how": "estimated by MIT Technology Review",
+            "source": "pics_mittr_image_hq"
+          },
+          {
+            "value": 90,
+            "label": "One short clip, WAN2.1–T2V–1.3B",
+            "how": "measured by Hugging Face on one graphics chip",
+            "source": "hf_video"
+          },
+          {
+            "value": 940,
+            "label": "One 5-second clip, the newer CogVideoX",
+            "how": "estimated by MIT Technology Review",
+            "source": "pics_mittr_video"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "please-thank-you",
+      "q": "Does saying “please” and “thank you” to ChatGPT waste energy?",
+      "cat": "Comparisons and myths",
+      "type": "claim",
+      "heard": "“Saying please and thank you to ChatGPT costs tens of millions of dollars in electricity.”",
+      "heardFrom": "a viral reply by OpenAI’s CEO on X, April 2025",
+      "stamp": "PARTLY",
+      "result": "A little. The “tens of millions” was a quip",
+      "reveal": "Altman’s “tens of millions of dollars” came with no calculation. A stand-alone thank-you costs about as much as any short message: 0.34 Wh or less, by OpenAI’s average.",
+      "world": "ChatGPT handled 18 billion messages a week by July 2025: about 0.32 TWh a year at 0.34 Wh each, by Hum’s sums. All the world’s data centres used about 485 TWh in 2025.",
+      "you": true,
+      "share": "Saying “thank you” to ChatGPT costs about as much as any short message: 0.34 Wh or less, by OpenAI’s figure. Sam Altman’s “tens of millions of dollars” was a quip, not a calculation."
+    },
+    {
+      "slug": "renewable-claims",
+      "q": "Does big tech really run on 100% renewable energy?",
+      "cat": "Company claims",
+      "type": "claim",
+      "heard": "“Big tech runs on 100% renewable energy.”",
+      "heardFrom": "company reports and advertising",
+      "stamp": "PARTLY",
+      "result": "On paper over a year, yes. Hour by hour, no",
+      "reveal": "Google matched 100% of its 2025 electricity use with renewable purchases over the year, but hour by hour its data centres and offices ran on about 65% carbon-free energy, by its own figures.",
+      "world": "Worldwide, the grids data centres draw from supply about 30% of their electricity from coal and 26% from gas, with about 27% from renewables, by the IEA’s estimate. A peer-reviewed Princeton study of the western US grid found that matching a year’s use has minimal impact on long-run emissions, while matching it hour by hour can cut them significantly.",
+      "you": false,
+      "share": "“100% renewable” is a yearly sum on paper. Google matched 100% of its 2025 electricity that way, but hour by hour on local grids it ran on about 65% carbon-free energy, by its own figures.",
+      "points": {
+        "title": "Google, 2025: the same electricity, counted two ways",
+        "unit": "% of electricity",
+        "items": [
+          {
+            "value": 100,
+            "label": "Matched with renewable purchases",
+            "how": "added up over the year, worldwide",
+            "source": "rc_google_annual",
+            "claim": true
+          },
+          {
+            "value": 65,
+            "label": "Carbon-free, hour by hour",
+            "how": "each hour, on each local grid",
+            "source": "rc_google_hourly"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "should-i-stop",
+      "q": "Should I stop using ChatGPT to help the planet?",
+      "cat": "About you",
+      "type": "claim",
+      "heard": "“Using ChatGPT is bad for the planet.”",
+      "heardFrom": "said at school, at parties and online",
+      "stamp": "PARTLY",
+      "result": "Small for you, big in total",
+      "reveal": "A typical user’s year of questions makes about 0.2 kg of CO₂, roughly half a mile in a US car. The total is what’s large: data centres used about 485 TWh in 2025.",
+      "world": "All the world’s data centres consumed about 485 TWh of electricity in 2025, and the IEA expects about 950 TWh by 2030. Electricity use by AI-focused data centres grew 50% in 2025. How much CO₂ that makes depends on where the power comes from: the IEA expects renewables to meet half of the growth.",
+      "you": true,
+      "share": "Is using ChatGPT bad for the planet? Partly: a typical user’s year of questions makes about 0.2 kg of CO₂, roughly half a mile in a US car (Hum’s sums). The total is the big part: data centres used about 485 TWh in 2025 (IEA)."
+    },
+    {
+      "slug": "training-vs-using",
+      "q": "Which uses more electricity: training AI, or people using it?",
+      "cat": "About you",
+      "type": "how-much",
+      "guess": {
+        "prompt": "Where a company has published the split, which took more of its machine-learning energy?",
+        "options": [
+          "Training the models",
+          "People using them",
+          "About half each",
+          "Nobody has ever measured it"
+        ],
+        "right": 1
+      },
+      "result": "Using it, where anyone has measured",
+      "reveal": "At Google, about three fifths of machine-learning energy went on use and two fifths on training, in the three years before 2022.",
+      "world": "Use adds up fast: ChatGPT alone got about 2.6 billion messages a day by July 2025, by Hum’s sums from OpenAI’s count. All the world’s data centres together used about 485 TWh in 2025.",
+      "you": false,
+      "share": "Where it’s been measured, using AI takes more energy than training it: about three fifths of Google’s machine-learning energy went on use (Google, 2022)."
     }
   ]
 }

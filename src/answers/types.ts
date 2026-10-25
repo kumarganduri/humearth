@@ -1,7 +1,7 @@
 // Hum v4 answers: the shapes in data/sources/answers.source.json and public/data/answers.json.
 
-export type Provenance = 'measured' | 'estimate' | 'company_claim' | 'forecast' | 'dataset';
-export const PROVENANCE: readonly Provenance[] = ['measured', 'estimate', 'company_claim', 'forecast', 'dataset'];
+export type Provenance = 'measured' | 'estimate' | 'company_claim' | 'forecast' | 'dataset' | 'rule' | 'report';
+export const PROVENANCE: readonly Provenance[] = ['measured', 'estimate', 'company_claim', 'forecast', 'dataset', 'rule', 'report'];
 
 export type Stamp = 'YES' | 'PARTLY' | 'NO' | 'NOBODY KNOWS';
 export const STAMPS: readonly Stamp[] = ['YES', 'PARTLY', 'NO', 'NOBODY KNOWS'];

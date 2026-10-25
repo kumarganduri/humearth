@@ -10,6 +10,10 @@ describe('numbersIn / exprNumbers', () => {
   it('reads thousands separators and decimals', () => {
     expect(numbersIn('5,250 MW and 0.34 Wh, 2.9×')).toEqual([5250, 0.34, 2.9]);
   });
+  it('reads the IEA\'s narrow-space thousands ("1 200") but never joins numbers across an ordinary space', () => {
+    expect(numbersIn('around 1\u202f200 TWh, and 1\u00a0700')).toEqual([1200, 1700]);
+    expect(numbersIn('in 2024 415 TWh')).toEqual([2024, 415]);
+  });
   it('reads 18e9 as one number in an expression', () => {
     expect(exprNumbers('18e9*52/(700*1e6)')).toEqual([18e9, 52, 700, 1e6]);
   });

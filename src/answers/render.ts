@@ -18,7 +18,7 @@ export const topicSlug = (c: Category | string) => c.toLowerCase().replace(/[^a-
 
 export const ICON: Record<Stamp, string> = { YES: '✓', NO: '✕', PARTLY: '◐', 'NOBODY KNOWS': '?' };
 export const CLAIM_CHOICES: [Stamp, string][] = [['YES', 'True'], ['PARTLY', 'Partly true'], ['NO', 'False'], ['NOBODY KNOWS', 'Nobody knows']];
-const PROV: Record<string, string> = { measured: 'Measured', estimate: 'Estimated', company_claim: 'Company says so', forecast: 'Forecast', dataset: 'Data row' };
+const PROV: Record<string, string> = { measured: 'Measured', estimate: 'Estimated', company_claim: 'Company says so', forecast: 'Forecast', dataset: 'Data row', rule: 'Rule or law', report: 'News report' };
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 /** "18 Oct 2026" from "2026-10-18", the same everywhere (no locale or time zone involved). */
@@ -71,7 +71,7 @@ function pointsHtml(p: Points, companies: Set<string>): string {
 <svg viewBox="0 0 360 40" aria-hidden="true" focusable="false"><line class="m-axis" x1="6" y1="20" x2="354" y2="20"/>${marks}</svg>
 <div class="fig-axis num" aria-hidden="true"><span>0</span><span>${Math.round(max * 10) / 10} ${esc(unit)}</span></div>
 <ul>${rows}</ul>
-<p class="fig-note">Hollow dots are the companies’ own figures. Unit: ${esc(p.unit)}.</p></figure>`;
+<p class="fig-note">${p.items.some((i) => companies.has(i.source)) ? 'Hollow dots are the companies’ own figures. ' : ''}Unit: ${esc(p.unit)}.</p></figure>`;
 }
 
 function rangeHtml(r: Range): string {

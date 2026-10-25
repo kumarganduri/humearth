@@ -12,7 +12,17 @@
     "bills",
     "flight",
     "reasoning",
-    "my-year"
+    "my-year",
+    "should-i-stop",
+    "can-ai-cut-emissions",
+    "pictures-and-video",
+    "renewable-claims",
+    "please-thank-you",
+    "nuclear-restarts",
+    "training-vs-using",
+    "drinking-water",
+    "efficiency-rebound",
+    "data-centre-noise"
   ],
   "sources": {
     "google": {
@@ -263,62 +273,6 @@
       "kind": "estimate",
       "checked": "page"
     },
-    "esg_18": {
-      "publisher": "ESG Dive (reporting Google’s 2026 Environmental Report)",
-      "quote": "its 2025 carbon footprint increased 18% from the year prior",
-      "url": "https://esgdive.com/news/googles-emissions-continue-to-climb-due-to-ai-buildout/824373",
-      "retrieved": "2026-10-18",
-      "kind": "company_claim",
-      "checked": "page"
-    },
-    "esg_37": {
-      "publisher": "ESG Dive (reporting Google’s 2026 Environmental Report)",
-      "quote": "Google's scope 2 emissions decreased 3% last year, while overall electricity use increased 37%.",
-      "url": "https://esgdive.com/news/googles-emissions-continue-to-climb-due-to-ai-buildout/824373",
-      "retrieved": "2026-10-18",
-      "kind": "company_claim",
-      "checked": "page"
-    },
-    "fd_ms": {
-      "publisher": "Facilities Dive (reporting Microsoft’s 2026 Sustainability Report)",
-      "quote": "increased by 25% year-over-year during its 2025 fiscal year",
-      "url": "https://www.facilitiesdive.com/news/microsofts-data-center-expansion-drove-25-emissions-spike-2025-environmental-sustainability-report/825142/",
-      "retrieved": "2026-10-18",
-      "kind": "company_claim",
-      "checked": "page"
-    },
-    "fd_ms2": {
-      "publisher": "Facilities Dive (reporting Microsoft’s 2026 Sustainability Report)",
-      "quote": "emitting 20.29 million metric tons of carbon dioxide equivalent",
-      "url": "https://www.facilitiesdive.com/news/microsofts-data-center-expansion-drove-25-emissions-spike-2025-environmental-sustainability-report/825142/",
-      "retrieved": "2026-10-18",
-      "kind": "company_claim",
-      "checked": "page"
-    },
-    "ud_73": {
-      "publisher": "Utility Dive (reporting PJM’s independent market monitor)",
-      "quote": "Data center load drove up revenue in the PJM Interconnection’s last capacity auction by $7.3 billion, or 82%,",
-      "url": "https://www.utilitydive.com/news/data-centers-pjm-capacity-auction-market-monitor/801780/",
-      "retrieved": "2026-10-18",
-      "kind": "estimate",
-      "checked": "page"
-    },
-    "ud_primary": {
-      "publisher": "Utility Dive (reporting PJM’s independent market monitor)",
-      "quote": "Data center load growth is the primary reason for recent and expected capacity market conditions,",
-      "url": "https://www.utilitydive.com/news/data-centers-pjm-capacity-auction-market-monitor/801780/",
-      "retrieved": "2026-10-18",
-      "kind": "estimate",
-      "checked": "page"
-    },
-    "ud_9": {
-      "publisher": "Utility Dive (reporting Monitoring Analytics, PJM’s market monitor)",
-      "quote": "9%, or $10.48/MWh, of the wholesale price of power",
-      "url": "https://www.utilitydive.com/news/data-center-pjm-wholesale-market/828917/",
-      "retrieved": "2026-10-18",
-      "kind": "estimate",
-      "checked": "page"
-    },
     "iea_mix_coal": {
       "publisher": "IEA, Energy and AI (2025)",
       "quote": "Coal, with a share of about 30%, is the largest source of electricity",
@@ -413,6 +367,646 @@
       "url": "https://www.technologyreview.com/2025/05/20/1116327/ai-energy-usage-climate-footprint-big-tech/",
       "retrieved": "2026-10-02",
       "kind": "estimate",
+      "checked": "page"
+    },
+    "bte_google_ambition": {
+      "publisher": "Google, 2026 Environmental Report",
+      "quote": "In 2025, our total ambition-based emissions were approximately 14.5 million tCO2e, representing an 18% year-on-year increase and an 81% increase compared to our 2019 base year",
+      "url": "https://sustainability.google/files/1699a2e19277e478b38a659f00cb38398a836e8c/download-1699a2e1.pdf",
+      "retrieved": "2026-10-25",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "bte_google_scope2": {
+      "publisher": "Google, 2026 Environmental Report",
+      "quote": "Compared to 2024, our scope 2 (market-based) emissions decreased by 3% despite a 37% year-over-year increase in total electricity",
+      "url": "https://sustainability.google/files/1699a2e19277e478b38a659f00cb38398a836e8c/download-1699a2e1.pdf",
+      "retrieved": "2026-10-25",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "bte_ms_25": {
+      "publisher": "Microsoft, 2026 Environmental Sustainability Report (fiscal year 2025)",
+      "quote": "Our total emissions (Scopes 1, 2, and 3) increased 25% year over year, driven primarily by the expansion of our datacenter infrastructure and stopping our use of non-additional, unbundled renewable energy certificates",
+      "url": "https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/microsoft/msc/documents/presentations/CSR/2026-Microsoft-Environmental-Sustainability-Report-PDF.pdf",
+      "retrieved": "2026-10-25",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "bte_ms_total": {
+      "publisher": "Microsoft, 2026 Environmental Sustainability Report (fiscal year 2025), emissions chart in metric tons CO2e",
+      "quote": "Emissions FY20 12,881,000 FY21 13,772,000 FY22 13,635,000 FY23 16,112,000 FY24 16,215,000 FY25 20,290,000",
+      "url": "https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/microsoft/msc/documents/presentations/CSR/2026-Microsoft-Environmental-Sustainability-Report-PDF.pdf",
+      "retrieved": "2026-10-25",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "bills_imm_2627": {
+      "publisher": "Monitoring Analytics, PJM's Independent Market Monitor: Analysis of the 2026/2027 RPM Base Residual Auction, Part A (1 October 2025)",
+      "quote": "Inclusion of 11,993 MW (Table 4) of existing and forecast data center load in the peak load forecast for 2026 resulted in a $7,271,197,971 or an 82.1 percent increase in capacity market revenues for the 2026/2027 RPM Base Residual Auction compared to what RPM revenues would have been had PJM cleared the auction with a peak load forecast that did not include load from existing and planned data centers",
+      "url": "https://www.monitoringanalytics.com/reports/Reports/2025/IMM_Analysis_of_the_20262027_RPM_Base_Residual_Auction_Part_A_20251001.pdf",
+      "retrieved": "2026-10-25",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "bills_imm_primary": {
+      "publisher": "Monitoring Analytics, PJM's Independent Market Monitor: 2026 Quarterly State of the Market Report for PJM, January through June, Section 1",
+      "quote": "Data center load growth is the primary reason for recent and expected capacity market conditions, including total forecast load growth, the tight supply and demand balance, and high prices.",
+      "url": "https://www.monitoringanalytics.com/reports/PJM_State_of_the_Market/2026/2026q2-som-pjm-sec1.pdf",
+      "retrieved": "2026-10-25",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "bills_imm_forecast": {
+      "publisher": "Monitoring Analytics, PJM's Independent Market Monitor: 2026 Quarterly State of the Market Report for PJM, January through June, Section 1",
+      "quote": "Forecast data center load growth has been the primary cause to date and the accuracy of those forecasts is highly questionable.",
+      "url": "https://www.monitoringanalytics.com/reports/PJM_State_of_the_Market/2026/2026q2-som-pjm-sec1.pdf",
+      "retrieved": "2026-10-25",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "bills_imm_wholesale": {
+      "publisher": "Monitoring Analytics, PJM's Independent Market Monitor: Market Monitor Report to the PJM Members Committee (19 August 2026), PJM wholesale power cost, January to July 2026",
+      "quote": "In the first seven months of 2026, the total cost per MWh of wholesale power increased by $10.48 (9.0 percent) from $106.05 without data center load impacts included in the total cost of wholesale power to $116.53 when the data center load impact is included.",
+      "url": "https://www.monitoringanalytics.com/reports/presentations/2026/IMM_MC_Market_Monitor_Report_20260819.pdf",
+      "retrieved": "2026-10-25",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "bills_imm_notall": {
+      "publisher": "Monitoring Analytics, PJM's Independent Market Monitor: Market Monitor Report to the PJM Members Committee (19 August 2026)",
+      "quote": "Not all of the increase in capacity market costs was a result of data center load.",
+      "url": "https://www.monitoringanalytics.com/reports/presentations/2026/IMM_MC_Market_Monitor_Report_20260819.pdf",
+      "retrieved": "2026-10-25",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "bills_opc_bills": {
+      "publisher": "Maryland Office of People's Counsel (state consumer advocate), press release on the PJM capacity auction, 17 December 2025",
+      "quote": "reflecting already high capacity market costs that most Maryland customers started seeing on their electric bills in September this year",
+      "url": "https://content.govdelivery.com/accounts/MDOPC/bulletins/4006939",
+      "retrieved": "2026-10-25",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "bills_opc_other": {
+      "publisher": "Maryland Office of People's Counsel (state consumer advocate), press release on the PJM capacity auction, 17 December 2025",
+      "quote": "Data centers also increase energy costs and transmission costs for Maryland customers.",
+      "url": "https://content.govdelivery.com/accounts/MDOPC/bulletins/4006939",
+      "retrieved": "2026-10-25",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "bills_lbnl_growth": {
+      "publisher": "Lawrence Berkeley National Laboratory and The Brattle Group: Retail Electricity Price Trends and Drivers (July 2026 update), US states",
+      "quote": "From 2019 to 2025, states with the highest growth generally saw average retail prices decline in real terms",
+      "url": "https://eta-publications.lbl.gov/sites/default/files/2026-07/retail_price_trends_2026_edition_julyupdate.pdf",
+      "retrieved": "2026-10-25",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "bills_lbnl_dc": {
+      "publisher": "Lawrence Berkeley National Laboratory and The Brattle Group: Retail Electricity Price Trends and Drivers (July 2026 update)",
+      "quote": "Note: Presence of significant data center load does not appear to alter conclusions",
+      "url": "https://eta-publications.lbl.gov/sites/default/files/2026-07/retail_price_trends_2026_edition_julyupdate.pdf",
+      "retrieved": "2026-10-25",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "bills_lbnl_future": {
+      "publisher": "Lawrence Berkeley National Laboratory and The Brattle Group: Retail Electricity Price Trends and Drivers (July 2026 update)",
+      "quote": "However, historical relationships may not be relevant going forward, given accelerating actual and prospective load growth",
+      "url": "https://eta-publications.lbl.gov/sites/default/files/2026-07/retail_price_trends_2026_edition_julyupdate.pdf",
+      "retrieved": "2026-10-25",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "aicut_5pct": {
+      "publisher": "IEA, Energy and AI (2025)",
+      "quote": "We estimate that emissions reductions from the broad application of existing AI-led solutions to be equivalent to around 5% of energy-related emissions in 2035.",
+      "url": "https://www.iea.org/reports/energy-and-ai/executive-summary",
+      "retrieved": "2026-10-25",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "aicut_dc": {
+      "publisher": "IEA, Energy and AI (2025)",
+      "quote": "Emissions from electricity use by data centres grows from 180 million tonnes (Mt) today to 300 Mt in the Base Case by 2035, and up to 500 Mt in the Lift-Off Case.",
+      "url": "https://www.iea.org/reports/energy-and-ai/executive-summary",
+      "retrieved": "2026-10-25",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "aicut_15": {
+      "publisher": "IEA, Energy and AI (2025)",
+      "quote": "While these emissions remain below 1.5% of the total energy sector emissions in this period, data centres are among the fastest growing sources of emissions.",
+      "url": "https://www.iea.org/reports/energy-and-ai/executive-summary",
+      "retrieved": "2026-10-25",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "aicut_far": {
+      "publisher": "IEA, Energy and AI (2025)",
+      "quote": "The widespread adoption of existing AI applications could lead to emissions reductions that are far larger than emissions from data centres – but also far smaller than what is needed to address climate change.",
+      "url": "https://www.iea.org/reports/energy-and-ai/executive-summary",
+      "retrieved": "2026-10-25",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "aicut_rebound": {
+      "publisher": "IEA, Energy and AI (2025)",
+      "quote": "Rebound effects – for example from modal shifts away from public transport to autonomous cars – could undercut some of these benefits.",
+      "url": "https://www.iea.org/reports/energy-and-ai/executive-summary",
+      "retrieved": "2026-10-25",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "aicut_bullet": {
+      "publisher": "IEA, Energy and AI (2025)",
+      "quote": "AI can be a tool in reducing emissions, but it is not a silver bullet and does not remove the need for proactive policy.",
+      "url": "https://www.iea.org/reports/energy-and-ai/executive-summary",
+      "retrieved": "2026-10-25",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "aicut_overstated": {
+      "publisher": "IEA, Energy and AI (2025)",
+      "quote": "Concerns that AI could accelerate climate change appear overstated, as do expectations that AI alone will address the issue",
+      "url": "https://www.iea.org/reports/energy-and-ai/executive-summary",
+      "retrieved": "2026-10-25",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "aicut_times": {
+      "publisher": "IEA, Energy and AI (2025)",
+      "quote": "These potential emissions reductions, if realised, would be three times larger than the total data centre emissions in the Lift-off Case, and four times larger than those in the Base Case.",
+      "url": "https://www.iea.org/reports/energy-and-ai/ai-and-climate-change",
+      "retrieved": "2026-10-25",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "aicut_momentum": {
+      "publisher": "IEA, Energy and AI (2025)",
+      "quote": "It is vital to note that there is currently no momentum that could ensure the widespread adoption of these AI applications.",
+      "url": "https://www.iea.org/reports/energy-and-ai/ai-and-climate-change",
+      "retrieved": "2026-10-25",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "aicut_marginal": {
+      "publisher": "IEA, Energy and AI (2025)",
+      "quote": "Therefore, their aggregate impact, even in 2035, could be marginal if the necessary enabling conditions are not created.",
+      "url": "https://www.iea.org/reports/energy-and-ai/ai-and-climate-change",
+      "retrieved": "2026-10-25",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "noise_pwt_cooling": {
+      "publisher": "Prince William Times (Piedmont Journalism Foundation), 27 February 2023 (archived copy)",
+      "quote": "the city passed an ordinance aimed at bitcoin shops, data centers and marijuana growers, all of which run cooling machinery night and day",
+      "url": "https://web.archive.org/web/20241223180232/https://www.princewilliamtimes.com/news/some-cities-suffering-from-data-center-noise-turn-to-tough-limits/article_2aa7fb8c-b6aa-11ed-8626-5738aae2f76c.html",
+      "retrieved": "2026-10-25",
+      "kind": "report",
+      "checked": "page"
+    },
+    "noise_pwt_constancy": {
+      "publisher": "Prince William Times (Piedmont Journalism Foundation), 27 February 2023 (archived copy)",
+      "quote": "Data center noise is unique in that it is not so much its loudness that is an irritant as its constancy.",
+      "url": "https://web.archive.org/web/20241223180232/https://www.princewilliamtimes.com/news/some-cities-suffering-from-data-center-noise-turn-to-tough-limits/article_2aa7fb8c-b6aa-11ed-8626-5738aae2f76c.html",
+      "retrieved": "2026-10-25",
+      "kind": "report",
+      "checked": "page"
+    },
+    "noise_pwt_greatoak": {
+      "publisher": "Prince William Times (Piedmont Journalism Foundation), 27 February 2023 (archived copy)",
+      "quote": "Measurements taken since last summer at Great Oak, a subdivision south of Manassas plagued by noise from a cluster of Amazon centers, showed that about half the time the noise was below the county daytime limit of 60 decibels.",
+      "url": "https://web.archive.org/web/20241223180232/https://www.princewilliamtimes.com/news/some-cities-suffering-from-data-center-noise-turn-to-tough-limits/article_2aa7fb8c-b6aa-11ed-8626-5738aae2f76c.html",
+      "retrieved": "2026-10-25",
+      "kind": "report",
+      "checked": "page"
+    },
+    "noise_pwt_drone": {
+      "publisher": "Prince William Times (Piedmont Journalism Foundation), 27 February 2023 (archived copy)",
+      "quote": "But residents say the constant drone, especially at night, causes anxiety and deprives them of sleep.",
+      "url": "https://web.archive.org/web/20241223180232/https://www.princewilliamtimes.com/news/some-cities-suffering-from-data-center-noise-turn-to-tough-limits/article_2aa7fb8c-b6aa-11ed-8626-5738aae2f76c.html",
+      "retrieved": "2026-10-25",
+      "kind": "report",
+      "checked": "page"
+    },
+    "noise_pwt_amazon": {
+      "publisher": "Prince William Times (Piedmont Journalism Foundation), 27 February 2023 (archived copy)",
+      "quote": "Amazon has been working to muffle its cooling equipment with acoustic shrouds and plans to replace all its rooftop fans by September.",
+      "url": "https://web.archive.org/web/20241223180232/https://www.princewilliamtimes.com/news/some-cities-suffering-from-data-center-noise-turn-to-tough-limits/article_2aa7fb8c-b6aa-11ed-8626-5738aae2f76c.html",
+      "retrieved": "2026-10-25",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "noise_pwt_conversation": {
+      "publisher": "Prince William Times (Piedmont Journalism Foundation), 27 February 2023 (archived copy)",
+      "quote": "People say noise of 55 to 65 decibels (the range of Prince William's noise ordinance limit) is no louder than human conversation, he said, \"but it's like having a conversation with someone you don't want to have, all the time.",
+      "url": "https://web.archive.org/web/20241223180232/https://www.princewilliamtimes.com/news/some-cities-suffering-from-data-center-noise-turn-to-tough-limits/article_2aa7fb8c-b6aa-11ed-8626-5738aae2f76c.html",
+      "retrieved": "2026-10-25",
+      "kind": "report",
+      "checked": "page"
+    },
+    "noise_pwt_exempt": {
+      "publisher": "Prince William Times (Piedmont Journalism Foundation), 27 February 2023 (archived copy)",
+      "quote": "It exempts noise from air conditioning, but the county may change that.",
+      "url": "https://web.archive.org/web/20241223180232/https://www.princewilliamtimes.com/news/some-cities-suffering-from-data-center-noise-turn-to-tough-limits/article_2aa7fb8c-b6aa-11ed-8626-5738aae2f76c.html",
+      "retrieved": "2026-10-25",
+      "kind": "report",
+      "checked": "page"
+    },
+    "noise_abc15_hum": {
+      "publisher": "ABC15 Arizona, on a data centre in Chandler, Arizona",
+      "quote": "After residents banded together over a high-pitched humming noise, a Chandler data center is promising to fix it.",
+      "url": "https://www.abc15.com/news/region-southeast-valley/chandler/chandler-residents-frustrated-over-humming-noise",
+      "retrieved": "2026-10-25",
+      "kind": "report",
+      "checked": "page"
+    },
+    "noise_abc15_ac": {
+      "publisher": "ABC15 Arizona, on a data centre in Chandler, Arizona",
+      "quote": "more than 300 signed a petition asking for the city to work with the company to eliminate the noise coming from its air conditioning systems.",
+      "url": "https://www.abc15.com/news/region-southeast-valley/chandler/chandler-residents-frustrated-over-humming-noise",
+      "retrieved": "2026-10-25",
+      "kind": "report",
+      "checked": "page"
+    },
+    "noise_ffx_day": {
+      "publisher": "Fairfax County, Virginia, Noise Ordinance applicability chart, maximum continuous sound levels in dBA",
+      "quote": "Residential Areas (as defined herein) in Residential Districts 7 a.m. to 10 p.m. 60",
+      "url": "https://www.fairfaxcounty.gov/planning-development/sites/planning-development/files/Assets/documents/Zoning%20Ordinance/Noise%20Amendment/soundsummarychart11-17-15.pdf",
+      "retrieved": "2026-10-25",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "noise_ffx_night": {
+      "publisher": "Fairfax County, Virginia, Noise Ordinance applicability chart, maximum continuous sound levels in dBA",
+      "quote": "Residential Areas (as defined herein) in Residential Districts 10 p.m. to 7a.m., 55",
+      "url": "https://www.fairfaxcounty.gov/planning-development/sites/planning-development/files/Assets/documents/Zoning%20Ordinance/Noise%20Amendment/soundsummarychart11-17-15.pdf",
+      "retrieved": "2026-10-25",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "noise_ffx_study": {
+      "publisher": "Fairfax County, Virginia, Noise Study Requirements, Data Centers Zoning Ordinance Amendment, Fall 2024",
+      "quote": "The study must address the expected maximum noise output with all cooling and any other noise-generating equipment operating simultaneously at full operational load.",
+      "url": "https://www.fairfaxcounty.gov/planning-development/sites/planning-development/files/Assets/Documents/zoning/data-centers/Noise-Study-Requirements.pdf",
+      "retrieved": "2026-10-25",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "noise_ffx_generators": {
+      "publisher": "Fairfax County, Virginia, Noise Study Requirements, Data Centers Zoning Ordinance Amendment, Fall 2024",
+      "quote": "The Noise Ordinance also includes an exception for the routine testing and maintenance of back-up generators if the testing: a) occurs between 7 a.m. and 9 p.m.; and b) does not occur for more than two consecutive or nonconsecutive hours in any one day.",
+      "url": "https://www.fairfaxcounty.gov/planning-development/sites/planning-development/files/Assets/Documents/zoning/data-centers/Noise-Study-Requirements.pdf",
+      "retrieved": "2026-10-25",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "noise_chandler_ambient": {
+      "publisher": "City of Chandler, Arizona, Ordinance No. 5033 (data centers), adopted December 2022",
+      "quote": "The Data Center must be designed and built to incorporate sound mitigation methods sufficient to prevent the sound levels emanating from the Data Center (as determined by a third-party acoustic engineer) from exceeding the ambient noise levels that were observed in the baseline study.",
+      "url": "https://www.chandleraz.gov/sites/default/files/departments/development-services/PLH22-0053-Ordinance-No-5033-Data-Center.pdf",
+      "retrieved": "2026-10-25",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "noise_chandler_generators": {
+      "publisher": "City of Chandler, Arizona, Ordinance No. 5033 (data centers), adopted December 2022",
+      "quote": "Unless the generators are supplying backup electrical supply during a power outage, backup generators may operate between the hours of 9:00 am and 5:00 pm, Monday through Friday, excluding holidays.",
+      "url": "https://www.chandleraz.gov/sites/default/files/departments/development-services/PLH22-0053-Ordinance-No-5033-Data-Center.pdf",
+      "retrieved": "2026-10-25",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "dw_google_total": {
+      "publisher": "Google 2025 Environmental Report (data-centre water table, data for 2024; limited assurance by Ernst & Young)",
+      "quote": "Data centers total Million gallons 9,866 2,079 7,787 51 Potable water 7,699 Non-potable water 1,289 Reclaimed wastewater 877",
+      "url": "https://www.gstatic.com/gumdrop/sustainability/google-2025-environmental-report.pdf",
+      "retrieved": "2026-10-25",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "dw_google_note": {
+      "publisher": "Google 2025 Environmental Report (data-centre water table, data for 2024; limited assurance by Ernst & Young)",
+      "quote": "Unless otherwise specified, water withdrawals are potable water.",
+      "url": "https://www.gstatic.com/gumdrop/sustainability/google-2025-environmental-report.pdf",
+      "retrieved": "2026-10-25",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "dw_google_douglas": {
+      "publisher": "Google 2025 Environmental Report (data-centre water table, data for 2024; limited assurance by Ernst & Young)",
+      "quote": "Douglas County, GA Million gallons 444.1 77.2 366.9 2.4 Potable water 7.4 Reclaimed wastewater 436.7",
+      "url": "https://www.gstatic.com/gumdrop/sustainability/google-2025-environmental-report.pdf",
+      "retrieved": "2026-10-25",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "dw_amazon": {
+      "publisher": "Amazon (About Amazon, data-centre water)",
+      "quote": "We already operate 26 facilities using 100% reclaimed water",
+      "url": "https://www.aboutamazon.com/news/sustainability/amazon-data-center-water-usage",
+      "retrieved": "2026-10-25",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "eff_iea_task": {
+      "publisher": "IEA, Key Questions on Energy and AI (2026)",
+      "quote": "Software and hardware advances have resulted in the energy use per AI task dropping by at least an order of magnitude annually in recent years.",
+      "url": "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary",
+      "retrieved": "2026-10-25",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "eff_iea_17": {
+      "publisher": "IEA, Key Questions on Energy and AI (2026)",
+      "quote": "The global electricity demand of data centres – the critical infrastructure for training and running AI models – grew by 17% in 2025, in line with IEA projections.",
+      "url": "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary",
+      "retrieved": "2026-10-25",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "eff_iea_heavy": {
+      "publisher": "IEA, Key Questions on Energy and AI (2026)",
+      "quote": "However, new energy-intensive AI applications are increasingly being launched and used, such as those for video generation, reasoning and agentic tasks. These kinds of tasks can consume hundreds or thousands of times more energy per query than simple text generation.",
+      "url": "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary",
+      "retrieved": "2026-10-25",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "eff_iea_trends": {
+      "publisher": "IEA, Key Questions on Energy and AI (2026)",
+      "quote": "The energy demand of AI is therefore the result of three rapidly evolving and uncertain trends: improvements in efficiency, surging uptake, and changing model capabilities",
+      "url": "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary",
+      "retrieved": "2026-10-25",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "eff_google_33": {
+      "publisher": "Google Cloud (median Gemini Apps text prompt; Google’s own figure)",
+      "quote": "over a recent 12 month period, the energy and total carbon footprint of the median Gemini Apps text prompt dropped by 33x and 44x, respectively",
+      "url": "https://cloud.google.com/blog/products/infrastructure/measuring-the-environmental-impact-of-ai-inference",
+      "retrieved": "2026-10-25",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "eff_google_tokens": {
+      "publisher": "Google (Sundar Pichai, I/O 2025 keynote; tokens across Google’s products and APIs)",
+      "quote": "This time last year, we were processing 9.7 trillion tokens a month across our products and APIs. Now, we’re processing over 480 trillion — that’s 50 times more.",
+      "url": "https://blog.google/technology/ai/io-2025-keynote/",
+      "retrieved": "2026-10-25",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "eff_iea_970": {
+      "publisher": "IEA, Energy and AI (2025), High Efficiency Case",
+      "quote": "This unlocks energy savings of more than 15%, with global electricity demand from data centres reaching around 970 TWh by 2035.",
+      "url": "https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai",
+      "retrieved": "2026-10-25",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "eff_iea_20": {
+      "publisher": "IEA, Energy and AI (2025), High Efficiency Case",
+      "quote": "In this case, electricity demand from data centres is 20% lower in 2035 than in the Base Case.",
+      "url": "https://www.iea.org/reports/energy-and-ai/executive-summary",
+      "retrieved": "2026-10-25",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "eff_iea_700": {
+      "publisher": "IEA, Energy and AI (2025), Headwinds Case (slower AI uptake)",
+      "quote": "Similar to trends seen in the early 2010s, the improvements in efficiency are expected to offset most of the impact of increased IT stock utilisation. This leads to a plateau in energy demand at around 700 TWh, limiting the growth of the data centre share of global electricity demand to less than 2% in 2035.",
+      "url": "https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai",
+      "retrieved": "2026-10-25",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "eff_rebound": {
+      "publisher": "Luccioni, Strubell and Crawford, From Efficiency Gains to Rebound Effects (arXiv, 2025)",
+      "quote": "Rebound effects undermine the assumption that improved technical efficiency alone will ensure net reductions in environmental harm.",
+      "url": "https://arxiv.org/abs/2501.16548",
+      "retrieved": "2026-10-25",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "tmi_ppa": {
+      "publisher": "Constellation Energy, press release (20 September 2024)",
+      "quote": "Constellation (Nasdaq: CEG) announced today the signing of a 20-year power purchase agreement with Microsoft that will pave the way for the launch of the Crane Clean Energy Center (CCEC) and restart of Three Mile Island Unit 1",
+      "url": "https://www.constellationenergy.com/news/2024/Constellation-to-Launch-Crane-Clean-Energy-Center-Restoring-Jobs-and-Carbon-Free-Power-to-The-Grid.html",
+      "retrieved": "2026-10-25",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "tmi_match": {
+      "publisher": "Constellation Energy, press release (20 September 2024)",
+      "quote": "Under the agreement, Microsoft will purchase energy from the renewed plant as part of its goal to help match the power its data centers in PJM use with carbon-free energy.",
+      "url": "https://www.constellationenergy.com/news/2024/Constellation-to-Launch-Crane-Clean-Energy-Center-Restoring-Jobs-and-Carbon-Free-Power-to-The-Grid.html",
+      "retrieved": "2026-10-25",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "tmi_unit2": {
+      "publisher": "Constellation Energy, press release (20 September 2024)",
+      "quote": "The Unit 1 reactor is located adjacent to TMI Unit 2, which shut down in 1979 and is in the process of being decommissioned by its owner, Energy Solutions. TMI Unit 1 is a fully independent facility, and its long-term operation was not impacted by the Unit 2 accident.",
+      "url": "https://www.constellationenergy.com/news/2024/Constellation-to-Launch-Crane-Clean-Energy-Center-Restoring-Jobs-and-Carbon-Free-Power-to-The-Grid.html",
+      "retrieved": "2026-10-25",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "tmi_2027": {
+      "publisher": "Constellation Energy, Crane Clean Energy Center page",
+      "quote": "This new center, expected to go online in 2027, will: Restore 835 megawatts of reliable, clean, carbon-free energy to the grid",
+      "url": "https://www.constellationenergy.com/about/locations/crane-clean-energy-center.html",
+      "retrieved": "2026-10-25",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "tmi_shut": {
+      "publisher": "American Nuclear Society, Nuclear Newswire (3 April 2026)",
+      "quote": "The plant was originally shuttered in 2019 due to economic challenges in the energy market, with low natural gas prices outpacing nuclear and no state incentives for TMI’s carbon-free energy output.",
+      "url": "https://www.ans.org/news/2026-04-03/article-7905/constellation-seeks-ferc-help-with-crane-restart/",
+      "retrieved": "2026-10-25",
+      "kind": "report",
+      "checked": "page"
+    },
+    "tmi_nrc": {
+      "publisher": "American Nuclear Society, Nuclear Newswire (9 June 2026), citing the NRC",
+      "quote": "The final EA and FONSI are expected in September, according to the NRC’s Crane restart web page. A final decision on the restart is expected in 2027.",
+      "url": "https://www.ans.org/news/2026-06-09/article-8106/nrc-issues-preliminary-eafonsi-for-crane-restart/",
+      "retrieved": "2026-10-25",
+      "kind": "report",
+      "checked": "page"
+    },
+    "tmi_ea": {
+      "publisher": "World Nuclear News (28 September 2026)",
+      "quote": "The US regulator, together with the Department of Energy Office of Energy Dominance Financing, has issued an environmental assessment and finding of no significant impact for environmental effects from proposed Federal actions related to reauthorising power operations at the Christopher Crane Clean Energy Center in Pennsylvania.",
+      "url": "https://www.world-nuclear-news.org/articles/nrc-completes-environmental-review-of-crane-restart",
+      "retrieved": "2026-10-25",
+      "kind": "report",
+      "checked": "page"
+    },
+    "pics_mittr_image_std": {
+      "publisher": "MIT Technology Review (one open image model, Stable Diffusion 3 Medium, standard 1024 x 1024 picture, estimated total)",
+      "quote": "That means an estimated 2,282 joules total.",
+      "url": "https://www.technologyreview.com/2025/05/20/1116327/ai-energy-usage-climate-footprint-big-tech/",
+      "retrieved": "2026-10-25",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "pics_mittr_image_hq": {
+      "publisher": "MIT Technology Review (same open image model, higher quality, estimated total)",
+      "quote": "Improving the image quality by doubling the number diffusion steps to 50 just about doubles the energy required, to about 4,402 joules.",
+      "url": "https://www.technologyreview.com/2025/05/20/1116327/ai-energy-usage-climate-footprint-big-tech/",
+      "retrieved": "2026-10-25",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "pics_mittr_video": {
+      "publisher": "MIT Technology Review (one open video model, the newer CogVideoX, estimated total)",
+      "quote": "The new model uses more than 30 times more energy on each 5-second video: about 3.4 million joules",
+      "url": "https://www.technologyreview.com/2025/05/20/1116327/ai-energy-usage-climate-footprint-big-tech/",
+      "retrieved": "2026-10-25",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "please_techcrunch": {
+      "publisher": "TechCrunch (Anthony Ha, April 2025), quoting OpenAI CEO Sam Altman’s reply on X",
+      "quote": "tens of millions of dollars well spent — you never know.",
+      "url": "https://techcrunch.com/2025/04/20/your-politeness-could-be-costly-for-openai/",
+      "retrieved": "2026-10-25",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "please_tc_tone": {
+      "publisher": "TechCrunch (Anthony Ha, April 2025)",
+      "quote": "Judging from Altman’s tongue-in-cheek tone, it’s probably safe to assume he didn’t do a precise calculation.",
+      "url": "https://techcrunch.com/2025/04/20/your-politeness-could-be-costly-for-openai/",
+      "retrieved": "2026-10-25",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "please_epoch_scale": {
+      "publisher": "Epoch AI (estimate for a GPT-4o answer of about 500 tokens)",
+      "quote": "If your ChatGPT usage tends to produce much longer or shorter responses than this, you can adjust our final estimate in proportion to understand your own footprint.",
+      "url": "https://epoch.ai/gradient-updates/how-much-energy-does-chatgpt-use",
+      "retrieved": "2026-10-25",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "rc_google_annual": {
+      "publisher": "Google, 2026 Environmental Report (its own figures)",
+      "quote": "In 2025, we navigated our largest load growth in history—a 37% annual increase in electricity demand. Despite this, we again matched 100% of our electricity consumption with renewable energy purchases (on a global and annual basis)",
+      "url": "https://sustainability.google/files/1699a2e19277e478b38a659f00cb38398a836e8c/download-1699a2e1.pdf",
+      "retrieved": "2026-10-25",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "rc_google_hourly": {
+      "publisher": "Google, 2026 Environmental Report (CFE: carbon-free energy, counted each hour on each local grid)",
+      "quote": "In 2025, we achieved a global average of approximately 65% CFE across our data centers and offices, remaining relatively flat compared to 66% in 2024",
+      "url": "https://sustainability.google/files/1699a2e19277e478b38a659f00cb38398a836e8c/download-1699a2e1.pdf",
+      "retrieved": "2026-10-25",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "rc_google_gap": {
+      "publisher": "Google, 2026 Environmental Report",
+      "quote": "even companies that meet a 100% annual match continue to rely on power generated by fossil fuels during times when, or in places where, carbon-free generation isn’t available",
+      "url": "https://sustainability.google/files/1699a2e19277e478b38a659f00cb38398a836e8c/download-1699a2e1.pdf",
+      "retrieved": "2026-10-25",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "rc_google_scope2": {
+      "publisher": "Google, 2026 Environmental Report, emissions data table (columns 2019 to 2025; the last figure in each row is 2025)",
+      "quote": "Scope 2 (location-based) tCO2e 5,173,000 5,845,000 6,498,700 7,963,700 9,085,700 11,067,100 15,148,700 Scope 2 (market-based) tCO2e 788,200 921,200 1,769,400 2,430,200 3,288,000 2,898,600 2,815,000",
+      "url": "https://sustainability.google/files/1699a2e19277e478b38a659f00cb38398a836e8c/download-1699a2e1.pdf",
+      "retrieved": "2026-10-25",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "rc_meta_eac": {
+      "publisher": "Meta, 2025 Environmental Data Index (an EAC is an energy attribute certificate)",
+      "quote": "We have publicly committed to matching 100% of our electricity use with clean and renewable energy including wind, solar, and hydropower. We procure and retire one EAC for every MWh of electricity used to power our global operations.",
+      "url": "https://sustainability.atmeta.com/wp-content/uploads/2025/10/Meta_2025-Environmental-Data-Index.pdf",
+      "retrieved": "2026-10-25",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "rc_ncc_recs": {
+      "publisher": "Nature Climate Change (2022), peer-reviewed study of renewable energy certificates (RECs) used by companies with science-based targets",
+      "quote": "If this trend continues, 42% of committed scope 2 emission reductions will not result in real-world mitigation.",
+      "url": "https://www.nature.com/articles/s41558-022-01379-5",
+      "retrieved": "2026-10-25",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "rc_joule_annual": {
+      "publisher": "Joule (2024), peer-reviewed Princeton study modelling the western United States",
+      "quote": "procurement strategies that match participants’ demand with carbon-free generation on an annual basis have minimal impact on long-run system-level CO2 emissions",
+      "url": "https://collaborate.princeton.edu/en/publications/system-level-impacts-of-voluntary-carbon-free-electricity-procure/",
+      "retrieved": "2026-10-25",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "rc_joule_hourly": {
+      "publisher": "Joule (2024), peer-reviewed Princeton study modelling the western United States",
+      "quote": "matching participants’ demand on an hourly basis with carbon-free generation can drive significant reductions in system-level CO2 emissions",
+      "url": "https://collaborate.princeton.edu/en/publications/system-level-impacts-of-voluntary-carbon-free-electricity-procure/",
+      "retrieved": "2026-10-25",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "stop_epa_car": {
+      "publisher": "US EPA, Greenhouse Gas Emissions from a Typical Passenger Vehicle (tailpipe CO2)",
+      "quote": "The average passenger vehicle emits about 400 grams of CO2 per mile.",
+      "url": "https://www.epa.gov/greenvehicles/greenhouse-gas-emissions-typical-passenger-vehicle",
+      "retrieved": "2026-10-25",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "tvu_google_split": {
+      "publisher": "Google Research blog (David Patterson, February 15, 2022; Google's own machine learning, measured by Google)",
+      "quote": "ML training and inference are only 10%–15% of Google’s total energy use for each of the last three years, each year split ⅗ for inference and ⅖ for training",
+      "url": "https://research.google/blog/good-news-about-the-carbon-footprint-of-machine-learning-training/",
+      "retrieved": "2026-10-25",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "tvu_bloomz": {
+      "publisher": "Luccioni, Jernite & Strubell, Power Hungry Processing (FAccT 2024; Hugging Face, open BLOOMz models, measured)",
+      "quote": "from around 200 million inferences for the smallest model, BLOOMz-560M, to over 590 million inferences for the biggest model, BLOOMz-7B.",
+      "url": "https://arxiv.org/html/2311.16863",
+      "retrieved": "2026-10-25",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "tvu_olmo": {
+      "publisher": "Morrison et al., Allen Institute for AI (ICLR 2025; open OLMo models, measured)",
+      "quote": "We find that for most models tested, the number of inferences required to outweigh training costs is in the hundreds of millions to tens of billions, except for the most over-trained models.",
+      "url": "https://arxiv.org/html/2503.05804",
+      "retrieved": "2026-10-25",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "tvu_aws": {
+      "publisher": "Luccioni, Jernite & Strubell, Power Hungry Processing (FAccT 2024), citing AWS",
+      "quote": "According to AWS, the largest global cloud provider, inference is estimated to make up 80 to 90% of total ML cloud computing demand",
+      "url": "https://arxiv.org/html/2311.16863",
+      "retrieved": "2026-10-25",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "tvu_meta": {
+      "publisher": "Luccioni, Jernite & Strubell, Power Hungry Processing (FAccT 2024), citing Meta",
+      "quote": "a 2021 publication by Meta attributed approximately one-third of their internal end-to-end ML carbon footprint to model inference, with the remainder produced by data management, storage, and training",
+      "url": "https://arxiv.org/html/2311.16863",
+      "retrieved": "2026-10-25",
+      "kind": "company_claim",
       "checked": "page"
     }
   },
@@ -597,20 +1191,120 @@
       "expr": "485*1e12",
       "result": 485000000000000.0
     },
-    "ai_share_mid": {
-      "text": "(26.5% + 38%) ÷ 2 ≈ 32%",
-      "expr": "(26.5+38)/2",
-      "result": 32.25
-    },
-    "un_people": {
-      "text": "8 billion people (UN, November 2022)",
-      "expr": "8",
-      "result": 8
-    },
     "ten_x": {
       "text": "2.9 Wh ÷ 0.3 Wh ≈ 9.7, which became “10 times”",
       "expr": "2.9/0.3",
       "result": 9.67
+    },
+    "bte_ms_mt": {
+      "text": "Microsoft’s fiscal 2025 total, 20,290,000 tonnes of CO₂e, is 20.29 million tonnes.",
+      "expr": "20290000/1e6",
+      "result": 20.29
+    },
+    "bills_73": {
+      "text": "The monitor's $7,271,197,971 is about $7.3 billion.",
+      "expr": "7271197971/1e9",
+      "result": 7.3
+    },
+    "bills_9": {
+      "text": "$10.48 of the $116.53 per MWh wholesale cost is about 9%.",
+      "expr": "10.48/116.53*100",
+      "result": 9
+    },
+    "dw_total_l": {
+      "text": "9,866 million US gallons × 3.785 litres a gallon ≈ 37 billion litres",
+      "expr": "9866*1e6*3785/1000/1e9",
+      "result": 37.34
+    },
+    "dw_potable_l": {
+      "text": "7,699 million US gallons × 3.785 litres a gallon ≈ 29 billion litres",
+      "expr": "7699*1e6*3785/1000/1e9",
+      "result": 29.14
+    },
+    "dw_nonpotable_l": {
+      "text": "1,289 million US gallons × 3.785 litres a gallon ≈ 4.9 billion litres",
+      "expr": "1289*1e6*3785/1000/1e9",
+      "result": 4.879
+    },
+    "dw_reclaimed_l": {
+      "text": "877 million US gallons × 3.785 litres a gallon ≈ 3.3 billion litres",
+      "expr": "877*1e6*3785/1000/1e9",
+      "result": 3.319
+    },
+    "dw_potable_share": {
+      "text": "7,699 ÷ 9,866 million gallons ≈ 78% potable",
+      "expr": "7699/9866*100",
+      "result": 78.04
+    },
+    "dw_reclaimed_share": {
+      "text": "877 ÷ 9,866 million gallons ≈ 9% reclaimed wastewater",
+      "expr": "877/9866*100",
+      "result": 8.889
+    },
+    "dw_nonpotable_share": {
+      "text": "1,289 ÷ 9,866 million gallons ≈ 13% other non-potable water",
+      "expr": "1289/9866*100",
+      "result": 13.07
+    },
+    "eff_double": {
+      "text": "970 TWh in 2035 ÷ 485 TWh in 2025 = 2, about double",
+      "expr": "970/485",
+      "result": 2
+    },
+    "pics_img_std_wh": {
+      "text": "2,282 J ÷ 3,600 ≈ 0.63 Wh",
+      "expr": "2282/3600",
+      "result": 0.634
+    },
+    "pics_img_hq_wh": {
+      "text": "4,402 J ÷ 3,600 ≈ 1.22 Wh",
+      "expr": "4402/3600",
+      "result": 1.223
+    },
+    "pics_vid_mit_wh": {
+      "text": "3.4 million J ÷ 3,600 ≈ 944 Wh, about 940 Wh",
+      "expr": "3.4*1e6/3600",
+      "result": 944.4
+    },
+    "pics_img_q": {
+      "text": "1.22 Wh ÷ 0.34 Wh ≈ 3.6, a few short questions at OpenAI’s figure",
+      "expr": "1.223/0.34",
+      "result": 3.6
+    },
+    "pics_vid_phones": {
+      "text": "90 Wh ÷ 19 Wh ≈ 4.7, about 5 phone charges",
+      "expr": "90/19",
+      "result": 4.74
+    },
+    "rc_scope2_ratio": {
+      "text": "Google 2025: 15.1 million tonnes counted on the grids it drew from (location-based) ÷ 2.8 million tonnes after its purchases (market-based) ≈ 5.4 times",
+      "expr": "15148700/2815000",
+      "result": 5.38
+    },
+    "stop_car_miles": {
+      "text": "0.2 kg ÷ 400 g a mile ≈ half a mile of driving",
+      "expr": "0.215*1000/400",
+      "result": 0.5375
+    },
+    "stop_heavy_miles": {
+      "text": "3 kg ÷ 400 g a mile ≈ 7 miles of driving",
+      "expr": "2.94*1000/400",
+      "result": 7.35
+    },
+    "stop_video_q": {
+      "text": "90 Wh ÷ 0.34 Wh ≈ 260 short questions",
+      "expr": "90/0.34",
+      "result": 264.7
+    },
+    "tvu_chatgpt_day": {
+      "text": "18 billion messages a week × 52 ÷ 365 ≈ 2.6 billion a day",
+      "expr": "18*1e9*52/365/1e9",
+      "result": 2.564
+    },
+    "ai_share_mid": {
+      "text": "(26.5% + 38%) ÷ 2 ≈ 32%",
+      "expr": "(26.5+38)/2",
+      "result": 32.25
     }
   },
   "ladder": [
@@ -1055,34 +1749,37 @@
       "heardFrom": "news coverage of the companies’ reports",
       "stamp": "PARTLY",
       "chips": [
-        "company figures",
-        "via trade press"
+        "company figures"
       ],
       "result": "Rising, yes. How much is AI, they don’t say",
-      "reveal": "Google’s footprint rose 18% in 2025, and Microsoft’s emissions 25% in its 2025 fiscal year, by their own reports.",
-      "answer": "Their emissions are rising, by their own 2026 reports as covered by trade press. Google’s 2025 carbon footprint rose 18% on the year before while its electricity use grew 37%. Microsoft’s emissions rose 25% in its 2025 fiscal year, to 20.29 million tonnes of CO₂e. Google says its electricity-related (scope 2) emissions fell 3%. Neither company says how much of the rise is AI rather than its other data-centre work.",
+      "reveal": "Google’s emissions rose 18% in 2025, and Microsoft’s 25% in its 2025 fiscal year, by their own reports.",
+      "answer": "Their emissions are rising, by their own 2026 reports. Google’s emissions counted toward its climate goal rose 18% in 2025, to about 14.5 million tonnes of CO₂e, 81% above 2019, while its electricity consumption grew 37%. Its electricity-related (scope 2) emissions fell 3%. Microsoft’s total emissions rose 25% in its 2025 fiscal year, to 20.29 million tonnes, mainly from expanding its data centres and no longer counting renewable certificates that add no new power. Neither company says how much of the rise is AI.",
       "world": "All the world’s data centres, of which AI is one part, used about 485 TWh in 2025. That’s about as much electricity as France uses in a year, and around 1.5% of the world’s. The IEA expects it to roughly double by 2030.",
       "why": "That emissions are rising is true. That AI is the cause is the part the companies don’t break out.",
       "dontknow": [
         "Neither company separates AI from its other data-centre work.",
-        "Hum read these figures in trade-press reports; the company reports themselves still need checking on the page."
+        "Google’s figure counts only the emissions inside the boundary of its climate goal; its full footprint is larger.",
+        "Microsoft’s figure uses its own “management’s criteria” for some supply-chain emissions; its strict Greenhouse Gas Protocol total for the same year is higher.",
+        "These are the companies’ own figures, only partly reviewed by outside auditors."
       ],
       "next": {
         "deeper": "power-mix",
         "bigger": "world-share",
         "closer": "bills"
       },
-      "share": "By their own reports: Google’s footprint rose 18% in 2025 (electricity use up 37%), Microsoft’s emissions 25% in fiscal 2025. How much is AI, they don’t say.",
+      "share": "By their own reports: Google’s emissions rose 18% in 2025 (electricity use up 37%), Microsoft’s 25% in fiscal 2025. How much is AI, they don’t say.",
       "cites": [
-        "esg_18",
-        "esg_37",
-        "fd_ms",
-        "fd_ms2",
+        "bte_google_ambition",
+        "bte_google_scope2",
+        "bte_ms_25",
+        "bte_ms_total",
         "iea_485",
         "ember_fr",
         "iea_15"
       ],
-      "calcs": [],
+      "calcs": [
+        "bte_ms_mt"
+      ],
       "you": false
     },
     {
@@ -1095,31 +1792,44 @@
       "stamp": "PARTLY",
       "chips": [
         "depends on region",
-        "US evidence"
+        "US evidence",
+        "what-if estimates"
       ],
       "result": "Partly: in the eastern US, the grid’s monitor says yes",
-      "reveal": "In the PJM grid of the eastern US, the independent market monitor calls data centres the primary reason capacity prices jumped.",
-      "answer": "Partly, depending on where you live. In the eastern US grid run by PJM, the independent market monitor calls data-centre growth the primary reason capacity prices jumped. By its estimate of what prices would have been without them, data-centre load raised one capacity auction’s revenue by $7.3 billion (82%), and makes up about 9% of the wholesale price of power. These are the monitor’s estimates, not measured bills: what reaches your bill depends on your utility and state.",
-      "world": "Outside PJM, Hum has no checked figure yet for how data centres affect household bills.",
+      "reveal": "In the PJM grid of the eastern US, the independent market monitor calls data-centre load growth the primary reason capacity prices jumped.",
+      "answer": "Partly, depending on where you live. In the eastern US grid run by PJM, the independent market monitor calls data-centre load growth the primary reason capacity prices jumped. It estimates data-centre load raised revenue in the 2026/2027 capacity auction by $7.3 billion (82.1%), and made up about 9% ($10.48 per MWh) of the wholesale cost of power in the first seven months of 2026. These are what-if estimates, not measured bills: what reaches yours depends on your utility and state.",
+      "world": "Across US states from 2019 to 2025, Berkeley Lab found those with the highest demand growth generally saw average prices fall after inflation, and says data-centre load doesn’t appear to change that. In PJM, the market monitor’s estimates point to data centres pushing capacity costs up.",
       "you": false,
       "why": "True in some regions, stated as if it were true everywhere.",
       "dontknow": [
-        "Nobody has measured how much of a given household’s bill increase is caused by data centres.",
-        "Hum read these figures in Utility Dive’s reporting; the monitor’s own reports still need checking on the page.",
-        "Hum hasn’t yet sourced other estimates, from utilities, industry or researchers."
+        "Nobody has measured how much of a given household’s bill increase is caused by data centres; the monitor’s figures compare real auctions with a world without data-centre load.",
+        "Much of the monitor’s estimate rests on forecast data-centre load, and the monitor itself calls the accuracy of those forecasts highly questionable.",
+        "The monitor’s figures cover the capacity market. Maryland’s consumer advocate says data centres also raise energy and transmission costs; Hum hasn’t sourced a figure for those.",
+        "Berkeley Lab warns the past pattern (more demand, lower prices) may not hold as data-centre growth speeds up.",
+        "Hum hasn’t yet checked PJM’s own or utilities’ estimates of the bill effect."
       ],
       "next": {
         "deeper": "power-mix",
         "bigger": "world-share",
         "closer": "my-year"
       },
-      "share": "In the eastern US PJM grid, the independent market monitor estimates data-centre load raised one capacity auction’s revenue by $7.3 billion (82%). What reaches your bill depends on your utility.",
+      "share": "PJM’s independent market monitor estimates data-centre load raised the eastern US grid’s 2026/2027 capacity auction revenue by $7.3 billion (82.1%). What reaches your bill depends on your utility and state.",
       "cites": [
-        "ud_primary",
-        "ud_73",
-        "ud_9"
+        "bills_imm_primary",
+        "bills_imm_2627",
+        "bills_imm_wholesale",
+        "bills_imm_notall",
+        "bills_imm_forecast",
+        "bills_opc_bills",
+        "bills_opc_other",
+        "bills_lbnl_growth",
+        "bills_lbnl_dc",
+        "bills_lbnl_future"
       ],
-      "calcs": []
+      "calcs": [
+        "bills_73",
+        "bills_9"
+      ]
     },
     {
       "slug": "power-mix",
@@ -1208,6 +1918,567 @@
         "ai_share_high"
       ],
       "chips": []
+    },
+    {
+      "slug": "can-ai-cut-emissions",
+      "type": "claim",
+      "cat": "Growth and the future",
+      "q": "Will AI cut more emissions than it causes?",
+      "heard": "“AI will cut more emissions than it causes.”",
+      "heardFrom": "a common argument for building more AI",
+      "stamp": "NOBODY KNOWS",
+      "chips": [
+        "a forecast, not a measurement"
+      ],
+      "result": "It could, in a forecast. Nobody has measured it",
+      "reveal": "In the IEA’s wide-adoption scenario, AI tools cut around 5% of energy-related emissions in 2035. That depends on uptake the IEA says has no momentum yet.",
+      "answer": "Nobody knows yet. The IEA estimates that if existing AI tools were widely used, for example in factories, buildings and transport, the cuts could equal around 5% of energy-related emissions in 2035: three to four times what data centres would emit. That is a scenario, not a measurement. The IEA says there is “currently no momentum” behind that uptake, that rebound effects could undercut the gains, and that AI is “not a silver bullet”. Data centres’ own emissions are already happening.",
+      "world": "Data centres’ own emissions, from the electricity they consume, were about 180 million tonnes of CO₂ in the IEA’s 2025 report, heading for 300 Mt by 2035 in its Base Case and up to 500 Mt in its Lift-Off Case. That stays below 1.5% of energy-sector emissions.",
+      "you": false,
+      "why": "It states a forecast as if it were a result. The savings depend on wide uptake that isn’t happening yet; the emissions from data centres are already real.",
+      "dontknow": [
+        "Nobody has measured how much CO₂ AI has actually avoided worldwide so far.",
+        "The IEA doesn’t put a size on rebound effects.",
+        "Other studies give their own estimates; Hum hasn’t yet checked them on the page."
+      ],
+      "next": {
+        "deeper": "efficiency-rebound",
+        "bigger": "world-share",
+        "closer": "big-tech-emissions"
+      },
+      "share": "Will AI cut more emissions than it causes? In an IEA scenario, yes: around 5% of energy-related emissions in 2035 if AI tools are widely used. But that’s a forecast, and the IEA calls AI “not a silver bullet”.",
+      "cites": [
+        "aicut_5pct",
+        "aicut_dc",
+        "aicut_15",
+        "aicut_far",
+        "aicut_rebound",
+        "aicut_bullet",
+        "aicut_overstated",
+        "aicut_times",
+        "aicut_momentum",
+        "aicut_marginal"
+      ],
+      "calcs": []
+    },
+    {
+      "slug": "data-centre-noise",
+      "type": "how-much",
+      "cat": "Near you",
+      "q": "Why do people near data centres hear a constant hum, and how loud can it be?",
+      "guess": {
+        "prompt": "In Fairfax County, Virginia, the night-time limit for steady noise in residential areas, which a new data centre must show it meets, is…",
+        "options": [
+          "35 dBA",
+          "55 dBA",
+          "75 dBA",
+          "90 dBA"
+        ],
+        "right": 1
+      },
+      "result": "Up to 55 dBA at night, in one Virginia county",
+      "reveal": "A noise expert says people call 55 to 65 decibels no louder than conversation. The trouble, residents say, is that it never stops.",
+      "answer": "Mostly cooling. Data centres run cooling machinery night and day, and in Chandler, Arizona, residents traced a high-pitched hum to one centre’s air conditioning. US limits are local. Fairfax County, Virginia, allows 60 dBA of steady noise in residential areas by day and 55 at night; since 2024 a new data centre must show, with a noise study at full cooling load, that it complies. Chandler requires new ones to be no louder than the area’s measured background. Both set daytime hours for routine tests of backup generators.",
+      "world": "Near a cluster of Amazon data centres in Prince William County, Virginia, measurements found the noise below the county’s 60-decibel daytime limit about half the time. Residents still said the constant drone, especially at night, cost them sleep. Amazon was muffling its cooling equipment, the local paper reported.",
+      "you": false,
+      "dontknow": [
+        "Nobody publishes a count of how many people live within earshot of a data centre.",
+        "Hum hasn’t found a published follow-up on whether Amazon’s new fans and shrouds quietened Great Oak.",
+        "Rules keep changing: in 2023 Prince William County still exempted air-conditioning noise, and was weighing whether to change that."
+      ],
+      "next": {
+        "deeper": "drinking-water",
+        "bigger": "world-share",
+        "closer": "bills"
+      },
+      "share": "Why data centres hum: their cooling runs night and day. Fairfax County, Virginia, caps steady noise in residential areas at 55 dBA at night; Chandler, Arizona, says new ones can’t be louder than the background.",
+      "cites": [
+        "noise_pwt_cooling",
+        "noise_pwt_constancy",
+        "noise_pwt_greatoak",
+        "noise_pwt_drone",
+        "noise_pwt_amazon",
+        "noise_pwt_conversation",
+        "noise_pwt_exempt",
+        "noise_abc15_hum",
+        "noise_abc15_ac",
+        "noise_ffx_day",
+        "noise_ffx_night",
+        "noise_ffx_study",
+        "noise_ffx_generators",
+        "noise_chandler_ambient",
+        "noise_chandler_generators"
+      ],
+      "calcs": [],
+      "chips": [
+        "US evidence",
+        "depends on local rules"
+      ]
+    },
+    {
+      "slug": "drinking-water",
+      "type": "claim",
+      "cat": "Water",
+      "q": "Do data centres use drinking water?",
+      "heard": "“Data centres use drinking water.”",
+      "heardFrom": "news coverage and planning debates",
+      "stamp": "PARTLY",
+      "chips": [
+        "company figures"
+      ],
+      "result": "Mostly, at Google: about 78% of its data-centre water was drinking-quality",
+      "reveal": "Google’s data centres took in about 37 billion litres of water in 2024, and about 29 billion of it was potable, by Google’s own report.",
+      "answer": "Partly, and mostly yes where it’s published. Google’s report says its data centres withdrew 9,866 million US gallons (about 37 billion litres) in 2024. Of that, 7,699 million gallons was potable, meaning drinking-quality: about 78%. About 9% was reclaimed wastewater and 13% other non-potable water (Hum’s arithmetic). Sites differ: in Douglas County, Georgia, almost all of it was reclaimed. Amazon says 26 of its facilities run on 100% reclaimed water but publishes no overall share. These are the companies’ own figures.",
+      "world": "Across the US, data centres consumed about 17 billion gallons of water on site in a recent year (a Berkeley Lab estimate). Nobody publishes how much of that was drinking water.",
+      "you": false,
+      "points": {
+        "title": "Where Google’s data centres got their water, 2024",
+        "unit": "billion litres withdrawn",
+        "items": [
+          {
+            "value": 29.14,
+            "label": "Potable (drinking-quality)",
+            "how": "Google’s table, converted from 7,699 million gallons",
+            "source": "dw_google_total"
+          },
+          {
+            "value": 4.879,
+            "label": "Other non-potable water",
+            "how": "Google’s table, converted from 1,289 million gallons",
+            "source": "dw_google_total"
+          },
+          {
+            "value": 3.319,
+            "label": "Reclaimed wastewater",
+            "how": "Google’s table, converted from 877 million gallons",
+            "source": "dw_google_total"
+          }
+        ]
+      },
+      "why": "True for most of Google’s water, but not for every site: some run mostly on reclaimed wastewater, and most companies don’t publish the split.",
+      "dontknow": [
+        "Amazon, Microsoft and Meta don’t publish what share of their data-centre water is drinking-quality.",
+        "No independent figure says how much of all data centres’ water is drinking water.",
+        "Google’s split is for water withdrawn. It doesn’t say how much of the potable water was later returned as discharge."
+      ],
+      "next": {
+        "deeper": "bottle-of-water",
+        "bigger": "world-share",
+        "closer": "bills"
+      },
+      "share": "Google’s data centres drew about 29 billion litres of potable, drinking-quality water in 2024, about 78% of their total, by Google’s own report. Some sites run on reclaimed wastewater.",
+      "cites": [
+        "dw_google_total",
+        "dw_google_note",
+        "dw_google_douglas",
+        "dw_amazon",
+        "lbnl_water"
+      ],
+      "calcs": [
+        "dw_total_l",
+        "dw_potable_l",
+        "dw_nonpotable_l",
+        "dw_reclaimed_l",
+        "dw_potable_share",
+        "dw_reclaimed_share",
+        "dw_nonpotable_share"
+      ]
+    },
+    {
+      "slug": "efficiency-rebound",
+      "type": "claim",
+      "cat": "Growth and the future",
+      "q": "Will more efficient AI chips fix AI’s energy problem?",
+      "heard": "“More efficient AI chips will fix AI’s energy problem.”",
+      "heardFrom": "tech industry talk",
+      "stamp": "NO",
+      "chips": [
+        "company figures"
+      ],
+      "result": "Not on their own",
+      "reveal": "Each AI answer uses far less energy than it did, but use is growing faster, so the total keeps rising.",
+      "answer": "Not on their own. Efficiency is improving fast: the IEA says energy per AI task has fallen at least tenfold a year recently, and Google says its median Gemini text prompt used 33x less energy over 12 months. But use grows faster. Google processed 50 times more tokens a month than a year before, and data centres’ electricity consumption grew 17% in 2025. Even in the IEA’s High Efficiency case, data centres use around 970 TWh in 2035, about double 2025.",
+      "world": "The world’s data centres used about 485 TWh in 2025, about as much electricity as France uses in a year. The IEA expects that to roughly double to 950 TWh by 2030.",
+      "you": false,
+      "why": "Cheaper answers get used more, and heavier uses such as video, reasoning and agents can take hundreds or thousands of times more energy per query than plain text (IEA). In the IEA’s forecasts, the only case that levels off, at around 700 TWh, pairs efficiency with slower AI uptake.",
+      "points": {
+        "title": "World data-centre electricity consumption, IEA (2025 estimate, 2035 forecasts)",
+        "unit": "TWh a year",
+        "items": [
+          {
+            "value": 485,
+            "label": "2025, estimated",
+            "how": "IEA, Key Questions on Energy and AI (2026)",
+            "source": "iea_485"
+          },
+          {
+            "value": 700,
+            "label": "2035, Headwinds case",
+            "how": "lowest case: slower AI uptake plus efficiency",
+            "source": "eff_iea_700"
+          },
+          {
+            "value": 970,
+            "label": "2035, High Efficiency case",
+            "how": "faster efficiency gains, 20% below the base case",
+            "source": "eff_iea_970",
+            "claim": true
+          }
+        ]
+      },
+      "dontknow": [
+        "Nobody outside Google has checked its 33x figure, and Google doesn’t publish its total AI electricity, so the fall per prompt can’t be set against the 50 times rise in tokens (prompts and tokens are different units).",
+        "The 2035 figures are IEA forecasts. How fast people take up AI, and how heavy new uses get, matter as much as chip efficiency, and nobody knows them yet."
+      ],
+      "next": {
+        "deeper": "reasoning",
+        "bigger": "world-share",
+        "closer": "one-question"
+      },
+      "share": "More efficient chips won’t fix AI’s energy use on their own: energy per AI task is falling fast, yet data-centre electricity grew 17% in 2025, and even the IEA’s High Efficiency case reaches about 970 TWh by 2035.",
+      "cites": [
+        "eff_iea_task",
+        "eff_google_33",
+        "eff_google_tokens",
+        "eff_iea_17",
+        "eff_iea_heavy",
+        "eff_iea_trends",
+        "eff_iea_970",
+        "eff_iea_20",
+        "eff_iea_700",
+        "eff_rebound",
+        "iea_485",
+        "ember_fr"
+      ],
+      "calcs": [
+        "eff_double"
+      ]
+    },
+    {
+      "slug": "nuclear-restarts",
+      "type": "claim",
+      "cat": "Power sources",
+      "q": "Are tech companies restarting Three Mile Island to power AI?",
+      "heard": "“Tech companies are restarting Three Mile Island to power AI.”",
+      "heardFrom": "news coverage since the 2024 Microsoft deal",
+      "stamp": "PARTLY",
+      "chips": [
+        "company figures",
+        "via trade press"
+      ],
+      "result": "Unit 1, for Microsoft’s data centres, and not running yet",
+      "reveal": "It’s Unit 1, not Unit 2, the reactor in the 1979 accident. Constellation expects it online in 2027.",
+      "answer": "Partly. Constellation is restarting Three Mile Island Unit 1, renamed the Crane Clean Energy Center, under a 20-year agreement for Microsoft to buy its energy. Constellation says that helps match what Microsoft’s data centres in the PJM region use, not AI alone, and the power goes onto the grid. It isn’t the 1979 accident reactor: that was Unit 2, now being decommissioned. Unit 1 shut in 2019 for economic reasons. It isn’t running yet: Constellation expects 2027, and the regulator’s final decision is expected in 2027.",
+      "world": "Once running, it would restore 835 megawatts to the grid, Constellation says. All the world’s data centres, of which AI is one part, used about 485 TWh of electricity in 2025.",
+      "you": false,
+      "why": "There is a real restart deal with Microsoft. But it’s for its data centres in general, it’s Unit 1 rather than the 1979 accident reactor, and it isn’t generating yet.",
+      "dontknow": [
+        "The price, and how much of Microsoft’s PJM data-centre use the plant covers, aren’t public.",
+        "Whether 2027 holds: the regulator cleared the environmental review in September 2026, but its final restart decision is still to come.",
+        "Hum couldn’t open the NRC’s own pages, so the regulator’s steps are as reported by the trade press."
+      ],
+      "next": {
+        "deeper": "power-mix",
+        "bigger": "world-share",
+        "closer": "bills"
+      },
+      "share": "Three Mile Island: Unit 1 (not the 1979 accident reactor) is being restarted under a 20-year deal for Microsoft’s data centres. It isn’t running yet; Constellation expects 2027.",
+      "cites": [
+        "tmi_ppa",
+        "tmi_match",
+        "tmi_unit2",
+        "tmi_2027",
+        "tmi_shut",
+        "tmi_nrc",
+        "tmi_ea",
+        "iea_485"
+      ],
+      "calcs": []
+    },
+    {
+      "slug": "pictures-and-video",
+      "type": "how-much",
+      "cat": "About you",
+      "q": "How much electricity does making an AI picture or video use?",
+      "guess": {
+        "prompt": "One short AI video clip uses about as much electricity as…",
+        "options": [
+          "A few short text questions",
+          "One phone charge",
+          "Boiling a litre of water",
+          "A US home for a day"
+        ],
+        "right": 2
+      },
+      "result": "About 90 Wh: like boiling a litre of water",
+      "reveal": "In one lab test, a short clip from an open video model used about 90 Wh (Hugging Face). Boiling a litre of water takes about 99 Wh.",
+      "answer": "In lab tests on specific open models, one AI picture used about 0.63 to 1.22 Wh, a few short text questions’ worth (MIT Technology Review estimates). One short video clip used about 90 Wh on one open model (Hugging Face), about 5 phone charges, and about 940 Wh on another (MIT Technology Review). The models and settings differ, so they can’t be ranked. Apps like Sora and Veo don’t publish per-video figures.",
+      "world": "Nobody publishes how many AI pictures and videos are made, or what they use in total. All the world’s data centres, of which AI is one part, used about 485 TWh in 2025, and the IEA expects about 950 TWh by 2030.",
+      "you": true,
+      "points": {
+        "title": "Lab tests on specific open models (not comparable with each other)",
+        "unit": "Wh per picture or clip",
+        "items": [
+          {
+            "value": 0.63,
+            "label": "One standard picture, Stable Diffusion 3 Medium",
+            "how": "estimated by MIT Technology Review",
+            "source": "pics_mittr_image_std"
+          },
+          {
+            "value": 1.22,
+            "label": "One higher-quality picture, same model",
+            "how": "estimated by MIT Technology Review",
+            "source": "pics_mittr_image_hq"
+          },
+          {
+            "value": 90,
+            "label": "One short clip, WAN2.1–T2V–1.3B",
+            "how": "measured by Hugging Face on one graphics chip",
+            "source": "hf_video"
+          },
+          {
+            "value": 940,
+            "label": "One 5-second clip, the newer CogVideoX",
+            "how": "estimated by MIT Technology Review",
+            "source": "pics_mittr_video"
+          }
+        ]
+      },
+      "rung": "video",
+      "dontknow": [
+        "OpenAI, Google and the other companies behind popular picture and video apps haven’t published how much electricity each picture or clip uses.",
+        "The lab figures are for specific open models and settings. Hugging Face measured the computer itself (graphics chip, processor and memory), not the data centre’s cooling, and MIT Technology Review doubled the chip’s energy to estimate the rest."
+      ],
+      "next": {
+        "deeper": "one-question",
+        "bigger": "world-share",
+        "closer": "my-year"
+      },
+      "share": "One short AI video clip used about 90 Wh in a lab test on an open model (Hugging Face), about as much as boiling a litre of water. One AI picture: about 0.63 to 1.22 Wh (MIT Technology Review).",
+      "cites": [
+        "pics_mittr_image_std",
+        "pics_mittr_image_hq",
+        "pics_mittr_video",
+        "hf_video",
+        "altman",
+        "epa_phone",
+        "nist",
+        "iea_485"
+      ],
+      "calcs": [
+        "pics_img_std_wh",
+        "pics_img_hq_wh",
+        "pics_vid_mit_wh",
+        "pics_img_q",
+        "pics_vid_phones",
+        "phone_wh",
+        "kettle_wh"
+      ],
+      "chips": []
+    },
+    {
+      "slug": "please-thank-you",
+      "type": "claim",
+      "cat": "Comparisons and myths",
+      "q": "Does saying “please” and “thank you” to ChatGPT waste energy?",
+      "heard": "“Saying please and thank you to ChatGPT costs tens of millions of dollars in electricity.”",
+      "heardFrom": "a viral reply by OpenAI’s CEO on X, April 2025",
+      "stamp": "PARTLY",
+      "chips": [
+        "company figures"
+      ],
+      "result": "A little. The “tens of millions” was a quip",
+      "reveal": "Altman’s “tens of millions of dollars” came with no calculation. A stand-alone thank-you costs about as much as any short message: 0.34 Wh or less, by OpenAI’s average.",
+      "answer": "Partly. Every message uses some electricity, but Sam Altman’s “tens of millions of dollars well spent” was an offhand reply on X, not a measurement: TechCrunch judged he didn’t do a precise calculation. Adding “please” to a question is a word or two more for the model to read, which barely changes it. A separate “thank you” is one more short message. OpenAI says an average question uses 0.34 Wh, about an oven running for a little over one second, and Epoch AI’s estimates shrink with shorter answers.",
+      "world": "ChatGPT handled 18 billion messages a week by July 2025: about 0.32 TWh a year at 0.34 Wh each, by Hum’s sums. All the world’s data centres used about 485 TWh in 2025.",
+      "you": true,
+      "rung": "question",
+      "why": "It treats an offhand reply from OpenAI’s CEO as if it were a measured bill.",
+      "dontknow": [
+        "Nobody has published how many ChatGPT messages are only pleasantries.",
+        "OpenAI hasn’t published how its 0.34 Wh is measured, or what a very short reply uses.",
+        "Hum read Altman’s reply as TechCrunch quoted it; the post on X can’t be opened without signing in."
+      ],
+      "next": {
+        "deeper": "one-question",
+        "bigger": "world-share",
+        "closer": "should-i-stop"
+      },
+      "share": "Saying “thank you” to ChatGPT costs about as much as any short message: 0.34 Wh or less, by OpenAI’s figure. Sam Altman’s “tens of millions of dollars” was a quip, not a calculation.",
+      "cites": [
+        "please_techcrunch",
+        "please_tc_tone",
+        "altman",
+        "please_epoch_scale",
+        "nber",
+        "iea_485"
+      ],
+      "calcs": [
+        "chatgpt_year_twh"
+      ]
+    },
+    {
+      "slug": "renewable-claims",
+      "type": "claim",
+      "cat": "Company claims",
+      "q": "Does big tech really run on 100% renewable energy?",
+      "heard": "“Big tech runs on 100% renewable energy.”",
+      "heardFrom": "company reports and advertising",
+      "stamp": "PARTLY",
+      "chips": [
+        "company figures",
+        "peer-reviewed studies"
+      ],
+      "result": "On paper over a year, yes. Hour by hour, no",
+      "reveal": "Google matched 100% of its 2025 electricity use with renewable purchases over the year, but hour by hour its data centres and offices ran on about 65% carbon-free energy, by its own figures.",
+      "answer": "Partly. The 100% is a yearly sum on paper: companies buy clean power or certificates equal to the electricity they use. Google says it matched 100% of its 2025 consumption this way. Counted hour by hour on each local grid, its data centres and offices ran on about 65% carbon-free energy. Google itself says firms with a 100% annual match still use fossil power when or where clean power isn’t available. Counted on the grids it drew from, its electricity emissions were about 5.4 times what it reports after purchases.",
+      "world": "Worldwide, the grids data centres draw from supply about 30% of their electricity from coal and 26% from gas, with about 27% from renewables, by the IEA’s estimate. A peer-reviewed Princeton study of the western US grid found that matching a year’s use has minimal impact on long-run emissions, while matching it hour by hour can cut them significantly.",
+      "you": false,
+      "why": "The purchases are real, and the yearly sum adds up. But it isn’t the electricity the data centres draw from the grid each hour. Another study estimates that if certificate use keeps its trend, 42% of companies’ promised cuts in electricity emissions won’t be real-world cuts.",
+      "dontknow": [
+        "These are the companies’ own figures. Hum found no independent hour-by-hour measurement of their clean power.",
+        "Google publishes an hourly figure. Many companies don’t, so their 100% claims can only be checked as a yearly sum.",
+        "Google’s electricity demand grew 37% in 2025. It doesn’t say how much of that growth is AI."
+      ],
+      "next": {
+        "deeper": "big-tech-emissions",
+        "bigger": "power-mix",
+        "closer": "bills"
+      },
+      "share": "“100% renewable” is a yearly sum on paper. Google matched 100% of its 2025 electricity that way, but hour by hour on local grids it ran on about 65% carbon-free energy, by its own figures.",
+      "points": {
+        "title": "Google, 2025: the same electricity, counted two ways",
+        "unit": "% of electricity",
+        "items": [
+          {
+            "value": 100,
+            "label": "Matched with renewable purchases",
+            "how": "added up over the year, worldwide",
+            "source": "rc_google_annual",
+            "claim": true
+          },
+          {
+            "value": 65,
+            "label": "Carbon-free, hour by hour",
+            "how": "each hour, on each local grid",
+            "source": "rc_google_hourly"
+          }
+        ]
+      },
+      "cites": [
+        "rc_google_annual",
+        "rc_google_hourly",
+        "rc_google_gap",
+        "rc_google_scope2",
+        "rc_meta_eac",
+        "rc_ncc_recs",
+        "rc_joule_annual",
+        "rc_joule_hourly",
+        "iea_mix_coal",
+        "iea_mix_gas",
+        "iea_mix_ren"
+      ],
+      "calcs": [
+        "rc_scope2_ratio"
+      ]
+    },
+    {
+      "slug": "should-i-stop",
+      "type": "claim",
+      "cat": "About you",
+      "q": "Should I stop using ChatGPT to help the planet?",
+      "heard": "“Using ChatGPT is bad for the planet.”",
+      "heardFrom": "said at school, at parties and online",
+      "stamp": "PARTLY",
+      "chips": [
+        "company figures"
+      ],
+      "result": "Small for you, big in total",
+      "reveal": "A typical user’s year of questions makes about 0.2 kg of CO₂, roughly half a mile in a US car. The total is what’s large: data centres used about 485 TWh in 2025.",
+      "answer": "Partly. One person’s share is small: a typical user’s year of ChatGPT questions makes about 0.2 kg of CO₂ by Hum’s sums from OpenAI’s figures, roughly what an average US car emits in half a mile (US EPA). Even 50 questions a day is about 7 miles of driving. Some uses weigh more: one short AI video clip used about 90 Wh in a Hugging Face test, as much as about 260 short questions. The large part is the total, and it’s growing fast.",
+      "world": "All the world’s data centres consumed about 485 TWh of electricity in 2025, and the IEA expects about 950 TWh by 2030. Electricity use by AI-focused data centres grew 50% in 2025. How much CO₂ that makes depends on where the power comes from: the IEA expects renewables to meet half of the growth.",
+      "you": true,
+      "why": "It’s true of the total, not of one person’s text questions. The total depends on billions of users, heavy uses like video, and the power behind the data centres.",
+      "dontknow": [
+        "OpenAI gives only an average per question and hasn’t published how it’s measured.",
+        "Nobody publishes how use is spread across people, so a typical user is an average.",
+        "The grids behind ChatGPT’s data centres aren’t published, so the world average stands in.",
+        "Training, chips and buildings aren’t counted in one person’s share."
+      ],
+      "next": {
+        "deeper": "pictures-and-video",
+        "bigger": "world-share",
+        "closer": "my-year"
+      },
+      "share": "Is using ChatGPT bad for the planet? Partly: a typical user’s year of questions makes about 0.2 kg of CO₂, roughly half a mile in a US car (Hum’s sums). The total is the big part: data centres used about 485 TWh in 2025 (IEA).",
+      "cites": [
+        "nber",
+        "altman",
+        "ember_473",
+        "stop_epa_car",
+        "hf_video",
+        "iea_485",
+        "iea_ai50",
+        "iea_half"
+      ],
+      "calcs": [
+        "msgs_per_user",
+        "user_kwh",
+        "user_kg",
+        "heavy_kg",
+        "stop_car_miles",
+        "stop_heavy_miles",
+        "stop_video_q"
+      ]
+    },
+    {
+      "slug": "training-vs-using",
+      "type": "how-much",
+      "cat": "About you",
+      "q": "Which uses more electricity: training AI, or people using it?",
+      "guess": {
+        "prompt": "Where a company has published the split, which took more of its machine-learning energy?",
+        "options": [
+          "Training the models",
+          "People using them",
+          "About half each",
+          "Nobody has ever measured it"
+        ],
+        "right": 1
+      },
+      "result": "Using it, where anyone has measured",
+      "reveal": "At Google, about three fifths of machine-learning energy went on use and two fifths on training, in the three years before 2022.",
+      "answer": "Using it, in the little data there is. Training is a big one-off; use (called inference) repeats with every question. Google said machine learning was 10% to 15% of its energy, about three fifths of it for use and two fifths for training. AWS estimated inference at 80 to 90% of machine-learning cloud demand. Researchers measuring open models found use overtakes training after hundreds of millions to tens of billions of answers: 200 to 590 million for Hugging Face’s BLOOMz models.",
+      "world": "Use adds up fast: ChatGPT alone got about 2.6 billion messages a day by July 2025, by Hum’s sums from OpenAI’s count. All the world’s data centres together used about 485 TWh in 2025.",
+      "you": false,
+      "why": "Training is paid once per model, though each new model is trained again. Use keeps going for as long as people keep asking.",
+      "dontknow": [
+        "No company has published a training versus use split since chatbots took off; Google’s is from before 2022.",
+        "OpenAI, Google and Anthropic don’t publish how much energy training their newest models took.",
+        "Splits are counted different ways: Meta put about one-third of its machine-learning carbon on use in a 2021 paper, counting data and storage alongside training."
+      ],
+      "next": {
+        "deeper": "one-question",
+        "bigger": "world-share",
+        "closer": "my-year"
+      },
+      "share": "Where it’s been measured, using AI takes more energy than training it: about three fifths of Google’s machine-learning energy went on use (Google, 2022).",
+      "cites": [
+        "tvu_google_split",
+        "tvu_aws",
+        "tvu_meta",
+        "tvu_bloomz",
+        "tvu_olmo",
+        "nber",
+        "iea_485"
+      ],
+      "calcs": [
+        "tvu_chatgpt_day"
+      ],
+      "chips": [
+        "company figures"
+      ]
     }
   ]
 }
