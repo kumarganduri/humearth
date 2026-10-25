@@ -17,7 +17,8 @@
     "test:e2e": "playwright test",
     "checklist": "tsx scripts/source-checklist.ts",
     "check:countries": "tsx scripts/check-countries.ts",
-    "build:og": "tsx scripts/build-og.ts"
+    "build:og": "tsx scripts/build-og.ts",
+    "check:quotes": "tsx scripts/check-quotes.ts"
   },
   "dependencies": {
     "d3-geo": "^3.1.1"
@@ -31,6 +32,7 @@
     "@types/node": "^26.6.3",
     "@types/topojson-client": "^3.1.5",
     "@types/topojson-specification": "^1.0.5",
+    "pdfjs-dist": "6.3.289",
     "topojson-client": "^3.1.0",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2",

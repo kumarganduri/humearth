@@ -49,8 +49,8 @@
         },
         {
           "label": "Luccioni, Jernite, Strubell, Power Hungry Processing (2023): \"image generation, whose mean consumption is 2.9kWh\" per 1,000 inferences",
-          "url": "https://arxiv.org/abs/2311.16863",
-          "retrieved": "2026-10-02",
+          "url": "https://arxiv.org/html/2311.16863v3",
+          "retrieved": "2026-10-25",
           "supports": "high",
           "checked": "page"
         }

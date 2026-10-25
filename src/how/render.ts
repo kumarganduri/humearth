@@ -118,6 +118,7 @@ export function renderVerdicts(): string {
 </dl>
 <p><b>Labels on every figure:</b> Measured · Estimated · Calculated by Hum (our arithmetic, shown under “Hum’s sums”, and checked by the build) · Company says so (not independently checked) · Forecast · Data row (copied from a published dataset and checked against the file).</p>
 <p><b>Both sides:</b> every answer that says your own use is small also gives the total, because one question is tiny and all of them together are not. Figures that measure different things are never ranked against each other.</p>
+<p><b>Kept fresh:</b> every Monday an automatic check downloads every page Hum quotes and confirms each quote is still there. A quote that changed or vanished is flagged for a person to re-read, and the answers that use it are updated.</p>
 <p><b>Your privacy on the cards:</b> your guesses and score stay on your device. Nothing you choose is sent to us.</p>`;
 }
 

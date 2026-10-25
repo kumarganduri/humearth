@@ -1,0 +1,34 @@
+name: Freshness watch
+
+# Every Monday: re-download every page Hum quotes and check each quote is still there (npm run check:quotes).
+# Quotes that went missing or changed go in one "Freshness watch" issue; a page that is down goes in the issue
+# only after 3 weeks in a row (until then, in this run's summary). It never touches the site or blocks a deploy.
+on:
+  schedule:
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: freshness
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    name: Check every quote is still on its page
+    runs-on: ubuntu-24.04 # pinned, like ci.yml
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Re-check every quote
+        run: npm run check:quotes -- --issue
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

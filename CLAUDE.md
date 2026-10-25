@@ -23,6 +23,7 @@ In QA mode, flag any code that doesn't match DESIGN.md.
 - `npm test` (Vitest, unit). Tests live next to code as `*.test.ts`.
 - `npm run test:e2e` (Playwright, against the production build, desktop + phone, port 4191, audio muted). Specs in `e2e/`.
 - `npm run typecheck`, `npm run check:budget` (after build: first-screen JS <= 90 KB gz, no three.js).
+- `npm run check:quotes`: the freshness watch. Downloads every quoted page (HTML or PDF) and checks each quote is still there (found / changed / missing / down). `.github/workflows/freshness.yml` runs it every Monday and keeps one "Freshness watch" issue (its state is a hidden comment in the issue); pages down 3 weeks in a row join the issue. Logic in `scripts/lib/freshness.ts` (tested).
 - CI (`.github/workflows/ci.yml`) runs all of it plus Lighthouse. Main deploys to Cloudflare Pages when the secrets exist. The `source-data` job runs `check:countries` separately, so a re-published dataset turns it red without blocking deploys.
 
 ## Architecture notes

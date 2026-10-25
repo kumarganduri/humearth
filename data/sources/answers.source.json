@@ -115,7 +115,7 @@
     },
     "epoch_home": {
       "publisher": "Epoch AI (citing US household data)",
-      "quote": "The average US household uses 10,500 kilowatt-hours of electricity per year, or over 28,000 watt-hours per day.",
+      "quote": "The average US household … uses 10,500 kilowatt-hours of electricity per year, or over 28,000 watt-hours per day.",
       "url": "https://epoch.ai/gradient-updates/how-much-energy-does-chatgpt-use",
       "retrieved": "2026-10-18",
       "kind": "estimate",

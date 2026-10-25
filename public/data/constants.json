@@ -1,7 +1,7 @@
 {
-  "constantsVersion": 10,
-  "contentHash": "caa3e7ef053b6f00",
-  "builtAt": "2026-10-12",
+  "constantsVersion": 11,
+  "contentHash": "cf084a94471f042d",
+  "builtAt": "2026-10-25",
   "values": {
     "textPromptWh": {
       "label": "Electricity per text answer",
@@ -51,8 +51,8 @@
         },
         {
           "label": "Luccioni, Jernite, Strubell, Power Hungry Processing (2023): \"image generation, whose mean consumption is 2.9kWh\" per 1,000 inferences",
-          "url": "https://arxiv.org/abs/2311.16863",
-          "retrieved": "2026-10-02",
+          "url": "https://arxiv.org/html/2311.16863v3",
+          "retrieved": "2026-10-25",
           "supports": "high",
           "checked": "page"
         }
