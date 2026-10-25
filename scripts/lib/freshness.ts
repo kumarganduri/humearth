@@ -162,7 +162,9 @@ export function decide(results: Result[], previous: State, today: string): Decis
   for (const r of results) {
     counts[r.status]++;
     if (r.status === 'down') {
-      const weeks = (previous.downWeeks[r.url] ?? 0) + 1;
+      // A second run on the same day (a manual re-run) doesn't add a week.
+      const before = previous.downWeeks[r.url] ?? 0;
+      const weeks = previous.lastRun === today ? Math.max(before, 1) : before + 1;
       downWeeks[r.url] = weeks;
       (weeks >= DOWN_WEEKS ? problems : downNotYet).push({ ...r, note: `down ${weeks} weeks in a row${r.note ? `: ${r.note}` : ''}` });
     } else if (r.status !== 'found') problems.push(r);

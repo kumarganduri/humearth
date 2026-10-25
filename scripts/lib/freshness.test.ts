@@ -86,6 +86,8 @@ describe('decide: what goes in the issue', () => {
       state = d.state;
     }
     expect(decide([r('https://cbre.com/x', 'found')], state, '2026-11-30').state.downWeeks).toEqual({}); // back up: the count resets
+    const again = decide([r('https://cbre.com/y', 'down')], { downWeeks: { 'https://cbre.com/y': 1 }, lastRun: '2026-12-07' }, '2026-12-07');
+    expect(again.state.downWeeks['https://cbre.com/y']).toBe(1); // a re-run the same day isn't another week
   });
   it('keeps its state in the issue body, and reads it back', () => {
     const d = decide([r('https://cbre.com/x', 'down')], { downWeeks: { 'https://cbre.com/x': 1 } }, '2026-10-26');
