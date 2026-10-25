@@ -1,12 +1,12 @@
 {
-  "contentHash": "20389220fa04fc6b",
-  "builtAt": "2026-10-06",
+  "contentHash": "efa2866eff9b353c",
+  "builtAt": "2026-10-25",
   "dataset": {
     "name": "Ember yearly electricity data (global)",
     "page": "https://ember-energy.org/data/yearly-electricity-data/",
     "url": "https://files.ember-energy.org/public-downloads/generation/outputs/release_generation_yearly_global.csv",
-    "retrieved": "2026-10-06",
-    "sha256": "b2ac49fa9b27035fedda3c6afb85917bf136de9253bfcbaf09c3410904ec7cd1",
+    "retrieved": "2026-10-25",
+    "sha256": "91d30fb170dac8a62130f7b39e11ecbb301f902e08400e9561510882eadcd701",
     "licence": "CC-BY-4.0",
     "checked": "dataset",
     "filter": {
@@ -62,7 +62,7 @@
     },
     {
       "name": "United Kingdom",
-      "demandTWh": 311.288
+      "demandTWh": 311.584
     },
     {
       "name": "Australia",
@@ -74,7 +74,7 @@
     },
     {
       "name": "Sweden",
-      "demandTWh": 136.471
+      "demandTWh": 136.546
     },
     {
       "name": "Netherlands",

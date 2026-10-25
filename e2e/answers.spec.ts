@@ -19,10 +19,13 @@ test('front door: guess, see which answer was right, read the bigger picture, go
 });
 
 test('front door: a claim card shows Hum’s verdict stamp after the guess', async ({ page }) => {
+  // Which cards come first depends on the day (the deck skips Today's card), so play on to the first claim card.
   await page.goto('/');
-  await page.locator('#card .choices button').first().click();
-  await page.click('#next-card');
-  await page.locator('#card .choices button').first().click();
+  for (let i = 0; i < 4 && !(await page.locator('#card .choices button[data-k]').count()); i++) {
+    await page.locator('#card .choices button').first().click();
+    await page.click('#next-card');
+  }
+  await page.locator('#card .choices button[data-k]').first().click();
   await expect(page.locator('#reveal .stamp')).toContainText('Hum’s verdict');
 });
 
@@ -105,4 +108,19 @@ test.describe('with scripts off', () => {
     await page.goto('/today');
     await expect(page.locator('#card-h')).toBeVisible();
   });
+});
+
+// Regression: the daily CI rebuild failed for a week because a test assumed the deck's order, which changes with the
+// date. Walk a whole cycle of days with a fixed clock: Today shows the day's number and never the front door's first card.
+test('every day of the card cycle: Today has the day’s number and differs from the front door’s first card', async ({ page }) => {
+  const launch = Date.UTC(2026, 9, 18, 12);
+  for (let day = 0; day < 12; day++) {
+    await page.clock.setFixedTime(new Date(launch + day * 864e5));
+    await page.goto('/');
+    const front = await page.locator('#card-h').textContent();
+    await page.goto('/today');
+    await expect(page.locator('#today-num')).toHaveText(`Hum #${day + 1}`);
+    await expect(page.locator('#card .choices button').first()).toBeVisible();
+    expect(await page.locator('#card-h').textContent(), `day ${day}`).not.toBe(front);
+  }
 });
