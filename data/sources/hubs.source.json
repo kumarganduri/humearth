@@ -330,9 +330,9 @@
           "checked": "page"
         },
         {
-          "label": "Baxtel: \"Paris has 137 facilities with 3,205,561 sqft and 639 megawatts.\"",
+          "label": "Baxtel: \"Paris has 136 facilities with 3,205,561 sqft and 639 megawatts.\"",
           "url": "https://baxtel.com/data-center/paris",
-          "retrieved": "2026-10-25",
+          "retrieved": "2026-10-31",
           "supports": "mid,high",
           "checked": "page"
         }

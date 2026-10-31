@@ -6,7 +6,8 @@ import './analytics'; // visitor counts, real site only
 import './base.css';
 import './daily.css';
 import { cleanUpV1, safeLocalStorage } from './legacy';
-import { ask, buildPool, dayNumber, questionFor, revealB, statement, type PoolData, type Question } from './daily/pool';
+import { buildPool, dayNumber, questionFor, revealB, statement, type PoolData, type Question } from './daily/pool';
+import { questionHtml } from './daily/view';
 import { answer, currentStreak, load, save, shareText, type DailyRecord } from './daily/streak';
 import { esc } from './present/format';
 
@@ -19,15 +20,6 @@ async function getJson<T>(name: string): Promise<T> {
   const r = await fetch(`/data/${name}.json`);
   if (!r.ok) throw new Error(`${name}.json ${r.status}`);
   return r.json() as Promise<T>;
-}
-
-function questionHtml(q: Question): string {
-  return `<p class="dq-a">${esc(statement(q))}</p>
-<p class="dq-ask">${esc(ask(q))}</p>
-<div class="dq-choices" role="group" aria-label="Your answer">
-  <button type="button" class="btn dq-btn" data-pick="more">More</button>
-  <button type="button" class="btn dq-btn" data-pick="less">Less</button>
-</div>`;
 }
 
 function resultHtml(q: Question, day: number, right: boolean, rec: DailyRecord): string {
@@ -64,7 +56,9 @@ function start(d: PoolData) {
   };
 
   if (rec.played[day]) return showResult();
-  box.innerHTML = questionHtml(q);
+  // The build prebuilt the question for its own (UTC) day: wake it in place, unless your local day differs.
+  if (box.dataset.day !== String(day) || !box.querySelector('[data-pick]')) box.innerHTML = questionHtml(q);
+  box.dataset.day = String(day);
   for (const b of box.querySelectorAll<HTMLButtonElement>('[data-pick]')) {
     b.addEventListener('click', () => {
       rec = load(store); // another tab may have answered today already: its answer stands

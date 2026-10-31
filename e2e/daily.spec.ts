@@ -74,3 +74,12 @@ test('two tabs: the first answer of the day stands', async ({ context }) => {
   await b.click('[data-pick="less"]'); // too late: tab A already answered today
   await expect(b.locator('.dq-verdict')).toHaveText(first!);
 });
+
+// Regression: on days with a long question, /daily's largest text was drawn by the script after its data loaded and
+// Lighthouse failed the daily rebuild (27 and 31 Oct). The day's question is now in the page as served.
+test('the day’s question is in the page as served, before any script runs', async ({ request, page }) => {
+  const html = await (await request.get('/daily')).text();
+  expect(html).toMatch(/<div class="dq-card js-only" id="dq" data-day="\d+"[^>]*><p class="dq-a">[^<]{10,}<\/p>/);
+  await page.goto('/daily');
+  await expect(page.locator('[data-pick="more"]')).toBeVisible();
+});

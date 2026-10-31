@@ -15,6 +15,8 @@ import { extractInlineStyles } from '../src/present/inline-styles';
 import { validateAnswersSource } from '../src/answers/schema';
 import { answerPages, answersFile, FOOTER_HTML, homeBody, todayBody } from '../src/answers/pages';
 import { dayNumber } from '../src/answers/pure';
+import { buildPool, dayNumber as dailyDay, questionFor } from '../src/daily/pool';
+import { cardHtml as dailyCardHtml } from '../src/daily/view';
 import type { AnswersSource } from '../src/answers/types';
 import { mkdirSync, rmSync } from 'node:fs';
 import { createHash } from 'node:crypto';
@@ -147,6 +149,13 @@ try {
     [HOME_OUT, `<!-- ${banner} -->\n${homeBody(src)}\n`],
     [TODAY_OUT, `<!-- ${banner} -->\n${todayBody(answersJson.trim(), src, dayNumber(src.launch, new Date()))}\n`],
     ['src/footer.generated.html', `${FOOTER_HTML}\n`],
+    // Hum Daily's question for the build's (UTC) day, prebuilt; CI rebuilds just after midnight UTC.
+    ['src/daily.generated.html', (() => {
+      const n = new Date();
+      const day = dailyDay(new Date(n.getUTCFullYear(), n.getUTCMonth(), n.getUTCDate()));
+      const pool = buildPool({ series: readJson<SeriesFile>(SERIES_OUT)!, countries: readJson<CountriesFile>(COUNTRIES_OUT)!, constants: readJson<Constants>(OUT)!, grids: readJson<GridsFile>(GRIDS_OUT)!, hubs: readJson<HubsFile>(HUBS_OUT)! });
+      return `<!-- ${banner} -->\n${dailyCardHtml(questionFor(day, pool), day)}\n`;
+    })()],
   ] as const) {
     if (!existsSync(file) || readFileSync(file, 'utf8') !== body) {
       writeFileSync(file, body);

@@ -15,6 +15,7 @@ import { defineConfig, type Plugin } from 'vite';
 const GENERATED: [page: string, marker: string, file: string][] = [
   ['index.html', '<!--home-content-->', 'src/home.generated.html'],
   ['today.html', '<!--today-content-->', 'src/today.generated.html'],
+  ['daily.html', '<!--daily-content-->', 'src/daily.generated.html'],
   ['earth.html', '<!--hero-content-->', 'src/hero.generated.html'],
   ['how-we-know.html', '<!--how-content-->', 'src/how/content.generated.html'],
   ['question.html', '<!--question-content-->', 'src/question.generated.html'],
