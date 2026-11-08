@@ -30,6 +30,7 @@ test('front door: a claim card shows Hum’s verdict stamp after the guess', asy
 });
 
 test('front door: playing every card ends on a score', async ({ page }) => {
+  test.slow(); // plays all 21 cards: ~21 s on the phone profile, too close to the 30 s default under full load
   await page.goto('/');
   for (let i = 0; i < 40; i++) {
     const next = page.locator('#next-card');
