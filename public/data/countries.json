@@ -1,12 +1,12 @@
 {
-  "contentHash": "88f98c81cdfece38",
-  "builtAt": "2026-10-31",
+  "contentHash": "1ebe9df96577468e",
+  "builtAt": "2026-11-08",
   "dataset": {
     "name": "Ember yearly electricity data (global)",
     "page": "https://ember-energy.org/data/yearly-electricity-data/",
     "url": "https://files.ember-energy.org/public-downloads/generation/outputs/release_generation_yearly_global.csv",
-    "retrieved": "2026-10-31",
-    "sha256": "c3bd8b3d18824dd50b2ca23f407665d02c772eff6ab36d727fb8f463b063dcdf",
+    "retrieved": "2026-11-08",
+    "sha256": "08932763076fa781634371dd1b75d8156f76592710c7e984836ed56a663d5688",
     "licence": "CC-BY-4.0",
     "checked": "dataset",
     "filter": {
