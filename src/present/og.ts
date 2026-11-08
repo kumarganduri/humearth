@@ -9,7 +9,7 @@ import type { FeatureCollection, Geometry } from 'geojson';
 import type { GridsFile, HubsFile, ImpactsFile } from '../footprint/types';
 import { aiRates, perRequest, requestsPerSecond, simGrids, simulate2030, todayTWh } from '../footprint/rates';
 import { START_ROTATION } from '../globe/earth';
-import { esc, formatNumber } from './format';
+import { esc, formatMt, formatNumber } from './format';
 import { resultRange } from './share-preview';
 import { passedFor } from './earth';
 import type { HeroData } from './hero';
@@ -170,7 +170,7 @@ export function personalCardSvg(mt: number, d: OgData): string {
 <circle cx="1090" cy="110" r="120" fill="none" stroke="${C.rule}" stroke-width="1.5"/>
 <text x="72" y="104" font-family="Instrument Serif" font-size="52" fill="${C.text}">Hum</text>
 <text x="72" y="196" font-family="Instrument Serif" font-size="58" fill="${C.text}">My 2030 for the world's data centres</text>
-<text x="72" y="330" font-family="Atkinson Hyperlegible Mono" font-weight="600" font-size="120" fill="${C.co2}">${esc(formatNumber(mt))}</text>
+<text x="72" y="330" font-family="Atkinson Hyperlegible Mono" font-weight="600" font-size="120" fill="${C.co2}">${esc(formatMt(mt))}</text>
 <text x="72" y="374" font-family="Atkinson Hyperlegible Next" font-size="30" fill="${C.muted}">million tonnes of CO2 a year: ${esc(verdict)}</text>
 <rect x="${x0}" y="${y}" width="${w}" height="18" rx="9" fill="${C.other}"/>
 <rect x="${x0}" y="${y}" width="${fill.toFixed(1)}" height="18" rx="9" fill="${C.co2}"/>

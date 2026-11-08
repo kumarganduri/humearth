@@ -8,7 +8,7 @@ import type { Constants, Grid } from '../footprint/types';
 import type { SeriesFile } from '../footprint/series-types';
 import { simGrids, simulate2030, type SimGrid, type SimInput, type SimResult } from '../footprint/rates';
 import { niceMax } from '../charts/scale';
-import { esc, formatNumber } from './format';
+import { esc, formatMt, formatNumber } from './format';
 
 export const START: SimInput = { mix: { world: 100 }, efficiency: 0 };
 
@@ -36,12 +36,12 @@ export function verdict(r: SimResult, s: SeriesFile): string {
 }
 
 /** The words that go with a shared link: your result, from the numbers. */
-export const shareText = (r: SimResult) => `My 2030 for the world's data centres: ${formatNumber(r.mtCO2)} million tonnes of CO2 a year. Try yours on Hum:`;
+export const shareText = (r: SimResult) => `My 2030 for the world's data centres: ${formatMt(r.mtCO2)} million tonnes of CO2 a year. Try yours on Hum:`;
 
 export function outputsHtml(r: SimResult, grids: SimGrid[], co2Year: number): string {
   const max = gaugeMax(r, grids);
   const saved = r.baseTWh - r.twh;
-  return `<div class="gauge"><div class="k">CO2 from data-centre electricity in 2030</div><div class="v c"><span class="derived">${formatNumber(r.mtCO2)}</span> <small>million tonnes a year</small></div><div class="bar"><i style="width:${((Math.min(r.mtCO2, max) / max) * 100).toFixed(2)}%"></i><b style="left:${((r.todayMtCO2 / max) * 100).toFixed(2)}%"></b></div><div class="ref">White line: ${co2Year}, ${formatNumber(r.todayMtCO2)} million tonnes (IEA)</div></div>
+  return `<div class="gauge"><div class="k">CO2 from data-centre electricity in 2030</div><div class="v c"><span class="derived">${formatMt(r.mtCO2)}</span> <small>million tonnes a year</small></div><div class="bar"><i style="width:${((Math.min(r.mtCO2, max) / max) * 100).toFixed(2)}%"></i><b style="left:${((r.todayMtCO2 / max) * 100).toFixed(2)}%"></b></div><div class="ref">White line: ${co2Year}, ${formatNumber(r.todayMtCO2)} million tonnes (IEA)</div></div>
 <div class="gauge"><div class="k">Electricity</div><div class="v e">${saved > 0 ? `<span class="derived">${formatNumber(r.twh)}</span>` : formatNumber(r.twh)} <small>TWh a year</small></div><div class="ref">${saved > 0 ? `IEA forecast ${formatNumber(r.baseTWh)}; your efficiency saves <span class="derived">${formatNumber(saved)}</span>` : 'IEA forecast for 2030'}</div></div>
 <div class="gauge"><div class="k">Water (cooling + power plants)</div><div class="v w"><span class="derived">${formatNumber(r.waterBillionLitres[1])}</span> <small>billion litres</small></div><div class="ref">range <span class="derived">${formatNumber(r.waterBillionLitres[0])}</span> to <span class="derived">${formatNumber(r.waterBillionLitres[2])}</span></div></div>`;
 }
@@ -63,7 +63,7 @@ export function simPageHtml(c: Constants, s: SeriesFile, gridList: Grid[]): stri
   const each = grids
     .map((g) => {
       const one = simulate2030(s, c, grids, { mix: { [g.key]: 1 }, efficiency: 0 });
-      return `<tr><th scope="row">${esc(g.name)}</th><td>${formatNumber(g.gCO2PerKWh)}</td><td><span class="derived">${formatNumber(one.mtCO2)}</span></td></tr>`;
+      return `<tr><th scope="row">${esc(g.name)}</th><td>${formatNumber(g.gCO2PerKWh)}</td><td><span class="derived">${formatMt(one.mtCO2)}</span></td></tr>`;
     })
     .join('');
   return `<section class="sim-head" aria-labelledby="s-h">

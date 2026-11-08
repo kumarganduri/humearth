@@ -3,7 +3,7 @@
 **Status (2026-10-11):** approved by the founder. All 29 quotes below were found on their pages twice: by the research pass, then independently (curl + exact-substring match; the two PDFs read with pdf.js). What went on the site is in `data/sources/impacts.source.json`:
 - **Tiles:** grid (1a + 1c), air (2b + 2a), chips (3a), land (4b + 4a + the court quote), noise (5b + 5a).
 - **Practices:** B1a + B1b, B2a + B2b, B3a + B3b, B4a + B4b, B5a, B6a + B6c.
-- **Left out:** 2c (verified only on a republication; re-check on virginiamercury.com before using), the WTOP count of 37 data centres (Bisnow's newer 34 used), 1b, 1d, 3b to 3d, 4c, B3c and B6b (kept here as alternatives).
+- **Left out:** 2c (now verified on the original via an archive copy, 2026-11-08; usable), the WTOP count of 37 data centres (Bisnow's newer 34 used), 1b, 1d, 3b to 3d, 4c, B3c and B6b (kept here as alternatives).
 
 ---
 
@@ -88,9 +88,10 @@ Collected 2026-10-11. This is a **draft for review**. Nothing in it is in `data/
 - **Claim:** More than 9,000 backup generators, some burning diesel, can supply data centres in Northern Virginia. Virginia lawmakers debated stricter emissions rules in 2026.
 - **Quote:** "There are over 9,000 backup generators that can supply emergency power to Northern Virginia data centers, some of which run on diesel and emit toxins."
 - **URL (where verified):** https://royalexaminer.com/lawmakers-debate-how-to-regulate-data-centers-diesel-backup-generators (a republication, credited "By Virginia Mercury", 17 Feb 2026)
-- **Original:** https://virginiamercury.com/2026/02/17/lawmakers-debate-how-to-regulate-data-centers-diesel-backup-generators/ returned **403** to both curl and WebFetch.
-- **Publisher / date:** Virginia Mercury (States Newsroom), 17 February 2026
-- **Status:** VERIFIED on the republished copy only. Re-check on virginiamercury.com before publishing.
+- **Original:** https://virginiamercury.com/2026/02/17/lawmakers-debate-how-to-regulate-data-centers-diesel-backup-generators/ returned **403** to both curl and WebFetch (still 403 on 2026-11-08).
+- **Archive copy of the original:** https://web.archive.org/web/20260618030345/https://virginiamercury.com/2026/02/17/lawmakers-debate-how-to-regulate-data-centers-diesel-backup-generators/ (saved 18 June 2026). The quote is there word for word, by Shannon Heckt.
+- **Publisher / date:** Virginia Mercury (States Newsroom), Shannon Heckt, 17 February 2026
+- **Status:** VERIFIED on the original (archive copy, checked 2026-11-08). Cite the virginiamercury.com URL; the freshness watch falls back to the archive when the site blocks it.
 - **Numbers:** 9,000+ generators
 - **Lead:** The article cites a VCU study, "Modeling Localized Air Pollution Impacts from Data Centers in Northern Virginia" (VCU Institute for Sustainable Energy and Environment). The study itself was not fetched.
 
@@ -328,7 +329,7 @@ Collected 2026-10-11. This is a **draft for review**. Nothing in it is in `data/
 - **Monitoring Analytics** (PJM market monitor) reports: not fetched. The figures come through Utility Dive.
 - **CRU decision paper CRU/2025236** and **EirGrid's 2022 Dublin statement**: not fetched. The DatacenterDynamics copy was blocked by a bot check.
 - **Virginia JLARC 2024 "Data Centers in Virginia"** (grid and bills): connection refused. This would be a strong government source for Tile 1 and is worth retrying.
-- **Virginia Mercury original** (403). Verified on a republication instead.
+- **Virginia Mercury original** (403). Verified on the Internet Archive's copy of the original on 2026-11-08.
 - **Shelby County Health Department permit** and **SELC's own pages**: not fetched.
 - **NewClimate Institute Corporate Climate Responsibility Monitor 2025, tech sector** (market-based accounting, scope 3): 403 to curl and WebFetch. It would be a good second source for B1 and B5.
 - **Carbon Market Watch's tech deep dive**: 403.

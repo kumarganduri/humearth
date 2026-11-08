@@ -26,6 +26,12 @@ export function formatNumber(n: number): string {
   return sign + String(Number(a.toPrecision(3)));
 }
 
+/** A modelled CO2 total in million tonnes: whole numbers only, so "96.4" doesn't claim more precision than "449". */
+export function formatMt(mt: number): string {
+  if (Number.isFinite(mt) && mt > 0 && mt < 0.5) return 'under 1';
+  return formatNumber(Math.round(mt));
+}
+
 export interface Range {
   low: number | null;
   mid: number;

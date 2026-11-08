@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { captionFor, esc, formatNumber, rangeText, rangeWords, readingHtml } from './format';
+import { captionFor, esc, formatMt, formatNumber, rangeText, rangeWords, readingHtml } from './format';
 import type { SeriesYear } from '../footprint/series-types';
 
 describe('formatNumber: one rule everywhere', () => {
@@ -31,6 +31,16 @@ describe('formatNumber: one rule everywhere', () => {
   it('never prints NaN or Infinity', () => {
     expect(formatNumber(Number.NaN)).toBe('–');
     expect(formatNumber(Infinity)).toBe('–');
+  });
+});
+
+describe('formatMt: modelled CO2 in whole million tonnes', () => {
+  it('keeps one precision below and above 100 (the /2030 slider once showed "96.4")', () => {
+    expect(formatMt(96.4)).toBe('96');
+    expect(formatMt(449.2)).toBe('449');
+    expect(formatMt(1234.6)).toBe('1,235');
+    expect(formatMt(0.2)).toBe('under 1');
+    expect(formatMt(0)).toBe('0');
   });
 });
 
