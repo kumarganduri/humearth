@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { checkCountries, parseCsvLine, sha256 } from './countries-check';
+import { checkCountries, fileNote, parseCsvLine, sha256 } from './countries-check';
 import type { CountriesSource } from '../../src/footprint/series-types';
 
 // A tiny CSV shaped like Ember's: wide format, Demand is one "Electricity source" row per area and year.
@@ -40,12 +40,16 @@ describe('checkCountries: every stored country number matches the dataset file',
 
   it('fails on a typo in a stored value', () => {
     const s = source({ countries: [{ name: 'France', demandTWh: 408.57 }] });
-    expect(checkCountries(bytes(CSV), s)).toEqual(['France: stored 408.57, dataset has 480.57']);
+    expect(checkCountries(bytes(CSV), s)).toEqual(['France: stored 408.57, dataset has 480.57. Update the row, sha256 and retrieved date in countries.source.json']);
   });
 
-  it('fails when the file was re-published (different bytes), even if the numbers still match', () => {
-    const changed = `${CSV}\nSpain,ESP,2025,Country or economy,Demand,275.25,Europe`;
-    expect(checkCountries(bytes(changed), source()).join()).toMatch(/dataset file changed: sha256/);
+  it('passes a re-published file whose rows still match, with a note; fails once one of Hum\'s numbers moves', () => {
+    const republished = `${CSV}\nSpain,ESP,2025,Country or economy,Demand,275.25,Europe`;
+    expect(checkCountries(bytes(republished), source())).toEqual([]);
+    expect(fileNote(bytes(republished), source())).toMatch(/re-published \(sha256 /);
+    expect(fileNote(bytes(CSV), source())).toBeNull();
+    const revised = republished.replace('Japan,JPN,2025,Country or economy,Demand,1029.97', 'Japan,JPN,2025,Country or economy,Demand,1031.2');
+    expect(checkCountries(bytes(revised), source())).toEqual([expect.stringMatching(/^Japan: stored 1029.97, dataset has 1031.2/)]);
   });
 
   it('fails on a country with no row for that year, and on a renamed column', () => {

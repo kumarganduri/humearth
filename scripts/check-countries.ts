@@ -1,9 +1,10 @@
 // npm run check:countries [-- path/to/file.csv]
 // Downloads the dataset named in data/sources/countries.source.json (or reads a local copy), then checks
-// its sha256 and every stored country value. Exits 1 on any mismatch. Runs in CI.
+// every stored country value. Exits 1 when one of Hum's numbers no longer matches; a re-published file whose
+// rows still match only prints a note. Runs in CI.
 
 import { readFileSync } from 'node:fs';
-import { checkCountries } from './lib/countries-check';
+import { checkCountries, fileNote } from './lib/countries-check';
 import type { CountriesSource } from '../src/footprint/series-types';
 
 const src = JSON.parse(readFileSync('data/sources/countries.source.json', 'utf8')) as CountriesSource;
@@ -17,12 +18,15 @@ async function bytesOf(): Promise<Uint8Array> {
 }
 
 try {
-  const problems = checkCountries(await bytesOf(), src);
+  const bytes = await bytesOf();
+  const problems = checkCountries(bytes, src);
+  const note = fileNote(bytes, src);
+  if (note) console.log(`note: ${note}`);
   if (problems.length) {
     console.error(`Country data check failed:\n  - ${problems.join('\n  - ')}`);
     process.exit(1);
   }
-  console.log(`countries ok: ${src.countries.length} rows match ${src.dataset.name} (${src.year}), sha256 ${src.dataset.sha256.slice(0, 12)}…`);
+  console.log(`countries ok: ${src.countries.length} rows match ${src.dataset.name} (${src.year})`);
 } catch (e) {
   console.error(e instanceof Error ? e.message : e);
   process.exit(1);

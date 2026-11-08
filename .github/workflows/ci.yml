@@ -65,8 +65,9 @@ jobs:
 
   source-data:
     name: Country numbers match the Ember dataset
-    # Separate from "test" on purpose: when Ember re-publishes its file this goes red so we update the
-    # numbers knowingly (eng review D3), but it never blocks deploying an unrelated fix.
+    # Separate from "test" on purpose: when Ember revises one of Hum's country numbers this goes red so we
+    # update it knowingly (eng review D3), but it never blocks deploying an unrelated fix. A re-published file
+    # whose rows still match only logs a note.
     runs-on: ubuntu-24.04 # pinned: ubuntu-latest moves to 26.04 on 2026-10-19; upgrade deliberately once Playwright supports it
     timeout-minutes: 10
     steps:
