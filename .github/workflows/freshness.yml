@@ -19,7 +19,7 @@ concurrency:
 jobs:
   watch:
     name: Check every quote is still on its page
-    runs-on: ubuntu-24.04 # pinned, like ci.yml
+    runs-on: ubuntu-26.04 # pinned, like ci.yml
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v7

@@ -15,7 +15,7 @@ concurrency:
 jobs:
   test:
     name: Checks, tests and build
-    runs-on: ubuntu-24.04 # pinned: ubuntu-latest moves to 26.04 on 2026-10-19; upgrade deliberately once Playwright supports it
+    runs-on: ubuntu-26.04 # pinned; Playwright supports 26.04 from 1.63
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v7
@@ -68,7 +68,7 @@ jobs:
     # Separate from "test" on purpose: when Ember revises one of Hum's country numbers this goes red so we
     # update it knowingly (eng review D3), but it never blocks deploying an unrelated fix. A re-published file
     # whose rows still match only logs a note.
-    runs-on: ubuntu-24.04 # pinned: ubuntu-latest moves to 26.04 on 2026-10-19; upgrade deliberately once Playwright supports it
+    runs-on: ubuntu-26.04 # pinned; Playwright supports 26.04 from 1.63
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v7
@@ -84,7 +84,7 @@ jobs:
     name: Deploy to Cloudflare Pages
     needs: test
     if: (github.event_name == 'push' || github.event_name == 'schedule') && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-24.04 # pinned: ubuntu-latest moves to 26.04 on 2026-10-19; upgrade deliberately once Playwright supports it
+    runs-on: ubuntu-26.04 # pinned; Playwright supports 26.04 from 1.63
     timeout-minutes: 10
     permissions:
       contents: read
