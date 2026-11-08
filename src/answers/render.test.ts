@@ -54,6 +54,12 @@ describe('figures', () => {
     expect(html).toContain('not comparable');
     expect(html).not.toMatch(/\b(low|middle|high)\b/i);
   });
+  it('writes big chart values with thousands commas and keeps their decimals', () => {
+    const html = figureHtml(get('smaller-models'), companies);
+    expect(html).toContain('12,791.22 Wh');
+    expect(html).toContain('18.35 Wh');
+    expect(html).toMatch(/<span>14,070 Wh<\/span>/);
+  });
   it('uses no inline styles anywhere (the CSP refuses them)', () => {
     for (const html of [...Object.values(answerPages(src)), homeBody(src)]) expect(html).not.toMatch(/\sstyle=/);
   });

@@ -55,6 +55,9 @@ export function stampHtml(s: Stamp, tag: 'a' | 'span' = 'a'): string {
 
 /* ---------- figures: linear axes from 0; marks in SVG, every label in HTML ---------- */
 
+/** Chart values as stored (never rounded: they match their quotes), with thousands commas: 7,626.53 not 7626.53. */
+const num = (v: number) => v.toLocaleString('en-US', { maximumFractionDigits: 6 });
+
 function pointsHtml(p: Points, companies: Set<string>): string {
   const max = Math.max(...p.items.map((i) => i.value)) * 1.1;
   const x = (v: number) => (6 + (v / max) * 348).toFixed(1);
@@ -65,11 +68,11 @@ function pointsHtml(p: Points, companies: Set<string>): string {
       : `<circle class="${companies.has(i.source) ? 'm-co' : 'm-in'}" cx="${x(i.value)}" cy="20" r="7"/>`)
     .join('');
   const rows = p.items
-    .map((i) => `<li><span class="sw ${i.claim ? 'cl' : companies.has(i.source) ? 'co' : 'in'}" aria-hidden="true"></span><span><b class="num">${i.value} ${esc(unit)}</b> ${esc(i.label)}: ${esc(i.how)}${companies.has(i.source) ? ' (company figure)' : ''}</span></li>`)
+    .map((i) => `<li><span class="sw ${i.claim ? 'cl' : companies.has(i.source) ? 'co' : 'in'}" aria-hidden="true"></span><span><b class="num">${num(i.value)} ${esc(unit)}</b> ${esc(i.label)}: ${esc(i.how)}${companies.has(i.source) ? ' (company figure)' : ''}</span></li>`)
     .join('');
   return `<figure class="fig"><figcaption class="fig-t">${esc(p.title)}</figcaption>
 <svg viewBox="0 0 360 40" aria-hidden="true" focusable="false"><line class="m-axis" x1="6" y1="20" x2="354" y2="20"/>${marks}</svg>
-<div class="fig-axis num" aria-hidden="true"><span>0</span><span>${Math.round(max * 10) / 10} ${esc(unit)}</span></div>
+<div class="fig-axis num" aria-hidden="true"><span>0</span><span>${num(max >= 100 ? Math.round(max) : Math.round(max * 10) / 10)} ${esc(unit)}</span></div>
 <ul>${rows}</ul>
 <p class="fig-note">${p.items.some((i) => companies.has(i.source)) ? 'Hollow dots are the companies’ own figures. ' : ''}Unit: ${esc(p.unit)}.</p></figure>`;
 }
@@ -81,9 +84,9 @@ function rangeHtml(r: Range): string {
 <svg viewBox="0 0 360 40" aria-hidden="true" focusable="false"><line class="m-axis" x1="6" y1="20" x2="354" y2="20"/>
 <rect class="m-band" x="${x(r.low).toFixed(1)}" y="10" width="${Math.max(4, x(r.high) - x(r.low)).toFixed(1)}" height="20" rx="2"/>
 <rect class="m-claim" x="${(x(r.claim) - 6).toFixed(1)}" y="8" width="12" height="24" rx="2"/></svg>
-<div class="fig-axis num" aria-hidden="true"><span>0 ${esc(r.unit)}</span><span>${Math.round(max)} ${esc(r.unit)}</span></div>
-<ul><li><span class="sw rg" aria-hidden="true"></span><span><b class="num">${r.low} to ${r.high} ${esc(r.unit)}</b> ${esc(r.what)}</span></li>
-<li><span class="sw cl" aria-hidden="true"></span><span><b class="num">${r.claim} ${esc(r.unit)}</b> ${esc(r.claimWhat)}</span></li></ul></figure>`;
+<div class="fig-axis num" aria-hidden="true"><span>0 ${esc(r.unit)}</span><span>${num(Math.round(max))} ${esc(r.unit)}</span></div>
+<ul><li><span class="sw rg" aria-hidden="true"></span><span><b class="num">${num(r.low)} to ${num(r.high)} ${esc(r.unit)}</b> ${esc(r.what)}</span></li>
+<li><span class="sw cl" aria-hidden="true"></span><span><b class="num">${num(r.claim)} ${esc(r.unit)}</b> ${esc(r.claimWhat)}</span></li></ul></figure>`;
 }
 
 /** Sources whose figures are the companies' own (drawn hollow). */

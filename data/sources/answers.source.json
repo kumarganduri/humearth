@@ -22,7 +22,17 @@
     "training-vs-using",
     "drinking-water",
     "efficiency-rebound",
-    "data-centre-noise"
+    "data-centre-noise",
+    "is-ai-the-reason",
+    "delete-emails",
+    "big-data-centre",
+    "new-gas-plants",
+    "smaller-models",
+    "us-share",
+    "jobs",
+    "coal-kept-open",
+    "heat-reuse",
+    "how-many-data-centres"
   ],
   "sources": {
     "google": {
@@ -1008,6 +1018,830 @@
       "retrieved": "2026-10-25",
       "kind": "company_claim",
       "checked": "page"
+    },
+    "bigdc_iea_homes": {
+      "publisher": "IEA, Energy and AI (2025), executive summary",
+      "quote": "A typical AI-focused data centre consumes as much electricity as 100 000 households, but the largest ones under construction today will consume 20 times as much.",
+      "url": "https://www.iea.org/reports/energy-and-ai/executive-summary",
+      "retrieved": "2026-11-08",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "bigdc_meta": {
+      "publisher": "Meta, Richland Parish (Louisiana) data center page",
+      "quote": "This data center will play a vital role in accelerating our AI progress, delivering 5 gigawatts of compute capacity to house Hyperion, our largest multi-gigawatt AI cluster.",
+      "url": "https://datacenters.atmeta.com/richland-parish-data-center/",
+      "retrieved": "2026-11-08",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "bigdc_crusoe": {
+      "publisher": "Crusoe, press release on its Abilene, Texas AI campus (18 March 2025)",
+      "quote": "The second phase of construction, expected to be completed in mid-2026, includes six additional buildings, bringing the total facility to eight buildings, approximately 4 million square feet, and a total power capacity of 1.2 gigawatts (GW).",
+      "url": "https://www.crusoe.ai/resources/newsroom/crusoe-expands-ai-data-center-campus-in-abilene-to-1-2-gigawatts",
+      "retrieved": "2026-11-08",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "bigdc_crusoe_p1": {
+      "publisher": "Crusoe, press release on its Abilene, Texas AI campus (18 March 2025)",
+      "quote": "The initial phase, comprising two buildings at 980,000 square feet and 200+ megawatts, is expected to be energized in the first half of 2025.",
+      "url": "https://www.crusoe.ai/resources/newsroom/crusoe-expands-ai-data-center-campus-in-abilene-to-1-2-gigawatts",
+      "retrieved": "2026-11-08",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "bigdc_eia_home": {
+      "publisher": "US Energy Information Administration (EIA), FAQ: How much electricity does an American home use?",
+      "quote": "In 2022, the average annual amount of electricity sold to (purchased by) a U.S. residential electric-utility customer was 10,791 kilowatthours (kWh), an average of about 899 kWh per month.",
+      "url": "https://www.eia.gov/tools/faqs/faq.php?id=97&t=3",
+      "retrieved": "2026-11-08",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "bigdc_eia_la": {
+      "publisher": "US Energy Information Administration (EIA), FAQ: How much electricity does an American home use?",
+      "quote": "Louisiana had the highest annual electricity purchases per residential customer at 14,774 kWh",
+      "url": "https://www.eia.gov/tools/faqs/faq.php?id=97&t=3",
+      "retrieved": "2026-11-08",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "count_iea_8000": {
+      "publisher": "IEA, Electricity 2024: Analysis and forecast to 2026 (report PDF, page 32)",
+      "quote": "There are currently more than 8 000 data centres globally, with about 33% of these located in the United States, 16% in Europe and close to 10% in China.",
+      "url": "https://www.iea.org/files/18f3ed24-4b26-4c83-a3d2-8a1be51c8cc8/Electricity2024-Analysisandforecastto2026.pdf",
+      "retrieved": "2026-11-08",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "count_iea_eu": {
+      "publisher": "IEA, Electricity 2024: Analysis and forecast to 2026 (report PDF, page 32)",
+      "quote": "Around 1 240 data centres were operating within Europe in 2022, with the majority concentrated in the financial centres of Frankfurt, London, Amsterdam, Paris, and Dublin.",
+      "url": "https://www.iea.org/files/18f3ed24-4b26-4c83-a3d2-8a1be51c8cc8/Electricity2024-Analysisandforecastto2026.pdf",
+      "retrieved": "2026-11-08",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "count_iea_types": {
+      "publisher": "IEA, Energy and AI (2025), Energy demand from AI",
+      "quote": "All three types of data centres – enterprise, colocation and server provider, and hyperscale – contribute to the growth in electricity consumption.",
+      "url": "https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai",
+      "retrieved": "2026-11-08",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "count_srg_2025": {
+      "publisher": "Synergy Research Group, press release (7 April 2026)",
+      "quote": "The number of large data centers operated by hyperscale companies reached 1,360 at the end of the fourth quarter of 2025, and new data from Synergy Research Group shows that they now account for 48% of the worldwide capacity of all data centers.",
+      "url": "https://www.srgresearch.com/articles/hyperscale-operators-to-account-for-67-of-all-data-center-capacity-by-2031",
+      "retrieved": "2026-11-08",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "count_srg_pipeline": {
+      "publisher": "Synergy Research Group, press release (7 April 2026)",
+      "quote": "There are almost 800 hyperscale data centers in our known future pipeline, enabling hyperscale capacity to double in just three years.",
+      "url": "https://www.srgresearch.com/articles/hyperscale-operators-to-account-for-67-of-all-data-center-capacity-by-2031",
+      "retrieved": "2026-11-08",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "count_srg_2024": {
+      "publisher": "Synergy Research Group, press release (19 March 2025)",
+      "quote": "the number of large data centers operated by hyperscale providers increased to 1,136 at the end of 2024",
+      "url": "https://srgresearch.com/articles/hyperscale-data-center-count-hits-1136-average-size-increases-us-accounts-for-54-of-total-capacity",
+      "retrieved": "2026-11-08",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "count_srg_19": {
+      "publisher": "Synergy Research Group, press release (19 March 2025)",
+      "quote": "The research is based on an analysis of the data center footprint of 19 of the world’s major cloud and internet service firms",
+      "url": "https://srgresearch.com/articles/hyperscale-data-center-count-hits-1136-average-size-increases-us-accounts-for-54-of-total-capacity",
+      "retrieved": "2026-11-08",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "usshare_2024": {
+      "publisher": "Lawrence Berkeley National Laboratory, United States Data Center Energy Usage Report: 2025 Update (June 2026; US figures, consumption, crypto mining excluded)",
+      "quote": "The updated estimate of data center electricity use in 2024 is 192 terawatt-hours (TWh), accounting for 4.7% of total U.S. electricity consumption.",
+      "url": "https://www.energy.gov/documents/united-states-data-center-energy-usage-report-2025-update",
+      "retrieved": "2026-11-08",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "usshare_14": {
+      "publisher": "Lawrence Berkeley National Laboratory, United States Data Center Energy Usage Report: 2025 Update (June 2026; US figures)",
+      "quote": "with ever-increasing computing capabilities and power consumption, led to a 14% increase in U.S. data center electricity use between 2023 and 2024.",
+      "url": "https://www.energy.gov/documents/united-states-data-center-energy-usage-report-2025-update",
+      "retrieved": "2026-11-08",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "usshare_22": {
+      "publisher": "Lawrence Berkeley National Laboratory, United States Data Center Energy Usage Report: 2025 Update (June 2026; US figures)",
+      "quote": "In the near term, growth accelerates, with Reference Case energy consumption increasing 22% from 2024 to 2025 and 29% from 2025 to 2026.",
+      "url": "https://www.energy.gov/documents/united-states-data-center-energy-usage-report-2025-update",
+      "retrieved": "2026-11-08",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "usshare_2030": {
+      "publisher": "Lawrence Berkeley National Laboratory, United States Data Center Energy Usage Report: 2025 Update (June 2026; US figures)",
+      "quote": "The Reference Case estimate for 2030 data center electricity use is 649 TWh, representing 11.8% of forecasted 2030 U.S. electricity use",
+      "url": "https://www.energy.gov/documents/united-states-data-center-energy-usage-report-2025-update",
+      "retrieved": "2026-11-08",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "usshare_range": {
+      "publisher": "Lawrence Berkeley National Laboratory, United States Data Center Energy Usage Report: 2025 Update (June 2026; US figures)",
+      "quote": "This yields a Compounded Uncertainty Range of 521–843 TWh, equal to 9.5–15.3% of total U.S. electricity use in 2030.",
+      "url": "https://www.energy.gov/documents/united-states-data-center-energy-usage-report-2025-update",
+      "retrieved": "2026-11-08",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "usshare_hist": {
+      "publisher": "Lawrence Berkeley National Laboratory, United States Data Center Energy Usage Report: 2025 Update (June 2026), summing up earlier estimates by others",
+      "quote": "Historical estimates from sources including EPRI, Goldman Sachs, and Boston Consulting Group show broad agreement that U.S. data center electricity use grew from roughly 60–80 TWh around 2017 to approximately 150–200 TWh by 2023.",
+      "url": "https://www.energy.gov/documents/united-states-data-center-energy-usage-report-2025-update",
+      "retrieved": "2026-11-08",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "usshare_33": {
+      "publisher": "Lawrence Berkeley National Laboratory, United States Data Center Energy Usage Report: 2025 Update (June 2026; US figures, 2024 to 2030)",
+      "quote": "This would result in data centers being responsible for 33% of total load growth over the six-year period.",
+      "url": "https://www.energy.gov/documents/united-states-data-center-energy-usage-report-2025-update",
+      "retrieved": "2026-11-08",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "usshare_iea430": {
+      "publisher": "Lawrence Berkeley National Laboratory, United States Data Center Energy Usage Report: 2025 Update (June 2026), comparing US forecasts",
+      "quote": "Among industry estimates for 2030, the Reference Case falls in the upper-middle portion of the distribution ... and above IEA (2025) at approximately 430 TWh.",
+      "url": "https://www.energy.gov/documents/united-states-data-center-energy-usage-report-2025-update",
+      "retrieved": "2026-11-08",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "usshare_iea_half": {
+      "publisher": "IEA, Energy and AI (2025)",
+      "quote": "In the United States, data centres account for nearly half of electricity demand growth between now and 2030.",
+      "url": "https://www.iea.org/reports/energy-and-ai/executive-summary",
+      "retrieved": "2026-11-08",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "aigrowth_lbnl55": {
+      "publisher": "Lawrence Berkeley National Laboratory, United States Data Center Energy Usage Report: 2025 Update (June 2026; US figures)",
+      "quote": "In the Reference Case, AI servers account for 84% of total server energy use and 55% of total data center energy use.",
+      "url": "https://www.energy.gov/documents/united-states-data-center-energy-usage-report-2025-update",
+      "retrieved": "2026-11-08",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "aigrowth_lbnl_driver": {
+      "publisher": "Lawrence Berkeley National Laboratory, United States Data Center Energy Usage Report: 2025 Update (June 2026; US figures)",
+      "quote": "Increases in energy use are primarily driven by growth in both the quantity and rated power of accelerated servers shipped each year.",
+      "url": "https://www.energy.gov/documents/united-states-data-center-energy-usage-report-2025-update",
+      "retrieved": "2026-11-08",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "aigrowth_lbnl_both": {
+      "publisher": "Lawrence Berkeley National Laboratory, United States Data Center Energy Usage Report: 2025 Update (June 2026; US figures)",
+      "quote": "Between 2018 and 2024, growth in total data center energy use is driven by both rapid proliferation of AI servers and continued growth in conventional server energy demand.",
+      "url": "https://www.energy.gov/documents/united-states-data-center-energy-usage-report-2025-update",
+      "retrieved": "2026-11-08",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "aigrowth_driver": {
+      "publisher": "IEA, Energy and AI (2025)",
+      "quote": "AI is the most important driver of this growth, alongside growing demand for other digital services.",
+      "url": "https://www.iea.org/reports/energy-and-ai/executive-summary",
+      "retrieved": "2026-11-08",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "aigrowth_half": {
+      "publisher": "IEA, Energy and AI (2025), world data-centre electricity consumption, Base Case, 2024 to 2030",
+      "quote": "Accelerated servers account for almost half of the net increase in global data centre electricity consumption, while conventional servers account for only around 20%.",
+      "url": "https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai",
+      "retrieved": "2026-11-08",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "aigrowth_other": {
+      "publisher": "IEA, Energy and AI (2025), world data-centre electricity consumption, Base Case, 2024 to 2030",
+      "quote": "Other IT equipment, and infrastructure (cooling and other infrastructure) demand account for around 10% and 20% of the net increase respectively.",
+      "url": "https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai",
+      "retrieved": "2026-11-08",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "aigrowth_30": {
+      "publisher": "IEA, Energy and AI (2025), world figures",
+      "quote": "Electricity consumption in accelerated servers, which is mainly driven by AI adoption, is projected to grow by 30% annually in the Base Case, while conventional server electricity consumption growth is slower at 9% per year.",
+      "url": "https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai",
+      "retrieved": "2026-11-08",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "aigrowth_triple": {
+      "publisher": "IEA, Key Questions on Energy and AI (2026), world figures, 2025 to 2030",
+      "quote": "Electricity consumption from AI-focused data centres grows much faster than overall data centre electricity consumption, tripling in this period.",
+      "url": "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary",
+      "retrieved": "2026-11-08",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "gas_iea_driver": {
+      "publisher": "IEA, Energy and AI (2025)",
+      "quote": "Even so, new demand from data centres is a significant near-term driver of growth for natural gas-fired and coal-fired generation, through both higher utilisation of existing assets and new power plants.",
+      "url": "https://www.iea.org/reports/energy-and-ai/energy-supply-for-ai",
+      "retrieved": "2026-11-08",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "gas_iea_us": {
+      "publisher": "IEA, Energy and AI (2025), on data centres in the United States",
+      "quote": "As demand growth is particularly rapid over the next five years, natural gas is the largest source of additional supply, adding over 130 TWh of annual generation until 2030.",
+      "url": "https://www.iea.org/reports/energy-and-ai/energy-supply-for-ai",
+      "retrieved": "2026-11-08",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "gas_entergy_filing": {
+      "publisher": "POWER magazine (19 November 2024), quoting Entergy Louisiana’s application to the Louisiana Public Service Commission",
+      "quote": "With respect to generation resources, ELL [Entergy Louisiana LLC] is proposing to construct three new 1×1 CCCT generators, each of which will have a nameplate capacity of 754 MW for a combined addition of 2,262 MW of new baseload generation.",
+      "url": "https://www.powermag.com/entergy-louisiana-eyes-2-2-gw-of-new-gas-fired-generation-to-support-data-center-demand/",
+      "retrieved": "2026-11-08",
+      "kind": "report",
+      "checked": "page"
+    },
+    "gas_entergy_gas": {
+      "publisher": "POWER magazine (19 November 2024)",
+      "quote": "A filing with the Louisiana Public Service Commission shows that Entergy plans to build more than 2 GW of natural gas-fired power generation in the state, including a 1,500-MW facility in northeast Louisiana that would provide power for a large Meta data center operation in an area off Interstate 20 in Holly Ridge (Figure 1).",
+      "url": "https://www.powermag.com/entergy-louisiana-eyes-2-2-gw-of-new-gas-fired-generation-to-support-data-center-demand/",
+      "retrieved": "2026-11-08",
+      "kind": "report",
+      "checked": "page"
+    },
+    "gas_entergy_meta": {
+      "publisher": "POWER magazine (19 November 2024)",
+      "quote": "The name of the “Customer,” now known to be Meta, was redacted in the filing available on the PSC website.",
+      "url": "https://www.powermag.com/entergy-louisiana-eyes-2-2-gw-of-new-gas-fired-generation-to-support-data-center-demand/",
+      "retrieved": "2026-11-08",
+      "kind": "report",
+      "checked": "page"
+    },
+    "gas_entergy_online": {
+      "publisher": "Entergy Louisiana, press release on the Louisiana Public Service Commission’s approval (20 August 2025)",
+      "quote": "Two of the facilities will be located in Richland Parish and are expected to come online in late 2028.",
+      "url": "https://www.entergy.com/news/entergy-louisiana-receives-lpsc-approval-for-major-infrastructure-investments-to-support-metas-data-center-and-improve-reliability",
+      "retrieved": "2026-11-08",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "gas_entergy_pays": {
+      "publisher": "Entergy Louisiana, press release on the Louisiana Public Service Commission’s approval (20 August 2025)",
+      "quote": "Importantly, Meta is paying its share of the costs for the infrastructure needed to support its operations, ensuring that other customers are protected from those expenses.",
+      "url": "https://www.entergy.com/news/entergy-louisiana-receives-lpsc-approval-for-major-infrastructure-investments-to-support-metas-data-center-and-improve-reliability",
+      "retrieved": "2026-11-08",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "gas_entergy_grid": {
+      "publisher": "Entergy Louisiana, press release on the Louisiana Public Service Commission’s approval (20 August 2025)",
+      "quote": "These investments will help power one of the most advanced data centers in the world and will also reinforce our grid, create economic opportunity and support a more sustainable energy future across Louisiana.",
+      "url": "https://www.entergy.com/news/entergy-louisiana-receives-lpsc-approval-for-major-infrastructure-investments-to-support-metas-data-center-and-improve-reliability",
+      "retrieved": "2026-11-08",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "gas_gp_approved": {
+      "publisher": "Georgia Power, press release (19 December 2025)",
+      "quote": "Georgia Power announced today that the Georgia Public Service Commission (PSC) has approved a plan which will allow the company to proceed with procuring approximately 9,900 megawatts (MW) of diverse, cost-effective generation resources to serve the energy needs of a growing state.",
+      "url": "https://www.georgiapower.com/news-hub/press-releases/psc-approves-savings-for-customers-and-energy-demands.html",
+      "retrieved": "2026-11-08",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "gas_gp_requested": {
+      "publisher": "Georgia Power, press release (19 December 2025)",
+      "quote": "requested the certification of more than 3,600 MW of new combined cycle natural gas generation; more than 3,000 MW of new battery energy storage systems (BESS); 350 MW of BESS plus solar; and more than 2,800 MW of power purchase agreements.",
+      "url": "https://www.georgiapower.com/news-hub/press-releases/psc-approves-savings-for-customers-and-energy-demands.html",
+      "retrieved": "2026-11-08",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "gas_gp_largeload": {
+      "publisher": "Georgia Power, press release (19 December 2025)",
+      "quote": "The company’s latest report in November highlights that large-load growth continues to materialize with thousands of megawatts of new electrical load projected in the coming years and construction underway or pending for nearly 30 large-load projects across the state.",
+      "url": "https://www.georgiapower.com/news-hub/press-releases/psc-approves-savings-for-customers-and-energy-demands.html",
+      "retrieved": "2026-11-08",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "gas_gp_dc": {
+      "publisher": "Georgia Power, Data Centers & Your Georgia Power Bill",
+      "quote": "How does Georgia Power plan to accommodate the growth from data centers? The Integrated Resource Plan (IRP) guides investments in generation and transmission to meet forecasted energy demand, thus ensuring reliable service for all customers.",
+      "url": "https://www.georgiapower.com/about/customer-pledge/data-centers.html",
+      "retrieved": "2026-11-08",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "coal_doe_order_dc": {
+      "publisher": "US Department of Energy, emergency Order No. 202-26-39 on the J.H. Campbell plant (14 August 2026)",
+      "quote": "This determination is based on the combination of accelerating demand growth from new data centers and the retirement of existing thermal generators.",
+      "url": "https://www.energy.gov/documents/doe-order-no-202-26-39",
+      "retrieved": "2026-11-08",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "coal_doe_order_size": {
+      "publisher": "US Department of Energy, emergency Order No. 202-26-39 on the J.H. Campbell plant (14 August 2026)",
+      "quote": "The J.H. Campbell Generating Plant (Campbell Plant) is a 1,420 MW coal-fired plant primarily owned by Consumers Energy Company (Consumers) and located in West Olive, Michigan.",
+      "url": "https://www.energy.gov/documents/doe-order-no-202-26-39",
+      "retrieved": "2026-11-08",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "coal_doe_campbell_page": {
+      "publisher": "US Department of Energy, page for Order No. 202-26-39",
+      "quote": "The order directs MISO to ensure that the coal-fired J.H. Campbell Generating Plant (Campbell Plant) in West Olive, Michigan remains available to operate and to take every step to employ economic dispatch to minimize costs to ratepayers. The Campbell Plant was originally slated to shut down on May 31, 2025, 15 years before the end of its scheduled design life. This order is in effect beginning on August 17, 2026 through November 14, 2026.",
+      "url": "https://www.energy.gov/ceser/federal-power-act-section-202c-midcontinent-independent-system-operator-miso-order-no-202-1",
+      "retrieved": "2026-11-08",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "coal_court_vacate": {
+      "publisher": "US Court of Appeals for the D.C. Circuit, Michigan v. Department of Energy, No. 25-1159 (decided 11 September 2026)",
+      "quote": "Because the circumstances DOE identified in the challenged order do not warrant resort to section 202(c) as correctly interpreted, we grant the petitions for review and vacate the Order.",
+      "url": "https://media.cadc.uscourts.gov/opinions/docs/2026/09/25-1159-2192454.pdf",
+      "retrieved": "2026-11-08",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "coal_court_expired": {
+      "publisher": "US Court of Appeals for the D.C. Circuit, Michigan v. Department of Energy, No. 25-1159 (decided 11 September 2026)",
+      "quote": "And vacatur will not be disruptive because the Order under review has already expired.",
+      "url": "https://media.cadc.uscourts.gov/opinions/docs/2026/09/25-1159-2192454.pdf",
+      "retrieved": "2026-11-08",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "coal_doe_centralia": {
+      "publisher": "US Department of Energy, press release on the Centralia order (September 2026)",
+      "quote": "The emergency order directs TransAlta Centralia Generation, LLC (TransAlta) to ensure that Unit 2 of the Centralia Generating Station in Centralia, Washington, a coal-fired power plant, remains available to operate.",
+      "url": "https://www.energy.gov/articles/energy-secretary-keeps-northwest-coal-generating-plant-online",
+      "retrieved": "2026-11-08",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "coal_doe_17gw": {
+      "publisher": "US Department of Energy, press release on the Centralia order (September 2026)",
+      "quote": "For example, in 2025, more than 17 gigawatts of coal-power electricity generation were saved from going offline.",
+      "url": "https://www.energy.gov/articles/energy-secretary-keeps-northwest-coal-generating-plant-online",
+      "retrieved": "2026-11-08",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "coal_doe_craig": {
+      "publisher": "US Department of Energy, press release on the Craig order (December 2025)",
+      "quote": "Unit 1 of the coal plant was scheduled to shut down at the end of 2025. The reliable supply of power from the coal plant is essential for keeping the region’s electric grid stable.",
+      "url": "https://www.energy.gov/articles/energy-secretary-ensures-colorado-coal-plant-remains-open-prevent-blackouts",
+      "retrieved": "2026-11-08",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "coal_doe_stanton": {
+      "publisher": "US Department of Energy, press release on the Stanton order (September 2026)",
+      "quote": "The emergency order directs the Orlando Utilities Commission (OUC) to ensure that Unit 1 at the Stanton Energy Center (Stanton) in Orlando, Florida, a coal-fired power plant remains available to operate.",
+      "url": "https://www.energy.gov/articles/energy-secretary-saves-coal-fired-generation-going-offline-florida",
+      "retrieved": "2026-11-08",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "coal_gp_bowen": {
+      "publisher": "Georgia Power, press release (15 July 2025)",
+      "quote": "The company has received approval for the continued operation of coal-fired units at Plants Bowen and Scherer, which have served customers reliably for decades with 4,000 MW of generating capacity, and new pursuit of natural gas co-firing at those plants which will aid in continued compliance with federal environmental regulations.",
+      "url": "https://www.georgiapower.com/news-hub/press-releases/georgia-public-service-commission-approves-plan-to-meet-the-energy-needs-of-a-growing-georgia.html",
+      "retrieved": "2026-11-08",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "coal_gp_growth": {
+      "publisher": "Georgia Power, press release (15 July 2025)",
+      "quote": "Over the next six years, Georgia Power projects approximately 8,500 megawatts (MW) of electrical load growth – an increase of approximately 2,600 MW in peak demand by the end of 2030 when compared to projections in the 2023 IRP Update.",
+      "url": "https://www.georgiapower.com/news-hub/press-releases/georgia-public-service-commission-approves-plan-to-meet-the-energy-needs-of-a-growing-georgia.html",
+      "retrieved": "2026-11-08",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "coal_ud_dates": {
+      "publisher": "Utility Dive (16 July 2025)",
+      "quote": "Continued operation of the Scherer and Bowen coal plants, which combine for 4,000 MW but had been planned to shut down in 2028 and 2035, respectively.",
+      "url": "https://www.utilitydive.com/news/georgia-power-irp-coal-gas-plants-data-centers/753170/",
+      "retrieved": "2026-11-08",
+      "kind": "report",
+      "checked": "page"
+    },
+    "coal_ud_shaw": {
+      "publisher": "Utility Dive (16 July 2025), quoting the Georgia Public Service Commission’s chairman",
+      "quote": "“As data center construction continues in Georgia, this IRP puts us in a safe and secure spot to meet that energy need,” PSC Chairman Jason Shaw said in a statement.",
+      "url": "https://www.utilitydive.com/news/georgia-power-irp-coal-gas-plants-data-centers/753170/",
+      "retrieved": "2026-11-08",
+      "kind": "report",
+      "checked": "page"
+    },
+    "coal_iea_china": {
+      "publisher": "IEA, Energy and AI (2025)",
+      "quote": "As they are located mostly in the east of the country, the data centre electricity supply in China today is dominated by coal with a near 70% share, followed by renewables with nearly 20%, nuclear close to 10% and natural gas accounting for the remainder.",
+      "url": "https://www.iea.org/reports/energy-and-ai/energy-supply-for-ai",
+      "retrieved": "2026-11-08",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "del_gov_tip": {
+      "publisher": "UK Environment Agency and Defra, National Drought Group press release (August 2025)",
+      "quote": "Delete old emails and pictures as data centres require vast amounts of water to cool their systems.",
+      "url": "https://www.gov.uk/government/news/national-drought-group-meets-to-address-nationally-significant-water-shortfall",
+      "retrieved": "2026-11-08",
+      "kind": "report",
+      "checked": "page"
+    },
+    "del_gov_loo": {
+      "publisher": "UK Environment Agency and Defra, National Drought Group press release (August 2025)",
+      "quote": "Fix a leaking toilet – leaky loos can waste 200-400 litres a day.",
+      "url": "https://www.gov.uk/government/news/national-drought-group-meets-to-address-nationally-significant-water-shortfall",
+      "retrieved": "2026-11-08",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "del_gov_yorks": {
+      "publisher": "UK Environment Agency and Defra, National Drought Group press release (August 2025), reporting Yorkshire Water’s figure",
+      "quote": "Yorkshire Water reporting a 10% reduction in domestic demand following their hosepipe ban. This equates to saving up to 80 million litres per day",
+      "url": "https://www.gov.uk/government/news/national-drought-group-meets-to-address-nationally-significant-water-shortfall",
+      "retrieved": "2026-11-08",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "del_iea_storage": {
+      "publisher": "IEA, Energy and AI (2025): share of data-centre electricity by equipment",
+      "quote": "Storage systems are devices used for centralised data storage and backup, and account for around 5% of electricity consumption.",
+      "url": "https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai",
+      "retrieved": "2026-11-08",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "del_drive_size": {
+      "publisher": "Seagate, Exos X18 data sheet (data-centre hard drive)",
+      "quote": "Market-leading 18TB HDD",
+      "url": "https://www.seagate.com/content/dam/seagate/migrated-assets/www-content/datasheets/pdfs/exos-x18-channel-DS2045-4-2106US-en_US.pdf",
+      "retrieved": "2026-11-08",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "del_drive_idle": {
+      "publisher": "Seagate, Exos X18 data sheet, power table (first column: the 18TB SATA model)",
+      "quote": "Idle A (W) Average 5.3W",
+      "url": "https://www.seagate.com/content/dam/seagate/migrated-assets/www-content/datasheets/pdfs/exos-x18-channel-DS2045-4-2106US-en_US.pdf",
+      "retrieved": "2026-11-08",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "del_drive_hours": {
+      "publisher": "Seagate, Exos X18 data sheet",
+      "quote": "Power-On Hours per Year (24×7) 8760",
+      "url": "https://www.seagate.com/content/dam/seagate/migrated-assets/www-content/datasheets/pdfs/exos-x18-channel-DS2045-4-2106US-en_US.pdf",
+      "retrieved": "2026-11-08",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "del_li_onsite": {
+      "publisher": "Li, Yang, Islam, Ren (UC Riverside), Making AI Less Thirsty: water evaporated at the data centre per kWh",
+      "quote": "data centers can evaporate approximately 1 – 9 liters per kWh of server energy",
+      "url": "https://arxiv.org/html/2304.03271v5",
+      "retrieved": "2026-11-08",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "del_li_power": {
+      "publisher": "Li, Yang, Islam, Ren (UC Riverside), Making AI Less Thirsty: water consumed at US power stations per kWh of electricity",
+      "quote": "our value of 3.14 L/kWh for the U.S. average water consumption factor",
+      "url": "https://arxiv.org/html/2304.03271v5",
+      "retrieved": "2026-11-08",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "del_masley": {
+      "publisher": "Andy Masley, independent blog (13 August 2025), his own sums from a drive data sheet and average water use",
+      "quote": "To save as much water in data centers as fixing your toilet would save, you would need to delete 1.5 billion photos, or 200 billion emails.",
+      "url": "https://blog.andymasley.com/p/contra-the-uk-government-please-dont",
+      "retrieved": "2026-11-08",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "small_hf_3b_off": {
+      "publisher": "Hugging Face, AI Energy Score v2 (open models, measured; GPU energy in Wh per 1k queries)",
+      "quote": "SmolLM3-3B 3B Off 18.35",
+      "url": "https://huggingface.co/blog/sasha/ai-energy-score-v2",
+      "retrieved": "2026-11-08",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "small_hf_3b_on": {
+      "publisher": "Hugging Face, AI Energy Score v2 (open models, measured; GPU energy in Wh per 1k queries)",
+      "quote": "SmolLM3-3B 3B On 12,791.22",
+      "url": "https://huggingface.co/blog/sasha/ai-energy-score-v2",
+      "retrieved": "2026-11-08",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "small_hf_70b_off": {
+      "publisher": "Hugging Face, AI Energy Score v2 (open models, measured; GPU energy in Wh per 1k queries)",
+      "quote": "DeepSeek-R1-Distill-Llama-70B 70B Off 49.53",
+      "url": "https://huggingface.co/blog/sasha/ai-energy-score-v2",
+      "retrieved": "2026-11-08",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "small_hf_70b_on": {
+      "publisher": "Hugging Face, AI Energy Score v2 (open models, measured; GPU energy in Wh per 1k queries)",
+      "quote": "DeepSeek-R1-Distill-Llama-70B 70B On 7,626.53",
+      "url": "https://huggingface.co/blog/sasha/ai-energy-score-v2",
+      "retrieved": "2026-11-08",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "small_hf_assume": {
+      "publisher": "Hugging Face, AI Energy Score v2",
+      "quote": "This matters because many people still assume that smaller models are always better, but the intensity of the reasoning process now has to be considered as well.",
+      "url": "https://huggingface.co/blog/sasha/ai-energy-score-v2",
+      "retrieved": "2026-11-08",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "small_php_size": {
+      "publisher": "Luccioni, Jernite & Strubell, Power Hungry Processing (FAccT 2024; open models, measured)",
+      "quote": "size and emissions are correlated, with smaller models emitting less carbon and using less energy.",
+      "url": "https://arxiv.org/html/2311.16863",
+      "retrieved": "2026-11-08",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "small_php_small": {
+      "publisher": "Luccioni, Jernite & Strubell, Power Hungry Processing, Table 3 (model, parameters, g CO2e, energy in kWh per 1,000 inferences)",
+      "quote": "BLOOMz-560M 559M 7.5 0.054",
+      "url": "https://arxiv.org/html/2311.16863",
+      "retrieved": "2026-11-08",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "small_php_big": {
+      "publisher": "Luccioni, Jernite & Strubell, Power Hungry Processing, Table 3 (model, parameters, g CO2e, energy in kWh per 1,000 inferences)",
+      "quote": "BLOOMz-7B 7B 14.46 0.104",
+      "url": "https://arxiv.org/html/2311.16863",
+      "retrieved": "2026-11-08",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "small_php_task": {
+      "publisher": "Luccioni, Jernite & Strubell, Power Hungry Processing",
+      "quote": "the task structure accounts for more of the variation than the model size does.",
+      "url": "https://arxiv.org/html/2311.16863",
+      "retrieved": "2026-11-08",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "small_google_flash": {
+      "publisher": "Google Cloud (Google’s own description of its Gemini models)",
+      "quote": "Techniques like distillation create smaller, more efficient models (Gemini Flash and Flash-Lite) for serving that use our larger, more capable models as teachers.",
+      "url": "https://cloud.google.com/blog/products/infrastructure/measuring-the-environmental-impact-of-ai-inference",
+      "retrieved": "2026-11-08",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "small_epoch_mini": {
+      "publisher": "Epoch AI",
+      "quote": "So there is a good chance that o3-mini has a lower per-token energy cost than GPT-4o, but this could easily be outweighed by long reasoning chains.",
+      "url": "https://epoch.ai/gradient-updates/how-much-energy-does-chatgpt-use",
+      "retrieved": "2026-11-08",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "jobs_jlarc_typical": {
+      "publisher": "Virginia Joint Legislative Audit and Review Commission (JLARC), Data Centers in Virginia, Report 598, December 2024 (archived copy)",
+      "quote": "For example, several data center representatives indicated that a typical 250,000-square-foot data center may have approximately 50 full-time workers (one employee per 5,000 square feet versus one employee per 650 square feet for some distribution centers).",
+      "url": "https://web.archive.org/web/20251231092219/https://jlarc.virginia.gov/pdfs/reports/Rpt598.pdf",
+      "retrieved": "2026-11-08",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "jobs_jlarc_half": {
+      "publisher": "Virginia Joint Legislative Audit and Review Commission (JLARC), Data Centers in Virginia, Report 598, December 2024 (archived copy)",
+      "quote": "The other half are contract workers, including electricians, pipefitters, and security personnel who work full-time at the facility",
+      "url": "https://web.archive.org/web/20251231092219/https://jlarc.virginia.gov/pdfs/reports/Rpt598.pdf",
+      "retrieved": "2026-11-08",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "jobs_jlarc_build": {
+      "publisher": "Virginia Joint Legislative Audit and Review Commission (JLARC), Data Centers in Virginia, Report 598, December 2024 (archived copy)",
+      "quote": "Construction of an individual data center building usually takes about 12 to 18 months, and data center representatives indicated that, at the height of construction, approximately 1,500 workers are on site from various construction-related industries.",
+      "url": "https://web.archive.org/web/20251231092219/https://jlarc.virginia.gov/pdfs/reports/Rpt598.pdf",
+      "retrieved": "2026-11-08",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "jobs_jlarc_fy23": {
+      "publisher": "Virginia Joint Legislative Audit and Review Commission (JLARC), Data Centers in Virginia, Report 598, December 2024 (archived copy)",
+      "quote": "Data center direct employees and contract workers accounted for, by JLARC staff estimates, over 8,000 full-time jobs in FY23.",
+      "url": "https://web.archive.org/web/20251231092219/https://jlarc.virginia.gov/pdfs/reports/Rpt598.pdf",
+      "retrieved": "2026-11-08",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "jobs_jlarc_total": {
+      "publisher": "Virginia Joint Legislative Audit and Review Commission (JLARC), Data Centers in Virginia, Report 598, December 2024 (archived copy)",
+      "quote": "The analysis estimated that the data center industry provides approximately 74,000 jobs, $5.5 billion in labor income, and $9.1 billion in Virginia GDP overall to the state economy annually",
+      "url": "https://web.archive.org/web/20251231092219/https://jlarc.virginia.gov/pdfs/reports/Rpt598.pdf",
+      "retrieved": "2026-11-08",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "jobs_jlarc_share": {
+      "publisher": "Virginia Joint Legislative Audit and Review Commission (JLARC), Data Centers in Virginia, Report 598, December 2024 (archived copy)",
+      "quote": "These estimates are just over 1 percent of total statewide employment, income, and Virginia GDP during the last three years.",
+      "url": "https://web.archive.org/web/20251231092219/https://jlarc.virginia.gov/pdfs/reports/Rpt598.pdf",
+      "retrieved": "2026-11-08",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "jobs_jlarc_construction": {
+      "publisher": "Virginia Joint Legislative Audit and Review Commission (JLARC), Data Centers in Virginia, Report 598, December 2024 (archived copy)",
+      "quote": "Data centers were estimated to contribute 59,000 jobs annually during the construction phase, accounting for 80 percent of total annual jobs resulting from data centers.",
+      "url": "https://web.archive.org/web/20251231092219/https://jlarc.virginia.gov/pdfs/reports/Rpt598.pdf",
+      "retrieved": "2026-11-08",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "jobs_jlarc_largest": {
+      "publisher": "Virginia Joint Legislative Audit and Review Commission (JLARC), Data Centers in Virginia, Report 598, December 2024 (archived copy)",
+      "quote": "Northern Virginia is the largest data center market in the world",
+      "url": "https://web.archive.org/web/20251231092219/https://jlarc.virginia.gov/pdfs/reports/Rpt598.pdf",
+      "retrieved": "2026-11-08",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "jobs_jlarc_exemption": {
+      "publisher": "Virginia Joint Legislative Audit and Review Commission (JLARC), Data Centers in Virginia, Report 598, December 2024 (archived copy)",
+      "quote": "To qualify, data centers must create a minimum of 50 jobs paying at least 150 percent of the prevailing annual average wage in the locality where the data center is located and make a $150 million capital investment.",
+      "url": "https://web.archive.org/web/20251231092219/https://jlarc.virginia.gov/pdfs/reports/Rpt598.pdf",
+      "retrieved": "2026-11-08",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "jobs_jlarc_collective": {
+      "publisher": "Virginia Joint Legislative Audit and Review Commission (JLARC), Data Centers in Virginia, Report 598, December 2024 (archived copy)",
+      "quote": "Current law allows all of a company’s data centers in a specific locality to collectively qualify for … the exemption. Therefore, the company reports data to VEDP for all of its data centers in each locality where it operates rather than by each individual data center.",
+      "url": "https://web.archive.org/web/20251231092219/https://jlarc.virginia.gov/pdfs/reports/Rpt598.pdf",
+      "retrieved": "2026-11-08",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "jobs_led_meta_jobs": {
+      "publisher": "Louisiana Economic Development, news release on Meta’s Richland Parish data centre (13 July 2026)",
+      "quote": "The project is expected to support 7,500 construction jobs at peak construction and approximately 1,000 operational jobs.",
+      "url": "https://www.opportunitylouisiana.gov/news/meta-commits-more-than-50-billion-for-north-louisiana-project-becoming-one-of-the-largest-data-centers-in-history",
+      "retrieved": "2026-11-08",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "jobs_led_meta_invest": {
+      "publisher": "Louisiana Economic Development, news release on Meta’s Richland Parish data centre (13 July 2026)",
+      "quote": "Meta announced it is committing more than $50 billion to its Richland Parish Data Center project, expanding the campus to nearly 10 million square feet and 5 gigawatts of IT capacity.",
+      "url": "https://www.opportunitylouisiana.gov/news/meta-commits-more-than-50-billion-for-north-louisiana-project-becoming-one-of-the-largest-data-centers-in-history",
+      "retrieved": "2026-11-08",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "heat_eed_rule": {
+      "publisher": "EU Energy Efficiency Directive (EU) 2023/1791, Article 26(6)",
+      "quote": "Member States shall ensure that data centres with a total rated energy input exceeding 1 MW utilise the waste heat or other waste heat recovery applications unless they can show that it is not technically or economically feasible",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023L1791",
+      "retrieved": "2026-11-08",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "heat_com_reported": {
+      "publisher": "European Commission, Report on the energy efficiency of data centres in the EU, COM(2026) 500, September 2026",
+      "quote": "770 data centres reported their data in the first reporting period, representing around 36% of the estimated total of data centres in the EU falling under the reporting requirement",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:52026DC0500",
+      "retrieved": "2026-11-08",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "heat_com_67": {
+      "publisher": "European Commission, Report on the energy efficiency of data centres in the EU, COM(2026) 500, September 2026",
+      "quote": "Only 67 data centres reported some waste heat reuse in the first reporting period.",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:52026DC0500",
+      "retrieved": "2026-11-08",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "heat_com_share": {
+      "publisher": "European Commission, Report on the energy efficiency of data centres in the EU, COM(2026) 500, September 2026",
+      "quote": "approximately 1.8% … of the total heat generated by data centres is being reused in the EU.",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:52026DC0500",
+      "retrieved": "2026-11-08",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "heat_com_allheat": {
+      "publisher": "European Commission, Report on the energy efficiency of data centres in the EU, COM(2026) 500, September 2026",
+      "quote": "In the case of data centres, energy reuse focuses on waste heat since practically all electricity consumed by a data centre eventually turns to heat.",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:52026DC0500",
+      "retrieved": "2026-11-08",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "heat_com_caveat": {
+      "publisher": "European Commission, Report on the energy efficiency of data centres in the EU, COM(2026) 500, September 2026",
+      "quote": "This figure may not be fully representative of the data centre heat reuse landscape in the EU as some computed values seemed unrealistically high, although they could not be fully falsified. Moreover, although there are known heat reuse projects in some Member States, those same Member States have not reported any data centres on heat reuse.",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:52026DC0500",
+      "retrieved": "2026-11-08",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "heat_com_seasons": {
+      "publisher": "European Commission, Report on the energy efficiency of data centres in the EU, COM(2026) 500, September 2026",
+      "quote": "Special attention also needs to be given to climatic and seasonal variations, as demand for heat reuse is lower in warmer climate zones than in colder regions. Even in regions with high heating demand, the seasonality of demand remains a major barrier for high heat reuse rates.",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:52026DC0500",
+      "retrieved": "2026-11-08",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "heat_com_offtakers": {
+      "publisher": "European Commission, Report on the energy efficiency of data centres in the EU, COM(2026) 500, September 2026",
+      "quote": "waste heat reuse is only possible if there is demand for waste heat from local heat off-takers and local infrastructure for waste heat reuse exists around the facilities",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:52026DC0500",
+      "retrieved": "2026-11-08",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "heat_odense_homes": {
+      "publisher": "Ramboll (engineers for Fjernvarme Fyn), project page on heat recovery from Meta’s data centre in Odense, Denmark",
+      "quote": "The project, called Tietgenbyen Energy Center, will provide heat to more than 12,000 homes (in 2023), reducing the city's reliance on coal",
+      "url": "https://www.ramboll.com/en-us/projects/energy/meta-surplus-heat-to-district-heating",
+      "retrieved": "2026-11-08",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "heat_odense_pumps": {
+      "publisher": "Ramboll (engineers for Fjernvarme Fyn), project page on heat recovery from Meta’s data centre in Odense, Denmark",
+      "quote": "Here, large electrically driven ammonia heat pumps raise the heat temperature to 70-75°C, suitable for the city's district heating network.",
+      "url": "https://www.ramboll.com/en-us/projects/energy/meta-surplus-heat-to-district-heating",
+      "retrieved": "2026-11-08",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "heat_odense_cap": {
+      "publisher": "Fjernvarme Fyn (Odense’s district heating company), press release in Danish (17 January 2025)",
+      "quote": "Ind til nu har overskudsvarmen været pålagt et prisloft, der har begrænset Fjernvarme Fyn i deres brug af overskudsvarmen.",
+      "url": "https://via.ritzau.dk/pressemeddelelse/14212302/stor-sejr-for-fjernvarmekunder?publisherId=13562371",
+      "retrieved": "2026-11-08",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "heat_odense_capgone": {
+      "publisher": "Fjernvarme Fyn (Odense’s district heating company), press release in Danish (17 January 2025)",
+      "quote": "Regeringen og Folketingets partier har besluttet at afskaffe prisloftet på overskudsvarme.",
+      "url": "https://via.ritzau.dk/pressemeddelelse/14212302/stor-sejr-for-fjernvarmekunder?publisherId=13562371",
+      "retrieved": "2026-11-08",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "heat_fortum_40": {
+      "publisher": "Fortum, press release on its heat pump plants at Microsoft’s data centre sites near Helsinki (May 2026)",
+      "quote": "Once fully implemented, data centre waste heat is expected to cover approximately 40 per cent of the total yearly 2 terawatt hour district heat demand of the 250,000 heat users in the area",
+      "url": "https://www.fortum.com/media/2026/05/fortum-has-started-heat-production-two-large-data-centre-sites-finland",
+      "retrieved": "2026-11-08",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "heat_fortum_start": {
+      "publisher": "Fortum, press release on its heat pump plants at Microsoft’s data centre sites near Helsinki (May 2026)",
+      "quote": "The recovery of waste heat from these Microsoft data centre sites will begin step by step next year, in line with Microsoft’s construction and commissioning schedule.",
+      "url": "https://www.fortum.com/media/2026/05/fortum-has-started-heat-production-two-large-data-centre-sites-finland",
+      "retrieved": "2026-11-08",
+      "kind": "company_claim",
+      "checked": "page"
     }
   },
   "calcs": {
@@ -1305,6 +2139,158 @@
       "text": "(26.5% + 38%) ÷ 2 ≈ 32%",
       "expr": "(26.5+38)/2",
       "result": 32.25
+    },
+    "bigdc_home_kw": {
+      "text": "An average US home buys 10,791 kWh a year. Spread over 365 days × 24 hours, that’s about 1.23 kW, all the time",
+      "expr": "10791/(365*24)",
+      "result": 1.23185,
+      "assume": {
+        "24": "hours in a day"
+      }
+    },
+    "bigdc_iea_largest": {
+      "text": "IEA: a typical AI data centre uses as much as 100,000 households. The largest being built, 20 times that: 100,000 × 20 = 2,000,000 households",
+      "expr": "100000*20",
+      "result": 2000000
+    },
+    "bigdc_p1_homes": {
+      "text": "Crusoe’s first phase, 200 MW = 200,000 kW, drawn 24 hours a day for 365 days ÷ 10,791 kWh a home ≈ 162,000 US homes, at full power",
+      "expr": "200*1000*24*365/10791",
+      "result": 162358.0,
+      "assume": {
+        "24": "hours in a day"
+      }
+    },
+    "bigdc_abilene_homes": {
+      "text": "Abilene, 1.2 GW = 1,200,000 kW, drawn 24 hours a day for 365 days ÷ 10,791 kWh a home ≈ 974,000 US homes, at full power",
+      "expr": "1.2*1e6*24*365/10791",
+      "result": 974145.0,
+      "assume": {
+        "24": "hours in a day"
+      }
+    },
+    "bigdc_hyperion_homes": {
+      "text": "Meta’s 5 GW = 5,000,000 kW, drawn 24 hours a day for 365 days ÷ 10,791 kWh a home ≈ 4 million US homes (4,060,000), at full power",
+      "expr": "5*1e6*24*365/10791",
+      "result": 4058940.0,
+      "assume": {
+        "24": "hours in a day"
+      }
+    },
+    "bigdc_hyperion_la": {
+      "text": "Meta’s 5 GW = 5,000,000 kW, drawn 24 hours a day for 365 days ÷ 14,774 kWh a Louisiana home ≈ 3 million Louisiana homes (2,960,000), at full power",
+      "expr": "5*1e6*24*365/14774",
+      "result": 2964670.0,
+      "assume": {
+        "24": "hours in a day"
+      }
+    },
+    "bigdc_hyperion_twh": {
+      "text": "5 GW × 24 hours × 365 days = 43,800 GWh ≈ 44 TWh in a year, at full power",
+      "expr": "5*24*365/1000",
+      "result": 43.8,
+      "assume": {
+        "24": "hours in a day"
+      }
+    },
+    "bigdc_hyperion_share": {
+      "text": "44 TWh ÷ 485 TWh (all data centres, 2025) ≈ 9%",
+      "expr": "43.8/485*100",
+      "result": 9.03093
+    },
+    "count_us": {
+      "text": "About 33% of 8,000 ≈ 2,640 data centres in the US (IEA, 2024 report; it says “more than”, so this is a floor)",
+      "expr": "8000*33/100",
+      "result": 2640
+    },
+    "count_hyper_share": {
+      "text": "1,360 hyperscale ÷ 8,000 in all ≈ 17%. Rough: the two counts are from different years and different sources",
+      "expr": "1360/8000*100",
+      "result": 17
+    },
+    "count_growth": {
+      "text": "1,360 at the end of 2025 − 1,136 at the end of 2024 = 224 more hyperscale data centres in a year",
+      "expr": "1360-1136",
+      "result": 224
+    },
+    "usshare_x": {
+      "text": "649 TWh in 2030 ÷ 192 TWh in 2024 ≈ 3.4 times as much",
+      "expr": "649/192",
+      "result": 3.38
+    },
+    "aigrowth_rest": {
+      "text": "100% − 20% (ordinary servers) − 10% (other IT) − 20% (cooling and other infrastructure) = about 50%, the IEA’s “almost half” for AI-type servers",
+      "expr": "100-20-10-20",
+      "result": 50
+    },
+    "del_photos_wh": {
+      "text": "One 18 TB data-centre drive idles at 5.3 W for 8,760 hours a year. Assume 1,000 photos of 5 MB each, kept as 3 copies: 15 GB. 5.3 × 8,760 ÷ 18 TB × 0.015 TB = about 39 Wh a year (the drive only).",
+      "expr": "5.3*8760/18*1000*5*3/1e6",
+      "result": 38.69,
+      "assume": {
+        "5": "a phone photo is about 5 MB",
+        "3": "data centres keep about 3 copies of each file"
+      }
+    },
+    "del_photos_phone": {
+      "text": "39 Wh ÷ 19 Wh per phone charge = about 2 phone charges a year",
+      "expr": "5.3*8760/18*1000*5*3/1e6/19",
+      "result": 2.036
+    },
+    "del_photos_ml_low": {
+      "text": "39 Wh × (1 litre per kWh at the data centre + 3.14 at the power station) = about 160 ml of water a year",
+      "expr": "5.3*8760/18*1000*5*3/1e6*(1+3.14)",
+      "result": 160.18
+    },
+    "del_photos_ml_high": {
+      "text": "39 Wh × (9 litres per kWh at the data centre + 3.14 at the power station) = about 470 ml of water a year",
+      "expr": "5.3*8760/18*1000*5*3/1e6*(9+3.14)",
+      "result": 469.7
+    },
+    "del_loo_ratio": {
+      "text": "A leaky loo’s 200 litres a day ÷ 470 ml = about 426 times as much water, every day",
+      "expr": "200*1000/(5.3*8760/18*1000*5*3/1e6*(9+3.14))",
+      "result": 425.8
+    },
+    "small_ratio_off": {
+      "text": "Thinking off: 49.53 Wh ÷ 18.35 Wh per 1,000 questions = the 70B model used about 2.7 times as much as the 3B model",
+      "expr": "49.53/18.35",
+      "result": 2.699
+    },
+    "small_think_vs_big": {
+      "text": "Thinking on: 12,791.22 Wh ÷ 7,626.53 Wh = the 3B model used about 1.7 times as much as the 70B model",
+      "expr": "12791.22/7626.53",
+      "result": 1.677
+    },
+    "small_think_vs_off": {
+      "text": "12,791.22 Wh (3B, thinking on) ÷ 49.53 Wh (70B, thinking off) = about 258 times as much",
+      "expr": "12791.22/49.53",
+      "result": 258.25
+    },
+    "small_bloom_energy": {
+      "text": "0.104 kWh ÷ 0.054 kWh per 1,000 inferences = BLOOMz-7B used about 1.9 times as much as BLOOMz-560M",
+      "expr": "0.104/0.054",
+      "result": 1.926
+    },
+    "small_bloom_params": {
+      "text": "7 billion ÷ 559 million parameters = BLOOMz-7B is about 12.5 times bigger",
+      "expr": "7*1000/559",
+      "result": 12.52
+    },
+    "jobs_build_ratio": {
+      "text": "About 1,500 workers on site at the peak of building ÷ about 50 full-time workers once it runs = 30 times as many",
+      "expr": "1500 / 50",
+      "result": 30
+    },
+    "jobs_meta_per_job": {
+      "text": "More than $50 billion ÷ about 1,000 operational jobs = more than $50 million of investment per permanent job",
+      "expr": "50 * 1e9 / 1000",
+      "result": 50000000
+    },
+    "heat_fortum_twh": {
+      "text": "40% of 2 TWh a year = 0.8 TWh of heat a year",
+      "expr": "40 / 100 * 2",
+      "result": 0.8
     }
   },
   "ladder": [
@@ -2478,6 +3464,700 @@
       ],
       "chips": [
         "company figures"
+      ]
+    },
+    {
+      "slug": "big-data-centre",
+      "type": "how-much",
+      "cat": "Comparisons and myths",
+      "q": "How much electricity does one big AI data centre use, compared with homes?",
+      "guess": {
+        "prompt": "Meta says its Louisiana AI campus will have 5 gigawatts of compute capacity. Running flat out, that’s the electricity of about how many average US homes?",
+        "options": [
+          "40,000",
+          "400,000",
+          "4 million",
+          "40 million"
+        ],
+        "right": 2
+      },
+      "result": "Up to millions of homes: about 4 million for Meta’s planned 5 GW campus",
+      "reveal": "A typical AI data centre uses as much electricity as 100,000 households, the IEA says. The largest ones being built will use 20 times that.",
+      "answer": "It depends a lot on size. The IEA says a typical AI-focused data centre uses as much electricity as 100,000 households, and the largest ones being built will use 20 times as much: about 2,000,000 households. Companies give the size of a campus as power (how fast it can draw electricity), not as energy used in a year. An average US home bought 10,791 kWh in 2022, which is about 1.23 kW, all the time (Hum’s sum). Crusoe’s AI campus in Abilene, Texas is planned at 1.2 GW: at full power, that’s about 974,000 US homes. Meta says its Richland Parish campus in Louisiana will deliver 5 GW of compute capacity: about 4 million US homes, or about 3 million Louisiana homes, which use more. These are what the campuses would consume, not generate. They are the companies’ own plans, and real use is lower because sites don’t run flat out all the time.",
+      "world": "All the world’s data centres consumed about 485 TWh of electricity in 2025 (IEA). Meta’s 5 GW campus, run flat out for a year, would use about 44 TWh: about 9% of that, from one site.",
+      "you": false,
+      "points": {
+        "title": "How many homes? If each ran at full power all year",
+        "unit": "homes",
+        "items": [
+          {
+            "value": 100000,
+            "label": "Typical AI data centre (IEA)",
+            "how": "IEA: as much as 100,000 households",
+            "source": "bigdc_iea_homes"
+          },
+          {
+            "value": 162358,
+            "label": "Crusoe Abilene, first phase (200 MW)",
+            "how": "Hum’s sum with the EIA’s average US home",
+            "source": "bigdc_crusoe_p1"
+          },
+          {
+            "value": 974145,
+            "label": "Crusoe Abilene, planned (1.2 GW)",
+            "how": "Hum’s sum with the EIA’s average US home",
+            "source": "bigdc_crusoe",
+            "claim": true
+          },
+          {
+            "value": 2000000,
+            "label": "Largest being built (IEA)",
+            "how": "IEA: 20 times a typical one",
+            "source": "bigdc_iea_homes"
+          },
+          {
+            "value": 4058940,
+            "label": "Meta Richland Parish, planned (5 GW)",
+            "how": "Hum’s sum with the EIA’s average US home",
+            "source": "bigdc_meta",
+            "claim": true
+          }
+        ]
+      },
+      "dontknow": [
+        "Companies publish capacity, the most power a campus can draw. None of them publishes how much electricity these campuses actually use in a year.",
+        "Meta says “compute capacity”. Its page doesn’t say whether the 5 GW includes cooling and the rest of the site.",
+        "The IEA’s summary doesn’t say which country’s households it means, so its 100,000 isn’t quite the same as Hum’s US homes.",
+        "Crusoe expected Abilene’s second phase to be finished in mid-2026. Hum hasn’t checked that it is."
+      ],
+      "next": {
+        "deeper": "nuclear-restarts",
+        "bigger": "world-share",
+        "closer": "bills"
+      },
+      "share": "One big AI campus can need as much electricity as millions of homes. Meta’s planned 5 GW campus in Louisiana, run flat out, matches about 4 million average US homes (Hum’s sum from EIA figures).",
+      "chips": [
+        "company figures"
+      ],
+      "cites": [
+        "bigdc_iea_homes",
+        "bigdc_crusoe",
+        "bigdc_crusoe_p1",
+        "bigdc_meta",
+        "bigdc_eia_home",
+        "bigdc_eia_la",
+        "iea_485"
+      ],
+      "calcs": [
+        "bigdc_home_kw",
+        "bigdc_iea_largest",
+        "bigdc_p1_homes",
+        "bigdc_abilene_homes",
+        "bigdc_hyperion_homes",
+        "bigdc_hyperion_la",
+        "bigdc_hyperion_twh",
+        "bigdc_hyperion_share"
+      ]
+    },
+    {
+      "slug": "how-many-data-centres",
+      "type": "how-much",
+      "cat": "The world's total",
+      "q": "How many data centres are there in the world?",
+      "guess": {
+        "prompt": "About how many giant ‘hyperscale’ data centres did the big cloud and internet companies run at the end of 2025?",
+        "options": [
+          "136",
+          "1,360",
+          "13,600",
+          "136,000"
+        ],
+        "right": 1
+      },
+      "result": "More than 8,000, but nobody keeps an official count",
+      "reveal": "The IEA counted more than 8,000 in its 2024 report. About 1,360 are giant ‘hyperscale’ ones, and those hold 48% of all data-centre capacity.",
+      "answer": "It depends what you count, and there’s no official world count. The IEA’s Electricity 2024 report said there were more than 8,000 data centres, about 33% in the US, 16% in Europe and close to 10% in China. The IEA sorts them into three kinds: a company’s own (enterprise), rented space (colocation) and the giants (hyperscale). The giants are counted on their own. Synergy Research Group, a market-research firm, follows 19 big cloud and internet companies. They ran 1,360 large ‘hyperscale’ data centres at the end of 2025, up 224 in a year. That’s only about 17% of the IEA’s count (rough, since the years differ), but they hold 48% of the world’s data-centre capacity. So counting buildings says less than counting power.",
+      "world": "The giants are still growing: Synergy says almost 800 more hyperscale data centres are in the pipeline, enough to double their capacity in about three years.",
+      "you": false,
+      "points": {
+        "title": "Counting data centres",
+        "unit": "data centres",
+        "items": [
+          {
+            "value": 8000,
+            "label": "World, all kinds (IEA, 2024 report)",
+            "how": "IEA: “more than 8,000”",
+            "source": "count_iea_8000"
+          },
+          {
+            "value": 2640,
+            "label": "In the US",
+            "how": "Hum’s sum: about 33% of 8,000",
+            "source": "count_iea_8000"
+          },
+          {
+            "value": 1240,
+            "label": "In Europe, 2022 (IEA)",
+            "how": "IEA: around 1,240 operating",
+            "source": "count_iea_eu"
+          },
+          {
+            "value": 1360,
+            "label": "Hyperscale, end of 2025 (Synergy)",
+            "how": "Large data centres of 19 big firms",
+            "source": "count_srg_2025"
+          },
+          {
+            "value": 1136,
+            "label": "Hyperscale, end of 2024 (Synergy)",
+            "how": "Large data centres of 19 big firms",
+            "source": "count_srg_2024"
+          }
+        ]
+      },
+      "dontknow": [
+        "No government or international agency keeps an official count of the world’s data centres.",
+        "The IEA’s 8,000 is from its 2024 report, and Hum hasn’t found how it defines a data centre, so it can’t be lined up exactly with Synergy’s 1,360.",
+        "Online directories list more sites than the IEA, but Hum couldn’t open them to check their totals.",
+        "Small server rooms inside offices, schools and hospitals aren’t in any count Hum found."
+      ],
+      "next": {
+        "deeper": "world-share",
+        "bigger": "efficiency-rebound",
+        "closer": "data-centre-noise"
+      },
+      "share": "There’s no official count of the world’s data centres. The IEA counted more than 8,000. About 1,360 are giant ‘hyperscale’ ones, and those hold 48% of all data-centre capacity (Synergy Research Group).",
+      "chips": [],
+      "cites": [
+        "count_iea_8000",
+        "count_iea_eu",
+        "count_iea_types",
+        "count_srg_2025",
+        "count_srg_2024",
+        "count_srg_19",
+        "count_srg_pipeline"
+      ],
+      "calcs": [
+        "count_us",
+        "count_hyper_share",
+        "count_growth"
+      ]
+    },
+    {
+      "slug": "us-share",
+      "type": "how-much",
+      "cat": "The world's total",
+      "q": "What share of US electricity do data centres use, and how fast is it rising?",
+      "guess": {
+        "prompt": "What share of US electricity did data centres use in 2024?",
+        "options": [
+          "0.5%",
+          "4.7%",
+          "15%",
+          "30%"
+        ],
+        "right": 1
+      },
+      "result": "About 4.7%, and rising fast",
+      "reveal": "About 192 TWh in 2024, by Berkeley Lab’s count. Its central forecast for 2030 is 649 TWh, about 11.8% of US electricity.",
+      "answer": "About 4.7% of US electricity consumption in 2024, or 192 TWh, by Berkeley Lab, a US Department of Energy lab. That doesn’t count crypto mining. Around 2017 it was roughly 60 to 80 TWh, by earlier estimates. Use grew 14% from 2023 to 2024. Berkeley Lab expects growth to speed up: 22% in 2025 and 29% in 2026. Its central forecast is 649 TWh by 2030, about 3.4 times 2024 and 11.8% of US electricity. Its range for 2030 runs from 9.5% to 15.3%. The rise is driven mainly by AI servers, which it expects to use 55% of US data-centre electricity by 2030.",
+      "world": "The US used 45% of the world’s data-centre electricity in 2024, more than any other country (IEA).",
+      "you": false,
+      "why": "Companies are filling data centres with AI servers, and each new chip draws more power than the last. Berkeley Lab says data centres would make up 33% of all the growth in US electricity use from 2024 to 2030.",
+      "points": {
+        "title": "US data-centre electricity consumption, Berkeley Lab (2024 estimate, 2030 forecasts)",
+        "unit": "TWh a year",
+        "items": [
+          {
+            "value": 192,
+            "label": "2024, estimated",
+            "how": "4.7% of US electricity",
+            "source": "usshare_2024"
+          },
+          {
+            "value": 521,
+            "label": "2030, low end",
+            "how": "9.5% of US electricity",
+            "source": "usshare_range"
+          },
+          {
+            "value": 649,
+            "label": "2030, central forecast",
+            "how": "11.8% of US electricity",
+            "source": "usshare_2030"
+          },
+          {
+            "value": 843,
+            "label": "2030, high end",
+            "how": "15.3% of US electricity",
+            "source": "usshare_range"
+          }
+        ]
+      },
+      "dontknow": [
+        "Nobody meters every US data centre. Berkeley Lab builds its figure from how many servers are sold and how much power each draws, and it revised earlier years down slightly in its 2025 update.",
+        "The 2030 figures are forecasts, and they disagree. The IEA’s 2025 forecast for US data centres was about 430 TWh, well below Berkeley Lab’s 649 TWh. The IEA also says data centres make nearly half of US electricity-demand growth to 2030, where Berkeley Lab says 33%."
+      ],
+      "next": {
+        "deeper": "world-share",
+        "bigger": "efficiency-rebound",
+        "closer": "bills"
+      },
+      "share": "US data centres used about 4.7% of the country’s electricity in 2024 (Berkeley Lab). Its central forecast is 11.8% by 2030.",
+      "cites": [
+        "usshare_2024",
+        "usshare_hist",
+        "usshare_14",
+        "usshare_22",
+        "usshare_2030",
+        "usshare_range",
+        "usshare_33",
+        "usshare_iea430",
+        "usshare_iea_half",
+        "aigrowth_lbnl55",
+        "iea_us",
+        "aigrowth_lbnl_driver"
+      ],
+      "calcs": [
+        "usshare_x"
+      ],
+      "chips": []
+    },
+    {
+      "slug": "is-ai-the-reason",
+      "type": "claim",
+      "cat": "Growth and the future",
+      "q": "Is AI the main reason data-centre electricity use is growing?",
+      "heard": "“AI is why data centres keep using more electricity.”",
+      "heardFrom": "news coverage of new data centres",
+      "stamp": "YES",
+      "chips": [],
+      "result": "Yes, the biggest single reason, but not the only one",
+      "reveal": "AI-type servers make up almost half of the expected growth to 2030. Ordinary servers, other equipment and cooling make up the rest.",
+      "answer": "Yes, but not on its own. The IEA calls AI “the most important driver” of growth. In its forecast to 2030, servers built for AI (called accelerated servers) make almost half of the rise in the world’s data-centre electricity consumption. Ordinary servers make about 20%, other computer equipment about 10%, and cooling and other infrastructure about 20%. Some of that cooling is for AI servers too. AI is also growing fastest: AI-focused data centres used 50% more electricity in 2025, while all data centres used 17% more.",
+      "world": "The world’s data centres used about 485 TWh in 2025. The IEA expects 950 TWh by 2030, and expects electricity use by AI-focused data centres to triple in that time.",
+      "you": false,
+      "why": "AI servers use more electricity each year: the IEA expects it to grow 30% a year, against 9% a year for ordinary servers. In the US, Berkeley Lab says the rise is driven mainly by more AI-type servers, each drawing more power, though ordinary servers kept growing too up to 2024.",
+      "points": {
+        "title": "Where the growth in world data-centre electricity comes from, 2024 to 2030 (IEA forecast)",
+        "unit": "% of the increase",
+        "items": [
+          {
+            "value": 50,
+            "label": "AI-type (accelerated) servers",
+            "how": "the IEA’s “almost half”; Hum’s sum of what the other parts leave",
+            "source": "aigrowth_half",
+            "claim": true
+          },
+          {
+            "value": 20,
+            "label": "Ordinary servers",
+            "how": "around 20%",
+            "source": "aigrowth_half"
+          },
+          {
+            "value": 20,
+            "label": "Cooling and other infrastructure",
+            "how": "around 20%, partly for AI servers",
+            "source": "aigrowth_other"
+          },
+          {
+            "value": 10,
+            "label": "Other IT equipment",
+            "how": "around 10%",
+            "source": "aigrowth_other"
+          }
+        ]
+      },
+      "dontknow": [
+        "Nobody counts AI electricity directly. Forecasters count servers built for AI, and those also run some work that isn’t AI.",
+        "There’s no published split of how much of the cooling and other infrastructure is for AI servers, so AI’s full share of the growth isn’t known.",
+        "The split to 2030 is a forecast. In the US, Berkeley Lab expects AI servers to use 55% of all data-centre electricity by 2030."
+      ],
+      "next": {
+        "deeper": "training-vs-using",
+        "bigger": "world-share",
+        "closer": "efficiency-rebound"
+      },
+      "share": "AI is the biggest single reason data-centre electricity is growing, but not the only one: the IEA expects AI-type servers to make almost half of the growth to 2030.",
+      "cites": [
+        "aigrowth_driver",
+        "aigrowth_half",
+        "aigrowth_other",
+        "aigrowth_30",
+        "aigrowth_triple",
+        "aigrowth_lbnl_driver",
+        "aigrowth_lbnl_both",
+        "aigrowth_lbnl55",
+        "eff_iea_17",
+        "iea_ai50",
+        "iea_485"
+      ],
+      "calcs": [
+        "aigrowth_rest"
+      ]
+    },
+    {
+      "slug": "new-gas-plants",
+      "type": "claim",
+      "cat": "Power sources",
+      "q": "Are data centres causing new gas power plants to be built?",
+      "heard": "“Data centres are causing new gas power plants to be built.”",
+      "heardFrom": "news coverage and local debates over new power plants",
+      "stamp": "YES",
+      "chips": [
+        "company figures",
+        "US evidence",
+        "via trade press"
+      ],
+      "result": "Yes, in named cases, like Meta’s data centre in Louisiana",
+      "reveal": "Entergy is building three gas plants of 754 MW each, 2,262 MW in all, for the site that turned out to be Meta’s. Regulators approved them in August 2025.",
+      "answer": "Yes, in some places, and the utilities’ own filings say so. In Louisiana, Entergy asked regulators to build three new gas plants of 754 MW each to serve a large new customer in Richland Parish. The customer’s name was hidden in the filing; it is now known to be Meta, for a data centre. Regulators approved the plants in August 2025, and Entergy expects two of them online in late 2028. Entergy says Meta pays its share of the costs, and that the plants will also strengthen the grid for everyone. In Georgia, Georgia Power asked to build more than 3,600 MW of new gas plants as part of a plan of about 9,900 MW, approved in December 2025, to serve fast-growing “large-load” customers such as data centres.",
+      "world": "The IEA calls new demand from data centres a significant near-term driver of growth for gas-fired and coal-fired power, from both existing and new plants. In the US, it expects gas to be the largest source of extra electricity for data centres, adding over 130 TWh a year by 2030.",
+      "you": false,
+      "why": "Utilities and regulators have tied specific new gas plants to data centres in public filings. How much gas would have been built anyway is less clear.",
+      "dontknow": [
+        "How many of the new gas plants planned across the US exist because of data centres. Hum hasn’t found a full count it could check.",
+        "Whether all the data centres utilities are planning for will be built. If some aren’t, some plants may not be needed.",
+        "Hum couldn’t open Entergy’s filing to the Louisiana regulator itself, so its words here are as quoted by POWER magazine.",
+        "Georgia Power’s approved plan may differ from the more than 3,600 MW of gas it asked for. Hum hasn’t checked the final mix."
+      ],
+      "next": {
+        "deeper": "power-mix",
+        "bigger": "world-share",
+        "closer": "bills"
+      },
+      "share": "Yes, in named cases: Entergy is building three gas plants (2,262 MW) for the site that became Meta’s Louisiana data centre. The IEA calls data centres a significant near-term driver of new gas power.",
+      "cites": [
+        "gas_entergy_filing",
+        "gas_entergy_gas",
+        "gas_entergy_meta",
+        "gas_entergy_online",
+        "gas_entergy_pays",
+        "gas_entergy_grid",
+        "gas_gp_approved",
+        "gas_gp_requested",
+        "gas_gp_largeload",
+        "gas_gp_dc",
+        "gas_iea_driver",
+        "gas_iea_us"
+      ],
+      "calcs": []
+    },
+    {
+      "slug": "coal-kept-open",
+      "type": "claim",
+      "cat": "Power sources",
+      "q": "Are coal plants being kept open because of data centres?",
+      "heard": "“Coal plants are being kept open to power data centres.”",
+      "heardFrom": "news coverage of US coal plant orders since 2025",
+      "stamp": "PARTLY",
+      "chips": [
+        "US evidence",
+        "company figures",
+        "via trade press"
+      ],
+      "result": "Some are, and data centres are one of several reasons given",
+      "reveal": "Georgia kept two big coal plants running as data centres grow. A US emergency order for a Michigan coal plant names data centres; the orders for other plants don’t.",
+      "answer": "Partly. Some US coal plants that were due to close are still open, and data centres are one of the reasons given, usually alongside others. In Georgia, regulators approved Georgia Power’s plan to keep its Bowen and Scherer coal plants running. Together they make 4,000 MW, and they had been due to shut in 2028 and 2035. Georgia Power points to about 8,500 MW of growth in electricity use over six years, and the regulators’ chairman linked the plan to data centre construction in Georgia. Separately, the US Department of Energy has used emergency orders to keep coal units open in Michigan, Washington, Colorado and Florida. Its order for Michigan’s 1,420 MW J.H. Campbell plant names rising demand from new data centres, together with old power plants retiring. Its announcements for the other plants talk about grid reliability and don’t mention data centres. In September 2026 a federal appeals court ruled the first Campbell order unlawful. A newer order runs to November 14, 2026.",
+      "world": "The Department of Energy says more than 17 gigawatts of US coal power were saved from going offline in 2025, for all its reasons, not only data centres. Worldwide, the IEA says coal supplies about 30% of the electricity data centres use, and nearly 70% in China.",
+      "you": false,
+      "why": "Data centres are named as a reason for keeping some coal plants open, but rarely the only one, and most of the emergency orders’ announcements don’t mention them.",
+      "dontknow": [
+        "How much of Georgia’s expected growth is data centres. Georgia Power’s figure counts all its new demand.",
+        "Whether these plants would have closed if no data centres were coming. The Campbell order also points to other power plants retiring.",
+        "What the court ruling means for the newer Campbell orders. The court ruled on the first order, which had already expired.",
+        "Hum read the full text of the Campbell order only. For the other plants it read the Department of Energy’s announcements, and it hasn’t yet checked the orders for coal plants in Indiana."
+      ],
+      "next": {
+        "deeper": "power-mix",
+        "bigger": "world-share",
+        "closer": "bills"
+      },
+      "share": "Partly: Georgia kept two coal plants (4,000 MW) open as data centres grow, and a US emergency order for Michigan’s Campbell coal plant names data centres. The orders for other coal plants don’t mention them.",
+      "cites": [
+        "coal_gp_bowen",
+        "coal_gp_growth",
+        "coal_ud_dates",
+        "coal_ud_shaw",
+        "coal_doe_order_dc",
+        "coal_doe_order_size",
+        "coal_doe_campbell_page",
+        "coal_court_vacate",
+        "coal_court_expired",
+        "coal_doe_centralia",
+        "coal_doe_craig",
+        "coal_doe_stanton",
+        "coal_doe_17gw",
+        "iea_mix_coal",
+        "coal_iea_china"
+      ],
+      "calcs": []
+    },
+    {
+      "slug": "delete-emails",
+      "type": "claim",
+      "cat": "Water",
+      "q": "Will deleting old emails and photos really save water?",
+      "heard": "“Delete old emails and pictures as data centres require vast amounts of water to cool their systems.”",
+      "heardFrom": "UK government drought advice (Environment Agency and Defra), August 2025",
+      "stamp": "NO",
+      "chips": [],
+      "result": "No. The saving is far too small to notice",
+      "reveal": "Keeping 1,000 photos for a year uses about 160 to 470 ml of water, by Hum’s sums. A leaky loo can waste 200 to 400 litres a day.",
+      "answer": "No. Data centres do use water to keep cool, but stored files are a small part of their work: storage systems use about 5% of data-centre electricity (IEA). Hum’s sums: one 18 TB data-centre drive idles at 5.3 W. So 1,000 photos of 5 MB, kept as 3 copies, use about 39 Wh a year, about 2 phone charges. At 1 to 9 litres of water per kWh at the data centre (Li et al.), plus 3.14 at US power stations, that’s about 160 to 470 ml a year. The same government advice says a leaky loo can waste 200 to 400 litres a day: about 426 times more, every single day. Andy Masley, an independent writer, worked out you’d need to delete 1.5 billion photos, or 200 billion emails, to match fixing one leaky toilet.",
+      "world": "What did help: Yorkshire Water reported a 10% fall in home water use after its hosepipe ban, up to 80 million litres a day. Data-centre water is real but local: US data centres consumed about 17 billion gallons on site in a recent year (a Berkeley Lab estimate).",
+      "you": true,
+      "why": "It points at something real, data-centre cooling water, but at a part of it, stored files, that is far too small to matter. The advice gave no figure.",
+      "dontknow": [
+        "Nobody has measured whether deleting files makes a data centre use any less water. Drives may keep running either way, and copies can stay in backups.",
+        "Hum’s sums count the drive only, not the servers, network and cooling around it, so the true figure is somewhat higher, though still tiny next to a leak.",
+        "A per-email water figure said to come from the Environment Agency appears in news stories, but Hum couldn’t find it on any government page.",
+        "Hum found no published total for the water UK data centres use."
+      ],
+      "next": {
+        "deeper": "bottle-of-water",
+        "bigger": "drinking-water",
+        "closer": "pictures-and-video"
+      },
+      "share": "Deleting old emails and photos won’t help in a drought. Keeping 1,000 photos for a year uses about 160 to 470 ml of water, by Hum’s sums. A leaky loo can waste 200 to 400 litres a day.",
+      "cites": [
+        "del_gov_tip",
+        "del_gov_loo",
+        "del_gov_yorks",
+        "del_iea_storage",
+        "del_drive_size",
+        "del_drive_idle",
+        "del_drive_hours",
+        "del_li_onsite",
+        "del_li_power",
+        "del_masley",
+        "epa_phone",
+        "lbnl_water"
+      ],
+      "calcs": [
+        "del_photos_wh",
+        "phone_wh",
+        "del_photos_phone",
+        "del_photos_ml_low",
+        "del_photos_ml_high",
+        "del_loo_ratio"
+      ]
+    },
+    {
+      "slug": "smaller-models",
+      "type": "claim",
+      "cat": "About you",
+      "q": "Is it greener to use a smaller “mini” or “flash” AI model?",
+      "heard": "“Pick the mini model. Smaller is always greener.”",
+      "heardFrom": "a common belief, says Hugging Face’s AI Energy Score team",
+      "stamp": "PARTLY",
+      "chips": [],
+      "result": "Usually, unless it thinks for longer",
+      "reveal": "In Hugging Face’s tests a 70B model used about 2.7 times the energy of a 3B one. With thinking switched on, the 3B model used about 1.7 times more than the 70B.",
+      "answer": "Partly. For the same kind of answer, smaller models use less. Independent tests of open models agree: within each model family, size and energy went together (Luccioni et al.), and in Hugging Face’s AI Energy Score a 70B model used about 2.7 times as much as a 3B one, with thinking off. Bigger isn’t evenly worse: in the same study a model about 12.5 times bigger used about 1.9 times the energy. And length matters more than size. With thinking on, the same 3B model used about 258 times more than the 70B one with thinking off, and more than the 70B one with thinking on, because it wrote far more text. Google says it builds Gemini Flash smaller to be more efficient, but publishes no figure for each model, so it can’t be ranked against these tests. Epoch AI expects mini models to use less per word, which long thinking can easily outweigh.",
+      "world": "One person’s choice is small, but the total keeps growing: electricity use by AI-focused data centres grew 50% in 2025, by the IEA’s estimate.",
+      "you": true,
+      "why": "Size matters, but how much the model writes matters more. A small model that “thinks” at length can use more than a big one.",
+      "points": {
+        "title": "Hugging Face’s tests, same setup (open models)",
+        "unit": "Wh per 1,000 questions (GPU only)",
+        "items": [
+          {
+            "value": 18.35,
+            "label": "3B model, thinking off",
+            "how": "SmolLM3-3B, measured",
+            "source": "small_hf_3b_off"
+          },
+          {
+            "value": 49.53,
+            "label": "70B model, thinking off",
+            "how": "DeepSeek-R1-Distill-Llama-70B, measured",
+            "source": "small_hf_70b_off"
+          },
+          {
+            "value": 7626.53,
+            "label": "70B model, thinking on",
+            "how": "DeepSeek-R1-Distill-Llama-70B, measured",
+            "source": "small_hf_70b_on"
+          },
+          {
+            "value": 12791.22,
+            "label": "3B model, thinking on",
+            "how": "SmolLM3-3B, measured",
+            "source": "small_hf_3b_on"
+          }
+        ]
+      },
+      "dontknow": [
+        "OpenAI, Google and Anthropic don’t publish energy per question for each model, so their mini and flash models can’t be checked.",
+        "These tests used open models on Hugging Face’s own hardware. Commercial models run on different chips and software."
+      ],
+      "next": {
+        "deeper": "reasoning",
+        "bigger": "efficiency-rebound",
+        "closer": "one-question"
+      },
+      "share": "Is a smaller AI model greener? Usually: a 70B open model used about 2.7× the energy of a 3B one (Hugging Face). But with thinking on, the small model used about 1.7× more than the big one.",
+      "cites": [
+        "small_hf_3b_off",
+        "small_hf_3b_on",
+        "small_hf_70b_off",
+        "small_hf_70b_on",
+        "small_hf_assume",
+        "hf_tokens",
+        "small_php_size",
+        "small_php_small",
+        "small_php_big",
+        "small_php_task",
+        "small_google_flash",
+        "small_epoch_mini",
+        "iea_ai50"
+      ],
+      "calcs": [
+        "small_ratio_off",
+        "small_think_vs_big",
+        "small_think_vs_off",
+        "small_bloom_energy",
+        "small_bloom_params"
+      ]
+    },
+    {
+      "slug": "jobs",
+      "type": "how-much",
+      "cat": "Near you",
+      "q": "How many permanent jobs does a data centre create?",
+      "guess": {
+        "prompt": "In Virginia, a typical data centre building of 250,000 square feet has about how many full-time workers once it’s running?",
+        "options": [
+          "5",
+          "50",
+          "500",
+          "5,000"
+        ],
+        "right": 1
+      },
+      "result": "About 50 for a big building, half of them contractors",
+      "reveal": "Building it takes far more: about 1,500 workers on site at the peak, for 12 to 18 months. That’s 30 times as many as will run it.",
+      "answer": "Not many for its size. Virginia’s legislative watchdog, JLARC, heard from the industry that a typical 250,000-square-foot data centre has about 50 full-time workers. That’s one worker per 5,000 square feet, against one per 650 at some warehouses. About half are contractors, such as electricians and security staff. Building it takes many more: about 1,500 workers on site at the peak, for 12 to 18 months. Virginia’s sales-tax break asks for 50 jobs paying at least 150% of the local average wage, but a company can count all its data centres in one county together. The biggest AI campuses promise more. In Louisiana, Meta is putting more than $50 billion into one campus, and the state expects about 7,500 construction jobs at peak and about 1,000 operational jobs. That’s more than $50 million of investment per permanent job (Hum’s arithmetic).",
+      "world": "Northern Virginia is the world’s largest data centre market. There, data centre staff and contractors held over 8,000 full-time jobs in a recent year (FY23). Counting builders, suppliers and the shops their wages reach, JLARC estimated the industry supports about 74,000 jobs a year, just over 1% of the state’s jobs. 80% of them come from construction.",
+      "you": false,
+      "dontknow": [
+        "The 50-worker figure came from data centre companies, not from a count of every site.",
+        "Virginia’s companies report jobs for all their data centres in a county together, so nobody publishes jobs per building there.",
+        "Meta’s 1,000 operational jobs is an expectation. Hum hasn’t found a published count of how many people work at the Louisiana campus today.",
+        "Whether AI data centres need more or fewer staff than older ones hasn’t been measured."
+      ],
+      "next": {
+        "deeper": "bills",
+        "bigger": "world-share",
+        "closer": "data-centre-noise"
+      },
+      "share": "A typical big data centre in Virginia has about 50 full-time workers, half of them contractors. Building it takes about 1,500 at the peak, for 12 to 18 months (Virginia’s JLARC study).",
+      "points": {
+        "title": "Building it vs running it",
+        "unit": "workers or jobs",
+        "items": [
+          {
+            "value": 1500,
+            "label": "Virginia: building one data centre, at the peak",
+            "how": "industry figure reported by JLARC",
+            "source": "jobs_jlarc_build"
+          },
+          {
+            "value": 50,
+            "label": "Virginia: running it, full-time",
+            "how": "industry figure reported by JLARC; about half are contractors",
+            "source": "jobs_jlarc_typical"
+          },
+          {
+            "value": 7500,
+            "label": "Meta, Louisiana: construction jobs at peak",
+            "how": "expected, per the state’s announcement",
+            "source": "jobs_led_meta_jobs",
+            "claim": true
+          },
+          {
+            "value": 1000,
+            "label": "Meta, Louisiana: operational jobs",
+            "how": "expected, per the state’s announcement",
+            "source": "jobs_led_meta_jobs",
+            "claim": true
+          }
+        ]
+      },
+      "chips": [
+        "US evidence",
+        "company figures"
+      ],
+      "cites": [
+        "jobs_jlarc_typical",
+        "jobs_jlarc_half",
+        "jobs_jlarc_build",
+        "jobs_jlarc_fy23",
+        "jobs_jlarc_total",
+        "jobs_jlarc_share",
+        "jobs_jlarc_construction",
+        "jobs_jlarc_largest",
+        "jobs_jlarc_exemption",
+        "jobs_jlarc_collective",
+        "jobs_led_meta_jobs",
+        "jobs_led_meta_invest"
+      ],
+      "calcs": [
+        "jobs_build_ratio",
+        "jobs_meta_per_job"
+      ]
+    },
+    {
+      "slug": "heat-reuse",
+      "type": "claim",
+      "cat": "Near you",
+      "q": "Can the heat from data centres be used to warm homes?",
+      "heard": "“The heat from data centres could warm our homes.”",
+      "heardFrom": "company announcements and planning debates",
+      "stamp": "PARTLY",
+      "chips": [
+        "EU evidence",
+        "company figures"
+      ],
+      "result": "Yes, in a few places. Across the EU, about 1.8% of it is reused",
+      "reveal": "Of 770 data centres that reported to the EU, only 67 said they reuse any heat.",
+      "answer": "Yes, it can, but few do. Practically all the electricity a data centre uses turns into heat. In Odense, Denmark, heat pumps take heat from Meta’s data centre, warm it to 70-75°C and send it into the city’s district heating pipes. The engineers say it heats more than 12,000 homes. A Danish price cap on this kind of heat limited how much the local heat company used, until politicians decided to scrap it. Near Helsinki, Fortum says heat from two Microsoft data centres will start flowing step by step from next year, and once complete should cover about 40% of the 2 TWh a year of district heat used by 250,000 heat users. That’s about 0.8 TWh of heat a year (Hum’s arithmetic). But in the EU’s first reporting round, only 67 of 770 data centres reported reusing any heat, and about 1.8% of all the heat was reused. It needs heat pipes nearby and someone who wants heat, and demand is low in summer and in warm places. EU law now says data centres above 1 MW must use their waste heat unless they show it isn’t technically or economically feasible.",
+      "world": "All the world’s data centres used about 485 TWh of electricity in 2025, the IEA estimates, and practically all of it ends up as heat. Nobody publishes how much of that is reused worldwide. In the EU, where it is measured, it’s about 1.8%.",
+      "you": false,
+      "why": "It works, and real homes are heated this way in Odense. But it needs district heating pipes and a cold climate, so most data centres don’t do it: about 1.8% of EU data centres’ heat is reused, and the biggest Nordic scheme hasn’t started taking heat yet.",
+      "dontknow": [
+        "Outside the EU, nobody publishes how much data-centre heat is reused.",
+        "The EU’s 1.8% may not be representative: some reported values looked unrealistically high, and some countries with known schemes reported none.",
+        "Only about 36% of the EU data centres that had to report did so in the first round.",
+        "How much Microsoft heat will reach homes near Helsinki, and when, depends on Microsoft’s building schedule."
+      ],
+      "next": {
+        "deeper": "power-mix",
+        "bigger": "world-share",
+        "closer": "data-centre-noise"
+      },
+      "share": "Can data centres heat homes? Yes: in Odense, Denmark, Meta’s heats more than 12,000 homes, the engineers say. But across the EU only about 1.8% of data centres’ heat is reused.",
+      "cites": [
+        "heat_eed_rule",
+        "heat_com_reported",
+        "heat_com_67",
+        "heat_com_share",
+        "heat_com_allheat",
+        "heat_com_caveat",
+        "heat_com_seasons",
+        "heat_com_offtakers",
+        "heat_odense_homes",
+        "heat_odense_pumps",
+        "heat_odense_cap",
+        "heat_odense_capgone",
+        "heat_fortum_40",
+        "heat_fortum_start",
+        "iea_485"
+      ],
+      "calcs": [
+        "heat_fortum_twh"
       ]
     }
   ]

@@ -317,8 +317,8 @@
       "lon": 2.35,
       "mw": {
         "low": 391,
-        "mid": 639,
-        "high": 639
+        "mid": 715,
+        "high": 715
       },
       "measure": "Jan 2024 ranking (low); listed facilities (mid, high)",
       "sources": [
@@ -330,9 +330,9 @@
           "checked": "page"
         },
         {
-          "label": "Baxtel: \"Paris has 136 facilities with 3,205,561 sqft and 639 megawatts.\"",
+          "label": "Baxtel: \"Paris has 136 facilities with 3,205,561 sqft and 715 megawatts.\"",
           "url": "https://baxtel.com/data-center/paris",
-          "retrieved": "2026-10-31",
+          "retrieved": "2026-11-08",
           "supports": "mid,high",
           "checked": "page"
         }
@@ -345,8 +345,8 @@
       "lon": 18.1,
       "mw": {
         "low": 74,
-        "mid": 116,
-        "high": 116
+        "mid": 131,
+        "high": 131
       },
       "measure": "Jan 2024 ranking (low); listed facilities (mid, high)",
       "sources": [
@@ -358,9 +358,9 @@
           "checked": "page"
         },
         {
-          "label": "Baxtel: \"Stockholm has 41 facilities with 834,289 sqft and 116 megawatts.\"",
+          "label": "Baxtel: \"Stockholm has 41 facilities with 834,289 sqft and 131 megawatts.\"",
           "url": "https://baxtel.com/data-center/stockholm",
-          "retrieved": "2026-10-25",
+          "retrieved": "2026-11-08",
           "supports": "mid,high",
           "checked": "page"
         }
@@ -373,8 +373,8 @@
       "lon": 28.0,
       "mw": {
         "low": 161,
-        "mid": 278,
-        "high": 278
+        "mid": 300,
+        "high": 300
       },
       "measure": "Jan 2024 ranking (low); listed facilities (mid, high)",
       "sources": [
@@ -386,9 +386,9 @@
           "checked": "page"
         },
         {
-          "label": "Baxtel: \"Johannesburg has 22 facilities with 2,756,243 sqft and 278 megawatts.\"",
+          "label": "Baxtel: \"Johannesburg has 22 facilities with 2,756,243 sqft and 300 megawatts.\"",
           "url": "https://baxtel.com/data-center/johannesburg",
-          "retrieved": "2026-10-25",
+          "retrieved": "2026-11-08",
           "supports": "mid,high",
           "checked": "page"
         }
@@ -442,16 +442,16 @@
       "lat": 31.2,
       "lon": 121.5,
       "mw": {
-        "low": 432,
+        "low": 435,
         "mid": 725,
         "high": 725
       },
       "measure": "listed facilities (low); Jan 2024 ranking (mid, high)",
       "sources": [
         {
-          "label": "Baxtel: \"Shanghai has 24 facilities with 3,843,410 sqft and 432 megawatts.\"",
+          "label": "Baxtel: \"Shanghai has 24 facilities with 3,843,410 sqft and 435 megawatts.\"",
           "url": "https://baxtel.com/data-center/shanghai",
-          "retrieved": "2026-10-25",
+          "retrieved": "2026-11-08",
           "supports": "low",
           "checked": "page"
         },

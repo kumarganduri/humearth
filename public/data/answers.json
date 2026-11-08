@@ -1,6 +1,6 @@
 {
-  "contentHash": "9196f3d48df0271a",
-  "builtAt": "2026-10-25",
+  "contentHash": "0731d362f8baeed0",
+  "builtAt": "2026-11-08",
   "launch": "2026-10-18",
   "deck": [
     "one-question",
@@ -23,7 +23,17 @@
     "training-vs-using",
     "drinking-water",
     "efficiency-rebound",
-    "data-centre-noise"
+    "data-centre-noise",
+    "is-ai-the-reason",
+    "delete-emails",
+    "big-data-centre",
+    "new-gas-plants",
+    "smaller-models",
+    "us-share",
+    "jobs",
+    "coal-kept-open",
+    "heat-reuse",
+    "how-many-data-centres"
   ],
   "companies": [
     "google",
@@ -54,7 +64,31 @@
     "rc_meta_eac",
     "tvu_google_split",
     "tvu_aws",
-    "tvu_meta"
+    "tvu_meta",
+    "bigdc_meta",
+    "bigdc_crusoe",
+    "bigdc_crusoe_p1",
+    "gas_entergy_online",
+    "gas_entergy_pays",
+    "gas_entergy_grid",
+    "gas_gp_approved",
+    "gas_gp_requested",
+    "gas_gp_largeload",
+    "gas_gp_dc",
+    "coal_gp_bowen",
+    "coal_gp_growth",
+    "del_drive_size",
+    "del_drive_idle",
+    "del_drive_hours",
+    "small_google_flash",
+    "jobs_led_meta_jobs",
+    "jobs_led_meta_invest",
+    "heat_odense_homes",
+    "heat_odense_pumps",
+    "heat_odense_cap",
+    "heat_odense_capgone",
+    "heat_fortum_40",
+    "heat_fortum_start"
   ],
   "answers": [
     {
@@ -561,6 +595,371 @@
       "world": "Use adds up fast: ChatGPT alone got about 2.6 billion messages a day by July 2025, by Hum’s sums from OpenAI’s count. All the world’s data centres together used about 485 TWh in 2025.",
       "you": false,
       "share": "Where it’s been measured, using AI takes more energy than training it: about three fifths of Google’s machine-learning energy went on use (Google, 2022)."
+    },
+    {
+      "slug": "big-data-centre",
+      "q": "How much electricity does one big AI data centre use, compared with homes?",
+      "cat": "Comparisons and myths",
+      "type": "how-much",
+      "guess": {
+        "prompt": "Meta says its Louisiana AI campus will have 5 gigawatts of compute capacity. Running flat out, that’s the electricity of about how many average US homes?",
+        "options": [
+          "40,000",
+          "400,000",
+          "4 million",
+          "40 million"
+        ],
+        "right": 2
+      },
+      "result": "Up to millions of homes: about 4 million for Meta’s planned 5 GW campus",
+      "reveal": "A typical AI data centre uses as much electricity as 100,000 households, the IEA says. The largest ones being built will use 20 times that.",
+      "world": "All the world’s data centres consumed about 485 TWh of electricity in 2025 (IEA). Meta’s 5 GW campus, run flat out for a year, would use about 44 TWh: about 9% of that, from one site.",
+      "you": false,
+      "share": "One big AI campus can need as much electricity as millions of homes. Meta’s planned 5 GW campus in Louisiana, run flat out, matches about 4 million average US homes (Hum’s sum from EIA figures).",
+      "points": {
+        "title": "How many homes? If each ran at full power all year",
+        "unit": "homes",
+        "items": [
+          {
+            "value": 100000,
+            "label": "Typical AI data centre (IEA)",
+            "how": "IEA: as much as 100,000 households",
+            "source": "bigdc_iea_homes"
+          },
+          {
+            "value": 162358,
+            "label": "Crusoe Abilene, first phase (200 MW)",
+            "how": "Hum’s sum with the EIA’s average US home",
+            "source": "bigdc_crusoe_p1"
+          },
+          {
+            "value": 974145,
+            "label": "Crusoe Abilene, planned (1.2 GW)",
+            "how": "Hum’s sum with the EIA’s average US home",
+            "source": "bigdc_crusoe",
+            "claim": true
+          },
+          {
+            "value": 2000000,
+            "label": "Largest being built (IEA)",
+            "how": "IEA: 20 times a typical one",
+            "source": "bigdc_iea_homes"
+          },
+          {
+            "value": 4058940,
+            "label": "Meta Richland Parish, planned (5 GW)",
+            "how": "Hum’s sum with the EIA’s average US home",
+            "source": "bigdc_meta",
+            "claim": true
+          }
+        ]
+      }
+    },
+    {
+      "slug": "how-many-data-centres",
+      "q": "How many data centres are there in the world?",
+      "cat": "The world's total",
+      "type": "how-much",
+      "guess": {
+        "prompt": "About how many giant ‘hyperscale’ data centres did the big cloud and internet companies run at the end of 2025?",
+        "options": [
+          "136",
+          "1,360",
+          "13,600",
+          "136,000"
+        ],
+        "right": 1
+      },
+      "result": "More than 8,000, but nobody keeps an official count",
+      "reveal": "The IEA counted more than 8,000 in its 2024 report. About 1,360 are giant ‘hyperscale’ ones, and those hold 48% of all data-centre capacity.",
+      "world": "The giants are still growing: Synergy says almost 800 more hyperscale data centres are in the pipeline, enough to double their capacity in about three years.",
+      "you": false,
+      "share": "There’s no official count of the world’s data centres. The IEA counted more than 8,000. About 1,360 are giant ‘hyperscale’ ones, and those hold 48% of all data-centre capacity (Synergy Research Group).",
+      "points": {
+        "title": "Counting data centres",
+        "unit": "data centres",
+        "items": [
+          {
+            "value": 8000,
+            "label": "World, all kinds (IEA, 2024 report)",
+            "how": "IEA: “more than 8,000”",
+            "source": "count_iea_8000"
+          },
+          {
+            "value": 2640,
+            "label": "In the US",
+            "how": "Hum’s sum: about 33% of 8,000",
+            "source": "count_iea_8000"
+          },
+          {
+            "value": 1240,
+            "label": "In Europe, 2022 (IEA)",
+            "how": "IEA: around 1,240 operating",
+            "source": "count_iea_eu"
+          },
+          {
+            "value": 1360,
+            "label": "Hyperscale, end of 2025 (Synergy)",
+            "how": "Large data centres of 19 big firms",
+            "source": "count_srg_2025"
+          },
+          {
+            "value": 1136,
+            "label": "Hyperscale, end of 2024 (Synergy)",
+            "how": "Large data centres of 19 big firms",
+            "source": "count_srg_2024"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "us-share",
+      "q": "What share of US electricity do data centres use, and how fast is it rising?",
+      "cat": "The world's total",
+      "type": "how-much",
+      "guess": {
+        "prompt": "What share of US electricity did data centres use in 2024?",
+        "options": [
+          "0.5%",
+          "4.7%",
+          "15%",
+          "30%"
+        ],
+        "right": 1
+      },
+      "result": "About 4.7%, and rising fast",
+      "reveal": "About 192 TWh in 2024, by Berkeley Lab’s count. Its central forecast for 2030 is 649 TWh, about 11.8% of US electricity.",
+      "world": "The US used 45% of the world’s data-centre electricity in 2024, more than any other country (IEA).",
+      "you": false,
+      "share": "US data centres used about 4.7% of the country’s electricity in 2024 (Berkeley Lab). Its central forecast is 11.8% by 2030.",
+      "points": {
+        "title": "US data-centre electricity consumption, Berkeley Lab (2024 estimate, 2030 forecasts)",
+        "unit": "TWh a year",
+        "items": [
+          {
+            "value": 192,
+            "label": "2024, estimated",
+            "how": "4.7% of US electricity",
+            "source": "usshare_2024"
+          },
+          {
+            "value": 521,
+            "label": "2030, low end",
+            "how": "9.5% of US electricity",
+            "source": "usshare_range"
+          },
+          {
+            "value": 649,
+            "label": "2030, central forecast",
+            "how": "11.8% of US electricity",
+            "source": "usshare_2030"
+          },
+          {
+            "value": 843,
+            "label": "2030, high end",
+            "how": "15.3% of US electricity",
+            "source": "usshare_range"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "is-ai-the-reason",
+      "q": "Is AI the main reason data-centre electricity use is growing?",
+      "cat": "Growth and the future",
+      "type": "claim",
+      "heard": "“AI is why data centres keep using more electricity.”",
+      "heardFrom": "news coverage of new data centres",
+      "stamp": "YES",
+      "result": "Yes, the biggest single reason, but not the only one",
+      "reveal": "AI-type servers make up almost half of the expected growth to 2030. Ordinary servers, other equipment and cooling make up the rest.",
+      "world": "The world’s data centres used about 485 TWh in 2025. The IEA expects 950 TWh by 2030, and expects electricity use by AI-focused data centres to triple in that time.",
+      "you": false,
+      "share": "AI is the biggest single reason data-centre electricity is growing, but not the only one: the IEA expects AI-type servers to make almost half of the growth to 2030.",
+      "points": {
+        "title": "Where the growth in world data-centre electricity comes from, 2024 to 2030 (IEA forecast)",
+        "unit": "% of the increase",
+        "items": [
+          {
+            "value": 50,
+            "label": "AI-type (accelerated) servers",
+            "how": "the IEA’s “almost half”; Hum’s sum of what the other parts leave",
+            "source": "aigrowth_half",
+            "claim": true
+          },
+          {
+            "value": 20,
+            "label": "Ordinary servers",
+            "how": "around 20%",
+            "source": "aigrowth_half"
+          },
+          {
+            "value": 20,
+            "label": "Cooling and other infrastructure",
+            "how": "around 20%, partly for AI servers",
+            "source": "aigrowth_other"
+          },
+          {
+            "value": 10,
+            "label": "Other IT equipment",
+            "how": "around 10%",
+            "source": "aigrowth_other"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "new-gas-plants",
+      "q": "Are data centres causing new gas power plants to be built?",
+      "cat": "Power sources",
+      "type": "claim",
+      "heard": "“Data centres are causing new gas power plants to be built.”",
+      "heardFrom": "news coverage and local debates over new power plants",
+      "stamp": "YES",
+      "result": "Yes, in named cases, like Meta’s data centre in Louisiana",
+      "reveal": "Entergy is building three gas plants of 754 MW each, 2,262 MW in all, for the site that turned out to be Meta’s. Regulators approved them in August 2025.",
+      "world": "The IEA calls new demand from data centres a significant near-term driver of growth for gas-fired and coal-fired power, from both existing and new plants. In the US, it expects gas to be the largest source of extra electricity for data centres, adding over 130 TWh a year by 2030.",
+      "you": false,
+      "share": "Yes, in named cases: Entergy is building three gas plants (2,262 MW) for the site that became Meta’s Louisiana data centre. The IEA calls data centres a significant near-term driver of new gas power."
+    },
+    {
+      "slug": "coal-kept-open",
+      "q": "Are coal plants being kept open because of data centres?",
+      "cat": "Power sources",
+      "type": "claim",
+      "heard": "“Coal plants are being kept open to power data centres.”",
+      "heardFrom": "news coverage of US coal plant orders since 2025",
+      "stamp": "PARTLY",
+      "result": "Some are, and data centres are one of several reasons given",
+      "reveal": "Georgia kept two big coal plants running as data centres grow. A US emergency order for a Michigan coal plant names data centres; the orders for other plants don’t.",
+      "world": "The Department of Energy says more than 17 gigawatts of US coal power were saved from going offline in 2025, for all its reasons, not only data centres. Worldwide, the IEA says coal supplies about 30% of the electricity data centres use, and nearly 70% in China.",
+      "you": false,
+      "share": "Partly: Georgia kept two coal plants (4,000 MW) open as data centres grow, and a US emergency order for Michigan’s Campbell coal plant names data centres. The orders for other coal plants don’t mention them."
+    },
+    {
+      "slug": "delete-emails",
+      "q": "Will deleting old emails and photos really save water?",
+      "cat": "Water",
+      "type": "claim",
+      "heard": "“Delete old emails and pictures as data centres require vast amounts of water to cool their systems.”",
+      "heardFrom": "UK government drought advice (Environment Agency and Defra), August 2025",
+      "stamp": "NO",
+      "result": "No. The saving is far too small to notice",
+      "reveal": "Keeping 1,000 photos for a year uses about 160 to 470 ml of water, by Hum’s sums. A leaky loo can waste 200 to 400 litres a day.",
+      "world": "What did help: Yorkshire Water reported a 10% fall in home water use after its hosepipe ban, up to 80 million litres a day. Data-centre water is real but local: US data centres consumed about 17 billion gallons on site in a recent year (a Berkeley Lab estimate).",
+      "you": true,
+      "share": "Deleting old emails and photos won’t help in a drought. Keeping 1,000 photos for a year uses about 160 to 470 ml of water, by Hum’s sums. A leaky loo can waste 200 to 400 litres a day."
+    },
+    {
+      "slug": "smaller-models",
+      "q": "Is it greener to use a smaller “mini” or “flash” AI model?",
+      "cat": "About you",
+      "type": "claim",
+      "heard": "“Pick the mini model. Smaller is always greener.”",
+      "heardFrom": "a common belief, says Hugging Face’s AI Energy Score team",
+      "stamp": "PARTLY",
+      "result": "Usually, unless it thinks for longer",
+      "reveal": "In Hugging Face’s tests a 70B model used about 2.7 times the energy of a 3B one. With thinking switched on, the 3B model used about 1.7 times more than the 70B.",
+      "world": "One person’s choice is small, but the total keeps growing: electricity use by AI-focused data centres grew 50% in 2025, by the IEA’s estimate.",
+      "you": true,
+      "share": "Is a smaller AI model greener? Usually: a 70B open model used about 2.7× the energy of a 3B one (Hugging Face). But with thinking on, the small model used about 1.7× more than the big one.",
+      "points": {
+        "title": "Hugging Face’s tests, same setup (open models)",
+        "unit": "Wh per 1,000 questions (GPU only)",
+        "items": [
+          {
+            "value": 18.35,
+            "label": "3B model, thinking off",
+            "how": "SmolLM3-3B, measured",
+            "source": "small_hf_3b_off"
+          },
+          {
+            "value": 49.53,
+            "label": "70B model, thinking off",
+            "how": "DeepSeek-R1-Distill-Llama-70B, measured",
+            "source": "small_hf_70b_off"
+          },
+          {
+            "value": 7626.53,
+            "label": "70B model, thinking on",
+            "how": "DeepSeek-R1-Distill-Llama-70B, measured",
+            "source": "small_hf_70b_on"
+          },
+          {
+            "value": 12791.22,
+            "label": "3B model, thinking on",
+            "how": "SmolLM3-3B, measured",
+            "source": "small_hf_3b_on"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "jobs",
+      "q": "How many permanent jobs does a data centre create?",
+      "cat": "Near you",
+      "type": "how-much",
+      "guess": {
+        "prompt": "In Virginia, a typical data centre building of 250,000 square feet has about how many full-time workers once it’s running?",
+        "options": [
+          "5",
+          "50",
+          "500",
+          "5,000"
+        ],
+        "right": 1
+      },
+      "result": "About 50 for a big building, half of them contractors",
+      "reveal": "Building it takes far more: about 1,500 workers on site at the peak, for 12 to 18 months. That’s 30 times as many as will run it.",
+      "world": "Northern Virginia is the world’s largest data centre market. There, data centre staff and contractors held over 8,000 full-time jobs in a recent year (FY23). Counting builders, suppliers and the shops their wages reach, JLARC estimated the industry supports about 74,000 jobs a year, just over 1% of the state’s jobs. 80% of them come from construction.",
+      "you": false,
+      "share": "A typical big data centre in Virginia has about 50 full-time workers, half of them contractors. Building it takes about 1,500 at the peak, for 12 to 18 months (Virginia’s JLARC study).",
+      "points": {
+        "title": "Building it vs running it",
+        "unit": "workers or jobs",
+        "items": [
+          {
+            "value": 1500,
+            "label": "Virginia: building one data centre, at the peak",
+            "how": "industry figure reported by JLARC",
+            "source": "jobs_jlarc_build"
+          },
+          {
+            "value": 50,
+            "label": "Virginia: running it, full-time",
+            "how": "industry figure reported by JLARC; about half are contractors",
+            "source": "jobs_jlarc_typical"
+          },
+          {
+            "value": 7500,
+            "label": "Meta, Louisiana: construction jobs at peak",
+            "how": "expected, per the state’s announcement",
+            "source": "jobs_led_meta_jobs",
+            "claim": true
+          },
+          {
+            "value": 1000,
+            "label": "Meta, Louisiana: operational jobs",
+            "how": "expected, per the state’s announcement",
+            "source": "jobs_led_meta_jobs",
+            "claim": true
+          }
+        ]
+      }
+    },
+    {
+      "slug": "heat-reuse",
+      "q": "Can the heat from data centres be used to warm homes?",
+      "cat": "Near you",
+      "type": "claim",
+      "heard": "“The heat from data centres could warm our homes.”",
+      "heardFrom": "company announcements and planning debates",
+      "stamp": "PARTLY",
+      "result": "Yes, in a few places. Across the EU, about 1.8% of it is reused",
+      "reveal": "Of 770 data centres that reported to the EU, only 67 said they reuse any heat.",
+      "world": "All the world’s data centres used about 485 TWh of electricity in 2025, the IEA estimates, and practically all of it ends up as heat. Nobody publishes how much of that is reused worldwide. In the EU, where it is measured, it’s about 1.8%.",
+      "you": false,
+      "share": "Can data centres heat homes? Yes: in Odense, Denmark, Meta’s heats more than 12,000 homes, the engineers say. But across the EU only about 1.8% of data centres’ heat is reused."
     }
   ]
 }
