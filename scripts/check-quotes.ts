@@ -4,10 +4,11 @@
 // It never fails the build over a source: a changed page is news for a person, not a broken site.
 
 import { appendFileSync, readFileSync, readdirSync } from 'node:fs';
-import { archiveAgeDays, ARCHIVE_MAX_DAYS, collectQuotes, decide, dropRunningHeaders, htmlText, issueBody, lacksArticle, looksBlocked, matchQuote, readState, summaryMarkdown, type Result, type State } from './lib/freshness';
+import { archiveAgeDays, ARCHIVE_MAX_DAYS, rawArchiveUrl, collectQuotes, decide, dropRunningHeaders, htmlText, issueBody, lacksArticle, looksBlocked, matchQuote, readState, summaryMarkdown, type Result, type State } from './lib/freshness';
 
 const UA = 'Mozilla/5.0 (compatible; HumFreshnessWatch/1.0; +https://humearth.org/how-we-know)';
 const TIMEOUT_MS = 45_000;
+const ARCHIVE_TIMEOUT_MS = 150_000; // the Internet Archive is slow: a 10 MB PDF took about a minute
 const CONCURRENCY = 4;
 const today = new Date().toISOString().slice(0, 10);
 
@@ -29,7 +30,7 @@ async function pdfText(bytes: Uint8Array): Promise<string> {
 /** The page's text, or why it couldn't be read. */
 async function fetchText(url: string): Promise<{ text: string } | { down: string }> {
   try {
-    const res = await fetch(url, { headers: { 'user-agent': UA, accept: 'text/html,application/pdf,*/*' }, redirect: 'follow', signal: AbortSignal.timeout(TIMEOUT_MS) });
+    const res = await fetch(rawArchiveUrl(url), { headers: { 'user-agent': UA, accept: 'text/html,application/pdf,*/*' }, redirect: 'follow', signal: AbortSignal.timeout(url.includes('web.archive.org/') ? ARCHIVE_TIMEOUT_MS : TIMEOUT_MS) });
     const bytes = new Uint8Array(await res.arrayBuffer());
     const isPdf = /pdf/i.test(res.headers.get('content-type') ?? '') || new TextDecoder().decode(bytes.slice(0, 5)) === '%PDF-';
     if (isPdf && res.ok) return { text: await pdfText(bytes) };

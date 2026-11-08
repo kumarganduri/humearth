@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { archiveAgeDays, collectQuotes, decide, DOWN_WEEKS, dropRunningHeaders, htmlText, issueBody, lacksArticle, looksBlocked, matchQuote, quotesInLabel, readState, type Result } from './freshness';
+import { archiveAgeDays, collectQuotes, rawArchiveUrl, decide, DOWN_WEEKS, dropRunningHeaders, htmlText, issueBody, lacksArticle, looksBlocked, matchQuote, quotesInLabel, readState, type Result } from './freshness';
 
 // Saved fragments of real pages Hum quotes (trimmed), so the matcher is tested against what sites actually serve.
 const BLOGGER = `<html><head><script>var x = "Together with other work";</script></head><body><noscript><div class="post-body">The servers it touches each work on it for just a few thousandths of a second. Together with other work performed before your search even starts (such as building the search index) this amounts to 0.0003 kWh of energy per search, or 1 kJ.&nbsp; For comparison…</div></noscript></body></html>`;
@@ -13,6 +13,7 @@ describe('matchQuote', () => {
   it('finds quotes through HTML noise: noscript articles, entities, sub/superscripts, MathML', () => {
     expect(matchQuote(htmlText(BLOGGER), 'Together with other work performed before your search even starts (such as building the search index) this amounts to 0.0003 kWh of energy per search, or 1 kJ.')).toBe('found');
     expect(matchQuote(htmlText(WIKI), '2,500,000 L (2,500 m3; 660,000 US gal), assuming a nominal depth of 2 m.')).toBe('found');
+    expect(matchQuote(htmlText('<p>three new 1&times;1 CCCT generators</p>'), 'three new 1×1 CCCT generators')).toBe('found');
     expect(matchQuote(htmlText(EIA), 'U.S. utility-scale net electricity generation and resulting CO 2 emissions by fuel in 2023')).toBe('found');
     expect(matchQuote(htmlText(MATHML), 'generating a single short video with WAN2.1–T2V–1.3B consumes nearly ∼90 Wh')).toBe('found');
   });
@@ -36,6 +37,12 @@ describe('PDF text', () => {
     const text = dropRunningHeaders(pages);
     expect(text).not.toContain('Ordinance No.');
     expect(matchQuote(text, '(as determined by a third-party acoustic engineer) from exceeding the ambient noise levels')).toBe('found');
+  });
+  it('drops a bare page number at the bottom of a page, but keeps numbers inside the text', () => {
+    const pages = [['Opinion text.', '6'], ['Because the circumstances DOE identified do not warrant resort to section 202(c) as', '7'], ['correctly interpreted, we grant the petitions.', '8']];
+    const text = dropRunningHeaders(pages);
+    expect(matchQuote(text, 'do not warrant resort to section 202(c) as correctly interpreted, we grant the petitions.')).toBe('found');
+    expect(dropRunningHeaders([['Table 4', '2,262'], ['754', 'MW'], ['x', 'y']])).toContain('2,262');
   });
   it('removes e-signature stamps', () => {
     expect(dropRunningHeaders([['acoustic DocuSign Envelope ID: A7E42978-D6B7-49C6-A7BD-F602DBAB151F engineer']])).not.toContain('DocuSign');
@@ -111,6 +118,11 @@ describe('pages that send cloud servers something else', () => {
     const quote = 'We estimate that less than 16% of the carbon credits issued to the investigated projects constitute real emission reductions';
     expect(lacksArticle('Your privacy, your choice. We use essential cookies to make sure the site can function. Accept all cookies', quote)).toBe(true);
     expect(lacksArticle('Carbon credits issued to investigated projects: the share of real emission reductions was estimated at 12%.', quote)).toBe(false);
+  });
+  it('reads a cited archive link as the captured file, not the Wayback viewer page', () => {
+    expect(rawArchiveUrl('https://web.archive.org/web/20251231092219/https://jlarc.virginia.gov/pdfs/reports/Rpt598.pdf')).toBe('https://web.archive.org/web/20251231092219id_/https://jlarc.virginia.gov/pdfs/reports/Rpt598.pdf');
+    expect(rawArchiveUrl('https://web.archive.org/web/20251231092219id_/https://x.org/a')).toBe('https://web.archive.org/web/20251231092219id_/https://x.org/a');
+    expect(rawArchiveUrl('https://www.iea.org/reports/x')).toBe('https://www.iea.org/reports/x');
   });
   it('dates archive copies', () => {
     expect(archiveAgeDays('20260918120000', '2026-10-25')).toBe(37);

@@ -62,7 +62,7 @@ export function normalise(s: string): string {
 
 /** Visible text of an HTML page (scripts, styles and tags removed, entities decoded). */
 export function htmlText(html: string): string {
-  const ENT: Record<string, string> = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ', rsquo: '’', lsquo: '‘', rdquo: '”', ldquo: '“', ndash: '–', mdash: '—', hellip: '…' };
+  const ENT: Record<string, string> = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ', rsquo: '’', lsquo: '‘', rdquo: '”', ldquo: '“', ndash: '–', mdash: '—', hellip: '…', times: '×', minus: '−', deg: '°', middot: '·', bull: '•', euro: '€', pound: '£', thinsp: ' ', ensp: ' ', emsp: ' ', shy: '' };
   return html
     .replace(/<(script|style)[\s\S]*?<\/\1>/gi, ' ') // <noscript> is kept: some pages (Blogger) put the article in it
     .replace(/<annotation[\s\S]*?<\/annotation>/gi, ' ') // MathML's LaTeX copy ("∼ \\sim 90 Wh")
@@ -80,8 +80,11 @@ export function dropRunningHeaders(pages: string[][]): string {
   const seen = new Map<string, number>();
   for (const lines of pages) for (const k of new Set(lines.map(key).filter((k) => k.length > 3))) seen.set(k, (seen.get(k) ?? 0) + 1);
   const furniture = new Set([...seen].filter(([, n]) => n >= 3 && pages.length >= 3).map(([k]) => k));
+  // A bare page number at the top or bottom of a page (court opinions, reports) would split a sentence across pages.
+  const ends = (lines: string[]) => { const at = lines.flatMap((l, i) => (l.trim() ? [i] : [])); return [at[0], at[at.length - 1]]; };
+  const pageNumber = (lines: string[], i: number) => pages.length >= 3 && /^\s*\d{1,4}\s*$/.test(lines[i]!) && ends(lines).includes(i);
   return pages
-    .map((lines) => lines.filter((l) => !furniture.has(key(l))).join('\n'))
+    .map((lines) => lines.filter((l, i) => !furniture.has(key(l)) && !pageNumber(lines, i)).join('\n'))
     .join('\n')
     .replace(/DocuSign Envelope ID: [0-9A-F-]{20,}/gi, ' '); // e-signature stamp on every page of signed documents
 }
@@ -139,6 +142,9 @@ export function lacksArticle(pageText: string, quote: string): boolean {
 
 /** The Internet Archive's most recent copy is used when a page blocks us, if it is no older than this. */
 export const ARCHIVE_MAX_DAYS = 183;
+
+/** A cited Internet Archive link, as the file it captured: without "id_" the Wayback Machine sends its viewer page. */
+export const rawArchiveUrl = (url: string) => url.replace(/^(https:\/\/web\.archive\.org\/web\/\d+)\//, '$1id_/');
 
 /** "20260918123456" (a Wayback timestamp) -> days before `today` ("2026-10-25"). */
 export function archiveAgeDays(timestamp: string, today: string): number {
