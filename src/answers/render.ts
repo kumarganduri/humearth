@@ -58,33 +58,42 @@ export function stampHtml(s: Stamp, tag: 'a' | 'span' = 'a'): string {
 /** Chart values as stored (never rounded: they match their quotes), with thousands commas: 7,626.53 not 7626.53. */
 const num = (v: number) => v.toLocaleString('en-US', { maximumFractionDigits: 6 });
 
+/** The axis ends on a round number just above the largest value ("15,000", not "14,070.3"). */
+export function niceMax(v: number): number {
+  const pow = 10 ** Math.floor(Math.log10(v));
+  const step = [1, 1.2, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10].find((m) => m * pow >= v * 1.02)!;
+  return Number((step * pow).toPrecision(3));
+}
+
+/** One row per published figure, each with its own mark on a shared axis, so close values never overlap and
+ *  every label sits beside its mark (DESIGN.md: labels on the marks, no legend). */
 function pointsHtml(p: Points, companies: Set<string>): string {
-  const max = Math.max(...p.items.map((i) => i.value)) * 1.1;
+  const max = niceMax(Math.max(...p.items.map((i) => i.value)));
   const x = (v: number) => (6 + (v / max) * 348).toFixed(1);
   const unit = p.unit.split(' ')[0]!;
-  const marks = p.items
-    .map((i) => i.claim
-      ? `<rect class="m-claim" x="${(Number(x(i.value)) - 6).toFixed(1)}" y="8" width="12" height="24" rx="2"/>`
-      : `<circle class="${companies.has(i.source) ? 'm-co' : 'm-in'}" cx="${x(i.value)}" cy="20" r="7"/>`)
-    .join('');
+  const mark = (i: Points['items'][number]) => i.claim
+    ? `<rect class="m-claim" x="${(Number(x(i.value)) - 6).toFixed(1)}" y="2" width="12" height="16" rx="2"/>`
+    : `<circle class="${companies.has(i.source) ? 'm-co' : 'm-in'}" cx="${x(i.value)}" cy="10" r="6"/>`;
   const rows = p.items
-    .map((i) => `<li><span class="sw ${i.claim ? 'cl' : companies.has(i.source) ? 'co' : 'in'}" aria-hidden="true"></span><span><b class="num">${num(i.value)} ${esc(unit)}</b> ${esc(i.label)}: ${esc(i.how)}${companies.has(i.source) ? ' (company figure)' : ''}</span></li>`)
+    .map((i) => `<li><span><b class="num">${num(i.value)} ${esc(unit)}</b> ${esc(i.label)}: ${esc(i.how)}${companies.has(i.source) ? ' (company figure)' : ''}</span>
+<svg viewBox="0 0 360 20" aria-hidden="true" focusable="false"><line class="m-axis" x1="6" y1="10" x2="354" y2="10"/>${mark(i)}</svg></li>`)
     .join('');
+  const hollow = p.items.some((i) => companies.has(i.source));
   return `<figure class="fig"><figcaption class="fig-t">${esc(p.title)}</figcaption>
-<svg viewBox="0 0 360 40" aria-hidden="true" focusable="false"><line class="m-axis" x1="6" y1="20" x2="354" y2="20"/>${marks}</svg>
-<div class="fig-axis num" aria-hidden="true"><span>0</span><span>${num(max >= 100 ? Math.round(max) : Math.round(max * 10) / 10)} ${esc(unit)}</span></div>
-<ul>${rows}</ul>
-<p class="fig-note">${p.items.some((i) => companies.has(i.source)) ? 'Hollow dots are the companies’ own figures. ' : ''}Unit: ${esc(p.unit)}.</p></figure>`;
+${hollow ? '<p class="fig-note">Each row is one published figure. A hollow dot is a company’s own number.</p>' : ''}
+<ul class="fig-rows">${rows}</ul>
+<div class="fig-axis num" aria-hidden="true"><span>0</span><span>${num(max)} ${esc(unit)}</span></div>
+<p class="fig-note">Unit: ${esc(p.unit)}.</p></figure>`;
 }
 
 function rangeHtml(r: Range): string {
-  const max = r.claim * 1.05;
+  const max = niceMax(r.claim);
   const x = (v: number) => 6 + (v / max) * 348;
   return `<figure class="fig"><figcaption class="fig-t">${esc(r.unit)} per answer</figcaption>
 <svg viewBox="0 0 360 40" aria-hidden="true" focusable="false"><line class="m-axis" x1="6" y1="20" x2="354" y2="20"/>
 <rect class="m-band" x="${x(r.low).toFixed(1)}" y="10" width="${Math.max(4, x(r.high) - x(r.low)).toFixed(1)}" height="20" rx="2"/>
 <rect class="m-claim" x="${(x(r.claim) - 6).toFixed(1)}" y="8" width="12" height="24" rx="2"/></svg>
-<div class="fig-axis num" aria-hidden="true"><span>0 ${esc(r.unit)}</span><span>${num(Math.round(max))} ${esc(r.unit)}</span></div>
+<div class="fig-axis num" aria-hidden="true"><span>0 ${esc(r.unit)}</span><span>${num(max)} ${esc(r.unit)}</span></div>
 <ul><li><span class="sw rg" aria-hidden="true"></span><span><b class="num">${num(r.low)} to ${num(r.high)} ${esc(r.unit)}</b> ${esc(r.what)}</span></li>
 <li><span class="sw cl" aria-hidden="true"></span><span><b class="num">${num(r.claim)} ${esc(r.unit)}</b> ${esc(r.claimWhat)}</span></li></ul></figure>`;
 }

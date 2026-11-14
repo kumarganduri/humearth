@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { answerPage, cardHtml, dateWords, energy, figureHtml, isRightChoice, ladderHtml, revealHtml, timesWords } from './render';
+import { answerPage, cardHtml, niceMax, dateWords, energy, figureHtml, isRightChoice, ladderHtml, revealHtml, timesWords } from './render';
 import { answerPages, searchPages, homeBody } from './pages';
 import { answerCardSvg, wrap } from './og';
 import { dayNumber, matches, todayIndex, todaySlug } from './pure';
@@ -58,7 +58,9 @@ describe('figures', () => {
     const html = figureHtml(get('smaller-models'), companies);
     expect(html).toContain('12,791.22 Wh');
     expect(html).toContain('18.35 Wh');
-    expect(html).toMatch(/<span>14,070 Wh<\/span>/);
+    expect(html).toMatch(/<span>15,000 Wh<\/span>/); // the axis ends on a round number
+    expect(html.match(/<svg /g)).toHaveLength(4); // one row per figure, so close values never overlap
+    expect([niceMax(0.34), niceMax(525), niceMax(4058849), niceMax(100)]).toEqual([0.4, 600, 5000000, 120]);
   });
   it('uses no inline styles anywhere (the CSP refuses them)', () => {
     for (const html of [...Object.values(answerPages(src)), homeBody(src)]) expect(html).not.toMatch(/\sstyle=/);
@@ -114,7 +116,7 @@ describe('Today and search', () => {
     expect(matches('the and of', src.answers)).toEqual([]);
   });
   it('finds what people actually typed in the phone test, and says nothing when it has nothing', () => {
-    const pages = searchPages(['India', 'Ireland', 'Singapore']);
+    const pages = searchPages(['India', 'Ireland', 'Japan', 'Canada']);
     const all = [...src.answers, ...pages];
     const top = (q: string) => { const m = matches<Findable>(q, all)[0]; return m ? (m.href ?? m.slug) : null; };
     expect(top('is AI bad for the planet?')).toBe('should-i-stop');
@@ -122,7 +124,11 @@ describe('Today and search', () => {
     expect(top('AI art image')).toBe('pictures-and-video');
     expect(top('training a model')).toBe('training-vs-using');
     expect(top('Ohio')).toBe('bills');
-    expect(top('india')).toBe('/earth');
+    expect(top('india')).toBe('india'); // a place with its own answer finds it first
+    expect(top('Japan')).toBe('/earth'); // a place without one goes to The Earth
+    expect(top('data centres Ireland electricity')).toBe('ireland');
+    expect(top('copilot company employees')).toBe('ai-at-work');
+    expect(top('dollars a month')).toBe('bill-dollars');
     expect(top('2030 forecast')).toBe('/2030');
     expect(top('who is behind Hum')).toBe('/about');
     expect(top('who pays for this site')).toBe('/about');

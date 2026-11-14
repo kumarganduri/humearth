@@ -1,5 +1,5 @@
 {
-  "contentHash": "516e06687c4878c8",
+  "contentHash": "c3fcd53ee353b42d",
   "builtAt": "2026-11-14",
   "launch": "2026-10-18",
   "deck": [
@@ -33,7 +33,15 @@
     "jobs",
     "coal-kept-open",
     "heat-reuse",
-    "how-many-data-centres"
+    "how-many-data-centres",
+    "ireland",
+    "ai-at-work",
+    "bill-dollars",
+    "india",
+    "uk",
+    "virginia",
+    "germany",
+    "singapore"
   ],
   "today": [
     "one-question",
@@ -59,7 +67,8 @@
     "renewable-claims",
     "big-tech-emissions",
     "heat-reuse",
-    "how-many-data-centres"
+    "how-many-data-centres",
+    "ai-at-work"
   ],
   "pages": [
     {
@@ -140,7 +149,10 @@
     "heat_odense_cap",
     "heat_odense_capgone",
     "heat_fortum_40",
-    "heat_fortum_start"
+    "heat_fortum_start",
+    "work_ms_range",
+    "work_ms_dash",
+    "va_dominion_25"
   ],
   "answers": [
     {
@@ -246,7 +258,7 @@
       "stamp": "NO",
       "result": "No. The study said one bottle per 10 to 50 answers, for an older model",
       "reveal": "The peer-reviewed study said one 500 ml bottle per 10 to 50 answers, for GPT-3.",
-      "world": "Water is felt locally. In a recent year, US data centres used about 17 billion gallons on site, and about 211 billion more through the power plants that supplied them (Berkeley Lab estimates).",
+      "world": "Water is felt locally. In a recent year, US data centres used about 17 billion US gallons (about 64 billion litres) on site, and about 211 billion gallons (800 billion litres) more through the power plants that supplied them (Berkeley Lab estimates).",
       "you": true,
       "share": "“A bottle of water per ChatGPT email”: the study behind it said one 500 ml bottle per 10 to 50 answers, for GPT-3. For today’s models, nobody has published it.",
       "range": {
@@ -448,7 +460,7 @@
       "stamp": "PARTLY",
       "result": "Mostly, at Google: about 78% of its data-centre water was drinking-quality",
       "reveal": "Google’s data centres took in about 37 billion litres of water in 2024, and about 29 billion of it was potable, by Google’s own report.",
-      "world": "Across the US, data centres consumed about 17 billion gallons of water on site in a recent year (a Berkeley Lab estimate). Nobody publishes how much of that was drinking water.",
+      "world": "Across the US, data centres consumed about 17 billion US gallons (about 64 billion litres) of water on site in a recent year (a Berkeley Lab estimate). Nobody publishes how much of that was drinking water.",
       "you": false,
       "share": "Google’s data centres drew about 29 billion litres of potable, drinking-quality water in 2024, about 78% of their total, by Google’s own report. Some sites run on reclaimed wastewater.",
       "points": {
@@ -642,10 +654,10 @@
       "heardFrom": "said at school, at parties and online",
       "stamp": "PARTLY",
       "result": "Small for you, big in total",
-      "reveal": "A typical user’s year of questions makes about 0.2 kg of CO₂, roughly half a mile in a US car. The total is what’s large: data centres used about 485 TWh in 2025.",
+      "reveal": "A typical user’s year of questions makes about 0.2 kg of CO₂, roughly half a mile (about 0.9 km) in a US car. The total is what’s large: data centres used about 485 TWh in 2025.",
       "world": "All the world’s data centres consumed about 485 TWh of electricity in 2025, and the IEA expects about 950 TWh by 2030. Electricity use by AI-focused data centres grew 50% in 2025. How much CO₂ that makes depends on where the power comes from: the IEA expects renewables to meet half of the growth.",
       "you": true,
-      "share": "Is using ChatGPT bad for the planet? Partly: a typical user’s year of questions makes about 0.2 kg of CO₂, roughly half a mile in a US car (Hum’s sums). The total is the big part: data centres used about 485 TWh in 2025 (IEA)."
+      "share": "Is using ChatGPT bad for the planet? Partly: a typical user’s year of questions makes about 0.2 kg of CO₂, roughly half a mile (about 0.9 km) in a US car (Hum’s sums). The total is the big part: data centres used about 485 TWh in 2025 (IEA)."
     },
     {
       "slug": "training-vs-using",
@@ -926,7 +938,7 @@
       "stamp": "NO",
       "result": "No. The saving is far too small to notice",
       "reveal": "Keeping 1,000 photos for a year uses about 160 to 470 ml of water, by Hum’s sums. A leaky loo can waste 200 to 400 litres a day.",
-      "world": "What did help: Yorkshire Water reported a 10% fall in home water use after its hosepipe ban, up to 80 million litres a day. Data-centre water is real but local: US data centres consumed about 17 billion gallons on site in a recent year (a Berkeley Lab estimate).",
+      "world": "What did help: Yorkshire Water reported a 10% fall in home water use after its hosepipe ban, up to 80 million litres a day. Data-centre water is real but local: US data centres consumed about 17 billion US gallons (about 64 billion litres) on site in a recent year (a Berkeley Lab estimate).",
       "you": true,
       "share": "Deleting old emails and photos won’t help in a drought. Keeping 1,000 photos for a year uses about 160 to 470 ml of water, by Hum’s sums. A leaky loo can waste 200 to 400 litres a day."
     },
@@ -982,7 +994,7 @@
       "keys": "jobs work workers employment economy local",
       "type": "how-much",
       "guess": {
-        "prompt": "In Virginia, a typical data centre building of 250,000 square feet has about how many full-time workers once it’s running?",
+        "prompt": "In Virginia, a typical data centre building of 250,000 square feet (about 23,000 m²) has about how many full-time workers once it’s running?",
         "options": [
           "5",
           "50",
@@ -1043,6 +1055,374 @@
       "world": "All the world’s data centres used about 485 TWh of electricity in 2025, the IEA estimates, and practically all of it ends up as heat. Nobody publishes how much of that is reused worldwide. In the EU, where it is measured, it’s about 1.8%.",
       "you": false,
       "share": "Can data centres heat homes? Yes: in Odense, Denmark, Meta’s heats more than 12,000 homes, the engineers say. But across the EU only about 1.8% of data centres’ heat is reused."
+    },
+    {
+      "slug": "ireland",
+      "q": "How much of Ireland’s electricity do data centres use?",
+      "cat": "Near you",
+      "keys": "ireland irish republic dublin eirgrid cso cru esb percent share country europe grid connection moratorium",
+      "type": "how-much",
+      "guess": {
+        "prompt": "What share of Ireland’s metered electricity did data centres use in 2025?",
+        "options": [
+          "2%",
+          "9%",
+          "23%",
+          "51%"
+        ],
+        "right": 2
+      },
+      "result": "About 23% in 2025, up from 5% in 2015",
+      "reveal": "That’s 7,663 GWh, counted from electricity meters. All of Ireland’s homes together used 28%.",
+      "world": "Worldwide, data centres used about 1.5% of electricity in 2024 (IEA). Ireland’s share is about 15 times that.",
+      "you": false,
+      "share": "Data centres used 23% of Ireland’s metered electricity in 2025, up from 5% in 2015 (Central Statistics Office). That’s more than all the homes in the country’s towns and cities.",
+      "points": {
+        "title": "Data centres’ share of Ireland’s metered electricity consumption (CSO), and EirGrid’s forecast",
+        "unit": "%",
+        "items": [
+          {
+            "value": 5,
+            "label": "2015",
+            "how": "1,240 GWh, metered",
+            "source": "ie_cso_table"
+          },
+          {
+            "value": 11,
+            "label": "2020",
+            "how": "3,030 GWh, metered",
+            "source": "ie_cso_table"
+          },
+          {
+            "value": 21,
+            "label": "2023",
+            "how": "6,339 GWh, metered",
+            "source": "ie_cso_table"
+          },
+          {
+            "value": 22,
+            "label": "2024",
+            "how": "6,973 GWh, metered",
+            "source": "ie_cso_table"
+          },
+          {
+            "value": 23,
+            "label": "2025",
+            "how": "7,663 GWh, metered",
+            "source": "ie_cso_table"
+          },
+          {
+            "value": 32,
+            "label": "2030, forecast",
+            "how": "EirGrid: data centres plus other new technology sites, share of all demand",
+            "source": "ie_eirgrid_2030"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "uk",
+      "q": "How much of the UK’s electricity do data centres use?",
+      "cat": "Near you",
+      "keys": "uk united kingdom britain british great britain england scotland wales london slough neso desnz national grid percent share country",
+      "type": "how-much",
+      "guess": {
+        "prompt": "What share of the electricity taken from Great Britain’s grid went to data centres in 2024, by the government’s first count?",
+        "options": [
+          "0.2%",
+          "2%",
+          "12%",
+          "22%"
+        ],
+        "right": 1
+      },
+      "result": "About 2% in Great Britain, by the first official count",
+      "reveal": "That’s 4.5 TWh in 2024, read from electricity meters. It leaves out Northern Ireland, and the data centres companies run just for themselves.",
+      "world": "Worldwide, data centres used about 1.5% of electricity in 2024 (IEA). Next door in Ireland, they used 23% of metered electricity in 2025.",
+      "you": false,
+      "share": "Data centres used about 2% of the electricity consumed from Great Britain’s grid in 2024, by the UK government’s first count from meters. In Slough, next to London, it was 65%.",
+      "points": {
+        "title": "Data-centre electricity consumption in Great Britain: counts, an older estimate and a forecast",
+        "unit": "TWh a year",
+        "items": [
+          {
+            "value": 3.2,
+            "label": "2020, from meters",
+            "how": "Energy department (DESNZ)",
+            "source": "uk_dukes"
+          },
+          {
+            "value": 4.1,
+            "label": "2023, from meters",
+            "how": "Energy department (DESNZ)",
+            "source": "uk_desnz_neso"
+          },
+          {
+            "value": 4.5,
+            "label": "2024, from meters",
+            "how": "2% of grid consumption",
+            "source": "uk_desnz_share"
+          },
+          {
+            "value": 7.6,
+            "label": "2023, NESO’s estimate",
+            "how": "Worked out from data-centre capacity",
+            "source": "uk_desnz_neso"
+          },
+          {
+            "value": 20,
+            "label": "2030, NESO’s forecast",
+            "how": "“just over 20 TWh”; since lowered",
+            "source": "uk_neso_2030"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "india",
+      "q": "How much electricity do India’s data centres use?",
+      "cat": "Near you",
+      "keys": "india indian mumbai navi mumbai chennai hyderabad bengaluru bangalore delhi noida pune maharashtra bharat coal megawatt capacity",
+      "type": "how-much",
+      "guess": {
+        "prompt": "About how much electricity did India’s data centres use in 2024?",
+        "options": [
+          "1.3 TWh",
+          "13 TWh",
+          "130 TWh",
+          "1,300 TWh"
+        ],
+        "right": 1
+      },
+      "result": "About 13 TWh in 2024, under 1% of India’s electricity",
+      "reveal": "That’s an estimate by S&P Global, a research firm. It expects 57 TWh by 2030. India’s government publishes capacity (MW), not yearly use (TWh).",
+      "world": "India’s 13 TWh was about 3% of the 415 TWh that data centres used worldwide in 2024. The US used 45% (IEA).",
+      "you": false,
+      "share": "India’s data centres used about 13 TWh of electricity in 2024, under 1% of the country’s total (S&P Global estimate). That could reach 57 TWh by 2030.",
+      "points": {
+        "title": "India’s data-centre capacity (government figures). This is power they can draw, not energy used in a year",
+        "unit": "MW",
+        "items": [
+          {
+            "value": 375,
+            "label": "2020",
+            "how": "Around 375 MW installed",
+            "source": "in_cap"
+          },
+          {
+            "value": 1570,
+            "label": "August 2026",
+            "how": "1.57 GW installed",
+            "source": "in_cap"
+          },
+          {
+            "value": 8000,
+            "label": "2030, projected",
+            "how": "Nearly 8 GW",
+            "source": "in_cap2030"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "singapore",
+      "q": "How much of Singapore’s electricity do data centres use?",
+      "cat": "Near you",
+      "keys": "singapore singaporean sg moratorium pause ban jurong asean southeast asia imda natural gas island city",
+      "type": "how-much",
+      "guess": {
+        "prompt": "What share of Singapore’s electricity did data centres use in 2020?",
+        "options": [
+          "0.7%",
+          "7%",
+          "27%",
+          "70%"
+        ],
+        "right": 1
+      },
+      "result": "About 7% in 2020, and reported at just over a tenth by 2024",
+      "reveal": "The government’s figure for 2020 was 3.40 TWh. A news report puts 2024 at about 6.5 TWh, about 1.9 times as much.",
+      "world": "Worldwide, data centres used about 1.5% of electricity in 2024 (IEA). Singapore’s share is several times that, because it is a small country and a hub for the region.",
+      "you": false,
+      "share": "Data centres used about 7% of Singapore’s electricity in 2020 (government figure). A 2024 news report puts it at just over a tenth.",
+      "points": {
+        "title": "Electricity used by Singapore’s data centres (consumption)",
+        "unit": "TWh a year",
+        "items": [
+          {
+            "value": 2.75,
+            "label": "2019, government",
+            "how": "5.3% of Singapore’s electricity",
+            "source": "sg_2020"
+          },
+          {
+            "value": 3.4,
+            "label": "2020, government",
+            "how": "7% of Singapore’s electricity",
+            "source": "sg_2020"
+          },
+          {
+            "value": 6.5,
+            "label": "2024, news report",
+            "how": "Slightly more than a tenth",
+            "source": "sg_2024"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "bill-dollars",
+      "q": "How many dollars a month do data centres add to a home electricity bill?",
+      "cat": "Your bills and the grid",
+      "keys": "dollars month monthly household home cost money how much extra pjm ohio virginia maryland pennsylvania jersey illinois dominion bge pepco capacity rates",
+      "type": "how-much",
+      "guess": {
+        "prompt": "In the eastern US grid (PJM), estimates of what data centres add to a home’s electricity bill are about…",
+        "options": [
+          "$1 a month",
+          "$10 a month",
+          "$50 a month",
+          "$100 a month"
+        ],
+        "right": 1
+      },
+      "result": "About $9 to $11 a month in the eastern US grid. Most places have no figure.",
+      "reveal": "Three estimates for the PJM grid land between $9 and $11 a month. They are estimates, not measured bills, and most places have none.",
+      "world": "Virginia has a forecast, not a bill: the state’s audit commission said data-centre growth could add $14 to $37 a month to a typical Dominion Energy home’s generation and transmission costs by 2040, before inflation. It found today’s rates charge data centres their share. Outside PJM, Hum found no published dollars-a-month figure. Across US states, Berkeley Lab found prices generally fell where demand grew most, and says data-centre load doesn’t appear to change that.",
+      "you": false,
+      "share": "What do data centres add to a home electricity bill? In the eastern US grid (PJM), estimates land around $9 to $11 a month. Virginia’s forecast is $14 to $37 a month by 2040. Most places have no published figure."
+    },
+    {
+      "slug": "ai-at-work",
+      "q": "My company is rolling out AI assistants. How much electricity and CO₂ does that add?",
+      "cat": "About you",
+      "keys": "company employees employee workplace work business copilot gemini office seat seats scope 3 esg sustainability report rollout enterprise team",
+      "type": "how-much",
+      "guess": {
+        "prompt": "A 1,000-person company where everyone asks an AI assistant 20 text questions each working day uses, in a year, about as much electricity as…",
+        "options": [
+          "A sixth of one US home",
+          "16 US homes",
+          "160 US homes",
+          "1,600 US homes"
+        ],
+        "right": 0
+      },
+      "result": "For text questions, about 1.7 kWh and 0.8 kg of CO₂ per person a year",
+      "reveal": "That assumes 20 text questions per working day at 0.34 Wh each, OpenAI’s company figure. A 1,000-person company comes to about 1,700 kWh a year.",
+      "world": "One company’s share is small, but the total keeps growing: electricity use by AI-focused data centres grew 50% in 2025, by the IEA’s estimate.",
+      "you": true,
+      "share": "A 1,000-person company asking an AI assistant 20 text questions each per working day: about 1,700 kWh and 800 kg of CO₂ a year (Hum’s sums from company figures). That’s about 16% of one US home’s electricity. Coding agents and video add far more."
+    },
+    {
+      "slug": "virginia",
+      "q": "How much of Virginia’s electricity do data centres use?",
+      "cat": "Near you",
+      "keys": "virginia loudoun ashburn dominion northern nova data center alley state usa america",
+      "type": "how-much",
+      "guess": {
+        "prompt": "What share of Virginia’s electricity did data centres use in 2023?",
+        "options": [
+          "A fiftieth",
+          "A tenth",
+          "About a quarter",
+          "More than half"
+        ],
+        "right": 2
+      },
+      "result": "About a quarter, more than in any other US state",
+      "reveal": "EPRI estimates 25.59% in 2023, or about 33.9 TWh. Across the whole US the share was about 4.7% in 2024.",
+      "world": "Across the whole US, data centres used about 4.7% of electricity consumption in 2024 (Berkeley Lab). Worldwide it was about 1.5% (IEA). Virginia’s share is far above both.",
+      "you": false,
+      "share": "Data centres use about a quarter of Virginia’s electricity (EPRI, 2023). Across the whole US it’s about 4.7%.",
+      "points": {
+        "title": "Share of electricity consumption used by data centres (Virginia 2023; US and world 2024)",
+        "unit": "% of electricity",
+        "items": [
+          {
+            "value": 1.5,
+            "label": "World, 2024",
+            "how": "IEA estimate",
+            "source": "iea_15"
+          },
+          {
+            "value": 4.7,
+            "label": "United States, 2024",
+            "how": "Berkeley Lab estimate",
+            "source": "usshare_2024"
+          },
+          {
+            "value": 25.59,
+            "label": "Virginia, 2023",
+            "how": "EPRI estimate",
+            "source": "va_epri_row"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "germany",
+      "q": "How much of Germany’s electricity do data centres use?",
+      "cat": "Near you",
+      "keys": "germany german deutschland frankfurt rhein main de-cix rechenzentren enefg berlin europe",
+      "type": "how-much",
+      "guess": {
+        "prompt": "What share of Germany’s electricity did data centres use in 2025?",
+        "options": [
+          "0.4%",
+          "4%",
+          "14%",
+          "40%"
+        ],
+        "right": 1
+      },
+      "result": "About 4%",
+      "reveal": "About 21 TWh in 2025, by the estimate the German government uses. More than a third of the capacity is around Frankfurt.",
+      "world": "Worldwide, data centres used about 1.5% of electricity consumption in 2024 (IEA), so Germany’s 4% is well above the world average. Germany’s 21 TWh is about 4.3% of the 485 TWh that all the world’s data centres used in 2025 (Hum’s arithmetic).",
+      "you": false,
+      "share": "Data centres use about 4% of Germany’s electricity: about 21 TWh in 2025. More than a third of the capacity is around Frankfurt.",
+      "points": {
+        "title": "Electricity consumption of data centres in Germany (estimates to 2025, forecasts after)",
+        "unit": "TWh a year",
+        "items": [
+          {
+            "value": 12,
+            "label": "2014, estimated",
+            "how": "Bitkom and Borderstep",
+            "source": "de_bitkom_2014"
+          },
+          {
+            "value": 20,
+            "label": "2024, estimated",
+            "how": "Bitkom and Borderstep",
+            "source": "de_bitkom_2014"
+          },
+          {
+            "value": 21,
+            "label": "2025, estimated",
+            "how": "about 4% of gross electricity consumption",
+            "source": "de_strat_21"
+          },
+          {
+            "value": 42,
+            "label": "2035, forecast",
+            "how": "study for the economy ministry",
+            "source": "de_bt_2035"
+          },
+          {
+            "value": 80,
+            "label": "2037, low end",
+            "how": "grid regulator’s planning range",
+            "source": "de_bnetza_2037"
+          },
+          {
+            "value": 115,
+            "label": "2037, high end",
+            "how": "grid regulator’s planning range",
+            "source": "de_bnetza_2037"
+          }
+        ]
+      }
     }
   ]
 }

@@ -54,6 +54,8 @@ test('search finds a reviewed answer and links to it', async ({ page }) => {
 test('search sends a place to The Earth, "who makes Hum" to the About page, and says what Hum covers when it has nothing', async ({ page }) => {
   await page.goto('/');
   await page.fill('#q', 'India');
+  await expect(page.locator('#results a').first()).toHaveAttribute('href', '/q/india');
+  await page.fill('#q', 'Japan');
   await expect(page.locator('#results a').first()).toHaveAttribute('href', '/earth');
   await page.fill('#q', 'who is behind Hum');
   await expect(page.locator('#results a').first()).toHaveAttribute('href', '/about');

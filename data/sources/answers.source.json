@@ -32,7 +32,15 @@
     "jobs",
     "coal-kept-open",
     "heat-reuse",
-    "how-many-data-centres"
+    "how-many-data-centres",
+    "ireland",
+    "ai-at-work",
+    "bill-dollars",
+    "india",
+    "uk",
+    "virginia",
+    "germany",
+    "singapore"
   ],
   "today": [
     "one-question",
@@ -58,7 +66,8 @@
     "renewable-claims",
     "big-tech-emissions",
     "heat-reuse",
-    "how-many-data-centres"
+    "how-many-data-centres",
+    "ai-at-work"
   ],
   "sources": {
     "google": {
@@ -1868,6 +1877,734 @@
       "retrieved": "2026-11-08",
       "kind": "company_claim",
       "checked": "page"
+    },
+    "ie_cso_share": {
+      "publisher": "Central Statistics Office (Ireland), Data Centres Metered Electricity Consumption 2025 (7 July 2026; metered consumption)",
+      "quote": "The percentage share of total metered electricity consumption used by data centres rose to 23% in 2025 from 5% in 2015",
+      "url": "https://www.cso.ie/en/releasesandpublications/ep/p-dcmec/datacentresmeteredelectricityconsumption2025/keyfindings/",
+      "retrieved": "2026-11-14",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "ie_cso_gwh": {
+      "publisher": "Central Statistics Office (Ireland), Data Centres Metered Electricity Consumption 2025 (7 July 2026; metered consumption)",
+      "quote": "Metered electricity consumption by data centres increased by 10% in a single year, rising from 6,973 Gigawatt hours (GWh) in 2024 to 7,663 GWh in 2025. Consumption by all other users, including residential and other business customers, went up by 2% over the same period",
+      "url": "https://www.cso.ie/en/releasesandpublications/ep/p-dcmec/datacentresmeteredelectricityconsumption2025/keyfindings/",
+      "retrieved": "2026-11-14",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "ie_cso_homes": {
+      "publisher": "Central Statistics Office (Ireland), Data Centres Metered Electricity Consumption 2025 (7 July 2026; metered consumption)",
+      "quote": "Total residential consumption of electricity, including both urban and rural dwellings, accounted for 28% of usage, compared with 23% by data centres",
+      "url": "https://www.cso.ie/en/releasesandpublications/ep/p-dcmec/datacentresmeteredelectricityconsumption2025/keyfindings/",
+      "retrieved": "2026-11-14",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "ie_cso_urban": {
+      "publisher": "Central Statistics Office (Ireland), Data Centres Metered Electricity Consumption 2025 (7 July 2026; metered consumption), statistician’s comment",
+      "quote": "For comparison, 2025 consumption stood at 18% for urban households and 9% for rural households",
+      "url": "https://www.cso.ie/en/releasesandpublications/ep/p-dcmec/datacentresmeteredelectricityconsumption2025/keyfindings/",
+      "retrieved": "2026-11-14",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "ie_cso_everyyear": {
+      "publisher": "Central Statistics Office (Ireland), Data Centres Metered Electricity Consumption 2025 (7 July 2026; metered consumption), statistician’s comment",
+      "quote": "Data centre consumption has grown every single year without exception, more than doubling between 2015 and 2019 from 1,240 GWh to 2,490 GWh, and tripling again between 2019 and 2025, reaching 7,663 GWh",
+      "url": "https://www.cso.ie/en/releasesandpublications/ep/p-dcmec/datacentresmeteredelectricityconsumption2025/keyfindings/",
+      "retrieved": "2026-11-14",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "ie_cso_table": {
+      "publisher": "Central Statistics Office (Ireland), Data Centres Metered Electricity Consumption 2025 (7 July 2026; metered consumption), Table 1 rows: year, data centres (GWh), other metered customers (GWh), total (GWh), % data centres",
+      "quote": "2015 1,240 23,360 24,600 5 ... 2020 3,030 24,025 27,056 11 ... 2023 6,339 24,242 30,581 21 ... 2024 6,973 24,930 31,903 22 ... 2025 7,663 25,324 32,986 23",
+      "url": "https://www.cso.ie/en/releasesandpublications/ep/p-dcmec/datacentresmeteredelectricityconsumption2025/keyfindings/",
+      "retrieved": "2026-11-14",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "ie_cso_meters": {
+      "publisher": "Central Statistics Office (Ireland), Data Centres Metered Electricity Consumption 2025 (7 July 2026; metered consumption), background notes",
+      "quote": "Data centres were not readily identifiable in the meter data so the CSO examined around 2.6 million meters to identify Meter Point Reference Numbers (MPRNs) that were considered as primarily being used for data centre activity.",
+      "url": "https://www.cso.ie/en/releasesandpublications/ep/p-dcmec/datacentresmeteredelectricityconsumption2025/backgroundnotes/",
+      "retrieved": "2026-11-14",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "ie_cso_few": {
+      "publisher": "Central Statistics Office (Ireland), Data Centres Metered Electricity Consumption 2025 (7 July 2026; metered consumption), background notes",
+      "quote": "A small number of data centres accounted for most of the metered electricity consumption by data centres.",
+      "url": "https://www.cso.ie/en/releasesandpublications/ep/p-dcmec/datacentresmeteredelectricityconsumption2025/backgroundnotes/",
+      "retrieved": "2026-11-14",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "ie_cso_mains": {
+      "publisher": "Central Statistics Office (Ireland), Data Centres Metered Electricity Consumption 2025 (7 July 2026; metered consumption), background notes",
+      "quote": "The data provided to the CSO covered all meters connected to the mains electricity network.",
+      "url": "https://www.cso.ie/en/releasesandpublications/ep/p-dcmec/datacentresmeteredelectricityconsumption2025/backgroundnotes/",
+      "retrieved": "2026-11-14",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "ie_cso_def": {
+      "publisher": "Central Statistics Office (Ireland), Data Centres Metered Electricity Consumption 2025 (7 July 2026; metered consumption), background notes",
+      "quote": "There is no agreed definition of a data centre. ... Data for all years are subject to revision.",
+      "url": "https://www.cso.ie/en/releasesandpublications/ep/p-dcmec/datacentresmeteredelectricityconsumption2025/backgroundnotes/",
+      "retrieved": "2026-11-14",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "ie_eirgrid_2030": {
+      "publisher": "EirGrid (Ireland’s grid operator), All-Island Resource Adequacy Assessment 2026-2035, Ireland report (median scenario; share of the total electricity requirement)",
+      "quote": "Also notable is that by 2030, 32% of all electricity demand is expected to come from data centres and new technology loads.",
+      "url": "https://cms.eirgrid.ie/sites/default/files/publications/AIRAA-2026-2035_Ireland.pdf",
+      "retrieved": "2026-11-14",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "ie_eirgrid_dublin": {
+      "publisher": "EirGrid (Ireland’s grid operator), All-Island Resource Adequacy Assessment 2026-2035, Ireland report",
+      "quote": "demand is expected to continue to rise from current levels as these customers build out towards their contracted load. Almost all this extra load is contracted in the greater Dublin region",
+      "url": "https://cms.eirgrid.ie/sites/default/files/publications/AIRAA-2026-2035_Ireland.pdf",
+      "retrieved": "2026-11-14",
+      "kind": "report",
+      "checked": "page"
+    },
+    "ie_cru_generation": {
+      "publisher": "Commission for Regulation of Utilities (Ireland’s energy regulator), news release on its data-centre connection decision (12 December 2025)",
+      "quote": "New data centres connecting to the electricity network will continue to be required to provide generation and/or storage capacity, either onsite or local in proximity to match the requested data centre maximum import demand capacity.",
+      "url": "https://www.cru.ie/about-us/news/the-cru-publishes-its-decision-on-new-electricity-connection-policy-for-data-centres/",
+      "retrieved": "2026-11-14",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "ie_cru_renewable": {
+      "publisher": "Commission for Regulation of Utilities (Ireland’s energy regulator), news release on its data-centre connection decision (12 December 2025)",
+      "quote": "Data centres will be required to meet at least 80% of their annual demand with additional renewable electricity projects generating in the Republic of Ireland.",
+      "url": "https://www.cru.ie/about-us/news/the-cru-publishes-its-decision-on-new-electricity-connection-policy-for-data-centres/",
+      "retrieved": "2026-11-14",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "ie_cru_growth": {
+      "publisher": "Commission for Regulation of Utilities (Ireland’s energy regulator), news release on its data-centre connection decision (12 December 2025)",
+      "quote": "Ireland has been very successful in attracting data centre development to date, resulting in electricity demand from data centres growing from 5% of national electricity demand in 2015 to 22% in 2024.",
+      "url": "https://www.cru.ie/about-us/news/the-cru-publishes-its-decision-on-new-electricity-connection-policy-for-data-centres/",
+      "retrieved": "2026-11-14",
+      "kind": "report",
+      "checked": "page"
+    },
+    "uk_desnz_share": {
+      "publisher": "UK Department for Energy Security and Net Zero (DESNZ), Data centre electricity consumption in Great Britain, 2020 to 2024 (30 June 2026; Official Statistics in Development; consumption from the grid)",
+      "quote": "In Great Britain, data centres accounted for an estimated 4.5 TWh (2%) of the 249.2 TWh ... of electricity consumed from the grid in 2024.",
+      "url": "https://assets.publishing.service.gov.uk/media/6a3e9f25da47783d87723bf2/Data_centre_electricity_consumption_in_Great_Britain__2020_to_2024.pdf",
+      "retrieved": "2026-11-14",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "uk_desnz_where": {
+      "publisher": "UK Department for Energy Security and Net Zero (DESNZ), Data centre electricity consumption in Great Britain, 2020 to 2024 (30 June 2026; Official Statistics in Development; consumption from the grid)",
+      "quote": "Around three-quarters (77%) of this data centre electricity consumption occurred in the South East (1.8 TWh) and London (1.7 TWh).",
+      "url": "https://assets.publishing.service.gov.uk/media/6a3e9f25da47783d87723bf2/Data_centre_electricity_consumption_in_Great_Britain__2020_to_2024.pdf",
+      "retrieved": "2026-11-14",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "uk_desnz_slough": {
+      "publisher": "UK Department for Energy Security and Net Zero (DESNZ), Data centre electricity consumption in Great Britain, 2020 to 2024 (30 June 2026; Official Statistics in Development; consumption from the grid)",
+      "quote": "Slough (in the South East) was by far the largest contributor, accounting for 1.3 TWh (29%) of data centre electricity consumption in 2024. ... In 2024, data centres accounted for almost two-thirds (65%) of all electricity consumed from the grid in Slough.",
+      "url": "https://assets.publishing.service.gov.uk/media/6a3e9f25da47783d87723bf2/Data_centre_electricity_consumption_in_Great_Britain__2020_to_2024.pdf",
+      "retrieved": "2026-11-14",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "uk_desnz_growth": {
+      "publisher": "UK Department for Energy Security and Net Zero (DESNZ), Data centre electricity consumption in Great Britain, 2020 to 2024 (30 June 2026; Official Statistics in Development; consumption from the grid)",
+      "quote": "Between 2020 and 2024 total data centre consumption increased by 1.3 TWh (41%).",
+      "url": "https://assets.publishing.service.gov.uk/media/6a3e9f25da47783d87723bf2/Data_centre_electricity_consumption_in_Great_Britain__2020_to_2024.pdf",
+      "retrieved": "2026-11-14",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "uk_desnz_scope": {
+      "publisher": "UK Department for Energy Security and Net Zero (DESNZ), Data centre electricity consumption in Great Britain, 2020 to 2024 (30 June 2026; Official Statistics in Development; consumption from the grid)",
+      "quote": "The estimates presented here only cover data centres which provide facilities that support external organisations or individuals. These include colocation data centres, managed hosting colocation data centres and hyperscale data centres; they do not include enterprise data centres (those owned and used by an organisation to support its own internal IT and data requirements).",
+      "url": "https://assets.publishing.service.gov.uk/media/6a3e9f25da47783d87723bf2/Data_centre_electricity_consumption_in_Great_Britain__2020_to_2024.pdf",
+      "retrieved": "2026-11-14",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "uk_desnz_matched": {
+      "publisher": "UK Department for Energy Security and Net Zero (DESNZ), Data centre electricity consumption in Great Britain, 2020 to 2024 (30 June 2026; Official Statistics in Development; consumption from the grid)",
+      "quote": "Electricity meters were then matched to the expanded list of data centres, resulting in 242 ... data centres with electricity consumption data matched to them",
+      "url": "https://assets.publishing.service.gov.uk/media/6a3e9f25da47783d87723bf2/Data_centre_electricity_consumption_in_Great_Britain__2020_to_2024.pdf",
+      "retrieved": "2026-11-14",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "uk_desnz_unmatched": {
+      "publisher": "UK Department for Energy Security and Net Zero (DESNZ), Data centre electricity consumption in Great Britain, 2020 to 2024 (30 June 2026; Official Statistics in Development; consumption from the grid)",
+      "quote": "Additionally, there were some data centres (17 out of 259 ... ) to which electricity meters could not be matched.",
+      "url": "https://assets.publishing.service.gov.uk/media/6a3e9f25da47783d87723bf2/Data_centre_electricity_consumption_in_Great_Britain__2020_to_2024.pdf",
+      "retrieved": "2026-11-14",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "uk_desnz_neso": {
+      "publisher": "UK Department for Energy Security and Net Zero (DESNZ), Data centre electricity consumption in Great Britain, 2020 to 2024 (30 June 2026; Official Statistics in Development; consumption from the grid), comparing its count with NESO’s",
+      "quote": "The National Energy System Operator (NESO) has published a figure of 7.6 TWh ... for the total data centre electricity consumption across Great Britain in 2023. This estimate is based on information about the capacities of data centres in Great Britain with assumptions made about the utilisation of this capacity. The estimates presented here, which are instead based on meter level data on the electricity actually consumed, give a lower 2023 total of 4.1 TWh.",
+      "url": "https://assets.publishing.service.gov.uk/media/6a3e9f25da47783d87723bf2/Data_centre_electricity_consumption_in_Great_Britain__2020_to_2024.pdf",
+      "retrieved": "2026-11-14",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "uk_desnz_dev": {
+      "publisher": "UK Department for Energy Security and Net Zero (DESNZ), Data centre electricity consumption in Great Britain, 2020 to 2024 (30 June 2026; Official Statistics in Development; consumption from the grid)",
+      "quote": "The statistics presented here are classed as Official Statistics in Development as they carry a higher degree of uncertainty than Official Statistics.",
+      "url": "https://assets.publishing.service.gov.uk/media/6a3e9f25da47783d87723bf2/Data_centre_electricity_consumption_in_Great_Britain__2020_to_2024.pdf",
+      "retrieved": "2026-11-14",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "uk_dukes": {
+      "publisher": "UK Department for Energy Security and Net Zero, Digest of UK Energy Statistics (DUKES) 2026, Chapter 5: Electricity",
+      "quote": "Whilst data centres are not yet separately identified in our main data collections, DESNZ analysis of electricity meter data indicates that data centres accounted for an estimated 4.5 TWh of electricity consumed from the grid in Great Britain in 2024, up from 3.2 TWh in 2020.",
+      "url": "https://assets.publishing.service.gov.uk/media/6aba96e8997a4b2950ccf02c/DUKES_2026_Chapter_5.pdf",
+      "retrieved": "2026-11-14",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "uk_hcl": {
+      "publisher": "House of Commons Library, Data centres: planning policy, sustainability, and resilience (research briefing CBP-10315, 27 May 2026)",
+      "quote": "Data centres currently consume around 2.5% of the UK’s electricity ... expected to rise four-fold by 2030",
+      "url": "https://commonslibrary.parliament.uk/research-briefings/cbp-10315/",
+      "retrieved": "2026-11-14",
+      "kind": "report",
+      "checked": "page"
+    },
+    "uk_neso_2030": {
+      "publisher": "NESO (Great Britain’s National Energy System Operator), written evidence DCU0081 to the UK Parliament’s Environmental Audit Committee, on its Future Energy Scenarios 2025 forecast",
+      "quote": "Current NESO analysis points to around 5.2 GW of connected capacity and just over 20 TWh of demand by 2030, but connection requests now exceed 70 GW",
+      "url": "https://committees.parliament.uk/writtenevidence/166090/html/",
+      "retrieved": "2026-11-14",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "uk_neso_viable": {
+      "publisher": "NESO (Great Britain’s National Energy System Operator), written evidence DCU0081 to the UK Parliament’s Environmental Audit Committee, on its Future Energy Scenarios 2025 forecast",
+      "quote": "We do not expect all of this demand to connect to the transmission system as it contains a number of projects likely to be non-viable",
+      "url": "https://committees.parliament.uk/writtenevidence/166090/html/",
+      "retrieved": "2026-11-14",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "uk_neso_lower": {
+      "publisher": "NESO, slides for its Electricity Markets Advisory Council (22 September 2026), on its 2026 Ten-Year Outlook (10YO) compared with its 2025 forecast (10YF)",
+      "quote": "Despite growth in the connections queue, annual demand in the 2026 10YO is also lower than the 2025 10YF, primarily due to the lower utilisation rate assumed, informed by newly available data.",
+      "url": "https://www.neso.energy/document/388756/download",
+      "retrieved": "2026-11-14",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "in_twh": {
+      "publisher": "KNN India (news agency), reporting an S&P Global report (18 September 2025; yearly consumption)",
+      "quote": "In absolute terms, India’s data centre power consumption is expected to grow more than four times — from 13 terawatt-hours (TWh) in 2024 to 57 TWh by 2030.",
+      "url": "https://knnindia.co.in/news/newsdetails/sectors/power-consumption-by-data-centers-to-quadruple-from-13-to-57-twh-by-2030",
+      "retrieved": "2026-11-14",
+      "kind": "report",
+      "checked": "page"
+    },
+    "in_share": {
+      "publisher": "Outlook Business (India), reporting S&P Global estimates (18 September 2025; share of electricity generated, not consumed)",
+      "quote": "the share of electricity of the data centres will triple from 0.84 per cent in 2024 to 2.6 per cent of the total electricity generated in the country by 2030",
+      "url": "https://www.outlookbusiness.com/deeptech/data-centres-in-india-projected-to-become-2nd-largest-power-purchaser-in-apac-region",
+      "retrieved": "2026-11-14",
+      "kind": "report",
+      "checked": "page"
+    },
+    "in_cap": {
+      "publisher": "Press Information Bureau, Government of India, explainer “Data Centres in India: Infrastructure for the Digital Age” (14 September 2026; capacity in MW and GW, not yearly consumption)",
+      "quote": "Installed data-centre power capacity stood at around 375 MW in 2020. It has increased to 1.57 GW as of August 2026.",
+      "url": "https://www.pib.gov.in/PressNoteDetails.aspx?NoteId=159969&ModuleId=3&reg=48&lang=2",
+      "retrieved": "2026-11-14",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "in_cap2030": {
+      "publisher": "Press Information Bureau, Government of India, explainer “Data Centres in India: Infrastructure for the Digital Age” (14 September 2026; capacity in MW and GW, not yearly consumption)",
+      "quote": "The capacity is projected to expand further to nearly 8 GW by 2030",
+      "url": "https://www.pib.gov.in/PressNoteDetails.aspx?NoteId=159969&ModuleId=3&reg=48&lang=2",
+      "retrieved": "2026-11-14",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "in_cea": {
+      "publisher": "Press Information Bureau, Government of India, explainer “Data Centres in India: Infrastructure for the Digital Age” (14 September 2026; capacity in MW and GW, not yearly consumption)",
+      "quote": "According to the Central Electricity Authority (CEA), Ministry of Power, demand could reach 17 GW by 2031–32",
+      "url": "https://www.pib.gov.in/PressNoteDetails.aspx?NoteId=159969&ModuleId=3&reg=48&lang=2",
+      "retrieved": "2026-11-14",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "in_fossil": {
+      "publisher": "Ember, India country page (updated 30 October 2026; share of generation)",
+      "quote": "With fossil fuels accounting for 73% of generation in 2025, the power sector is India’s largest emissions contributor.",
+      "url": "https://ember-energy.org/countries-and-regions/india/",
+      "retrieved": "2026-11-14",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "in_coal": {
+      "publisher": "Ember, India country page (updated 30 October 2026)",
+      "quote": "Power sector emissions have grown over the last two decades due to the expansion of coal generation.",
+      "url": "https://ember-energy.org/countries-and-regions/india/",
+      "retrieved": "2026-11-14",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "sg_2020": {
+      "publisher": "Singapore Ministry of Communications and Information (now MDDI), written reply to a question in Parliament (27 July 2021; consumption)",
+      "quote": "In 2019, DCs accounted for approximately 5.3% (2.75 terawatt-hours, or TWh) of Singapore’s total electricity consumption. Against the backdrop of the COVID-19 pandemic and increased digitalisation, this increased by 1.7 percentage points to approximately 7% (3.40 TWh) in 2020.",
+      "url": "https://www.mddi.gov.sg/newsroom/mci-response-pq-data-carbon-emissions-data-centres-sg/",
+      "retrieved": "2026-11-14",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "sg_2024": {
+      "publisher": "Eco-Business (news site, Singapore), 8 October 2026 (consumption; it does not name its source for the 2024 figure)",
+      "quote": "Data centres consumed about 6.5 terawatt-hour (TWh) of electricity in 2024, slightly more than a tenth of Singapore’s total and up from about 7 per cent in 2020.",
+      "url": "https://www.eco-business.com/news/singapore-sets-southeast-asias-first-binding-data-centre-rules-building-demand-for-clean-energy/",
+      "retrieved": "2026-11-14",
+      "kind": "report",
+      "checked": "page"
+    },
+    "sg_pause": {
+      "publisher": "Singapore Economic Development Board (EDB) and IMDA, joint press release (20 July 2022)",
+      "quote": "The Government informed the industry of a temporary pause in the growth of DCs in 2019 and embarked on a review.",
+      "url": "https://www.edb.gov.sg/en/about-edb/media-releases-publications/edb-and-imda-launch-pilot-data-centre-call-for-application-to-support-sustainable-growth-of-data-centres.html",
+      "retrieved": "2026-11-14",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "sg_lift": {
+      "publisher": "Singapore Economic Development Board (EDB) and IMDA, joint press release (14 July 2023)",
+      "quote": "After the temporary pause in the growth of DCs was lifted in 2022, a pilot DC-CFA was launched to facilitate the sustainable building of new data centre capacity.",
+      "url": "https://www.edb.gov.sg/en/about-edb/media-releases-publications/four-data-centre-proposals-selected-as-part-of-pilot-data-centre-call-for-application.html",
+      "retrieved": "2026-11-14",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "sg_80": {
+      "publisher": "Singapore Economic Development Board (EDB) and IMDA, joint press release (14 July 2023; capacity)",
+      "quote": "will award about 80 MW of new capacity to four data centre operators through the pilot Data Centre – Call for Application (DC-CFA) exercise",
+      "url": "https://www.edb.gov.sg/en/about-edb/media-releases-publications/four-data-centre-proposals-selected-as-part-of-pilot-data-centre-call-for-application.html",
+      "retrieved": "2026-11-14",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "sg_cap": {
+      "publisher": "Infocomm Media Development Authority (IMDA), Singapore, Green Data Centre Roadmap (2024, PDF; capacity, not yearly consumption)",
+      "quote": "Today, Singapore is a regional DC hub, with total capacity exceeding 1.4 gigawatts, and one of the highest concentrations of DCs in the region",
+      "url": "https://www.imda.gov.sg/-/media/imda/files/how-we-can-help/green-dc-roadmap/green-dc-roadmap.pdf",
+      "retrieved": "2026-11-14",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "sg_300": {
+      "publisher": "Infocomm Media Development Authority (IMDA), Singapore, Green Data Centre Roadmap (2024, PDF; capacity, not yearly consumption)",
+      "quote": "We aim to provide at least 300 megawatts (MW) of additional capacity in the near term, with much more through green energy deployments.",
+      "url": "https://www.imda.gov.sg/-/media/imda/files/how-we-can-help/green-dc-roadmap/green-dc-roadmap.pdf",
+      "retrieved": "2026-11-14",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "sg_70": {
+      "publisher": "Singapore Ministry of Trade and Industry, written reply to a question in Parliament (January 2021 sitting; capacity)",
+      "quote": "As of 2021, there are more than 70 operational data centres (DCs) in Singapore with a total available IT capacity of about 1,000 megawatts (MW).",
+      "url": "https://www.mti.gov.sg/Newsroom/Parliamentary-Replies/2021/01/Written-reply-to-PQ-on-data-centres",
+      "retrieved": "2026-11-14",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "sg_gas": {
+      "publisher": "National Climate Change Secretariat, Singapore, Power page (share of generation)",
+      "quote": "Since 2000, Singapore has shifted away from less efficient fossil fuels and in turn increased the percentage of natural gas used in electricity generation from 19% to about 94% in 2024.",
+      "url": "https://www.nccs.gov.sg/singapores-climate-action/mitigation-efforts/power/",
+      "retrieved": "2026-11-14",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "sg_law": {
+      "publisher": "Singapore Ministry of Digital Development and Information (MDDI), press release on the Digital Infrastructure Bill (8 September 2026)",
+      "quote": "All operators of DCs with a critical IT load of at least 3MW will be licensed. As a first step, DCs will be required to meet facility-level energy-efficiency requirements, including Power Usage Effectiveness (PUE) requirements.",
+      "url": "https://www.mddi.gov.sg/newsroom/new-digital-infrastructure-bill-to-strengthen-the-foundations-for-singapore-s-digital-economy/",
+      "retrieved": "2026-11-14",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "sg_passed": {
+      "publisher": "Eco-Business (news site, Singapore), 8 October 2026",
+      "quote": "Singapore has become the first country in Southeast Asia to pass a law setting binding efficiency standards and clean energy requirements for data centres",
+      "url": "https://www.eco-business.com/news/singapore-sets-southeast-asias-first-binding-data-centre-rules-building-demand-for-clean-energy/",
+      "retrieved": "2026-11-14",
+      "kind": "report",
+      "checked": "page"
+    },
+    "sg_pq2025": {
+      "publisher": "Singapore Ministry of Trade and Industry, written reply to a question in Parliament (7 January 2025)",
+      "quote": "In May 2024, the Government announced our aim to provide at least 300 megawatts of additional data centre capacity in the near term and potentially more through low-carbon energy deployments. The growth in capacity is in line with our projections to peak emissions in 2028.",
+      "url": "https://www.mti.gov.sg/newsroom/written-reply-to-pq-on-electricity-consumption-when-data-centres--capacities-rise-by-a-third-and-impact-on-singapore-s-greenhouse-emissions/",
+      "retrieved": "2026-11-14",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "sg_min2024": {
+      "publisher": "Singapore Ministry of Trade and Industry, speech by Senior Minister of State Low Yen Ling (June 2024)",
+      "quote": "DCs are collectively our biggest indirect carbon emitters, contributing up to 82% of Singapore’s I&C sector emissions and 7% of our total electricity consumption.",
+      "url": "https://www.mti.gov.sg/newsroom/speech-by-sms-low-yen-ling-at-st-engineering-data-centre-groundbreaking-ceremony/",
+      "retrieved": "2026-11-14",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "bd_pjm_states": {
+      "publisher": "PJM Interconnection, Who We Are",
+      "quote": "coordinates the movement of wholesale electricity in all or parts of Delaware, Illinois, Indiana, Kentucky, Maryland, Michigan, New Jersey, North Carolina, Ohio, Pennsylvania, Tennessee, Virginia, West Virginia and the District of Columbia",
+      "url": "https://www.pjm.com/about-pjm/who-we-are",
+      "retrieved": "2026-11-14",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "bd_eia_899": {
+      "publisher": "US Energy Information Administration, FAQ: How much electricity does an American home use?",
+      "quote": "In 2022, the average annual amount of electricity sold to (purchased by) a U.S. residential electric-utility customer was 10,791 kilowatthours (kWh), an average of about 899 kWh per month.",
+      "url": "https://www.eia.gov/tools/faqs/faq.php?id=97&t=3",
+      "retrieved": "2026-11-14",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "bd_fc_10": {
+      "publisher": "FactCheck.org (Annenberg Public Policy Center), October 2026, reporting estimates from Sanya Carley of the University of Pennsylvania’s Kleinman Center for Energy Policy",
+      "quote": "adding, for example, at least $10 per month to bills in western Maryland and Ohio starting in mid-2025",
+      "url": "https://www.factcheck.org/2026/10/data-centers-and-electricity-prices-its-not-as-simple-as-voters-may-think/",
+      "retrieved": "2026-11-14",
+      "kind": "report",
+      "checked": "page"
+    },
+    "bd_fc_63": {
+      "publisher": "FactCheck.org (Annenberg Public Policy Center), October 2026, reporting estimates from Sanya Carley of the University of Pennsylvania’s Kleinman Center for Energy Policy",
+      "quote": "capacity market increases between mid-2025 and mid-2026 added around $18 per month to the average home electricity bill in western Maryland and $16 per month in Ohio, with 63% of those increases estimated to be specifically due to data centers",
+      "url": "https://www.factcheck.org/2026/10/data-centers-and-electricity-prices-its-not-as-simple-as-voters-may-think/",
+      "retrieved": "2026-11-14",
+      "kind": "report",
+      "checked": "page"
+    },
+    "bd_opc_low": {
+      "publisher": "Maryland Office of People's Counsel (state consumer advocate), press release 24 July 2025: table of estimated Maryland residential monthly bill increases from PJM capacity auctions. The first figure is the cumulative increase from the 2024/2025 delivery year, the second the increase from the latest auction alone",
+      "quote": "Delmarva Power (Maryland) $10.43 $5.24",
+      "url": "https://content.govdelivery.com/accounts/MDOPC/bulletins/3ead2f8",
+      "retrieved": "2026-11-14",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "bd_opc_high": {
+      "publisher": "Maryland Office of People's Counsel (state consumer advocate), press release 24 July 2025: table of estimated Maryland residential monthly bill increases from PJM capacity auctions. The first figure is the cumulative increase from the 2024/2025 delivery year, the second the increase from the latest auction alone",
+      "quote": "Potomac Edison (APS-Maryland) $20.81 $3.21",
+      "url": "https://content.govdelivery.com/accounts/MDOPC/bulletins/3ead2f8",
+      "retrieved": "2026-11-14",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "bd_opc_rough": {
+      "publisher": "Maryland Office of People's Counsel (state consumer advocate), press release 24 July 2025",
+      "quote": "The results are rough estimates and depend on the level of customer energy consumption.",
+      "url": "https://content.govdelivery.com/accounts/MDOPC/bulletins/3ead2f8",
+      "retrieved": "2026-11-14",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "bd_opc_dc": {
+      "publisher": "Maryland Office of People's Counsel (state consumer advocate), press release 24 July 2025",
+      "quote": "Most increases in demand originated from data centers",
+      "url": "https://content.govdelivery.com/accounts/MDOPC/bulletins/3ead2f8",
+      "retrieved": "2026-11-14",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "bd_jlarc_37": {
+      "publisher": "Virginia Joint Legislative Audit and Review Commission (JLARC): Data Centers in Virginia, Report 598 (December 2024), Dominion Energy customers",
+      "quote": "A typical residential customer of Dominion Energy could experience generation- and transmission-related costs increasing by an estimated $14 to $37 monthly in constant (or real) dollars by 2040 (independent of inflation).",
+      "url": "https://web.archive.org/web/20251231092219/https://jlarc.virginia.gov/pdfs/reports/Rpt598.pdf",
+      "retrieved": "2026-11-14",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "bd_jlarc_now": {
+      "publisher": "Virginia Joint Legislative Audit and Review Commission (JLARC): Data Centers in Virginia, Report 598 (December 2024)",
+      "quote": "The study found that current rates appropriately allocate costs to the customers responsible for incurring them, including data center customers.",
+      "url": "https://web.archive.org/web/20251231092219/https://jlarc.virginia.gov/pdfs/reports/Rpt598.pdf",
+      "retrieved": "2026-11-14",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "bd_jlarc_excl": {
+      "publisher": "Virginia Joint Legislative Audit and Review Commission (JLARC): Data Centers in Virginia, Report 598 (December 2024), note to Table 4-2",
+      "quote": "Does not include potential increases in distribution and several other charges that customers typically pay for.",
+      "url": "https://web.archive.org/web/20251231092219/https://jlarc.virginia.gov/pdfs/reports/Rpt598.pdf",
+      "retrieved": "2026-11-14",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "work_ms_range": {
+      "publisher": "Microsoft (Cloud Blog, 15 June 2026, on a Microsoft study published in Joule; modelled, large models served at scale)",
+      "quote": "a typical AI query to some of the largest and most capable LLMs uses between 0.16 and 0.60 watt-hours of electricity",
+      "url": "https://www.microsoft.com/en-us/microsoft-cloud/blog/2026/06/15/scaling-ai-with-8-to-20x-energy-efficiency/",
+      "retrieved": "2026-11-14",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "work_ms_dash": {
+      "publisher": "Microsoft Learn, Emissions Impact Dashboard for Microsoft 365 (frequently asked questions)",
+      "quote": "Copilot for Microsoft 365 isn't currently included in this report.",
+      "url": "https://learn.microsoft.com/en-us/power-bi/connect-data/service-connect-emissions-impact-dashboard-microsoft-365",
+      "retrieved": "2026-11-14",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "va_epri_quarter": {
+      "publisher": "EPRI (Electric Power Research Institute), Powering Intelligence: Analyzing Artificial Intelligence and Data Center Energy Consumption, white paper, May 2024",
+      "quote": "Today, fifteen states account for 80% of the national data center load, with data centers estimated to comprise a quarter of Virginia’s electric load in 2023.",
+      "url": "https://restservice.epri.com/publicdownload/000000003002028905/0/Product",
+      "retrieved": "2026-11-14",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "va_epri_row": {
+      "publisher": "EPRI (Electric Power Research Institute), Powering Intelligence: Analyzing Artificial Intelligence and Data Center Energy Consumption, white paper, May 2024 (Table 2: data-centre electricity consumption in MWh and share of the state’s electricity consumption; first two columns are 2023)",
+      "quote": "Virginia 33,851,122 25.59%",
+      "url": "https://restservice.epri.com/publicdownload/000000003002028905/0/Product",
+      "retrieved": "2026-11-14",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "va_epri_most": {
+      "publisher": "EPRI (Electric Power Research Institute), Powering Intelligence: Analyzing Artificial Intelligence and Data Center Energy Consumption, white paper, May 2024",
+      "quote": "Data centers consume more power in Virginia, for instance, than in any other state.",
+      "url": "https://restservice.epri.com/publicdownload/000000003002028905/0/Product",
+      "retrieved": "2026-11-14",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "va_epri_2030": {
+      "publisher": "EPRI (Electric Power Research Institute), Powering Intelligence: Analyzing Artificial Intelligence and Data Center Energy Consumption, white paper, May 2024",
+      "quote": "With evenly spread growth, the data center share of load in Virginia increases to almost 50% in the higher growth scenario and to 36% when averaged across the four scenarios.",
+      "url": "https://restservice.epri.com/publicdownload/000000003002028905/0/Product",
+      "retrieved": "2026-11-14",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "va_epri_uneven": {
+      "publisher": "EPRI (Electric Power Research Institute), Powering Intelligence: Analyzing Artificial Intelligence and Data Center Energy Consumption, white paper, May 2024",
+      "quote": "In reality, load growth is unlikely to be spread evenly.",
+      "url": "https://restservice.epri.com/publicdownload/000000003002028905/0/Product",
+      "retrieved": "2026-11-14",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "va_epri_method": {
+      "publisher": "EPRI (Electric Power Research Institute), Powering Intelligence: Analyzing Artificial Intelligence and Data Center Energy Consumption, white paper, May 2024",
+      "quote": "shows the effect in 2030 of applying the annual U.S. data center growth rates (averaged across the four scenarios) to project state-level loads against a backdrop of 1% annual growth in other loads.",
+      "url": "https://restservice.epri.com/publicdownload/000000003002028905/0/Product",
+      "retrieved": "2026-11-14",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "va_jlarc_early": {
+      "publisher": "Virginia Joint Legislative Audit and Review Commission (JLARC), Data Centers in Virginia, Report 598, December 2024 (archived copy)",
+      "quote": "The region’s role in the early stages of the internet’s development gave it a head start as a key data center hub.",
+      "url": "https://web.archive.org/web/20251231092219/https://jlarc.virginia.gov/pdfs/reports/Rpt598.pdf",
+      "retrieved": "2026-11-14",
+      "kind": "report",
+      "checked": "page"
+    },
+    "va_jlarc_cluster": {
+      "publisher": "Virginia Joint Legislative Audit and Review Commission (JLARC), Data Centers in Virginia, Report 598, December 2024 (archived copy)",
+      "quote": "With the rapid growth of the internet in the 2000s, it became advantageous for data centers to cluster near each other so they could share information more quickly.",
+      "url": "https://web.archive.org/web/20251231092219/https://jlarc.virginia.gov/pdfs/reports/Rpt598.pdf",
+      "retrieved": "2026-11-14",
+      "kind": "report",
+      "checked": "page"
+    },
+    "va_jlarc_difficult": {
+      "publisher": "Virginia Joint Legislative Audit and Review Commission (JLARC), Data Centers in Virginia, Report 598, December 2024 (archived copy)",
+      "quote": "Building enough infrastructure for unconstrained data center demand will be very difficult and meeting half that demand is still difficult",
+      "url": "https://web.archive.org/web/20251231092219/https://jlarc.virginia.gov/pdfs/reports/Rpt598.pdf",
+      "retrieved": "2026-11-14",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "va_dominion_25": {
+      "publisher": "Utility Dive, quoting Dominion Energy chief executive Robert Blue on the company’s earnings call (31 October 2025)",
+      "quote": "we’ve got more than 25% of our sales going to data centers in Virginia",
+      "url": "https://www.utilitydive.com/news/dominion-energy-offshore-wind-earnings/804617/",
+      "retrieved": "2026-11-14",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "va_jlarc_13": {
+      "publisher": "Virginia Joint Legislative Audit and Review Commission (JLARC), Data Centers in Virginia, Report 598, December 2024 (archived copy), citing Cushman & Wakefield",
+      "quote": "The Northern Virginia market constitutes 13 percent of all reported data center operational capacity globally and 25 percent of capacity in the Americas region.",
+      "url": "https://web.archive.org/web/20251231092219/https://jlarc.virginia.gov/pdfs/reports/Rpt598.pdf",
+      "retrieved": "2026-11-14",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "va_jlarc_loudoun": {
+      "publisher": "Virginia Joint Legislative Audit and Review Commission (JLARC), Data Centers in Virginia, Report 598, December 2024 (archived copy)",
+      "quote": "Loudoun County alone accounts for approximately half of the state’s data center industry in terms of number of sites, building square footage, and estimated energy usage.",
+      "url": "https://web.archive.org/web/20251231092219/https://jlarc.virginia.gov/pdfs/reports/Rpt598.pdf",
+      "retrieved": "2026-11-14",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "va_jlarc_flat": {
+      "publisher": "Virginia Joint Legislative Audit and Review Commission (JLARC), Data Centers in Virginia, Report 598, December 2024 (archived copy)",
+      "quote": "The state’s energy demand was essentially flat from 2006 to 2020 because, even though population increased, it was offset by energy efficiency improvements.",
+      "url": "https://web.archive.org/web/20251231092219/https://jlarc.virginia.gov/pdfs/reports/Rpt598.pdf",
+      "retrieved": "2026-11-14",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "va_jlarc_double": {
+      "publisher": "Virginia Joint Legislative Audit and Review Commission (JLARC), Data Centers in Virginia, Report 598, December 2024 (archived copy)",
+      "quote": "an independent forecast commissioned by JLARC shows that unconstrained demand for power in Virginia would double within the next 10 years, with the data center industry being the main driver.",
+      "url": "https://web.archive.org/web/20251231092219/https://jlarc.virginia.gov/pdfs/reports/Rpt598.pdf",
+      "retrieved": "2026-11-14",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "va_jlarc_coops": {
+      "publisher": "Virginia Joint Legislative Audit and Review Commission (JLARC), Data Centers in Virginia, Report 598, December 2024 (archived copy)",
+      "quote": "a majority of projected data center growth (~60 percent) is expected to occur in co-op service territories.",
+      "url": "https://web.archive.org/web/20251231092219/https://jlarc.virginia.gov/pdfs/reports/Rpt598.pdf",
+      "retrieved": "2026-11-14",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "va_eia_14": {
+      "publisher": "US Energy Information Administration, Today in Energy (28 June 2024): change in electricity sales to commercial customers, 2019 to 2023",
+      "quote": "Electricity demand has grown the most in Virginia, which added 14 BkWh, and Texas, which added 13 BkWh.",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=62409",
+      "retrieved": "2026-11-14",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "de_strat_21": {
+      "publisher": "German Federal Government, Rechenzentrumsstrategie (national data-centre strategy), adopted March 2026, in German, giving the Borderstep Institute’s 2025 estimate",
+      "quote": "Der Stromverbrauch für Rechenzentren steigt und beträgt ungefähr 21 TWh (2025). Ihr Anteil am Bruttostromverbrauch liegt bei rund 4 %.",
+      "url": "https://www.publikationen-bundesregierung.de/resource/blob/2277604/2418520/77be2a4d9543da619145270a635d664d/nationale-rechenzentrums-strategie-bf-download-bmds-data.pdf?download=1",
+      "retrieved": "2026-11-14",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "de_strat_frankfurt": {
+      "publisher": "German Federal Government, Rechenzentrumsstrategie (national data-centre strategy), adopted March 2026, in German",
+      "quote": "Räumlich sind im Gebiet Frankfurt/Rhein-Main die größten Rechenzentrumskapazitäten in Deutschland verortet (mehr als ein Drittel der nationalen Gesamtkapazität; Borderstep, 2025), wobei dieses historisch zunächst wegen der Nähe zum DE-CIX sowie dem dortigen Bankenstandort entstandene und in der EU bedeutendste Cluster",
+      "url": "https://www.publikationen-bundesregierung.de/resource/blob/2277604/2418520/77be2a4d9543da619145270a635d664d/nationale-rechenzentrums-strategie-bf-download-bmds-data.pdf?download=1",
+      "retrieved": "2026-11-14",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "de_strat_largest": {
+      "publisher": "German Federal Government, Rechenzentrumsstrategie (national data-centre strategy), adopted March 2026, in German",
+      "quote": "Deutschland ist gemessen an Kapazitäten und Anzahl der Standorte der größte Rechenzentrumsmarkt in Europa.",
+      "url": "https://www.publikationen-bundesregierung.de/resource/blob/2277604/2418520/77be2a4d9543da619145270a635d664d/nationale-rechenzentrums-strategie-bf-download-bmds-data.pdf?download=1",
+      "retrieved": "2026-11-14",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "de_strat_ai": {
+      "publisher": "German Federal Government, Rechenzentrumsstrategie (national data-centre strategy), adopted March 2026, in German",
+      "quote": "Der Anteil von Rechenzentren, die in Deutschland für High-Performance-Computing (HPC) oder … genutzt werden, liegt laut Borderstep (2025) bei 15%",
+      "url": "https://www.publikationen-bundesregierung.de/resource/blob/2277604/2418520/77be2a4d9543da619145270a635d664d/nationale-rechenzentrums-strategie-bf-download-bmds-data.pdf?download=1",
+      "retrieved": "2026-11-14",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "de_strat_novelle": {
+      "publisher": "German Federal Government, Rechenzentrumsstrategie (national data-centre strategy), adopted March 2026, in German",
+      "quote": "Die Bundesregierung wird Vorschläge für eine Novelle des Energieeffizienzgesetzes (EnEfG) vorlegen, die für 2026 geplant ist.",
+      "url": "https://www.publikationen-bundesregierung.de/resource/blob/2277604/2418520/77be2a4d9543da619145270a635d664d/nationale-rechenzentrums-strategie-bf-download-bmds-data.pdf?download=1",
+      "retrieved": "2026-11-14",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "de_enefg_renew": {
+      "publisher": "Germany, Energieeffizienzgesetz (Energy Efficiency Act, EnEfG), official text on gesetze-im-internet.de, in German, § 11 (5)",
+      "quote": "Betreiber von Rechenzentren decken den Stromverbrauch in ihren Rechenzentren bilanziell 1. ab dem 1. Januar 2024 zu 50 Prozent durch Strom aus erneuerbaren Energien und 2. ab dem 1. Januar 2027 zu 100 Prozent durch Strom aus erneuerbaren Energien.",
+      "url": "https://www.gesetze-im-internet.de/enefg/BJNR1350B0023.html",
+      "retrieved": "2026-11-14",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "de_enefg_reuse": {
+      "publisher": "Germany, Energieeffizienzgesetz (Energy Efficiency Act, EnEfG), official text on gesetze-im-internet.de, in German, § 11 (2)",
+      "quote": "Rechenzentren, die ab dem 1. Juli 2026 den Betrieb aufnehmen, sind so zu errichten und zu betreiben, dass sie … von mindestens 10 Prozent aufweisen; Rechenzentren, die ab dem 1. Juli 2027 den Betrieb aufnehmen, müssen einen geplanten Anteil an wiederverwendeter Energie von mindestens 15 Prozent aufweisen; Rechenzentren, die ab dem 1. Juli 2028 den Betrieb aufnehmen, müssen einen geplanten Anteil an wiederverwendeter Energie von mindestens 20 Prozent aufweisen.",
+      "url": "https://www.gesetze-im-internet.de/enefg/BJNR1350B0023.html",
+      "retrieved": "2026-11-14",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "de_enefg_register": {
+      "publisher": "Germany, Energieeffizienzgesetz (Energy Efficiency Act, EnEfG), official text on gesetze-im-internet.de, in German, § 14",
+      "quote": "Die Bundesregierung errichtet ein Energieeffizienzregister für Rechenzentren, in dem die von den Rechenzentren nach § 13 Absatz 1 in Verbindung mit Anlage 3 übermittelten Informationen gespeichert und in eine europäische Datenbank über Rechenzentren übertragen werden.",
+      "url": "https://www.gesetze-im-internet.de/enefg/BJNR1350B0023.html",
+      "retrieved": "2026-11-14",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "de_enefg_report": {
+      "publisher": "Germany, Energieeffizienzgesetz (Energy Efficiency Act, EnEfG), official text on gesetze-im-internet.de, in German, § 13 (1)",
+      "quote": "Betreiber von Rechenzentren sind verpflichtet, bis zum Ablauf des 31. März eines jeden Jahres Informationen über ihr Rechenzentrum nach Maßgabe der Anlage 3 für das vorangegangene Kalenderjahr zu veröffentlichen und an den Bund zu übermitteln.",
+      "url": "https://www.gesetze-im-internet.de/enefg/BJNR1350B0023.html",
+      "retrieved": "2026-11-14",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "de_bnetza_2037": {
+      "publisher": "Bundesnetzagentur (Germany’s grid regulator), approval of the scenario framework for the electricity grid development plan 2025-2037/2045, April 2025, in German",
+      "quote": "Dadurch ergibt sich ein zusätzlicher Stromverbrauch durch Rechenzentren zwischen ca. 80 und 115 TWh und damit mehr als im Entwurf der Übertragungsnetzbetreiber.",
+      "url": "https://www.netzentwicklungsplan.de/sites/default/files/2025-04/Genehmigung%20Szenariorahmen%202025_0.pdf",
+      "retrieved": "2026-11-14",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "de_bnetza_doubt": {
+      "publisher": "Bundesnetzagentur (Germany’s grid regulator), approval of the scenario framework for the electricity grid development plan 2025-2037/2045, April 2025, in German",
+      "quote": "Ob alle Projekte mit den gemeldeten Anschlussleistungen realisiert werden, kann bezweifelt werden.",
+      "url": "https://www.netzentwicklungsplan.de/sites/default/files/2025-04/Genehmigung%20Szenariorahmen%202025_0.pdf",
+      "retrieved": "2026-11-14",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "de_bt_2035": {
+      "publisher": "German Federal Government, answer to a parliamentary question, Bundestag Drucksache 21/1263 (18 August 2025), in German",
+      "quote": "Ein Gutachten des Bundesministeriums für Wirtschaft und Energie (BMWE) schätzt, dass der Stromverbrauch aller Rechenzentren in Deutschland im Jahr 2035 bei ca. 42 TWh pro Jahr liegen könnte.",
+      "url": "https://dserver.bundestag.de/btd/21/012/2101263.pdf",
+      "retrieved": "2026-11-14",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "de_bitkom_2014": {
+      "publisher": "Bitkom (German digital industry association), press release on its data-centre study with the Borderstep Institute (21 November 2024), in German; 1 Mrd. kWh is 1 TWh",
+      "quote": "Er wird 2024 bei 20 Mrd. Kilowattstunden liegen – 2014 waren es noch 12 Mrd. kWh.",
+      "url": "https://www.bitkom.org/Presse/Presseinformation/Rechenzentren-Deutschland-verliert-Anschluss",
+      "retrieved": "2026-11-14",
+      "kind": "estimate",
+      "checked": "page"
     }
   },
   "calcs": {
@@ -2317,6 +3054,165 @@
       "text": "40% of 2 TWh a year = 0.8 TWh of heat a year",
       "expr": "40 / 100 * 2",
       "result": 0.8
+    },
+    "water_17_l": {
+      "text": "17 billion US gallons × 3.785 litres a gallon ≈ 64 billion litres",
+      "expr": "17*3785/1000",
+      "result": 64.345
+    },
+    "stop_car_km": {
+      "text": "half a mile × 1.609 km a mile ≈ 0.9 km",
+      "expr": "0.5375*1.609",
+      "result": 0.865
+    },
+    "stop_heavy_km": {
+      "text": "7 miles × 1.609 km a mile ≈ 12 km",
+      "expr": "7.35*1.609",
+      "result": 11.83
+    },
+    "jobs_sqm": {
+      "text": "250,000 square feet × 0.0929 m² a square foot ≈ 23,000 m²",
+      "expr": "250000*0.0929",
+      "result": 23225
+    },
+    "ie_twh": {
+      "text": "7,663 GWh ÷ 1,000 ≈ 7.7 TWh (Ireland’s data centres, metered consumption, 2025)",
+      "expr": "7663/1000",
+      "result": 7.66
+    },
+    "ie_x_2015": {
+      "text": "7,663 GWh in 2025 ÷ 1,240 GWh in 2015 ≈ 6.2, so about 6 times as much",
+      "expr": "7663/1240",
+      "result": 6.18
+    },
+    "ie_x_world": {
+      "text": "23% in Ireland (2025) ÷ 1.5% worldwide (2024) ≈ 15.3, so about 15 times the world share. Rough: the years differ, and Ireland’s figure is a share of metered consumption",
+      "expr": "23/1.5",
+      "result": 15.3
+    },
+    "uk_x_2030": {
+      "text": "Just over 20 TWh in 2030 (NESO’s forecast) ÷ 4.5 TWh in 2024 (the government’s meter count) ≈ 4.4 times as much. Rough: the two were worked out in different ways",
+      "expr": "20/4.5",
+      "result": 4.44
+    },
+    "uk_meter_vs_neso": {
+      "text": "4.1 TWh (from meters) ÷ 7.6 TWh (from capacity), both for Great Britain in 2023 ≈ 54%, a little over half",
+      "expr": "4.1/7.6*100",
+      "result": 53.9
+    },
+    "in_x": {
+      "text": "57 TWh in 2030 ÷ 13 TWh in 2024 ≈ 4.4 times as much (S&P Global’s figures, as reported)",
+      "expr": "57/13",
+      "result": 4.4
+    },
+    "in_cap_x": {
+      "text": "1.57 GW is 1,570 MW. 1,570 MW in August 2026 ÷ 375 MW in 2020 ≈ 4.2 times the capacity",
+      "expr": "1.57*1000/375",
+      "result": 4.2
+    },
+    "in_world": {
+      "text": "13 TWh in India ÷ 415 TWh in the world ≈ 3% of the world’s data-centre electricity in 2024. Rough: the two figures come from different sources",
+      "expr": "13/415*100",
+      "result": 3.1
+    },
+    "sg_x": {
+      "text": "6.5 TWh in 2024 ÷ 3.40 TWh in 2020 ≈ 1.9 times as much. Rough: the 2024 figure is from a news report, the 2020 one from the government",
+      "expr": "6.5/3.40",
+      "result": 1.9
+    },
+    "in_8000": {
+      "text": "8 GW × 1,000 = 8,000 MW (the government says “nearly 8 GW”, so this is a ceiling)",
+      "expr": "8*1000",
+      "result": 8000
+    },
+    "bd_pjm_month": {
+      "text": "899 kWh a month × $10.48 per MWh ÷ 1,000 ≈ $9 a month",
+      "expr": "899*10.48/1000",
+      "result": 9.4
+    },
+    "bd_ohio": {
+      "text": "$16 a month × 63% ≈ $10 a month",
+      "expr": "16*63/100",
+      "result": 10.1
+    },
+    "bd_wmd": {
+      "text": "$18 a month × 63% ≈ $11 a month",
+      "expr": "18*63/100",
+      "result": 11.3
+    },
+    "work_q": {
+      "text": "1,000 people × 20 questions × 250 working days = 5,000,000 questions a year",
+      "expr": "1000*20*250",
+      "result": 5000000,
+      "assume": {
+        "20": "each person asks 20 text questions per working day",
+        "250": "250 working days a year",
+        "1000": "a company of 1,000 people using the assistant"
+      }
+    },
+    "work_kwh": {
+      "text": "5,000,000 questions × 0.34 Wh = 1,700 kWh a year",
+      "expr": "5000000*0.34/1000",
+      "result": 1700
+    },
+    "work_kg": {
+      "text": "1,700 kWh × 473 g/kWh ≈ 800 kg of CO₂ a year",
+      "expr": "1700*473/1000",
+      "result": 804
+    },
+    "work_seat_kwh": {
+      "text": "20 questions × 250 working days × 0.34 Wh = 1,700 Wh, or 1.7 kWh per person a year",
+      "expr": "20*250*0.34/1000",
+      "result": 1.7,
+      "assume": {
+        "20": "each person asks 20 text questions per working day",
+        "250": "250 working days a year"
+      }
+    },
+    "work_seat_kg": {
+      "text": "1.7 kWh × 473 g/kWh ≈ 0.8 kg of CO₂ per person a year",
+      "expr": "1.7*473/1000",
+      "result": 0.8
+    },
+    "work_homes": {
+      "text": "1,700 kWh ÷ 10,500 kWh ≈ 16% of one average US home’s yearly electricity",
+      "expr": "1700/10500*100",
+      "result": 16
+    },
+    "work_flights": {
+      "text": "About 800 kg ÷ 246 kg per passenger on a 1,000 km flight ≈ 3 passengers",
+      "expr": "804/246",
+      "result": 3.3
+    },
+    "work_low": {
+      "text": "5,000,000 questions × 0.16 Wh = 800 kWh a year",
+      "expr": "5000000*0.16/1000",
+      "result": 800
+    },
+    "work_high": {
+      "text": "5,000,000 questions × 0.60 Wh = 3,000 kWh a year",
+      "expr": "5000000*0.60/1000",
+      "result": 3000
+    },
+    "work_long": {
+      "text": "5,000,000 questions × 2.5 Wh = 12,500 kWh a year",
+      "expr": "5000000*2.5/1000",
+      "result": 12500
+    },
+    "work_long_homes": {
+      "text": "12,500 kWh ÷ 10,500 kWh ≈ 1.2 average US homes",
+      "expr": "12500/10500",
+      "result": 1.2
+    },
+    "va_twh": {
+      "text": "33,851,122 MWh ÷ 1,000,000 = about 33.9 TWh (Virginia data centres, 2023)",
+      "expr": "33851122/1e6",
+      "result": 33.85
+    },
+    "de_world_share": {
+      "text": "21 TWh ÷ 485 TWh = about 4.3% of the world’s data-centre electricity (2025)",
+      "expr": "21/485*100",
+      "result": 4.33
     }
   },
   "ladder": [
@@ -2550,7 +3446,7 @@
       "result": "No. The study said one bottle per 10 to 50 answers, for an older model",
       "reveal": "The peer-reviewed study said one 500 ml bottle per 10 to 50 answers, for GPT-3.",
       "answer": "No, not a bottle per email. The best-known study (Li et al., UC Riverside) estimated GPT-3 used a 500 ml bottle for every 10 to 50 medium-length answers: 10 to 50 ml each. For today’s models, nobody has published an independent figure. Company figures are far lower: OpenAI says about 0.32 ml per average question and Google 0.26 ml per median prompt, and neither says clearly whether it counts water used at power plants. A newer figure for an AI-written email also circulates, but Hum couldn’t read it on its page, so it isn’t used.",
-      "world": "Water is felt locally. In a recent year, US data centres used about 17 billion gallons on site, and about 211 billion more through the power plants that supplied them (Berkeley Lab estimates).",
+      "world": "Water is felt locally. In a recent year, US data centres used about 17 billion US gallons (about 64 billion litres) on site, and about 211 billion gallons (800 billion litres) more through the power plants that supplied them (Berkeley Lab estimates).",
       "you": true,
       "range": {
         "low": 10,
@@ -2583,7 +3479,8 @@
       "calcs": [
         "water_per_q_low",
         "water_per_q_high",
-        "openai_ml"
+        "openai_ml",
+        "water_17_l"
       ],
       "chips": [],
       "keys": "drink drinks litre liter thirsty"
@@ -3054,7 +3951,7 @@
       "result": "Mostly, at Google: about 78% of its data-centre water was drinking-quality",
       "reveal": "Google’s data centres took in about 37 billion litres of water in 2024, and about 29 billion of it was potable, by Google’s own report.",
       "answer": "Partly, and mostly yes where it’s published. Google’s report says its data centres withdrew 9,866 million US gallons (about 37 billion litres) in 2024. Of that, 7,699 million gallons was potable, meaning drinking-quality: about 78%. About 9% was reclaimed wastewater and 13% other non-potable water (Hum’s arithmetic). Sites differ: in Douglas County, Georgia, almost all of it was reclaimed. Amazon says 26 of its facilities run on 100% reclaimed water but publishes no overall share. These are the companies’ own figures.",
-      "world": "Across the US, data centres consumed about 17 billion gallons of water on site in a recent year (a Berkeley Lab estimate). Nobody publishes how much of that was drinking water.",
+      "world": "Across the US, data centres consumed about 17 billion US gallons (about 64 billion litres) of water on site in a recent year (a Berkeley Lab estimate). Nobody publishes how much of that was drinking water.",
       "you": false,
       "points": {
         "title": "Where Google’s data centres got their water, 2024",
@@ -3106,7 +4003,8 @@
         "dw_reclaimed_l",
         "dw_potable_share",
         "dw_reclaimed_share",
-        "dw_nonpotable_share"
+        "dw_nonpotable_share",
+        "water_17_l"
       ],
       "keys": "potable tap drinking drought local water supply town"
     },
@@ -3426,8 +4324,8 @@
         "company figures"
       ],
       "result": "Small for you, big in total",
-      "reveal": "A typical user’s year of questions makes about 0.2 kg of CO₂, roughly half a mile in a US car. The total is what’s large: data centres used about 485 TWh in 2025.",
-      "answer": "Partly. One person’s share is small: a typical user’s year of ChatGPT questions makes about 0.2 kg of CO₂ by Hum’s sums from OpenAI’s figures, roughly what an average US car emits in half a mile (US EPA). Even 50 questions a day is about 7 miles of driving. Some uses weigh more: one short AI video clip used about 90 Wh in a Hugging Face test, as much as about 260 short questions. The large part is the total, and it’s growing fast.",
+      "reveal": "A typical user’s year of questions makes about 0.2 kg of CO₂, roughly half a mile (about 0.9 km) in a US car. The total is what’s large: data centres used about 485 TWh in 2025.",
+      "answer": "Partly. One person’s share is small: a typical user’s year of ChatGPT questions makes about 0.2 kg of CO₂ by Hum’s sums from OpenAI’s figures, roughly what an average US car emits in half a mile, about 0.9 km (US EPA). Even 50 questions a day is about 7 miles (12 km) of driving. Some uses weigh more: one short AI video clip used about 90 Wh in a Hugging Face test, as much as about 260 short questions. The large part is the total, and it’s growing fast.",
       "world": "All the world’s data centres consumed about 485 TWh of electricity in 2025, and the IEA expects about 950 TWh by 2030. Electricity use by AI-focused data centres grew 50% in 2025. How much CO₂ that makes depends on where the power comes from: the IEA expects renewables to meet half of the growth.",
       "you": true,
       "why": "It’s true of the total, not of one person’s text questions. The total depends on billions of users, heavy uses like video, and the power behind the data centres.",
@@ -3442,7 +4340,7 @@
         "bigger": "world-share",
         "closer": "my-year"
       },
-      "share": "Is using ChatGPT bad for the planet? Partly: a typical user’s year of questions makes about 0.2 kg of CO₂, roughly half a mile in a US car (Hum’s sums). The total is the big part: data centres used about 485 TWh in 2025 (IEA).",
+      "share": "Is using ChatGPT bad for the planet? Partly: a typical user’s year of questions makes about 0.2 kg of CO₂, roughly half a mile (about 0.9 km) in a US car (Hum’s sums). The total is the big part: data centres used about 485 TWh in 2025 (IEA).",
       "cites": [
         "nber",
         "altman",
@@ -3460,7 +4358,9 @@
         "heavy_kg",
         "stop_car_miles",
         "stop_heavy_miles",
-        "stop_video_q"
+        "stop_video_q",
+        "stop_car_km",
+        "stop_heavy_km"
       ],
       "keys": "bad harm guilty guilt destroying kids children homework stop quit worth"
     },
@@ -3959,7 +4859,7 @@
       "result": "No. The saving is far too small to notice",
       "reveal": "Keeping 1,000 photos for a year uses about 160 to 470 ml of water, by Hum’s sums. A leaky loo can waste 200 to 400 litres a day.",
       "answer": "No. Data centres do use water to keep cool, but stored files are a small part of their work: storage systems use about 5% of data-centre electricity (IEA). Hum’s sums: one 18 TB data-centre drive idles at 5.3 W. So 1,000 photos of 5 MB, kept as 3 copies, use about 39 Wh a year, about 2 phone charges. At 1 to 9 litres of water per kWh at the data centre (Li et al.), plus 3.14 at US power stations, that’s about 160 to 470 ml a year. The same government advice says a leaky loo can waste 200 to 400 litres a day: about 426 times more, every single day. Andy Masley, an independent writer, worked out you’d need to delete 1.5 billion photos, or 200 billion emails, to match fixing one leaky toilet.",
-      "world": "What did help: Yorkshire Water reported a 10% fall in home water use after its hosepipe ban, up to 80 million litres a day. Data-centre water is real but local: US data centres consumed about 17 billion gallons on site in a recent year (a Berkeley Lab estimate).",
+      "world": "What did help: Yorkshire Water reported a 10% fall in home water use after its hosepipe ban, up to 80 million litres a day. Data-centre water is real but local: US data centres consumed about 17 billion US gallons (about 64 billion litres) on site in a recent year (a Berkeley Lab estimate).",
       "you": true,
       "why": "It points at something real, data-centre cooling water, but at a part of it, stored files, that is far too small to matter. The advice gave no figure.",
       "dontknow": [
@@ -3994,7 +4894,8 @@
         "del_photos_phone",
         "del_photos_ml_low",
         "del_photos_ml_high",
-        "del_loo_ratio"
+        "del_loo_ratio",
+        "water_17_l"
       ],
       "keys": "delete deleting emails photos storage cloud uk drought"
     },
@@ -4083,7 +4984,7 @@
       "cat": "Near you",
       "q": "How many permanent jobs does a data centre create?",
       "guess": {
-        "prompt": "In Virginia, a typical data centre building of 250,000 square feet has about how many full-time workers once it’s running?",
+        "prompt": "In Virginia, a typical data centre building of 250,000 square feet (about 23,000 m²) has about how many full-time workers once it’s running?",
         "options": [
           "5",
           "50",
@@ -4094,7 +4995,7 @@
       },
       "result": "About 50 for a big building, half of them contractors",
       "reveal": "Building it takes far more: about 1,500 workers on site at the peak, for 12 to 18 months. That’s 30 times as many as will run it.",
-      "answer": "Not many for its size. Virginia’s legislative watchdog, JLARC, heard from the industry that a typical 250,000-square-foot data centre has about 50 full-time workers. That’s one worker per 5,000 square feet, against one per 650 at some warehouses. About half are contractors, such as electricians and security staff. Building it takes many more: about 1,500 workers on site at the peak, for 12 to 18 months. Virginia’s sales-tax break asks for 50 jobs paying at least 150% of the local average wage, but a company can count all its data centres in one county together. The biggest AI campuses promise more. In Louisiana, Meta is putting more than $50 billion into one campus, and the state expects about 7,500 construction jobs at peak and about 1,000 operational jobs. That’s more than $50 million of investment per permanent job (Hum’s arithmetic).",
+      "answer": "Not many for its size. Virginia’s legislative watchdog, JLARC, heard from the industry that a typical 250,000-square-foot data centre (about 23,000 m²) has about 50 full-time workers. That’s one worker per 5,000 square feet, against one per 650 at some warehouses. About half are contractors, such as electricians and security staff. Building it takes many more: about 1,500 workers on site at the peak, for 12 to 18 months. Virginia’s sales-tax break asks for 50 jobs paying at least 150% of the local average wage, but a company can count all its data centres in one county together. The biggest AI campuses promise more. In Louisiana, Meta is putting more than $50 billion into one campus, and the state expects about 7,500 construction jobs at peak and about 1,000 operational jobs. That’s more than $50 million of investment per permanent job (Hum’s arithmetic).",
       "world": "Northern Virginia is the world’s largest data centre market. There, data centre staff and contractors held over 8,000 full-time jobs in a recent year (FY23). Counting builders, suppliers and the shops their wages reach, JLARC estimated the industry supports about 74,000 jobs a year, just over 1% of the state’s jobs. 80% of them come from construction.",
       "you": false,
       "dontknow": [
@@ -4161,7 +5062,8 @@
       ],
       "calcs": [
         "jobs_build_ratio",
-        "jobs_meta_per_job"
+        "jobs_meta_per_job",
+        "jobs_sqm"
       ],
       "keys": "jobs work workers employment economy local"
     },
@@ -4216,6 +5118,674 @@
         "heat_fortum_twh"
       ],
       "keys": "heat heating warm district waste denmark finland europe"
+    },
+    {
+      "slug": "ireland",
+      "type": "how-much",
+      "cat": "Near you",
+      "q": "How much of Ireland’s electricity do data centres use?",
+      "guess": {
+        "prompt": "What share of Ireland’s metered electricity did data centres use in 2025?",
+        "options": [
+          "2%",
+          "9%",
+          "23%",
+          "51%"
+        ],
+        "right": 2
+      },
+      "result": "About 23% in 2025, up from 5% in 2015",
+      "reveal": "That’s 7,663 GWh, counted from electricity meters. All of Ireland’s homes together used 28%.",
+      "answer": "About 23% of the Republic of Ireland’s metered electricity consumption in 2025, by the country’s Central Statistics Office (CSO). That’s 7,663 GWh, or about 7.7 TWh. In 2015 it was 5%. This is a count, not an estimate: the CSO went through around 2.6 million electricity meters to find the ones that feed data centres. A small number of data centres use most of it. Their use has grown every single year since 2015, and is now about 6 times what it was. In 2025 it rose 10%, while everyone else’s rose 2%. Data centres now use more than all the homes in towns and cities (18%), and not far off all homes together (28%). The grid operator, EirGrid, expects data centres and other new technology sites to make up 32% of all electricity demand by 2030. Almost all the extra demand already signed up is around Dublin. Since December 2025 the energy regulator’s rules say a new data centre must bring its own power plant or batteries, on site or nearby, as big as the grid connection it asks for. It must also match at least 80% of its yearly use with new renewable power made in Ireland.",
+      "world": "Worldwide, data centres used about 1.5% of electricity in 2024 (IEA). Ireland’s share is about 15 times that.",
+      "you": false,
+      "why": "Ireland is a small country with a lot of data centres. Dublin is one of the cities where most of Europe’s data centres are concentrated (IEA). The regulator says Ireland has been very successful in attracting them, taking their share of national electricity demand from 5% in 2015 to 22% in 2024.",
+      "points": {
+        "title": "Data centres’ share of Ireland’s metered electricity consumption (CSO), and EirGrid’s forecast",
+        "unit": "%",
+        "items": [
+          {
+            "value": 5,
+            "label": "2015",
+            "how": "1,240 GWh, metered",
+            "source": "ie_cso_table"
+          },
+          {
+            "value": 11,
+            "label": "2020",
+            "how": "3,030 GWh, metered",
+            "source": "ie_cso_table"
+          },
+          {
+            "value": 21,
+            "label": "2023",
+            "how": "6,339 GWh, metered",
+            "source": "ie_cso_table"
+          },
+          {
+            "value": 22,
+            "label": "2024",
+            "how": "6,973 GWh, metered",
+            "source": "ie_cso_table"
+          },
+          {
+            "value": 23,
+            "label": "2025",
+            "how": "7,663 GWh, metered",
+            "source": "ie_cso_table"
+          },
+          {
+            "value": 32,
+            "label": "2030, forecast",
+            "how": "EirGrid: data centres plus other new technology sites, share of all demand",
+            "source": "ie_eirgrid_2030"
+          }
+        ]
+      },
+      "dontknow": [
+        "The CSO only counts electricity that comes through a meter on the mains network. Hum hasn’t found an official count of electricity that data centres make for themselves on site.",
+        "There is no agreed definition of a data centre. The CSO picks out the meters itself, and says the figures for all years can be revised.",
+        "Nobody publishes how much of this electricity goes to AI.",
+        "The 2030 figure is a forecast. It also counts other new technology sites, and it is a share of all electricity demand, not of metered consumption, so it doesn’t line up exactly with the CSO’s 23%."
+      ],
+      "next": {
+        "deeper": "world-share",
+        "bigger": "us-share",
+        "closer": "uk"
+      },
+      "share": "Data centres used 23% of Ireland’s metered electricity in 2025, up from 5% in 2015 (Central Statistics Office). That’s more than all the homes in the country’s towns and cities.",
+      "cites": [
+        "ie_cso_share",
+        "ie_cso_gwh",
+        "ie_cso_homes",
+        "ie_cso_urban",
+        "ie_cso_everyyear",
+        "ie_cso_table",
+        "ie_cso_meters",
+        "ie_cso_few",
+        "ie_cso_mains",
+        "ie_cso_def",
+        "ie_eirgrid_2030",
+        "ie_eirgrid_dublin",
+        "ie_cru_generation",
+        "ie_cru_renewable",
+        "ie_cru_growth",
+        "iea_15",
+        "count_iea_eu"
+      ],
+      "calcs": [
+        "ie_twh",
+        "ie_x_2015",
+        "ie_x_world"
+      ],
+      "chips": [
+        "counted from meters"
+      ],
+      "keys": "ireland irish republic dublin eirgrid cso cru esb percent share country europe grid connection moratorium"
+    },
+    {
+      "slug": "uk",
+      "type": "how-much",
+      "cat": "Near you",
+      "q": "How much of the UK’s electricity do data centres use?",
+      "guess": {
+        "prompt": "What share of the electricity taken from Great Britain’s grid went to data centres in 2024, by the government’s first count?",
+        "options": [
+          "0.2%",
+          "2%",
+          "12%",
+          "22%"
+        ],
+        "right": 1
+      },
+      "result": "About 2% in Great Britain, by the first official count",
+      "reveal": "That’s 4.5 TWh in 2024, read from electricity meters. It leaves out Northern Ireland, and the data centres companies run just for themselves.",
+      "answer": "About 2% of the electricity consumed from Great Britain’s grid in 2024: 4.5 TWh out of 249.2 TWh. That’s the UK energy department’s first count. It matched electricity meters to 242 data centres. It isn’t the whole UK picture. It leaves out Northern Ireland. It also leaves out data centres that an organisation runs only for its own use. Other figures are higher. Parliament’s library says around 2.5% for the UK. The grid operator, NESO, had put Great Britain at 7.6 TWh in 2023, working from the size of data centres and how hard it assumed they run. The meters showed 4.1 TWh for that year, a little over half as much. Use is very local: 77% of it was in London and the South East. In Slough, a town next to London, data centres took 65% of all the electricity consumed from the grid. Use grew 41% from 2020 to 2024. NESO’s forecast was just over 20 TWh by 2030, about 4.4 times the 2024 count. In 2026 it lowered its outlook for data centres, because they use less of their capacity than it had assumed.",
+      "world": "Worldwide, data centres used about 1.5% of electricity in 2024 (IEA). Next door in Ireland, they used 23% of metered electricity in 2025.",
+      "you": false,
+      "why": "The queue is far bigger than what is likely to be built. Requests to connect data centres now add up to more than 70 GW. NESO expects about 5.2 GW to be connected by 2030, and says the queue holds projects that are unlikely to go ahead.",
+      "points": {
+        "title": "Data-centre electricity consumption in Great Britain: counts, an older estimate and a forecast",
+        "unit": "TWh a year",
+        "items": [
+          {
+            "value": 3.2,
+            "label": "2020, from meters",
+            "how": "Energy department (DESNZ)",
+            "source": "uk_dukes"
+          },
+          {
+            "value": 4.1,
+            "label": "2023, from meters",
+            "how": "Energy department (DESNZ)",
+            "source": "uk_desnz_neso"
+          },
+          {
+            "value": 4.5,
+            "label": "2024, from meters",
+            "how": "2% of grid consumption",
+            "source": "uk_desnz_share"
+          },
+          {
+            "value": 7.6,
+            "label": "2023, NESO’s estimate",
+            "how": "Worked out from data-centre capacity",
+            "source": "uk_desnz_neso"
+          },
+          {
+            "value": 20,
+            "label": "2030, NESO’s forecast",
+            "how": "“just over 20 TWh”; since lowered",
+            "source": "uk_neso_2030"
+          }
+        ]
+      },
+      "dontknow": [
+        "There is no measured figure for the whole UK. The official count covers Great Britain, and the government says data centres are not yet separately identified in its main energy statistics.",
+        "Nobody has counted the electricity used by data centres that organisations run only for themselves. The official count leaves them out.",
+        "The count is new, and the government labels it as still in development. 17 of the 259 data centres on its list could not be matched to a meter.",
+        "The page where Parliament’s library gives its 2.5% does not say how the figure was worked out.",
+        "NESO lowered its outlook in 2026, but Hum hasn’t found its new figure for 2030 in a form it could read.",
+        "Nobody publishes how much of this electricity goes to AI."
+      ],
+      "next": {
+        "deeper": "world-share",
+        "bigger": "us-share",
+        "closer": "ireland"
+      },
+      "share": "Data centres used about 2% of the electricity consumed from Great Britain’s grid in 2024, by the UK government’s first count from meters. In Slough, next to London, it was 65%.",
+      "cites": [
+        "uk_desnz_share",
+        "uk_desnz_where",
+        "uk_desnz_slough",
+        "uk_desnz_growth",
+        "uk_desnz_scope",
+        "uk_desnz_matched",
+        "uk_desnz_unmatched",
+        "uk_desnz_neso",
+        "uk_desnz_dev",
+        "uk_dukes",
+        "uk_hcl",
+        "uk_neso_2030",
+        "uk_neso_viable",
+        "uk_neso_lower",
+        "iea_15",
+        "ie_cso_share"
+      ],
+      "calcs": [
+        "uk_x_2030",
+        "uk_meter_vs_neso"
+      ],
+      "chips": [
+        "Great Britain only",
+        "first official count"
+      ],
+      "keys": "uk united kingdom britain british great britain england scotland wales london slough neso desnz national grid percent share country"
+    },
+    {
+      "slug": "india",
+      "type": "how-much",
+      "cat": "Near you",
+      "q": "How much electricity do India’s data centres use?",
+      "guess": {
+        "prompt": "About how much electricity did India’s data centres use in 2024?",
+        "options": [
+          "1.3 TWh",
+          "13 TWh",
+          "130 TWh",
+          "1,300 TWh"
+        ],
+        "right": 1
+      },
+      "result": "About 13 TWh in 2024, under 1% of India’s electricity",
+      "reveal": "That’s an estimate by S&P Global, a research firm. It expects 57 TWh by 2030. India’s government publishes capacity (MW), not yearly use (TWh).",
+      "answer": "About 13 TWh in 2024. That is an estimate by S&P Global, a research firm, as reported by Indian news outlets. It was about 0.84% of all the electricity generated in India. S&P expects 57 TWh by 2030, about 4.4 times as much, or 2.6% of generation. India’s government doesn’t publish how much electricity data centres use in a year. It publishes capacity: the most power they can draw at one moment. That was around 375 MW in 2020 and 1.57 GW in August 2026, about 4.2 times as much. The government expects nearly 8 GW by 2030, and its Central Electricity Authority says demand could reach 17 GW by 2031–32. Capacity (MW or GW) is not the same as energy used over a year (TWh), because data centres don’t run flat out all the time. Most of India’s electricity comes from fossil fuels: 73% of generation in 2025, by Ember, an energy research group. Ember says emissions from India’s power plants have grown because the country burns more coal.",
+      "world": "India’s 13 TWh was about 3% of the 415 TWh that data centres used worldwide in 2024. The US used 45% (IEA).",
+      "you": false,
+      "why": "India’s digital economy is growing fast, and cloud and AI companies are building there. The government has backed it with tax breaks and cheaper loans for data centres.",
+      "points": {
+        "title": "India’s data-centre capacity (government figures). This is power they can draw, not energy used in a year",
+        "unit": "MW",
+        "items": [
+          {
+            "value": 375,
+            "label": "2020",
+            "how": "Around 375 MW installed",
+            "source": "in_cap"
+          },
+          {
+            "value": 1570,
+            "label": "August 2026",
+            "how": "1.57 GW installed",
+            "source": "in_cap"
+          },
+          {
+            "value": 8000,
+            "label": "2030, projected",
+            "how": "Nearly 8 GW",
+            "source": "in_cap2030"
+          }
+        ]
+      },
+      "dontknow": [
+        "India’s government publishes data-centre capacity, not yearly electricity use. The TWh figures are one research firm’s estimate.",
+        "Hum could not open S&P Global’s own page, so it quotes two news reports of it. They give the share as a share of electricity generated, not consumed.",
+        "The forecasts are far apart, and they use different units. Nobody knows how many of the planned data centres will be built, or how hard they will run.",
+        "Nobody publishes how much of the power for India’s data centres comes from coal and how much from solar or wind bought directly."
+      ],
+      "next": {
+        "deeper": "power-mix",
+        "bigger": "world-share",
+        "closer": "big-data-centre"
+      },
+      "share": "India’s data centres used about 13 TWh of electricity in 2024, under 1% of the country’s total (S&P Global estimate). That could reach 57 TWh by 2030.",
+      "cites": [
+        "in_twh",
+        "in_share",
+        "in_cap",
+        "in_cap2030",
+        "in_cea",
+        "in_fossil",
+        "in_coal",
+        "iea_15",
+        "iea_us"
+      ],
+      "calcs": [
+        "in_x",
+        "in_cap_x",
+        "in_world",
+        "in_8000"
+      ],
+      "chips": [],
+      "keys": "india indian mumbai navi mumbai chennai hyderabad bengaluru bangalore delhi noida pune maharashtra bharat coal megawatt capacity"
+    },
+    {
+      "slug": "singapore",
+      "type": "how-much",
+      "cat": "Near you",
+      "q": "How much of Singapore’s electricity do data centres use?",
+      "guess": {
+        "prompt": "What share of Singapore’s electricity did data centres use in 2020?",
+        "options": [
+          "0.7%",
+          "7%",
+          "27%",
+          "70%"
+        ],
+        "right": 1
+      },
+      "result": "About 7% in 2020, and reported at just over a tenth by 2024",
+      "reveal": "The government’s figure for 2020 was 3.40 TWh. A news report puts 2024 at about 6.5 TWh, about 1.9 times as much.",
+      "answer": "About 7% of Singapore’s electricity consumption in 2020, or 3.40 TWh, the government told Parliament. In 2019 it was 5.3%, or 2.75 TWh. Eco-Business, a news site, reports about 6.5 TWh in 2024, slightly more than a tenth of the country’s total. That is about 1.9 times the 2020 figure. Singapore is small and short of land and clean power. So in 2019 the government paused new data centres. It lifted the pause in 2022, but new capacity is handed out in small lots: about 80 MW in the first round, and at least 300 MW more planned. Singapore already has more than 70 data centres, with over 1.4 GW of capacity between them. Capacity (MW or GW) is the most power they can draw at once, not the energy they use in a year (TWh). About 94% of Singapore’s electricity was generated from natural gas in 2024. A new law will license every data centre of at least 3 MW and set energy-efficiency rules.",
+      "world": "Worldwide, data centres used about 1.5% of electricity in 2024 (IEA). Singapore’s share is several times that, because it is a small country and a hub for the region.",
+      "you": false,
+      "why": "Singapore is a business and internet hub for Southeast Asia, so many companies want their servers there. The country relies heavily on imported natural gas for its power, so more data centres mostly means burning more gas.",
+      "points": {
+        "title": "Electricity used by Singapore’s data centres (consumption)",
+        "unit": "TWh a year",
+        "items": [
+          {
+            "value": 2.75,
+            "label": "2019, government",
+            "how": "5.3% of Singapore’s electricity",
+            "source": "sg_2020"
+          },
+          {
+            "value": 3.4,
+            "label": "2020, government",
+            "how": "7% of Singapore’s electricity",
+            "source": "sg_2020"
+          },
+          {
+            "value": 6.5,
+            "label": "2024, news report",
+            "how": "Slightly more than a tenth",
+            "source": "sg_2024"
+          }
+        ]
+      },
+      "dontknow": [
+        "Hum could not find an official figure for any year after 2020. The 2024 figure is from a news report that doesn’t name its source. Ministers were still quoting 7% in 2024.",
+        "The government was asked in Parliament in 2025 what share data centres will use once capacity grows. Its written reply gave no percentage.",
+        "Nobody knows yet how much of the new capacity will run on low-carbon power, which Singapore would mostly have to import."
+      ],
+      "next": {
+        "deeper": "power-mix",
+        "bigger": "world-share",
+        "closer": "big-data-centre"
+      },
+      "share": "Data centres used about 7% of Singapore’s electricity in 2020 (government figure). A 2024 news report puts it at just over a tenth.",
+      "cites": [
+        "sg_2020",
+        "sg_2024",
+        "sg_pause",
+        "sg_lift",
+        "sg_80",
+        "sg_cap",
+        "sg_300",
+        "sg_70",
+        "sg_gas",
+        "sg_law",
+        "sg_passed",
+        "sg_pq2025",
+        "iea_15",
+        "sg_min2024"
+      ],
+      "calcs": [
+        "sg_x"
+      ],
+      "chips": [],
+      "keys": "singapore singaporean sg moratorium pause ban jurong asean southeast asia imda natural gas island city"
+    },
+    {
+      "slug": "bill-dollars",
+      "type": "how-much",
+      "cat": "Your bills and the grid",
+      "q": "How many dollars a month do data centres add to a home electricity bill?",
+      "guess": {
+        "prompt": "In the eastern US grid (PJM), estimates of what data centres add to a home’s electricity bill are about…",
+        "options": [
+          "$1 a month",
+          "$10 a month",
+          "$50 a month",
+          "$100 a month"
+        ],
+        "right": 1
+      },
+      "result": "About $9 to $11 a month in the eastern US grid. Most places have no figure.",
+      "reveal": "Three estimates for the PJM grid land between $9 and $11 a month. They are estimates, not measured bills, and most places have none.",
+      "answer": "It depends where you live, and for most places nobody has published a figure. The best evidence is from PJM, the eastern US grid that covers all or parts of Ohio, Virginia, Maryland, Pennsylvania, New Jersey, Illinois and other states. PJM’s market monitor estimates data centres added $10.48 per MWh to wholesale power costs in the first seven months of 2026. For a home buying 899 kWh a month, the US average, that is about $9 a month by Hum’s sum, if the cost passes straight through. A University of Pennsylvania researcher told FactCheck.org that higher capacity costs added about $16 a month in Ohio and $18 in western Maryland, with 63% of that due to data centres: about $10 and $11. Maryland’s consumer advocate put the whole capacity increase over two auctions at $10.43 to $20.81 a month, depending on the utility, and says most of the new demand came from data centres.",
+      "world": "Virginia has a forecast, not a bill: the state’s audit commission said data-centre growth could add $14 to $37 a month to a typical Dominion Energy home’s generation and transmission costs by 2040, before inflation. It found today’s rates charge data centres their share. Outside PJM, Hum found no published dollars-a-month figure. Across US states, Berkeley Lab found prices generally fell where demand grew most, and says data-centre load doesn’t appear to change that.",
+      "you": false,
+      "dontknow": [
+        "Nobody has measured the data-centre share of a real household bill. Every figure here compares real costs with an estimate of costs without data centres.",
+        "Hum’s $9 sum assumes wholesale costs pass straight through to homes, and uses the US average of 899 kWh a month from 2022. Your use and your utility’s contracts will differ.",
+        "The Ohio and western Maryland figures are a researcher’s estimates as reported by FactCheck.org. Hum has not found them in a published study.",
+        "The Maryland figures are rough estimates of the whole capacity increase, not only the part caused by data centres.",
+        "The monitor’s estimates lean on forecast data-centre load, and it calls the accuracy of those forecasts highly questionable.",
+        "Virginia’s figure is a forecast for 2040 that leaves out distribution costs. It covers Dominion Energy customers only.",
+        "For most US states, and for other countries, Hum found no published dollars-a-month figure."
+      ],
+      "next": {
+        "deeper": "bills",
+        "bigger": "us-share",
+        "closer": "my-year"
+      },
+      "share": "What do data centres add to a home electricity bill? In the eastern US grid (PJM), estimates land around $9 to $11 a month. Virginia’s forecast is $14 to $37 a month by 2040. Most places have no published figure.",
+      "cites": [
+        "bills_imm_wholesale",
+        "bd_eia_899",
+        "bd_pjm_states",
+        "bd_fc_10",
+        "bd_fc_63",
+        "bd_opc_low",
+        "bd_opc_high",
+        "bd_opc_rough",
+        "bd_opc_dc",
+        "bd_jlarc_37",
+        "bd_jlarc_now",
+        "bd_jlarc_excl",
+        "bills_imm_forecast",
+        "bills_lbnl_growth",
+        "bills_lbnl_dc"
+      ],
+      "calcs": [
+        "bd_pjm_month",
+        "bd_ohio",
+        "bd_wmd"
+      ],
+      "chips": [
+        "depends on region",
+        "US evidence",
+        "what-if estimates"
+      ],
+      "keys": "dollars month monthly household home cost money how much extra pjm ohio virginia maryland pennsylvania jersey illinois dominion bge pepco capacity rates"
+    },
+    {
+      "slug": "ai-at-work",
+      "type": "how-much",
+      "cat": "About you",
+      "q": "My company is rolling out AI assistants. How much electricity and CO₂ does that add?",
+      "guess": {
+        "prompt": "A 1,000-person company where everyone asks an AI assistant 20 text questions each working day uses, in a year, about as much electricity as…",
+        "options": [
+          "A sixth of one US home",
+          "16 US homes",
+          "160 US homes",
+          "1,600 US homes"
+        ],
+        "right": 0
+      },
+      "result": "For text questions, about 1.7 kWh and 0.8 kg of CO₂ per person a year",
+      "reveal": "That assumes 20 text questions per working day at 0.34 Wh each, OpenAI’s company figure. A 1,000-person company comes to about 1,700 kWh a year.",
+      "answer": "For plain text questions, not much. Take a company of 1,000 people, each asking 20 questions on 250 working days: 5,000,000 questions a year. At 0.34 Wh each, OpenAI’s company figure, that is about 1,700 kWh a year, about 16% of one average US home’s electricity. On the world-average grid it makes about 800 kg of CO₂, roughly 3 passengers on a 1,000 km flight. Other company figures give a similar size: Microsoft’s study says 0.16 to 0.60 Wh per question, which is 800 to 3,000 kWh, and Google’s 0.24 Wh sits inside that. Heavier work adds more. If every question carried a long document (about 2.5 Wh, by Epoch AI’s estimate), the year would come to 12,500 kWh, about 1.2 US homes. Thinking modes used about 30 times more energy on average in Hugging Face’s tests of open models.",
+      "world": "One company’s share is small, but the total keeps growing: electricity use by AI-focused data centres grew 50% in 2025, by the IEA’s estimate.",
+      "you": true,
+      "dontknow": [
+        "Microsoft, Google and OpenAI publish no figure per seat or per employee. Microsoft’s emissions dashboard for Microsoft 365 says Copilot isn’t currently included.",
+        "The per-question figures are company figures. OpenAI hasn’t published how its figure is measured, and Microsoft’s comes from a model, not a meter.",
+        "20 questions a day is Hum’s assumption. Your company’s real count could be far lower or higher.",
+        "Coding agents, pictures and video use far more per task. No company publishes a figure for agents at work.",
+        "The sum uses the world-average grid. Which data centres answer your company’s questions isn’t published.",
+        "Training the models, making chips and building data centres aren’t counted."
+      ],
+      "next": {
+        "deeper": "reasoning",
+        "bigger": "world-share",
+        "closer": "my-year"
+      },
+      "share": "A 1,000-person company asking an AI assistant 20 text questions each per working day: about 1,700 kWh and 800 kg of CO₂ a year (Hum’s sums from company figures). That’s about 16% of one US home’s electricity. Coding agents and video add far more.",
+      "cites": [
+        "altman",
+        "google",
+        "work_ms_range",
+        "work_ms_dash",
+        "ember_473",
+        "epoch_home",
+        "epoch_long",
+        "owid_flight",
+        "hf_30",
+        "iea_ai50"
+      ],
+      "calcs": [
+        "work_q",
+        "work_kwh",
+        "work_kg",
+        "work_seat_kwh",
+        "work_seat_kg",
+        "work_homes",
+        "work_flights",
+        "work_low",
+        "work_high",
+        "work_long",
+        "work_long_homes"
+      ],
+      "chips": [
+        "company figures"
+      ],
+      "keys": "company employees employee workplace work business copilot gemini office seat seats scope 3 esg sustainability report rollout enterprise team"
+    },
+    {
+      "slug": "virginia",
+      "type": "how-much",
+      "cat": "Near you",
+      "q": "How much of Virginia’s electricity do data centres use?",
+      "guess": {
+        "prompt": "What share of Virginia’s electricity did data centres use in 2023?",
+        "options": [
+          "A fiftieth",
+          "A tenth",
+          "About a quarter",
+          "More than half"
+        ],
+        "right": 2
+      },
+      "result": "About a quarter, more than in any other US state",
+      "reveal": "EPRI estimates 25.59% in 2023, or about 33.9 TWh. Across the whole US the share was about 4.7% in 2024.",
+      "answer": "About a quarter. EPRI, a US electricity research institute, estimates that data centres used 25.59% of the electricity consumed in Virginia in 2023. That is about 33.9 TWh (Hum’s arithmetic). EPRI says data centres use more power in Virginia than in any other state. Dominion Energy, Virginia’s biggest power company, said in October 2025 that more than 25% of its Virginia sales go to data centres. The reason is Northern Virginia, the largest data-centre market in the world. It holds 13% of the world’s reported data-centre capacity, a state audit found. Loudoun County alone has about half of Virginia’s data-centre industry. For years this did not show: the state’s energy demand was flat from 2006 to 2020. Then it climbed. From 2019 to 2023, electricity sales to commercial customers grew by 14 billion kWh, the most of any US state. A forecast made for the state’s auditors says Virginia’s demand for power would double within 10 years if nothing held it back, with data centres the main driver. EPRI’s own simple projection puts data centres at 36% of Virginia’s electricity by 2030, averaged across its four scenarios, and almost 50% in the highest one.",
+      "world": "Across the whole US, data centres used about 4.7% of electricity consumption in 2024 (Berkeley Lab). Worldwide it was about 1.5% (IEA). Virginia’s share is far above both.",
+      "you": false,
+      "why": "Northern Virginia was an early home of the internet, and data centres like to sit close to each other. So one state ended up with 13% of the world’s reported data-centre capacity, and about half of that state’s industry is in a single county, Loudoun.",
+      "points": {
+        "title": "Share of electricity consumption used by data centres (Virginia 2023; US and world 2024)",
+        "unit": "% of electricity",
+        "items": [
+          {
+            "value": 1.5,
+            "label": "World, 2024",
+            "how": "IEA estimate",
+            "source": "iea_15"
+          },
+          {
+            "value": 4.7,
+            "label": "United States, 2024",
+            "how": "Berkeley Lab estimate",
+            "source": "usshare_2024"
+          },
+          {
+            "value": 25.59,
+            "label": "Virginia, 2023",
+            "how": "EPRI estimate",
+            "source": "va_epri_row"
+          }
+        ]
+      },
+      "dontknow": [
+        "Nobody meters every data centre in Virginia and publishes the total. EPRI’s figure is an estimate for 2023, and Hum found no official state figure for later years.",
+        "Dominion’s “more than 25%” covers only Dominion’s own sales. It leaves out data centres served by electric co-operatives, where the state’s auditors expect most of the growth (about 60%).",
+        "The 2030 figures are simple projections, not plans. EPRI applied national growth rates to every state, and says growth is unlikely to be spread evenly.",
+        "The forecast that demand would double within 10 years assumes nothing holds data centres back. The auditors say building enough power stations and power lines for that would be very difficult."
+      ],
+      "next": {
+        "deeper": "us-share",
+        "bigger": "world-share",
+        "closer": "bills"
+      },
+      "share": "Data centres use about a quarter of Virginia’s electricity (EPRI, 2023). Across the whole US it’s about 4.7%.",
+      "cites": [
+        "va_epri_quarter",
+        "va_epri_row",
+        "va_epri_most",
+        "va_epri_2030",
+        "va_epri_uneven",
+        "va_dominion_25",
+        "jobs_jlarc_largest",
+        "va_jlarc_13",
+        "va_jlarc_loudoun",
+        "va_jlarc_flat",
+        "va_jlarc_double",
+        "va_jlarc_coops",
+        "va_epri_method",
+        "va_jlarc_early",
+        "va_jlarc_cluster",
+        "va_jlarc_difficult",
+        "va_eia_14",
+        "usshare_2024",
+        "iea_15"
+      ],
+      "calcs": [
+        "va_twh"
+      ],
+      "chips": [],
+      "keys": "virginia loudoun ashburn dominion northern nova data center alley state usa america"
+    },
+    {
+      "slug": "germany",
+      "type": "how-much",
+      "cat": "Near you",
+      "q": "How much of Germany’s electricity do data centres use?",
+      "guess": {
+        "prompt": "What share of Germany’s electricity did data centres use in 2025?",
+        "options": [
+          "0.4%",
+          "4%",
+          "14%",
+          "40%"
+        ],
+        "right": 1
+      },
+      "result": "About 4%",
+      "reveal": "About 21 TWh in 2025, by the estimate the German government uses. More than a third of the capacity is around Frankfurt.",
+      "answer": "About 4% of Germany’s gross electricity consumption in 2025, or about 21 TWh. Gross consumption is everything the country uses, including what is lost in the grid. The figure is an estimate by the Borderstep Institute, and the German government uses it in its 2026 data-centre strategy. Use has grown: the industry group Bitkom put it at 12 billion kWh (12 TWh) in 2014 and 20 billion kWh in 2024. Germany is Europe’s biggest data-centre market. More than a third of its capacity sits around Frankfurt, which grew up beside the DE-CIX internet exchange and the city’s banks. Germany also has its own rules. Under its Energy Efficiency Act, data centres have had to cover 50% of their electricity with renewable power since 2024, counted over the year, and 100% from 2027. Data centres that open from July 2026 must reuse at least 10% of their energy, for example as heat for buildings. That rises to 20% for those that open from July 2028. Operators must also publish their energy data every year and send it to a federal register. What comes next is uncertain. A study for the economy ministry says German data centres could use about 42 TWh in 2035. The grid regulator plans for about 80 to 115 TWh by 2037, based on projects that companies have reported.",
+      "world": "Worldwide, data centres used about 1.5% of electricity consumption in 2024 (IEA), so Germany’s 4% is well above the world average. Germany’s 21 TWh is about 4.3% of the 485 TWh that all the world’s data centres used in 2025 (Hum’s arithmetic).",
+      "you": false,
+      "points": {
+        "title": "Electricity consumption of data centres in Germany (estimates to 2025, forecasts after)",
+        "unit": "TWh a year",
+        "items": [
+          {
+            "value": 12,
+            "label": "2014, estimated",
+            "how": "Bitkom and Borderstep",
+            "source": "de_bitkom_2014"
+          },
+          {
+            "value": 20,
+            "label": "2024, estimated",
+            "how": "Bitkom and Borderstep",
+            "source": "de_bitkom_2014"
+          },
+          {
+            "value": 21,
+            "label": "2025, estimated",
+            "how": "about 4% of gross electricity consumption",
+            "source": "de_strat_21"
+          },
+          {
+            "value": 42,
+            "label": "2035, forecast",
+            "how": "study for the economy ministry",
+            "source": "de_bt_2035"
+          },
+          {
+            "value": 80,
+            "label": "2037, low end",
+            "how": "grid regulator’s planning range",
+            "source": "de_bnetza_2037"
+          },
+          {
+            "value": 115,
+            "label": "2037, high end",
+            "how": "grid regulator’s planning range",
+            "source": "de_bnetza_2037"
+          }
+        ]
+      },
+      "dontknow": [
+        "Nobody publishes a metered total for all German data centres. The 21 TWh is an estimate.",
+        "How fast it will grow. Forecasts for the mid-2030s run from about 42 TWh to 115 TWh. The regulator itself says it is doubtful that every reported project will be built.",
+        "How much of it is AI. The strategy says about 15% of German data centres are used for AI or high-performance computing, but gives no electricity figure for them.",
+        "Whether the rules will stay as they are. The government’s strategy says it plans to propose changes to the Energy Efficiency Act in 2026.",
+        "The renewable rule is counted over the year. It does not mean a data centre runs on wind and sun every hour."
+      ],
+      "next": {
+        "deeper": "heat-reuse",
+        "bigger": "world-share",
+        "closer": "renewable-claims"
+      },
+      "share": "Data centres use about 4% of Germany’s electricity: about 21 TWh in 2025. More than a third of the capacity is around Frankfurt.",
+      "cites": [
+        "de_strat_21",
+        "de_strat_frankfurt",
+        "de_strat_largest",
+        "de_strat_ai",
+        "de_strat_novelle",
+        "de_enefg_renew",
+        "de_enefg_reuse",
+        "de_enefg_register",
+        "de_enefg_report",
+        "de_bnetza_2037",
+        "de_bnetza_doubt",
+        "de_bt_2035",
+        "de_bitkom_2014",
+        "iea_15",
+        "iea_485"
+      ],
+      "calcs": [
+        "de_world_share"
+      ],
+      "chips": [],
+      "keys": "germany german deutschland frankfurt rhein main de-cix rechenzentren enefg berlin europe"
     }
   ]
 }

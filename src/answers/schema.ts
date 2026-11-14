@@ -15,7 +15,7 @@ const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
  * 1000 (k), 3600 (seconds per hour), 1e6/1e9/1e12 (M/G/T), 52 and 365 (weeks and days in a year), 100 (per cent),
  * 3785 (millilitres in a US gallon, 3,785.41 by definition).
  */
-export const CONVERSIONS = [1000, 3600, 1e6, 1e9, 1e12, 52, 365, 100, 3785];
+export const CONVERSIONS = [1000, 3600, 1e6, 1e9, 1e12, 52, 365, 100, 3785, 1.609, 0.0929]; // ..., ml in a US gallon, km in a mile, m² in a square foot
 
 const isObj = (x: unknown): x is Record<string, unknown> => typeof x === 'object' && x !== null && !Array.isArray(x);
 const str = (x: unknown): x is string => typeof x === 'string' && x.trim().length > 0;
