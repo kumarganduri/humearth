@@ -51,6 +51,21 @@ test('search finds a reviewed answer and links to it', async ({ page }) => {
   await expect(page.locator('#results .none')).toContainText('No reviewed answer');
 });
 
+test('search sends a place to The Earth, "who makes Hum" to the About page, and says what Hum covers when it has nothing', async ({ page }) => {
+  await page.goto('/');
+  await page.fill('#q', 'India');
+  await expect(page.locator('#results a').first()).toHaveAttribute('href', '/earth');
+  await page.fill('#q', 'who is behind Hum');
+  await expect(page.locator('#results a').first()).toHaveAttribute('href', '/about');
+  await page.fill('#q', 'bottle of water');
+  await expect(page.locator('#results a').first()).toContainText('NO.');
+  await page.fill('#q', 'tiktok');
+  await expect(page.locator('#results .none')).toContainText(/Hum has \d+ answers about/);
+  await page.goto('/about');
+  await expect(page.locator('h1')).toHaveText('Who makes Hum');
+  await expect(page.locator('.lede')).toContainText('No AI company');
+});
+
 test('an answer page has its verdict, the total, sources with check dates, and next questions', async ({ page }) => {
   await page.goto('/q/flight');
   await expect(page.locator('h1')).toHaveText('Is using AI worse for the climate than taking a flight?');
@@ -102,7 +117,8 @@ test.describe('with scripts off', () => {
   test('answer pages read in full and the front door card links to its answer', async ({ page }) => {
     await page.goto('/q/bottle-of-water');
     await expect(page.locator('.lede')).toContainText('Li et al.');
-    await expect(page.locator('.verdict-row .stamp')).toContainText('NOBODY KNOWS');
+    await expect(page.locator('.verdict-row .stamp')).toContainText('NO');
+    await expect(page.locator('.short')).toContainText('one bottle per 10 to 50 answers');
     await page.goto('/');
     await expect(page.locator('#card-h')).toBeVisible();
     await expect(page.locator('#card .choices')).toBeHidden();

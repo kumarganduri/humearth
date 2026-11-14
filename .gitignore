@@ -12,5 +12,6 @@ playwright-report/
 q/
 topics/
 topics.html
+about.html
 src/today.generated.html
 src/daily.generated.html

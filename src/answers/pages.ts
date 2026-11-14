@@ -2,9 +2,9 @@
 //   q/{slug}.html, topics/{slug}.html, topics.html  (full documents; vite.config.ts picks them up)
 //   src/home.generated.html, src/today.generated.html      (bodies inlined into index.html and today.html)
 
-import { CATEGORIES, type Answer, type AnswersFile, type AnswersSource } from './types';
+import { CATEGORIES, type Answer, type AnswersFile, type AnswersSource, type Findable } from './types';
 import { answerPage, answerRow, cardHtml, esc, SITE, topicPage, topicSlug } from './render';
-import { dayNumber, todayIndex } from './pure';
+import { todaySlug } from './pure';
 
 export const NAV_LINKS: [href: string, label: string][] = [
   ['/today', 'Today'],
@@ -19,7 +19,7 @@ export function navHtml(current?: string): string {
   return `<header class="nav"><a class="wordmark" href="/" aria-label="Hum home">Hum</a><nav aria-label="Main" class="nav-links">${links}</nav></header>`;
 }
 
-export const FOOTER_HTML = `<footer class="foot"><nav aria-label="More"><a href="/topics">All topics</a><a href="/how-we-know.html">How we know</a><span class="foot-tools">Tools: <a href="/question">One question</a> · <a href="/live">Live</a> · <a href="/2030">2030</a> · <a href="/daily">Daily</a> · <a href="/earth">The Earth</a></span></nav><p>Hum is open source. Every number is sourced, with the date its quote was checked.</p></footer>`;
+export const FOOTER_HTML = `<footer class="foot"><nav aria-label="More"><a href="/topics">All topics</a><a href="/how-we-know.html">How we know</a><a href="/about">Who makes Hum</a><span class="foot-tools">Tools: <a href="/question">One question</a> · <a href="/live">Live</a> · <a href="/2030">2030</a> · <a href="/daily">Daily</a> · <a href="/earth">The Earth</a></span></nav><p>Hum is open source. Every number is sourced, with the date its quote was checked.</p></footer>`;
 
 const FONTS = ['instrument-serif-latin-400-normal', 'atkinson-hyperlegible-next-latin-400-normal', 'atkinson-hyperlegible-next-latin-700-normal', 'atkinson-hyperlegible-mono-latin-600-normal']
   .map((f) => `<link rel="preload" href="/fonts/${f}.woff2" as="font" type="font/woff2" crossorigin />`).join('\n    ');
@@ -91,7 +91,46 @@ export function answerPages(src: AnswersSource): Record<string, string> {
     path: '/topics', ogImage: '/og/home.png', ogAlt: 'Hum: straight answers about AI’s electricity, water and CO₂.', nav: '/topics',
     body: `<section class="topic"><h1>All topics</h1><p class="muted">${src.answers.length} reviewed answers. More are being checked.</p>${used.map((c) => `<h2><a href="/topics/${topicSlug(c)}">${esc(c)}</a></h2><ul class="rows">${src.answers.filter((a) => a.cat === c).map(answerRow).join('')}</ul>`).join('')}</section>`,
   });
+  out['about.html'] = pageShell({
+    title: 'Who makes Hum · Hum', description: 'Hum is an independent, open-source project made and paid for by Kumar Ganduri. No AI company, energy company or advertiser funds it.',
+    path: '/about', ogImage: '/og/home.png', ogAlt: 'Hum: straight answers about AI’s electricity, water and CO₂.', body: aboutBody(src),
+  });
   return out;
+}
+
+export const REPO = 'https://github.com/kumarganduri/humearth';
+
+/** /about: who makes Hum, who pays, how an answer is made, how to report an error. */
+export function aboutBody(src: AnswersSource): string {
+  return `<article class="answer about">
+<h1>Who makes Hum</h1>
+<p class="lede">Hum is made by Kumar Ganduri, as an independent project. He pays for it himself. No AI company, energy company, advertiser or sponsor funds it, and nobody pays to appear in it or to be left out.</p>
+<h2>What it’s for</h2>
+<p>People hear a lot of claims about AI’s electricity, water and CO₂. Some are right, some are exaggerated, and some can’t be known yet. Hum gives a straight answer to each one and shows where every number comes from, so you can check it yourself.</p>
+<h2>How an answer is made</h2>
+<ul class="plain">
+<li>Every number comes from a quote read on the source’s own page, with a link and the date it was checked.</li>
+<li>When Hum does a sum, the sum is shown, and the site won’t build if it doesn’t add up.</li>
+<li>A company’s own figure is labelled as the company’s, and is never ranked against independent measurements.</li>
+<li>Every week, each quote is checked again on its page. If one has changed or gone, it is reviewed.</li>
+<li>When nobody has published a number, Hum says so.</li>
+</ul>
+<p>There are ${src.answers.length} reviewed answers so far. <a href="/how-we-know.html">How we know</a> has the full method and every source.</p>
+<h2>Found a mistake?</h2>
+<p>Please say so. <a href="${REPO}/issues/new" rel="noopener noreferrer">Report an error on GitHub</a>, with the page and what looks wrong. Corrections are made in the open.</p>
+<h2>Open source</h2>
+<p>The code, the data and every quote are public: <a href="${REPO}" rel="noopener noreferrer">github.com/kumarganduri/humearth</a>.</p>
+</article>`;
+}
+
+/** The site's own pages for search: places lead to The Earth, where countries and data-centre hubs are compared. */
+export function searchPages(places: string[]): Findable[] {
+  return [
+    { href: '/earth', q: 'The Earth: data centres next to countries and cities', sub: 'How the world’s data centres compare with a country’s electricity use, and where the biggest hubs are', keys: `country countries map globe city cities hub hubs where ${places.join(' ')}` },
+    { href: '/2030', q: '2030: what could data centres’ CO₂ be?', sub: 'Mix the power sources and see the total change', keys: 'future forecast forecasts prediction projection scenario 2035' },
+    { href: '/about', q: 'Who makes Hum, and who pays for it?', sub: 'Made and paid for by Kumar Ganduri. No company funds it', keys: 'about site website behind made maker owner author funded funding funds money pays sponsor trust bias contact error hum' },
+    { href: '/how-we-know.html', q: 'How we know: the method and every source', sub: 'Where each number comes from and how it is checked', keys: 'sources method methodology verdict verdicts citation citations cite evidence' },
+  ];
 }
 
 /** The front door's body (inlined into index.html). The first card is prerendered, so it's there before any script. */
@@ -102,7 +141,7 @@ export function homeBody(src: AnswersSource): string {
   const counts = CATEGORIES.map((c) => [c, src.answers.filter((a) => a.cat === c).length] as const).filter(([, n]) => n > 0);
   return `<section class="front" aria-labelledby="front-h">
   <div class="hero"><h1 id="front-h">One AI question uses very little electricity. The world’s data centres use about as much as France.</h1>
-  <p class="hero-sub">Straight answers about AI’s electricity, water and CO₂. Every number sourced.</p></div>
+  <p class="hero-sub">Straight answers about AI’s electricity, water and CO₂. Every number sourced. <a href="/about">Independent: no company funds it.</a></p></div>
   <div class="search js-only" role="search"><label for="q">Heard something? Ask Hum.</label><input id="q" type="search" autocomplete="off" placeholder="e.g. is AI bad for the planet?" aria-controls="results" aria-describedby="q-count" /><p id="q-count" class="muted" aria-live="polite"></p><ul class="results" id="results" hidden></ul></div>
   <div class="card" id="card" data-slug="${first.slug}">${cardHtml(first, { at: 0, of: src.deck.length })}</div>
 </section>
@@ -115,21 +154,22 @@ export function homeBody(src: AnswersSource): string {
  *  any script and with scripts off. The card data is embedded (a JSON data block, not a script, so the CSP allows
  *  it); the script only swaps the card if the day has turned over since the build. */
 export function todayBody(data: string, src: AnswersSource, day: number): string {
-  const slug = src.deck[todayIndex(day, src.deck.length)]!;
+  const slug = todaySlug(src, day);
   const a = src.answers.find((x) => x.slug === slug)!;
   return `<section class="today" aria-labelledby="today-h"><h1 id="today-h">Today’s question</h1>
-  <p class="muted"><span id="today-num">Hum #${Math.max(1, day + 1)}</span> · one question a day, the same for everyone. No sign-up. There are ${src.deck.length} cards so far, so they repeat until more answers are reviewed.</p>
+  <p class="muted"><span id="today-num">Hum #${Math.max(1, day + 1)}</span> · one question a day, the same for everyone. No sign-up.</p>
   <script type="application/json" id="answers-data">${data.replace(/</g, '\\u003c')}</script>
   <div class="card" id="card" data-slug="${slug}">${cardHtml(a)}</div>
   <div id="today-share"></div></section>`;
 }
 
 /** public/data/answers.json: what the browser needs for cards, search and Today. */
-export function answersFile(src: AnswersSource, contentHash: string, builtAt: string): AnswersFile & { companies: string[] } {
+export function answersFile(src: AnswersSource, contentHash: string, builtAt: string, places: string[] = []): AnswersFile & { companies: string[] } {
   return {
-    contentHash, builtAt, launch: src.launch, deck: src.deck,
+    contentHash, builtAt, launch: src.launch, deck: src.deck, ...(src.today ? { today: src.today } : {}),
+    pages: searchPages(places),
     companies: Object.entries(src.sources).filter(([, s]) => s.kind === 'company_claim').map(([k]) => k),
-    answers: src.answers.map(({ slug, q, cat, type, heard, heardFrom, stamp, guess, result, reveal, world, you, share, points, range }) =>
-      ({ slug, q, cat, type, heard, heardFrom, stamp, guess, result, reveal, world, you, share, points, range })),
+    answers: src.answers.map(({ slug, q, cat, keys, type, heard, heardFrom, stamp, guess, result, reveal, world, you, share, points, range }) =>
+      ({ slug, q, cat, keys, type, heard, heardFrom, stamp, guess, result, reveal, world, you, share, points, range })),
   };
 }

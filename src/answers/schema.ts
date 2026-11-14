@@ -172,6 +172,8 @@ export function validateAnswersSource(input: unknown): string[] {
   });
   if (!Array.isArray(src.deck) || src.deck.length === 0) errs.push('deck: at least one card');
   else for (const s of src.deck) if (!slugs.has(s)) errs.push(`deck: no answer "${s}"`);
+  for (const s of src.today ?? []) if (!slugs.has(s)) errs.push(`today: no answer "${s}"`);
+  if (src.today && src.today.length < 2) errs.push('today: at least two cards');
   for (const a of src.answers) errs.push(...validateAnswer(a, src, slugs, rungs));
   return errs;
 }

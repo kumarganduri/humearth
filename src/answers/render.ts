@@ -147,6 +147,9 @@ export const shareHtml = (text: string, url: string) =>
 
 export const UNITS_HTML = `<details class="units"><summary>What do Wh, kWh and TWh mean?</summary><div><p><abbr title="watt-hour">Wh</abbr> is a watt-hour: a 1-watt light left on for an hour. 1 kWh = 1,000 Wh, and 1 TWh = 1 billion kWh. Hum compares each number with something everyday so you don’t need the units.</p></div></details>`;
 
+/** Shown on answers that use these units, right where they first appear (the fold has the longer version). */
+export const UNITS_NOTE = `<p class="units-note"><abbr title="watt-hour">Wh</abbr> is a watt-hour: a 1-watt light left on for an hour. 1 kWh = 1,000 Wh. 1 TWh = 1 billion kWh.</p>`;
+
 type CardAnswer = Pick<Answer, 'slug' | 'type' | 'heard' | 'heardFrom' | 'guess' | 'stamp'>;
 
 /** The card before a guess. With scripts off the buttons are hidden (.js-only) and "See the answer" is the way in. */
@@ -189,8 +192,10 @@ export function answerPage(a: Answer, src: AnswersSource): string {
 <h1 id="answer-h">${esc(a.q)}</h1>
 ${a.type === 'claim' ? `<p class="claimline">The claim: ${esc(a.heard!)}</p>` : ''}
 ${verdict}
+<p class="short"><span class="k">Short answer</span>${esc(a.result)}.</p>
 <p class="lede">${esc(a.answer)}</p>
 <p class="world"><span class="k">The bigger picture</span>${esc(a.world)}</p>
+${/\b[kMGT]?Wh\b/.test(`${a.answer} ${a.world}`) ? UNITS_NOTE : ''}
 ${figureHtml(a, companies)}
 <div class="folds">
 ${a.rung ? `<details><summary>How big is that?</summary><div>${ladderHtml(src.ladder, a.rung)}</div></details>` : ''}

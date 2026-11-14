@@ -34,6 +34,32 @@
     "heat-reuse",
     "how-many-data-centres"
   ],
+  "today": [
+    "one-question",
+    "google-search",
+    "bottle-of-water",
+    "netflix",
+    "should-i-stop",
+    "please-thank-you",
+    "pictures-and-video",
+    "flight",
+    "my-year",
+    "delete-emails",
+    "reasoning",
+    "smaller-models",
+    "world-share",
+    "big-data-centre",
+    "power-mix",
+    "training-vs-using",
+    "is-ai-the-reason",
+    "drinking-water",
+    "can-ai-cut-emissions",
+    "efficiency-rebound",
+    "renewable-claims",
+    "big-tech-emissions",
+    "heat-reuse",
+    "how-many-data-centres"
+  ],
   "sources": {
     "google": {
       "publisher": "Google Cloud (median Gemini text prompt, includes idle machines and data-centre cooling)",
@@ -2434,7 +2460,8 @@
         "long_x_high",
         "chatgpt_year_twh"
       ],
-      "chips": []
+      "chips": [],
+      "keys": "energy power watt per prompt query message chat"
     },
     {
       "slug": "google-search",
@@ -2509,7 +2536,8 @@
         "search_wh",
         "ten_x"
       ],
-      "chips": []
+      "chips": [],
+      "keys": "googling search engine gemini overview"
     },
     {
       "slug": "bottle-of-water",
@@ -2518,10 +2546,10 @@
       "q": "Does ChatGPT use a bottle of water for every email it writes?",
       "heard": "“ChatGPT drinks a bottle of water for every email it writes.”",
       "heardFrom": "viral since 2023",
-      "stamp": "NOBODY KNOWS",
-      "result": "Not for the model that was measured. For today’s, nobody has published it",
+      "stamp": "NO",
+      "result": "No. The study said one bottle per 10 to 50 answers, for an older model",
       "reveal": "The peer-reviewed study said one 500 ml bottle per 10 to 50 answers, for GPT-3.",
-      "answer": "Nobody has published it for today’s models. The best-known study (Li et al., UC Riverside) estimated GPT-3 used a 500 ml bottle for every 10 to 50 medium-length answers: 10 to 50 ml each. Company figures are far lower: OpenAI says about 0.32 ml per average question and Google 0.26 ml per median prompt, and neither says clearly whether it counts water used at power plants. A newer figure for an AI-written email also circulates, but Hum couldn’t read it on its page, so it isn’t used.",
+      "answer": "No, not a bottle per email. The best-known study (Li et al., UC Riverside) estimated GPT-3 used a 500 ml bottle for every 10 to 50 medium-length answers: 10 to 50 ml each. For today’s models, nobody has published an independent figure. Company figures are far lower: OpenAI says about 0.32 ml per average question and Google 0.26 ml per median prompt, and neither says clearly whether it counts water used at power plants. A newer figure for an AI-written email also circulates, but Hum couldn’t read it on its page, so it isn’t used.",
       "world": "Water is felt locally. In a recent year, US data centres used about 17 billion gallons on site, and about 211 billion more through the power plants that supplied them (Berkeley Lab estimates).",
       "you": true,
       "range": {
@@ -2533,7 +2561,7 @@
         "claim": 500,
         "claimWhat": "what the claim says: a whole bottle"
       },
-      "why": "The study measured an older model and spread one bottle over 10 to 50 answers. The retold version drops both.",
+      "why": "The study measured an older model and spread one bottle over 10 to 50 answers. The retold version drops both. What today’s models use is still unpublished.",
       "dontknow": [
         "No independent per-question water figure exists for current ChatGPT models.",
         "The companies don’t say clearly whether they count water used at power plants.",
@@ -2557,7 +2585,8 @@
         "water_per_q_high",
         "openai_ml"
       ],
-      "chips": []
+      "chips": [],
+      "keys": "drink drinks litre liter thirsty"
     },
     {
       "slug": "netflix",
@@ -2597,7 +2626,8 @@
         "netflix_q_mid",
         "netflix_q_high"
       ],
-      "chips": []
+      "chips": [],
+      "keys": "streaming youtube video tv watching"
     },
     {
       "slug": "flight",
@@ -2643,7 +2673,8 @@
         "q_co2_high",
         "flight_q_high"
       ],
-      "chips": []
+      "chips": [],
+      "keys": "flying plane fly airplane travel"
     },
     {
       "slug": "reasoning",
@@ -2674,7 +2705,8 @@
         "iea_ai50"
       ],
       "calcs": [],
-      "chips": []
+      "chips": [],
+      "keys": "thinking tokens token coding agent agents long deep research"
     },
     {
       "slug": "my-year",
@@ -2724,7 +2756,8 @@
         "person_t",
         "flight_kg"
       ],
-      "chips": []
+      "chips": [],
+      "keys": "footprint personal me guilty carbon year"
     },
     {
       "slug": "big-tech-emissions",
@@ -2766,7 +2799,8 @@
       "calcs": [
         "bte_ms_mt"
       ],
-      "you": false
+      "you": false,
+      "keys": "google microsoft meta amazon net zero"
     },
     {
       "slug": "bills",
@@ -2815,7 +2849,8 @@
       "calcs": [
         "bills_73",
         "bills_9"
-      ]
+      ],
+      "keys": "electric electricity bill bills price prices cost raise raising rise rising higher pjm ohio virginia maryland pennsylvania jersey illinois"
     },
     {
       "slug": "power-mix",
@@ -2857,7 +2892,8 @@
         "iea_half"
       ],
       "calcs": [],
-      "chips": []
+      "chips": [],
+      "keys": "coal gas renewables solar wind nuclear clean dirty fossil"
     },
     {
       "slug": "world-share",
@@ -2903,7 +2939,8 @@
         "ai_share_low",
         "ai_share_high"
       ],
-      "chips": []
+      "chips": [],
+      "keys": "world global total percent share france"
     },
     {
       "slug": "can-ai-cut-emissions",
@@ -2945,7 +2982,8 @@
         "aicut_momentum",
         "aicut_marginal"
       ],
-      "calcs": []
+      "calcs": [],
+      "keys": "good benefit benefits help climate solve save"
     },
     {
       "slug": "data-centre-noise",
@@ -2999,7 +3037,8 @@
       "chips": [
         "US evidence",
         "depends on local rules"
-      ]
+      ],
+      "keys": "noise loud sound hum humming neighbour neighbor virginia fairfax arizona chandler living near"
     },
     {
       "slug": "drinking-water",
@@ -3068,7 +3107,8 @@
         "dw_potable_share",
         "dw_reclaimed_share",
         "dw_nonpotable_share"
-      ]
+      ],
+      "keys": "potable tap drinking drought local water supply town"
     },
     {
       "slug": "efficiency-rebound",
@@ -3138,7 +3178,8 @@
       ],
       "calcs": [
         "eff_double"
-      ]
+      ],
+      "keys": "efficient efficiency chips future jevons"
     },
     {
       "slug": "nuclear-restarts",
@@ -3179,7 +3220,8 @@
         "tmi_ea",
         "iea_485"
       ],
-      "calcs": []
+      "calcs": [],
+      "keys": "nuclear three mile island microsoft reactor"
     },
     {
       "slug": "pictures-and-video",
@@ -3261,7 +3303,8 @@
         "phone_wh",
         "kettle_wh"
       ],
-      "chips": []
+      "chips": [],
+      "keys": "image images picture pictures photo art drawing video videos sora generate generation make making create"
     },
     {
       "slug": "please-thank-you",
@@ -3302,7 +3345,8 @@
       ],
       "calcs": [
         "chatgpt_year_twh"
-      ]
+      ],
+      "keys": "polite manners thanks"
     },
     {
       "slug": "renewable-claims",
@@ -3367,7 +3411,8 @@
       ],
       "calcs": [
         "rc_scope2_ratio"
-      ]
+      ],
+      "keys": "renewable green greenwashing clean certificates offsets"
     },
     {
       "slug": "should-i-stop",
@@ -3416,7 +3461,8 @@
         "stop_car_miles",
         "stop_heavy_miles",
         "stop_video_q"
-      ]
+      ],
+      "keys": "bad harm guilty guilt destroying kids children homework stop quit worth"
     },
     {
       "slug": "training-vs-using",
@@ -3464,7 +3510,8 @@
       ],
       "chips": [
         "company figures"
-      ]
+      ],
+      "keys": "training train model models inference"
     },
     {
       "slug": "big-data-centre",
@@ -3557,7 +3604,8 @@
         "bigdc_hyperion_la",
         "bigdc_hyperion_twh",
         "bigdc_hyperion_share"
-      ]
+      ],
+      "keys": "size big large campus gigawatt gw mw megawatt homes one facility"
     },
     {
       "slug": "how-many-data-centres",
@@ -3641,7 +3689,8 @@
         "count_us",
         "count_hyper_share",
         "count_growth"
-      ]
+      ],
+      "keys": "count number many hyperscale"
     },
     {
       "slug": "us-share",
@@ -3721,7 +3770,8 @@
       "calcs": [
         "usshare_x"
       ],
-      "chips": []
+      "chips": [],
+      "keys": "america american usa united states us"
     },
     {
       "slug": "is-ai-the-reason",
@@ -3795,7 +3845,8 @@
       ],
       "calcs": [
         "aigrowth_rest"
-      ]
+      ],
+      "keys": "growth growing demand rising driver"
     },
     {
       "slug": "new-gas-plants",
@@ -3842,7 +3893,8 @@
         "gas_iea_driver",
         "gas_iea_us"
       ],
-      "calcs": []
+      "calcs": [],
+      "keys": "gas plant plants louisiana georgia meta entergy"
     },
     {
       "slug": "coal-kept-open",
@@ -3892,7 +3944,8 @@
         "iea_mix_coal",
         "coal_iea_china"
       ],
-      "calcs": []
+      "calcs": [],
+      "keys": "coal plant plants michigan georgia"
     },
     {
       "slug": "delete-emails",
@@ -3942,7 +3995,8 @@
         "del_photos_ml_low",
         "del_photos_ml_high",
         "del_loo_ratio"
-      ]
+      ],
+      "keys": "delete deleting emails photos storage cloud uk drought"
     },
     {
       "slug": "smaller-models",
@@ -4020,7 +4074,8 @@
         "small_think_vs_off",
         "small_bloom_energy",
         "small_bloom_params"
-      ]
+      ],
+      "keys": "mini flash small smaller model models gemini claude gpt which better greener"
     },
     {
       "slug": "jobs",
@@ -4107,7 +4162,8 @@
       "calcs": [
         "jobs_build_ratio",
         "jobs_meta_per_job"
-      ]
+      ],
+      "keys": "jobs work workers employment economy local"
     },
     {
       "slug": "heat-reuse",
@@ -4158,7 +4214,8 @@
       ],
       "calcs": [
         "heat_fortum_twh"
-      ]
+      ],
+      "keys": "heat heating warm district waste denmark finland europe"
     }
   ]
 }

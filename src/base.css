@@ -61,7 +61,7 @@ a { color: var(--color-data-centres); text-underline-offset: 3px; }
 .btn.solid:hover:not(:disabled) { background: color-mix(in srgb, var(--color-data-centres) 85%, white); }
 @media (max-width: 560px) {
   .nav { flex-wrap: wrap; row-gap: 0; padding-inline: 20px; }
-  .nav-links { gap: 14px; font-size: .88rem; flex-wrap: wrap; }
+  .nav-links { gap: 14px; font-size: .88rem; flex-wrap: wrap; flex-basis: 100%; } /* own row: the header looks the same with or without the web font */
   /* Six links: two tidy rows of three instead of one stray link on a second row. */
   .nav-links:has(> a:nth-child(6)) { display: grid; grid-template-columns: repeat(3, max-content); column-gap: 18px; row-gap: 0; }
 }

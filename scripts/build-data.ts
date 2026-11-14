@@ -138,7 +138,9 @@ try {
   const src = answersSrc!;
   const answersHash = createHash('sha256').update(JSON.stringify(src)).digest('hex').slice(0, 16);
   const prevAnswers = readJson<{ contentHash: string; builtAt: string }>(ANSWERS_OUT);
-  const answersJson = `${JSON.stringify(answersFile(src, answersHash, prevAnswers?.contentHash === answersHash ? prevAnswers.builtAt : today), null, 2)}\n`;
+  // Place names search can send to The Earth: the countries and hubs that page actually shows.
+  const places = [...readJson<CountriesFile>(COUNTRIES_OUT)!.countries.map((c) => c.name), ...readJson<HubsFile>(HUBS_OUT)!.hubs.flatMap((h) => [h.name, h.country])];
+  const answersJson = `${JSON.stringify(answersFile(src, answersHash, prevAnswers?.contentHash === answersHash ? prevAnswers.builtAt : today, places), null, 2)}\n`;
   const pages = answerPages(src);
   // Generated pages are rebuilt from scratch, so a removed answer can't leave an old page behind.
   for (const dir of ['q', 'topics']) { rmSync(dir, { recursive: true, force: true }); mkdirSync(dir, { recursive: true }); }

@@ -1,10 +1,10 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { answerPage, cardHtml, dateWords, energy, figureHtml, isRightChoice, ladderHtml, revealHtml, timesWords } from './render';
-import { answerPages, homeBody } from './pages';
+import { answerPages, searchPages, homeBody } from './pages';
 import { answerCardSvg, wrap } from './og';
-import { dayNumber, matches, todayIndex } from './pure';
-import type { AnswersSource } from './types';
+import { dayNumber, matches, todayIndex, todaySlug } from './pure';
+import type { Findable, AnswersSource } from './types';
 
 const src: AnswersSource = JSON.parse(readFileSync('data/sources/answers.source.json', 'utf8'));
 const get = (slug: string) => src.answers.find((a) => a.slug === slug)!;
@@ -112,5 +112,29 @@ describe('Today and search', () => {
     expect(matches('is AI raising my bill?', src.answers)[0]!.slug).toBe('bills');
     expect(matches('agua? water bottle', src.answers)[0]!.slug).toBe('bottle-of-water');
     expect(matches('the and of', src.answers)).toEqual([]);
+  });
+  it('finds what people actually typed in the phone test, and says nothing when it has nothing', () => {
+    const pages = searchPages(['India', 'Ireland', 'Singapore']);
+    const all = [...src.answers, ...pages];
+    const top = (q: string) => { const m = matches<Findable>(q, all)[0]; return m ? (m.href ?? m.slug) : null; };
+    expect(top('is AI bad for the planet?')).toBe('should-i-stop');
+    expect(top('bottle of water email')).toBe('bottle-of-water');
+    expect(top('AI art image')).toBe('pictures-and-video');
+    expect(top('training a model')).toBe('training-vs-using');
+    expect(top('Ohio')).toBe('bills');
+    expect(top('india')).toBe('/earth');
+    expect(top('2030 forecast')).toBe('/2030');
+    expect(top('who is behind Hum')).toBe('/about');
+    expect(top('who pays for this site')).toBe('/about');
+    // One common word is not a match.
+    expect(matches('Loudoun water', all).map((m) => m.slug)).not.toContain('bottle-of-water');
+    expect(top('does AI use more power than Minecraft')).toBeNull();
+    expect(top('how many GW')).toBe('big-data-centre');
+    expect(top('tiktok')).toBeNull();
+  });
+  it('takes Today from the everyday rotation, and from the deck when there is none', () => {
+    expect(todaySlug({ deck: ['a', 'b', 'c'], today: ['x', 'y'] }, 0)).toBe('y');
+    expect(todaySlug({ deck: ['a', 'b', 'c'] }, 0)).toBe('b');
+    expect(src.today!.every((s) => src.deck.includes(s))).toBe(true);
   });
 });

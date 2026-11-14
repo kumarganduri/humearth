@@ -24,7 +24,10 @@ html { scroll-padding-top: 72px; }
 .results { list-style: none; margin: 4px 0 0; padding: 0; border: 1px solid var(--color-rule); border-radius: var(--rounded-md); background: var(--color-surface); }
 .results li + li { border-top: 1px solid var(--color-rule); }
 .results a { display: flex; gap: 10px; align-items: baseline; padding: 12px 14px; text-decoration: none; min-height: 44px; }
+.results a { flex-wrap: wrap; row-gap: 2px; }
+.results .sub { flex-basis: 100%; color: var(--color-text-muted); font-size: .875rem; }
 .results .none { padding: 12px 14px; color: var(--color-text-muted); }
+.results .none a { display: inline; padding: 0; min-height: 0; text-decoration: underline; }
 
 /* card */
 .card { background: var(--color-surface); border: 1px solid var(--color-rule); border-radius: var(--rounded-md); padding: 20px; }
@@ -55,6 +58,13 @@ html { scroll-padding-top: 72px; }
 .chip { font: 600 .75rem/1 var(--num); letter-spacing: .08em; text-transform: uppercase; padding: 6px 8px; border-radius: var(--rounded-sm); border: 1.5px solid var(--color-text-muted); color: var(--color-text-muted); }
 .verdict-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
 .world { border-left: 3px solid var(--color-data-centres); padding: 4px 0 4px 14px; }
+.short { font-size: 1.2rem; font-weight: 700; line-height: 1.35; }
+.short .k { display: block; font-size: .8125rem; font-weight: 700; color: var(--color-text-muted); letter-spacing: .04em; }
+.units-note { font-size: .875rem; color: var(--color-text-muted); }
+.tellme[hidden] { display: none; }
+.today > .muted { margin-bottom: var(--space-md); }
+.hero-sub a { color: inherit; }
+.about h2 { margin-top: var(--space-lg); }
 .world .k { display: block; font-size: .8125rem; font-weight: 700; color: var(--color-data-centres); letter-spacing: .04em; }
 
 /* answer page */

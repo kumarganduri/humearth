@@ -67,6 +67,19 @@ export interface Range {
   claimWhat: string;
 }
 
+/** Something search can find: a reviewed answer, or one of the site's own pages (The Earth, 2030, Who makes Hum). */
+export interface Findable {
+  q: string;
+  cat?: string;
+  slug?: string;
+  /** A page that isn't an answer. */
+  href?: string;
+  /** Other words people use for this: places, synonyms. Never shown. */
+  keys?: string;
+  /** One line shown under the title in results. */
+  sub?: string;
+}
+
 export interface Guess {
   prompt: string;
   options: string[];
@@ -75,6 +88,8 @@ export interface Guess {
 
 export interface Answer {
   slug: string;
+  /** Other words people search for (places, synonyms). Never shown. */
+  keys?: string;
   q: string;
   cat: Category;
   type: 'claim' | 'how-much';
@@ -121,6 +136,8 @@ export interface AnswersSource {
   answers: Answer[];
   /** The front door's card order (slugs): personal and big-picture cards alternate. */
   deck: string[];
+  /** Today's rotation: the everyday cards, in order. Falls back to the deck. */
+  today?: string[];
   /** Launch day (UTC) for Today's numbering. */
   launch: string;
 }
@@ -131,5 +148,9 @@ export interface AnswersFile {
   builtAt: string;
   launch: string;
   deck: string[];
-  answers: Pick<Answer, 'slug' | 'q' | 'cat' | 'type' | 'heard' | 'heardFrom' | 'stamp' | 'guess' | 'result' | 'reveal' | 'world' | 'you' | 'share' | 'points' | 'range'>[];
+  /** Today's rotation: the everyday cards, in order. Falls back to the deck. */
+  today?: string[];
+  answers: Pick<Answer, 'slug' | 'q' | 'cat' | 'keys' | 'type' | 'heard' | 'heardFrom' | 'stamp' | 'guess' | 'result' | 'reveal' | 'world' | 'you' | 'share' | 'points' | 'range'>[];
+  /** The site's own pages, so search can send "India" to The Earth and "who makes Hum" to About. */
+  pages: Findable[];
 }

@@ -11,8 +11,8 @@ import './answers.css';
 import { cardHtml, esc, isRightChoice, revealHtml, SITE } from './answers/render';
 import { bindShares } from './answers/share';
 import { safeLocalStorage } from './legacy';
-import type { AnswersFile } from './answers/types';
-import { dayNumber, matches, todayIndex } from './answers/pure';
+import type { AnswersFile, Findable } from './answers/types';
+import { dayNumber, matches, todaySlug } from './answers/pure';
 
 type Data = AnswersFile & { companies: string[] };
 type Card = Data['answers'][number];
@@ -43,6 +43,7 @@ function play(host: HTMLElement, a: Card, companies: Set<string>, opts: { at?: n
     const rv = host.querySelector<HTMLElement>('#reveal')!;
     rv.innerHTML = revealHtml(a, right, companies, opts.next ? { label: opts.next } : undefined);
     rv.hidden = false;
+    host.querySelector('.tellme')?.setAttribute('hidden', ''); // the reveal has its own link to the full answer
     bindShares(rv);
     rv.querySelector<HTMLElement>('#rv-h')!.focus();
     if (opts.onNext) rv.querySelector('#next-card')?.addEventListener('click', opts.onNext);
@@ -53,8 +54,8 @@ function frontDoor(data: Data, companies: Set<string>) {
   const host = document.getElementById('card');
   if (!host) return;
   const bySlug = new Map(data.answers.map((a) => [a.slug, a]));
-  const todaySlug = data.deck[todayIndex(dayNumber(data.launch, new Date()), data.deck.length)];
-  const deck = data.deck.filter((s) => s !== todaySlug).map((s) => bySlug.get(s)!);
+  const todays = todaySlug(data, dayNumber(data.launch, new Date()));
+  const deck = data.deck.filter((s) => s !== todays).map((s) => bySlug.get(s)!);
   let at = 0, score = 0;
   const next = () => {
     if (at >= deck.length) {
@@ -82,11 +83,11 @@ function search(data: Data) {
   let t: ReturnType<typeof setTimeout> | undefined;
   input.addEventListener('input', () => {
     const v = input.value.trim();
-    const hits = v ? matches(v, data.answers) : [];
+    const hits = v ? matches<Findable & { stamp?: string; result?: string }>(v, [...data.answers, ...(data.pages ?? [])]) : [];
     list.hidden = !v;
     list.innerHTML = hits.length
-      ? hits.map((a) => `<li><a href="/q/${a.slug}">${esc(a.q)}</a></li>`).join('')
-      : `<li class="none">No reviewed answer for that yet. <a href="/topics">Browse every answer</a>.</li>`;
+      ? hits.map((a) => `<li><a href="${a.href ?? `/q/${a.slug}`}"><span>${esc(a.q)}</span><span class="sub">${a.stamp ? `${esc(a.stamp)}. ` : ''}${esc(a.sub ?? a.result ?? '')}</span></a></li>`).join('')
+      : `<li class="none">No reviewed answer for that yet. Hum has ${data.answers.length} answers about the electricity, water and CO₂ of AI and data centres. <a href="/topics">Browse every answer</a>.</li>`;
     clearTimeout(t);
     t = setTimeout(() => { count.textContent = v ? (hits.length ? `${hits.length} ${hits.length === 1 ? 'answer matches' : 'answers match'}` : 'No match yet') : ''; }, 500);
   });
@@ -97,7 +98,7 @@ function today(data: Data, companies: Set<string>) {
   if (!host) return;
   const day = dayNumber(data.launch, new Date());
   const n = Math.max(1, day + 1);
-  const a = data.answers.find((x) => x.slug === data.deck[todayIndex(day, data.deck.length)])!;
+  const a = data.answers.find((x) => x.slug === todaySlug(data, day))!;
   const num = document.getElementById('today-num')!;
   if (num.textContent !== `Hum #${n}`) num.textContent = `Hum #${n}`;
   const key = `hum.today.${n}`;
