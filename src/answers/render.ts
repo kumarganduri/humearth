@@ -148,8 +148,11 @@ export function citeText(a: Answer, sources: Record<string, AnswerSource>): stri
 
 /* ---------- share ---------- */
 
+/** An answer's share card (question, verdict, one-line answer), the same image link previews use. */
+export const shareImage = (url: string) => { const m = /\/q\/([a-z0-9-]+)$/.exec(url); return m ? `/og/q/${m[1]}.png` : ''; };
+
 export const shareHtml = (text: string, url: string) =>
-  `<div class="share js-only" data-share-text="${esc(text)}" data-share-url="${esc(url)}"><button type="button" class="btn">Share</button><span class="share-done" aria-live="polite"></span></div>
+  `<div class="share js-only" data-share-text="${esc(text)}" data-share-url="${esc(url)}"${shareImage(url) ? ` data-share-image="${shareImage(url)}"` : ''}><button type="button" class="btn">Share</button>${shareImage(url) ? `<a class="share-img" href="${shareImage(url)}" download>Save as image</a>` : ''}<span class="share-done" aria-live="polite"></span></div>
 <noscript><p class="share-plain">${esc(text)} ${esc(url)}</p></noscript>`;
 
 /* ---------- the playable card ---------- */
@@ -175,14 +178,17 @@ export function cardHtml(a: CardAnswer, progress?: { at: number; of: number }): 
 export const isRightChoice = (a: CardAnswer, choice: { k?: string; i?: number }) =>
   a.type === 'claim' ? choice.k === a.stamp : choice.i === a.guess!.right;
 
+const FOR_YOU = `<p class="foryou">What this means for you: your own use barely registers. What adds up is billions of questions, heavier uses like <a href="${answerUrl('reasoning')}">thinking modes</a> and video, and the data centres being built for them.</p>`;
+
 type RevealAnswer = Pick<Answer, 'slug' | 'type' | 'stamp' | 'result' | 'reveal' | 'world' | 'you' | 'share' | 'points' | 'range'>;
 
-export function revealHtml(a: RevealAnswer, right: boolean, companies: Set<string>, next?: { label: string }): string {
+/** After a guess: the answer in one line, Next and the full answer within reach, then the bigger picture. The
+ *  figures chart and the unit detail live on the answer page (the phone test: they buried the Next button). */
+export function revealHtml(a: RevealAnswer, right: boolean, next?: { label: string }): string {
   return `${a.type === 'claim' && a.stamp ? stampHtml(a.stamp) : ''}<h3 id="rv-h" tabindex="-1">${right ? 'You got it.' : 'Not quite.'} ${esc(a.result)}.</h3>
-<p>${esc(a.reveal)}</p>${figureHtml(a, companies)}
+<p>${esc(a.reveal)}</p>
+<div class="cardnav">${next ? `<button type="button" class="btn solid" id="next-card">${esc(next.label)}</button>` : ''}<a class="btn" href="${answerUrl(a.slug)}">Read the full answer</a></div>
 <p class="world"><span class="k">The bigger picture</span>${esc(a.world)}</p>
-${a.you ? `<p class="foryou">What this means for you: your own use barely registers. What adds up is billions of questions, heavier uses like <a href="${answerUrl('reasoning')}">thinking modes</a> and video, and the data centres being built for them.</p>` : ''}
-<div class="cardnav"><a class="btn" href="${answerUrl(a.slug)}">Read the full answer</a>${next ? `<button type="button" class="btn quiet" id="next-card">${esc(next.label)}</button>` : ''}</div>
 ${shareHtml(a.share, SITE + answerUrl(a.slug))}`;
 }
 
@@ -204,6 +210,7 @@ ${verdict}
 <p class="short"><span class="k">Short answer</span>${esc(a.result)}.</p>
 <p class="lede">${esc(a.answer)}</p>
 <p class="world"><span class="k">The bigger picture</span>${esc(a.world)}</p>
+${a.you ? FOR_YOU : ''}
 ${/\b[kMGT]?Wh\b/.test(`${a.answer} ${a.world}`) ? UNITS_NOTE : ''}
 ${figureHtml(a, companies)}
 <div class="folds">

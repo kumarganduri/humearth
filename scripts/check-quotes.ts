@@ -46,8 +46,8 @@ async function fetchText(url: string): Promise<{ text: string } | { down: string
 async function archiveCopy(url: string): Promise<{ text: string; note: string } | null> {
   try {
     const r = await fetch(`https://archive.org/wayback/available?url=${encodeURIComponent(url)}`, { headers: { 'user-agent': UA }, signal: AbortSignal.timeout(TIMEOUT_MS) });
-    const snap = ((await r.json()) as { archived_snapshots?: { closest?: { timestamp: string; available: boolean } } }).archived_snapshots?.closest;
-    if (!snap?.available || archiveAgeDays(snap.timestamp, today) > ARCHIVE_MAX_DAYS) return null;
+    const snap = ((await r.json()) as { archived_snapshots?: { closest?: { timestamp: string; available: boolean; status?: string } } }).archived_snapshots?.closest;
+    if (!snap?.available || (snap.status && snap.status !== '200') || archiveAgeDays(snap.timestamp, today) > ARCHIVE_MAX_DAYS) return null;
     const page = await fetchText(`https://web.archive.org/web/${snap.timestamp}id_/${url}`); // id_: the page as captured, no archive toolbar
     return 'text' in page ? { text: page.text, note: `checked on the Internet Archive's copy from ${snap.timestamp.slice(0, 4)}-${snap.timestamp.slice(4, 6)}-${snap.timestamp.slice(6, 8)}` } : null;
   } catch {

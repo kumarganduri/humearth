@@ -155,6 +155,8 @@ export function archiveAgeDays(timestamp: string, today: string): number {
 /** A response we can't read the page from: blocked, rate-limited or a bot challenge. */
 export function looksBlocked(status: number, body: string): boolean {
   if (status >= 400) return true;
+  // 202 with nothing in it is a bot challenge too (EUR-Lex); so is any page with no text to speak of.
+  if (status === 202 || body.replace(/<[^>]*>/g, '').trim().length < 200) return true;
   return /just a moment\.\.\.|cf-chl|enable javascript and cookies to continue|access denied|captcha/i.test(body.slice(0, 5000)) && body.length < 60_000;
 }
 

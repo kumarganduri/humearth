@@ -36,9 +36,14 @@ describe('cards', () => {
     expect(isRightChoice(get('one-question'), { i: 0 })).toBe(true);
   });
   it('the reveal carries the bigger picture, and "what this means for you" only on personal answers', () => {
-    expect(revealHtml(get('one-question'), true, companies)).toContain('What this means for you');
-    expect(revealHtml(get('bills'), true, companies)).not.toContain('What this means for you');
-    expect(revealHtml(get('flight'), false, companies)).toMatch(/Not quite\..*Hum’s verdict|Hum’s verdict.*Not quite\./s);
+    // The reveal stays light: answer, Next and the full answer, the bigger picture. No chart, no unit detail.
+    const rv = revealHtml(get('one-question'), true, { label: 'Next question' });
+    expect(rv).not.toContain('<figure');
+    expect(rv.indexOf('next-card')).toBeLessThan(rv.indexOf('The bigger picture'));
+    expect(rv).toContain('data-share-image="/og/q/one-question.png"');
+    expect(answerPage(get('one-question'), src)).toContain('What this means for you');
+    expect(answerPage(get('bills'), src)).not.toContain('What this means for you');
+    expect(revealHtml(get('flight'), false)).toMatch(/Not quite\..*Hum’s verdict|Hum’s verdict.*Not quite\./s);
   });
   it('with scripts off the card links to its answer', () => {
     expect(cardHtml(get('netflix'))).toContain('href="/q/netflix"');

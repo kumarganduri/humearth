@@ -76,3 +76,26 @@ Twenty AI agents each played a different first-time visitor and followed `user-t
 - 20. water, bottle of water, Wasser, Germany, how much water does AI use in a day
 
 Full answers from every tester, with screenshot references, are in the session’s workflow journal; this file is the summary.
+
+## Round 2, 15 November 2026 (after the fixes and 8 new answers)
+
+The same 20 simulated visitors, same script, on the live site at commit `66a4726`.
+
+| Measure (testers of 20) | Round 1 | Round 2 |
+|---|---|---|
+| Said what the site is for after 10 seconds | 20 | 20 |
+| Found the water answer (all by search, 1 to 3 actions) | 20 | 20 |
+| Would share something | 20 | 20 |
+| Would come back tomorrow for Today | 0 | 0 |
+| Pressed "Next question" | 7 | 5 |
+| Called the bottle verdict confusing | 15 | 1 |
+| Reported the stray "." in search | 18 | 1 |
+| Wanted to know who makes or pays for Hum | 14 | 7 |
+| Reported unrelated search results | 8 | 3 |
+| Reported overlapping chart dots | 3 | 0 |
+| Stumbled on gallons, miles or US examples | 15 | 10 |
+| Found Wh / TWh hard | 20 | 19 |
+| Found the figures chart heavy or unclear | 20 | 19 |
+| Noticed the headline font differ between loads | 16 | 16 |
+
+Still open: the reveal after a guess is too heavy (chart, Wh and TWh before the Next button); units; a daily reason to return.

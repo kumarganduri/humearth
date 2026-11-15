@@ -9,6 +9,12 @@ export function bindShares(root: ParentNode = document) {
     const done = box.querySelector<HTMLElement>('.share-done')!;
     box.querySelector('button')!.addEventListener('click', async () => {
       try {
+        // Where the phone can share a picture, send the answer's card with the link; else text and link.
+        const image = box.dataset.shareImage;
+        if (image && navigator.share && navigator.canShare) {
+          const file = await fetch(image).then((r) => (r.ok ? r.blob() : null)).then((b) => (b ? new File([b], 'hum-answer.png', { type: 'image/png' }) : null)).catch(() => null);
+          if (file && navigator.canShare({ files: [file] })) { await navigator.share({ files: [file], text, url }); done.textContent = 'Shared'; return; }
+        }
         if (navigator.share) { await navigator.share({ text, url }); done.textContent = 'Shared'; return; }
       } catch (e) {
         if ((e as Error).name === 'AbortError') return;

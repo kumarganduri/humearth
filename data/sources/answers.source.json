@@ -40,7 +40,15 @@
     "uk",
     "virginia",
     "germany",
-    "singapore"
+    "singapore",
+    "texas",
+    "oregon",
+    "canada",
+    "australia",
+    "spain",
+    "brazil",
+    "africa",
+    "uae"
   ],
   "today": [
     "one-question",
@@ -2605,6 +2613,934 @@
       "retrieved": "2026-11-14",
       "kind": "estimate",
       "checked": "page"
+    },
+    "tx_epri_row": {
+      "publisher": "EPRI (Electric Power Research Institute), Powering Intelligence: Analyzing Artificial Intelligence and Data Center Energy Consumption, white paper, May 2024 (Table 2: data-centre electricity consumption in MWh and share of the state’s electricity consumption; the first two columns are 2023, the rest are four simple projections for 2030)",
+      "quote": "Texas 21,813,159 4.59% 28,149,002 5.47% 30,693,306 5.94% 42,507,676 8.04% 57,917,564 10.64%",
+      "url": "https://restservice.epri.com/publicdownload/000000003002028905/0/Product",
+      "retrieved": "2026-11-15",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "tx_epri_rank": {
+      "publisher": "EPRI (Electric Power Research Institute), Powering Intelligence: Analyzing Artificial Intelligence and Data Center Energy Consumption, white paper, May 2024 (states ranked by estimated data-centre load in 2023)",
+      "quote": "Ranked from highest to lowest, they are Virginia, Texas, California, Illinois, Oregon,",
+      "url": "https://restservice.epri.com/publicdownload/000000003002028905/0/Product",
+      "retrieved": "2026-11-15",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "tx_epri_draw": {
+      "publisher": "EPRI (Electric Power Research Institute), Powering Intelligence: Analyzing Artificial Intelligence and Data Center Energy Consumption, white paper, May 2024 (Table 1: opportunities, then challenges, for each state)",
+      "quote": "Texas Business-friendly; ample land availability Electric grid reliability and pace of expansion",
+      "url": "https://restservice.epri.com/publicdownload/000000003002028905/0/Product",
+      "retrieved": "2026-11-15",
+      "kind": "report",
+      "checked": "page"
+    },
+    "tx_epri26_par": {
+      "publisher": "EPRI (Electric Power Research Institute), Powering Intelligence 2026: Updated Scenarios of U.S. Data Center Electricity Use and Power Strategies, white paper, February 2026 (its estimates count crypto mining as well as data centres)",
+      "quote": "Texas, on par with Virginia in absolute scale of demand (when cryptocurrency mining is included) but lower in relative terms due to large industrial power demands in the state",
+      "url": "https://restservice.epri.com/publicdownload/000000003002034696/0/Product",
+      "retrieved": "2026-11-15",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "tx_eia_fastest": {
+      "publisher": "US Energy Information Administration, Today in Energy (3 October 2024): Data centers and cryptocurrency mining in Texas drive strong power demand growth",
+      "quote": "In the United States, electricity consumption is growing fastest in Texas, where the Electric Reliability Council of Texas (ERCOT) manages 90% of the load on the state’s power grid.",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=63344",
+      "retrieved": "2026-11-15",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "tx_eia_lfl": {
+      "publisher": "US Energy Information Administration, Today in Energy (3 October 2024): Data centers and cryptocurrency mining in Texas drive strong power demand growth",
+      "quote": "we expect electricity demand from customers identified by ERCOT as large flexible load (LFL) will total 54 billion kilowatthours (kWh) in 2025, up almost 60% from expected demand in 2024.",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=63344",
+      "retrieved": "2026-11-15",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "tx_eia_lfl10": {
+      "publisher": "US Energy Information Administration, Today in Energy (3 October 2024): Data centers and cryptocurrency mining in Texas drive strong power demand growth",
+      "quote": "This expected demand from LFL customers would represent about 10% of total forecast electricity consumption on the ERCOT grid next year.",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=63344",
+      "retrieved": "2026-11-15",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "tx_eia_lfl_def": {
+      "publisher": "US Energy Information Administration, Today in Energy (3 October 2024): Data centers and cryptocurrency mining in Texas drive strong power demand growth",
+      "quote": "The Electric Reliability Council of Texas (ERCOT) defines large flexible load as any facility drawing power from the grid with an expected peak demand capacity of 75 megawatts or more.",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=63344",
+      "retrieved": "2026-11-15",
+      "kind": "report",
+      "checked": "page"
+    },
+    "tx_eia_uncertain": {
+      "publisher": "US Energy Information Administration, Today in Energy (3 October 2024): Data centers and cryptocurrency mining in Texas drive strong power demand growth",
+      "quote": "One of the main sources of growing demand for power is large-scale computing facilities such as data centers and cryptocurrency mining operations, although their future demands are uncertain.",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=63344",
+      "retrieved": "2026-11-15",
+      "kind": "report",
+      "checked": "page"
+    },
+    "tx_eia_whenif": {
+      "publisher": "US Energy Information Administration, Today in Energy (3 October 2024): Data centers and cryptocurrency mining in Texas drive strong power demand growth",
+      "quote": "Although much planned capacity for large-load customers is awaiting approval from ERCOT, when or if the capacity will be brought online remains uncertain.",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=63344",
+      "retrieved": "2026-11-15",
+      "kind": "report",
+      "checked": "page"
+    },
+    "tx_eia_7_14": {
+      "publisher": "US Energy Information Administration, Today in Energy (31 July 2025): We expect rapid electricity demand growth in Texas and the mid-Atlantic",
+      "quote": "We expect electricity demand within ERCOT to increase by 7% in 2025 and by 14% in 2026 when some large data centers and cryptocurrency mining facilities come online.",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=65844",
+      "retrieved": "2026-11-15",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "tx_eia_audit": {
+      "publisher": "US Energy Information Administration, Today in Energy (3 September 2026): Weekly average load in ERCOT continues near record high",
+      "quote": "Amid the record-high demand, ERCOT is auditing proposals from data centers to connect to the grid, following Texas Governor Greg Abbott’s recent moratorium on new data center interconnections.",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=68084",
+      "retrieved": "2026-11-15",
+      "kind": "report",
+      "checked": "page"
+    },
+    "tx_sb6_75": {
+      "publisher": "Texas Legislature, Senate Bill 6 (S.B. 6), enrolled text, 2025: Utilities Code section 37.0561(c), standards for connecting large electricity users in the ERCOT region",
+      "quote": "The commission shall establish a demand threshold of 75 megawatts unless the commission determines that a lower threshold is necessary to accomplish the purposes described by Subsection (b).",
+      "url": "https://capitol.texas.gov/tlodocs/89R/billtext/html/SB00006F.htm",
+      "retrieved": "2026-11-15",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "tx_sb6_growth": {
+      "publisher": "Texas Legislature, Senate Research Center, bill analysis of Senate Bill 6 (S.B. 6) as enrolled, 5 August 2025, citing ERCOT’s estimate",
+      "quote": "ERCOT estimates additional load growth between 130-150 Gigawatts (GWs) by 2030. This amount is almost double ERCOT's peak load of 86 GWs in 2024.",
+      "url": "https://capitol.texas.gov/tlodocs/89R/analysis/html/SB00006F.htm",
+      "retrieved": "2026-11-15",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "tx_sb6_cost": {
+      "publisher": "Texas Legislature, Senate Research Center, bill analysis of Senate Bill 6 (S.B. 6) as enrolled, 5 August 2025",
+      "quote": "ensure that a large load customer who is subject to the standards adopted under Section 37.0561 contributes to the recovery of the interconnecting electric utility's costs to interconnect the large load to the utility's system.",
+      "url": "https://capitol.texas.gov/tlodocs/89R/analysis/html/SB00006F.htm",
+      "retrieved": "2026-11-15",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "tx_sb6_shed": {
+      "publisher": "Texas Legislature, Senate Research Center, bill analysis of Senate Bill 6 (S.B. 6) as enrolled, 5 August 2025",
+      "quote": "protecting residential customers from outages by requiring large loads to share the load shed obligation during times of shortage.",
+      "url": "https://capitol.texas.gov/tlodocs/89R/analysis/html/SB00006F.htm",
+      "retrieved": "2026-11-15",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "tx_ud_474": {
+      "publisher": "Utility Dive, Texas PUC adopts softened rules on data center interconnection (21 September 2026), reporting the size of ERCOT’s queue of large electricity users asking to connect",
+      "quote": "the state audits the Electric Reliability Council of Texas’ 474 GW interconnection queue, approximately 90% of which is data centers.",
+      "url": "https://www.utilitydive.com/news/texas-puc-adopts-data-center-interconnection-rules/830899/",
+      "retrieved": "2026-11-15",
+      "kind": "report",
+      "checked": "page"
+    },
+    "or_epri_row": {
+      "publisher": "EPRI (Electric Power Research Institute), Powering Intelligence: Analyzing Artificial Intelligence and Data Center Energy Consumption, white paper, May 2024 (Table 2: data-centre electricity consumption in MWh and share of the state’s electricity consumption; the first two columns are 2023, the rest are four simple projections for 2030)",
+      "quote": "Oregon 6,413,663 11.39% 8,276,574 13.39% 9,024,668 14.43% 12,498,415 18.93% 17,029,342 24.14%",
+      "url": "https://restservice.epri.com/publicdownload/000000003002028905/0/Product",
+      "retrieved": "2026-11-15",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "or_epri_draw": {
+      "publisher": "EPRI (Electric Power Research Institute), Powering Intelligence: Analyzing Artificial Intelligence and Data Center Energy Consumption, white paper, May 2024 (Table 1: opportunities, then challenges, for each state)",
+      "quote": "Oregon Low electricity rates, low carbon emissions, moderate climate, tax incentives, and skilled workforce Complex environmental regulations; demand for green energy solutions, and pace of growth",
+      "url": "https://restservice.epri.com/publicdownload/000000003002028905/0/Product",
+      "retrieved": "2026-11-15",
+      "kind": "report",
+      "checked": "page"
+    },
+    "or_epri26_only": {
+      "publisher": "EPRI (Electric Power Research Institute), Powering Intelligence 2026: Updated Scenarios of U.S. Data Center Electricity Use and Power Strategies, white paper, February 2026 (its estimates count crypto mining as well as data centres)",
+      "quote": "Today, Virginia is the only state where data centers consume over 20% of electricity",
+      "url": "https://restservice.epri.com/publicdownload/000000003002034696/0/Product",
+      "retrieved": "2026-11-15",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "or_epri26_2030": {
+      "publisher": "EPRI (Electric Power Research Institute), Powering Intelligence 2026: Updated Scenarios of U.S. Data Center Electricity Use and Power Strategies, white paper, February 2026 (its estimates count crypto mining as well as data centres)",
+      "quote": "By 2030, seven additional states—Oregon, Iowa ... could see data centers exceeding a 20% share (Medium scenario).",
+      "url": "https://restservice.epri.com/publicdownload/000000003002034696/0/Product",
+      "retrieved": "2026-11-15",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "or_epri26_range": {
+      "publisher": "EPRI (Electric Power Research Institute), Powering Intelligence 2026: Updated Scenarios of U.S. Data Center Electricity Use and Power Strategies, white paper, February 2026 (its estimates count crypto mining as well as data centres)",
+      "quote": "Range in 2024 data center demand reflects data variation across sources, particularly in Oregon.",
+      "url": "https://restservice.epri.com/publicdownload/000000003002034696/0/Product",
+      "retrieved": "2026-11-15",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "or_econw_twh": {
+      "publisher": "ECOnorthwest and the University of Virginia’s Weldon Cooper Center, Understanding Oregon’s Data Center Industry: preliminary findings presented to the Oregon Data Center Advisory Committee, 31 July 2026 (slides published by the Oregon Department of Energy)",
+      "quote": "Estimated data center electricity demand rises from 14.0 TWh in 2025 to 24.8 TWh by 2030.",
+      "url": "https://www.oregon.gov/energy/get-involved/Documents/2026-07-31-ECONW-Understanding-Data-Center-Industry.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "or_opb_23": {
+      "publisher": "OPB (Oregon Public Broadcasting), 17 September 2026, reporting the final ECOnorthwest and University of Virginia study",
+      "quote": "Among the key findings from ECOnorthwest is that data centers accounted for about 23% of Oregon’s electricity sales in 2025.",
+      "url": "https://www.opb.org/article/2026/09/17/oregon-data-centers-consume-quarter-state-power-report/",
+      "retrieved": "2026-11-15",
+      "kind": "report",
+      "checked": "page"
+    },
+    "or_puc_15": {
+      "publisher": "Oregon Public Utility Commission, POWER Act Biennial Report: 2026 Oregon PUC Report to the Oregon Legislature (IOUs are investor-owned utilities)",
+      "quote": "The PUC estimates that data center load comprises roughly 15 percent of the IOUs’ current load, and will continue to grow, reaching 25 percent of IOU load by 2030.",
+      "url": "https://www.oregon.gov/puc/forms/Forms%20and%20Reports/2026%20POWER%20Act%20Legislative%20Report.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "or_puc_growth": {
+      "publisher": "Oregon Public Utility Commission, POWER Act Biennial Report: 2026 Oregon PUC Report to the Oregon Legislature (IOUs are investor-owned utilities)",
+      "quote": "Data center load grew at an average rate of approximately 36 percent per year since 2021 and is projected to grow at approximately 14 percent per year through 2030.",
+      "url": "https://www.oregon.gov/puc/forms/Forms%20and%20Reports/2026%20POWER%20Act%20Legislative%20Report.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "or_puc_rule": {
+      "publisher": "Oregon Public Utility Commission, POWER Act Biennial Report: 2026 Oregon PUC Report to the Oregon Legislature (IOUs are investor-owned utilities)",
+      "quote": "The POWER Act, HB 3546 (2025), directs the PUC to create a separate rate class for data centers over 20 megawatts (MW), defined in the bill as large energy use facilities.",
+      "url": "https://www.oregon.gov/puc/forms/Forms%20and%20Reports/2026%20POWER%20Act%20Legislative%20Report.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "or_puc_10yr": {
+      "publisher": "Oregon Public Utility Commission, POWER Act Biennial Report: 2026 Oregon PUC Report to the Oregon Legislature (IOUs are investor-owned utilities)",
+      "quote": "the Act established a minimum contract length of 10 years to avoid stranded costs borne by all ratepayers.",
+      "url": "https://www.oregon.gov/puc/forms/Forms%20and%20Reports/2026%20POWER%20Act%20Legislative%20Report.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "or_puc_pge_homes": {
+      "publisher": "Oregon Public Utility Commission, POWER Act Biennial Report: 2026 Oregon PUC Report to the Oregon Legislature (IOUs are investor-owned utilities), on Portland General Electric (PGE)",
+      "quote": "PGE customers have experienced an average decrease in electricity rates of 1.3 percent for residential customers",
+      "url": "https://www.oregon.gov/puc/forms/Forms%20and%20Reports/2026%20POWER%20Act%20Legislative%20Report.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "or_puc_pge_dc": {
+      "publisher": "Oregon Public Utility Commission, POWER Act Biennial Report: 2026 Oregon PUC Report to the Oregon Legislature (IOUs are investor-owned utilities), on Portland General Electric (PGE)",
+      "quote": "Data centers within PGE’s territory have seen an average rate increase of 29 percent.",
+      "url": "https://www.oregon.gov/puc/forms/Forms%20and%20Reports/2026%20POWER%20Act%20Legislative%20Report.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "or_puc_nwpcc": {
+      "publisher": "Oregon Public Utility Commission, POWER Act Biennial Report: 2026 Oregon PUC Report to the Oregon Legislature (IOUs are investor-owned utilities), citing the Northwest Power and Conservation Council’s draft Ninth Power Plan",
+      "quote": "The Northwest Power and Conservation Council estimates data center load growth within the Pacific Northwest (PNW) region will roughly double by 2030, most of which will be served by consumer owned utilities (COUs) and the Bonneville Power Administration’s (BPA) system.",
+      "url": "https://www.oregon.gov/puc/forms/Forms%20and%20Reports/2026%20POWER%20Act%20Legislative%20Report.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "or_puc_blind": {
+      "publisher": "Oregon Public Utility Commission, POWER Act Biennial Report: 2026 Oregon PUC Report to the Oregon Legislature (IOUs are investor-owned utilities)",
+      "quote": "The PUC lacks visibility into data center impacts outside of IOU service territories",
+      "url": "https://www.oregon.gov/puc/forms/Forms%20and%20Reports/2026%20POWER%20Act%20Legislative%20Report.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "report",
+      "checked": "page"
+    },
+    "or_puc_hillsboro": {
+      "publisher": "Oregon Public Utility Commission, POWER Act Biennial Report: 2026 Oregon PUC Report to the Oregon Legislature (IOUs are investor-owned utilities)",
+      "quote": "Hillsboro was the first City in Oregon to enact a moratorium on new data center development applications. The Hillsboro City Council unanimously passed the 120-day moratorium during a special meeting on Monday July 27, 2026.",
+      "url": "https://www.oregon.gov/puc/forms/Forms%20and%20Reports/2026%20POWER%20Act%20Legislative%20Report.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "report",
+      "checked": "page"
+    },
+    "or_opb_water": {
+      "publisher": "OPB (Oregon Public Broadcasting), 23 January 2026, from City of The Dalles water records",
+      "quote": "Google used 383.9 million gallons of water in 2023, and 434.4 million gallons in 2024, according to data provided by the city to OPB in response to a public records request.",
+      "url": "https://www.opb.org/article/2026/01/23/the-dalles-mayor-data-center-google/",
+      "retrieved": "2026-11-15",
+      "kind": "report",
+      "checked": "page"
+    },
+    "or_opb_third": {
+      "publisher": "OPB (Oregon Public Broadcasting), 15 January 2026",
+      "quote": "By 2024, a third of The Dalles’ water went to Google’s three local data center sites.",
+      "url": "https://www.opb.org/article/2026/01/15/as-googles-water-demands-grow-the-dalles-aims-to-pull-more-from-mount-hood-forest/",
+      "retrieved": "2026-11-15",
+      "kind": "report",
+      "checked": "page"
+    },
+    "or_dcac_nda": {
+      "publisher": "Oregon Data Center Advisory Committee, Preliminary Learnings, September 2026 (published by the Oregon Department of Energy)",
+      "quote": "The Committee also heard that non-disclosure agreements (NDAs) can make it difficult for the public to understand how much municipal water is being used at the individual data center level.",
+      "url": "https://www.oregon.gov/energy/get-involved/Documents/2026-09-10-DCAC-Preliminary-Learnings.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "report",
+      "checked": "page"
+    },
+    "ca_nrcan_share": {
+      "publisher": "Natural Resources Canada, Best Practice Guide for Canadian Data Centres (2024), citing a market study it commissioned (an estimate, not a meter count)",
+      "quote": "estimated that data centres accounted for 1.4% of total electricity consumption in 2021 ... and increased by 50% to reach 2.1% in 2023.",
+      "url": "https://oee.nrcan.gc.ca/publications/statistics/dac/2024/index.cfm",
+      "retrieved": "2026-11-15",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "ca_nrcan_basis": {
+      "publisher": "Natural Resources Canada, Best Practice Guide for Canadian Data Centres (2024), footnotes on how the shares were worked out",
+      "quote": "This approximates data centre consumption in 2021 relative to Canada’s 2019 total electricity use ... This result approximated data centre consumption in 2023 relative to Canada’s total electricity use in 2022 as 2023 data for Canada’s electricity consumption were unavailable at the time of calculation.",
+      "url": "https://oee.nrcan.gc.ca/publications/statistics/dac/2024/index.cfm",
+      "retrieved": "2026-11-15",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "ca_nrcan_study": {
+      "publisher": "Natural Resources Canada, Best Practice Guide for Canadian Data Centres (2024), footnote on the market study",
+      "quote": "NRCan commissioned a study in 2021 to characterize the Canadian data centre market and establish the research infrastructure required to understand that market. The study was updated in 2023.",
+      "url": "https://oee.nrcan.gc.ca/publications/statistics/dac/2024/index.cfm",
+      "retrieved": "2026-11-15",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "ca_nrcan_cities": {
+      "publisher": "Natural Resources Canada, Best Practice Guide for Canadian Data Centres (2024) (electric demand in megawatts: power at one moment, not energy over a year)",
+      "quote": "electric demand in the major Canadian markets of Toronto, Montreal, and Vancouver. Electric demand was estimated at 320 MW, 520 MW, and 46 MW for these three markets respectively.",
+      "url": "https://oee.nrcan.gc.ca/publications/statistics/dac/2024/index.cfm",
+      "retrieved": "2026-11-15",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "ca_4e_share": {
+      "publisher": "4E TCP (an energy-efficiency programme set up under the IEA), Data Centre Energy Use: Critical Review of Models and Results (March 2025; the authors’ own estimates)",
+      "quote": "In Canada, data centres likely consume 3–6 TWh, equivalent to 0.5–1% of national electricity use",
+      "url": "https://www.iea-4e.org/wp-content/uploads/2025/05/Data-Centre-Energy-Use-Critical-Review-of-Models-and-Results.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "ca_cer_cm": {
+      "publisher": "Canada Energy Regulator, Canada’s Energy Future 2026 fact sheet: Current Measures scenario (17 March 2026; a scenario assumption; gigawatts of load, not energy used)",
+      "quote": "This scenario assumes Canada adds 1.5 GW of data centre load by 2030, and 3.5 GW by 2050.",
+      "url": "https://www.cer-rec.gc.ca/en/about/news-room/news-releases/2026/2026-fact-sheet/current-scenario.html",
+      "retrieved": "2026-11-15",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "ca_cer_hi": {
+      "publisher": "Canada Energy Regulator, Canada’s Energy Future 2026 fact sheet: Higher scenario (a scenario assumption; gigawatts of load, not energy used)",
+      "quote": "The scenario assumes 12 GW of data centre load in Canada by 2050. Data centre load growth makes up about a third, or 100 TWh, of the total projected end-use electricity demand growth in this scenario.",
+      "url": "https://www.cer-rec.gc.ca/en/about/news-room/news-releases/2026/2026-fact-sheet/higher-scenario.html",
+      "retrieved": "2026-11-15",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "ca_cer_quarter": {
+      "publisher": "Canada Energy Regulator, Canada’s Energy Future 2026, Results (electricity demand growth from 2023 to 2050)",
+      "quote": "In the Higher scenario, data centre load growth makes up about a quarter, or 100 TWh, of the total projected end-use electricity demand growth.",
+      "url": "https://www.cer-rec.gc.ca/en/data-analysis/canada-energy-future/2026/results/",
+      "retrieved": "2026-11-15",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "ca_cer_noprob": {
+      "publisher": "Canada Energy Regulator, Canada’s Energy Future 2026, Executive summary",
+      "quote": "We do not assign probabilities to any of our scenarios.",
+      "url": "https://www.cer-rec.gc.ca/en/data-analysis/canada-energy-future/2026/executive-summary/",
+      "retrieved": "2026-11-15",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "ca_cer_count": {
+      "publisher": "Canada Energy Regulator, Market Snapshot: Energy demand from data centers is steadily increasing (2 October 2024), counting from Data Center Map",
+      "quote": "There are currently an estimated 239 data centers ... operating across Canada ... Toronto and Montreal both have the most (at 81 and 48 respectively)",
+      "url": "https://www.cer-rec.gc.ca/en/data-analysis/energy-markets/market-snapshots/2024/market-snapshot-energy-demand-from-data-centers-is-steadily-increasing-and-ai-development-is-a-significant-factor.html",
+      "retrieved": "2026-11-15",
+      "kind": "report",
+      "checked": "page"
+    },
+    "ca_cer_why": {
+      "publisher": "Canada Energy Regulator, Market Snapshot: Energy demand from data centers is steadily increasing (2 October 2024)",
+      "quote": "Canada’s data center landscape is driven by low electricity costs, particularly in provinces like Quebec and British Columbia, where hydroelectricity is abundant and relatively affordable. The country’s clean energy grid, with over 80% of electricity coming from non-emitting sources, can also make it attractive for companies looking to build new data centers with a low carbon footprint. Additionally, Canada’s cool climate further enhances the energy efficiency of data centers by reducing cooling costs.",
+      "url": "https://www.cer-rec.gc.ca/en/data-analysis/energy-markets/market-snapshots/2024/market-snapshot-energy-demand-from-data-centers-is-steadily-increasing-and-ai-development-is-a-significant-factor.html",
+      "retrieved": "2026-11-15",
+      "kind": "report",
+      "checked": "page"
+    },
+    "ca_cer_hq": {
+      "publisher": "Canada Energy Regulator, Market Snapshot: Energy demand from data centers is steadily increasing (2 October 2024), reporting Hydro-Québec’s electricity supply plan",
+      "quote": "Hydro Québec anticipates an increase of 4.1 TWh in data center demand from 2023 to 2032 in its most recent electricity supply plan.",
+      "url": "https://www.cer-rec.gc.ca/en/data-analysis/energy-markets/market-snapshots/2024/market-snapshot-energy-demand-from-data-centers-is-steadily-increasing-and-ai-development-is-a-significant-factor.html",
+      "retrieved": "2026-11-15",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "ca_ieso_2050": {
+      "publisher": "IESO (Ontario’s grid operator), 2026 Annual Planning Outlook in 5 Graphs and a Map (share of Ontario’s electricity demand)",
+      "quote": "In the Reference Scenario, data centres are expected to make up 8.6 per cent of Ontario demand in 2050, about 60 per cent more than what was previously forecast.",
+      "url": "https://www.ieso.ca/Powering-Tomorrow/2026/2026-Annual-Planning-Outlook-in-5-Graphs-and-a-Map",
+      "retrieved": "2026-11-15",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "ca_ab_requests": {
+      "publisher": "Government of Alberta, AI Data Centres in Alberta: Is Alberta’s grid ready? (citing the grid operator AESO’s connection list of July 30, 2026; requests in megawatts of capacity, not energy used)",
+      "quote": "Companies have asked to connect roughly 19,565 megawatts of new data centre load, far more than the AESO allowed onto the grid in this first stage.",
+      "url": "https://www.alberta.ca/datacentres/grid",
+      "retrieved": "2026-11-15",
+      "kind": "report",
+      "checked": "page"
+    },
+    "ca_ab_limit": {
+      "publisher": "Government of Alberta, AI Data Centres in Alberta: Is Alberta’s grid ready? (citing the grid operator AESO’s connection list of July 30, 2026; requests in megawatts of capacity, not energy used)",
+      "quote": "It studied how much new large load the existing grid could safely serve and set an interim limit of 1,200 megawatts. That interim room is now fully taken.",
+      "url": "https://www.alberta.ca/datacentres/grid",
+      "retrieved": "2026-11-15",
+      "kind": "report",
+      "checked": "page"
+    },
+    "ca_ab_peak": {
+      "publisher": "Government of Alberta, AI Data Centres in Alberta: Is Alberta’s grid ready? (citing the grid operator AESO’s connection list of July 30, 2026; requests in megawatts of capacity, not energy used)",
+      "quote": "Requests to connect data centres in Alberta exceed the most power the entire province has ever used in a single hour.",
+      "url": "https://www.alberta.ca/datacentres/grid",
+      "retrieved": "2026-11-15",
+      "kind": "report",
+      "checked": "page"
+    },
+    "au_aemo_today": {
+      "publisher": "Australian Energy Market Operator (AEMO), 2026 Electricity Statement of Opportunities: Data Centre Forecasting Overview (August 2026; National Electricity Market only; financial years run July to June, so FY26 is 2025-26, FY30 is 2029-30 and FY36 is 2035-36)",
+      "quote": "Today, there are around 165 data centres that consumed approximately 5 terawatt hours (TWh) of electricity in financial year (FY) 2026, equivalent to around 3% of total NEM operational electricity consumption.",
+      "url": "https://www.aemo.com.au/-/media/files/electricity/nem/planning_and_forecasting/nem_esoo/2026/2026-esoo-data-centre-forecasting-overview.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "au_aemo_mw": {
+      "publisher": "Australian Energy Market Operator (AEMO), 2026 Electricity Statement of Opportunities: Data Centre Forecasting Overview (August 2026; National Electricity Market only; financial years run July to June, so FY26 is 2025-26, FY30 is 2029-30 and FY36 is 2035-36) (megawatts: average power drawn, not energy over a year)",
+      "quote": "Average monthly data centre demand observed across the NEM between January 2018 and June 2026 shows an increase from nearly 200 MW to more than 700 MW.",
+      "url": "https://www.aemo.com.au/-/media/files/electricity/nem/planning_and_forecasting/nem_esoo/2026/2026-esoo-data-centre-forecasting-overview.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "au_aemo_states": {
+      "publisher": "Australian Energy Market Operator (AEMO), 2026 Electricity Statement of Opportunities: Data Centre Forecasting Overview (August 2026; National Electricity Market only; financial years run July to June, so FY26 is 2025-26, FY30 is 2029-30 and FY36 is 2035-36), FY26 data-centre demand by region",
+      "quote": "New South Wales (66%) ... Victoria (30%) ... South Australia (2%) ... Queensland (1%) ... Tasmania (<1%)",
+      "url": "https://www.aemo.com.au/-/media/files/electricity/nem/planning_and_forecasting/nem_esoo/2026/2026-esoo-data-centre-forecasting-overview.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "au_aemo_nem": {
+      "publisher": "Australian Energy Market Operator (AEMO), 2026 Electricity Statement of Opportunities: Data Centre Forecasting Overview (August 2026; National Electricity Market only; financial years run July to June, so FY26 is 2025-26, FY30 is 2029-30 and FY36 is 2035-36)",
+      "quote": "Electricity supplied through the NEM is used by households, businesses and industry across eastern and south-eastern Australia.",
+      "url": "https://www.aemo.com.au/-/media/files/electricity/nem/planning_and_forecasting/nem_esoo/2026/2026-esoo-data-centre-forecasting-overview.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "report",
+      "checked": "page"
+    },
+    "au_aemo_forecast": {
+      "publisher": "Australian Energy Market Operator (AEMO), 2026 Electricity Statement of Opportunities: Data Centre Forecasting Overview (August 2026; National Electricity Market only; financial years run July to June, so FY26 is 2025-26, FY30 is 2029-30 and FY36 is 2035-36), Step Change scenario",
+      "quote": "data centre consumption is forecast to triple to around 15 TWh or 7.8% of forecast operational consumption by FY30 and grow nearly seven times to around 34 TWh or 13% of forecast operational consumption by FY36, before growth starts to taper off.",
+      "url": "https://www.aemo.com.au/-/media/files/electricity/nem/planning_and_forecasting/nem_esoo/2026/2026-esoo-data-centre-forecasting-overview.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "au_aemo_notlargest": {
+      "publisher": "Australian Energy Market Operator (AEMO), 2026 Electricity Statement of Opportunities: Data Centre Forecasting Overview (August 2026; National Electricity Market only; financial years run July to June, so FY26 is 2025-26, FY30 is 2029-30 and FY36 is 2035-36)",
+      "quote": "While data centres are forecast to become a larger consumer of electricity over the next decade, they aren’t expected to become the largest.",
+      "url": "https://www.aemo.com.au/-/media/files/electricity/nem/planning_and_forecasting/nem_esoo/2026/2026-esoo-data-centre-forecasting-overview.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "au_aemo_pipeline": {
+      "publisher": "Australian Energy Market Operator (AEMO), 2026 Electricity Statement of Opportunities: Data Centre Forecasting Overview (August 2026; National Electricity Market only; financial years run July to June, so FY26 is 2025-26, FY30 is 2029-30 and FY36 is 2035-36) (gigawatts of capacity, not energy used)",
+      "quote": "Projects in development: 225 data centres with 67 GW of combined capacity",
+      "url": "https://www.aemo.com.au/-/media/files/electricity/nem/planning_and_forecasting/nem_esoo/2026/2026-esoo-data-centre-forecasting-overview.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "report",
+      "checked": "page"
+    },
+    "au_aemo_cancelled": {
+      "publisher": "Australian Energy Market Operator (AEMO), 2026 Electricity Statement of Opportunities: Data Centre Forecasting Overview (August 2026; National Electricity Market only; financial years run July to June, so FY26 is 2025-26, FY30 is 2029-30 and FY36 is 2035-36)",
+      "quote": "Probability of project completion: 36% of developing projects in 2025 ESOO were cancelled",
+      "url": "https://www.aemo.com.au/-/media/files/electricity/nem/planning_and_forecasting/nem_esoo/2026/2026-esoo-data-centre-forecasting-overview.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "report",
+      "checked": "page"
+    },
+    "au_aemo_util": {
+      "publisher": "Australian Energy Market Operator (AEMO), 2026 Electricity Statement of Opportunities: Data Centre Forecasting Overview (August 2026; National Electricity Market only; financial years run July to June, so FY26 is 2025-26, FY30 is 2029-30 and FY36 is 2035-36)",
+      "quote": "Grid connection utilisation: averaging ~27% in FY26",
+      "url": "https://www.aemo.com.au/-/media/files/electricity/nem/planning_and_forecasting/nem_esoo/2026/2026-esoo-data-centre-forecasting-overview.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "au_aemo_release": {
+      "publisher": "Australian Energy Market Operator (AEMO), media release on its 2026 Electricity Statement of Opportunities (25 August 2026; National Electricity Market)",
+      "quote": "Data centre electricity consumption in the NEM is forecast to increase from approximately 5 terawatt hours (TWh) in 2025-26 to 34 TWh by 2035-36, increasing from around 3% to approximately 13% of electricity supplied through the grid.",
+      "url": "https://www.aemo.com.au/newsroom/media-release/2026-esoo",
+      "retrieved": "2026-11-15",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "au_aemo_national": {
+      "publisher": "Australian Energy Market Operator (AEMO), Digital demand surge: Preparing Australia’s power systems for the rise of data centres (1 June 2026)",
+      "quote": "Australia is currently home to 162 operational data centres nationally, predominantly in Sydney and Melbourne, accounting for around 2% of today’s grid-supplied electricity use.",
+      "url": "https://www.aemo.com.au/newsroom/news-updates/digital-demand-surge",
+      "retrieved": "2026-11-15",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "au_aemo_2025view": {
+      "publisher": "Australian Energy Market Operator (AEMO), Digital demand surge: Preparing Australia’s power systems for the rise of data centres (1 June 2026), on AEMO’s forecast from 2025",
+      "quote": "projected consumption to increase by around 25% annually to reach approximately 12 terawatt hours (TWh), or around 6% of grid-supplied electricity, by 2030",
+      "url": "https://www.aemo.com.au/newsroom/news-updates/digital-demand-surge",
+      "retrieved": "2026-11-15",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "au_aemo_wa": {
+      "publisher": "Australian Energy Market Operator (AEMO), Digital demand surge: Preparing Australia’s power systems for the rise of data centres (1 June 2026)",
+      "quote": "which are among the fastest growing sources of electricity demand in the National Electricity Market (NEM) and Wholesale Electricity Market (WEM)",
+      "url": "https://www.aemo.com.au/newsroom/news-updates/digital-demand-surge",
+      "retrieved": "2026-11-15",
+      "kind": "report",
+      "checked": "page"
+    },
+    "au_4e_banks": {
+      "publisher": "4E TCP (an energy-efficiency programme set up under the IEA), Data Centre Energy Use: Critical Review of Models and Results (March 2025; here reporting estimates by the investment banks Morgan Stanley and UBS)",
+      "quote": "In Australia, data centres currently use an estimated 8–12 TWh (3–5% of national electricity use) according to investment banks Morgan Stanley and UBS",
+      "url": "https://www.iea-4e.org/wp-content/uploads/2025/05/Data-Centre-Energy-Use-Critical-Review-of-Models-and-Results.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "es_dnv_twh": {
+      "publisher": "DNV (risk and energy consultancy), press release on its first Spain energy transition outlook, January 2025, in Spanish",
+      "quote": "La consultora estima que estos centros consumirán más de 6 TWh en 2024, que este consumo de energía aumentará a unos 12 TWh en 2030 y podría alcanzar los 26 TWh en 2050",
+      "url": "https://www.dnv.es/news/2025/dnv-preve-que-los-centros-de-datos-espanoles/",
+      "retrieved": "2026-11-15",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "es_dnv_madrid": {
+      "publisher": "DNV (risk and energy consultancy), press release on its first Spain energy transition outlook, January 2025, in Spanish",
+      "quote": "El desarrollo de nuevas infraestructuras, especialmente en zonas como Madrid o Barcelona, ha sido un factor clave en este crecimiento.",
+      "url": "https://www.dnv.es/news/2025/dnv-preve-que-los-centros-de-datos-espanoles/",
+      "retrieved": "2026-11-15",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "es_ree_2024": {
+      "publisher": "Red Eléctrica (Spain’s grid operator), press release on its 2024 Spanish electricity system report, March 2025",
+      "quote": "In gross terms, electricity demand for 2024 reached 248,811 GWh, marking a 0.9% increase",
+      "url": "https://www.ree.es/en/press-office/news/press-release/2025/03/electricity-generation-from-renewable-energies-in-spain-grows-by-10-3-in-2024-reaching-record-levels",
+      "retrieved": "2026-11-15",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "es_ree_peak": {
+      "publisher": "Red Eléctrica (Spain’s grid operator), press release with its estimates for 2025, December 2025",
+      "quote": "The highest demand on the peninsular electricity system was recorded on 15 January at 20:57, reaching 40,070 MW.",
+      "url": "https://www.ree.es/en/press-office/news/press-release/2025/12/electricity-demand-spain-set-to-continue-its-groth-trend-in-2025",
+      "retrieved": "2026-11-15",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "es_gov_12gw": {
+      "publisher": "Government of Spain (ministries for the Ecological Transition, Economy and Digital Transformation), press note on the draft royal decree on data centres, 27 August 2026, in Spanish",
+      "quote": "por la estratégica ubicación geográfica del país, su clima y su liderazgo en energías renovables: ya se han otorgado más de 12 GW de derechos de acceso y conexión a la red eléctrica desde 2021",
+      "url": "https://digital.gob.es/content/dam/portal-mtdfp/comunicacion/comunicacion_ministro/2026/08/27-08-26/270826NdP.RD%20Centros%20de%20Datos.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "es_gov_ai": {
+      "publisher": "Government of Spain (ministries for the Ecological Transition, Economy and Digital Transformation), press note on the draft royal decree on data centres, 27 August 2026, in Spanish",
+      "quote": "España cuenta con una Estrategia de Inteligencia Artificial, que estima unos 2,5 GW de potencia de computación en 2030, que necesitarían de 3,5 GW a 4 GW de demanda eléctrica.",
+      "url": "https://digital.gob.es/content/dam/portal-mtdfp/comunicacion/comunicacion_ministro/2026/08/27-08-26/270826NdP.RD%20Centros%20de%20Datos.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "es_rd_draft": {
+      "publisher": "Government of Spain (ministries for the Ecological Transition, Economy and Digital Transformation), press note on the draft royal decree on data centres, 27 August 2026, in Spanish",
+      "quote": "inician el trámite de audiencia pública, por la vía de urgencia, del Proyecto de Real Decreto por el que se regulan los requisitos de sostenibilidad energética, medioambiental y de resiliencia y soberanía digital aplicables a los centros de datos",
+      "url": "https://digital.gob.es/content/dam/portal-mtdfp/comunicacion/comunicacion_ministro/2026/08/27-08-26/270826NdP.RD%20Centros%20de%20Datos.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "es_rd_80": {
+      "publisher": "Government of Spain (ministries for the Ecological Transition, Economy and Digital Transformation), press note on the draft royal decree on data centres, 27 August 2026, in Spanish",
+      "quote": "Busca que cumplan los estándares europeos de eficiencia hídrica y energética más exigentes, y respalden con nueva generación renovable, cada hora de funcionamiento, el 80% de su consumo energético",
+      "url": "https://digital.gob.es/content/dam/portal-mtdfp/comunicacion/comunicacion_ministro/2026/08/27-08-26/270826NdP.RD%20Centros%20de%20Datos.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "es_rd_1mw": {
+      "publisher": "Government of Spain (ministries for the Ecological Transition, Economy and Digital Transformation), press note on the draft royal decree on data centres, 27 August 2026, in Spanish",
+      "quote": "gracias al establecimiento de requisitos a las instalaciones mayores de 1 MW de potencia eléctrica",
+      "url": "https://digital.gob.es/content/dam/portal-mtdfp/comunicacion/comunicacion_ministro/2026/08/27-08-26/270826NdP.RD%20Centros%20de%20Datos.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "es_rd_500": {
+      "publisher": "Government of Spain (ministries for the Ecological Transition, Economy and Digital Transformation), press note on the draft royal decree on data centres, 27 August 2026, in Spanish",
+      "quote": "todos los centros de datos mayores de 500 kW deberán remitir al MITECO los datos relativos a su eficiencia energética y su sostenibilidad, de acuerdo con el citado Reglamento Delegado (UE) 2024/1364, para su publicación con carácter anual.",
+      "url": "https://digital.gob.es/content/dam/portal-mtdfp/comunicacion/comunicacion_ministro/2026/08/27-08-26/270826NdP.RD%20Centros%20de%20Datos.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "es_iea_seven": {
+      "publisher": "IEA, commentary “Overcoming energy constraints is key to delivering on Europe’s data centre goals” (November 2025)",
+      "quote": "In Spain, planned projects are seven times larger on average.",
+      "url": "https://www.iea.org/commentaries/overcoming-energy-constraints-is-key-to-delivering-on-europe-s-data-centre-goals",
+      "retrieved": "2026-11-15",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "es_iea_peak": {
+      "publisher": "IEA, commentary “Overcoming energy constraints is key to delivering on Europe’s data centre goals” (November 2025)",
+      "quote": "In countries like Spain or the Netherlands, it would rise to around 10%.",
+      "url": "https://www.iea.org/commentaries/overcoming-energy-constraints-is-key-to-delivering-on-europe-s-data-centre-goals",
+      "retrieved": "2026-11-15",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "es_iea_notall": {
+      "publisher": "IEA, commentary “Overcoming energy constraints is key to delivering on Europe’s data centre goals” (November 2025)",
+      "quote": "Not all the projects from the current data centre project pipeline will be completed.",
+      "url": "https://www.iea.org/commentaries/overcoming-energy-constraints-is-key-to-delivering-on-europe-s-data-centre-goals",
+      "retrieved": "2026-11-15",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "br_brasscom_share": {
+      "publisher": "Brasscom (Brazil’s tech industry association), study of energy and water use in Brazil’s data centres, August 2025, in Portuguese; total consumption taken from EPE’s national energy balance",
+      "quote": "DATA CENTERS REPRESENTAM 1,7% DO TOTAL CONSUMIDO ( 11,3 TWh )",
+      "url": "https://brasscom.org.br/wp-content/uploads/2025/08/Estudo-sobre-o-Consumo-de-Energia-e-Agua-em-Data-Centers-no-Brasil-v7.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "br_brasscom_total": {
+      "publisher": "Brasscom (Brazil’s tech industry association), study of energy and water use in Brazil’s data centres, August 2025, in Portuguese; total consumption taken from EPE’s national energy balance",
+      "quote": "O CONSUMO DE ENERGIA ELÉTRICA NO BRASIL NO ANO DE 2024 FOI DE 650,4 TWh",
+      "url": "https://brasscom.org.br/wp-content/uploads/2025/08/Estudo-sobre-o-Consumo-de-Energia-e-Agua-em-Data-Centers-no-Brasil-v7.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "br_brasscom_mw": {
+      "publisher": "Brasscom (Brazil’s tech industry association), study of energy and water use in Brazil’s data centres, August 2025, in Portuguese; total consumption taken from EPE’s national energy balance",
+      "quote": "Potência Instalada (TI) no Brasil em 2024: 843,1 MW",
+      "url": "https://brasscom.org.br/wp-content/uploads/2025/08/Estudo-sobre-o-Consumo-de-Energia-e-Agua-em-Data-Centers-no-Brasil-v7.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "br_epe_30": {
+      "publisher": "EPE (Brazil’s Energy Research Office) and Ministry of Mines and Energy, Plano Decenal de Expansão de Energia 2036, energy demand booklet, October 2026, in Portuguese",
+      "quote": "Em 2036, os data centers responderão por 30 TWh do consumo de eletricidade do setor de serviços.",
+      "url": "https://www.epe.gov.br/sites-pt/publicacoes-dados-abertos/publicacoes/PublicacoesArquivos/publicacao-982/topico-851/PDE%202036_Caderno%20de%20Demanda%20de%20Energia_v1_2026-10-27.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "br_epe_requests": {
+      "publisher": "EPE (Brazil’s Energy Research Office) and Ministry of Mines and Energy, Plano Decenal de Expansão de Energia 2036, energy demand booklet, October 2026, in Portuguese",
+      "quote": "Em 2025, observou-se aumento dos pedidos de acesso à rede básica por projetos de data centers",
+      "url": "https://www.epe.gov.br/sites-pt/publicacoes-dados-abertos/publicacoes/PublicacoesArquivos/publicacao-982/topico-851/PDE%202036_Caderno%20de%20Demanda%20de%20Energia_v1_2026-10-27.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "br_epe_depends": {
+      "publisher": "EPE (Brazil’s Energy Research Office) and Ministry of Mines and Energy, Plano Decenal de Expansão de Energia 2036, energy demand booklet, October 2026, in Portuguese",
+      "quote": "A expansão efetiva da participação dessas grandes cargas dependerá do ritmo de concretização dos investimentos previstos",
+      "url": "https://www.epe.gov.br/sites-pt/publicacoes-dados-abertos/publicacoes/PublicacoesArquivos/publicacao-982/topico-851/PDE%202036_Caderno%20de%20Demanda%20de%20Energia_v1_2026-10-27.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "br_epe_total": {
+      "publisher": "EPE (Brazil’s Energy Research Office) and Ministry of Mines and Energy, Plano Decenal de Expansão de Energia 2036 (ten-year energy plan), summary report, October 2026, in Portuguese; table 2-4, columns 2026, 2031 and 2036",
+      "quote": "Consumo total de eletricidade (TWh) 702 846 979",
+      "url": "https://www.epe.gov.br/sites-pt/publicacoes-dados-abertos/publicacoes/PublicacoesArquivos/publicacao-982/topico-860/PDE%202036_Relat%C3%B3rio%20S%C3%ADntese_rev3_2026-10-08.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "br_epe_driver": {
+      "publisher": "EPE (Brazil’s Energy Research Office) and Ministry of Mines and Energy, Plano Decenal de Expansão de Energia 2036 (ten-year energy plan), summary report, October 2026, in Portuguese",
+      "quote": "os data centers se destacam como o principal vetor de crescimento do setor de comércio e serviços",
+      "url": "https://www.epe.gov.br/sites-pt/publicacoes-dados-abertos/publicacoes/PublicacoesArquivos/publicacao-982/topico-860/PDE%202036_Relat%C3%B3rio%20S%C3%ADntese_rev3_2026-10-08.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "br_epe_renewable": {
+      "publisher": "EPE (Brazil’s Energy Research Office) and Ministry of Mines and Energy, Plano Decenal de Expansão de Energia 2036 (ten-year energy plan), summary report, October 2026, in Portuguese",
+      "quote": "reforçando a posição do Brasil entre os países com as matrizes elétricas mais renováveis do mundo",
+      "url": "https://www.epe.gov.br/sites-pt/publicacoes-dados-abertos/publicacoes/PublicacoesArquivos/publicacao-982/topico-860/PDE%202036_Relat%C3%B3rio%20S%C3%ADntese_rev3_2026-10-08.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "br_cenario_3": {
+      "publisher": "Cenário Energia (Brazilian energy news site), report on EPE’s PDE 2036, 10 November 2026, in Portuguese; the two figures are the chart labels in EPE’s energy demand booklet",
+      "quote": "a demanda elétrica dos data centers saltará de 3 TWh em 2026 para 30 TWh em 2036",
+      "url": "https://cenarioenergia.com.br/2026/11/10/pde-2036-epe-consumo-energia-brasil-979-twh-data-centers/",
+      "retrieved": "2026-11-15",
+      "kind": "report",
+      "checked": "page"
+    },
+    "br_redata_energy": {
+      "publisher": "Brazil, Lei nº 15.504 of 15 September 2026 (the Redata data-centre tax regime), text on the Federal Senate’s legislation site, in Portuguese",
+      "quote": "atender à totalidade da sua demanda de energia elétrica por meio de contratos de suprimento ou autoprodução proveniente de geração a partir de fontes renováveis ou de baixa emissão, na forma de regulamento",
+      "url": "https://legis.senado.leg.br/norma/43892294/publicacao/43894328",
+      "retrieved": "2026-11-15",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "br_redata_water": {
+      "publisher": "Brazil, Lei nº 15.504 of 15 September 2026 (the Redata data-centre tax regime), text on the Federal Senate’s legislation site, in Portuguese",
+      "quote": "igual ou inferior a 0,05 L/kWh (cinco centésimos de litro por quilowatt-hora), com aferição anual",
+      "url": "https://legis.senado.leg.br/norma/43892294/publicacao/43894328",
+      "retrieved": "2026-11-15",
+      "kind": "rule",
+      "checked": "page"
+    },
+    "af_iea_twh": {
+      "publisher": "IEA, Key Questions on Energy and AI (2026, report PDF), Table A.4: data centres’ total electricity consumption by region, Base Case. The four columns are 2023, 2024, 2025 and 2030; 2030 is a projection",
+      "quote": "Total electricity consumption (TWh) World 360 416 485 945 … Africa 1.3 1.4 1.6 2.9",
+      "url": "https://www.iea.org/files/3179f7f8-01f6-4dd6-bffa-c9f7b73f1dc9/KeyQuestionsonEnergyandAI.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "af_iea_pue": {
+      "publisher": "IEA, Key Questions on Energy and AI (2026, report PDF), Table A.3: power usage effectiveness by region (total electricity divided by the electricity the computers use). The four columns are 2023, 2024, 2025 and 2030",
+      "quote": "Power usage effectiveness World 1.43 1.41 1.38 1.29 … Africa 1.85 1.81 1.77 1.59",
+      "url": "https://www.iea.org/files/3179f7f8-01f6-4dd6-bffa-c9f7b73f1dc9/KeyQuestionsonEnergyandAI.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "af_iea_pc": {
+      "publisher": "IEA, Energy and AI (2025), chapter “Energy demand from AI” (consumption per person per year)",
+      "quote": "Africa has the lowest consumption at less than 1 kWh of data centre electricity consumption per capita in 2024, rising to slightly less than 2 kWh per capita by the end of the decade.",
+      "url": "https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai",
+      "retrieved": "2026-11-15",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "af_iea_za": {
+      "publisher": "IEA, Energy and AI (2025), chapter “Energy demand from AI” (a projection for 2030)",
+      "quote": "South Africa showing strong growth and per-capita consumption more than 15 times larger than the continental average in 2030, with an intensity higher than 25 kWh per capita",
+      "url": "https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai",
+      "retrieved": "2026-11-15",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "af_iea_uspc": {
+      "publisher": "IEA, Energy and AI (2025), chapter “Energy demand from AI” (consumption per person per year)",
+      "quote": "the United States has the highest per-capita data centre consumption, at around 540 kWh in 2024",
+      "url": "https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai",
+      "retrieved": "2026-11-15",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "af_adca": {
+      "publisher": "Africa Data Centres Association (ADCA), summary of its report “Data Centres in Africa 2026: The Economic Report” (16 February 2026; capacity in MW, not yearly consumption)",
+      "quote": "Africa still accounts for only 0.6% of global capacity. Active capacity stands at 360 MW, with 238 MW under construction and 656 MW planned",
+      "url": "https://africadca.org/en/data-centres-in-africa-2026-the-economic-report",
+      "retrieved": "2026-11-15",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "af_adca_power": {
+      "publisher": "Africa Data Centres Association (ADCA), summary of its report “Data Centres in Africa 2026: The Economic Report” (16 February 2026)",
+      "quote": "Power availability has overtaken connectivity as the principal constraint",
+      "url": "https://africadca.org/en/data-centres-in-africa-2026-the-economic-report",
+      "retrieved": "2026-11-15",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "af_ng_cap": {
+      "publisher": "Nairametrics (news site, Nigeria), reporting a report by Estate Intel, a research firm (11 November 2025; capacity in MW, not yearly consumption)",
+      "quote": "Nigeria’s data centre market is on track for rapid expansion, with total installed capacity projected to rise from 56.1 megawatts (MW) in 2025 to over 218 MW by 2030, representing an almost fourfold increase in five years.",
+      "url": "https://nairametrics.com/2025/11/11/nigeria-data-centre-capacity-to-hit-218mw-by-2030-report/",
+      "retrieved": "2026-11-15",
+      "kind": "report",
+      "checked": "page"
+    },
+    "af_ng_diesel": {
+      "publisher": "Aggreko (a company that rents out generators), case study of MTN Nigeria’s data centre in Lagos (undated; the company’s own account of one site)",
+      "quote": "Previously the data centre had been on the grid which had been unreliable, so unreliable that 95% of the time, power was from a temporary diesel generator on site.",
+      "url": "https://www.aggreko.com/en-gb/case-studies/data-centres/powering-the-largest-data-centre-in-nigeria",
+      "retrieved": "2026-11-15",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "af_ember": {
+      "publisher": "Ember, Africa regional page (share of the world’s electricity demand)",
+      "quote": "Africa has 19% of the world’s population but accounts for just 3.1% of global electricity demand.",
+      "url": "https://ember-energy.org/countries-and-regions/africa/",
+      "retrieved": "2026-11-15",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "ae_wm_2025": {
+      "publisher": "Wood Mackenzie (research firm), news release (26 March 2026; yearly consumption)",
+      "quote": "Data centres consumed 3 TWh in 2025, representing approximately 2% of the UAE's 173 TWh total electricity demand.",
+      "url": "https://www.woodmac.com/press-releases/uae-data-centre-power-demand-to-double-by-2030-as-regulatory-gaps-constrain-clean-energy-procurement",
+      "retrieved": "2026-11-15",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "ae_wm_2030": {
+      "publisher": "Wood Mackenzie (research firm), news release (26 March 2026; a forecast)",
+      "quote": "data centres in the United Arab Emirates will double their power consumption to over 6 TWh by 2030",
+      "url": "https://www.woodmac.com/press-releases/uae-data-centre-power-demand-to-double-by-2030-as-regulatory-gaps-constrain-clean-energy-procurement",
+      "retrieved": "2026-11-15",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "ae_iea_twh": {
+      "publisher": "IEA, Key Questions on Energy and AI (2026, report PDF), Table A.4: data centres’ total electricity consumption by region, Base Case. The four columns are 2023, 2024, 2025 and 2030; 2030 is a projection",
+      "quote": "Total electricity consumption (TWh) World 360 416 485 945 … Middle East 1.3 1.5 1.7 3.0",
+      "url": "https://www.iea.org/files/3179f7f8-01f6-4dd6-bffa-c9f7b73f1dc9/KeyQuestionsonEnergyandAI.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "ae_iea_cap": {
+      "publisher": "IEA, Key Questions on Energy and AI (2026, report PDF), Table A.2: data centres’ total installed capacity by region in GW (capacity, not yearly consumption). The four columns are 2023, 2024, 2025 and 2030; 2030 is a projection",
+      "quote": "Total installed capacity (GW) World 83 97 114 226 … Middle East 0.3 0.4 0.4 0.7",
+      "url": "https://www.iea.org/files/3179f7f8-01f6-4dd6-bffa-c9f7b73f1dc9/KeyQuestionsonEnergyandAI.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "ae_iea_pipe": {
+      "publisher": "IEA, Key Questions on Energy and AI (2026, report PDF; capacity of announced projects, not yearly consumption)",
+      "quote": "in the Middle East, the pipeline of gigafactory data centres is an order of magnitude larger than the region’s entire installed data centre capacity today (Epoch AI, 2026a). The total project pipeline in the Middle East is almost 10 GW.",
+      "url": "https://www.iea.org/files/3179f7f8-01f6-4dd6-bffa-c9f7b73f1dc9/KeyQuestionsonEnergyandAI.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "ae_iea_cancel": {
+      "publisher": "IEA, Key Questions on Energy and AI (2026, report PDF)",
+      "quote": "because of their size relative to existing infrastructure, the cancellation or delay of a single project could fundamentally change the outlook for data centre electricity consumption",
+      "url": "https://www.iea.org/files/3179f7f8-01f6-4dd6-bffa-c9f7b73f1dc9/KeyQuestionsonEnergyandAI.pdf",
+      "retrieved": "2026-11-15",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "ae_g42_1gw": {
+      "publisher": "G42 (UAE technology company), news release “Global Tech Alliance Launches Stargate UAE” (22 May 2025; an announcement of planned capacity)",
+      "quote": "Stargate UAE, a 1-gigawatt compute cluster, will be built by G42 and operated by OpenAI and Oracle.",
+      "url": "https://www.g42.ai/resources/news/global-tech-alliance-launches-stargate-uae",
+      "retrieved": "2026-11-15",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "ae_g42_200": {
+      "publisher": "G42 (UAE technology company), news release “Global Tech Alliance Launches Stargate UAE” (22 May 2025; an announcement of planned capacity)",
+      "quote": "The first 200-megawatt AI cluster is expected to go live in 2026.",
+      "url": "https://www.g42.ai/resources/news/global-tech-alliance-launches-stargate-uae",
+      "retrieved": "2026-11-15",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "ae_g42_5gw": {
+      "publisher": "G42 (UAE technology company), news release “Global Tech Alliance Launches Stargate UAE” (22 May 2025; an announcement of planned capacity)",
+      "quote": "It will provide 5 gigawatts of AI data center capacity and regional compute resources. The facility will be powered by nuclear, solar, and natural gas to minimize carbon emissions",
+      "url": "https://www.g42.ai/resources/news/global-tech-alliance-launches-stargate-uae",
+      "retrieved": "2026-11-15",
+      "kind": "company_claim",
+      "checked": "page"
+    },
+    "ae_ksa_2024": {
+      "publisher": "KAPSARC (King Abdullah Petroleum Studies and Research Center, Saudi Arabia) and ICAIRE, discussion paper “AI and Energy: The Future of Data Centers in Saudi Arabia” (December 2025; yearly consumption)",
+      "quote": "National data centers used around 2.8 TWh in 2024, or 0.85% of total electricity.",
+      "url": "https://www.kapsarc.org/media/osyfiocu/dp00503-v1.html",
+      "retrieved": "2026-11-15",
+      "kind": "estimate",
+      "checked": "page"
+    },
+    "ae_ksa_2030": {
+      "publisher": "KAPSARC (King Abdullah Petroleum Studies and Research Center, Saudi Arabia) and ICAIRE, discussion paper “AI and Energy: The Future of Data Centers in Saudi Arabia” (December 2025; scenarios, not a measurement)",
+      "quote": "By 2030, this could increase to between 10.2 TWh and 42.2 TWh, representing 2.8%-11.6% of projected national electricity demand.",
+      "url": "https://www.kapsarc.org/media/osyfiocu/dp00503-v1.html",
+      "retrieved": "2026-11-15",
+      "kind": "forecast",
+      "checked": "page"
+    },
+    "ae_dhafra": {
+      "publisher": "Khaleej Times (UAE newspaper), carrying a report by WAM, the UAE state news agency, on an announcement by TAQA and EWEC (30 December 2025; power-plant capacity)",
+      "quote": "announced the financial closing of AED3.6 billion 1GW Al Dhafra Power Plant, which will provide power to data centre projects",
+      "url": "https://www.khaleejtimes.com/business/taqa-ewec-announce-financial-closing-for-1gw-al-dhafra-power-plant-2",
+      "retrieved": "2026-11-15",
+      "kind": "report",
+      "checked": "page"
+    },
+    "ae_dhafra_gas": {
+      "publisher": "Khaleej Times (UAE newspaper), carrying a report by WAM, the UAE state news agency, on an announcement by TAQA and EWEC (30 December 2025)",
+      "quote": "Construction of the Al Dhafra Gas Turbine project has already begun",
+      "url": "https://www.khaleejtimes.com/business/taqa-ewec-announce-financial-closing-for-1gw-al-dhafra-power-plant-2",
+      "retrieved": "2026-11-15",
+      "kind": "report",
+      "checked": "page"
+    },
+    "ae_ember_low": {
+      "publisher": "Ember, United Arab Emirates country page (updated 22 April 2026; share of generation)",
+      "quote": "The United Arab Emirates generates 32% of its electricity from low-carbon sources",
+      "url": "https://ember-energy.org/countries-and-regions/united-arab-emirates/",
+      "retrieved": "2026-11-15",
+      "kind": "measured",
+      "checked": "page"
+    },
+    "ae_ember_fossil": {
+      "publisher": "Ember, United Arab Emirates country page (updated 22 April 2026; key energy data)",
+      "quote": "68% Share of electricity from fossil fuels",
+      "url": "https://ember-energy.org/countries-and-regions/united-arab-emirates/",
+      "retrieved": "2026-11-15",
+      "kind": "measured",
+      "checked": "page"
     }
   },
   "calcs": {
@@ -3213,6 +4149,168 @@
       "text": "21 TWh ÷ 485 TWh = about 4.3% of the world’s data-centre electricity (2025)",
       "expr": "21/485*100",
       "result": 4.33
+    },
+    "tx_twh": {
+      "text": "21,813,159 MWh ÷ 1,000,000 = about 21.8 TWh (Texas data centres, 2023)",
+      "expr": "21813159/1e6",
+      "result": 21.81
+    },
+    "tx_queue_x": {
+      "text": "474 GW ÷ 86 GW = about 5.5 (requests to connect to ERCOT, against ERCOT’s highest demand in 2024; both are capacity, not energy)",
+      "expr": "474/86",
+      "result": 5.51
+    },
+    "or_twh": {
+      "text": "6,413,663 MWh ÷ 1,000,000 = about 6.4 TWh (Oregon data centres, 2023)",
+      "expr": "6413663/1e6",
+      "result": 6.41
+    },
+    "or_gap": {
+      "text": "14.0 TWh ÷ 6.4 TWh = about 2.2 (ECOnorthwest’s estimate for 2025 against EPRI’s estimate for 2023)",
+      "expr": "14.0/(6413663/1e6)",
+      "result": 2.18
+    },
+    "or_water_l": {
+      "text": "434.4 million US gallons × 3.785 litres a gallon ≈ 1.6 billion litres",
+      "expr": "434.4*1e6*3785/1000/1e9",
+      "result": 1.64
+    },
+    "ca_gap_high": {
+      "text": "2.1% (Natural Resources Canada, for 2023) ÷ 1% (top of the review’s range) = 2.1, so about 2 times",
+      "expr": "2.1/1",
+      "result": 2.1
+    },
+    "ca_gap_low": {
+      "text": "2.1% (Natural Resources Canada, for 2023) ÷ 0.5% (bottom of the review’s range) = 4.2, so about 4 times",
+      "expr": "2.1/0.5",
+      "result": 4.2
+    },
+    "ca_ab_x": {
+      "text": "19,565 MW asked for ÷ 1,200 MW allowed in the first stage ≈ 16.3, so about 16 times as much (Alberta; capacity, not energy)",
+      "expr": "19565/1200",
+      "result": 16.3
+    },
+    "au_mw_x": {
+      "text": "More than 700 MW (June 2026) ÷ nearly 200 MW (January 2018) = 3.5, so about 3.5 times the average draw. Rough: both ends are rounded",
+      "expr": "700/200",
+      "result": 3.5
+    },
+    "au_two_states": {
+      "text": "66% (New South Wales) + 30% (Victoria) = 96% of data-centre demand on the main grid",
+      "expr": "66+30",
+      "result": 96
+    },
+    "au_x_world": {
+      "text": "Around 3% on Australia’s main grid (2025-26) ÷ 1.5% worldwide (2024) = 2, so about twice the world share. Rough: the years differ, and the 3% covers one grid, not the whole country",
+      "expr": "3/1.5",
+      "result": 2
+    },
+    "es_share_2024": {
+      "text": "6 TWh ÷ 248,811 GWh (about 249 TWh) = about 2.4% of Spain’s electricity demand in 2024",
+      "expr": "6/(248811/1000)*100",
+      "result": 2.41
+    },
+    "es_world_share": {
+      "text": "6 TWh ÷ 415 TWh = about 1.4% of the world’s data-centre electricity (2024)",
+      "expr": "6/415*100",
+      "result": 1.45
+    },
+    "es_peak_share": {
+      "text": "12 GW ÷ 40,070 MW (about 40 GW) = about 30% of the highest demand on mainland Spain’s grid in 2025",
+      "expr": "12*1000/40070*100",
+      "result": 29.9
+    },
+    "es_permits_x": {
+      "text": "The government writes 3,5 GW with a decimal comma. That is 3.5 GW. 12 GW ÷ 3.5 GW = more than 3 times",
+      "expr": "12/(3+5*100/1000)",
+      "result": 3.43
+    },
+    "br_brasscom_en": {
+      "text": "Brasscom writes decimals with a comma: 1,7% is 1.7%, 11,3 TWh is 11.3 TWh and 650,4 TWh is 650.4 TWh. Check: 11.3 ÷ 650.4 = about 1.7%",
+      "expr": "(11+3*100/1000)/(650+4*100/1000)*100",
+      "result": 1.74
+    },
+    "br_share_2036": {
+      "text": "30 TWh ÷ 979 TWh = about 3.1% of the electricity Brazil is forecast to use in 2036",
+      "expr": "30/979*100",
+      "result": 3.06
+    },
+    "br_large_2026": {
+      "text": "3 TWh ÷ 702 TWh = about 0.4% of the electricity Brazil is forecast to use in 2026",
+      "expr": "3/702*100",
+      "result": 0.43
+    },
+    "br_x10": {
+      "text": "30 TWh ÷ 3 TWh = 10 times",
+      "expr": "30/3",
+      "result": 10
+    },
+    "af_share": {
+      "text": "1.6 TWh in Africa ÷ 485 TWh in the world ≈ 0.33% of the world’s data-centre electricity in 2025 (both figures from the IEA)",
+      "expr": "1.6/485*100",
+      "result": 0.33
+    },
+    "af_x": {
+      "text": "2.9 TWh projected for 2030 ÷ 1.6 TWh in 2025 ≈ 1.8 times as much (IEA’s figures for Africa)",
+      "expr": "2.9/1.6",
+      "result": 1.8
+    },
+    "af_ng_flat": {
+      "text": "A ceiling, not an estimate: 56.1 MW × 24 hours × 365 days ÷ 1,000,000 ≈ 0.49 TWh a year, if Nigeria’s data centres ran flat out all year. They don’t",
+      "expr": "56.1*24*365/1e6",
+      "result": 0.49,
+      "assume": {
+        "24": "hours in a day"
+      }
+    },
+    "af_ng_pue": {
+      "text": "If the 56.1 MW counts only the computers, cooling and other equipment come on top. The IEA’s figure for Africa in 2025 is 1.77 units of electricity in total for each unit the computers use: 56.1 MW × 1.77 × 24 hours × 365 days ÷ 1,000,000 ≈ 0.87 TWh a year, flat out",
+      "expr": "56.1*1.77*24*365/1e6",
+      "result": 0.87,
+      "assume": {
+        "24": "hours in a day"
+      }
+    },
+    "ae_x": {
+      "text": "6 TWh in 2030 ÷ 3 TWh in 2025 = 2 times as much (Wood Mackenzie says “over 6 TWh”, so at least 2 times)",
+      "expr": "6/3",
+      "result": 2
+    },
+    "ae_1gw": {
+      "text": "A ceiling, not an estimate: 1 GW × 24 hours × 365 days ÷ 1,000 = 8.76 TWh a year, if a 1 GW site ran flat out all year",
+      "expr": "1*24*365/1000",
+      "result": 8.76,
+      "assume": {
+        "24": "hours in a day"
+      }
+    },
+    "ae_1gw_x": {
+      "text": "8.76 TWh ÷ 3 TWh ≈ 2.9 times what all the UAE’s data centres used in 2025 (Wood Mackenzie’s estimate)",
+      "expr": "8.76/3",
+      "result": 2.9
+    },
+    "ae_5gw": {
+      "text": "5 GW × 24 hours × 365 days ÷ 1,000 = 43.8 TWh a year, if a 5 GW campus ran flat out all year",
+      "expr": "5*24*365/1000",
+      "result": 43.8,
+      "assume": {
+        "24": "hours in a day"
+      }
+    },
+    "ae_5gw_share": {
+      "text": "43.8 TWh ÷ 173 TWh ≈ 25% of the UAE’s electricity demand in 2025",
+      "expr": "43.8/173*100",
+      "result": 25
+    },
+    "ae_world": {
+      "text": "3 TWh in the UAE ÷ 485 TWh in the world ≈ 0.62% of the world’s data-centre electricity in 2025. Rough: the two figures come from different sources",
+      "expr": "3/485*100",
+      "result": 0.62
+    },
+    "ae_gap": {
+      "text": "3 TWh (UAE, 2025, Wood Mackenzie) + 2.8 TWh (Saudi Arabia, 2024, KAPSARC) = 5.8 TWh. 5.8 ÷ 1.7 TWh (IEA, whole Middle East, 2025) ≈ 3.4 times. Rough: the years and methods differ",
+      "expr": "(3+2.8)/1.7",
+      "result": 3.4
     }
   },
   "ladder": [
@@ -5786,6 +6884,705 @@
       ],
       "chips": [],
       "keys": "germany german deutschland frankfurt rhein main de-cix rechenzentren enefg berlin europe"
+    },
+    {
+      "slug": "texas",
+      "type": "how-much",
+      "cat": "Near you",
+      "q": "How much of Texas’s electricity do data centres use?",
+      "guess": {
+        "prompt": "What share of Texas’s electricity did data centres use in 2023?",
+        "options": [
+          "A two-hundredth",
+          "About a twentieth",
+          "About a fifth",
+          "About half"
+        ],
+        "right": 1
+      },
+      "result": "About a twentieth in 2023, close to the US average, and growing fast",
+      "reveal": "EPRI estimates 4.59% in 2023, or about 21.8 TWh. Across the whole US the share was about 4.7% in 2024.",
+      "answer": "About a twentieth, on the latest state estimate. EPRI, a US electricity research institute, estimates that data centres used 4.59% of the electricity consumed in Texas in 2023. That is about 21.8 TWh (Hum’s arithmetic). Only Virginia’s data centres used more. But Texas industry uses so much power that the share stayed close to the US average. It is growing fast. The US Energy Information Administration (EIA) says electricity consumption is growing faster in Texas than anywhere else in the US. ERCOT, the main Texas grid, carries 90% of the state’s load. In October 2024 the EIA forecast that ERCOT’s biggest flexible users, sites that can draw 75 megawatts or more, would use 54 billion kWh in 2025. That would be about 10% of the electricity consumed on ERCOT. This group counts crypto mines as well as data centres. In July 2025 the EIA forecast that demand on ERCOT would rise 7% in 2025 and 14% in 2026, as large data centres and crypto mines switch on. Far more is waiting. By September 2026, big users asking to connect to ERCOT added up to 474 GW, about 90% of it data centres, Utility Dive reported. That is about 5.5 times ERCOT’s highest demand in 2024, which was 86 GW. A GW measures power at one moment, not energy over a year, and a request is not a building. Texas passed a law in 2025, Senate Bill 6. It covers sites asking for more than 75 megawatts. They must pay towards the cost of connecting them, and share in power cuts when supply runs short. In 2026 the governor paused new data-centre connections while ERCOT audits the requests (EIA). EPRI’s simple projections for 2030 put data centres between 5.47% and 10.64% of Texas’s electricity.",
+      "world": "Across the whole US, data centres used about 4.7% of electricity consumption in 2024 (Berkeley Lab). Worldwide it was about 1.5% (IEA). In Virginia it was 25.59% in 2023 (EPRI).",
+      "you": false,
+      "why": "EPRI says Texas draws data centres because it is business-friendly and has plenty of land. Its challenges are grid reliability and how fast the grid can expand. From 2019 to 2023, electricity sales to commercial customers in Texas grew by 13 billion kWh. Only Virginia added more.",
+      "points": {
+        "title": "Share of electricity consumption used by data centres (Texas and Virginia 2023; US and world 2024)",
+        "unit": "% of electricity",
+        "items": [
+          {
+            "value": 1.5,
+            "label": "World, 2024",
+            "how": "IEA estimate",
+            "source": "iea_15"
+          },
+          {
+            "value": 4.59,
+            "label": "Texas, 2023",
+            "how": "EPRI estimate",
+            "source": "tx_epri_row"
+          },
+          {
+            "value": 4.7,
+            "label": "United States, 2024",
+            "how": "Berkeley Lab estimate",
+            "source": "usshare_2024"
+          },
+          {
+            "value": 25.59,
+            "label": "Virginia, 2023",
+            "how": "EPRI estimate",
+            "source": "va_epri_row"
+          }
+        ]
+      },
+      "dontknow": [
+        "Nobody meters every data centre in Texas and publishes the total. EPRI’s 4.59% is an estimate for 2023. EPRI’s 2026 update, which counts crypto mining too, says Texas is level with Virginia in total data-centre power use, but gives no new share for Texas in its text.",
+        "The EIA’s 10% is a forecast made in October 2024. It covers ERCOT, not all of Texas, and it counts every very large flexible user, crypto mines included. Hum has not found a published count of what data centres alone used in 2025.",
+        "The 474 GW is a list of requests, not of data centres that exist. The EIA said in 2024 that when or if such planned sites come online is uncertain. ERCOT’s own files block automated readers, so Hum quotes a news report for this figure.",
+        "The 2030 figures are simple projections, not plans. EPRI applied national growth rates to every state, and says growth is unlikely to be spread evenly.",
+        "Nobody publishes how much of this electricity goes to AI."
+      ],
+      "next": {
+        "deeper": "us-share",
+        "bigger": "world-share",
+        "closer": "virginia"
+      },
+      "share": "Data centres used about 4.59% of Texas’s electricity in 2023 (EPRI), close to the US average. Requests to connect now add up to 474 GW, about 5.5 times the Texas grid’s highest demand in 2024.",
+      "cites": [
+        "tx_epri_row",
+        "tx_epri_rank",
+        "tx_epri26_par",
+        "tx_eia_fastest",
+        "tx_eia_lfl",
+        "tx_eia_lfl10",
+        "tx_eia_lfl_def",
+        "tx_eia_uncertain",
+        "tx_eia_7_14",
+        "tx_ud_474",
+        "tx_sb6_growth",
+        "tx_sb6_75",
+        "tx_sb6_cost",
+        "tx_sb6_shed",
+        "tx_eia_audit",
+        "tx_eia_whenif",
+        "tx_epri_draw",
+        "va_eia_14",
+        "va_epri_method",
+        "va_epri_uneven",
+        "va_epri_row",
+        "usshare_2024",
+        "iea_15"
+      ],
+      "calcs": [
+        "tx_twh",
+        "tx_queue_x"
+      ],
+      "chips": [],
+      "keys": "texas ercot dallas fort worth houston austin san antonio abilene stargate oncor centerpoint puc sb 6 senate bill 6 large load crypto bitcoin mining queue interconnection state usa america"
+    },
+    {
+      "slug": "oregon",
+      "type": "how-much",
+      "cat": "Near you",
+      "q": "How much of Oregon’s electricity do data centres use?",
+      "guess": {
+        "prompt": "What share of Oregon’s electricity did data centres use in 2023, by EPRI’s estimate?",
+        "options": [
+          "A hundredth",
+          "A twentieth",
+          "More than a tenth",
+          "More than half"
+        ],
+        "right": 2
+      },
+      "result": "More than a tenth in 2023. A newer estimate says almost a quarter",
+      "reveal": "EPRI estimates 11.39% in 2023, or about 6.4 TWh. A 2026 study by ECOnorthwest puts it at about 23% of Oregon’s electricity sales in 2025.",
+      "answer": "More than a tenth, and maybe close to a quarter. The estimates differ a lot. EPRI, a US electricity research institute, estimates that data centres used 11.39% of the electricity consumed in Oregon in 2023. That is about 6.4 TWh (Hum’s arithmetic), the fifth most of any state. A newer study, by the consultancy ECOnorthwest and the University of Virginia, estimates 14.0 TWh in 2025. OPB, Oregon’s public broadcaster, reports that the study puts this at about 23% of Oregon’s electricity sales. That is about 2.2 times EPRI’s figure for two years earlier. Growth explains part of the gap. Different methods explain the rest: EPRI says its sources vary most for Oregon. In its 2026 update, EPRI says Virginia is the only state where data centres use over 20% of electricity today. So EPRI still puts Oregon below that. The state regulator has its own estimate, for part of the state. The Oregon Public Utility Commission (PUC) says data centres are roughly 15 percent of the load of Oregon’s investor-owned power companies. It expects 25 percent by 2030. That load grew about 36 percent a year since 2021. The Northwest Power and Conservation Council expects data-centre load across the Pacific Northwest to roughly double by 2030, mostly on public power, which the PUC does not regulate. Oregon passed a law in 2025, the POWER Act (HB 3546). It puts data centres over 20 megawatts in their own price class, with contracts of at least 10 years. After the PUC applied it to Portland General Electric, data centres’ rates rose 29 percent on average and home rates fell 1.3 percent. In July 2026 Hillsboro became the first Oregon city to pause new data-centre applications, for 120 days. Looking ahead, ECOnorthwest expects 24.8 TWh by 2030. EPRI’s 2026 update says Oregon could pass 20% by 2030 in its middle scenario. Water matters locally too. In The Dalles, Google used 434.4 million gallons (about 1.6 billion litres) of water in 2024, OPB reports from city records. That was a third of the city’s water.",
+      "world": "Across the whole US, data centres used about 4.7% of electricity consumption in 2024 (Berkeley Lab). Worldwide it was about 1.5% (IEA). Oregon is well above both on every estimate.",
+      "you": false,
+      "why": "EPRI says Oregon draws data centres with low electricity rates, low-carbon power, a mild climate, tax incentives and skilled workers. Its challenges include the pace of growth.",
+      "points": {
+        "title": "Share of electricity used by data centres: three estimates for Oregon, beside the US and the world in 2024",
+        "unit": "% of electricity",
+        "items": [
+          {
+            "value": 1.5,
+            "label": "World, 2024",
+            "how": "IEA estimate, share of consumption",
+            "source": "iea_15"
+          },
+          {
+            "value": 4.7,
+            "label": "United States, 2024",
+            "how": "Berkeley Lab estimate, share of consumption",
+            "source": "usshare_2024"
+          },
+          {
+            "value": 11.39,
+            "label": "Oregon, 2023",
+            "how": "EPRI estimate, share of consumption",
+            "source": "or_epri_row"
+          },
+          {
+            "value": 15,
+            "label": "Oregon’s investor-owned utilities, 2026",
+            "how": "Oregon PUC estimate, share of their load",
+            "source": "or_puc_15"
+          },
+          {
+            "value": 23,
+            "label": "Oregon, 2025",
+            "how": "ECOnorthwest estimate, share of electricity sales, as reported by OPB",
+            "source": "or_opb_23"
+          }
+        ]
+      },
+      "dontknow": [
+        "Nobody meters every data centre in Oregon and publishes the total. The two statewide figures are estimates and they are far apart: 11.39% for 2023 (EPRI) and about 23% for 2025 (ECOnorthwest).",
+        "Hum could not find the full ECOnorthwest study online, so the 23% is quoted from OPB’s report. The 14.0 TWh is from the authors’ own preliminary slides of July 2026, which may differ from the final study.",
+        "The PUC’s 15 percent covers only investor-owned power companies. The PUC says it lacks visibility into data centres outside their territories.",
+        "Water use is hard to see. Oregon’s Data Center Advisory Committee heard that non-disclosure agreements can make it difficult for the public to learn how much city water one data centre uses. The Dalles figure came out through a public records request.",
+        "The 2030 figures are forecasts, and the forecasters use different methods.",
+        "Nobody publishes how much of this electricity goes to AI."
+      ],
+      "next": {
+        "deeper": "us-share",
+        "bigger": "world-share",
+        "closer": "drinking-water"
+      },
+      "share": "Data centres used 11.39% of Oregon’s electricity in 2023 by one estimate (EPRI), and about 23% in 2025 by another (ECOnorthwest). Nobody meters the total.",
+      "cites": [
+        "or_epri_row",
+        "tx_epri_rank",
+        "or_econw_twh",
+        "or_opb_23",
+        "or_epri26_range",
+        "or_epri26_only",
+        "or_epri26_2030",
+        "or_puc_15",
+        "or_puc_growth",
+        "or_puc_nwpcc",
+        "or_puc_blind",
+        "or_puc_rule",
+        "or_puc_10yr",
+        "or_puc_pge_dc",
+        "or_puc_pge_homes",
+        "or_puc_hillsboro",
+        "or_opb_water",
+        "or_opb_third",
+        "or_dcac_nda",
+        "or_epri_draw",
+        "usshare_2024",
+        "iea_15"
+      ],
+      "calcs": [
+        "or_twh",
+        "or_gap",
+        "or_water_l"
+      ],
+      "chips": [],
+      "keys": "oregon the dalles hillsboro prineville boardman umatilla morrow portland pge portland general electric pacific power pacificorp bpa bonneville google amazon power act hb 3546 water columbia state usa america"
+    },
+    {
+      "slug": "canada",
+      "type": "how-much",
+      "cat": "Near you",
+      "q": "How much of Canada’s electricity do data centres use?",
+      "guess": {
+        "prompt": "What share of Canada’s electricity did data centres use in 2023, by the federal government’s estimate?",
+        "options": [
+          "0.2%",
+          "2.1%",
+          "12%",
+          "21%"
+        ],
+        "right": 1
+      },
+      "result": "About 2.1% in 2023 by the government’s estimate. Another estimate says 1% or less",
+      "reveal": "The 2.1% is from Natural Resources Canada, up from 1.4% in 2021. A 2025 review puts it at 0.5% to 1%. Nobody has counted it from meters.",
+      "answer": "About 2.1% of Canada’s electricity consumption in 2023, by an estimate from Natural Resources Canada, a federal department. That was up from 1.4% in 2021. It comes from a market study the department paid for. It is not a count from electricity meters. Not everyone agrees. A 2025 review for an energy-efficiency programme set up under the IEA says Canada’s data centres likely use 3 to 6 TWh a year, or 0.5% to 1% of national electricity use. So the government’s figure is about 2 to 4 times the review’s. Most data centres are in a few cities. In 2024 the Canada Energy Regulator reported an estimated 239 across the country, with 81 in Toronto and 48 in Montreal. The department put the power they draw at 520 MW in the Montreal market, 320 MW in Toronto and 46 MW in Vancouver. Megawatts measure power at one moment, not energy over a year. What comes next is uncertain. The regulator’s baseline scenario assumes Canada adds 1.5 GW of data-centre load by 2030 and 3.5 GW by 2050. Its Higher scenario assumes 12 GW by 2050, which adds about 100 TWh to yearly electricity demand. The regulator says it does not give odds for any of its scenarios. The provinces have their own forecasts. Ontario’s grid operator expects data centres to make up 8.6% of the province’s demand in 2050. Hydro-Québec expects data-centre demand to grow by 4.1 TWh from 2023 to 2032. In Alberta, companies have asked to connect roughly 19,565 MW of new data-centre load. That is more than the most power the whole province has ever used in one hour, and about 16 times the 1,200 MW the grid operator allowed in its first stage.",
+      "world": "Worldwide, data centres used about 1.5% of electricity in 2024 (IEA). Next door in the US it was 4.7% (Berkeley Lab).",
+      "you": false,
+      "why": "Canada draws data-centre builders with low electricity prices, above all in Quebec and British Columbia, where hydro power is plentiful. Over 80% of its electricity comes from sources that don’t emit, and the cool climate cuts cooling costs (Canada Energy Regulator).",
+      "points": {
+        "title": "Data centres’ share of Canada’s electricity consumption: the government’s estimate and an independent review",
+        "unit": "%",
+        "items": [
+          {
+            "value": 1.4,
+            "label": "2021, government estimate",
+            "how": "Natural Resources Canada’s market study",
+            "source": "ca_nrcan_share"
+          },
+          {
+            "value": 2.1,
+            "label": "2023, government estimate",
+            "how": "Natural Resources Canada’s market study",
+            "source": "ca_nrcan_share"
+          },
+          {
+            "value": 0.5,
+            "label": "2025 review, low end",
+            "how": "3 TWh a year",
+            "source": "ca_4e_share"
+          },
+          {
+            "value": 1,
+            "label": "2025 review, high end",
+            "how": "6 TWh a year",
+            "source": "ca_4e_share"
+          }
+        ]
+      },
+      "dontknow": [
+        "Nobody has counted the electricity Canada’s data centres use from meters. Hum hasn’t found a national count from Statistics Canada or the Canada Energy Regulator.",
+        "The two estimates don’t agree, and the page where the department gives its 2.1% doesn’t show how the market study worked it out.",
+        "The department’s years don’t line up. Its 2023 share sets data-centre use in 2023 against Canada’s total electricity use in 2022. Its 2021 share uses the total for 2019.",
+        "The regulator’s own pages differ on one point. Its results page says data centres make about a quarter of the growth in electricity demand in the Higher scenario. Its fact sheet says about a third. Both say 100 TWh.",
+        "The figures for 2030 and 2050 are assumptions and forecasts. A request to connect in Alberta is not a data centre that gets built.",
+        "Nobody publishes how much of this electricity goes to AI."
+      ],
+      "next": {
+        "deeper": "world-share",
+        "bigger": "us-share",
+        "closer": "virginia"
+      },
+      "share": "Data centres used about 2.1% of Canada’s electricity in 2023, by Natural Resources Canada’s estimate. Another review says 0.5% to 1%. Nobody has counted it from meters.",
+      "cites": [
+        "ca_nrcan_share",
+        "ca_nrcan_study",
+        "ca_nrcan_basis",
+        "ca_nrcan_cities",
+        "ca_4e_share",
+        "ca_cer_count",
+        "ca_cer_cm",
+        "ca_cer_hi",
+        "ca_cer_quarter",
+        "ca_cer_noprob",
+        "ca_cer_why",
+        "ca_cer_hq",
+        "ca_ieso_2050",
+        "ca_ab_requests",
+        "ca_ab_limit",
+        "ca_ab_peak",
+        "iea_15",
+        "usshare_2024"
+      ],
+      "calcs": [
+        "ca_gap_high",
+        "ca_gap_low",
+        "ca_ab_x"
+      ],
+      "chips": [
+        "an estimate, not a count"
+      ],
+      "keys": "canada canadian ontario quebec québec alberta british columbia bc toronto montreal montréal vancouver calgary edmonton hydro hydro-québec hydro-quebec ieso aeso cer nrcan percent share country province"
+    },
+    {
+      "slug": "australia",
+      "type": "how-much",
+      "cat": "Near you",
+      "q": "How much of Australia’s electricity do data centres use?",
+      "guess": {
+        "prompt": "What share of the electricity on Australia’s main grid went to data centres in 2025-26?",
+        "options": [
+          "0.3%",
+          "3%",
+          "13%",
+          "30%"
+        ],
+        "right": 1
+      },
+      "result": "About 3% of the main grid in 2025-26, forecast to reach 13% by 2035-36",
+      "reveal": "That’s approximately 5 TWh, by the grid operator AEMO. New South Wales and Victoria have 96% of it.",
+      "answer": "About 3% of the electricity consumed on Australia’s main grid in 2025-26, or approximately 5 TWh. The figure is from the Australian Energy Market Operator (AEMO), which runs that grid. The year runs from July to June. The grid is called the National Electricity Market (NEM). It covers eastern and south-eastern Australia. Western Australia has its own separate market. AEMO counts around 165 data centres on the main grid. Their average draw rose from nearly 200 MW in January 2018 to more than 700 MW in June 2026, about 3.5 times as much. Megawatts measure power at one moment, not energy over a year. Nearly all of it is in two states: New South Wales has 66% and Victoria has 30%. For the whole country, AEMO says 162 working data centres, mostly in Sydney and Melbourne, use around 2% of grid-supplied electricity. AEMO’s main forecast is that data-centre use triples to around 15 TWh by 2029-30, or 7.8% of the main grid’s consumption. By 2035-36 it reaches around 34 TWh, or 13%. Even then, AEMO does not expect data centres to be the grid’s largest user. These are forecasts, and they have moved. In 2025 AEMO expected approximately 12 TWh, or around 6%, by 2030. The queue is far bigger than what gets built. There are 225 projects in development with 67 GW of capacity between them, but 36% of the projects on the 2025 list were cancelled. Data centres also use much less than they sign up for: on average about 27% of their grid connection.",
+      "world": "Worldwide, data centres used about 1.5% of electricity in 2024 (IEA). The share on Australia’s main grid is about twice that.",
+      "you": false,
+      "points": {
+        "title": "Data-centre electricity consumption on Australia’s main grid (AEMO): latest year and forecasts",
+        "unit": "TWh a year",
+        "items": [
+          {
+            "value": 5,
+            "label": "2025-26",
+            "how": "Around 3% of the grid’s consumption",
+            "source": "au_aemo_today"
+          },
+          {
+            "value": 15,
+            "label": "2029-30, forecast",
+            "how": "7.8% of forecast consumption",
+            "source": "au_aemo_forecast"
+          },
+          {
+            "value": 34,
+            "label": "2035-36, forecast",
+            "how": "13% of forecast consumption",
+            "source": "au_aemo_forecast"
+          }
+        ]
+      },
+      "dontknow": [
+        "There is no detailed official count for the whole country. AEMO’s 3% covers the main eastern grid, and its figure for the whole country, around 2%, was published earlier and comes with no total in TWh.",
+        "AEMO’s figures are rounded: approximately 5 TWh and around 3%.",
+        "Other estimates are higher. A 2025 review for an IEA energy-efficiency programme reports that two investment banks put Australia’s data centres at 8 to 12 TWh, or 3% to 5% of national electricity use.",
+        "The figures for 2029-30 and 2035-36 are forecasts from one scenario, which AEMO calls Step Change. AEMO raised its forecast between 2025 and 2026.",
+        "Nobody publishes how much of this electricity goes to AI."
+      ],
+      "next": {
+        "deeper": "world-share",
+        "bigger": "us-share",
+        "closer": "singapore"
+      },
+      "share": "Data centres used about 3% of the electricity on Australia’s main grid in 2025-26, by the grid operator AEMO. It forecasts 13% by 2035-36.",
+      "cites": [
+        "au_aemo_today",
+        "au_aemo_mw",
+        "au_aemo_states",
+        "au_aemo_nem",
+        "au_aemo_forecast",
+        "au_aemo_notlargest",
+        "au_aemo_pipeline",
+        "au_aemo_cancelled",
+        "au_aemo_util",
+        "au_aemo_release",
+        "au_aemo_national",
+        "au_aemo_2025view",
+        "au_aemo_wa",
+        "au_4e_banks",
+        "iea_15"
+      ],
+      "calcs": [
+        "au_mw_x",
+        "au_two_states",
+        "au_x_world"
+      ],
+      "chips": [
+        "main eastern grid only",
+        "forecasts are forecasts"
+      ],
+      "keys": "australia australian aussie nem aemo esoo new south wales nsw sydney victoria melbourne queensland brisbane south australia adelaide tasmania western australia perth canberra percent share country state"
+    },
+    {
+      "slug": "spain",
+      "type": "how-much",
+      "cat": "Near you",
+      "q": "How much of Spain’s electricity do data centres use?",
+      "guess": {
+        "prompt": "What share of Spain’s electricity did data centres use in 2024, by one estimate?",
+        "options": [
+          "0.2%",
+          "2.4%",
+          "12%",
+          "24%"
+        ],
+        "right": 1
+      },
+      "result": "About 2.4% in 2024, by one estimate",
+      "reveal": "More than 6 TWh, by the consultancy DNV. Nobody publishes an official count. Projects with grid permits add up to far more than is running today.",
+      "answer": "About 2.4% of Spain’s electricity demand in 2024, by one estimate. Nobody publishes an official count. The consultancy DNV estimated that Spain’s data centres used more than 6 TWh in 2024. Red Eléctrica, the grid operator, put the country’s total demand that year at 248,811 GWh, about 249 TWh. Dividing one by the other gives about 2.4% (Hum’s arithmetic). DNV expects about 12 TWh in 2030 and says it could reach 26 TWh in 2050. Those are forecasts. DNV says new sites, especially around Madrid and Barcelona, have driven the growth so far. The bigger story is what has been asked for. The government says data-centre projects have been given rights to connect more than 12 GW to the grid since 2021. That is capacity, not energy, and a permit is not a building. For scale, the highest demand on mainland Spain’s grid in 2025 was 40,070 MW, about 40 GW. So the permits add up to about 30% of that peak. Spain’s own AI strategy expects data centres to need only 3.5 to 4 GW of electricity demand in 2030. The permits are more than 3 times that. The IEA says the projects planned in Spain are seven times larger on average than the data centres running today. In August 2026 the government published a draft decree. Data centres above 1 MW would have to back 80% of their energy use with new renewable power, hour by hour, and meet the strictest European classes for energy and water efficiency. Data centres above 500 kW would have to send their energy and sustainability data to the ministry, to be published every year.",
+      "world": "Worldwide, data centres used about 1.5% of electricity consumption in 2024 (IEA), so Spain’s 2.4% is above the world average. Spain’s 6 TWh is about 1.4% of the 415 TWh that all the world’s data centres used in 2024 (Hum’s arithmetic).",
+      "you": false,
+      "why": "The government says Spain attracts data centres because of where it sits, its climate and its lead in renewable power. That is why requests have run far ahead of what is built.",
+      "points": {
+        "title": "Electricity consumption of data centres in Spain (DNV: estimate for 2024, forecasts after)",
+        "unit": "TWh a year",
+        "items": [
+          {
+            "value": 6,
+            "label": "2024, estimated",
+            "how": "more than 6 TWh, about 2.4% of demand",
+            "source": "es_dnv_twh"
+          },
+          {
+            "value": 12,
+            "label": "2030, forecast",
+            "how": "DNV",
+            "source": "es_dnv_twh"
+          },
+          {
+            "value": 26,
+            "label": "2050, forecast",
+            "how": "DNV says it could reach this",
+            "source": "es_dnv_twh"
+          }
+        ]
+      },
+      "dontknow": [
+        "Nobody publishes a metered total for Spain’s data centres. The 6 TWh is one consultancy’s estimate, and it says “more than”. The 2.4% is Hum’s arithmetic on top of it.",
+        "How much will be built. Permits and announcements are not data centres. The IEA says that if every announced project were built, data-centre capacity in countries like Spain would be around 10% of today’s peak demand, and that not all of them will be completed. Grid permits add up to more than that.",
+        "Whether the new rules will pass as written. The decree was a draft in public consultation in August 2026. Hum found no final text when it checked.",
+        "How much water Spain’s data centres use. Hum found no official figure, for the country or for regions such as Aragón.",
+        "How much of it is AI. Nobody publishes that for Spain."
+      ],
+      "next": {
+        "deeper": "renewable-claims",
+        "bigger": "world-share",
+        "closer": "germany"
+      },
+      "share": "Data centres used about 2.4% of Spain’s electricity in 2024, by one estimate. Projects with grid permits add up to more than 12 GW, far more than is running today.",
+      "cites": [
+        "es_dnv_twh",
+        "es_dnv_madrid",
+        "es_ree_2024",
+        "es_ree_peak",
+        "es_gov_12gw",
+        "es_gov_ai",
+        "es_rd_draft",
+        "es_rd_80",
+        "es_rd_1mw",
+        "es_rd_500",
+        "es_iea_seven",
+        "es_iea_peak",
+        "es_iea_notall",
+        "iea_15"
+      ],
+      "calcs": [
+        "es_share_2024",
+        "es_world_share",
+        "es_peak_share",
+        "es_permits_x"
+      ],
+      "chips": [],
+      "keys": "spain spanish espana españa madrid barcelona aragon aragón zaragoza iberia red electrica redeia miteco centros de datos europe"
+    },
+    {
+      "slug": "brazil",
+      "type": "how-much",
+      "cat": "Near you",
+      "q": "How much of Brazil’s electricity do data centres use?",
+      "guess": {
+        "prompt": "What share of Brazil’s electricity did data centres use in 2024, by the industry’s own estimate?",
+        "options": [
+          "0.2%",
+          "1.7%",
+          "9%",
+          "17%"
+        ],
+        "right": 1
+      },
+      "result": "About 1.7% in 2024, by an industry estimate",
+      "reveal": "That’s 11.3 TWh, by Brazil’s tech industry association. The government’s planners forecast 30 TWh a year by 2036.",
+      "answer": "About 1.7% of Brazil’s electricity consumption in 2024, by an estimate from Brasscom, the country’s tech industry association. That is 11.3 TWh out of 650.4 TWh. It is a calculation, not a count from meters, and there is no official figure for today. Brazil’s Energy Research Office (EPE) plans the country’s energy with the government, and it publishes forecasts. In its plan to 2036, data centres use 30 TWh a year by 2036. That would be about 3.1% of the 979 TWh Brazil is forecast to use that year (Hum’s arithmetic). EPE calls data centres the main driver of growth in electricity use by shops and services. Its chart of big new loads shows data centres at 3 TWh in 2026, so its forecast is a rise of about 10 times in ten years. EPE says requests from data-centre projects to connect to the main grid went up in 2025. It also says the real growth will depend on how fast the planned investments happen. In September 2026 Brazil passed a law called Redata that gives data centres tax breaks. To qualify, a data centre must cover all of its electricity demand with renewable or low-emission sources. It must also use no more than five hundredths of a litre of water per kWh, checked every year.",
+      "world": "Worldwide, data centres used about 1.5% of electricity consumption in 2024 (IEA). If the industry estimate is right, Brazil’s 1.7% is close to the world average.",
+      "you": false,
+      "why": "EPE says Brazil’s electricity is among the most renewable in the world. That draws data-centre companies that want clean power, and the Redata law is meant to draw more.",
+      "dontknow": [
+        "How much Brazil’s data centres use today. Brasscom works its figure out from installed computing power, an efficiency factor and time, not from meters. If the machines don’t run at full power all year, the real figure is lower.",
+        "EPE’s chart shows only 3 TWh for data centres in 2026, about 0.4% of the 702 TWh Brazil is forecast to use that year. That is far below Brasscom’s figure. EPE’s chart is about large data centres, so the two may not count the same things.",
+        "How fast it will grow. The 30 TWh for 2036 is a forecast, and EPE says it depends on investments that have not been made yet.",
+        "How the Redata rules will work in practice. The law leaves the details of the clean-power rule to regulations.",
+        "How much of it is AI. Nobody publishes that for Brazil."
+      ],
+      "next": {
+        "deeper": "power-mix",
+        "bigger": "world-share",
+        "closer": "us-share"
+      },
+      "share": "Data centres used about 1.7% of Brazil’s electricity in 2024, by an industry estimate. Government planners forecast 30 TWh a year by 2036, about 3.1% of the country’s electricity.",
+      "cites": [
+        "br_brasscom_share",
+        "br_brasscom_total",
+        "br_brasscom_mw",
+        "br_epe_30",
+        "br_epe_total",
+        "br_epe_driver",
+        "br_cenario_3",
+        "br_epe_requests",
+        "br_epe_depends",
+        "br_epe_renewable",
+        "br_redata_energy",
+        "br_redata_water",
+        "iea_15"
+      ],
+      "calcs": [
+        "br_brasscom_en",
+        "br_share_2036",
+        "br_large_2026",
+        "br_x10"
+      ],
+      "chips": [],
+      "keys": "brazil brazilian brasil sao paulo são paulo rio de janeiro ceara ceará fortaleza epe redata latin america south america"
+    },
+    {
+      "slug": "africa",
+      "type": "how-much",
+      "cat": "Near you",
+      "q": "How much electricity do data centres use in Nigeria and the rest of Africa?",
+      "guess": {
+        "prompt": "About how much electricity did all of Africa’s data centres use in 2025?",
+        "options": [
+          "0.16 TWh",
+          "1.6 TWh",
+          "16 TWh",
+          "160 TWh"
+        ],
+        "right": 1
+      },
+      "result": "About 1.6 TWh for all of Africa in 2025. Nobody publishes a figure for Nigeria",
+      "reveal": "That’s an IEA estimate. It is about 0.33% of the world’s data-centre electricity. Nigeria publishes no yearly figure, only capacity: 56.1 MW in 2025, by one research firm.",
+      "answer": "About 1.6 TWh in 2025 for the whole continent. That is an estimate by the International Energy Agency (IEA). It is about 0.33% of the 485 TWh that data centres used worldwide. Africa has 19% of the world’s people and uses 3.1% of the world’s electricity, by Ember, an energy research group. The IEA expects 2.9 TWh by 2030, about 1.8 times as much. That is a projection, not a measurement. Per person it is tiny: less than 1 kWh a year in 2024, against around 540 kWh in the United States. South Africa is far ahead of the rest of the continent. The IEA expects it to pass 25 kWh per person in 2030. Nobody publishes how much electricity Nigeria’s data centres use in a year. What exists is capacity: the most power they can draw at one moment. Estate Intel, a research firm, puts Nigeria at 56.1 MW in 2025 and expects over 218 MW by 2030, as reported by Nairametrics, a Nigerian news site. Capacity (MW) is not energy used over a year (TWh). Hum’s rough ceiling: 56.1 MW running flat out all year would use about 0.49 TWh, or 0.87 TWh if cooling comes on top. Real use is lower, because data centres don’t run flat out. Across Africa, the industry’s own association counts 360 MW of active capacity, which it says is 0.6% of the world’s. In Nigeria, a lot of the power doesn’t come from the grid. Aggreko, a company that rents out generators, says one large Lagos data centre ran on a diesel generator 95% of the time, because the grid was so unreliable. It later switched to gas generators.",
+      "world": "Data centres worldwide used about 485 TWh of electricity in 2025 (IEA). Africa’s 1.6 TWh is about 0.33% of that. The US used 45% in 2024.",
+      "you": false,
+      "why": "Africa’s data-centre association says power supply is now the main thing holding growth back, ahead of internet connections. Where the grid is unreliable, operators run their own generators, which costs more.",
+      "points": {
+        "title": "Electricity used by all of Africa’s data centres (IEA estimates; consumption)",
+        "unit": "TWh a year",
+        "items": [
+          {
+            "value": 1.3,
+            "label": "2023",
+            "how": "IEA estimate",
+            "source": "af_iea_twh"
+          },
+          {
+            "value": 1.4,
+            "label": "2024",
+            "how": "IEA estimate",
+            "source": "af_iea_twh"
+          },
+          {
+            "value": 1.6,
+            "label": "2025",
+            "how": "IEA estimate",
+            "source": "af_iea_twh"
+          },
+          {
+            "value": 2.9,
+            "label": "2030, projected",
+            "how": "IEA Base Case, not a measurement",
+            "source": "af_iea_twh"
+          }
+        ]
+      },
+      "dontknow": [
+        "Nobody publishes how much electricity data centres use in Nigeria, or in most African countries. Hum could not find a figure from Nigeria’s government or regulators. The IEA’s figure is a model estimate for the whole continent.",
+        "The Nigerian capacity figure is one research firm’s count, read in a news report. Hum has not read the firm’s own report, and it is not clear whether the figure counts only the computers or cooling too.",
+        "Nobody publishes how much of the power comes from diesel or gas generators instead of the grid. The 95% figure is one company’s account of one site.",
+        "The 2030 figure is a projection. Nobody knows how many of the planned data centres will be built."
+      ],
+      "next": {
+        "deeper": "power-mix",
+        "bigger": "world-share",
+        "closer": "big-data-centre"
+      },
+      "share": "All of Africa’s data centres used about 1.6 TWh of electricity in 2025, about 0.33% of the world’s data-centre total (IEA estimate). Nobody publishes a figure for Nigeria.",
+      "cites": [
+        "af_iea_twh",
+        "af_iea_pue",
+        "af_iea_pc",
+        "af_iea_za",
+        "af_iea_uspc",
+        "af_adca",
+        "af_adca_power",
+        "af_ng_cap",
+        "af_ng_diesel",
+        "af_ember",
+        "iea_485",
+        "iea_us"
+      ],
+      "calcs": [
+        "af_share",
+        "af_x",
+        "af_ng_flat",
+        "af_ng_pue"
+      ],
+      "chips": [],
+      "keys": "nigeria nigerian lagos abuja kenya nairobi south africa johannesburg cape town egypt cairo ghana accra morocco ethiopia african continent diesel generator generators megawatt capacity"
+    },
+    {
+      "slug": "uae",
+      "type": "how-much",
+      "cat": "Near you",
+      "q": "How much electricity do data centres use in the UAE and the Gulf?",
+      "guess": {
+        "prompt": "About how much electricity did the UAE’s data centres use in 2025?",
+        "options": [
+          "0.3 TWh",
+          "3 TWh",
+          "30 TWh",
+          "173 TWh"
+        ],
+        "right": 1
+      },
+      "result": "About 3 TWh in the UAE in 2025, around 2% of its electricity (one firm’s estimate)",
+      "reveal": "That’s by Wood Mackenzie, a research firm. It expects over 6 TWh by 2030. Hum could not find an official UAE figure, and the estimates for the region don’t agree.",
+      "answer": "About 3 TWh in 2025, by Wood Mackenzie, a research firm. That was approximately 2% of the UAE’s 173 TWh of electricity demand. It expects over 6 TWh by 2030, at least 2 times as much. Hum could not find a figure from the UAE government or its power companies. In Saudi Arabia, the research centre KAPSARC puts data centres at around 2.8 TWh in 2024, or 0.85% of the country’s electricity. It says that could reach between 10.2 and 42.2 TWh by 2030. The estimates don’t agree. The International Energy Agency (IEA) puts the whole Middle East at 1.7 TWh in 2025, less than the estimate for either country alone. What is planned is far bigger than what exists. The IEA counts 0.4 GW of data-centre capacity in the Middle East in 2025, and a pipeline of projects of almost 10 GW. In Abu Dhabi, G42 and OpenAI have announced Stargate UAE, a 1 GW cluster inside a campus planned for 5 GW. The first 200 MW is expected in 2026. These are announcements, not measurements. Capacity (MW or GW) is the most power a site can draw at once, not the energy it uses in a year (TWh). Hum’s rough ceiling: 1 GW running flat out all year would use 8.76 TWh, about 2.9 times what all the UAE’s data centres used in 2025. The full 5 GW would use 43.8 TWh, about 25% of the UAE’s electricity demand in 2025. Real use would be lower. G42 says the campus will be powered by nuclear, solar and natural gas. Abu Dhabi is also building a 1 GW gas power plant that will supply data centres. Today 68% of the UAE’s electricity comes from fossil fuels and 32% from low-carbon sources, by Ember, an energy research group.",
+      "world": "Data centres worldwide used about 485 TWh of electricity in 2025 (IEA). The UAE’s 3 TWh is roughly 0.62% of that. The two figures come from different sources.",
+      "you": false,
+      "why": "The UAE and Saudi Arabia want to become hubs for AI, and they have the money and the energy to try. US companies such as OpenAI and Oracle are building there with local partners such as G42.",
+      "points": {
+        "title": "Estimates of data-centre electricity use in the Gulf (consumption). They come from different sources and don’t agree",
+        "unit": "TWh a year",
+        "items": [
+          {
+            "value": 1.7,
+            "label": "Whole Middle East, 2025",
+            "how": "IEA estimate",
+            "source": "ae_iea_twh"
+          },
+          {
+            "value": 2.8,
+            "label": "Saudi Arabia, 2024",
+            "how": "KAPSARC estimate, 0.85% of Saudi electricity",
+            "source": "ae_ksa_2024"
+          },
+          {
+            "value": 3,
+            "label": "UAE, 2025",
+            "how": "Wood Mackenzie estimate, approximately 2% of UAE demand",
+            "source": "ae_wm_2025"
+          },
+          {
+            "value": 6,
+            "label": "UAE, 2030, forecast",
+            "how": "Wood Mackenzie says over 6 TWh",
+            "source": "ae_wm_2030"
+          }
+        ]
+      },
+      "dontknow": [
+        "Hum could not find an official figure from the UAE government or its power and water companies for how much electricity data centres use. The 3 TWh is one research firm’s estimate.",
+        "The estimates don’t fit together. Added up, the UAE and Saudi estimates are about 3.4 times the IEA’s figure for the whole Middle East. They may count different things.",
+        "Nobody knows how much of the announced capacity will be built, or how hard it will run. The IEA says the delay or cancellation of a single project could change the outlook for the region.",
+        "Hum found no figures for Qatar, Kuwait, Bahrain or Oman."
+      ],
+      "next": {
+        "deeper": "new-gas-plants",
+        "bigger": "world-share",
+        "closer": "big-data-centre"
+      },
+      "share": "The UAE’s data centres used about 3 TWh of electricity in 2025, around 2% of the country’s demand (Wood Mackenzie estimate). Planned AI campuses could use several times that.",
+      "cites": [
+        "ae_wm_2025",
+        "ae_wm_2030",
+        "ae_iea_twh",
+        "ae_iea_cap",
+        "ae_iea_pipe",
+        "ae_iea_cancel",
+        "ae_g42_1gw",
+        "ae_g42_200",
+        "ae_g42_5gw",
+        "ae_ksa_2024",
+        "ae_ksa_2030",
+        "ae_dhafra",
+        "ae_dhafra_gas",
+        "ae_ember_low",
+        "ae_ember_fossil",
+        "iea_485"
+      ],
+      "calcs": [
+        "ae_x",
+        "ae_1gw",
+        "ae_1gw_x",
+        "ae_5gw",
+        "ae_5gw_share",
+        "ae_world",
+        "ae_gap"
+      ],
+      "chips": [],
+      "keys": "uae united arab emirates emirati dubai abu dhabi sharjah saudi arabia riyadh qatar doha kuwait bahrain oman gulf gcc middle east stargate g42 khazna openai humain desert"
     }
   ]
 }

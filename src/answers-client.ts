@@ -25,7 +25,7 @@ const read = <T>(k: string, d: T): T => { try { const v = store?.getItem(k); ret
 const write = (k: string, v: unknown) => { try { store?.setItem(k, JSON.stringify(v)); } catch { /* storage blocked: the game still works */ } };
 
 
-function play(host: HTMLElement, a: Card, companies: Set<string>, opts: { at?: number; of?: number; next?: string; onAnswer?: (right: boolean) => void; onNext?: () => void }) {
+function play(host: HTMLElement, a: Card, opts: { at?: number; of?: number; next?: string; onAnswer?: (right: boolean) => void; onNext?: () => void }) {
   // A card prebuilt into the page is woken in place, not redrawn (a redraw would repaint the largest text late).
   if (host.dataset.slug !== a.slug || !host.querySelector('.choices')) host.innerHTML = cardHtml(a, opts.at !== undefined ? { at: opts.at, of: opts.of! } : undefined);
   host.dataset.slug = a.slug;
@@ -41,7 +41,7 @@ function play(host: HTMLElement, a: Card, companies: Set<string>, opts: { at?: n
     }
     opts.onAnswer?.(right);
     const rv = host.querySelector<HTMLElement>('#reveal')!;
-    rv.innerHTML = revealHtml(a, right, companies, opts.next ? { label: opts.next } : undefined);
+    rv.innerHTML = revealHtml(a, right, opts.next ? { label: opts.next } : undefined);
     rv.hidden = false;
     host.querySelector('.tellme')?.setAttribute('hidden', ''); // the reveal has its own link to the full answer
     bindShares(rv);
@@ -50,7 +50,7 @@ function play(host: HTMLElement, a: Card, companies: Set<string>, opts: { at?: n
   });
 }
 
-function frontDoor(data: Data, companies: Set<string>) {
+function frontDoor(data: Data) {
   const host = document.getElementById('card');
   if (!host) return;
   const bySlug = new Map(data.answers.map((a) => [a.slug, a]));
@@ -64,7 +64,7 @@ function frontDoor(data: Data, companies: Set<string>) {
       host.querySelector<HTMLElement>('#card-h')!.focus();
       return;
     }
-    play(host, deck[at]!, companies, {
+    play(host, deck[at]!, {
       at, of: deck.length, next: at === deck.length - 1 ? 'See your score' : 'Next question',
       onAnswer: (right) => { if (right) score++; const t = read('hum.cards', { played: 0, right: 0 }); t.played++; if (right) t.right++; write('hum.cards', t); },
       onNext: () => { at++; next(); host.scrollIntoView({ block: 'start' }); host.querySelector<HTMLElement>('#card-h')?.focus({ preventScroll: true }); },
@@ -87,13 +87,13 @@ function search(data: Data) {
     list.hidden = !v;
     list.innerHTML = hits.length
       ? hits.map((a) => `<li><a href="${a.href ?? `/q/${a.slug}`}"><span>${esc(a.q)}</span><span class="sub">${a.stamp ? `${esc(a.stamp)}. ` : ''}${esc(a.sub ?? a.result ?? '')}</span></a></li>`).join('')
-      : `<li class="none">No reviewed answer for that yet. Hum has ${data.answers.length} answers about the electricity, water and CO₂ of AI and data centres. <a href="/topics">Browse every answer</a>.</li>`;
+      : `<li class="none">Nothing on “${esc(v)}” yet. Hum has ${data.answers.length} answers about the electricity, water and CO₂ of AI and data centres. <a href="/topics">Browse every answer</a>.</li>`;
     clearTimeout(t);
     t = setTimeout(() => { count.textContent = v ? (hits.length ? `${hits.length} ${hits.length === 1 ? 'answer matches' : 'answers match'}` : 'No match yet') : ''; }, 500);
   });
 }
 
-function today(data: Data, companies: Set<string>) {
+function today(data: Data) {
   const host = document.getElementById('card');
   if (!host) return;
   const day = dayNumber(data.launch, new Date());
@@ -103,7 +103,7 @@ function today(data: Data, companies: Set<string>) {
   if (num.textContent !== `Hum #${n}`) num.textContent = `Hum #${n}`;
   const key = `hum.today.${n}`;
   const done = read<{ right: boolean } | null>(key, null);
-  play(host, a, companies, {
+  play(host, a, {
     onAnswer: (right) => {
       write(key, { right });
       const prompt = a.type === 'claim' ? a.heard! : a.guess!.prompt;
@@ -125,8 +125,7 @@ async function main() {
     if (!r.ok) return; // the prebuilt first card and its "Just tell me" link still work
     data = (await r.json()) as Data;
   }
-  const companies = new Set(data.companies);
-  if (loc.pathname.replace(/\.html$/, '') === '/today') today(data, companies);
-  else frontDoor(data, companies);
+  if (loc.pathname.replace(/\.html$/, '') === '/today') today(data);
+  else frontDoor(data);
 }
 if (typeof document !== 'undefined') void main();

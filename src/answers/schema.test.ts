@@ -50,8 +50,8 @@ describe('validateAnswersSource', () => {
 
   it('fails a sum that uses a number from nowhere', () => {
     const s = real();
-    s.calcs.netflix_q_mid = { text: '77 Wh ÷ 0.4 Wh', expr: '77/0.4', result: 192.5 };
-    expect(validateAnswersSource(s).join('\n')).toMatch(/0\.4 in "77\/0\.4" isn't in any quote/);
+    s.calcs.netflix_q_mid = { text: '77 Wh ÷ 0.4321 Wh', expr: '77/0.4321', result: 178.2 }; // a number no source quotes
+    expect(validateAnswersSource(s).join('\n')).toMatch(/0\.4321 in "77\/0\.4321" isn't in any quote/);
   });
 
   it('requires an assumption to be shown to readers', () => {

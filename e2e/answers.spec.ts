@@ -48,7 +48,7 @@ test('search finds a reviewed answer and links to it', async ({ page }) => {
   await expect(page.locator('#results a').first()).toHaveAttribute('href', '/q/netflix');
   await expect(page.locator('#q-count')).toContainText('match');
   await page.fill('#q', 'zzzz qqqq');
-  await expect(page.locator('#results .none')).toContainText('No reviewed answer');
+  await expect(page.locator('#results .none')).toContainText('Nothing on “zzzz qqqq” yet');
 });
 
 test('search sends a place to The Earth, "who makes Hum" to the About page, and says what Hum covers when it has nothing', async ({ page }) => {

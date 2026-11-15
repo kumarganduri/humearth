@@ -62,6 +62,7 @@ html { scroll-padding-top: 72px; }
 .short .k { display: block; font-size: .8125rem; font-weight: 700; color: var(--color-text-muted); letter-spacing: .04em; }
 .units-note { font-size: .875rem; color: var(--color-text-muted); }
 .tellme[hidden] { display: none; }
+.share-img { display: inline-flex; align-items: center; min-height: 44px; font-size: .95rem; }
 .today > .muted { margin-bottom: var(--space-md); }
 .hero-sub a { color: inherit; }
 .about h2 { margin-top: var(--space-lg); }

@@ -109,7 +109,9 @@ describe('looksBlocked', () => {
   it('treats errors and bot challenges as down, not as a missing quote', () => {
     expect(looksBlocked(403, '')).toBe(true);
     expect(looksBlocked(200, '<title>Just a moment...</title>')).toBe(true);
-    expect(looksBlocked(200, '<p>A normal article about data centres.</p>')).toBe(false);
+    expect(looksBlocked(200, `<p>${'A normal article about data centres. '.repeat(10)}</p>`)).toBe(false);
+    expect(looksBlocked(202, '')).toBe(true); // EUR-Lex answers a script with 202 and an empty page
+    expect(looksBlocked(200, '<html><body><script>challenge()</script></body></html>')).toBe(true);
   });
 });
 
