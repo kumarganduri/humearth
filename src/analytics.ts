@@ -10,12 +10,13 @@ export const CF_ANALYTICS_TOKEN = 'e57c910a04784d82a8a18c6bcd95e3e6';
 export const COUNTED_HOSTS = ['humearth.org', 'www.humearth.org'];
 export const BEACON_SRC = 'https://static.cloudflareinsights.com/beacon.min.js';
 
-export function shouldCount(hostname: string, token: string): boolean {
-  return Boolean(token) && COUNTED_HOSTS.includes(hostname);
+/** Automated browsers (test agents, Playwright, Lighthouse) say so; their page loads aren't visits. */
+export function shouldCount(hostname: string, token: string, automated = false): boolean {
+  return Boolean(token) && COUNTED_HOSTS.includes(hostname) && !automated;
 }
 
 export function startAnalytics(doc: Document = document, hostname = location.hostname, token = CF_ANALYTICS_TOKEN): void {
-  if (!shouldCount(hostname, token) || doc.querySelector(`script[src="${BEACON_SRC}"]`)) return;
+  if (!shouldCount(hostname, token, typeof navigator !== 'undefined' && navigator.webdriver === true) || doc.querySelector(`script[src="${BEACON_SRC}"]`)) return;
   const s = doc.createElement('script');
   s.defer = true;
   s.src = BEACON_SRC;

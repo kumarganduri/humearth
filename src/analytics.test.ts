@@ -7,5 +7,6 @@ describe('visitor counting', () => {
     expect(shouldCount('www.humearth.org', 'abc')).toBe(true);
     for (const h of ['localhost', '127.0.0.1', 'hum-v2.humearth.pages.dev', 'humearth.pages.dev', 'evilhumearth.org']) expect(shouldCount(h, 'abc')).toBe(false);
     expect(shouldCount('humearth.org', '')).toBe(false);
+    expect(shouldCount('humearth.org', 'abc', true)).toBe(false); // an automated browser (a test agent) isn't a visitor
   });
 });

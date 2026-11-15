@@ -24,7 +24,7 @@ export const FOOTER_HTML = `<footer class="foot"><nav aria-label="More"><a href=
 const FONTS = ['instrument-serif-latin-400-normal', 'atkinson-hyperlegible-next-latin-400-normal', 'atkinson-hyperlegible-next-latin-700-normal', 'atkinson-hyperlegible-mono-latin-600-normal']
   .map((f) => `<link rel="preload" href="/fonts/${f}.woff2" as="font" type="font/woff2" crossorigin />`).join('\n    ');
 
-interface Shell { title: string; description: string; path: string; ogImage: string; ogAlt: string; body: string; nav?: string }
+interface Shell { title: string; description: string; path: string; ogImage: string; ogAlt: string; body: string; nav?: string; /** schema.org data for search engines */ ld?: object; noindex?: boolean }
 
 /** A full document for a generated page. The script entry brings in the shared CSS and the share button. */
 export function pageShell(p: Shell): string {
@@ -50,7 +50,7 @@ export function pageShell(p: Shell): string {
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="${esc(p.ogAlt)}" />
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:card" content="summary_large_image" />${p.noindex ? '\n    <meta name="robots" content="noindex" />' : ''}${p.ld ? `\n    <script type="application/ld+json">${JSON.stringify(p.ld).replace(/</g, '\\u003c')}</script>` : ''}
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -77,6 +77,7 @@ export function answerPages(src: AnswersSource): Record<string, string> {
       ogImage: `/og/q/${a.slug}.png`,
       ogAlt: `${a.q} ${verdict}${a.result}.`,
       body: answerPage(a, src),
+      ld: answerLd(a, src),
     });
   }
   const used = CATEGORIES.filter((c) => src.answers.some((a) => a.cat === c));
@@ -91,11 +92,38 @@ export function answerPages(src: AnswersSource): Record<string, string> {
     path: '/topics', ogImage: '/og/home.png', ogAlt: 'Hum: straight answers about AI’s electricity, water and CO₂.', nav: '/topics',
     body: `<section class="topic"><h1>All topics</h1><p class="muted">${src.answers.length} reviewed answers. More are being checked.</p>${used.map((c) => `<h2><a href="/topics/${topicSlug(c)}">${esc(c)}</a></h2><ul class="rows">${src.answers.filter((a) => a.cat === c).map(answerRow).join('')}</ul>`).join('')}</section>`,
   });
+  out['404.html'] = pageShell({
+    title: 'Page not found · Hum', description: 'That page isn’t on Hum.', path: '/404', ogImage: '/og/home.png', ogAlt: 'Hum: straight answers about AI’s electricity, water and CO₂.', noindex: true,
+    body: `<article class="answer about"><h1>That page isn’t here</h1><p class="lede">The link may be old or mistyped. Hum has ${src.answers.length} answers about the electricity, water and CO₂ of AI and data centres.</p><p><a class="btn" href="/">Ask Hum a question</a></p><p><a href="/topics">Browse every answer</a></p></article>`,
+  });
   out['about.html'] = pageShell({
     title: 'Who makes Hum · Hum', description: 'Hum is an independent, open-source project made and paid for by Kumar Ganduri. No AI company, energy company or advertiser funds it.',
     path: '/about', ogImage: '/og/home.png', ogAlt: 'Hum: straight answers about AI’s electricity, water and CO₂.', body: aboutBody(src),
   });
   return out;
+}
+
+const RATING: Record<string, string> = { YES: 'True', PARTLY: 'Partly true', NO: 'False', 'NOBODY KNOWS': 'Unknown: nobody has published it' };
+const HUM = { '@type': 'Organization', name: 'Hum', url: SITE };
+
+/** The newest date one of an answer's quotes was checked on its page: when the answer was last verified. */
+export const checkedOn = (a: Answer, src: AnswersSource) => a.cites.map((k) => src.sources[k]!.retrieved).sort().at(-1)!;
+
+/** schema.org data for an answer page: a fact-check (ClaimReview) for a claim, an article for a question. */
+export function answerLd(a: Answer, src: AnswersSource): object {
+  const url = `${SITE}/q/${a.slug}`, date = checkedOn(a, src);
+  return a.type === 'claim' && a.stamp
+    ? { '@context': 'https://schema.org', '@type': 'ClaimReview', url, datePublished: date, author: HUM, claimReviewed: a.heard!.replace(/^[“"]|[”"]$/g, ''),
+        reviewRating: { '@type': 'Rating', alternateName: RATING[a.stamp] }, reviewBody: `${a.result}. ${a.answer}` }
+    : { '@context': 'https://schema.org', '@type': 'Article', url, mainEntityOfPage: url, headline: a.q, description: `${a.result}. ${a.reveal}`, dateModified: date, author: HUM, publisher: HUM };
+}
+
+/** sitemap.xml: every page a search engine should know, answers with the date they were last verified. */
+export function sitemapXml(src: AnswersSource): string {
+  const used = CATEGORIES.filter((c) => src.answers.some((a) => a.cat === c));
+  const urls: [string, string?][] = [['/'], ...src.answers.map((a): [string, string] => [`/q/${a.slug}`, checkedOn(a, src)]), ['/topics'], ...used.map((c): [string] => [`/topics/${topicSlug(c)}`]),
+    ['/today'], ['/earth'], ['/how-we-know'], ['/about'], ['/question'], ['/live'], ['/2030'], ['/daily']];
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(([p, d]) => `  <url><loc>${SITE}${p}</loc>${d ? `<lastmod>${d}</lastmod>` : ''}</url>`).join('\n')}\n</urlset>\n`;
 }
 
 export const REPO = 'https://github.com/kumarganduri/humearth';

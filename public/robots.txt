@@ -1,0 +1,5 @@
+# Hum is open to every crawler.
+User-agent: *
+Allow: /
+
+Sitemap: https://humearth.org/sitemap.xml

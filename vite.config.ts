@@ -60,8 +60,10 @@ function generatedPages(): Record<string, string> {
   const out: Record<string, string> = {};
   const topics = resolve(import.meta.dirname, 'topics.html');
   if (existsSync(topics)) out.topics = topics;
-  const about = resolve(import.meta.dirname, 'about.html');
-  if (existsSync(about)) out.about = about;
+  for (const page of ['about', '404']) {
+    const abs = resolve(import.meta.dirname, `${page}.html`);
+    if (existsSync(abs)) out[page] = abs;
+  }
   for (const dir of ['q', 'topics']) {
     const abs = resolve(import.meta.dirname, dir);
     if (!existsSync(abs)) continue;

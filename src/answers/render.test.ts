@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { answerPage, cardHtml, niceMax, dateWords, energy, figureHtml, isRightChoice, ladderHtml, revealHtml, timesWords } from './render';
-import { answerPages, searchPages, homeBody } from './pages';
+import { answerLd, answerPages, searchPages, sitemapXml, homeBody } from './pages';
 import { answerCardSvg, wrap } from './og';
 import { dayNumber, matches, todayIndex, todaySlug } from './pure';
 import type { Findable, AnswersSource } from './types';
@@ -102,6 +102,25 @@ describe('preview cards', () => {
   it('wrap long questions and show the verdict', () => {
     expect(wrap('one two three four five', 9)).toEqual(['one two', 'three', 'four five']);
     expect(answerCardSvg(get('flight'))).toContain('>NO<');
+  });
+});
+
+describe('for search engines', () => {
+  it('marks a claim as a fact-check with Hum’s verdict, and a question as an article', () => {
+    const claim = answerLd(get('bottle-of-water'), src) as Record<string, any>;
+    expect(claim['@type']).toBe('ClaimReview');
+    expect(claim.claimReviewed).toBe('ChatGPT drinks a bottle of water for every email it writes.');
+    expect(claim.reviewRating.alternateName).toBe('False');
+    expect(claim.datePublished).toMatch(/^20\d\d-\d\d-\d\d$/);
+    expect((answerLd(get('world-share'), src) as Record<string, any>)['@type']).toBe('Article');
+    const page = answerPages(src)['q/bottle-of-water.html']!;
+    expect(JSON.parse(/<script type="application\/ld\+json">(.*?)<\/script>/.exec(page)![1]!)['@type']).toBe('ClaimReview');
+  });
+  it('lists every answer in the sitemap, and keeps the not-found page out of search', () => {
+    const xml = sitemapXml(src);
+    for (const a of src.answers) expect(xml).toContain(`<loc>https://humearth.org/q/${a.slug}</loc>`);
+    expect(xml).toContain('<loc>https://humearth.org/about</loc>');
+    expect(answerPages(src)['404.html']).toContain('<meta name="robots" content="noindex" />');
   });
 });
 

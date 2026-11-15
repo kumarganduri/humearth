@@ -70,6 +70,17 @@ test('search sends a place to The Earth, "who makes Hum" to the About page, and 
   await expect(page.locator('.lede')).toContainText('No AI company');
 });
 
+test('search engines get a sitemap, robots.txt and a fact-check record on a claim page', async ({ page, request }) => {
+  const robots = await request.get('/robots.txt');
+  expect(robots.headers()['content-type']).toContain('text/plain');
+  expect(await robots.text()).toContain('Sitemap: https://humearth.org/sitemap.xml');
+  expect(await (await request.get('/sitemap.xml')).text()).toContain('<loc>https://humearth.org/q/bottle-of-water</loc>');
+  await page.goto('/q/bottle-of-water');
+  const ld = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent())!);
+  expect(ld['@type']).toBe('ClaimReview');
+  expect(ld.reviewRating.alternateName).toBe('False');
+});
+
 test('an answer page has its verdict, the total, sources with check dates, and next questions', async ({ page }) => {
   await page.goto('/q/flight');
   await expect(page.locator('h1')).toHaveText('Is using AI worse for the climate than taking a flight?');

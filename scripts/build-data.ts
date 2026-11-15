@@ -13,7 +13,7 @@ import { livePageHtml } from '../src/present/live';
 import { simPageHtml } from '../src/present/sim';
 import { extractInlineStyles } from '../src/present/inline-styles';
 import { validateAnswersSource } from '../src/answers/schema';
-import { answerPages, answersFile, FOOTER_HTML, homeBody, todayBody } from '../src/answers/pages';
+import { answerPages, answersFile, FOOTER_HTML, homeBody, sitemapXml, todayBody } from '../src/answers/pages';
 import { dayNumber } from '../src/answers/pure';
 import { buildPool, dayNumber as dailyDay, questionFor } from '../src/daily/pool';
 import { cardHtml as dailyCardHtml } from '../src/daily/view';
@@ -145,6 +145,7 @@ try {
   // Generated pages are rebuilt from scratch, so a removed answer can't leave an old page behind.
   for (const dir of ['q', 'topics']) { rmSync(dir, { recursive: true, force: true }); mkdirSync(dir, { recursive: true }); }
   for (const [file, body] of Object.entries(pages)) writeFileSync(file, body);
+  writeFileSync('public/sitemap.xml', sitemapXml(src));
   console.log(`wrote ${Object.keys(pages).length} answer and topic pages (${src.answers.length} answers)`);
   for (const [file, body] of [
     [ANSWERS_OUT, answersJson],
