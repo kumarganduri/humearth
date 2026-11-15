@@ -99,3 +99,23 @@ The same 20 simulated visitors, same script, on the live site at commit `66a4726
 | Noticed the headline font differ between loads | 16 | 16 |
 
 Still open: the reveal after a guess is too heavy (chart, Wh and TWh before the Next button); units; a daily reason to return.
+
+## Round 3, 15 November 2026 (the new front door)
+
+The same 20 simulated visitors and script, on the live site at commit `7d53ae1` (globe, zoom, stamped claims, takeaways, lookup).
+
+| Measure (testers of 20) | Round 1 | Round 2 | Round 3 |
+|---|---|---|---|
+| Said Hum checks claims, with sources, after 10 seconds | 20 | 20 | 4 |
+| Found the water answer | 20 | 20 | 20 |
+| Taps and scrolls to the water answer (typical) | 2 | 2 | 8 |
+| Found search hard to reach | 3 | 7 | 16 |
+| Wanted to leave during the zoom, or felt it was stuck | – | – | 17 |
+| Would share something | 20 | 20 | 20 |
+| Would come back tomorrow | 0 | 0 | 3 |
+| Mentioned the live counter | 1 | 0 | 11 |
+| Wondered who makes Hum | 12 | 10 | 3 |
+| Found the figures chart unclear | 20 | 19 | 10 |
+| Found Wh / TWh hard | 20 | 19 | 18 |
+
+Everyone now knows the topic at once (data centres use as much electricity as France), but only 4 in 20 read the page as a place that checks claims; several sceptics read it as an alarm page. The zoom takes about five screens of scrolling that look alike, and it pushes the claims and the search far down. Most testers' single change: put the claim cards and the search right under the headline.

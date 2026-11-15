@@ -167,7 +167,8 @@ export function searchPages(places: string[]): Findable[] {
 export const ZOOM_RUNGS = ['question', 'phone', 'home', 'homeyear', 'all'];
 /** The claims people repeat most, to tap and stamp. */
 export const FRONT_CLAIMS = ['bottle-of-water', 'google-search', 'netflix', 'reasoning', 'please-thank-you', 'delete-emails'];
-/** What the lookup lists before anyone types. */
+/** What the lookup lists before anyone types (the first FIND_SHOWN), and when nothing matches. */
+export const FIND_SHOWN = 3;
 export const FIND_START = ['should-i-stop', 'bottle-of-water', 'one-question', 'bills', 'world-share', 'power-mix', 'drinking-water', 'reasoning'];
 const SHORT: Record<string, string> = { question: 'one question', phone: 'a phone charge', home: 'a home’s day', homeyear: 'a home’s year' };
 const SECONDS_A_YEAR = 365 * 24 * 3600;
@@ -194,8 +195,8 @@ export function findRow(a: Pick<Answer, 'slug' | 'q' | 'stamp' | 'result'>): str
 /** The front door's body (inlined into index.html). Everything is prebuilt and reads with scripts off; the
  *  script turns the globe, runs the counter, drives the zoom, stamps the claims and filters the lookup.
  *
- *    the planet (globe, headline, live counter)  ->  one question out to the planet (size ladder, area-true)
- *    ->  claims people repeat (tap to stamp)  ->  three things to remember  ->  look it up  ->  topics       */
+ *    the planet (globe, headline, what Hum does, the lookup, live counter)  ->  claims people repeat (tap to
+ *    stamp)  ->  one question out to the planet (size ladder, area-true)  ->  three things to remember  ->  topics */
 export function homeBody(src: AnswersSource): string {
   const bySlug = new Map(src.answers.map((a) => [a.slug, a]));
   const rung = new Map(src.ladder.map((r) => [r.key, r]));
@@ -221,32 +222,37 @@ export function homeBody(src: AnswersSource): string {
   return `<section class="fd-hero" aria-labelledby="front-h">
   <div class="fd-text">
     <h1 id="front-h">The world’s data centres use about as much electricity as <span class="dc">France</span>.</h1>
-    <p class="fd-sub">AI is the fastest-growing part. Hum checks what people say about it, and shows where every number comes from. <a href="/about">Independent: no company funds it.</a></p>
+    <p class="fd-job">People say a lot about AI’s electricity, water and CO₂. Hum checks it, and shows every source.</p>
+    <div class="find">
+      <div class="js-only" role="search"><label for="q">Heard a claim? Look it up</label><input id="q" type="search" autocomplete="off" placeholder="e.g. water, Ireland, my electricity bill" aria-controls="picks" aria-describedby="q-note" /></div>
+      <p class="note muted" id="q-note">${src.answers.length} checked answers. Some people start with these:</p>
+      <ul class="picks" id="picks">${FIND_START.slice(0, FIND_SHOWN).map((s) => findRow(bySlug.get(s)!)).join('')}</ul>
+    </div>
+    <p class="fd-sub">AI is the fastest-growing part. <a href="/about">Hum is independent: no company funds it.</a></p>
     <div class="counter js-only" id="counter" data-wh-year="${all.wh}">
       <p class="k">Since you opened this page, the world’s data centres have used</p>
       <p class="v num"><span id="ctr" class="derived">0</span> <small>kWh</small></p>
       <p class="how">Every second, about ${perSecondHomes} years of a US home’s electricity. Hum’s sum: ${esc(energy(all.wh))} a year (${esc(all.note.replace(/^about [^ ]+ TWh /, '').replace(/^in /, ''))}) spread over the seconds in a year.</p>
     </div>
-    <a class="go" href="#zoom">Start with one question <span aria-hidden="true">↓</span></a>
   </div>
   <div class="fd-globe" id="globe" data-wh="${all.wh}"><div class="globe-ctrls" hidden><button type="button" class="icon-btn" id="globe-spin" aria-label="Stop turning"></button></div></div>
   <p class="fd-legend" aria-hidden="true"><span><i class="sw-dc"></i>Countries data centres have passed</span><span><i class="sw-hub"></i>The biggest data-centre hubs</span></p>
 </section>
 
-<section class="zoom" id="zoom" aria-labelledby="zoom-h"><div class="stage">
-  <div class="stage-head"><div><p class="eyebrow js-only">Scroll to zoom out</p><h2 id="zoom-h">From one question to the planet</h2></div>
-  <div class="steps js-only" id="steps" role="group" aria-label="Jump to a step">${steps.map((r, i) => `<button type="button" aria-label="${esc(r.label)}"${i === 0 ? ' aria-current="step"' : ''}><span>${i + 1}</span></button>`).join('')}</div></div>
-  <canvas id="zc" class="js-only" aria-hidden="true"></canvas>
-  <ol class="zoom-steps" id="zoom-steps" aria-live="polite">${zoomSteps}</ol>
-</div></section>
-
-<section class="fd-band" aria-labelledby="claims-h">
+<section class="fd-band fd-claims" aria-labelledby="claims-h">
   <p class="eyebrow">What people say</p>
   <h2 id="claims-h">True, false, or nobody knows?</h2>
   <p class="muted">Tap a claim you’ve heard. Hum’s verdict comes from the sources, and each one links to them.</p>
   <div class="claims" id="claims">${claimCards}</div>
   <p class="score muted js-only" id="score" aria-live="polite">${claims.length} claims to check.</p>
 </section>
+
+<section class="zoom" id="zoom" aria-labelledby="zoom-h"><div class="stage">
+  <div class="stage-head"><div><p class="eyebrow js-only">Scroll to zoom out</p><h2 id="zoom-h">How big is it? From one question to the planet</h2></div>
+  <div class="steps js-only" id="steps" role="group" aria-label="Jump to a step">${steps.map((r, i) => `<button type="button" aria-label="${esc(r.label)}"${i === 0 ? ' aria-current="step"' : ''}><span>${i + 1}</span></button>`).join('')}</div></div>
+  <canvas id="zc" class="js-only" aria-hidden="true"></canvas>
+  <ol class="zoom-steps" id="zoom-steps" aria-live="polite">${zoomSteps}</ol>
+</div></section>
 
 <section class="fd-band" aria-labelledby="take-h">
   <p class="eyebrow">The takeaway</p>
@@ -257,14 +263,6 @@ export function homeBody(src: AnswersSource): string {
     <div><p class="who">The claims</p><div><p class="big">Most claims Hum has checked are false or only partly true.</p><p class="src">Of ${stamped.length} checked claims: ${n('NO')} false, ${n('PARTLY')} partly true, ${n('YES')} true, and for ${n('NOBODY KNOWS')} nobody knows yet.</p></div></div>
   </div>
   <div class="share-row js-only"><button type="button" class="btn solid" id="copy-take">Copy these three</button><span class="muted" id="copied" aria-live="polite"></span></div>
-</section>
-
-<section class="fd-band find" aria-labelledby="find-h">
-  <p class="eyebrow">Look it up</p>
-  <h2 id="find-h">Heard something else?</h2>
-  <div class="js-only" role="search"><label for="q">Find a claim or a question</label><input id="q" type="search" autocomplete="off" placeholder="e.g. water, Ireland, my electricity bill" aria-controls="picks" aria-describedby="q-note" /></div>
-  <p class="note muted" id="q-note">${src.answers.length} checked answers. Pick one, or type to narrow the list.</p>
-  <ul class="picks" id="picks">${FIND_START.map((s) => findRow(bySlug.get(s)!)).join('')}</ul>
 </section>
 
 <section class="fd-band" aria-labelledby="topics-h"><h2 id="topics-h">Browse by topic</h2><div class="shelves">${counts.map(([c, k]) => `<a href="/topics/${topicSlug(c)}"><span>${esc(c)}</span><span class="num muted">${k}</span></a>`).join('')}</div>

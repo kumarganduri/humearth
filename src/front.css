@@ -13,7 +13,10 @@
 .fd-hero { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); align-items: center; gap: 8px 32px; padding-block: 8px 24px; }
 .fd-hero h1 { font: 400 clamp(2.4rem, 5.6vw, 4.2rem)/1.04 var(--display); letter-spacing: -.005em; margin: 0; text-wrap: balance; }
 .fd-hero h1 .dc { color: var(--color-data-centres); }
-.fd-sub { font-size: 1.125rem; color: var(--color-text-muted); margin-top: 18px !important; max-width: 38ch; }
+.fd-job { font: 400 clamp(1.35rem, 3.4vw, 1.7rem)/1.25 var(--display); color: var(--color-ai); margin-top: 16px !important; max-width: 30ch; text-wrap: balance; }
+.fd-hero .find { margin-top: 20px; max-width: 520px; }
+.fd-hero .find label { margin-top: 0; }
+.fd-sub { font-size: 1rem; color: var(--color-text-muted); margin-top: 20px !important; max-width: 46ch; }
 .fd-sub a { color: inherit; }
 .counter { margin-top: 28px; padding: 16px 18px; border: 1px solid var(--color-rule); border-radius: var(--rounded-md); background: var(--color-surface); max-width: 460px; }
 .counter .k, .counter .how { font-size: .875rem; color: var(--color-text-muted); }
@@ -40,11 +43,14 @@
 .fd-legend .sw-hub { background: var(--color-ai); }
 @media (max-width: 760px) {
   .fd-hero { grid-template-columns: minmax(0, 1fr); }
-  .fd-globe { order: -1; max-width: 340px; }
+  .fd-globe { order: -1; max-width: 230px; margin-top: -8px; }
+  .fd-hero h1 { font-size: clamp(2rem, 8.4vw, 2.6rem); }
+  .fd-job { font-size: 1.3rem; margin-top: 10px !important; }
+  .fd-hero .find { margin-top: 14px; }
 }
 
 /* 2. the zoom: a plain list until the script makes it a tall, sticky stage */
-.zoom { border-top: 1px solid var(--color-rule); margin-top: var(--space-xl); }
+.zoom { border-top: 1px solid var(--color-rule); margin-top: 72px; }
 .stage { max-width: 1120px; margin: 0 auto; padding-block: 28px; display: flex; flex-direction: column; gap: 16px; }
 .stage-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px 16px; flex-wrap: wrap; }
 .steps { display: flex; gap: 2px; }
@@ -57,7 +63,7 @@
 .zoom-steps .val { font: 600 clamp(1.3rem, 3.8vw, 1.8rem)/1.15 var(--num); color: var(--color-data-centres); text-align: right; }
 .zoom-steps .line { grid-column: 1 / -1; color: var(--color-text-muted); max-width: 62ch; }
 #zc { display: none; }
-.zoom.live { height: 560vh; }
+.zoom.live { height: 300vh; } /* about two screens of scrolling for five steps (round 3: five screens felt stuck) */
 .zoom.live .stage { position: sticky; top: env(safe-area-inset-top, 0px); height: 100vh; height: 100svh; }
 .zoom.live #zc { display: block; flex: 1 1 auto; min-height: 0; width: 100%; }
 .zoom.live .zoom-steps { min-height: 150px; }

@@ -14,7 +14,7 @@ import './answers.css';
 import './front.css';
 import { esc } from './answers/render';
 import { matches } from './answers/pure';
-import { findRow, FIND_START } from './answers/pages';
+import { findRow, FIND_SHOWN, FIND_START } from './answers/pages';
 import type { AnswersFile, Findable } from './answers/types';
 import type { HubsFile } from './footprint/types';
 import type { CountriesFile } from './footprint/series-types';
@@ -219,13 +219,13 @@ function startLookup() {
     if (!d || input.value.trim() !== v) return;
     const bySlug = new Map(d.answers.map((a) => [a.slug, a]));
     const start = FIND_START.map((s) => bySlug.get(s)).filter((a): a is Data['answers'][number] => !!a);
-    if (!v) { list.innerHTML = start.map(findRow).join(''); note.textContent = `${d.answers.length} checked answers. Pick one, or type to narrow the list.`; return; }
+    if (!v) { list.innerHTML = start.slice(0, FIND_SHOWN).map(findRow).join(''); note.textContent = `${d.answers.length} checked answers. Some people start with these:`; return; }
     const hits = matches<Findable & { stamp?: Data['answers'][number]['stamp']; result?: string }>(v, [...d.answers, ...(d.pages ?? [])]);
     if (hits.length) {
-      list.innerHTML = hits.map((h) => (h.href ? `<li><a href="${h.href}"><span class="q">${esc(h.q)}</span><span></span><span class="r">${esc(h.sub ?? '')}</span></a></li>` : findRow(bySlug.get(h.slug!)!))).join('');
+      list.innerHTML = hits.slice(0, 5).map((h) => (h.href ? `<li><a href="${h.href}"><span class="q">${esc(h.q)}</span><span></span><span class="r">${esc(h.sub ?? '')}</span></a></li>` : findRow(bySlug.get(h.slug!)!))).join('');
       note.textContent = `${hits.length} ${hits.length === 1 ? 'answer' : 'answers'} for “${v}”.`;
     } else {
-      list.innerHTML = start.slice(0, 4).map(findRow).join('');
+      list.innerHTML = start.slice(0, FIND_SHOWN).map(findRow).join('');
       note.textContent = `Hum checks claims about the electricity, water and CO₂ of AI and data centres, so there’s nothing on “${v}” yet. People often start with these:`;
     }
   });

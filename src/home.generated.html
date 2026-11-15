@@ -2,26 +2,24 @@
 <section class="fd-hero" aria-labelledby="front-h">
   <div class="fd-text">
     <h1 id="front-h">The world’s data centres use about as much electricity as <span class="dc">France</span>.</h1>
-    <p class="fd-sub">AI is the fastest-growing part. Hum checks what people say about it, and shows where every number comes from. <a href="/about">Independent: no company funds it.</a></p>
+    <p class="fd-job">People say a lot about AI’s electricity, water and CO₂. Hum checks it, and shows every source.</p>
+    <div class="find">
+      <div class="js-only" role="search"><label for="q">Heard a claim? Look it up</label><input id="q" type="search" autocomplete="off" placeholder="e.g. water, Ireland, my electricity bill" aria-controls="picks" aria-describedby="q-note" /></div>
+      <p class="note muted" id="q-note">47 checked answers. Some people start with these:</p>
+      <ul class="picks" id="picks"><li><a href="/q/should-i-stop"><span class="q">Should I stop using ChatGPT to help the planet?</span><span class="st s-partly">PARTLY</span><span class="r">Small for you, big in total</span></a></li><li><a href="/q/bottle-of-water"><span class="q">Does ChatGPT use a bottle of water for every email it writes?</span><span class="st s-no">NO</span><span class="r">No. The study said one bottle per 10 to 50 answers, for an older model</span></a></li><li><a href="/q/one-question"><span class="q">How much electricity does one ChatGPT question use?</span><span></span><span class="r">About 2% of a phone charge</span></a></li></ul>
+    </div>
+    <p class="fd-sub">AI is the fastest-growing part. <a href="/about">Hum is independent: no company funds it.</a></p>
     <div class="counter js-only" id="counter" data-wh-year="485000000000000">
       <p class="k">Since you opened this page, the world’s data centres have used</p>
       <p class="v num"><span id="ctr" class="derived">0</span> <small>kWh</small></p>
       <p class="how">Every second, about 1.5 years of a US home’s electricity. Hum’s sum: 485 TWh a year (2025, IEA) spread over the seconds in a year.</p>
     </div>
-    <a class="go" href="#zoom">Start with one question <span aria-hidden="true">↓</span></a>
   </div>
   <div class="fd-globe" id="globe" data-wh="485000000000000"><div class="globe-ctrls" hidden><button type="button" class="icon-btn" id="globe-spin" aria-label="Stop turning"></button></div></div>
   <p class="fd-legend" aria-hidden="true"><span><i class="sw-dc"></i>Countries data centres have passed</span><span><i class="sw-hub"></i>The biggest data-centre hubs</span></p>
 </section>
 
-<section class="zoom" id="zoom" aria-labelledby="zoom-h"><div class="stage">
-  <div class="stage-head"><div><p class="eyebrow js-only">Scroll to zoom out</p><h2 id="zoom-h">From one question to the planet</h2></div>
-  <div class="steps js-only" id="steps" role="group" aria-label="Jump to a step"><button type="button" aria-label="One short AI question" aria-current="step"><span>1</span></button><button type="button" aria-label="Charging a phone once"><span>2</span></button><button type="button" aria-label="A US home for a day"><span>3</span></button><button type="button" aria-label="A US home for a year"><span>4</span></button><button type="button" aria-label="All the world’s data centres for a year"><span>5</span></button></div></div>
-  <canvas id="zc" class="js-only" aria-hidden="true"></canvas>
-  <ol class="zoom-steps" id="zoom-steps" aria-live="polite"><li data-wh="0.34" data-val="0.34 Wh" data-short="one question" class="now"><span class="what">One short AI question</span><span class="val num">0.34 Wh</span><p class="line">OpenAI says 0.34 Wh; other published figures differ.</p></li><li data-wh="19" data-val="19 Wh" data-short="a phone charge"><span class="what">Charging a phone once</span><span class="val num">19 Wh</span><p class="line">US EPA, about 19 Wh. About 56 questions charge one phone.</p></li><li data-wh="28000" data-val="28 kWh" data-short="a home’s day"><span class="what">A US home for a day</span><span class="val num">28 kWh</span><p class="line">About 28 kWh, Epoch AI from US data. About 1,500 phone charges.</p></li><li data-wh="10500000" data-val="11 MWh" data-short="a home’s year"><span class="what">A US home for a year</span><span class="val num">11 MWh</span><p class="line">About 10,500 kWh, Epoch AI from US data.</p></li><li data-wh="485000000000000" data-val="485 TWh" data-short=""><span class="what">All the world’s data centres for a year</span><span class="val num">485 TWh</span><p class="line">About 485 TWh in 2025, IEA. About 46 million US homes for a year.</p></li></ol>
-</div></section>
-
-<section class="fd-band" aria-labelledby="claims-h">
+<section class="fd-band fd-claims" aria-labelledby="claims-h">
   <p class="eyebrow">What people say</p>
   <h2 id="claims-h">True, false, or nobody knows?</h2>
   <p class="muted">Tap a claim you’ve heard. Hum’s verdict comes from the sources, and each one links to them.</p>
@@ -41,6 +39,13 @@
   <p class="score muted js-only" id="score" aria-live="polite">6 claims to check.</p>
 </section>
 
+<section class="zoom" id="zoom" aria-labelledby="zoom-h"><div class="stage">
+  <div class="stage-head"><div><p class="eyebrow js-only">Scroll to zoom out</p><h2 id="zoom-h">How big is it? From one question to the planet</h2></div>
+  <div class="steps js-only" id="steps" role="group" aria-label="Jump to a step"><button type="button" aria-label="One short AI question" aria-current="step"><span>1</span></button><button type="button" aria-label="Charging a phone once"><span>2</span></button><button type="button" aria-label="A US home for a day"><span>3</span></button><button type="button" aria-label="A US home for a year"><span>4</span></button><button type="button" aria-label="All the world’s data centres for a year"><span>5</span></button></div></div>
+  <canvas id="zc" class="js-only" aria-hidden="true"></canvas>
+  <ol class="zoom-steps" id="zoom-steps" aria-live="polite"><li data-wh="0.34" data-val="0.34 Wh" data-short="one question" class="now"><span class="what">One short AI question</span><span class="val num">0.34 Wh</span><p class="line">OpenAI says 0.34 Wh; other published figures differ.</p></li><li data-wh="19" data-val="19 Wh" data-short="a phone charge"><span class="what">Charging a phone once</span><span class="val num">19 Wh</span><p class="line">US EPA, about 19 Wh. About 56 questions charge one phone.</p></li><li data-wh="28000" data-val="28 kWh" data-short="a home’s day"><span class="what">A US home for a day</span><span class="val num">28 kWh</span><p class="line">About 28 kWh, Epoch AI from US data. About 1,500 phone charges.</p></li><li data-wh="10500000" data-val="11 MWh" data-short="a home’s year"><span class="what">A US home for a year</span><span class="val num">11 MWh</span><p class="line">About 10,500 kWh, Epoch AI from US data.</p></li><li data-wh="485000000000000" data-val="485 TWh" data-short=""><span class="what">All the world’s data centres for a year</span><span class="val num">485 TWh</span><p class="line">About 485 TWh in 2025, IEA. About 46 million US homes for a year.</p></li></ol>
+</div></section>
+
 <section class="fd-band" aria-labelledby="take-h">
   <p class="eyebrow">The takeaway</p>
   <h2 id="take-h">Three things to remember</h2>
@@ -50,14 +55,6 @@
     <div><p class="who">The claims</p><div><p class="big">Most claims Hum has checked are false or only partly true.</p><p class="src">Of 20 checked claims: 5 false, 11 partly true, 3 true, and for 1 nobody knows yet.</p></div></div>
   </div>
   <div class="share-row js-only"><button type="button" class="btn solid" id="copy-take">Copy these three</button><span class="muted" id="copied" aria-live="polite"></span></div>
-</section>
-
-<section class="fd-band find" aria-labelledby="find-h">
-  <p class="eyebrow">Look it up</p>
-  <h2 id="find-h">Heard something else?</h2>
-  <div class="js-only" role="search"><label for="q">Find a claim or a question</label><input id="q" type="search" autocomplete="off" placeholder="e.g. water, Ireland, my electricity bill" aria-controls="picks" aria-describedby="q-note" /></div>
-  <p class="note muted" id="q-note">47 checked answers. Pick one, or type to narrow the list.</p>
-  <ul class="picks" id="picks"><li><a href="/q/should-i-stop"><span class="q">Should I stop using ChatGPT to help the planet?</span><span class="st s-partly">PARTLY</span><span class="r">Small for you, big in total</span></a></li><li><a href="/q/bottle-of-water"><span class="q">Does ChatGPT use a bottle of water for every email it writes?</span><span class="st s-no">NO</span><span class="r">No. The study said one bottle per 10 to 50 answers, for an older model</span></a></li><li><a href="/q/one-question"><span class="q">How much electricity does one ChatGPT question use?</span><span></span><span class="r">About 2% of a phone charge</span></a></li><li><a href="/q/bills"><span class="q">Are data centres making my electricity bill go up?</span><span class="st s-partly">PARTLY</span><span class="r">Partly: in the eastern US, the grid’s monitor says yes</span></a></li><li><a href="/q/world-share"><span class="q">What share of the world’s electricity do data centres use?</span><span></span><span class="r">About 1.5%</span></a></li><li><a href="/q/power-mix"><span class="q">Are data centres powered by coal, gas or renewables?</span><span></span><span class="r">Mostly fossil fuels: coal about 30%, gas 26%</span></a></li><li><a href="/q/drinking-water"><span class="q">Do data centres use drinking water?</span><span class="st s-partly">PARTLY</span><span class="r">Mostly, at Google: about 78% of its data-centre water was drinking-quality</span></a></li><li><a href="/q/reasoning"><span class="q">Do “thinking” modes use more energy than normal answers?</span><span class="st s-yes">YES</span><span class="r">Yes, often far more</span></a></li></ul>
 </section>
 
 <section class="fd-band" aria-labelledby="topics-h"><h2 id="topics-h">Browse by topic</h2><div class="shelves"><a href="/topics/about-you"><span>About you</span><span class="num muted">8</span></a><a href="/topics/comparisons-and-myths"><span>Comparisons and myths</span><span class="num muted">6</span></a><a href="/topics/the-world-s-total"><span>The world&#39;s total</span><span class="num muted">3</span></a><a href="/topics/growth-and-the-future"><span>Growth and the future</span><span class="num muted">3</span></a><a href="/topics/your-bills-and-the-grid"><span>Your bills and the grid</span><span class="num muted">2</span></a><a href="/topics/water"><span>Water</span><span class="num muted">2</span></a><a href="/topics/near-you"><span>Near you</span><span class="num muted">17</span></a><a href="/topics/power-sources"><span>Power sources</span><span class="num muted">4</span></a><a href="/topics/company-claims"><span>Company claims</span><span class="num muted">2</span></a></div>

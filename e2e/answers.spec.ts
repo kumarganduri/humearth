@@ -31,13 +31,13 @@ test('front door: tapping a claim stamps Hum’s verdict and links to the source
 
 test('search finds a reviewed answer and links to it', async ({ page }) => {
   await page.goto('/');
-  await expect(page.locator('#picks a')).toHaveCount(8); // a list before anyone types
+  await expect(page.locator('#picks a')).toHaveCount(3); // a list before anyone types, on the first screen
   await page.fill('#q', 'netflix streaming');
   await expect(page.locator('#picks a').first()).toHaveAttribute('href', '/q/netflix');
   await expect(page.locator('#q-note')).toContainText('for “netflix streaming”');
   await page.fill('#q', 'hello');
   await expect(page.locator('#q-note')).toContainText('nothing on “hello” yet');
-  await expect(page.locator('#picks a')).toHaveCount(4); // never a dead end
+  await expect(page.locator('#picks a')).toHaveCount(3); // never a dead end
 });
 
 test('search sends a place to The Earth, "who makes Hum" to the About page, and says what Hum covers when it has nothing', async ({ page }) => {
