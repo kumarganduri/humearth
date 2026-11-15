@@ -29,10 +29,12 @@ test('front door: a claim card shows Hum’s verdict stamp after the guess', asy
   await expect(page.locator('#reveal .stamp')).toContainText('Hum’s verdict');
 });
 
-test('front door: playing every card ends on a score', async ({ page }) => {
-  test.slow(); // plays all 21 cards: ~21 s on the phone profile, too close to the 30 s default under full load
+test('front door: playing every card ends on a score', async ({ page, request }) => {
+  // Plays the whole deck, however many cards it has (about a second a card on the phone profile).
+  const cards = (await (await request.get('/data/answers.json')).json()).deck.length;
+  test.setTimeout(30_000 + cards * 4_000);
   await page.goto('/');
-  for (let i = 0; i < 40; i++) {
+  for (let i = 0; i <= cards; i++) {
     const next = page.locator('#next-card');
     if (!(await page.locator('#card .choices button').count())) break;
     await page.locator('#card .choices button').first().click();
