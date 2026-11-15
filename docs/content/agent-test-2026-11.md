@@ -119,3 +119,23 @@ The same 20 simulated visitors and script, on the live site at commit `7d53ae1` 
 | Found Wh / TWh hard | 20 | 19 | 18 |
 
 Everyone now knows the topic at once (data centres use as much electricity as France), but only 4 in 20 read the page as a place that checks claims; several sceptics read it as an alarm page. The zoom takes about five screens of scrolling that look alike, and it pushes the claims and the search far down. Most testers' single change: put the claim cards and the search right under the headline.
+
+## Round 4, 15 November 2026 (front door reordered)
+
+Same 20 visitors and script, on the live site at commit `4c8a23b`: what Hum does and the lookup on the first screen, claims before the zoom, the zoom cut to about two screens.
+
+| Measure (testers of 20) | Round 1 | Round 2 | Round 3 | Round 4 |
+|---|---|---|---|---|
+| Said Hum checks claims, with sources, after 10 seconds | 20 | 20 | 4 | 20 |
+| Taps and scrolls to the water answer (median) | 2 | 2 | 8 | 2 |
+| Wanted to leave during the zoom, or felt it was stuck | – | – | 20 | 2 |
+| Found the zoom confusing | 2 | 0 | 15 | 2 |
+| Mentioned the live counter | 0 | 0 | 11 | 17 |
+| Wondered who makes Hum | 12 | 10 | 3 | 4 |
+| Would share something | 20 | 20 | 20 | 20 |
+| Would come back tomorrow | 0 | 0 | 3 | 2 |
+| Found Wh / TWh hard | 20 | 19 | 18 | 19 |
+| Stumbled on US-only comparisons (US home, US car, gallons) | 15 | 13 | 14 | 16 |
+| Looked for their own place and found little | 18 | 19 | 18 | 18 |
+
+Still open: on a phone the search box sits at the bottom of the first screen, so typed results appear out of sight; one zoom step draws two labels on top of each other; units and US-only comparisons; local answers.
