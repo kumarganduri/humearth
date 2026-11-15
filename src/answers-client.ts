@@ -1,9 +1,6 @@
-// Hum v4 front door and Today. The first card and every answer page are prebuilt (works with scripts off);
-// this wakes the card deck, the search and Today, using the same pure render functions the build used.
-//
-//   /       card deck (guess -> reveal -> next ... -> score)  +  search over the reviewed answers
-//   /today  one card a day, numbered from launch (UTC), never the front door's first card
-//   old globe links (/?year=, /?s=) forward to /earth with everything after the path kept
+// Hum's Today page: one card a day, numbered from launch (UTC). The card is prebuilt (works with scripts off);
+// this wakes it with the same pure render functions the build used. The front door has its own script
+// (src/front.ts).
 
 import './analytics';
 import './base.css';
@@ -11,14 +8,13 @@ import './answers.css';
 import { cardHtml, esc, isRightChoice, revealHtml, SITE } from './answers/render';
 import { bindShares } from './answers/share';
 import { safeLocalStorage } from './legacy';
-import type { AnswersFile, Findable } from './answers/types';
-import { dayNumber, matches, todaySlug } from './answers/pure';
+import type { AnswersFile } from './answers/types';
+import { dayNumber, todaySlug } from './answers/pure';
 
 type Data = AnswersFile & { companies: string[] };
 type Card = Data['answers'][number];
 
 const loc = globalThis.location;
-if (loc.pathname === '/' && /[?&](year|s)=/.test(loc.search)) loc.replace(`/earth${loc.search}${loc.hash}`);
 
 const store = safeLocalStorage();
 const read = <T>(k: string, d: T): T => { try { const v = store?.getItem(k); return v ? (JSON.parse(v) as T) : d; } catch { return d; } };
@@ -47,49 +43,6 @@ function play(host: HTMLElement, a: Card, opts: { at?: number; of?: number; next
     bindShares(rv);
     rv.querySelector<HTMLElement>('#rv-h')!.focus();
     if (opts.onNext) rv.querySelector('#next-card')?.addEventListener('click', opts.onNext);
-  });
-}
-
-function frontDoor(data: Data) {
-  const host = document.getElementById('card');
-  if (!host) return;
-  const bySlug = new Map(data.answers.map((a) => [a.slug, a]));
-  const todays = todaySlug(data, dayNumber(data.launch, new Date()));
-  const deck = data.deck.filter((s) => s !== todays).map((s) => bySlug.get(s)!);
-  let at = 0, score = 0;
-  const next = () => {
-    if (at >= deck.length) {
-      host.innerHTML = `<h2 id="card-h" tabindex="-1">You got ${score} of ${deck.length}.</h2><p class="muted">That’s every card so far. A new question comes each day.</p><div class="cardnav"><a class="btn" href="/today">Today’s question</a><button type="button" class="btn quiet" id="again">Play again</button></div>`;
-      host.querySelector('#again')!.addEventListener('click', () => { at = 0; score = 0; next(); host.querySelector<HTMLElement>('#card-h')!.focus(); });
-      host.querySelector<HTMLElement>('#card-h')!.focus();
-      return;
-    }
-    play(host, deck[at]!, {
-      at, of: deck.length, next: at === deck.length - 1 ? 'See your score' : 'Next question',
-      onAnswer: (right) => { if (right) score++; const t = read('hum.cards', { played: 0, right: 0 }); t.played++; if (right) t.right++; write('hum.cards', t); },
-      onNext: () => { at++; next(); host.scrollIntoView({ block: 'start' }); host.querySelector<HTMLElement>('#card-h')?.focus({ preventScroll: true }); },
-    });
-  };
-  next();
-  search(data);
-}
-
-
-function search(data: Data) {
-  const input = document.getElementById('q') as HTMLInputElement | null;
-  const list = document.getElementById('results');
-  const count = document.getElementById('q-count');
-  if (!input || !list || !count) return;
-  let t: ReturnType<typeof setTimeout> | undefined;
-  input.addEventListener('input', () => {
-    const v = input.value.trim();
-    const hits = v ? matches<Findable & { stamp?: string; result?: string }>(v, [...data.answers, ...(data.pages ?? [])]) : [];
-    list.hidden = !v;
-    list.innerHTML = hits.length
-      ? hits.map((a) => `<li><a href="${a.href ?? `/q/${a.slug}`}"><span>${esc(a.q)}</span><span class="sub">${a.stamp ? `${esc(a.stamp)}. ` : ''}${esc(a.sub ?? a.result ?? '')}</span></a></li>`).join('')
-      : `<li class="none">Nothing on “${esc(v)}” yet. Hum has ${data.answers.length} answers about the electricity, water and CO₂ of AI and data centres. <a href="/topics">Browse every answer</a>.</li>`;
-    clearTimeout(t);
-    t = setTimeout(() => { count.textContent = v ? (hits.length ? `${hits.length} ${hits.length === 1 ? 'answer matches' : 'answers match'}` : 'No match yet') : ''; }, 500);
   });
 }
 
@@ -126,6 +79,5 @@ async function main() {
     data = (await r.json()) as Data;
   }
   if (loc.pathname.replace(/\.html$/, '') === '/today') today(data);
-  else frontDoor(data);
 }
 if (typeof document !== 'undefined') void main();

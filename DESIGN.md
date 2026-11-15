@@ -136,6 +136,11 @@ components:
 - **First screen (poster):**
   - Desktop: a 5/7 asymmetric grid, with the headline and range reading on the left and the live race, year slider and Play button on the right.
   - Phones: one column, headline first, then the race, with the slider in thumb reach.
+- **Front door (`/`, since 2026-11-15):** the planet, then the scale, then the claims, then what to remember.
+  - The first screen pairs the headline with the night globe (countries data centres have passed lit amber, hubs glowing) and a live counter of electricity used since the page opened. The counter is a sum, so its digits are dotted. Phones put the globe first, at most 340px.
+  - "From one question to the planet": a sticky stage that zooms out, as you scroll, through the size ladder (one question, a phone charge, a home's day, a home's year, all data centres). Circles are area-true, and anything too small to see gets a pointer. Numbered steps let you jump without scrolling. With scripts off it is a plain list.
+  - Claims people repeat are cards; tapping one stamps Hum's verdict (a rotated, bordered stamp in the verdict's colour) above the one-line answer and a link to the sources.
+  - "Three things to remember" closes the story, then a lookup that lists answers before anyone types, so an empty box never invites a chatbot question.
 - **The story:**
   - One left-aligned 640px reading column. Charts break out to the full content width (max 1120px).
   - 20px side gutter, 48–72px between sections, separated by a 1px `rule` line rather than by cards.
@@ -208,3 +213,4 @@ Small, quiet radii: 3px for bars and badges, 6px for buttons and panels. Bars ar
 | 2026-10-03 | Replaced with v2 "Lights at Night" | The founder found v1 too kid-oriented and unclear. The approved Hum v2 doc moves to adult data journalism in two layers. Three independent proposals plus research (OWID, The Pudding, Ember) converged on a dark page with an amber subject. Approved preview: https://claude.ai/artifact/55tZYU2wTeKooFKiYLLcsQ |
 | 2026-10-03 | Brightness means certainty (measured bright, forecast dim, derived dashed) | Turns honesty into the visual identity, so skeptics trust it |
 | 2026-10-03 | The page opens at today, with a Play button (replaces autoplay on load) | Scale shock with no waiting; respects reduced motion |
+| 2026-11-15 | Front door rebuilt: globe, zoom out from one question, stamped claims, three takeaways, a lookup with a list | The founder found the answer library dull and unclear; two rounds of simulated visitors agreed the page didn't say what Hum is or what to take away. Prototype approved: https://claude.ai/artifact/B4eotwba7urKfAkvHPgytx |

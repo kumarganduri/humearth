@@ -1,0 +1,113 @@
+/* The front door (DESIGN.md "Front door"): the planet first, then one question zooming out to the planet,
+   the claims people repeat, three things to remember, and the lookup. Lights at night: only measured
+   electricity shines; the counter is a sum, so it is dotted. */
+.front-door { padding-block: var(--space-md) var(--space-3xl); }
+.front-door .fd-hero, .front-door .fd-band, .front-door .stage { padding-inline: max(20px, env(safe-area-inset-left, 0px)) max(20px, env(safe-area-inset-right, 0px)); }
+.front-door h2 { font: 400 clamp(1.9rem, 5vw, 2.6rem)/1.1 var(--display); margin: 0; text-wrap: balance; }
+.front-door h2:focus { outline: none; }
+.front-door p { margin: 0; }
+.eyebrow { font: 700 .8125rem/1.2 var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--color-data-centres); margin: 0 0 10px !important; }
+.derived { text-decoration: underline dotted; text-underline-offset: 4px; }
+
+/* 1. the planet */
+.fd-hero { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); align-items: center; gap: 8px 32px; padding-block: 8px 24px; }
+.fd-hero h1 { font: 400 clamp(2.4rem, 5.6vw, 4.2rem)/1.04 var(--display); letter-spacing: -.005em; margin: 0; text-wrap: balance; }
+.fd-hero h1 .dc { color: var(--color-data-centres); }
+.fd-sub { font-size: 1.125rem; color: var(--color-text-muted); margin-top: 18px !important; max-width: 38ch; }
+.fd-sub a { color: inherit; }
+.counter { margin-top: 28px; padding: 16px 18px; border: 1px solid var(--color-rule); border-radius: var(--rounded-md); background: var(--color-surface); max-width: 460px; }
+.counter .k, .counter .how { font-size: .875rem; color: var(--color-text-muted); }
+.counter .how { margin-top: 6px !important; font-size: .8125rem; }
+.counter .v { font: 600 clamp(1.8rem, 4.6vw, 2.4rem)/1.15 var(--num); color: var(--color-data-centres); font-variant-numeric: tabular-nums; }
+.counter .v small { font-size: 1rem; color: var(--color-text-muted); font-weight: 400; }
+.go { display: inline-flex; align-items: center; gap: 10px; margin-top: 22px; min-height: 48px; padding: 0 18px; border-radius: var(--rounded-md); background: var(--color-data-centres); color: var(--color-on-primary); font-weight: 700; text-decoration: none; }
+.go:hover { background: color-mix(in srgb, var(--color-data-centres) 85%, white); }
+.fd-globe { position: relative; aspect-ratio: 1 / 1; width: 100%; max-width: 600px; justify-self: center; container-type: size; }
+/* A dim sphere holds the globe's place while the map loads (same geometry as fitGlobe); the canvas paints over it. */
+.fd-globe::before { content: ''; position: absolute; width: 88cqmin; aspect-ratio: 1; left: calc(50cqw - 44cqmin); top: calc(50cqh - 44cqmin); border-radius: 50%; background: #0E131C; }
+.fd-globe.off { display: none; }
+.fd-globe .globe-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; cursor: grab; touch-action: pan-y; }
+.fd-globe .globe-canvas:active { cursor: grabbing; }
+.fd-globe .globe-ctrls { position: absolute; z-index: 2; right: 0; top: 0; display: flex; gap: 8px; }
+.fd-globe .globe-ctrls[hidden] { display: none; }
+.icon-btn { appearance: none; width: 44px; height: 44px; display: inline-grid; place-items: center; padding: 0; cursor: pointer; border-radius: var(--rounded-full); border: 1px solid var(--color-rule); background: color-mix(in srgb, var(--color-night) 70%, transparent); color: var(--color-text-muted); }
+.icon-btn:hover { color: var(--color-data-centres); border-color: var(--color-data-centres); }
+.icon-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.icon-btn svg path[d^="M8 5"] { fill: currentColor; stroke: none; }
+.fd-legend { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: .8125rem; color: var(--color-text-muted); }
+.fd-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
+.fd-legend .sw-dc { background: var(--color-data-centres); }
+.fd-legend .sw-hub { background: var(--color-ai); }
+@media (max-width: 760px) {
+  .fd-hero { grid-template-columns: minmax(0, 1fr); }
+  .fd-globe { order: -1; max-width: 340px; }
+}
+
+/* 2. the zoom: a plain list until the script makes it a tall, sticky stage */
+.zoom { border-top: 1px solid var(--color-rule); margin-top: var(--space-xl); }
+.stage { max-width: 1120px; margin: 0 auto; padding-block: 28px; display: flex; flex-direction: column; gap: 16px; }
+.stage-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px 16px; flex-wrap: wrap; }
+.steps { display: flex; gap: 2px; }
+.steps button { width: 44px; height: 44px; display: grid; place-items: center; padding: 0; border: 0; background: none; cursor: pointer; }
+.steps span { width: 30px; height: 30px; display: grid; place-items: center; border-radius: 50%; border: 1.5px solid var(--color-rule); color: var(--color-text-muted); font: 600 .8rem/1 var(--num); }
+.steps button[aria-current="step"] span { border-color: var(--color-data-centres); background: var(--color-data-centres); color: var(--color-on-primary); }
+.zoom-steps { list-style: none; margin: 0; padding: 0; }
+.zoom-steps li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 20px; padding: 14px 0; border-top: 1px solid var(--color-rule); }
+.zoom-steps .what { font: 400 clamp(1.4rem, 4.2vw, 1.9rem)/1.15 var(--display); }
+.zoom-steps .val { font: 600 clamp(1.3rem, 3.8vw, 1.8rem)/1.15 var(--num); color: var(--color-data-centres); text-align: right; }
+.zoom-steps .line { grid-column: 1 / -1; color: var(--color-text-muted); max-width: 62ch; }
+#zc { display: none; }
+.zoom.live { height: 560vh; }
+.zoom.live .stage { position: sticky; top: env(safe-area-inset-top, 0px); height: 100vh; height: 100svh; }
+.zoom.live #zc { display: block; flex: 1 1 auto; min-height: 0; width: 100%; }
+.zoom.live .zoom-steps { min-height: 150px; }
+.zoom.live .zoom-steps li:not(.now) { display: none; }
+
+/* 3. claims: tap to stamp */
+.fd-band { max-width: 640px; margin: 0 auto; padding-block: 72px 0; display: flex; flex-direction: column; gap: 12px; }
+.claims { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 16px; }
+@media (max-width: 560px) { .claims { grid-template-columns: minmax(0, 1fr); } }
+.fd-claim { min-height: 200px; padding: 18px; border: 1px solid var(--color-rule); border-radius: var(--rounded-md); background: var(--color-surface); display: flex; flex-direction: column; gap: 10px; cursor: pointer; }
+.fd-claim:hover { border-color: #3B424D; }
+.fd-claim .heard { font-size: .8125rem; color: var(--color-text-muted); }
+.fd-claim .said { font: 400 1.35rem/1.2 var(--display); }
+.fd-claim.open .said { color: var(--color-text-muted); }
+.fd-claim .tap { margin-top: auto; align-self: flex-start; min-height: 44px; padding: 0; border: 0; background: none; color: var(--color-data-centres); font: 700 .95rem/1 var(--body); cursor: pointer; }
+.fd-claim.open .tap { display: none; }
+.fd-claim .after { display: none; flex-direction: column; gap: 10px; margin-top: auto; }
+.fd-claim.open .after { display: flex; }
+.fd-claim .result { font-weight: 700; }
+.fd-claim .more { display: inline-flex; align-items: center; min-height: 44px; color: var(--color-data-centres) !important; }
+.stamp-big { align-self: flex-start; font: 600 1.05rem/1 var(--num); letter-spacing: .06em; padding: 8px 10px; border: 3px solid currentColor; border-radius: 4px; transform: rotate(-9deg); }
+.fd-claim.open .stamp-big { animation: slam .38s cubic-bezier(.2, 1.4, .4, 1) both; }
+@keyframes slam { from { transform: rotate(-16deg) scale(2.1); opacity: 0; } to { transform: rotate(-9deg) scale(1); opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .fd-claim.open .stamp-big { animation: none; } }
+.s-no { color: var(--color-warning); }
+.s-yes { color: var(--color-success); }
+.s-partly { color: var(--color-data-centres); }
+.s-nobody { color: var(--color-ai); }
+
+/* 4. the takeaway */
+.take { margin-top: 16px; border: 1px solid var(--color-rule); border-radius: var(--rounded-md); background: var(--color-surface); padding: 4px 22px; }
+.take > div { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 16px; padding: 18px 0; border-top: 1px solid var(--color-rule); }
+.take > div:first-child { border-top: 0; }
+.take .who { font: 700 .8125rem/1.7 var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--color-data-centres); }
+.take .big { font: 400 clamp(1.35rem, 3.8vw, 1.65rem)/1.25 var(--display); }
+.take .src { font-size: .875rem; color: var(--color-text-muted); margin-top: 6px !important; }
+@media (max-width: 520px) { .take > div { grid-template-columns: minmax(0, 1fr); gap: 4px; } }
+.share-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 4px; }
+
+/* 5. the lookup */
+.find label { display: block; font-weight: 700; margin: 12px 0 8px; }
+.find input { width: 100%; min-height: 52px; padding: 0 16px; border-radius: var(--rounded-md); border: 1.5px solid #5C6573; background: var(--color-surface); color: var(--color-text); font: inherit; }
+.find input:focus { border-color: var(--color-focus); outline: none; }
+.find .note { font-size: .9rem; min-height: 1.4em; }
+.picks { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--color-rule); }
+.picks li { border-bottom: 1px solid var(--color-rule); }
+.picks a { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 14px; padding: 12px 2px; color: var(--color-text); text-decoration: none; min-height: 48px; }
+.picks a:hover .q { text-decoration: underline; }
+.picks .r { grid-column: 1 / -1; font-size: .875rem; color: var(--color-text-muted); }
+.picks .st { font: 600 .75rem/1.6 var(--num); letter-spacing: .05em; }
+.front-door .shelves { margin-top: 8px; }
+.front-door .shelves a { color: var(--color-text); }
+.front-door .status { margin-top: 24px !important; }

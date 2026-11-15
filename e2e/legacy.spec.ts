@@ -15,7 +15,7 @@ test('an old v1 share link opens the normal page, with the hash and stored world
 
 // Regression: reading window.localStorage throws where the browser blocks site storage (e.g. cookies blocked);
 // that stopped every page's script before it started. Each page must still come to life.
-for (const [path, ready] of [['/', '#card .choices button:first-child'], ['/earth', '#slider'], ['/question', '#q-send'], ['/live', '#l-hold'], ['/2030', '#s-eff']] as const) {
+for (const [path, ready] of [['/', '#zoom.live #steps button:first-child'], ['/earth', '#slider'], ['/question', '#q-send'], ['/live', '#l-hold'], ['/2030', '#s-eff']] as const) {
   test(`${path} still works when the browser blocks site storage`, async ({ page }) => {
     await page.addInitScript(() => Object.defineProperty(window, 'localStorage', { get() { throw new DOMException('blocked', 'SecurityError'); } }));
     await page.goto(path);

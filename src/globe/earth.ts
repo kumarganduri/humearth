@@ -21,6 +21,8 @@ export interface GlobeOptions {
   tracked: Set<string>;
   reduceMotion: boolean;
   onPick: (name: string | null, at: { x: number; y: number }) => void;
+  /** Always centre the globe in its box (the front door), instead of right of centre on wide screens (/earth). */
+  centred?: boolean;
   /** Called when turning starts or stops (including when a drag stops it), so controls stay in sync. */
   onSpinChange?: (spinning: boolean) => void;
 }
@@ -106,7 +108,7 @@ export function createGlobe(o: GlobeOptions): Globe {
     canvas.width = Math.round(w * dpr);
     canvas.height = Math.round(h * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const f = fitGlobe(w, h, matchMedia('(min-width: 860px)').matches);
+    const f = fitGlobe(w, h, !o.centred && matchMedia('(min-width: 860px)').matches);
     proj.scale(f.scale).translate([f.cx, f.cy]);
     dirty = true;
   };
